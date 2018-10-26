@@ -1,0 +1,40 @@
+<?xml version='1.0'?>
+<rules xmlns="http://www.loc.gov/bf2marc"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+       xmlns:marc="http://www.loc.gov/MARC21/slim"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <cf tag="001">
+    <transform><xsl:value-of select="$pRecordId"/></transform>
+  </cf>
+
+  <cf tag="003">
+    <context xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:source/bf:Source/bf:code">
+      <select xpath="."/>
+    </context>
+  </cf>
+    
+  <cf tag="005">
+    <context xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:changeDate">
+      <switch>
+        <case test="@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime'">
+          <transform>
+            <xsl:value-of select="concat(substring(text(),1,4),substring(text(),6,2),substring(text(),9,2),substring(text(),12,2),substring(text(),15,2),substring(text(),18,2),'.0')"/>
+          </transform>
+        </case>
+        <case test="default">
+          <transform>
+            <xsl:message>
+              <xsl:text>Unprocessed node: </xsl:text><xsl:value-of select="name()"/><xsl:text>. Invalid datatype for 005.</xsl:text>
+            </xsl:message>
+          </transform>
+        </case>
+      </switch>
+    </context>
+  </cf>
+
+</rules>

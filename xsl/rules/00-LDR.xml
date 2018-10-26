@@ -1,0 +1,80 @@
+<?xml version='1.0'?>
+<rules xmlns="http://www.loc.gov/bf2marc"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+       xmlns:marc="http://www.loc.gov/MARC21/slim"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <cf tag="LDR">
+    <fixed-field>
+      <!-- 00-04 -->
+      <position default="     "/>
+      <!-- 05 -->
+      <position default="n">
+        <select xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:status/bf:Status/bf:code">
+          <transform><xsl:value-of select="substring(.,1,1)"/></transform>
+        </select>
+      </position>
+      <!-- 06 -->
+      <position default="a">
+        <switch>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/NotatedMusic'] and rdf:RDF/bf:Instance/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manuscript']">d</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/NotatedMusic']">c</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography'] and rdf:RDF/bf:Instance/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manuscript']">f</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography']">e</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage']">g</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Audio']">i</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage']">k</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Electronic']">m</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MixedMaterial']">p</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Object']">r</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Text'] and rdf:RDF/bf:Instance/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manuscript']">t</case>
+        </switch>
+      </position>
+      <!-- 07 -->
+      <position default="m">
+        <switch>
+          <case test="rdf:RDF/bf:Instance/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Collection']">c</case>
+          <case test="rdf:RDF/bf:Instance/bf:issuance/bf:Issuance[@rdf:about='http://id.lc.gov/vocabulary/issuance/intg']">i</case>
+          <case test="rdf:RDF/bf:Instance/bf:issuance/bf:Issuance[@rdf:about='http://id.lc.gov/vocabulary/issuance/serl']">s</case>
+        </switch>
+      </position>
+      <!-- 08 -->
+      <position default=" ">
+        <switch>
+          <case test="rdf:RDF/bf:Instance/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Archival']">a</case>
+        </switch>
+      </position>
+      <!-- 09-16 -->
+      <position default="a22     "/>
+      <!-- 17 -->
+      <position default="u">
+        <switch>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/f'] or rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code[text()='f']"><text> </text></case>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/1']">1</case>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/3']">3</case>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/4']">4</case>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/5']">5</case>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/7']">7</case>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/8']">8</case>
+          <case test="string-length(rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code) = 1">
+            <select xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code"/>
+          </case>
+        </switch>
+      </position>
+      <!-- 18 -->
+      <position default="u">
+        <switch>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/bf:DescriptionConventions[@rdf:about='http://id.loc.gov/vocabulary/descriptionConventions/aacr'] or rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/bf:DescriptionConventions/bf:code[text()='aacr']">a</case>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/bf:DescriptionConventions[@rdf:about='http://id.loc.gov/vocabulary/descriptionConventions/isbd'] or rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/bf:DescriptionConventions/bf:code[text()='isbd']">i</case>
+        </switch>
+      </position>
+      <!-- 19-23 -->
+      <position default=" 4500"/>
+  </fixed-field>
+  </cf>
+
+</rules>

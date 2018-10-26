@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<rules xmlns="http://www.loc.gov/bf2marc"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+       xmlns:marc="http://www.loc.gov/MARC21/slim"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <df tag="245" repeatable="false">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/bf:Title">
+      <ind1 default="1"/>
+      <ind2 default="0">
+        <switch>
+          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+            <transform>
+              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+            </transform>
+          </case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:subtitle"/>
+      </sf>
+      <sf code="c" repeatable="false">
+        <select xpath="ancestor::bf:Instance/bf:responsibilityStatement"/>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:partNumber"/>
+      </sf>
+      <sf code="p">
+        <select xpath="bf:partName"/>
+      </sf>
+    </context>
+  </df>
+
+</rules>
