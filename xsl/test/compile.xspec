@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
+               xmlns:xslout="http://www.w3.org/1999/XSL/Transform"
+               xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+               xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+               xmlns:marc="http://www.loc.gov/MARC21/slim"
+               xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+               xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+               xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+               xmlns:bf2marc="http://www.loc.gov/bf2marc"
+               stylesheet="../src/compile.xsl" xslt-version="1.0">
+
+  <x:scenario label="Basic regression">
+    <x:context href="data/minimal.xml"/>
+    <x:expect label="...should match expected">
+      <xslt:stylesheet xmlns:date="http://exslt.org/dates-and-times"
+                       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+                       xmlns:marc="http://www.loc.gov/MARC21/slim"
+                       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+                       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+                       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+                       xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
+                       version="1.0"
+                       extension-element-prefixes="date"
+                       exclude-result-prefixes="rdf rdfs bf bflc madsrdf">
+        <xslt:output encoding="UTF-8" method="xml" indent="yes"/>
+        <xslt:strip-space elements="*"/>
+        <xslt:param name="pRecordId" select="generate-id()"/>
+        <xslt:param name="pGenerationDatestamp">
+          <xslt:if test="function-available('date:date-time')">
+            <xslt:value-of select="date:date-time()"/>
+          </xslt:if>
+        </xslt:param>
+        <xslt:variable name="vCurrentVersion">0.1.0-TEST</xslt:variable>
+        <xslt:template match="/">
+          <marc:record/>
+        </xslt:template>
+        <xslt:template match="text()"/>
+      </xslt:stylesheet>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="Load rules from included files">
+    <x:context href="data/file.xml"/>
+    <x:expect label="...should create transforms for all included files"
+              test="count(//marc:leader)=1 and count(//marc:controlfield)=3"/>
+  </x:scenario>
+
+  <x:scenario label="Document frame">
+    <x:scenario label="Rule without context element">
+      <x:context mode="documentFrame">
+        <bf2marc:cf tag="001"/>
+      </x:context>
+      <x:expect label="...should generate a frame for the target MARC element">
+        <marc:controlfield>
+          <xslt:attribute name="tag">001</xslt:attribute>
+        </marc:controlfield>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="Rule with context element">
+      <x:context mode="documentFrame">
+        <bf2marc:cf tag="001">
+          <bf2marc:context xpath="rdf:RDF/bf:Instance"/>
+        </bf2marc:cf>
+      </x:context>
+      <x:expect label="...should generate an apply-templates element">
+        <xslt:apply-templates select="rdf:RDF/bf:Instance" mode="generate-001"/>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="Template generation">
+    <x:scenario label="Rule with context element">
+      <x:context mode="generateTemplates">
+        <bf2marc:cf tag="001">
+          <bf2marc:context xpath="rdf:RDF/bf:Instance"/>
+        </bf2marc:cf>
+      </x:context>
+      <x:expect label="...should generate a template for transforming the matched node into the specified MARC element"
+                test="xslt:template/@match='rdf:RDF/bf:Instance' and xslt:template/@mode='generate-001'"/>
+    </x:scenario>
+
+    <x:scenario label="Non-repeatable field">
+      <x:context mode="generateTemplates">
+        <bf2marc:cf tag="001">
+          <bf2marc:context xpath="rdf:RDF/bf:Instance"/>
+        </bf2marc:cf>
+      </x:context>
+      <x:expect label="...source element should only pass through template once"
+                test="xslt:template/xslt:choose/xslt:when[1]/@test='position() = 1'"/>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="MARC field frame">
+    <x:scenario label="cf element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:cf tag="001"/>
+      </x:context>
+      <x:expect label="...should generate frame for target MARC control field">
+        <marc:controlfield>
+          <xslt:attribute name="tag">001</xslt:attribute>
+        </marc:controlfield>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="cf element with tag='LDR'">
+      <x:context mode="fieldTemplate">
+        <bf2marc:cf tag="LDR"/>
+      </x:context>
+      <x:expect label="...should generate frame for MARC leader">
+        <marc:leader/>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="bare value in cf">
+      <x:context mode="fieldTemplate">
+        <bf2marc:cf tag="001">12345678</bf2marc:cf>
+      </x:context>
+      <x:expect label="...should generate frame for target MARC control field with bare value"
+                test="marc:controlfield/xslt:attribute[@name='tag']='001' and marc:controlfield/xslt:text='12345678'"/>
+    </x:scenario>
+
+    <x:scenario label="Processing rules in cf or df element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:cf tag="001">
+          <bf2marc:select xpath="rdf:RDF/bf:Instance">12345678</bf2marc:select>
+        </bf2marc:cf>
+      </x:context>
+      <x:expect label="...should generate XSL logic for processing document"
+                test="count(marc:controlfield/xslt:for-each)=1"/>
+    </x:scenario>
+
+    <x:scenario label="df element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:df tag="245"/>
+      </x:context>
+      <x:expect label="...should generate frame for target MARC data field">
+        <marc:datafield>
+          <xslt:attribute name="tag">245</xslt:attribute>
+        </marc:datafield>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="ind1 or ind2 element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:df tag="245">
+          <bf2marc:ind1>1</bf2marc:ind1>
+          <bf2marc:ind2>0</bf2marc:ind2>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="...should generate ind1/ind2 attributes of target MARC data field">
+        <marc:datafield>
+          <xslt:attribute name="tag">245</xslt:attribute>
+          <xslt:attribute name="ind1"><xslt:text>1</xslt:text></xslt:attribute>
+          <xslt:attribute name="ind2"><xslt:text>0</xslt:text></xslt:attribute>
+        </marc:datafield>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="default attribute for ind1 or ind2 element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:df tag="245">
+          <bf2marc:ind1 default="1"/>
+          <bf2marc:ind2 default="0">
+            <bf2marc:select xpath="bf:code"/>
+          </bf2marc:ind2>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="...sets the default value for the ind1/ind2 attributes"
+                test="marc:datafield/xslt:attribute[@name='ind1']/xslt:text='1' and
+                      marc:datafield/xslt:attribute[@name='ind2']/xslt:choose/xslt:otherwise/xslt:text='0'"/>
+    </x:scenario>
+
+    <x:scenario label="sf element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:df tag="245">
+          <bf2marc:sf code="a"/>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="...should create frame for target MARC subfield"
+                test="count(marc:datafield//marc:subfield[@code='a'])=1"/>
+    </x:scenario>
+
+    <x:scenario label="bare value in sf">
+      <x:context mode="fieldTemplate">
+        <bf2marc:sf code="a">test</bf2marc:sf>
+      </x:context>
+      <x:expect label="...should generate frame for target MARC subfield with bare value">
+        <marc:subfield code="a">test</marc:subfield>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="Processing rules in sf">
+      <x:context mode="fieldTemplate">
+        <bf2marc:df tag="245">
+          <bf2marc:sf code="a" repeatable="false">
+            <bf2marc:switch>
+              <bf2marc:case test="bf:mainTitle">title from bf:mainTitle</bf2marc:case>
+              <bf2marc:case test="rdfs:label">title from rdfs:label</bf2marc:case>
+            </bf2marc:switch>
+          </bf2marc:sf>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="...should create a variable to hold value"
+                test="count(marc:datafield/xslt:variable[@name='v245-a'])=1"/>
+      <x:expect label="...and use that variable to decide whether to generate the subfield"
+                test="marc:datafield/xslt:if/@test='$v245-a != '''''"/>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="Rule building blocks">
+    <x:scenario label="Simple select element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:select xpath="rdfs:label"/>
+      </x:context>
+      <x:expect label="...should generate a for-each loop over the xpath">
+        <xslt:for-each select="rdfs:label">
+          <xslt:value-of select="."/>
+        </xslt:for-each>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="select within sf element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:sf code="a">
+          <bf2marc:select xpath="rdfs:label"/>
+        </bf2marc:sf>
+      </x:context>
+      <x:expect label="...should generate the frame of the target MARC subfield">
+        <xslt:for-each select="rdfs:label">
+          <marc:subfield code="a"><xslt:value-of select="."/></marc:subfield>
+        </xslt:for-each>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="select within non-repeatable field or subfield">
+      <x:context mode="generateTemplates">
+        <bf2marc:cf tag="001">
+          <bf2marc:context xpath="bf:Instance/bf:title/bf:Title">
+            <bf2marc:select xpath="rdfs:label"/>
+          </bf2marc:context>
+        </bf2marc:cf>
+      </x:context>
+      <x:expect label="...should only allow one pass through the loop"
+                test="xslt:template//xslt:for-each/xslt:choose/xslt:when[1]/@test='position() = 1'"/>
+    </x:scenario>
+
+    <x:scenario label="select with bare value">
+      <x:context mode="fieldTemplate">
+        <bf2marc:select xpath="rdfs:label">test value</bf2marc:select>
+      </x:context>
+      <x:expect label="...should generate xsl:text node with value">
+        <xslt:for-each select="rdfs:label">
+          <xslt:text>test value</xslt:text>
+        </xslt:for-each>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="switch/case">
+      <x:context mode="fieldTemplate">
+        <bf2marc:switch>
+          <bf2marc:case test="1=1"/>
+          <bf2marc:case test="1=0"/>
+          <bf2marc:case test="default"/>
+        </bf2marc:switch>
+      </x:context>
+      <x:expect label="...should generate an xsl:choose nodeset">
+        <xslt:choose>
+          <xslt:when test="1=1"/>
+          <xslt:when test="1=0"/>
+          <xslt:otherwise/>
+        </xslt:choose>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="case with bare value">
+      <x:context mode="fieldTemplate">
+        <bf2marc:switch>
+          <bf2marc:case test="1=1">test</bf2marc:case>
+        </bf2marc:switch>
+      </x:context>
+      <x:expect label="...should generate xsl:text node with value">
+        <xslt:choose>
+          <xslt:when test="1=1"><xslt:text>test</xslt:text></xslt:when>
+        </xslt:choose>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="fixed-field/position">
+      <x:context mode="fieldTemplate">
+        <bf2marc:fixed-field>
+          <bf2marc:position>test</bf2marc:position>
+          <bf2marc:position><bf2marc:select xpath="rdfs:label"/></bf2marc:position>
+        </bf2marc:fixed-field>
+      </x:context>
+      <x:expect label="...should generate XSL logic to generate concatenated values"
+                test="count(/xslt:text) = 1 and count(//xslt:for-each) = 1"/>
+      <x:expect label="...bare value should generate xsl:text node with value"
+                test="/xslt:text = 'test'"/>
+      <x:expect label="...select element should be non-repeatable"
+                test="/xslt:variable/xslt:for-each/xslt:choose/xslt:when[1]/@test='position() = 1'"/>
+    </x:scenario>
+
+    <x:scenario label="transform element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:transform>
+          <xslout:text>test</xslout:text>
+        </bf2marc:transform>
+      </x:context>
+      <x:expect label="...XSL should be copied into output stylesheet">
+        <xslt:text>test</xslt:text>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
+
+</x:description>

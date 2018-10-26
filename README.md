@@ -35,6 +35,10 @@ This converter takes BIBFRAME descriptions and transforms them into MARC21 recor
 
 * The XSLT conversion consists of a rules file (in a custom XML format), a stylesheet to transform the rules file into an XSLT stylesheet for use in the wrapper script, and a set of [Xspec](https://github.com/xspec) tests to describe and validate the conversion.
 
+## Known issues
+
+* The rules compiler in `xsl/src/compile.xsl` uses the `xsl:namespace-alias` element of XSLT to allow for generating a conversion stylesheet. The behavior of this element differs depending on your XSLT processor. libxslt (xsltproc) uses the same namespace prefix in the source stylesheet as the namespace prefix in the output stylesheet, switching the namespace underneath. The Saxon XSLT processor switches out both the namespace prefix and the namespace itself. This results in slightly different output stylesheets -- but the actual BIBFRAME to MARC transformation is exactly the same. `compile.xsl` has been written to work most smoothly with `xsltproc`.
+
 ## See also
 
 * The [Bibliographic Framework Initiative](http://www.loc.gov/bibframe/) at the Library of Congress
