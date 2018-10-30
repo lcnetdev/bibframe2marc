@@ -1,13 +1,20 @@
 ---
-before_script:
-  # Install XSpec for XSL testing
-  - git clone -b master https://github.com/xspec/xspec.git /tmp/xspec
-  # Install Saxon for Xspec
-  - mkdir -p /tmp/xspec/saxon
-  - export SAXON_CP=/tmp/xspec/saxon/saxon9he.jar
-  - wget -O ${SAXON_CP} http://central.maven.org/maven2/net/sf/saxon/Saxon-HE/9.7.0-14/Saxon-HE-9.7.0-14.jar
-  - chmod +x ${SAXON_CP}
+dist: trusty
+sudo: false
+language: minimal
 
-script:
-  - echo "Execute Xspec tests for rules compiler"
-  - /tmp/xspec/bin/xspec.sh $TRAVIS_BUILD_DIR/xsl/test/compile.xspec
+addons:
+  apt:
+    packages:
+      - xsltproc
+      - libsaxonhe-java
+
+install:
+  - git clone -b master https://github.com/xspec/xspec.git /tmp/xspec
+
+env:
+  global:
+    - XSPEC=/tmp/xspec/bin/xspec.sh
+    - SAXON_CP=/usr/share/java/Saxon-HE.jar
+
+script: "cd xsl && make test XSPEC=$XSPEC"
