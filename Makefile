@@ -1,10 +1,12 @@
-.PHONY : test_compile test_rules test check clean distclean
+.PHONY : all test_compile test_rules test check clean distclean
 
 XSLTPROC = xsltproc
 XSPEC = xspec.sh
 
 bibframe2marc.xsl : rules.xml
 	$(XSLTPROC) src/compile.xsl rules.xml > bibframe2marc.xsl
+
+all : bibframe2marc.xsl test
 
 rules.xml : $(shell find rules)
 	./buildrules.sh
