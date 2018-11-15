@@ -2,9 +2,10 @@
 
 XSLTPROC = xsltproc
 XSPEC = xspec.sh
+TARGET_XSL = bibframe2marc.xsl
 
 bibframe2marc.xsl : rules.xml
-	$(XSLTPROC) src/compile.xsl rules.xml > bibframe2marc.xsl
+	$(XSLTPROC) src/compile.xsl rules.xml > $(TARGET_XSL)
 
 all : bibframe2marc.xsl test
 

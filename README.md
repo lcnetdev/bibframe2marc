@@ -20,7 +20,7 @@ _bibframe2marc-xsl_ consists of an [XSLT 1.0 stylesheet](src/compile.xsl) that t
 
 ### Building
 
-`make` in the root level of the working directory will create the `bibframe2marc.xsl` conversion stylesheet from the rules in the `rules` subdirectory.
+`make` in the root level of the working directory will create the `bibframe2marc.xsl` conversion stylesheet from the rules in the `rules` subdirectory. The destination stylesheet filename and path can be configured with the `TARGET_XSL` variable.
 
 ### Using the generated conversion stylesheet (bibframe2marc.xsl)
 
