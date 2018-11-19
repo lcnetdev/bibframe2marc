@@ -1,6 +1,21 @@
+
+[![Build Status](https://travis-ci.org/lcnetdev/bibframe2marc-xsl.svg?branch=master)](https://travis-ci.org/lcnetdev/bibframe2marc-xsl)
+
 # bibframe2marc-xsl
 
 XSLT 1.0 conversion from RDF/XML [BIBFRAME 2.0](http://www.loc.gov/bibframe/) to [MARCXML](http://www.loc.gov/marcxml/).
+
+* [Introduction](#introduction)
+* [Dependencies](#dependencies)
+* [Usage](#usage)
+  * [Building](#building)
+  * [Using the generated conversion stylesheet](#using-the-generated-conversion-stylesheet)
+  * [Using the compiler stylesheet](#using-the-compiler-stylesheet)
+  * [Tests](#tests)
+* [TODO](#todo)
+* [Known issues](#known-issues)
+* [See also](#see-also)
+* [License](#license)
 
 ## Introduction
 
@@ -22,7 +37,7 @@ _bibframe2marc-xsl_ consists of an [XSLT 1.0 stylesheet](src/compile.xsl) that t
 
 `make` in the root level of the working directory will create the `bibframe2marc.xsl` conversion stylesheet from the rules in the `rules` subdirectory. The destination stylesheet filename and path can be configured with the `TARGET_XSL` variable.
 
-### Using the generated conversion stylesheet (bibframe2marc.xsl)
+### Using the generated conversion stylesheet
 
 The `bibframe2marc.xsl` conversion stylesheet is an XSLT 1.0 application that converts a striped RDF/XML document containing a single BIBFRAME 2.0 "description" (defined as an RDF graph composed of two top level nodes that refer to each other, one `bf:Instance` node and one `bf:Work` node) into a MARCXML document. It can be invoked as a standalone application using an XSLT 1.0 processor such as `xsltproc`, or it can be embedded in another application using a library such as `libxslt` for processing, as with the [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) perl library.
 
@@ -34,7 +49,7 @@ The converions stylesheet takes the following parameters:
 
 * `pGenerationTimestamp` -- a timestamp for the conversion. If it is not provided, and if the `date:date-time()` function is available, it will be created from the value of `date:date-time()`.
 
-### Using the compiler stylesheet (src/compile.xsl)
+### Using the compiler stylesheet
 
 The conversion stylesheet is generated from the rules in the `rules` subdirectory by the compiler stylesheet `src/compile.xsl`. You can adapt the sample conversion provided to your own needs, or create your own conversion rules. For more information, see the [conversion rules documentation](doc/rules.md).
 
@@ -68,3 +83,12 @@ The `test` target of the Makefile runs both `test_compile` and `test_rules`.
 * [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) -- a perl library that uses _bibframe2marc-xsl_ for BIBFRAME to MARC conversion
 * The [Bibliographic Framework Initiative](http://www.loc.gov/bibframe/) at the Library of Congress
 * The MARC to BIBFRAME conversion tool ([marc2bibframe2](https://github.com/lcnetdev/marc2bibframe2))
+
+## License
+As a work of the United States government, this project is in the public domain within the United States.
+
+Additionally, we waive copyright and related rights in the work worldwide through the CC0 1.0 Universal public domain dedication.
+
+[Legal Code (read the full text)](https://creativecommons.org/publicdomain/zero/1.0/legalcode).
+
+You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
