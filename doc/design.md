@@ -23,7 +23,7 @@ This converter takes BIBFRAME descriptions and transforms them into MARC21 recor
 
 ## Conversion wrapper
 
-A sample application that uses _bibframe2marc-xsl_ is included with the [Biblio::BF2MARC](https://github.com/lcnetdev/Biblio-BF2MARC) perl module.
+A sample application that uses _bibframe2marc-xsl_ is included with the [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) perl module.
 
 * The wrapper script takes an RDF graph of BIBFRAME descriptions and attempts to coerce it into a set of RDF/XML documents with 2 nodes:
   * `<bf:Instance>`

@@ -4,7 +4,7 @@ XSLT 1.0 conversion from RDF/XML [BIBFRAME 2.0](http://www.loc.gov/bibframe/) to
 
 ## Introduction
 
-_bibframe2marc-xsl_ consists of an [XSLT 1.0 stylesheet](src/compile.xsl) that takes a set of [XML rules](rules) and compiles them into another stylesheet (bibframe2marc.xsl). The conversion stylesheet takes an RDF/XML document representing a single BIBFRAME 2.0 description and converts it to a MARCXML document. The bibframe2marc.xsl stylesheet can be used as part of a conversion pipeline, as for example with the [Biblio::BF2MARC](https://github.com/lcnetdev/Biblio-BF2MARC) perl library.
+_bibframe2marc-xsl_ consists of an [XSLT 1.0 stylesheet](src/compile.xsl) that takes a set of [XML rules](rules) and compiles them into another stylesheet (bibframe2marc.xsl). The conversion stylesheet takes an RDF/XML document representing a single BIBFRAME 2.0 description and converts it to a MARCXML document. The bibframe2marc.xsl stylesheet can be used as part of a conversion pipeline, as for example with the [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) perl library.
 
 ## Dependencies
 
@@ -24,7 +24,7 @@ _bibframe2marc-xsl_ consists of an [XSLT 1.0 stylesheet](src/compile.xsl) that t
 
 ### Using the generated conversion stylesheet (bibframe2marc.xsl)
 
-The `bibframe2marc.xsl` conversion stylesheet is an XSLT 1.0 application that converts a striped RDF/XML document containing a single BIBFRAME 2.0 "description" (defined as an RDF graph composed of two top level nodes that refer to each other, one `bf:Instance` node and one `bf:Work` node) into a MARCXML document. It can be invoked as a standalone application using an XSLT 1.0 processor such as `xsltproc`, or it can be embedded in another application using a library such as `libxslt` for processing, as with the [Biblio::BF2MARC](https://github.com/lcnetdev/Biblio-BF2MARC) perl library.
+The `bibframe2marc.xsl` conversion stylesheet is an XSLT 1.0 application that converts a striped RDF/XML document containing a single BIBFRAME 2.0 "description" (defined as an RDF graph composed of two top level nodes that refer to each other, one `bf:Instance` node and one `bf:Work` node) into a MARCXML document. It can be invoked as a standalone application using an XSLT 1.0 processor such as `xsltproc`, or it can be embedded in another application using a library such as `libxslt` for processing, as with the [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) perl library.
 
 For more information about what consitutes a BIBFRAME description, see the [design notes](doc/design.md).
 
@@ -65,6 +65,6 @@ The `test` target of the Makefile runs both `test_compile` and `test_rules`.
 * [Issue tracker](https://github.com/lcnetdev/bibframe2marc-xsl/issues) on GitHub
 * [Conversion rules documentation](doc/rules.md)
 * [Design notes](doc/design.md)
-* [Biblio::BF2MARC](https://github.com/lcnetdev/Biblio-BF2MARC) -- a perl library that uses _bibframe2marc-xsl_ for BIBFRAME to MARC conversion
+* [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) -- a perl library that uses _bibframe2marc-xsl_ for BIBFRAME to MARC conversion
 * The [Bibliographic Framework Initiative](http://www.loc.gov/bibframe/) at the Library of Congress
 * The MARC to BIBFRAME conversion tool ([marc2bibframe2](https://github.com/lcnetdev/marc2bibframe2))
