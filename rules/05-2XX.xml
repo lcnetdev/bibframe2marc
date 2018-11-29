@@ -100,6 +100,30 @@
     </context>
   </df>
 
+  <df tag="243" repeatable="false">
+    <context xpath="rdf:RDF/bf:Work/bf:title/*[
+                      local-name()='CollectiveTitle' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/CollectiveTitle']
+                    ]">
+      <ind1 default="1"/>
+      <ind2 default="0">
+        <switch>
+          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+            <transform>
+              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+            </transform>
+          </case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+    </context>
+  </df>
+
   <df tag="245" repeatable="false">
     <context xpath="rdf:RDF/bf:Instance/bf:title/bf:Title[not(rdf:type)]">
       <ind1 default="1"/>
@@ -141,8 +165,7 @@
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']
                     ) and
                     not(bf:variantType = 'translated') and
-                    not(bf:variantType = 'former') and
-                    not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/CollectiveTitle'])]">
+                    not(bf:variantType = 'former')]">
       <ind1 default="1"/>
       <ind2 default=" ">
         <switch>
