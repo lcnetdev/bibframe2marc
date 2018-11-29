@@ -119,7 +119,7 @@
                 </xsl:choose>
               </xslt:when>
               <xslt:otherwise>
-                <xslt:apply-templates select="." mode="fieldTemplate">
+                <xslt:apply-templates select="parent::*" mode="fieldTemplate">
                   <xslt:with-param name="repeatable" select="parent::*/@repeatable"/>
                 </xslt:apply-templates>
               </xslt:otherwise>
