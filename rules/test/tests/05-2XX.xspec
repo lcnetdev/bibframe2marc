@@ -30,5 +30,11 @@
     <x:expect label="...should generate $a from rdfs:label"
               test="marc:record/marc:datafield[@tag='245']/marc:subfield[@code='a'] = 'The man who spoke Snakish : a novel / by Andrus Kivirähk'"/>
   </x:scenario>
-  
+
+  <x:scenario label="MARC 245 only generated if Title not subclassed">
+    <x:context href="../data/2XX/245-2.xml"/>
+    <x:expect label="No 245 generated"
+              test="count(//marc:datafield[@tag='245']) = 0"/>
+  </x:scenario>
+
 </x:description>
