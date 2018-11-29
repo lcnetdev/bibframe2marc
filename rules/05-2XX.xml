@@ -9,7 +9,7 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <df tag="210">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/*[local-name() = 'AbbreviatedTitle' or child::rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AbbreviatedTitle']]">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[local-name() = 'AbbreviatedTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AbbreviatedTitle']]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
@@ -36,7 +36,7 @@
   </df>
 
   <df tag="222">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/*[local-name() = 'KeyTitle' or child::rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/KeyTitle']]">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[local-name() = 'KeyTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/KeyTitle']]">
       <ind1 default=" "/>
       <ind2 default="0">
         <switch>
@@ -66,8 +66,42 @@
     </context>
   </df>
 
+  <df tag="242">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[(local-name() = 'VariantTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']) and bf:variantType = 'translated']">
+      <ind1 default="1"/>
+      <ind2 default="0">
+        <switch>
+          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+            <transform>
+              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+            </transform>
+          </case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:subtitle"/>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:partNumber"/>
+      </sf>
+      <sf code="p">
+        <select xpath="bf:partName"/>
+      </sf>
+      <sf code="y" repeatable="false">
+        <!-- pick up both bf:Language/bf:code and madsrdf:Language/madsrdf:code -->
+        <select xpath="bf:language/*[local-name()='Language']/*[local-name()='code']"/>
+      </sf>
+    </context>
+  </df>
+
   <df tag="245" repeatable="false">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/bf:Title[not(child::rdf:type)]">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/bf:Title[not(rdf:type)]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
