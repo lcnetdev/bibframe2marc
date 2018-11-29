@@ -10,6 +10,11 @@
     <x:expect label="generate 210" test="count(//marc:datafield[@tag='210']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 222">
+    <x:context href="../data/2XX/222.xml"/>
+    <x:expect label="generate 222" test="count(//marc:datafield[@tag='222']) = 1"/>
+  </x:scenario>
+
   <x:scenario label="MARC 245">
     <x:context href="../data/2XX/245.xml"/>
     <x:expect label="...should be generated from bf:Instance/bf:title/bf:Title"

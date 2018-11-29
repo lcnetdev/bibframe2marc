@@ -35,6 +35,36 @@
     </context>
   </df>
 
+  <df tag="222">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[local-name() = 'KeyTitle' or child::rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/KeyTitle']]">
+      <ind1 default=" "/>
+      <ind2 default="0">
+        <switch>
+          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+            <transform>
+              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+            </transform>
+          </case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:qualifier">
+          <transform>
+            <xsl:value-of select="concat('(',.,')')"/>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
 
   <df tag="245" repeatable="false">
     <context xpath="rdf:RDF/bf:Instance/bf:title/bf:Title[not(child::rdf:type)]">
