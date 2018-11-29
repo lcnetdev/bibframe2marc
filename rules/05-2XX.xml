@@ -133,4 +133,52 @@
     </context>
   </df>
 
+  <df tag="246">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[(
+                      local-name()='VariantTitle' or
+                      local-name()='ParallelTitle' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle'] or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']
+                    ) and
+                    not(bf:variantType = 'translated') and
+                    not(bf:variantType = 'former') and
+                    not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/CollectiveTitle'])]">
+      <ind1 default="1"/>
+      <ind2 default=" ">
+        <switch>
+          <case test="local-name()='ParallelTitle' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']">1</case>
+          <case test="bf:variantType = 'portion'">0</case>
+          <case test="bf:variantType = 'distinctive'">2</case>
+          <case test="bf:variantType = 'cover'">4</case>
+          <case test="bf:variantType = 'added title page'">5</case>
+          <case test="bf:variantType = 'caption'">6</case>
+          <case test="bf:variantType = 'running'">7</case>
+          <case test="bf:variantType = 'spine'">8</case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:subtitle"/>
+      </sf>
+      <sf code="f" repeatable="false">
+        <select xpath="bf:date"/>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:partNumber"/>
+      </sf>
+      <sf code="p">
+        <select xpath="bf:partName"/>
+      </sf>
+      <sf code="5" repeatable="false">
+        <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
+      </sf>
+    </context>
+  </df>
+
 </rules>
