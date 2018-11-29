@@ -5,6 +5,11 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
+  <x:scenario label="MARC 210">
+    <x:context href="../data/2XX/210.xml"/>
+    <x:expect label="generate 210" test="count(//marc:datafield[@tag='210']) = 1"/>
+  </x:scenario>
+
   <x:scenario label="MARC 245">
     <x:context href="../data/2XX/245.xml"/>
     <x:expect label="...should be generated from bf:Instance/bf:title/bf:Title"
