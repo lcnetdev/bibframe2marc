@@ -181,4 +181,43 @@
     </context>
   </df>
 
+  <df tag="247">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[(
+                      local-name()='VariantTitle' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
+                    ) and
+                    bf:variantType = 'former']">
+      <ind1 default="1"/>
+      <ind2 default="0"/>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:subtitle"/>
+      </sf>
+      <sf code="f" repeatable="false">
+        <select xpath="bf:date"/>
+      </sf>
+      <sf code="g" repeatable="false">
+        <select xpath="bf:qualifier">
+          <transform>
+            <xsl:value-of select="concat('(',.,')')"/>
+          </transform>
+        </select>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:partNumber"/>
+      </sf>
+      <sf code="p">
+        <select xpath="bf:partName"/>
+      </sf>
+      <sf code="x" repeatable="false">
+        <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']]/rdf:value"/>
+      </sf>
+    </context>
+  </df>
+
 </rules>
