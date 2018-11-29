@@ -28,7 +28,16 @@
                        exclude-result-prefixes="rdf rdfs bf bflc madsrdf">
         <xslt:output encoding="UTF-8" method="xml" indent="yes"/>
         <xslt:strip-space elements="*"/>
-        <xslt:param name="pRecordId" select="generate-id()"/>
+        <xslt:param name="pRecordId">
+          <xslt:choose>
+            <xslt:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value">
+              <xslt:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value" />
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:value-of select="generate-id()" />
+            </xslt:otherwise>
+          </xslt:choose>
+        </xslt:param>
         <xslt:param name="pGenerationDatestamp">
           <xslt:if test="function-available('date:date-time')">
             <xslt:value-of select="date:date-time()"/>
