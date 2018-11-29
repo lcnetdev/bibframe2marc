@@ -26,7 +26,12 @@
           <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography'] and rdf:RDF/bf:Instance/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manuscript']">f</case>
           <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography']">e</case>
           <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage']">g</case>
-          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Audio']">i</case>
+          <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Audio']">
+            <switch>
+              <case test="rdf:RDF/bf:Work/bf:Content[@rdf:about='http://id.loc.gov/vocabulary/contentTypes/prm']">j</case>
+              <case test="default">i</case>
+            </switch>
+          </case>
           <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage']">k</case>
           <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Electronic']">m</case>
           <case test="rdf:RDF/bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MixedMaterial']">p</case>
