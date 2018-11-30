@@ -24,16 +24,7 @@
       <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
       <xsl:strip-space elements="*"/>
 
-      <xsl:param name="pRecordId">
-        <xsl:choose>
-          <xsl:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value">
-            <xsl:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="generate-id()"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:param>
+      <xsl:param name="pRecordId" select="generate-id()"/>
 
       <xsl:param name="pGenerationDatestamp">
         <xsl:if test="function-available('date:date-time')">

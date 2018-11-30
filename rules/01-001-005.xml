@@ -9,7 +9,23 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <cf tag="001">
-    <transform><xsl:value-of select="$pRecordId"/></transform>
+    <switch>
+      <case test="$pRecordId = generate-id(/)">
+        <switch>
+          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
+            <transform>
+              <xsl:value-of select="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value"/>
+            </transform>
+          </case>
+          <case test="default">
+            <transform><xsl:value-of select="$pRecordId"/></transform>
+          </case>
+        </switch>
+      </case>
+      <case test="default">
+        <transform><xsl:value-of select="$pRecordId"/></transform>
+      </case>
+    </switch>
   </cf>
 
   <cf tag="003">
@@ -17,7 +33,7 @@
       <select xpath="."/>
     </context>
   </cf>
-    
+
   <cf tag="005">
     <context xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:changeDate">
       <switch>
