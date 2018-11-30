@@ -12,7 +12,7 @@
     <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[
         (local-name()='Lccn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn']) and
         not(
-          bf:status/bf:Status/rdfs:label='invalid' or
+          bf:status/bf:Status/rdfs:label[text()='invalid'] or
           bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
           bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'
         )]">
@@ -25,7 +25,7 @@
         <select xpath="ancestor::bf:Instance/bf:identifiedBy/*[
             (local-name()='Lccn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn']) and
             (
-              bf:status/bf:Status/rdfs:label='invalid' or
+              bf:status/bf:Status/rdfs:label[text()='invalid'] or
               bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
               bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'
             )]/rdf:value"/>
@@ -38,7 +38,7 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label='invalid' or
+        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
@@ -64,7 +64,7 @@
       </ind1>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label='invalid' or
+        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
@@ -82,7 +82,7 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label='invalid' or
+        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
@@ -102,7 +102,7 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label='invalid' or
+        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
