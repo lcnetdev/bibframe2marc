@@ -153,4 +153,69 @@
     </context>
   </df>
 
+  <df tag="024">
+    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Isrc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isrc']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Upc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Upc']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Ismn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ismn']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Ean' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ean']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Sici' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Sici']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Ansi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ansi']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Doi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Doi']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Hdl' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hdl']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Isan' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isan']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Isni' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isni']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Iso' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Iso']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Istc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Istc']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Iswc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Iswc']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicPublisherNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublisherNumber']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='StockNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StockNumber']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Urn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Urn']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']] |
+      rdf:RDF/bf:Instance/bf:identifiedBy/bf:Identifier[not(rdf:type)]">
+      <ind1 default="7">
+        <switch>
+          <case test="local-name()='Isrc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isrc']">0</case>
+          <case test="local-name()='Upc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Upc']">1</case>
+          <case test="local-name()='Ismn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ismn']">2</case>
+          <case test="local-name()='Ean' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ean']">3</case>
+          <case test="local-name()='Sici' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Sici']">4</case>
+          <case test="local-name()='Identifier' and not(rdf:type) and not(rdfs:label)">8</case>
+        </switch>
+      </ind1>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+                    bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
+          <sf code="z"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+        </case>
+      </switch>
+      <sf code="q"><select xpath="bf:qualifier"/></sf>
+      <sf code="2">
+        <switch>
+          <case test="local-name()='Ansi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ansi']">ansi</case>
+          <case test="local-name()='Doi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Doi']">doi</case>
+          <case test="local-name()='Hdl' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hdl']">hdl</case>
+          <case test="local-name()='Isan' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isan']">isan</case>
+          <case test="local-name()='Isni' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isni']">isni</case>
+          <case test="local-name()='Iso' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Iso']">iso</case>
+          <case test="local-name()='Istc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Istc']">istc</case>
+          <case test="local-name()='Iswc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Iswc']">iswc</case>
+          <case test="local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']">matrix-number</case>
+          <case test="local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']">music-plate</case>
+          <case test="local-name()='MusicPublisherNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublisherNumber']">music-publisher</case>
+          <case test="local-name()='StockNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StockNumber']">stock-number</case>
+          <case test="local-name()='Urn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Urn']">urn</case>
+          <case test="local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']">video-recording-identifier</case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+    </context>
+  </df>
+
 </rules>
