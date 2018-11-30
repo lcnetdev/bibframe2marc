@@ -116,4 +116,41 @@
     </context>
   </df>
 
+  <df tag="022">
+    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']] | rdf:RDF/bf:Work/bf:identifiedBy/*[local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/bf:Status/rdfs:label[text()='canceled'] or
+                    bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
+          <switch>
+            <case test="local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']">
+              <sf code="z"><select xpath="rdf:value"/></sf>
+            </case>
+            <case test="local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']">
+              <sf code="m"><select xpath="rdf:value"/></sf>
+            </case>
+          </switch>
+        </case>
+        <case test="bf:status/bf:Status/rdfs:label[text()='incorrect'] or
+                    bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/incorrect' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/incorrect'">
+          <sf code="y"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <switch>
+            <case test="local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']">
+              <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+            </case>
+            <case test="local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']">
+              <sf code="l" repeatable="false"><select xpath="rdf:value"/></sf>
+            </case>
+          </switch>
+        </case>
+      </switch>
+      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+    </context>
+  </df>
+
 </rules>
