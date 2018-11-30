@@ -51,4 +51,30 @@
     </context>
   </df>
 
+  <df tag="016">
+    <context xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[
+                      bf:source/bf:Source and
+                      not(bf:source/bf:Source/rdfs:label='DLC')
+                    ]">
+      <ind1 default="7">
+        <switch>
+          <case test="bf:source/bf:Source/rdfs:label='OONL' or
+                      bf:source/bf:Source/rdfs:label='Library and Archives Canada'"><text> </text></case>
+        </switch>
+      </ind1>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/bf:Status/rdfs:label='invalid' or
+                    bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
+          <sf code="z"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a"><select xpath="rdf:value"/></sf>
+        </case>
+      </switch>
+      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+    </context>
+  </df>
+
 </rules>
