@@ -256,4 +256,29 @@
     </context>
   </df>
 
+  <df tag="028">
+    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='AudioIssueNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AudioIssueNumber']] |
+                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']] |
+                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']] |
+                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicPublishingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublishingNumber']] |
+                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']] |
+                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='PublisherNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/PublisherNumber']] |
+                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicDistributorNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicDistributorNumber']]">
+      <ind1 default="5">
+        <switch>
+          <case test="local-name()='AudioIssueNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AudioIssueNumber']">0</case>
+          <case test="local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']">1</case>
+          <case test="local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']">2</case>
+          <case test="local-name()='MusicPublishingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublishingNumber']">3</case>
+          <case test="local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']">4</case>
+          <case test="local-name()='MusicDistributorNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicDistributorNumber']">6</case>
+        </switch>
+      </ind1>
+      <ind2 default="2"/>
+      <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:source/bf:Source/rdf:value"/></sf>
+      <sf code="q"><select xpath="bf:qualifier"/></sf>
+    </context>
+  </df>
+
 </rules>
