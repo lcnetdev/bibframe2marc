@@ -307,4 +307,142 @@
     </context>
   </df>
 
+  <df tag="033">
+    <context xpath="rdf:RDF/bf:Work/bf:capture/bf:Capture">
+      <ind1 default=" ">
+        <switch>
+          <case test="count(bf:date)=1">
+            <switch>
+              <case test="contains(bf:date,'/')">2</case>
+              <case test="default">0</case>
+            </switch>
+          </case>
+          <case test="count(bf:date) > 1">1</case>
+        </switch>
+      </ind1>
+      <ind2 default=" ">
+        <switch>
+          <case test="bf:note/bf:Note[rdfs:label='broadcast']">1</case>
+          <case test="bf:note/bf:Note[rdfs:label='finding']">2</case>
+        </switch>
+      </ind2>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <switch>
+        <case test="count(bf:date)=1">
+          <switch>
+            <case test="bf:date/@rdf:datatype='http://id.loc.gov/datatypes/edtf'">
+              <switch>
+                <case test="contains(bf:date,'/')">
+                  <transform>
+                    <xsl:variable name="vDate1">
+                      <xsl:variable name="vEDTFDate1">
+                        <xsl:call-template name="EDTF-Date1">
+                          <xsl:with-param name="pEDTFDate" select="bf:date"/>
+                        </xsl:call-template>
+                      </xsl:variable>
+                      <xsl:call-template name="EDTF-to-033">
+                        <xsl:with-param name="pEDTFDate" select="$vEDTFDate1"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:variable name="vDate2">
+                      <xsl:variable name="vEDTFDate2">
+                        <xsl:call-template name="EDTF-Date2">
+                          <xsl:with-param name="pEDTFDate" select="bf:date"/>
+                        </xsl:call-template>
+                      </xsl:variable>
+                      <xsl:call-template name="EDTF-to-033">
+                        <xsl:with-param name="pEDTFDate" select="$vEDTFDate2"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <marc:subfield code="a"><xsl:value-of select="$vDate1"/></marc:subfield>
+                    <marc:subfield code="a"><xsl:value-of select="$vDate2"/></marc:subfield>
+                  </transform>
+                </case>
+                <case test="default">
+                  <transform>
+                    <xsl:variable name="v033Date">
+                      <xsl:call-template name="EDTF-to-033">
+                        <xsl:with-param name="pEDTFDate" select="bf:date"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <marc:subfield code="a"><xsl:value-of select="$v033Date"/></marc:subfield>
+                  </transform>
+                </case>
+              </switch>
+            </case>
+            <case test="default">
+              <transform>
+                <xsl:message>Unprocessed bf:date node, value <xsl:value-of select="bf:date"/>. Unknown data type (must be EDTF)</xsl:message>
+                <marc:subfield code="a">--------</marc:subfield>
+              </transform>
+            </case>
+          </switch>
+        </case>
+        <case test="default">
+          <select xpath="bf:date">
+            <switch>
+              <case test="@rdf:datatype='http://id.loc.gov/datatypes/edtf'">
+                <switch>
+                  <case test="contains(.,'/')">
+                    <transform>
+                      <xsl:message>Unprocessed bf:date node, value <xsl:value-of select="."/>. Range of EDTF dates detected where only single value allowed.</xsl:message>
+                      <marc:subfield code="a">--------</marc:subfield>
+                    </transform>
+                  </case>
+                  <case test="default">
+                    <transform>
+                      <xsl:variable name="v033Date">
+                        <xsl:call-template name="EDTF-to-033">
+                          <xsl:with-param name="pEDTFDate" select="."/>
+                        </xsl:call-template>
+                      </xsl:variable>
+                      <marc:subfield code="a"><xsl:value-of select="$v033Date"/></marc:subfield>
+                    </transform>
+                  </case>
+                </switch>
+              </case>
+              <case test="default">
+                <transform>
+                  <xsl:message>Unprocessed bf:date node, value <xsl:value-of select="."/>. Unknown data type (must be EDTF)</xsl:message>
+                  <marc:subfield code="a">--------</marc:subfield>
+                </transform>
+              </case>
+            </switch>
+          </select>
+        </case>
+      </switch>
+      <select xpath="bf:place/bf:Place">
+        <switch>
+          <case test="bf:source/bf:Source/rdf:value='lcc-g'">
+            <switch>
+              <case test="contains(rdf:value,' ')">
+                <transform>
+                  <marc:subfield code="b"><xsl:value-of select="substring-before(rdf:value,' ')"/></marc:subfield>
+                  <marc:subfield code="c"><xsl:value-of select="substring-after(rdf:value,' ')"/></marc:subfield>
+                </transform>
+              </case>
+              <case test="default">
+                <transform>
+                  <marc:subfield code="b"><xsl:value-of select="rdf:value"/></marc:subfield>
+                </transform>
+              </case>
+            </switch>
+          </case>
+          <case test="default">
+            <transform>
+              <marc:subfield code="p"><xsl:value-of select="rdfs:label"/></marc:subfield>
+            </transform>
+            <select xpath="bf:source/bf:Source/rdfs:label">
+              <transform>
+                <marc:subfield code="2"><xsl:value-of select="."/></marc:subfield>
+              </transform>
+            </select>
+          </case>
+        </switch>
+      </select>
+    </context>
+  </df>
+
 </rules>
