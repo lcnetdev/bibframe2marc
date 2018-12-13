@@ -281,4 +281,21 @@
     </context>
   </df>
 
+  <df tag="030">
+    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Coden' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Coden']]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+                    bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
+          <sf code="z"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+        </case>
+      </switch>
+    </context>
+  </df>
+
 </rules>
