@@ -157,6 +157,17 @@ The following global variables in the generated stylesheet are available for use
 * `pGenerationTimestamp`: The value of the `pGenerationTimestamp` stylesheet parameter. Defaults to `date:date-time()` if the function is available to the XSLT processer.
 * `vCurrentVersion`: The value of the `version` element of the top-level `rules` document.
 
+#### XSL named templates
+
+The following named templates are defined in the generated stylesheet for use in XSL fragments:
+
+* `EDTF-Date1`: Return the first date from an EDTF date range. If the EDTF date is not a range, will simply return the date.
+* `EDTF-Date1`: Return the second date from an EDTF date range. If the EDTF date is not a range, will return an empty string.
+* `EDTF-DatePart`: Return the date part of a single EDTF date (not a range).
+* `EDTF-TimePart`: Return the time part of a single EDTF date (not a range).
+* `EDTF-TimeDiff`: Return the time shift part of a single EDTF date (not a range).
+* `EDTF-to-033`: Return a string formatted as a date for the 033/263 fields from a single EDTF date (not a range).
+
 #### Limitations
 
 * The behavior of `context` and `select` blocks in a non-repeatable field is somewhat limiting. For a non-repeatable field, there can only be one `context` or `select` block.

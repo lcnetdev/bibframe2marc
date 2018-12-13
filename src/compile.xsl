@@ -34,6 +34,180 @@
 
       <xslt:apply-templates/>
 
+      <!-- Conversion functions -->
+
+      <!-- EDTF functions -->
+
+      <!-- Extract first date from a range -->
+      <xsl:template name="EDTF-Date1">
+        <xsl:param name="pEDTFDate"/>
+        <xsl:choose>
+          <xsl:when test="contains($pEDTFDate,'/')">
+            <xsl:value-of select="substring-before($pEDTFDate,'/')"/>
+          </xsl:when>
+          <xsl:otherwise><xsl:value-of select="$pEDTFDate"/></xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
+
+      <!-- Extract second date from a range -->
+      <xsl:template name="EDTF-Date2">
+        <xsl:param name="pEDTFDate"/>
+        <xsl:value-of select="substring-after($pEDTFDate,'/')"/>
+      </xsl:template>
+
+      <!-- Extract date part from a single EDTF date -->
+      <!-- This will also work on ISO-8601 dates -->
+      <xsl:template name="EDTF-DatePart">
+        <xsl:param name="pEDTFDate"/>
+        <xsl:choose>
+          <xsl:when test="contains($pEDTFDate,'T')">
+            <xsl:value-of select="substring-before($pEDTFDate,'T')"/>
+          </xsl:when>
+          <xsl:otherwise><xsl:value-of select="$pEDTFDate"/></xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
+
+      <!-- Extract time part from a single EDTF date -->
+      <!-- This will also work on ISO-8601 dates -->
+      <xsl:template name="EDTF-TimePart">
+        <xsl:param name="pEDTFDate"/>
+        <xsl:choose>
+          <xsl:when test="contains(substring-after($pEDTFDate,'T'),'+')">
+            <xsl:value-of select="substring-before(substring-after($pEDTFDate,'T'),'+')"/>
+          </xsl:when>
+          <xsl:when test="contains(substring-after($pEDTFDate,'T'),'-')">
+            <xsl:value-of select="substring-before(substring-after($pEDTFDate,'T'),'-')"/>
+          </xsl:when>
+          <xsl:when test="contains(substring-after($pEDTFDate,'T'),'Z')">
+            <xsl:value-of select="substring-before(substring-after($pEDTFDate,'T'),'Z')"/>
+          </xsl:when>
+          <xsl:otherwise><xsl:value-of select="substring-after($pEDTFDate,'T')"/></xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
+
+      <!-- Extract time differential from a single EDTF date -->
+      <!-- This will also work on ISO-8601 dates -->
+      <xsl:template name="EDTF-TimeDiff">
+        <xsl:param name="pEDTFDate"/>
+        <xsl:choose>
+          <xsl:when test="contains(substring-after($pEDTFDate,'T'),'+')">
+            <xsl:value-of select="concat('+',substring-after(substring-after($pEDTFDate,'T'),'+'))"/>
+          </xsl:when>
+          <xsl:when test="contains(substring-after($pEDTFDate,'T'),'-')">
+            <xsl:value-of select="concat('-',substring-after(substring-after($pEDTFDate,'T'),'-'))"/>
+          </xsl:when>
+          <xsl:when test="contains(substring-after($pEDTFDate,'T'),'Z')">+00:00</xsl:when>
+        </xsl:choose>
+      </xsl:template>
+
+      <!-- Translate EDTF Level 1 date to 033/263 format -->
+      <!-- See https://www.loc.gov/standards/datetime/edtf.html -->
+      <!-- Template expects single dates, not ranges (the 033 expresses ranges as multiple single dates) -->
+      <xsl:template name="EDTF-to-033">
+        <xsl:param name="pEDTFDate"/>
+
+        <!-- Remove all qualifiers from EDTF date -->
+        <xsl:variable name="vEDTFDate" select="translate(translate(translate($pEDTFDate,'?',''),'~',''),'%','')"/>
+
+        <xsl:variable name="vDatePart">
+          <xsl:call-template name="EDTF-DatePart">
+            <xsl:with-param name="pEDTFDate" select="$vEDTFDate"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="vTimePart">
+          <xsl:call-template name="EDTF-TimePart">
+            <xsl:with-param name="pEDTFDate" select="$vEDTFDate"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="vTimeDiffPart">
+          <xsl:call-template name="EDTF-TimeDiff">
+            <xsl:with-param name="pEDTFDate" select="$vEDTFDate"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <xsl:variable name="vYear">
+          <!-- Translate 'X' to '-' -->
+          <xsl:variable name="vYear033">
+            <xsl:choose>
+              <xsl:when test="contains($vDatePart,'-')">
+                <xsl:value-of select="translate(substring-before($vDatePart,'-'),'X','-')"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="translate($vDatePart,'X','-')"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <xsl:choose>
+            <!-- only support 4-digit, positive integer dates -->
+            <xsl:when test="starts-with($vYear033,'Y') or starts-with($vYear033,'-') or (string-length($vYear033) != 4)">
+              <xsl:text>----</xsl:text>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$vYear033"/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+
+        <xsl:variable name="vMonth">
+          <!-- Translate 'X' to '-' -->
+          <xsl:variable name="vMonth033">
+            <xsl:choose>
+              <xsl:when test="substring-after(substring-after($vDatePart,'-'),'-') != ''">
+                <xsl:value-of select="translate(substring-before(substring-after($vDatePart,'-'),'-'),'X','-')"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="translate(substring-after($vDatePart,'-'),'X','-')"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <xsl:choose>
+            <!-- only support 2-digit months up to 12 (no seasons) -->
+            <xsl:when test="(string-length($vMonth033) != 2) or ($vMonth033 > 12)">
+              <xsl:text>--</xsl:text>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$vMonth033"/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+
+        <xsl:variable name="vDay">
+          <!-- Translate 'X' to '-' -->
+          <xsl:variable name="vDay033" select="translate(substring-after(substring-after($vDatePart,'-'),'-'),'X','-')"/>
+          <xsl:choose>
+            <!-- only support 2-digit days up to 31 -->
+            <xsl:when test="(string-length($vDay033) != 2) or ($vDay033 > 31)">
+              <xsl:text>--</xsl:text>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$vDay033"/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+
+        <xsl:variable name="vTime">
+          <xsl:if test="$vTimePart != ''">
+            <!-- Translate 'X' to '-', remove colons -->
+            <xsl:variable name="vTime033" select="translate(translate($vTimePart,'X','-'),':','')"/>
+            <xsl:choose>
+              <!-- only support 6-digits times (no other sanity check) -->
+              <xsl:when test="string-length($vTime033) = 6"><xsl:value-of select="$vTime033"/></xsl:when>
+              <xsl:otherwise>------</xsl:otherwise>
+            </xsl:choose>
+          </xsl:if>
+        </xsl:variable>
+
+        <xsl:variable name="vTimeDiff">
+          <xsl:if test="($vTimePart != '') and ($vTimeDiffPart != '')">
+            <!-- Translate 'X' to '-', remove colons -->
+            <xsl:variable name="vTimeDiff033" select="translate(translate($vTimeDiffPart,'X','-'),':','')"/>
+            <xsl:choose>
+              <!-- Needs to be 5 characters, pad with zeros on the right -->
+              <xsl:when test="string-length($vTimeDiff033) = 5"><xsl:value-of select="$vTimeDiff033"/></xsl:when>
+              <xsl:when test="string-length($vTimeDiff033) = 3">
+                <xsl:value-of select="concat($vTimeDiff033,'00')"/>
+              </xsl:when>
+            </xsl:choose>
+          </xsl:if>
+        </xsl:variable>
+
+        <xsl:value-of select="concat($vYear,$vMonth,$vDay,$vTime,$vTimeDiff)"/>
+      </xsl:template>
+
     </xsl:stylesheet>
   </xslt:template>
 

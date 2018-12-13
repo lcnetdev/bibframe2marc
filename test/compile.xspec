@@ -39,6 +39,163 @@
           <marc:record/>
         </xslt:template>
         <xslt:template match="text()"/>
+        <xslt:template name="EDTF-Date1">
+          <xslt:param name="pEDTFDate" />
+          <xslt:choose>
+            <xslt:when test="contains($pEDTFDate,'/')">
+              <xslt:value-of select="substring-before($pEDTFDate,'/')" />
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:value-of select="$pEDTFDate" />
+            </xslt:otherwise>
+          </xslt:choose>
+        </xslt:template>
+        <xslt:template name="EDTF-Date2">
+          <xslt:param name="pEDTFDate" />
+          <xslt:value-of select="substring-after($pEDTFDate,'/')" />
+        </xslt:template>
+        <xslt:template name="EDTF-DatePart">
+          <xslt:param name="pEDTFDate" />
+          <xslt:choose>
+            <xslt:when test="contains($pEDTFDate,'T')">
+              <xslt:value-of select="substring-before($pEDTFDate,'T')" />
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:value-of select="$pEDTFDate" />
+            </xslt:otherwise>
+          </xslt:choose>
+        </xslt:template>
+        <xslt:template name="EDTF-TimePart">
+          <xslt:param name="pEDTFDate" />
+          <xslt:choose>
+            <xslt:when test="contains(substring-after($pEDTFDate,'T'),'+')">
+              <xslt:value-of select="substring-before(substring-after($pEDTFDate,'T'),'+')" />
+            </xslt:when>
+            <xslt:when test="contains(substring-after($pEDTFDate,'T'),'-')">
+              <xslt:value-of select="substring-before(substring-after($pEDTFDate,'T'),'-')" />
+            </xslt:when>
+            <xslt:when test="contains(substring-after($pEDTFDate,'T'),'Z')">
+              <xslt:value-of select="substring-before(substring-after($pEDTFDate,'T'),'Z')" />
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:value-of select="substring-after($pEDTFDate,'T')" />
+            </xslt:otherwise>
+          </xslt:choose>
+        </xslt:template>
+        <xslt:template name="EDTF-TimeDiff">
+          <xslt:param name="pEDTFDate" />
+          <xslt:choose>
+            <xslt:when test="contains(substring-after($pEDTFDate,'T'),'+')">
+              <xslt:value-of select="concat('+',substring-after(substring-after($pEDTFDate,'T'),'+'))" />
+            </xslt:when>
+            <xslt:when test="contains(substring-after($pEDTFDate,'T'),'-')">
+              <xslt:value-of select="concat('-',substring-after(substring-after($pEDTFDate,'T'),'-'))" />
+            </xslt:when>
+            <xslt:when test="contains(substring-after($pEDTFDate,'T'),'Z')">+00:00</xslt:when>
+          </xslt:choose>
+        </xslt:template>
+        <xslt:template name="EDTF-to-033">
+          <xslt:param name="pEDTFDate" />
+          <xslt:variable name="vEDTFDate"
+                         select="translate(translate(translate($pEDTFDate,'?',''),'~',''),'%','')" />
+          <xslt:variable name="vDatePart">
+            <xslt:call-template name="EDTF-DatePart">
+              <xslt:with-param name="pEDTFDate"
+                               select="$vEDTFDate" />
+            </xslt:call-template>
+          </xslt:variable>
+          <xslt:variable name="vTimePart">
+            <xslt:call-template name="EDTF-TimePart">
+              <xslt:with-param name="pEDTFDate"
+                               select="$vEDTFDate" />
+            </xslt:call-template>
+          </xslt:variable>
+          <xslt:variable name="vTimeDiffPart">
+            <xslt:call-template name="EDTF-TimeDiff">
+              <xslt:with-param name="pEDTFDate"
+                               select="$vEDTFDate" />
+            </xslt:call-template>
+          </xslt:variable>
+          <xslt:variable name="vYear">
+            <xslt:variable name="vYear033">
+              <xslt:choose>
+                <xslt:when test="contains($vDatePart,'-')">
+                  <xslt:value-of select="translate(substring-before($vDatePart,'-'),'X','-')" />
+                </xslt:when>
+                <xslt:otherwise>
+                  <xslt:value-of select="translate($vDatePart,'X','-')" />
+                </xslt:otherwise>
+              </xslt:choose>
+            </xslt:variable>
+            <xslt:choose>
+              <xslt:when test="starts-with($vYear033,'Y') or starts-with($vYear033,'-') or (string-length($vYear033) != 4)">
+                <xslt:text>----</xslt:text>
+              </xslt:when>
+              <xslt:otherwise>
+                <xslt:value-of select="$vYear033" />
+              </xslt:otherwise>
+            </xslt:choose>
+          </xslt:variable>
+          <xslt:variable name="vMonth">
+            <xslt:variable name="vMonth033">
+              <xslt:choose>
+                <xslt:when test="substring-after(substring-after($vDatePart,'-'),'-') != ''">
+                  <xslt:value-of select="translate(substring-before(substring-after($vDatePart,'-'),'-'),'X','-')" />
+                </xslt:when>
+                <xslt:otherwise>
+                  <xslt:value-of select="translate(substring-after($vDatePart,'-'),'X','-')" />
+                </xslt:otherwise>
+              </xslt:choose>
+            </xslt:variable>
+            <xslt:choose>
+              <xslt:when test="(string-length($vMonth033) != 2) or ($vMonth033 > 12)">
+                <xslt:text>--</xslt:text>
+              </xslt:when>
+              <xslt:otherwise>
+                <xslt:value-of select="$vMonth033" />
+              </xslt:otherwise>
+            </xslt:choose>
+          </xslt:variable>
+          <xslt:variable name="vDay">
+            <xslt:variable name="vDay033"
+                           select="translate(substring-after(substring-after($vDatePart,'-'),'-'),'X','-')" />
+            <xslt:choose>
+              <xslt:when test="(string-length($vDay033) != 2) or ($vDay033 > 31)">
+                <xslt:text>--</xslt:text>
+              </xslt:when>
+              <xslt:otherwise>
+                <xslt:value-of select="$vDay033" />
+              </xslt:otherwise>
+            </xslt:choose>
+          </xslt:variable>
+          <xslt:variable name="vTime">
+            <xslt:if test="$vTimePart != ''">
+              <xslt:variable name="vTime033"
+                             select="translate(translate($vTimePart,'X','-'),':','')" />
+              <xslt:choose>
+                <xslt:when test="string-length($vTime033) = 6">
+                  <xslt:value-of select="$vTime033" />
+                </xslt:when>
+                <xslt:otherwise>------</xslt:otherwise>
+              </xslt:choose>
+            </xslt:if>
+          </xslt:variable>
+          <xslt:variable name="vTimeDiff">
+            <xslt:if test="($vTimePart != '') and ($vTimeDiffPart != '')">
+              <xslt:variable name="vTimeDiff033"
+                             select="translate(translate($vTimeDiffPart,'X','-'),':','')" />
+              <xslt:choose>
+                <xslt:when test="string-length($vTimeDiff033) = 5">
+                  <xslt:value-of select="$vTimeDiff033" />
+                </xslt:when>
+                <xslt:when test="string-length($vTimeDiff033) = 3">
+                  <xslt:value-of select="concat($vTimeDiff033,'00')" />
+                </xslt:when>
+              </xslt:choose>
+            </xslt:if>
+          </xslt:variable>
+          <xslt:value-of select="concat($vYear,$vMonth,$vDay,$vTime,$vTimeDiff)" />
+        </xslt:template>
       </xslt:stylesheet>
     </x:expect>
   </x:scenario>

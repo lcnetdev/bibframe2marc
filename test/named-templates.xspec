@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+               xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
+               xmlns:xslout="http://www.w3.org/1999/XSL/Transform"
+               xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+               xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+               xmlns:marc="http://www.loc.gov/MARC21/slim"
+               xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+               xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+               xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+               xmlns:bf2marc="http://www.loc.gov/bf2marc"
+
+-->
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               stylesheet="../bibframe2marc.xsl" xslt-version="1.0">
+
+  <x:scenario label="EDTF templates">
+
+    <x:scenario label="EDTF-Date1">
+      <x:call template="EDTF-Date1">
+        <x:param name="pEDTFDate" select="'2018-12-09/2018-12-10'"/>
+      </x:call>
+      <x:expect label="Should return the first date in a range" select="'2018-12-09'"/>
+    </x:scenario>
+
+    <x:scenario label="EDTF-Date2">
+      <x:call template="EDTF-Date2">
+        <x:param name="pEDTFDate" select="'2018-12-09/2018-12-10'"/>
+      </x:call>
+      <x:expect label="Should return the first date in a range" select="'2018-12-10'"/>
+    </x:scenario>
+
+    <x:scenario label="EDTF-DatePart">
+      <x:call template="EDTF-DatePart">
+        <x:param name="pEDTFDate" select="'2018-12-09T00:14:03+06:00'"/>
+      </x:call>
+      <x:expect label="Should return the date part of the EDTF date" select="'2018-12-09'"/>
+    </x:scenario>
+
+    <x:scenario label="EDTF-TimePart">
+      <x:call template="EDTF-TimePart">
+        <x:param name="pEDTFDate" select="'2018-12-09T00:14:03+06:00'"/>
+      </x:call>
+      <x:expect label="Should return the time part of the EDTF date" select="'00:14:03'"/>
+    </x:scenario>
+
+    <x:scenario label="EDTF-TimeDiff">
+      <x:call template="EDTF-TimeDiff">
+        <x:param name="pEDTFDate" select="'2018-12-09T00:14:03+06:00'"/>
+      </x:call>
+      <x:expect label="Should return the time shift of the EDTF date" select="'+06:00'"/>
+    </x:scenario>
+
+    <x:scenario label="EDTF-to-033">
+      <x:call template="EDTF-to-033">
+        <x:param name="pEDTFDate" select="'2018-12-XX?T00:14:03%+06:00'"/>
+      </x:call>
+      <x:expect label="Should return the date formatted for the 033" select="'201812--001403+0600'"/>
+    </x:scenario>
+
+  </x:scenario>
+
+</x:description>
