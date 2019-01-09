@@ -243,4 +243,72 @@
     </context>
   </df>
 
+  <df tag="264">
+    <context xpath="rdf:RDF/bf:Instance/bf:provisionActivity/*[
+                      local-name()='ProvisionActivity' or
+                      local-name()='Production' or
+                      local-name()='Publication' or
+                      local-name()='Distribution' or
+                      local-name()='Manufacture']">
+      <ind1 default=" ">
+        <switch>
+          <case test="bf:status/bf:Status/rdfs:label='current'">3</case>
+        </switch>
+      </ind1>
+      <ind2 default="1">
+        <switch>
+          <case test="local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production']">0</case>
+          <case test="local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution']">2</case>
+          <case test="local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']">3</case>
+        </switch>
+      </ind2>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a">
+        <select xpath="bf:place/*[local-name()='Place' or local-name()='Geographic' or local-name()='Authority']">
+          <switch>
+            <case test="rdfs:label">
+              <transform>
+                <xsl:value-of select="concat(rdfs:label,':')"/>
+              </transform>
+            </case>
+            <case test="madsrdf:authoritativeLabel">
+              <transform>
+                <xsl:value-of select="concat(madsrdf:authoritativeLabel,':')"/>
+              </transform>
+            </case>
+            <case test="@rdf:about"><select xpath="@rdf:about"/></case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="b">
+        <select xpath="bf:agent/bf:Agent/rdfs:label">
+          <transform>
+            <xsl:value-of select="concat(.,',')"/>
+          </transform>
+        </select>
+      </sf>
+      <sf code="c">
+        <select xpath="bf:date">
+          <transform>
+            <xsl:value-of select="concat(.,'.')"/>
+          </transform>
+        </select>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="264">
+    <context xpath="rdf:RDF/bf:Instance/bf:copyrightDate">
+      <ind1 default=" "/>
+      <ind2 default="4"/>
+      <sf code="c">
+        <transform>
+          <xsl:value-of select="concat(.,'.')"/>
+        </transform>
+      </sf>
+    </context>
+  </df>
+
 </rules>
