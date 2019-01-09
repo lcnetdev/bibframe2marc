@@ -161,8 +161,10 @@
     <context xpath="rdf:RDF/bf:Instance/bf:title/*[(
                       local-name()='VariantTitle' or
                       local-name()='ParallelTitle' or
+                      local-name()='TranscribedTitle' or
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle'] or
-                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle'] or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
                     ) and
                     not(bf:variantType = 'translated') and
                     not(bf:variantType = 'former')]">
