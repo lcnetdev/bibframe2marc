@@ -16,4 +16,29 @@
     </sf>
   </df>
 
+  <df tag="500">
+    <context xpath="rdf:RDF/bf:Instance/bf:note/bf:Note[not(bf:noteType)]|rdf:RDF/bf:Work/bf:note/bf:Note[not(bf:noteType)]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a" repeatable="false">
+        <transform>
+          <xsl:for-each select="rdfs:label">
+            <xsl:choose>
+              <xsl:when test="position() = last()">
+                <xsl:value-of select="."/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="concat(.,' ')"/></xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
+        </transform>
+      </sf>
+      <sf code="5" repeatable="false">
+        <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
+      </sf>
+    </context>
+  </df>
+
 </rules>
