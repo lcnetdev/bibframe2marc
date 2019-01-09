@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:marc="http://www.loc.gov/MARC21/slim"
+               stylesheet="../../../bibframe2marc.xsl"
+               xslt-version="1.0">
+
+  <x:scenario label="MARC 338">
+    <x:context href="../data/3XX/338.xml"/>
+    <x:expect label="generate 338" test="count(//marc:datafield[@tag='338']) = 1"/>
+  </x:scenario>
+
+</x:description>

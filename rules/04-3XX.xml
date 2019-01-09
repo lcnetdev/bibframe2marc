@@ -1,0 +1,48 @@
+<?xml version='1.0'?>
+<rules xmlns="http://www.loc.gov/bf2marc"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+       xmlns:marc="http://www.loc.gov/MARC21/slim"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <df tag="338">
+    <context xpath="rdf:RDF/bf:Instance/bf:carrier">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bf:Carrier/bflc:appliesTo/bflc:AppliesTo/rdfs:label|madsrdf:Authority/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a">
+        <select xpath="bf:Carrier/rdfs:label|madsrdf:Authority/madsrdf:authoritativeLabel"/>
+      </sf>
+      <sf code="b">
+        <select xpath="madsrdf:Authority/madsrdf:code"/>
+      </sf>
+      <sf code="0">
+        <select xpath="madsrdf:Authority/@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:Carrier/bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vSource">
+              <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vSource != ''">
+                <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:Carrier/bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
+</rules>
