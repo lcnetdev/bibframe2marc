@@ -8,6 +8,24 @@
        xmlns:marc="http://www.loc.gov/MARC21/slim"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <df tag="300">
+    <context xpath="rdf:RDF/bf:Instance/bf:extent/bf:Extent">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a"><select xpath="rdfs:label"/></sf>
+      <sf code="b" repeatable="false">
+        <select xpath="../../bf:note/bf:Note[bf:noteType='Physical details']/rdfs:label"/>
+      </sf>
+      <sf code="c"><select xpath="../../bf:dimensions"/></sf>
+      <sf code="e" repeatable="false">
+        <select xpath="../../bf:note/bf:Note[bf:noteType='Accompanying material']/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
   <df tag="338">
     <context xpath="rdf:RDF/bf:Instance/bf:carrier/bf:Carrier|rdf:RDF/bf:Instance/bf:carrier/madsrdf:Authority">
       <ind1 default=" "/>
