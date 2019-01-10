@@ -37,7 +37,10 @@
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="a">
-        <select xpath="rdfs:label|madsrdf:authoritativeLabel"/>
+        <switch>
+          <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="b" repeatable="false">
         <select xpath="madsrdf:code"/>
@@ -74,7 +77,10 @@
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="a">
-        <select xpath="rdfs:label|madsrdf:authoritativeLabel"/>
+        <switch>
+          <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="b" repeatable="false">
         <select xpath="madsrdf:code"/>
@@ -111,7 +117,10 @@
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="a">
-        <select xpath="rdfs:label|madsrdf:authoritativeLabel"/>
+        <switch>
+          <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="b" repeatable="false">
         <select xpath="madsrdf:code"/>
