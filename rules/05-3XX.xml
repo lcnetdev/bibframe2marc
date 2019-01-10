@@ -70,7 +70,10 @@
   </df>
 
   <df tag="337">
-    <context xpath="rdf:RDF/bf:Instance/bf:media/bf:Media|rdf:RDF/bf:Instance/bf:media/madsrdf:Authority">
+    <context xpath="rdf:RDF/bf:Instance/bf:media/*[local-name()='Media' or
+                                                   rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Media'] or
+                                                   local-name()='Authority' or
+                                                   rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" repeatable="false">
@@ -110,7 +113,10 @@
   </df>
 
   <df tag="338">
-    <context xpath="rdf:RDF/bf:Instance/bf:carrier/bf:Carrier|rdf:RDF/bf:Instance/bf:carrier/madsrdf:Authority">
+    <context xpath="rdf:RDF/bf:Instance/bf:carrier/*[local-name()='Carrier' or
+                                                     rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Carrier'] or
+                                                     local-name()='Authority' or
+                                                     rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" repeatable="false">
