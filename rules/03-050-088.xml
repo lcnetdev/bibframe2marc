@@ -11,9 +11,9 @@
   <df tag="050">
     <context xpath="rdf:RDF/bf:Work/bf:classification/bf:ClassificationLcc[not(bf:source/bf:Source/rdfs:label='Library and Archives Canada')]">
       <ind1 default=" "/>
-      <ind2 default="4">
+      <ind2 default="0">
         <switch>
-          <case test="bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc'">0</case>
+          <case test="bf:source and bf:source/bf:Source/@rdf:about != 'http://id.loc.gov/vocabulary/organizations/dlc'">4</case>
         </switch>
       </ind2>
       <sf code="a"><select xpath="bf:classificationPortion"/></sf>
