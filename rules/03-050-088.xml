@@ -21,4 +21,25 @@
     </context>
   </df>
 
+  <df tag="082">
+    <context xpath="rdf:RDF/bf:Work/bf:classification/bf:ClassificationDdc">
+      <ind1 default="7">
+        <switch>
+          <case test="not(bf:edition)">0</case>
+          <case test="bf:edition = 'full'">0</case>
+          <case test="bf:edition = 'abridged'">1</case>
+        </switch>
+      </ind1>
+      <ind2 default="4">
+        <switch>
+          <case test="bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc'">0</case>
+        </switch>
+      </ind2>
+      <sf code="a"><select xpath="bf:classificationPortion"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
+      <sf code="q" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="2" repeatable="false"><select xpath="bf:edition"/></sf>
+    </context>
+  </df>
+
 </rules>
