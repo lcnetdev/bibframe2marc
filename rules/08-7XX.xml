@@ -56,4 +56,40 @@
     </context>
   </df>
 
+  <df tag="710">
+    <context xpath="rdf:RDF/bf:Work/bf:contribution/bf:Contribution[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']]">
+      <ind1 default="2"/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false"><select xpath="madsrdf:elementList/madsrdf:NameElement/madsrdf:elementValue[1]"/></sf>
+      <sf code="b">
+        <select xpath="madsrdf:elementList/madsrdf:NameElement[position() > 1]">
+          <select xpath="madsrdf:elementValue"/>
+        </select>
+      </sf>
+      <sf code="d" repeatable="false">
+        <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
+      </sf>
+      <sf code="e">
+        <switch>
+          <case test="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+            <select xpath="../../bf:role/*">
+              <switch>
+                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+              </switch>
+            </select>
+          </case>
+        </switch>
+      </sf>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="4">
+        <switch>
+          <case test="../../bf:role/*/madsrdf:code">
+            <select xpath="../../bf:role/*/madsrdf:code"/>
+          </case>
+          <case test="default"><select xpath="../../bf:role/*/bf:code"/></case>
+        </switch>
+      </sf>
+    </context>
+  </df>
 </rules>
