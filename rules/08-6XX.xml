@@ -28,9 +28,9 @@
       <sf code="a" repeatable="false">
         <switch>
           <case test="madsrdf:componentList">
-            <select xpath="madsrdf:componentList/*/*[local-name()='label' or local-name()='authoritativeLabel'][1]"/>
+            <select xpath="madsrdf:componentList/madsrdf:Topic/*[local-name()='label' or local-name()='authoritativeLabel'][1]"/>
           </case>
-          <case test="default"><select xpath="rdfs:label"/></case>
+          <case test="default"><select xpath="*[local-name()='label' or local-name()='authoritativeLabel'][1]"/></case>
         </switch>
       </sf>
       <sf code="e">
@@ -38,21 +38,17 @@
       </sf>
       <select xpath="madsrdf:componentList/*">
         <switch>
-          <case test="position() > 1">
-            <switch>
-              <case test="local-name()='GenreForm'">
-                <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-              </case>
-              <case test="local-name()='Topic'">
-                <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-              </case>
-              <case test="local-name()='Temporal'">
-                <sf code="y"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-              </case>
-              <case test="local-name()='Geographic'">
-                <sf code="z"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-              </case>
-            </switch>
+          <case test="local-name()='GenreForm'">
+            <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+          </case>
+          <case test="local-name()='Topic' and generate-id(.) != generate-id(../madsrdf:Topic[1])">
+            <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+          </case>
+          <case test="local-name()='Temporal'">
+            <sf code="y"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+          </case>
+          <case test="local-name()='Geographic'">
+            <sf code="z"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
           </case>
         </switch>
       </select>
