@@ -1,0 +1,66 @@
+<?xml version='1.0'?>
+<rules xmlns="http://www.loc.gov/bf2marc"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+       xmlns:marc="http://www.loc.gov/MARC21/slim"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <df tag="650">
+    <context xpath="rdf:RDF/bf:Work/bf:subject/*[local-name()='Topic']">
+      <ind1 default=" "/>
+      <ind2 default="4">
+        <switch>
+          <case test="bf:source/bf:Source/bf:code='lcsh'">0</case>
+          <case test="bf:source/bf:Source/bf:code='lcshac'">1</case>
+          <case test="bf:source/bf:Source/bf:code='mesh'">2</case>
+          <case test="bf:source/bf:Source/bf:code='nal'">3</case>
+          <case test="bf:source/bf:Source/bf:code='cash'">5</case>
+          <case test="bf:source/bf:Source/bf:code='rvm'">6</case>
+          <case test="bf:source/bf:Source/bf:code">7</case>
+        </switch>
+      </ind2>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="madsrdf:componentList">
+            <select xpath="madsrdf:componentList/*/*[local-name()='label' or local-name()='authoritativeLabel'][1]"/>
+          </case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="e">
+        <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
+      </sf>
+      <select xpath="madsrdf:componentList/*">
+        <switch>
+          <case test="position() > 1">
+            <switch>
+              <case test="local-name()='GenreForm'">
+                <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+              </case>
+              <case test="local-name()='Topic'">
+                <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+              </case>
+              <case test="local-name()='Temporal'">
+                <sf code="y"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+              </case>
+              <case test="local-name()='Geographic'">
+                <sf code="z"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+              </case>
+            </switch>
+          </case>
+        </switch>
+      </select>
+      <sf code="0">
+        <select xpath="@rdf:about|*/*[local-name()='Topic' or local-name()='GenreForm' or local-name()='Temporal' or local-name()='Geographic']/@rdf:about"/>
+      </sf>
+      <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
+    </context>
+  </df>
+
+</rules>

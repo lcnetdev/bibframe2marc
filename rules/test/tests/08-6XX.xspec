@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:marc="http://www.loc.gov/MARC21/slim"
+               stylesheet="../../../bibframe2marc.xsl"
+               xslt-version="1.0">
+
+  <x:scenario label="MARC 650">
+    <x:context href="../data/6XX/650.xml"/>
+    <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 2"/>
+    <x:expect label="parse subdivisions" test="//marc:datafield[@tag='650'][1]/marc:subfield[@code='x']='Security measures'"/>
+  </x:scenario>
+
+</x:description>
