@@ -20,8 +20,8 @@
           <case test="bf:source/bf:Source/bf:code='cash'">5</case>
           <case test="bf:source/bf:Source/bf:code='rvm'">6</case>
           <case test="bf:source/bf:Source/bf:code">7</case>
-          <case test="contains(@rdf:about,'id.loc.gov/authorities/subjects')">0</case>
-          <case test="contains(@rdf:about,'id.loc.gov/authorities/childrensSubjects')">1</case>
+          <case test="contains(@rdf:about,'id.loc.gov/authorities/subjects') or contains(madsrdf:componentList/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1]/@rdf:about,'id.loc.gov/authorities/subjects')">0</case>
+          <case test="contains(@rdf:about,'id.loc.gov/authorities/childrensSubjects') or contains(madsrdf:componentList/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1]/@rdf:about,'id.loc.gov/authorities/childrensSubjects')">1</case>
         </switch>
       </ind2>
       <sf code="3" repeatable="false">
