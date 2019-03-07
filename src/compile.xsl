@@ -26,6 +26,20 @@
 
       <xsl:param name="pRecordId" select="generate-id()"/>
 
+      <xsl:variable name="vRecordId">
+        <xsl:choose>
+          <xsl:when test="$pRecordId = generate-id()">
+            <xsl:choose>
+              <xsl:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
+                <xsl:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/bf:Source/rdfs:label='DLC']/rdf:value"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="$pRecordId"/></xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:otherwise><xsl:value-of select="$pRecordId"/></xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
       <xsl:param name="pGenerationDatestamp">
         <xsl:if test="function-available('date:date-time')">
           <xsl:value-of select="date:date-time()"/>
@@ -279,7 +293,15 @@
                     </xslt:apply-templates>
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:message>Unprocessed node: <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="parent::*/@tag"/>).</xsl:message>
+                    <xsl:message>
+                      <xsl:text>Record </xsl:text>
+                      <xsl:value-of select="$vRecordId"/>
+                      <xsl:text>: Unprocessed node </xsl:text>
+                      <xsl:value-of select="name()"/>
+                      <xsl:text>. Non-repeatable target field (</xsl:text>
+                      <xslt:value-of select="parent::*/@tag"/>
+                      <xsl:text>).</xsl:text>
+                    </xsl:message>
                   </xsl:otherwise>
                 </xsl:choose>
               </xslt:when>
@@ -431,7 +453,9 @@
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:message terminate="no">
-                        <xsl:text>Unprocessed node: </xsl:text>
+                        <xsl:text>Record </xsl:text>
+                        <xsl:value-of select="$vRecordId"/>
+                        <xsl:text>: Unprocessed node </xsl:text>
                         <xsl:value-of select="name()"/>
                         <xsl:text>. Non-repeatable target element <xslt:value-of select="ancestor::*/@tag"/></xsl:text>
                         <xslt:if test="ancestor::bf2marc:sf">

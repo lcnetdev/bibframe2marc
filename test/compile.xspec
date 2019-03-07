@@ -29,6 +29,23 @@
         <xslt:output encoding="UTF-8" method="xml" indent="yes"/>
         <xslt:strip-space elements="*"/>
         <xslt:param name="pRecordId" select="generate-id()"/>
+        <xslt:variable name="vRecordId">
+          <xslt:choose>
+            <xslt:when test="$pRecordId = generate-id()">
+              <xslt:choose>
+                <xslt:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
+                  <xslt:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/bf:Source/rdfs:label='DLC']/rdf:value" />
+                </xslt:when>
+                <xslt:otherwise>
+                  <xslt:value-of select="$pRecordId" />
+                </xslt:otherwise>
+              </xslt:choose>
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:value-of select="$pRecordId" />
+            </xslt:otherwise>
+          </xslt:choose>
+        </xslt:variable>
         <xslt:param name="pGenerationDatestamp">
           <xslt:if test="function-available('date:date-time')">
             <xslt:value-of select="date:date-time()"/>
