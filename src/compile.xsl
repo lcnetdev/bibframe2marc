@@ -293,15 +293,7 @@
                     </xslt:apply-templates>
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:message>
-                      <xsl:text>Record </xsl:text>
-                      <xsl:value-of select="$vRecordId"/>
-                      <xsl:text>: Unprocessed node </xsl:text>
-                      <xsl:value-of select="name()"/>
-                      <xsl:text>. Non-repeatable target field (</xsl:text>
-                      <xslt:value-of select="parent::*/@tag"/>
-                      <xsl:text>).</xsl:text>
-                    </xsl:message>
+                    <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="parent::*/@tag"/>).</xsl:message>
                   </xsl:otherwise>
                 </xsl:choose>
               </xslt:when>
@@ -452,16 +444,7 @@
                       </xslt:apply-templates>
                     </xsl:when>
                     <xsl:otherwise>
-                      <xsl:message terminate="no">
-                        <xsl:text>Record </xsl:text>
-                        <xsl:value-of select="$vRecordId"/>
-                        <xsl:text>: Unprocessed node </xsl:text>
-                        <xsl:value-of select="name()"/>
-                        <xsl:text>. Non-repeatable target element <xslt:value-of select="ancestor::*/@tag"/></xsl:text>
-                        <xslt:if test="ancestor::bf2marc:sf">
-                          <xsl:text> $<xslt:value-of select="ancestor::bf2marc:sf/@code"/></xsl:text>
-                        </xslt:if>
-                      </xsl:message>
+                      <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target element <xslt:value-of select="ancestor::*/@tag"/><xslt:if test="ancestor::bf2marc:sf"> $<xslt:value-of select="ancestor::bf2marc:sf/@code"/></xslt:if>.</xsl:message>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xslt:when>

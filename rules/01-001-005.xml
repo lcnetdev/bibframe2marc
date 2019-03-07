@@ -28,9 +28,7 @@
         </case>
         <case test="default">
           <transform>
-            <xsl:message>
-              <xsl:text>Unprocessed node: </xsl:text><xsl:value-of select="name()"/><xsl:text>. Invalid datatype for 005.</xsl:text>
-            </xsl:message>
+            <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Invalid datatype for 005.</xsl:message>
           </transform>
         </case>
       </switch>
