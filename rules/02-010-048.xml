@@ -374,7 +374,7 @@
             </case>
             <case test="default">
               <transform>
-                <xsl:message>Unprocessed bf:date node, value <xsl:value-of select="bf:date"/>. Unknown data type (must be EDTF)</xsl:message>
+                <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed bf:date node, value <xsl:value-of select="bf:date"/>. Unknown data type (must be EDTF)</xsl:message>
                 <marc:subfield code="a">--------</marc:subfield>
               </transform>
             </case>
@@ -387,7 +387,7 @@
                 <switch>
                   <case test="contains(.,'/')">
                     <transform>
-                      <xsl:message>Unprocessed bf:date node, value <xsl:value-of select="."/>. Range of EDTF dates detected where only single value allowed.</xsl:message>
+                      <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed bf:date node, value <xsl:value-of select="."/>. Range of EDTF dates detected where only single value allowed.</xsl:message>
                       <marc:subfield code="a">--------</marc:subfield>
                     </transform>
                   </case>
@@ -405,7 +405,7 @@
               </case>
               <case test="default">
                 <transform>
-                  <xsl:message>Unprocessed bf:date node, value <xsl:value-of select="."/>. Unknown data type (must be EDTF)</xsl:message>
+                  <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed bf:date node, value <xsl:value-of select="."/>. Unknown data type (must be EDTF)</xsl:message>
                   <marc:subfield code="a">--------</marc:subfield>
                 </transform>
               </case>
