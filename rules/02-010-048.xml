@@ -447,4 +447,35 @@
 
   <!-- awaiting input on MARC 034 -->
 
+  <df tag="035">
+    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Local' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local']]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+                    bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
+          <sf code="z">
+            <transform>
+              <xsl:variable name="vIdSource">
+                <xsl:if test="bf:source/bf:Source/rdfs:label">(<xsl:value-of select="bf:source/bf:Source/rdfs:label"/>)</xsl:if>
+              </xsl:variable>
+              <xsl:value-of select="concat($vIdSource,rdf:value)"/>
+            </transform>
+          </sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false">
+            <transform>
+              <xsl:variable name="vIdSource">
+                <xsl:if test="bf:source/bf:Source/rdfs:label">(<xsl:value-of select="bf:source/bf:Source/rdfs:label"/>)</xsl:if>
+              </xsl:variable>
+              <xsl:value-of select="concat($vIdSource,rdf:value)"/>
+            </transform>
+          </sf>
+        </case>
+      </switch>
+    </context>
+  </df>
+
 </rules>

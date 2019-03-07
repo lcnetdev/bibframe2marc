@@ -77,4 +77,9 @@
 
   <!-- awaiting input on MARC 034 -->
 
+  <x:scenario label="MARC 035">
+    <x:context href="../data/010-048/010-048.xml"/>
+    <x:expect label="generate 035" test="count(//marc:datafield[@tag='035']) = 1"/>
+  </x:scenario>
+
 </x:description>
