@@ -82,4 +82,11 @@
     <x:expect label="generate 035" test="count(//marc:datafield[@tag='035']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 036">
+    <x:context href="../data/010-048/010-048.xml"/>
+    <x:expect label="generate 036 from bf:StudyNumber" test="count(//marc:datafield[@tag='036']) = 1"/>
+    <x:expect label="rdf:value goes in $a" test="//marc:datafield[@tag='036']/marc:subfield[@code='a'] = 'CNRS 84115'"/>
+    <x:expect label="bf:source goes in $b" test="//marc:datafield[@tag='036']/marc:subfield[@code='b'] = 'Centre national de la recherche scientifique'"/>
+  </x:scenario>
+
 </x:description>
