@@ -483,8 +483,31 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
-      <sf code="b" repeatable="false"><select
-      xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+    </context>
+  </df>
+
+  <df tag="037">
+    <context xpath="rdf:RDF/bf:Instance/bf:acquisitionSource/bf:AcquisitionSource">
+      <ind1 default=" ">
+        <switch>
+          <case test="bf:note/bf:Note/rdfs:label[text()='intervening source']">2</case>
+          <case test="bf:note/bf:Note/rdfs:label[text()='current source']">3</case>
+        </switch>
+      </ind1>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a" repeatable="false">
+        <select xpath="bf:identifiedBy/*[local-name()='StockNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StudyNumber']]/rdf:value"/>
+      </sf>
+      <sf code="b" repeatable="false"><select xpath="rdfs:label"/></sf>
+      <sf code="c"><select xpath="bf:acquisitionTerms"/></sf>
+      <sf code="n">
+        <select xpath="bf:note/bf:Note/rdfs:label[text() != 'intervening source' and text() != 'current source']"/>
+      </sf>
+      <sf code="5"><select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/></sf>
     </context>
   </df>
 
