@@ -245,7 +245,33 @@
     </context>
   </df>
 
-  <!-- awaiting input on MARC 255 -->
+  <df tag="255">
+    <context xpath="rdf:RDF/bf:Work/bf:scale">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:Scale"><select xpath="bf:Scale/rdfs:label"/></case>
+          <case test="default"><transform><xsl:value-of select="."/></transform></case>
+        </switch>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="255">
+    <context xpath="rdf:RDF/bf:Work/bf:cartographicAttributes/bf:Cartographic">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:projection/bf:Projection/rdfs:label"/>
+      </sf>
+      <sf code="c" repeatable="false"><select xpath="bf:coordinates"/></sf>
+      <sf code="d" repeatable="false"><select xpath="bf:ascensionAndDeclination"/></sf>
+      <sf code="e" repeatable="false"><select xpath="bf:equinox"/></sf>
+      <sf code="f" repeatable="false"><select xpath="bf:outerGRing"/></sf>
+      <sf code="g" repeatable="false"><select xpath="bf:exclusionGRing"/></sf>
+    </context>
+  </df>
 
   <df tag="264">
     <context xpath="rdf:RDF/bf:Instance/bf:provisionActivity/*[
