@@ -41,7 +41,18 @@
     </context>
   </df>
 
-  <!-- awaiting input on MARC 507 -->
+  <df tag="507">
+    <context xpath="rdf:RDF/bf:Instance/bf:scale">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:Scale"><select xpath="bf:Scale/rdfs:label"/></case>
+          <case test="default"><transform><xsl:value-of select="."/></transform></case>
+        </switch>
+      </sf>
+    </context>
+  </df>
 
   <df tag="525">
     <context xpath="rdf:RDF/*[local-name()='Instance' or local-name()='Work']/bf:supplementaryContent/bf:SupplementaryContent">
