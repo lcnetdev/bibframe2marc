@@ -101,4 +101,15 @@
     <x:expect label="$5 from applicableInstitution" test="//marc:datafield[@tag='037']/marc:subfield[@code='5'] = 'Uk'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 038 from label">
+    <x:context href="../data/010-048/010-048.xml"/>
+    <x:expect label="generate 038 from bf:metadataLicensor" test="count(//marc:datafield[@tag='038']) = 1"/>
+    <x:expect label="$a from label" test="//marc:datafield[@tag='038']/marc:subfield[@code='a'] = 'Uk'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 038 from code">
+    <x:context href="../data/010-048/038-code.xml"/>
+    <x:expect label="$a from dereferenced authority code" test="//marc:datafield[@tag='038']/marc:subfield[@code='a'] = 'NcD'"/>
+  </x:scenario>
+
 </x:description>
