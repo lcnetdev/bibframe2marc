@@ -30,8 +30,8 @@
         <xsl:choose>
           <xsl:when test="$pRecordId = generate-id()">
             <xsl:choose>
-              <xsl:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
-                <xsl:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/bf:Source/rdfs:label='DLC']/rdf:value"/>
+              <xsl:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
+                <xsl:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value"/>
               </xsl:when>
               <xsl:otherwise><xsl:value-of select="$pRecordId"/></xsl:otherwise>
             </xsl:choose>
