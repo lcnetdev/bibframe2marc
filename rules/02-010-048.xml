@@ -541,4 +541,108 @@
     </context>
   </df>
 
+  <switch>
+    <case test="rdf:RDF/bf:Work[count(bf:language/bf:Language[not(bf:source)])&gt;1]">
+      <df tag="041">
+        <ind1 default=" ">
+          <switch>
+            <case test="rdf:RDF/bf:Work/bf:note/bf:Note[rdfs:label='Includes translation']">1</case>
+          </switch>
+        </ind1>
+        <ind2 default=" "/>
+        <sf code="a">
+          <select xpath="rdf:RDF/bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]">
+            <switch>
+              <case test="starts-with(@rdf:about,'http://id.loc.gov/vocabulary/languages/')">
+                <transform><xsl:value-of select="substring-after(@rdf:about,'http://id.loc.gov/vocabulary/languages/')"/></transform>
+              </case>
+              <case test="madsrdf:code"><transform><xsl:value-of select="madsrdf:code"/></transform></case>
+              <case test="starts-with(rdf:value,'http://id.loc.gov/vocabulary/languages/')">
+                <transform><xsl:value-of select="substring-after(rdf:value,'http://id.loc.gov/vocabulary/languages/')"/></transform>
+              </case>
+              <case test="rdf:value"><transform><xsl:value-of select="rdf:value"/></transform></case>
+              <case test="default"><transform><xsl:value-of select="rdfs:label"/></transform></case>
+            </switch>
+          </select>
+        </sf>
+        <select xpath="rdf:RDF/bf:Work/bf:language/bf:Language[not(bf:source) and bf:part]">
+          <transform>
+            <xsl:variable name="vSubfield">
+              <xsl:choose>
+                <xsl:when test="bf:part='summary'">b</xsl:when>
+                <xsl:when test="bf:part='sung or spoken text'">d</xsl:when>
+                <xsl:when test="bf:part='libretto'">e</xsl:when>
+                <xsl:when test="bf:part='table of contents'">f</xsl:when>
+                <xsl:when test="bf:part='accompanying material'">g</xsl:when>
+                <xsl:when test="bf:part='original'">h</xsl:when>
+                <xsl:when test="bf:part='subtitles or captions'">j</xsl:when>
+                <xsl:when test="bf:part='intermediate translations'">k</xsl:when>
+                <xsl:when test="bf:part='original accompanying materials'">m</xsl:when>
+                <xsl:when test="bf:part='original libretto'">n</xsl:when>
+                <xsl:otherwise>a</xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <marc:subfield>
+              <xsl:attribute name="code"><xsl:value-of select="$vSubfield"/></xsl:attribute>
+              <xsl:choose>
+                <xsl:when test="starts-with(@rdf:about,'http://id.loc.gov/vocabulary/languages/')">
+                  <xsl:value-of select="substring-after(@rdf:about,'http://id.loc.gov/vocabulary/languages/')"/>
+                </xsl:when>
+                <xsl:when test="madsrdf:code"><xsl:value-of select="madsrdf:code"/></xsl:when>
+                <xsl:when test="starts-with(rdf:value,'http://id.loc.gov/vocabulary/languages/')">
+                  <xsl:value-of select="substring-after(rdf:value,'http://id.loc.gov/vocabulary/languages/')"/>
+                </xsl:when>
+                <xsl:when test="rdf:value"><xsl:value-of select="rdf:value"/></xsl:when>
+                <xsl:otherwise><xsl:value-of select="rdfs:label"/></xsl:otherwise>
+              </xsl:choose>
+            </marc:subfield>
+          </transform>
+        </select>
+      </df>
+    </case>
+  </switch>
+
+  <df tag="041">
+    <context xpath="rdf:RDF/bf:Work/bf:language/bf:Language[bf:source]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <select xpath=".">
+        <transform>
+          <xsl:variable name="vSubfield">
+            <xsl:choose>
+              <xsl:when test="bf:part='summary'">b</xsl:when>
+              <xsl:when test="bf:part='sung or spoken text'">d</xsl:when>
+              <xsl:when test="bf:part='libretto'">e</xsl:when>
+              <xsl:when test="bf:part='table of contents'">f</xsl:when>
+              <xsl:when test="bf:part='accompanying material'">g</xsl:when>
+              <xsl:when test="bf:part='original'">h</xsl:when>
+              <xsl:when test="bf:part='subtitles or captions'">j</xsl:when>
+              <xsl:when test="bf:part='intermediate translations'">k</xsl:when>
+              <xsl:when test="bf:part='original accompanying materials'">m</xsl:when>
+              <xsl:when test="bf:part='original libretto'">n</xsl:when>
+              <xsl:otherwise>a</xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <marc:subfield>
+            <xsl:attribute name="code"><xsl:value-of select="$vSubfield"/></xsl:attribute>
+            <xsl:value-of select="rdf:value"/>
+          </marc:subfield>
+          <marc:subfield code="2">
+            <xsl:choose>
+              <xsl:when test="bf:source/@rdf:resource">
+                <xsl:value-of select="bf:source/@rdf:resource"/>
+              </xsl:when>
+              <xsl:when test="bf:source/bf:Source/@rdf:about">
+                <xsl:value-of select="bf:source/bf:Source/@rdf:about"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </marc:subfield>
+        </transform>
+      </select>
+    </context>
+  </df>
+
 </rules>

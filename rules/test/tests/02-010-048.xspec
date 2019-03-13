@@ -129,4 +129,14 @@
     <x:expect label="$e from AdminMetadata/descriptionConventions" test="//marc:datafield[@tag='040']/marc:subfield[@code='e'][1] = 'rda'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 041">
+    <x:context href="../data/010-048/010-048.xml"/>
+    <x:expect label="generate 041 from Work/language" test="count(//marc:datafield[@tag='041']) = 2"/>
+    <x:expect label="ind1 from note" test="//marc:datafield[@tag='041'][1]/@ind1 = '1'"/>
+    <x:expect label="$a from Language without part" test="//marc:datafield[@tag='041'][1]/marc:subfield[@code='a'] = 'eng'"/>
+    <x:expect label="other subfields determined by part note" test="//marc:datafield[@tag='041'][1]/marc:subfield[@code='b'] = 'dan'"/>
+    <x:expect label="Language with source generates new 041" test="//marc:datafield[@tag='041'][2]/marc:subfield[@code='a'] = 'en'"/>
+    <x:expect label="...with source in $2" test="//marc:datafield[@tag='041'][2]/marc:subfield[@code='2'] = 'http://id.loc.gov/vocabulary/iso639-1'"/>
+  </x:scenario>
+
 </x:description>
