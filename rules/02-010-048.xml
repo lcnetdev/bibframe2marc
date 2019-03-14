@@ -645,4 +645,16 @@
     </context>
   </df>
 
+  <switch>
+    <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionAuthentication">
+      <df tag="042" repeatable="false">
+        <ind1 default=" "/>
+        <ind2 default=" "/>
+        <sf code="a">
+          <select xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionAuthentication/*[local-name()='DescriptionAuthentication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/DescriptionAuthentication']]/*[local-name()='code']"/>
+        </sf>
+      </df>
+    </case>
+  </switch>
+
 </rules>
