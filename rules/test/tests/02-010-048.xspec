@@ -156,4 +156,13 @@
     <x:expect label="...and $2" test="//marc:datafield[@tag='043']/marc:subfield[@code='2'] = 'BlRjBN'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 044">
+    <x:context href="../data/010-048/010-048.xml"/>
+    <x:expect label="generate 044 from bf:place" test="count(//marc:datafield[@tag='044']) = 1"/>
+    <x:expect label="URI http://id.loc.gov/vocabulary/countries/ generates $a" test="//marc:datafield[@tag='044']/marc:subfield[@code='a'][1] = 'lv' and //marc:datafield[@tag='044']/marc:subfield[@code='a'][2] = 'li'"/>
+    <x:expect label="source 'ISO 3166' generates $c" test="//marc:datafield[@tag='044']/marc:subfield[@code='c'] = 'cch-zh'"/>
+    <x:expect label="...other sources generate $b" test="//marc:datafield[@tag='044']/marc:subfield[@code='b'] = 'xna'"/>
+    <x:expect label="...with $2" test="//marc:datafield[@tag='044']/marc:subfield[@code='2'] = 'ausmarc'"/>
+  </x:scenario>
+
 </x:description>

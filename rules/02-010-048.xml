@@ -699,4 +699,34 @@
     </case>
   </switch>
 
+  <switch>
+    <case test="rdf:RDF/bf:Instance/bf:place">
+      <df tag="044">
+        <ind1 default=" "/>
+        <ind2 default=" "/>
+        <select xpath="rdf:RDF/bf:Instance/bf:place">
+          <switch>
+            <case test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')">
+              <sf code="a">
+                <transform><xsl:value-of select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')"/></transform>
+              </sf>
+            </case>
+            <case test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/countries/')]">
+              <sf code="a">
+                <transform><xsl:value-of select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/countries/')"/></transform>
+              </sf>
+            </case>
+            <case test="bf:Place/bf:source/bf:Source/rdfs:label='ISO 3166'">
+              <sf code="c"><select xpath="bf:Place/bf:code"/></sf>
+            </case>
+            <case test="default">
+              <sf code="b"><select xpath="bf:Place/bf:code"/></sf>
+              <sf code="2"><select xpath="bf:Place/bf:source/bf:Source/rdfs:label"/></sf>
+            </case>
+          </switch>
+        </select>
+      </df>
+    </case>
+  </switch>
+
 </rules>
