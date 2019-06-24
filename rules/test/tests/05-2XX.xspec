@@ -5,6 +5,26 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
+  <x:scenario label="MARC 210">
+    <x:context href="../data/2XX/210.xml"/>
+    <x:expect label="generate 210" test="count(//marc:datafield[@tag='210']) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 222">
+    <x:context href="../data/2XX/222.xml"/>
+    <x:expect label="generate 222" test="count(//marc:datafield[@tag='222']) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 242">
+    <x:context href="../data/2XX/242.xml"/>
+    <x:expect label="generate 242" test="count(//marc:datafield[@tag='242']) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 243">
+    <x:context href="../data/2XX/243.xml"/>
+    <x:expect label="generate 243" test="count(//marc:datafield[@tag='243']) = 1"/>
+  </x:scenario>
+
   <x:scenario label="MARC 245">
     <x:context href="../data/2XX/245.xml"/>
     <x:expect label="...should be generated from bf:Instance/bf:title/bf:Title"
@@ -30,5 +50,39 @@
     <x:expect label="...should generate $a from rdfs:label"
               test="marc:record/marc:datafield[@tag='245']/marc:subfield[@code='a'] = 'The man who spoke Snakish : a novel / by Andrus Kivirähk'"/>
   </x:scenario>
-  
+
+  <x:scenario label="MARC 245 only generated if Title not subclassed">
+    <x:context href="../data/2XX/245-2.xml"/>
+    <x:expect label="No 245 generated"
+              test="count(//marc:datafield[@tag='245']) = 0"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 246">
+    <x:context href="../data/2XX/246.xml"/>
+    <x:expect label="generate 246" test="count(//marc:datafield[@tag='246']) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 247">
+    <x:context href="../data/2XX/247.xml"/>
+    <x:expect label="generate 247" test="count(//marc:datafield[@tag='247']) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 255">
+    <x:context href="../data/2XX/255.xml"/>
+    <x:expect label="generate 255 from scale or cartographicAttributes of Work" test="count(//marc:datafield[@tag='255']) = 3"/>
+    <x:expect label="$a from scale literal" test="//marc:datafield[@tag='255'][1]/marc:subfield[@code='a'] = 'Scale varies'"/>
+    <x:expect label="...or from bf:Scale object" test="//marc:datafield[@tag='255'][2]/marc:subfield[@code='a'] = 'Scale [ca. 1:90,000]'"/>
+    <x:expect label="$b from projection" test="//marc:datafield[@tag='255']/marc:subfield[@code='b'] = 'Chamberlin trimetric proj.'"/>
+    <x:expect label="$c from coordinates" test="//marc:datafield[@tag='255']/marc:subfield[@code='c'] = 'W 125°--W 65°/N 49°--N 25°'"/>
+    <x:expect label="$d from ascensionAndDeclination" test="//marc:datafield[@tag='255']/marc:subfield[@code='d'] = 'Zones +90° to +81° to 63°, -81° to 98°'"/>
+    <x:expect label="$e from equinox" test="//marc:datafield[@tag='255']/marc:subfield[@code='e'] = 'eq. 1950'"/>
+    <x:expect label="$f from outerGRing" test="//marc:datafield[@tag='255']/marc:subfield[@code='f'] = 'W 84˚00´00ʺ--W 75˚00´00ʺ/N 40˚00´00ʺ--N 37˚30´00ʺ'"/>
+    <x:expect label="$g from exclusionGRing" test="//marc:datafield[@tag='255']/marc:subfield[@code='g'] = 'W 84˚00´00ʺ--W 75˚00´00ʺ/N 40˚00´00ʺ--N 37˚30´00ʺ'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 264">
+    <x:context href="../data/2XX/264.xml"/>
+    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
+  </x:scenario>
+
 </x:description>

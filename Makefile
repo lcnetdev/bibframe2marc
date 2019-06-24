@@ -15,10 +15,13 @@ rules.xml : $(shell find rules)
 test_compile :
 	$(XSPEC) test/compile.xspec
 
+test_named_templates : bibframe2marc.xsl
+	$(XSPEC) test/named-templates.xspec
+
 test_rules : bibframe2marc.xsl
 	$(XSPEC) rules/test/rules.xspec
 
-test : test_compile test_rules
+test : test_compile test_named_templates test_rules
 
 check : test
 

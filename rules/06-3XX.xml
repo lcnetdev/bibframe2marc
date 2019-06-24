@@ -1,0 +1,158 @@
+<?xml version='1.0'?>
+<rules xmlns="http://www.loc.gov/bf2marc"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+       xmlns:marc="http://www.loc.gov/MARC21/slim"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <df tag="300">
+    <context xpath="rdf:RDF/bf:Instance/bf:extent/bf:Extent">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a"><select xpath="rdfs:label"/></sf>
+      <sf code="b" repeatable="false">
+        <select xpath="../../bf:note/bf:Note[bf:noteType='Physical details']/rdfs:label"/>
+      </sf>
+      <sf code="c"><select xpath="../../bf:dimensions"/></sf>
+      <sf code="e" repeatable="false">
+        <select xpath="../../bf:note/bf:Note[bf:noteType='Accompanying material']/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="336">
+    <context xpath="rdf:RDF/bf:Work/bf:content/*[local-name()='Content' or
+                                                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Content'] or
+                                                 local-name()='Authority' or
+                                                 rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a">
+        <switch>
+          <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="madsrdf:code"/>
+      </sf>
+      <sf code="0">
+        <select xpath="@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vSource">
+              <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vSource != ''">
+                <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="337">
+    <context xpath="rdf:RDF/bf:Instance/bf:media/*[local-name()='Media' or
+                                                   rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Media'] or
+                                                   local-name()='Authority' or
+                                                   rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a">
+        <switch>
+          <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="madsrdf:code"/>
+      </sf>
+      <sf code="0">
+        <select xpath="@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vSource">
+              <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vSource != ''">
+                <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="338">
+    <context xpath="rdf:RDF/bf:Instance/bf:carrier/*[local-name()='Carrier' or
+                                                     rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Carrier'] or
+                                                     local-name()='Authority' or
+                                                     rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a">
+        <switch>
+          <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="madsrdf:code"/>
+      </sf>
+      <sf code="0">
+        <select xpath="@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vSource">
+              <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vSource != ''">
+                <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
+</rules>

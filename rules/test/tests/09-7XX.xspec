@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:marc="http://www.loc.gov/MARC21/slim"
+               stylesheet="../../../bibframe2marc.xsl"
+               xslt-version="1.0">
+
+  <x:scenario label="MARC 700">
+    <x:context href="../data/7XX/700.xml"/>
+    <x:expect label="generate 700" test="count(//marc:datafield[@tag='700']) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 710">
+    <x:context href="../data/7XX/710.xml"/>
+    <x:expect label="generate 710" test="count(//marc:datafield[@tag='710']) = 1"/>
+  </x:scenario>
+
+</x:description>

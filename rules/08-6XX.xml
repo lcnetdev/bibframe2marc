@@ -1,0 +1,80 @@
+<?xml version='1.0'?>
+<rules xmlns="http://www.loc.gov/bf2marc"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+       xmlns:marc="http://www.loc.gov/MARC21/slim"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <df tag="650">
+    <context xpath="rdf:RDF/bf:Work/bf:subject/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']]">
+      <ind1 default=" "/>
+      <ind2 default="4">
+        <switch>
+          <case test="bf:source/bf:Source/bf:code='lcsh'">0</case>
+          <case test="bf:source/bf:Source/bf:code='lcshac'">1</case>
+          <case test="bf:source/bf:Source/bf:code='mesh'">2</case>
+          <case test="bf:source/bf:Source/bf:code='nal'">3</case>
+          <case test="bf:source/bf:Source/bf:code='cash'">5</case>
+          <case test="bf:source/bf:Source/bf:code='rvm'">6</case>
+          <case test="bf:source/bf:Source/bf:code">7</case>
+          <case test="contains(@rdf:about,'id.loc.gov/authorities/subjects') or contains(madsrdf:componentList/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1]/@rdf:about,'id.loc.gov/authorities/subjects')">0</case>
+          <case test="contains(@rdf:about,'id.loc.gov/authorities/childrensSubjects') or contains(madsrdf:componentList/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1]/@rdf:about,'id.loc.gov/authorities/childrensSubjects')">1</case>
+        </switch>
+      </ind2>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <switch>
+        <case test="madsrdf:componentList">
+          <sf code="a" repeatable="false">
+            <select xpath="madsrdf:componentList/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1]/*[local-name()='authoritativeLabel' or local-name()='label'][1]"/>
+          </sf>
+          <sf code="0"><select xpath="madsrdf:componentList/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1]/@rdf:about"/></sf>
+          <select xpath="madsrdf:componentList/*">
+            <switch>
+              <case test="local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']">
+                <switch>
+                  <case test="generate-id(.) != generate-id(../*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1])">
+                    <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+                    <sf code="0"><select xpath="@rdf:about"/></sf>
+                  </case>
+                </switch>
+              </case>
+              <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
+                <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+                <sf code="0"><select xpath="@rdf:about"/></sf>
+              </case>
+              <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
+                <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
+                <sf code="0"><select xpath="@rdf:about"/></sf>
+              </case>
+              <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
+                <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
+                <sf code="0"><select xpath="@rdf:about"/></sf>
+              </case>
+            </switch>
+          </select>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false">
+            <switch>
+              <case test="madsrdf:authoritativeLabel">
+                <select xpath="madsrdf:authoritativeLabel[1]"/>
+              </case>
+              <case test="default"><select xpath="rdfs:label[1]"/></case>
+            </switch>
+          </sf>
+        </case>
+      </switch>
+      <sf code="e">
+        <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
+      </sf>
+      <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
+    </context>
+  </df>
+
+</rules>

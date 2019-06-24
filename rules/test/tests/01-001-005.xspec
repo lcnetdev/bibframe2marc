@@ -12,10 +12,10 @@
 
   <x:scenario label="MARC 001">
     <x:context href="../data/001-005/001.xml"/>
-    <x:expect label="...should be generated from the pRecordId global parameter"
+    <x:expect label="...should be generated from the vRecordId global variable"
               test="marc:record/marc:controlfield[@tag='001'] = 'test001'"/>
   </x:scenario>
-  
+
   <x:scenario label="MARC 003">
     <x:context href="../data/001-005/003.xml"/>
     <x:expect label="...should be generated from bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:source/bf:Source/bf:code"

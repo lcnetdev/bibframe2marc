@@ -8,8 +8,124 @@
        xmlns:marc="http://www.loc.gov/MARC21/slim"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <df tag="210">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[local-name() = 'AbbreviatedTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AbbreviatedTitle']]">
+      <ind1 default="1"/>
+      <ind2 default="0">
+        <switch>
+          <case test="bf:source/bf:Source/rdf:value = 'issnkey'"><text> </text></case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:qualifier">
+          <transform>
+            <xsl:value-of select="concat('(',.,')')"/>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="222">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[local-name() = 'KeyTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/KeyTitle']]">
+      <ind1 default=" "/>
+      <ind2 default="0">
+        <switch>
+          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+            <transform>
+              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+            </transform>
+          </case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:qualifier">
+          <transform>
+            <xsl:value-of select="concat('(',.,')')"/>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="242">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[(local-name() = 'VariantTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']) and bf:variantType = 'translated']">
+      <ind1 default="1"/>
+      <ind2 default="0">
+        <switch>
+          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+            <transform>
+              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+            </transform>
+          </case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:subtitle"/>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:partNumber"/>
+      </sf>
+      <sf code="p">
+        <select xpath="bf:partName"/>
+      </sf>
+      <sf code="y" repeatable="false">
+        <!-- pick up both bf:Language/bf:code and madsrdf:Language/madsrdf:code -->
+        <select xpath="bf:language/*[local-name()='Language']/*[local-name()='code']"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="243" repeatable="false">
+    <context xpath="rdf:RDF/bf:Work/bf:title/*[
+                      local-name()='CollectiveTitle' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/CollectiveTitle']
+                    ]">
+      <ind1 default="1"/>
+      <ind2 default="0">
+        <switch>
+          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+            <transform>
+              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+            </transform>
+          </case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+    </context>
+  </df>
+
   <df tag="245" repeatable="false">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/bf:Title">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/bf:Title[not(rdf:type)]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
@@ -37,6 +153,190 @@
       </sf>
       <sf code="p">
         <select xpath="bf:partName"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="246">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[(
+                      local-name()='VariantTitle' or
+                      local-name()='ParallelTitle' or
+                      local-name()='TranscribedTitle' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle'] or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle'] or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
+                    ) and
+                    not(bf:variantType = 'translated') and
+                    not(bf:variantType = 'former')]">
+      <ind1 default="1"/>
+      <ind2 default=" ">
+        <switch>
+          <case test="local-name()='ParallelTitle' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']">1</case>
+          <case test="bf:variantType = 'portion'">0</case>
+          <case test="bf:variantType = 'distinctive'">2</case>
+          <case test="bf:variantType = 'cover'">4</case>
+          <case test="bf:variantType = 'added title page'">5</case>
+          <case test="bf:variantType = 'caption'">6</case>
+          <case test="bf:variantType = 'running'">7</case>
+          <case test="bf:variantType = 'spine'">8</case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:subtitle"/>
+      </sf>
+      <sf code="f" repeatable="false">
+        <select xpath="bf:date"/>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:partNumber"/>
+      </sf>
+      <sf code="p">
+        <select xpath="bf:partName"/>
+      </sf>
+      <sf code="5" repeatable="false">
+        <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="247">
+    <context xpath="rdf:RDF/bf:Instance/bf:title/*[(
+                      local-name()='VariantTitle' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
+                    ) and
+                    bf:variantType = 'former']">
+      <ind1 default="1"/>
+      <ind2 default="0"/>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:subtitle"/>
+      </sf>
+      <sf code="f" repeatable="false">
+        <select xpath="bf:date"/>
+      </sf>
+      <sf code="g" repeatable="false">
+        <select xpath="bf:qualifier">
+          <transform>
+            <xsl:value-of select="concat('(',.,')')"/>
+          </transform>
+        </select>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:partNumber"/>
+      </sf>
+      <sf code="p">
+        <select xpath="bf:partName"/>
+      </sf>
+      <sf code="x" repeatable="false">
+        <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']]/rdf:value"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="255">
+    <context xpath="rdf:RDF/bf:Work/bf:scale">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:Scale"><select xpath="bf:Scale/rdfs:label"/></case>
+          <case test="default"><transform><xsl:value-of select="."/></transform></case>
+        </switch>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="255">
+    <context xpath="rdf:RDF/bf:Work/bf:cartographicAttributes/bf:Cartographic">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:projection/bf:Projection/rdfs:label"/>
+      </sf>
+      <sf code="c" repeatable="false"><select xpath="bf:coordinates"/></sf>
+      <sf code="d" repeatable="false"><select xpath="bf:ascensionAndDeclination"/></sf>
+      <sf code="e" repeatable="false"><select xpath="bf:equinox"/></sf>
+      <sf code="f" repeatable="false"><select xpath="bf:outerGRing"/></sf>
+      <sf code="g" repeatable="false"><select xpath="bf:exclusionGRing"/></sf>
+    </context>
+  </df>
+
+  <df tag="264">
+    <context xpath="rdf:RDF/bf:Instance/bf:provisionActivity/*[
+                      local-name()='ProvisionActivity' or
+                      local-name()='Production' or
+                      local-name()='Publication' or
+                      local-name()='Distribution' or
+                      local-name()='Manufacture']">
+      <ind1 default=" ">
+        <switch>
+          <case test="bf:status/bf:Status/rdfs:label='current'">3</case>
+        </switch>
+      </ind1>
+      <ind2 default="1">
+        <switch>
+          <case test="local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production']">0</case>
+          <case test="local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution']">2</case>
+          <case test="local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']">3</case>
+        </switch>
+      </ind2>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a">
+        <select xpath="bf:place/*[local-name()='Place' or local-name()='Geographic' or local-name()='Authority']">
+          <switch>
+            <case test="rdfs:label">
+              <transform>
+                <xsl:value-of select="concat(rdfs:label,':')"/>
+              </transform>
+            </case>
+            <case test="madsrdf:authoritativeLabel">
+              <transform>
+                <xsl:value-of select="concat(madsrdf:authoritativeLabel,':')"/>
+              </transform>
+            </case>
+            <case test="@rdf:about"><select xpath="@rdf:about"/></case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="b">
+        <select xpath="bf:agent/bf:Agent/rdfs:label">
+          <transform>
+            <xsl:value-of select="concat(.,',')"/>
+          </transform>
+        </select>
+      </sf>
+      <sf code="c">
+        <select xpath="bf:date">
+          <transform>
+            <xsl:value-of select="concat(.,'.')"/>
+          </transform>
+        </select>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="264">
+    <context xpath="rdf:RDF/bf:Instance/bf:copyrightDate">
+      <ind1 default=" "/>
+      <ind2 default="4"/>
+      <sf code="c">
+        <transform>
+          <xsl:value-of select="concat(.,'.')"/>
+        </transform>
       </sf>
     </context>
   </df>

@@ -1,0 +1,59 @@
+<?xml version='1.0'?>
+<rules xmlns="http://www.loc.gov/bf2marc"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+       xmlns:marc="http://www.loc.gov/MARC21/slim"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <df tag="100" repeatable="false">
+    <context xpath="rdf:RDF/bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']]">
+      <ind1 default="1">
+        <switch>
+          <case test="local-name()='FamilyName'">3</case>
+        </switch>
+      </ind1>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
+            <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
+          </case>
+          <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="c">
+        <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
+      </sf>
+      <sf code="d" repeatable="false">
+        <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
+      </sf>
+      <sf code="e">
+        <switch>
+          <case test="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+            <select xpath="../../bf:role/*">
+              <switch>
+                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+              </switch>
+            </select>
+          </case>
+        </switch>
+      </sf>
+      <sf code="q" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="4">
+        <switch>
+          <case test="../../bf:role/*/madsrdf:code">
+            <select xpath="../../bf:role/*/madsrdf:code"/>
+          </case>
+          <case test="default"><select xpath="../../bf:role/*/bf:code"/></case>
+        </switch>
+      </sf>
+    </context>
+  </df>
+
+</rules>
