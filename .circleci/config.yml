@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/buildpack-deps:scm
+    steps:
+      - checkout
+      - run:
+          name: Install testing prerequisites
+          command: |
+            sudo apt-get update && sudo apt-get install -y libsaxonhe-java
+            git clone https://github.com/xspec/xspec.git /tmp/xspec
+      - run:
+          name: Run tests
+          environment:
+            SAXON_CP: /usr/share/java/Saxon-HE.jar
+            XSPEC: /tmp/xspec/bin/xspec.sh
+          command: "make test XSPEC=$XSPEC"
+      - store_artifacts:
+          path: test/xspec/compile-result.html
+          destination: xspec-tests/compile-result.html
+      - store_artifacts:
+          path: test/xspec/named-templates-result.html
+          destination: xspec-tests/named-templates-result.html
+      - store_artifacts:
+          path: rules/test/xspec/rules-result.html
+          destination: xspec-tests/rules-result.html

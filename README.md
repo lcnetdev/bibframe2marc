@@ -1,6 +1,5 @@
 
-[![Build Status](https://travis-ci.org/lcnetdev/bibframe2marc-xsl.svg?branch=master)](https://travis-ci.org/lcnetdev/bibframe2marc-xsl)
-
+[![CircleCI](https://circleci.com/gh/lcnetdev/bibframe2marc-xsl/tree/master.svg?style=svg)](https://circleci.com/gh/lcnetdev/bibframe2marc-xsl)
 # bibframe2marc-xsl
 
 XSLT 1.0 conversion from RDF/XML [BIBFRAME 2.0](http://www.loc.gov/bibframe/) to [MARCXML](http://www.loc.gov/marcxml/).
