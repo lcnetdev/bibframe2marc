@@ -14,7 +14,7 @@ The `Makefile` included with this project will generate a top-level `rules.xml` 
 
 ## XML elements
 
-* `rules`: the root element of any rules document. The `rules` element can contain the elements `version`, `file`, `cf`, and `df`, and `switch`. The order of the rules determines the field order of the generated MARC record.
+* `rules`: the root element of any rules document. The `rules` element can contain the elements `version`, `file`, `map`, `cf`, `df`, and `switch`. The order of the rules determines the field order of the generated MARC record.
 
 ```xml
 <rules xmlns="http://www.loc.gov/bf2marc">
@@ -43,6 +43,25 @@ The `Makefile` included with this project will generate a top-level `rules.xml` 
 
 ```xml
 <file>rules/00-LDR.xml</file>
+```
+
+* `map`: Create a lookup table. The `map` element should contain a flat XML data structure. It has a required `name` attribute. It creates a variable with the name of the `name` attribute in the stylesheet that contains the data structure specified. This data structure can then be referenced in XPath expressions or using the `lookup` element.
+
+```xml
+<bf2marc:rules xmlns:bf2marc="http://www.loc.gov/bf2marc">
+  <bf2marc:map name="instruments">
+    <instrument>
+      <code>ba</code>
+      <type>brass</type>
+      <label>horn</label>
+    </instrument>
+    <instrument>
+      <code>bb</code>
+      <type>brass</type>
+      <label>trumpet</label>
+    </instrument>
+  </bf2marc:map>
+</bf2marc:rules>
 ```
 
 ### Building conversion rules
@@ -139,6 +158,25 @@ The `df` element is more complex. In addition to the rule building blocks docume
 </sf>
 ```
 
+* `lookup/lookupField`: These elements can be used to look up a value in a map using values from the current context, or using a static value. The `lookup` element has 2 required attributes: `map` identifies the map for the lookup, and `targetField` identifies the field in the map that contains the targeted value. A `lookup` element contains 1 or more `lookupField` elements, which are and-ed together to search the map. The `lookupField` element has a required `name` attribute that identifies the map field in which to look for the value. The optional `xpath` attribute contains an XPath expression in the current context to use as a lookup value. If there is no `xpath` attribute, the text value of the `lookupField` element is used as the lookup value.
+
+  * These elements can be used with the `cf`, `ind1`, `ind2`, `sf`, `position`, and `case` elements.
+
+```xml
+<df tag="048">
+  <context xpath="//bf:Work/bf:instrument/bf:MusicInstrument">
+    <ind1 default=" "/>
+    <ind2 default=" "/>
+    <sf code="a">
+      <lookup map="instruments" targetField="code">
+        <lookupField name="type">brass</field>
+        <lookupField name="label" xpath="rdfs:label"/>
+      </lookup>
+    </sf>
+  </context>
+</df>
+```
+
 * `transform`: Provide an XSL fragment for processing the current context.
 
   * This element can be used with the `cf`, `ind1`, `ind2`, `sf`, `position`, `case`, and `select` elements.
@@ -166,7 +204,7 @@ The following global variables in the generated stylesheet are available for use
 The following named templates are defined in the generated stylesheet for use in XSL fragments:
 
 * `EDTF-Date1`: Return the first date from an EDTF date range. If the EDTF date is not a range, will simply return the date.
-* `EDTF-Date1`: Return the second date from an EDTF date range. If the EDTF date is not a range, will return an empty string.
+* `EDTF-Date2`: Return the second date from an EDTF date range. If the EDTF date is not a range, will return an empty string.
 * `EDTF-DatePart`: Return the date part of a single EDTF date (not a range).
 * `EDTF-TimePart`: Return the time part of a single EDTF date (not a range).
 * `EDTF-TimeDiff`: Return the time shift part of a single EDTF date (not a range).
@@ -187,5 +225,6 @@ The generated stylesheet uses the following namespace prefixes:
 * `bflc`: `http://id.loc.gov/ontologies/bflc/`
 * `madsrdf`: `http://www.loc.gov/mads/rdf/v1#`
 * `xsl`: `http://www.w3.org/1999/XSL/Transform`
+* `local`: `local:`
 
 These prefixes should be used in any XPath expressions and embedded XSL fragments to support XSL transformation. For your rules documents to validate, you may need to import these namespaces, along with the `bf2marc` namespace.

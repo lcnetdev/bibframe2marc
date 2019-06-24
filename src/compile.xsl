@@ -8,6 +8,7 @@
                  xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
                  xmlns:xsl="http://www.w3.org/1999/XSL/TransformAlias"
                  xmlns:bf2marc="http://www.loc.gov/bf2marc"
+                 xmlns:local="http://example.org/local"
                  exclude-result-prefixes="bf2marc">
 
   <xslt:namespace-alias stylesheet-prefix="xsl" result-prefix="xslt"/>
@@ -19,7 +20,7 @@
     <xsl:stylesheet version="1.0"
                     xmlns:date="http://exslt.org/dates-and-times"
                     extension-element-prefixes="date"
-                    exclude-result-prefixes="rdf rdfs bf bflc madsrdf">
+                    exclude-result-prefixes="rdf rdfs bf bflc madsrdf local">
 
       <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
       <xsl:strip-space elements="*"/>
@@ -229,6 +230,8 @@
   <xslt:template match="bf2marc:rules">
     <xsl:variable name="vCurrentVersion"><xslt:value-of select="bf2marc:version"/></xsl:variable>
 
+    <xslt:apply-templates mode="map"/>
+
     <xsl:template match="/">
       <marc:record>
 
@@ -241,6 +244,23 @@
 
     <xsl:template match="text()"/>
 
+  </xslt:template>
+
+  <!-- templates for constructing map variables -->
+
+  <!-- compile maps from included files -->
+  <xslt:template match="bf2marc:file" mode="map">
+    <xslt:apply-templates select="document(.)/bf2marc:rules/bf2marc:file | document(.)/bf2marc:rules/bf2marc:map" mode="map"/>
+  </xslt:template>
+
+  <xslt:template match="bf2marc:map" mode="map">
+    <xslt:element name="{concat('local:',@name)}">
+      <xslt:for-each select="*">
+        <xslt:copy-of select="."/>
+      </xslt:for-each>
+    </xslt:element>
+
+    <xsl:variable name="{@name}" select="document('')/*/{concat('local:',@name)}"/>
   </xslt:template>
 
   <!-- templates for building the document frame -->
@@ -602,6 +622,77 @@
     </xslt:choose>
   </xslt:template>
 
+  <xslt:template match="bf2marc:lookup" mode="fieldTemplate">
+    <xslt:param name="repeatable"/>
+    <xslt:choose>
+      <xslt:when test="@map != '' and @targetField != '' and count(bf2marc:lookupField) &gt; 0">
+        <xslt:variable name="vConditions">
+          <xslt:for-each select="bf2marc:lookupField">
+            <xslt:choose>
+              <xslt:when test="@name != ''">
+                <xslt:variable name="vCondition">
+                  <xslt:choose>
+                    <xslt:when test="@xpath != ''">
+                      <xslt:value-of select="@name"/>=$v<xslt:value-of select="@name"/>
+                    </xslt:when>
+                    <xslt:otherwise>
+                      <xslt:value-of select="@name"/>='<xslt:value-of select="text()"/><xslt:text>'</xslt:text>
+                    </xslt:otherwise>
+                  </xslt:choose>
+                </xslt:variable>
+                <xslt:choose>
+                  <xslt:when test="position() = 1"><xslt:value-of select="$vCondition"/></xslt:when>
+                  <xslt:otherwise> and <xslt:value-of select="$vCondition"/></xslt:otherwise>
+                </xslt:choose>
+              </xslt:when>
+              <xslt:otherwise>
+                <xslt:message terminate="yes">
+                  <xslt:text>Invalid lookupField rule for target element </xslt:text><xslt:value-of select="ancestor::*/@tag"/><xslt:if test="ancestor::bf2marc:sf"> $<xslt:value-of select="ancestor::bf2marc:sf/@code"/></xslt:if><xslt:text>. No name attribute.</xslt:text>
+                </xslt:message>
+              </xslt:otherwise>
+            </xslt:choose>
+          </xslt:for-each>
+        </xslt:variable>
+        <xslt:for-each select="bf2marc:lookupField">
+          <xslt:if test="@xpath != ''">
+            <xsl:variable name="{concat('v',@name)}">
+              <xsl:value-of select="{@xpath}"/>
+            </xsl:variable>
+          </xslt:if>
+        </xslt:for-each>
+        <xslt:choose>
+          <xslt:when test="local-name(parent::*)='sf'">
+            <marc:subfield code="{parent::bf2marc:sf/@code}">
+              <xsl:value-of select="{concat('$',@map,'/*[',$vConditions,']/',@targetField)}"/>
+            </marc:subfield>
+          </xslt:when>
+          <xslt:otherwise>
+            <xsl:value-of select="{concat('$',@map,'/*[',$vConditions,']/',@targetField)}"/>
+          </xslt:otherwise>
+        </xslt:choose>
+      </xslt:when>
+      <xslt:otherwise>
+        <xslt:choose>
+          <xslt:when test="@map = ''">
+            <xslt:message terminate="yes">
+              <xslt:text>Invalid lookup rule for target element </xslt:text><xslt:value-of select="ancestor::*/@tag"/><xslt:if test="ancestor::bf2marc:sf"> $<xslt:value-of select="ancestor::bf2marc:sf/@code"/></xslt:if><xslt:text>. No map attribute.</xslt:text>
+            </xslt:message>
+          </xslt:when>
+          <xslt:when test="@targetField = ''">
+            <xslt:message terminate="yes">
+              <xslt:text>Invalid lookupField rule for target element </xslt:text><xslt:value-of select="ancestor::*/@tag"/><xslt:if test="ancestor::bf2marc:sf"> $<xslt:value-of select="ancestor::bf2marc:sf/@code"/></xslt:if><xslt:text>. No targetField attribute.</xslt:text>
+            </xslt:message>
+          </xslt:when>
+          <xslt:otherwise>
+            <xslt:message terminate="yes">
+              <xslt:text>Invalid lookup rule for target element </xslt:text><xslt:value-of select="ancestor::*/@tag"/><xslt:if test="ancestor::bf2marc:sf"> $<xslt:value-of select="ancestor::bf2marc:sf/@code"/></xslt:if><xslt:text>. No lookupField elements.</xslt:text>
+            </xslt:message>
+          </xslt:otherwise>
+        </xslt:choose>
+      </xslt:otherwise>
+    </xslt:choose>
+  </xslt:template>
+
   <xslt:template match="bf2marc:transform" mode="fieldTemplate">
     <xslt:apply-templates mode="copy"/>
   </xslt:template>
@@ -618,6 +709,7 @@
   </xslt:template>
 
   <!-- suppress text from unmatched nodes -->
+  <xslt:template match="text()" mode="map"/>
   <xslt:template match="text()" mode="documentFrame"/>
   <xslt:template match="text()" mode="generateTemplates"/>
   <xslt:template match="text()" mode="fieldTemplate"/>

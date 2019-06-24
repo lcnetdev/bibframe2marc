@@ -10,6 +10,7 @@
                xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
                xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
                xmlns:bf2marc="http://www.loc.gov/bf2marc"
+               xmlns:local="http://example.org/local"
                stylesheet="../src/compile.xsl" xslt-version="1.0">
 
   <x:scenario label="Basic regression">
@@ -23,9 +24,10 @@
                        xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
                        xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
                        xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
+                       xmlns:local="http://example.org/local"
                        version="1.0"
                        extension-element-prefixes="date"
-                       exclude-result-prefixes="rdf rdfs bf bflc madsrdf">
+                       exclude-result-prefixes="rdf rdfs bf bflc madsrdf local">
         <xslt:output encoding="UTF-8" method="xml" indent="yes"/>
         <xslt:strip-space elements="*"/>
         <xslt:param name="pRecordId" select="generate-id()"/>
@@ -221,6 +223,38 @@
     <x:context href="data/file.xml"/>
     <x:expect label="...should create transforms for all included files"
               test="count(//marc:leader)=1 and count(//marc:controlfield)=3"/>
+  </x:scenario>
+
+  <x:scenario label="map element">
+    <x:context mode="map">
+      <bf2marc:map name="instruments">
+        <instrument>
+          <code>ba</code>
+          <type>brass</type>
+          <label>horn</label>
+        </instrument>
+        <instrument>
+          <code>bb</code>
+          <type>brass</type>
+          <label>trumpet</label>
+        </instrument>
+      </bf2marc:map>
+    </x:context>
+    <x:expect label="...should generate a variable with the embedded XML data structure">
+      <local:instruments>
+        <instrument>
+          <code>ba</code>
+          <type>brass</type>
+          <label>horn</label>
+        </instrument>
+        <instrument>
+          <code>bb</code>
+          <type>brass</type>
+          <label>trumpet</label>
+        </instrument>
+      </local:instruments>
+      <xslt:variable name="instruments" select="document('')/*/local:instruments"/>
+    </x:expect>
   </x:scenario>
 
   <x:scenario label="Document frame">
@@ -477,6 +511,25 @@
                 test="/xslt:text = 'test'"/>
       <x:expect label="...select element should be non-repeatable"
                 test="/xslt:variable/xslt:for-each/xslt:choose/xslt:when[1]/@test='position() = 1'"/>
+    </x:scenario>
+
+    <x:scenario label="lookup/lookupField">
+      <x:context mode="fieldTemplate">
+        <bf2marc:lookup map="test" targetField="code">
+          <bf2marc:lookupField name="field1" xpath="rdfs:label"/>
+          <bf2marc:lookupField name="field2">lookmeup</bf2marc:lookupField>
+        </bf2marc:lookup>
+      </x:context>
+      <x:expect label="...lookupField with xpath attribute should generate variable"
+                test="count(/xslt:variable[@name='vfield1']) = 1"/>
+      <x:expect label="...with value from xpath"
+                test="/xslt:variable[@name='vfield1']/xslt:value-of/@select = 'rdfs:label'"/>
+      <x:expect label="...lookup creates XPath expression to pull value from map"
+                test="count(/xslt:value-of/@select) = 1"/>
+      <x:expect label="...lookupField with xpath uses variable in select"
+                test="contains(/xslt:value-of/@select,'field1=$vfield1') = true()"/>
+      <x:expect label="...lookupField with bare value uses string in select"
+                test="contains(/xslt:value-of/@select,'lookmeup') = true()"/>
     </x:scenario>
 
     <x:scenario label="transform element">
