@@ -191,7 +191,6 @@ The `df` element is more complex. In addition to the rule building blocks docume
 
 The following global variables in the generated stylesheet are available for use in XSL fragments:
 
-* `pRecordId`: The value of the `pRecordId` stylesheet parameter. Defaults to `generate-id()`
 * `vRecordId`: A record ID that is calculated for the current BIBFRAME description, with this priority:
   1. The value of the `pRecordId` parameter, if it is passed to the stylesheet
   2. The value in `/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value`, if there is no `bf:source` property or the `bf:source/bf:Source/rdfs:label` value is "DLC".
