@@ -25,21 +25,7 @@
       <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
       <xsl:strip-space elements="*"/>
 
-      <xsl:param name="pRecordId" select="generate-id()"/>
-
-      <xsl:variable name="vRecordId">
-        <xsl:choose>
-          <xsl:when test="$pRecordId = generate-id()">
-            <xsl:choose>
-              <xsl:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
-                <xsl:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value"/>
-              </xsl:when>
-              <xsl:otherwise><xsl:value-of select="$pRecordId"/></xsl:otherwise>
-            </xsl:choose>
-          </xsl:when>
-          <xsl:otherwise><xsl:value-of select="$pRecordId"/></xsl:otherwise>
-        </xsl:choose>
-      </xsl:variable>
+      <xsl:param name="pRecordId" select="'default'"/>
 
       <xsl:param name="pGenerationDatestamp">
         <xsl:if test="function-available('date:date-time')">
@@ -233,6 +219,21 @@
     <xslt:apply-templates mode="map"/>
 
     <xsl:template match="/">
+
+      <xsl:variable name="vRecordId">
+        <xsl:choose>
+          <xsl:when test="$pRecordId = 'default'">
+            <xsl:choose>
+              <xsl:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
+                <xsl:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="generate-id()"/></xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:otherwise><xsl:value-of select="$pRecordId"/></xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+
       <marc:record>
 
         <xslt:apply-templates mode="documentFrame"/>
@@ -284,7 +285,9 @@
     <xslt:choose>
       <xslt:when test="bf2marc:context">
         <xslt:for-each select="bf2marc:context">
-          <xsl:apply-templates select="{@xpath}" mode="generate-{parent::*/@tag}"/>
+          <xsl:apply-templates select="{@xpath}" mode="generate-{parent::*/@tag}">
+            <xsl:with-param name="vRecordId" select="$vRecordId"/>
+          </xsl:apply-templates>
         </xslt:for-each>
       </xslt:when>
       <xslt:otherwise>
@@ -308,6 +311,7 @@
         <xslt:when test="(local-name(parent::*) = 'df' and parent::*/@repeatable != 'false') or
                          position() = 1">
           <xsl:template match="{@xpath}" mode="generate-{parent::*/@tag}">
+            <xsl:param name="vRecordId"/>
             <xslt:choose>
               <xslt:when test="local-name(parent::*) = 'cf' or parent::*/@repeatable = 'false'">
                 <xsl:choose>

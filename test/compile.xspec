@@ -30,24 +30,7 @@
                        exclude-result-prefixes="rdf rdfs bf bflc madsrdf local">
         <xslt:output encoding="UTF-8" method="xml" indent="yes"/>
         <xslt:strip-space elements="*"/>
-        <xslt:param name="pRecordId" select="generate-id()"/>
-        <xslt:variable name="vRecordId">
-          <xslt:choose>
-            <xslt:when test="$pRecordId = generate-id()">
-              <xslt:choose>
-                <xslt:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
-                  <xslt:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value" />
-                </xslt:when>
-                <xslt:otherwise>
-                  <xslt:value-of select="$pRecordId" />
-                </xslt:otherwise>
-              </xslt:choose>
-            </xslt:when>
-            <xslt:otherwise>
-              <xslt:value-of select="$pRecordId" />
-            </xslt:otherwise>
-          </xslt:choose>
-        </xslt:variable>
+        <xslt:param name="pRecordId" select="'default'"/>
         <xslt:param name="pGenerationDatestamp">
           <xslt:if test="function-available('date:date-time')">
             <xslt:value-of select="date:date-time()"/>
@@ -55,6 +38,23 @@
         </xslt:param>
         <xslt:variable name="vCurrentVersion">0.1.0-TEST</xslt:variable>
         <xslt:template match="/">
+          <xslt:variable name="vRecordId">
+            <xslt:choose>
+              <xslt:when test="$pRecordId = 'default'">
+                <xslt:choose>
+                  <xslt:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
+                    <xslt:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value" />
+                  </xslt:when>
+                  <xslt:otherwise>
+                    <xslt:value-of select="generate-id()" />
+                  </xslt:otherwise>
+                </xslt:choose>
+              </xslt:when>
+              <xslt:otherwise>
+                <xslt:value-of select="$pRecordId" />
+              </xslt:otherwise>
+            </xslt:choose>
+          </xslt:variable>
           <marc:record/>
         </xslt:template>
         <xslt:template match="text()"/>
@@ -276,7 +276,9 @@
         </bf2marc:cf>
       </x:context>
       <x:expect label="...should generate an apply-templates element">
-        <xslt:apply-templates select="rdf:RDF/bf:Instance" mode="generate-001"/>
+        <xslt:apply-templates select="rdf:RDF/bf:Instance" mode="generate-001">
+          <xslt:with-param name="vRecordId" select="$vRecordId"/>
+        </xslt:apply-templates>
       </x:expect>
     </x:scenario>
   </x:scenario>
