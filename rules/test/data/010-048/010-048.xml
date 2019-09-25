@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-  <bf:Work>
+  <bf:Work rdf:about="http://example.org/010-048test#Work">
     <bf:adminMetadata>
       <bf:AdminMetadata>
         <bf:identifiedBy>
@@ -175,7 +175,7 @@
       <bf:GeographicCoverage rdf:about="http://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-LV"/>
     </bf:geographicCoverage>
   </bf:Work>
-  <bf:Instance>
+  <bf:Instance rdf:about="http://example.org/010-048test#Instance">
     <bf:acquisitionTerms>For sale ($450.00) or rent ($45.00)</bf:acquisitionTerms>
     <bf:identifiedBy>
       <bf:Lccn>
@@ -365,5 +365,6 @@
         </bf:source>
       </bf:Place>
     </bf:place>
+    <bf:instanceOf rdf:resource="http://example.org/010-048test#Work"/>
   </bf:Instance>
 </rdf:RDF>

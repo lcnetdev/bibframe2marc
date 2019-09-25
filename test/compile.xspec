@@ -38,6 +38,35 @@
         </xslt:param>
         <xslt:variable name="vCurrentVersion">0.1.0-TEST</xslt:variable>
         <xslt:template match="/">
+          <xslt:choose>
+            <xslt:when test="rdf:RDF">
+              <xslt:choose>
+                <xslt:when test="count(rdf:RDF/bf:Instance) = 1">
+                  <xslt:choose>
+                    <xslt:when test="count(rdf:RDF/bf:Work) = 0" />
+                    <xslt:when test="count(rdf:RDF/bf:Work) = 1">
+                      <xslt:choose>
+                        <xslt:when test="rdf:RDF/bf:Instance/bf:instanceOf[@rdf:resource=/rdf:RDF/bf:Work/@rdf:about]" />
+                        <xslt:when test="rdf:RDF/bf:Work/bf:hasInstance[@rdf:resource=/rdf:RDF/bf:Instance/@rdf:about]" />
+                        <xslt:otherwise>
+                          <xslt:message terminate="yes">Invalid document: top-level Instance and Work are not linked</xslt:message>
+                        </xslt:otherwise>
+                      </xslt:choose>
+                    </xslt:when>
+                    <xslt:otherwise>
+                      <xslt:message terminate="yes">Invalid document: document can only have 0 or 1 top-level Work element</xslt:message>
+                    </xslt:otherwise>
+                  </xslt:choose>
+                </xslt:when>
+                <xslt:otherwise>
+                  <xslt:message terminate="yes">Invalid document: document must have exactly one top-level Instance element</xslt:message>
+                </xslt:otherwise>
+              </xslt:choose>
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:message terminate="yes">Invalid document: no RDF root element</xslt:message>
+            </xslt:otherwise>
+          </xslt:choose>
           <xslt:variable name="vRecordId">
             <xslt:choose>
               <xslt:when test="$pRecordId = 'default'">

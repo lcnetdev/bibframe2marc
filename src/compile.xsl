@@ -220,6 +220,39 @@
 
     <xsl:template match="/">
 
+      <!-- rudimentary document validation -->
+      <!-- Document should consist of an rdf:RDF root element with one top-level bf:Instance element -->
+      <!-- There can be 0 or 1 top-level bf:Work element that is linked to the bf:Instance -->
+      <xsl:choose>
+        <xsl:when test="rdf:RDF">
+          <xsl:choose>
+            <xsl:when test="count(rdf:RDF/bf:Instance) = 1">
+              <xsl:choose>
+                <xsl:when test="count(rdf:RDF/bf:Work) = 0"/>
+                <xsl:when test="count(rdf:RDF/bf:Work) = 1">
+                  <xsl:choose>
+                    <xsl:when test="rdf:RDF/bf:Instance/bf:instanceOf[@rdf:resource=/rdf:RDF/bf:Work/@rdf:about]"/>
+                    <xsl:when test="rdf:RDF/bf:Work/bf:hasInstance[@rdf:resource=/rdf:RDF/bf:Instance/@rdf:about]"/>
+                    <xsl:otherwise>
+                      <xsl:message terminate="yes">Invalid document: top-level Instance and Work are not linked</xsl:message>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:message terminate="yes">Invalid document: document can only have 0 or 1 top-level Work element</xsl:message>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:message terminate="yes">Invalid document: document must have exactly one top-level Instance element</xsl:message>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:message terminate="yes">Invalid document: no RDF root element</xsl:message>
+        </xsl:otherwise>
+      </xsl:choose>
+
       <xsl:variable name="vRecordId">
         <xsl:choose>
           <xsl:when test="$pRecordId = 'default'">

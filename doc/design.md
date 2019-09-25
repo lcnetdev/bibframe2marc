@@ -6,16 +6,11 @@ The schema for constructing conversion rules (see [rules.md](rules.md)) is desig
 
 ## Background: What goes into a MARC record
 
-MARC21 bibliographic records can be constructed from an RDF graph with the following characteristics:
+MARC21 bibliographic records can be constructed from an striped RDF/XML document with the following characteristics:
 
-* One or more `bf:Instance` subjects with one or more `bf:instanceOf` predicates with a `bf:Work` object.
-  * The `bf:instanceOf` predicate can also be calculated as the inverse of a `bf:hasInstance` predicate of a `bf:Work` subject.
-  * Each `bf:Instance` to `bf:Work` relationship can generate a new MARC record.
-    * A single `bf:Work` can be related to multiple `bf:Instance` nodes. The combination of the predicates of the `bf:Work` and each of the `bf:Instance` nodes can be used to construct multiple unique MARC21 bibliographic records.
-      * Series and linking relationships (e.g. `bf:otherPhysicalFormat`, `bf:reproductionOf`) can be used to infer whether or not a unique MARC21 bibliographic record should be constructed.
-    * A single `bf:Instance` can be related to multiple `bf:Work` nodes, but in general this _should not_ result in the construction of multiple unique MARC21 bibliographic records.
-      * Series and linking relationships should be used to infer which `bf:Work` node should be used in the construction of the record.
-      * If a "primary" `bf:Work` node can not be inferred, multiple records will be constructed.
+* Exactly 1 top-level `bf:Instance` subject
+* 0 or 1 top-level `bf:Work` subject
+  * The `bf:Work` subject, if it exists, must be linked with the `bf:Instance` entity, either as the object of a `bf:instanceOf` predicate, or as the subject of a `bf:hasInstance` predicate.
 
 An RDF graph with these characteristics is referred to as a BIBFRAME "description" for simplicity's sake.
 
