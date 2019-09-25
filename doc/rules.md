@@ -191,6 +191,7 @@ The `df` element is more complex. In addition to the rule building blocks docume
 
 The following global variables in the generated stylesheet are available for use in XSL fragments:
 
+* `vAdminMetadata`: The node set that represents the `bf:AdminMetadata` object for the BIBFRAME description. By default, it is from the XPath `/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata` (the top-level `bf:Instance` subject). If there is no object at that path, the variable will be created from `/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata` (the top-level `bf:Work` subject).
 * `vRecordId`: A record ID that is calculated for the current BIBFRAME description, with this priority:
   1. The value of the `pRecordId` parameter, if it is passed to the stylesheet
   2. The value in `/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value`, if there is no `bf:source` property or the `bf:source/bf:Source/rdfs:label` value is "DLC".

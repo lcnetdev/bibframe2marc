@@ -67,12 +67,13 @@
               <xslt:message terminate="yes">Invalid document: no RDF root element</xslt:message>
             </xslt:otherwise>
           </xslt:choose>
+          <xslt:variable name="vAdminMetadata" select="rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata | rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata[not(/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata)]" />
           <xslt:variable name="vRecordId">
             <xslt:choose>
               <xslt:when test="$pRecordId = 'default'">
                 <xslt:choose>
-                  <xslt:when test="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
-                    <xslt:value-of select="/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value" />
+                  <xslt:when test="$vAdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value">
+                    <xslt:value-of select="$vAdminMetadata/bf:identifiedBy/bf:Local[not(bf:source) or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or bf:source/bf:Source/rdfs:label='DLC']/rdf:value" />
                   </xslt:when>
                   <xslt:otherwise>
                     <xslt:value-of select="generate-id()" />
