@@ -52,7 +52,12 @@
   </df>
 
   <df tag="016">
-    <context xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[
+    <context xpath="rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[
+                      bf:source/bf:Source and
+                      not(bf:source/bf:Source/rdfs:label='DLC')
+                    ] |
+                    rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[
+                      not(/rdf:RDF/bf:Instance/bf:adminMetadata) and
                       bf:source/bf:Source and
                       not(bf:source/bf:Source/rdfs:label='DLC')
                     ]">
@@ -509,37 +514,53 @@
     </context>
   </df>
 
-  <df tag="038" repeatable="false">
-    <context xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:metadataLicensor">
-      <ind1 default=" "/>
-      <ind2 default=" "/>
-      <sf code="a" repeatable="false">
-        <select xpath="bflc:MetadataLicensor/rdfs:label|*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
-      </sf>
-    </context>
-  </df>
+  <switch>
+    <case test="$vAdminMetadata/bflc:metadataLicensor">
+      <df tag="038" repeatable="false">
+        <ind1 default=" "/>
+        <ind2 default=" "/>
+        <sf code="a" repeatable="false">
+          <transform>
+            <xsl:value-of select="$vAdminMetadata/bflc:metadataLicensor/bflc:MetadataLicensor/rdfs:label|$vAdminMetadata/bflc:metadataLicensor/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
+          </transform>
+        </sf>
+      </df>
+    </case>
+  </switch>
 
-  <df tag="040" repeatable="false">
-    <context xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata[bf:source]">
-      <ind1 default=" "/>
-      <ind2 default=" "/>
-      <sf code="a" repeatable="false">
-        <select xpath="bf:source/*[local-name()='Agent' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Agent']]/rdfs:label|bf:source/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
-      </sf>
-      <sf code="b" repeatable="false">
-        <select xpath="bf:descriptionLanguage/bf:Language/bf:code|bf:descriptionLanguage/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code"/>
-      </sf>
-      <sf code="c" repeatable="false">
-        <select xpath="bf:source/*[local-name()='Agent' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Agent']]/rdfs:label|bf:source/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
-      </sf>
-      <sf code="d">
-        <select xpath="bf:descriptionModifier/*[local-name()='Agent' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Agent']]/rdfs:label|bf:descriptionModifier/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
-      </sf>
-      <sf code="e">
-        <select xpath="bf:descriptionConventions/bf:DescriptionConventions/rdfs:label|bf:descriptionConventions/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code"/>
-      </sf>
-    </context>
-  </df>
+  <switch>
+    <case test="$vAdminMetadata/bf:source">
+      <df tag="040" repeatable="false">
+        <ind1 default=" "/>
+        <ind2 default=" "/>
+        <sf code="a" repeatable="false">
+          <transform>
+            <xsl:value-of select="$vAdminMetadata/bf:source/*[local-name()='Agent' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Agent']]/rdfs:label|$vAdminMetadata/bf:source/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
+          </transform>
+        </sf>
+        <sf code="b" repeatable="false">
+          <transform>
+            <xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/bf:Language/bf:code|$vAdminMetadata/bf:descriptionLanguage/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code"/>
+          </transform>
+        </sf>
+        <sf code="c" repeatable="false">
+          <transform>
+            <xsl:value-of select="$vAdminMetadata/bf:source/*[local-name()='Agent' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Agent']]/rdfs:label|$vAdminMetadata/bf:source/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
+          </transform>
+        </sf>
+        <sf code="d">
+          <transform>
+            <xsl:value-of select="$vAdminMetadata/bf:descriptionModifier/*[local-name()='Agent' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Agent']]/rdfs:label|$vAdminMetadata/bf:descriptionModifier/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
+          </transform>
+        </sf>
+        <sf code="e">
+          <transform>
+            <xsl:value-of select="$vAdminMetadata/bf:descriptionConventions/bf:DescriptionConventions/rdfs:label|$vAdminMetadata/bf:descriptionConventions/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code"/>
+          </transform>
+        </sf>
+      </df>
+    </case>
+  </switch>
 
   <switch>
     <case test="rdf:RDF/bf:Work[count(bf:language/bf:Language[not(bf:source)])&gt;1]">
@@ -646,12 +667,12 @@
   </df>
 
   <switch>
-    <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionAuthentication">
+    <case test="$vAdminMetadata/bf:descriptionAuthentication">
       <df tag="042" repeatable="false">
         <ind1 default=" "/>
         <ind2 default=" "/>
         <sf code="a">
-          <select xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionAuthentication/*[local-name()='DescriptionAuthentication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/DescriptionAuthentication']]/*[local-name()='code']"/>
+          <select xpath="$vAdminMetadata/bf:descriptionAuthentication/*[local-name()='DescriptionAuthentication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/DescriptionAuthentication']]/*[local-name()='code']"/>
         </sf>
       </df>
     </case>

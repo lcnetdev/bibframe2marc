@@ -12,27 +12,33 @@
     <transform><xsl:value-of select="$vRecordId"/></transform>
   </cf>
 
-  <cf tag="003">
-    <context xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:source/bf:Source/bf:code">
-      <select xpath="."/>
-    </context>
-  </cf>
+  <switch>
+    <case test="$vAdminMetadata/bf:source/bf:Source/bf:code">
+      <cf tag="003">
+        <transform>
+          <xsl:value-of select="$vAdminMetadata/bf:source/bf:Source/bf:code"/>
+        </transform>
+      </cf>
+    </case>
+  </switch>
 
-  <cf tag="005">
-    <context xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:changeDate">
+  <switch>
+    <case test="$vAdminMetadata/bf:changeDate">
       <switch>
-        <case test="@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime'">
-          <transform>
-            <xsl:value-of select="concat(substring(text(),1,4),substring(text(),6,2),substring(text(),9,2),substring(text(),12,2),substring(text(),15,2),substring(text(),18,2),'.0')"/>
-          </transform>
+        <case test="$vAdminMetadata/bf:changeDate/@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime'">
+          <cf tag="005">
+            <transform>
+              <xsl:value-of select="concat(substring($vAdminMetadata/bf:changeDate,1,4),substring($vAdminMetadata/bf:changeDate,6,2),substring($vAdminMetadata/bf:changeDate,9,2),substring($vAdminMetadata/bf:changeDate,12,2),substring($vAdminMetadata/bf:changeDate,15,2),substring($vAdminMetadata/bf:changeDate,18,2),'.0')"/>
+            </transform>
+          </cf>
         </case>
         <case test="default">
           <transform>
-            <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Invalid datatype for 005.</xsl:message>
+            <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed bf:changeDate. Invalid datatype for 005.</xsl:message>
           </transform>
         </case>
       </switch>
-    </context>
-  </cf>
+    </case>
+  </switch>
 
 </rules>

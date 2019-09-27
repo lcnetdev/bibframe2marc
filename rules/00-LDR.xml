@@ -14,7 +14,7 @@
       <position default="     "/>
       <!-- 05 -->
       <position default="n">
-        <select xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:status/bf:Status/bf:code">
+        <select xpath="$vAdminMetadata/bf:status/bf:Status/bf:code">
           <transform><xsl:value-of select="substring(.,1,1)"/></transform>
         </select>
       </position>
@@ -58,23 +58,23 @@
       <!-- 17 -->
       <position default="u">
         <switch>
-          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/f'] or rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code[text()='f']"><text> </text></case>
-          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/1']">1</case>
-          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/3']">3</case>
-          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/4']">4</case>
-          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/5']">5</case>
-          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/7']">7</case>
-          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/8']">8</case>
-          <case test="string-length(rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code) = 1">
-            <select xpath="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code"/>
+          <case test="$vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/f'] or $vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code[text()='f']"><text> </text></case>
+          <case test="$vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/1']">1</case>
+          <case test="$vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/3']">3</case>
+          <case test="$vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/4']">4</case>
+          <case test="$vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/5']">5</case>
+          <case test="$vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/7']">7</case>
+          <case test="$vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about='http://id.loc.gov/vocabulary/menclvl/8']">8</case>
+          <case test="string-length($vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code) = 1">
+            <select xpath="$vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code"/>
           </case>
         </switch>
       </position>
       <!-- 18 -->
       <position default="u">
         <switch>
-          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/bf:DescriptionConventions[@rdf:about='http://id.loc.gov/vocabulary/descriptionConventions/aacr'] or rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/bf:DescriptionConventions/bf:code[text()='aacr']">a</case>
-          <case test="rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/bf:DescriptionConventions[@rdf:about='http://id.loc.gov/vocabulary/descriptionConventions/isbd'] or rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:descriptionConventions/bf:DescriptionConventions/bf:code[text()='isbd']">i</case>
+          <case test="$vAdminMetadata/bf:descriptionConventions/bf:DescriptionConventions[@rdf:about='http://id.loc.gov/vocabulary/descriptionConventions/aacr'] or $vAdminMetadata/bf:descriptionConventions/bf:DescriptionConventions/bf:code[text()='aacr']">a</case>
+          <case test="$vAdminMetadata/bf:descriptionConventions/bf:DescriptionConventions[@rdf:about='http://id.loc.gov/vocabulary/descriptionConventions/isbd'] or $vAdminMetadata/bf:descriptionConventions/bf:DescriptionConventions/bf:code[text()='isbd']">i</case>
         </switch>
       </position>
       <!-- 19-23 -->
