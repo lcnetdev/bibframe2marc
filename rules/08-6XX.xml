@@ -27,34 +27,34 @@
       <sf code="3" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
       <switch>
         <case test="madsrdf:componentList">
           <sf code="a" repeatable="false">
             <select xpath="madsrdf:componentList/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1]/*[local-name()='authoritativeLabel' or local-name()='label'][1]"/>
           </sf>
-          <sf code="0"><select xpath="madsrdf:componentList/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1]/@rdf:about"/></sf>
+          <sf code="0"><select xpath="madsrdf:componentList/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
           <select xpath="madsrdf:componentList/*">
             <switch>
               <case test="local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']">
                 <switch>
                   <case test="generate-id(.) != generate-id(../*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']][1])">
                     <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about"/></sf>
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
                   </case>
                 </switch>
               </case>
               <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
                 <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                <sf code="0"><select xpath="@rdf:about"/></sf>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
               </case>
               <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
                 <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                <sf code="0"><select xpath="@rdf:about"/></sf>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
               </case>
               <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
                 <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                <sf code="0"><select xpath="@rdf:about"/></sf>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
               </case>
             </switch>
           </select>

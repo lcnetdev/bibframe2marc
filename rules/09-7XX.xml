@@ -44,7 +44,7 @@
         </switch>
       </sf>
       <sf code="q" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
-      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
       <sf code="4">
         <switch>
           <case test="../../bf:role/*/madsrdf:code">
@@ -81,7 +81,7 @@
           </case>
         </switch>
       </sf>
-      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
       <sf code="4">
         <switch>
           <case test="../../bf:role/*/madsrdf:code">
