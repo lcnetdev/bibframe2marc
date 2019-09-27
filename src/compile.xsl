@@ -322,6 +322,7 @@
         <xslt:for-each select="bf2marc:context">
           <xsl:apply-templates select="{@xpath}" mode="generate-{parent::*/@tag}">
             <xsl:with-param name="vRecordId" select="$vRecordId"/>
+            <xsl:with-param name="vAdminMetadata" select="$vAdminMetadata"/>
           </xsl:apply-templates>
         </xslt:for-each>
       </xslt:when>
@@ -347,6 +348,7 @@
                          position() = 1">
           <xsl:template match="{@xpath}" mode="generate-{parent::*/@tag}">
             <xsl:param name="vRecordId"/>
+            <xsl:param name="vAdminMetadata"/>
             <xslt:choose>
               <xslt:when test="local-name(parent::*) = 'cf' or parent::*/@repeatable = 'false'">
                 <xsl:choose>
