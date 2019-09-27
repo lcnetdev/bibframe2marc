@@ -9,7 +9,7 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <df tag="700">
-    <context xpath="rdf:RDF/bf:Work/bf:contribution/bf:Contribution[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']]">
+    <context xpath="bf:Work/bf:contribution/bf:Contribution[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']]">
       <ind1 default="1">
         <switch>
           <case test="local-name()='FamilyName'">3</case>
@@ -57,7 +57,7 @@
   </df>
 
   <df tag="710">
-    <context xpath="rdf:RDF/bf:Work/bf:contribution/bf:Contribution[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']]">
+    <context xpath="bf:Work/bf:contribution/bf:Contribution[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']]">
       <ind1 default="2"/>
       <ind2 default=" "/>
       <sf code="a" repeatable="false"><select xpath="madsrdf:elementList/madsrdf:NameElement/madsrdf:elementValue[1]"/></sf>

@@ -67,7 +67,10 @@
               <xslt:message terminate="yes">Invalid document: no RDF root element</xslt:message>
             </xslt:otherwise>
           </xslt:choose>
-          <xslt:variable name="vAdminMetadata" select="rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata | rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata[not(/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata)]" />
+          <xslt:apply-templates/>
+        </xslt:template>
+        <xslt:template match="rdf:RDF">
+          <xslt:variable name="vAdminMetadata" select="bf:Instance/bf:adminMetadata/bf:AdminMetadata | bf:Work/bf:adminMetadata/bf:AdminMetadata[not(/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata)]" />
           <xslt:variable name="vRecordId">
             <xslt:choose>
               <xslt:when test="$pRecordId = 'default'">
@@ -302,11 +305,11 @@
     <x:scenario label="Rule with context element">
       <x:context mode="documentFrame">
         <bf2marc:cf tag="001">
-          <bf2marc:context xpath="rdf:RDF/bf:Instance"/>
+          <bf2marc:context xpath="bf:Instance"/>
         </bf2marc:cf>
       </x:context>
       <x:expect label="...should generate an apply-templates element">
-        <xslt:apply-templates select="rdf:RDF/bf:Instance" mode="generate-001">
+        <xslt:apply-templates select="bf:Instance" mode="generate-001">
           <xslt:with-param name="vRecordId" select="$vRecordId"/>
           <xslt:with-param name="vAdminMetadata" select="$vAdminMetadata"/>
         </xslt:apply-templates>
@@ -318,17 +321,17 @@
     <x:scenario label="Rule with context element">
       <x:context mode="generateTemplates">
         <bf2marc:cf tag="001">
-          <bf2marc:context xpath="rdf:RDF/bf:Instance"/>
+          <bf2marc:context xpath="bf:Instance"/>
         </bf2marc:cf>
       </x:context>
       <x:expect label="...should generate a template for transforming the matched node into the specified MARC element"
-                test="xslt:template/@match='rdf:RDF/bf:Instance' and xslt:template/@mode='generate-001'"/>
+                test="xslt:template/@match='bf:Instance' and xslt:template/@mode='generate-001'"/>
     </x:scenario>
 
     <x:scenario label="Non-repeatable field">
       <x:context mode="generateTemplates">
         <bf2marc:cf tag="001">
-          <bf2marc:context xpath="rdf:RDF/bf:Instance"/>
+          <bf2marc:context xpath="bf:Instance"/>
         </bf2marc:cf>
       </x:context>
       <x:expect label="...source element should only pass through template once"
@@ -368,7 +371,7 @@
     <x:scenario label="Processing rules in cf or df element">
       <x:context mode="fieldTemplate">
         <bf2marc:cf tag="001">
-          <bf2marc:select xpath="rdf:RDF/bf:Instance">12345678</bf2marc:select>
+          <bf2marc:select xpath="bf:Instance">12345678</bf2marc:select>
         </bf2marc:cf>
       </x:context>
       <x:expect label="...should generate XSL logic for processing document"

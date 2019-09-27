@@ -9,7 +9,7 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <df tag="010" repeatable="false">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[
+    <context xpath="bf:Instance/bf:identifiedBy/*[
         (local-name()='Lccn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn']) and
         not(
           bf:status/bf:Status/rdfs:label[text()='invalid'] or
@@ -34,7 +34,7 @@
   </df>
 
   <df tag="015">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Nbn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Nbn']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Nbn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Nbn']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
@@ -52,11 +52,11 @@
   </df>
 
   <df tag="016">
-    <context xpath="rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[
+    <context xpath="bf:Instance/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[
                       bf:source/bf:Source and
                       not(bf:source/bf:Source/rdfs:label='DLC')
                     ] |
-                    rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[
+                    bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[
                       not(/rdf:RDF/bf:Instance/bf:adminMetadata) and
                       bf:source/bf:Source and
                       not(bf:source/bf:Source/rdfs:label='DLC')
@@ -83,7 +83,7 @@
   </df>
 
   <df tag="017">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='CopyrightNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/CopyrightNumber']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='CopyrightNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/CopyrightNumber']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
@@ -103,7 +103,7 @@
   </df>
 
   <df tag="020">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Isbn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isbn']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Isbn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isbn']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
@@ -122,7 +122,7 @@
   </df>
 
   <df tag="022">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']] | rdf:RDF/bf:Work/bf:identifiedBy/*[local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']] | bf:Work/bf:identifiedBy/*[local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
@@ -159,26 +159,26 @@
   </df>
 
   <df tag="024">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Isrc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isrc']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Upc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Upc']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Ismn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ismn']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Ean' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ean']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Sici' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Sici']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Ansi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ansi']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Doi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Doi']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Hdl' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hdl']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Isan' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isan']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Isni' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isni']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Iso' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Iso']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Istc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Istc']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Iswc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Iswc']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicPublisherNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublisherNumber']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='StockNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StockNumber']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Urn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Urn']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']] |
-      rdf:RDF/bf:Instance/bf:identifiedBy/bf:Identifier[not(rdf:type)]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Isrc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isrc']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Upc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Upc']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Ismn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ismn']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Ean' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ean']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Sici' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Sici']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Ansi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ansi']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Doi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Doi']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Hdl' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hdl']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Isan' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isan']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Isni' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isni']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Iso' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Iso']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Istc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Istc']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Iswc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Iswc']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='MusicPublisherNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublisherNumber']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='StockNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StockNumber']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='Urn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Urn']] |
+      bf:Instance/bf:identifiedBy/*[local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']] |
+      bf:Instance/bf:identifiedBy/bf:Identifier[not(rdf:type)]">
       <ind1 default="7">
         <switch>
           <case test="local-name()='Isrc' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isrc']">0</case>
@@ -224,7 +224,7 @@
   </df>
 
   <df tag="025">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='LcOverseasAcq' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/LcOverseasAcq']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='LcOverseasAcq' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/LcOverseasAcq']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a"><select xpath="rdf:value"/></sf>
@@ -232,7 +232,7 @@
   </df>
 
   <df tag="026">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Fingerprint' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Fingerprint']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Fingerprint' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Fingerprint']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="e" repeatable="false"><select xpath="rdf:value"/></sf>
@@ -244,7 +244,7 @@
   </df>
 
   <df tag="027">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Strn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Strn']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Strn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Strn']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
@@ -262,13 +262,13 @@
   </df>
 
   <df tag="028">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='AudioIssueNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AudioIssueNumber']] |
-                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']] |
-                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']] |
-                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicPublishingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublishingNumber']] |
-                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']] |
-                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='PublisherNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/PublisherNumber']] |
-                    rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='MusicDistributorNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicDistributorNumber']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='AudioIssueNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AudioIssueNumber']] |
+                    bf:Instance/bf:identifiedBy/*[local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']] |
+                    bf:Instance/bf:identifiedBy/*[local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']] |
+                    bf:Instance/bf:identifiedBy/*[local-name()='MusicPublishingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublishingNumber']] |
+                    bf:Instance/bf:identifiedBy/*[local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']] |
+                    bf:Instance/bf:identifiedBy/*[local-name()='PublisherNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/PublisherNumber']] |
+                    bf:Instance/bf:identifiedBy/*[local-name()='MusicDistributorNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicDistributorNumber']]">
       <ind1 default="5">
         <switch>
           <case test="local-name()='AudioIssueNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AudioIssueNumber']">0</case>
@@ -287,7 +287,7 @@
   </df>
 
   <df tag="030">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Coden' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Coden']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Coden' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Coden']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
@@ -304,7 +304,7 @@
   </df>
 
   <df tag="032">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='PostalRegistration' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/PostalRegistration']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='PostalRegistration' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/PostalRegistration']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
@@ -313,7 +313,7 @@
   </df>
 
   <df tag="033">
-    <context xpath="rdf:RDF/bf:Work/bf:capture/bf:Capture">
+    <context xpath="bf:Work/bf:capture/bf:Capture">
       <ind1 default=" ">
         <switch>
           <case test="count(bf:date)=1">
@@ -451,7 +451,7 @@
   </df>
 
   <df tag="035">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='Local' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Local' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
@@ -482,7 +482,7 @@
   </df>
 
   <df tag="036" repeatable="false">
-    <context xpath="rdf:RDF/bf:Instance/bf:identifiedBy/*[local-name()='StudyNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StudyNumber']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='StudyNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StudyNumber']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
@@ -491,7 +491,7 @@
   </df>
 
   <df tag="037">
-    <context xpath="rdf:RDF/bf:Instance/bf:acquisitionSource/bf:AcquisitionSource">
+    <context xpath="bf:Instance/bf:acquisitionSource/bf:AcquisitionSource">
       <ind1 default=" ">
         <switch>
           <case test="bf:note/bf:Note/rdfs:label[text()='intervening source']">2</case>
@@ -563,16 +563,16 @@
   </switch>
 
   <switch>
-    <case test="rdf:RDF/bf:Work[count(bf:language/bf:Language[not(bf:source)])&gt;1]">
+    <case test="bf:Work[count(bf:language/bf:Language[not(bf:source)])&gt;1]">
       <df tag="041">
         <ind1 default=" ">
           <switch>
-            <case test="rdf:RDF/bf:Work/bf:note/bf:Note[rdfs:label='Includes translation']">1</case>
+            <case test="bf:Work/bf:note/bf:Note[rdfs:label='Includes translation']">1</case>
           </switch>
         </ind1>
         <ind2 default=" "/>
         <sf code="a">
-          <select xpath="rdf:RDF/bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]">
+          <select xpath="bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]">
             <switch>
               <case test="starts-with(@rdf:about,'http://id.loc.gov/vocabulary/languages/')">
                 <transform><xsl:value-of select="substring-after(@rdf:about,'http://id.loc.gov/vocabulary/languages/')"/></transform>
@@ -586,7 +586,7 @@
             </switch>
           </select>
         </sf>
-        <select xpath="rdf:RDF/bf:Work/bf:language/bf:Language[not(bf:source) and bf:part]">
+        <select xpath="bf:Work/bf:language/bf:Language[not(bf:source) and bf:part]">
           <transform>
             <xsl:variable name="vSubfield">
               <xsl:choose>
@@ -624,7 +624,7 @@
   </switch>
 
   <df tag="041">
-    <context xpath="rdf:RDF/bf:Work/bf:language/bf:Language[bf:source]">
+    <context xpath="bf:Work/bf:language/bf:Language[bf:source]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <select xpath=".">
@@ -679,11 +679,11 @@
   </switch>
 
   <switch>
-    <case test="rdf:RDF/bf:Work/bf:geographicCoverage">
+    <case test="bf:Work/bf:geographicCoverage">
       <df tag="043">
         <ind1 default=" "/>
         <ind2 default=" "/>
-        <select xpath="rdf:RDF/bf:Work/bf:geographicCoverage">
+        <select xpath="bf:Work/bf:geographicCoverage">
           <switch>
             <case test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/geographicAreas/')">
               <sf code="a">
@@ -721,11 +721,11 @@
   </switch>
 
   <switch>
-    <case test="rdf:RDF/bf:Instance/bf:place">
+    <case test="bf:Instance/bf:place">
       <df tag="044">
         <ind1 default=" "/>
         <ind2 default=" "/>
-        <select xpath="rdf:RDF/bf:Instance/bf:place">
+        <select xpath="bf:Instance/bf:place">
           <switch>
             <case test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')">
               <sf code="a">

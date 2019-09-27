@@ -9,7 +9,7 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <df tag="210">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/*[local-name() = 'AbbreviatedTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AbbreviatedTitle']]">
+    <context xpath="bf:Instance/bf:title/*[local-name() = 'AbbreviatedTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AbbreviatedTitle']]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
@@ -36,7 +36,7 @@
   </df>
 
   <df tag="222">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/*[local-name() = 'KeyTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/KeyTitle']]">
+    <context xpath="bf:Instance/bf:title/*[local-name() = 'KeyTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/KeyTitle']]">
       <ind1 default=" "/>
       <ind2 default="0">
         <switch>
@@ -67,7 +67,7 @@
   </df>
 
   <df tag="242">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/*[(local-name() = 'VariantTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']) and bf:variantType = 'translated']">
+    <context xpath="bf:Instance/bf:title/*[(local-name() = 'VariantTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']) and bf:variantType = 'translated']">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
@@ -101,7 +101,7 @@
   </df>
 
   <df tag="243" repeatable="false">
-    <context xpath="rdf:RDF/bf:Work/bf:title/*[
+    <context xpath="bf:Work/bf:title/*[
                       local-name()='CollectiveTitle' or
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/CollectiveTitle']
                     ]">
@@ -125,7 +125,7 @@
   </df>
 
   <df tag="245" repeatable="false">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/bf:Title[not(rdf:type)]">
+    <context xpath="bf:Instance/bf:title/bf:Title[not(rdf:type)]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
@@ -158,7 +158,7 @@
   </df>
 
   <df tag="246">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/*[(
+    <context xpath="bf:Instance/bf:title/*[(
                       local-name()='VariantTitle' or
                       local-name()='ParallelTitle' or
                       local-name()='TranscribedTitle' or
@@ -207,7 +207,7 @@
   </df>
 
   <df tag="247">
-    <context xpath="rdf:RDF/bf:Instance/bf:title/*[(
+    <context xpath="bf:Instance/bf:title/*[(
                       local-name()='VariantTitle' or
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
                     ) and
@@ -246,7 +246,7 @@
   </df>
 
   <df tag="255">
-    <context xpath="rdf:RDF/bf:Work/bf:scale">
+    <context xpath="bf:Work/bf:scale">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" repeatable="false">
@@ -259,7 +259,7 @@
   </df>
 
   <df tag="255">
-    <context xpath="rdf:RDF/bf:Work/bf:cartographicAttributes/bf:Cartographic">
+    <context xpath="bf:Work/bf:cartographicAttributes/bf:Cartographic">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="b" repeatable="false">
@@ -274,7 +274,7 @@
   </df>
 
   <df tag="264">
-    <context xpath="rdf:RDF/bf:Instance/bf:provisionActivity/*[
+    <context xpath="bf:Instance/bf:provisionActivity/*[
                       local-name()='ProvisionActivity' or
                       local-name()='Production' or
                       local-name()='Publication' or
@@ -330,7 +330,7 @@
   </df>
 
   <df tag="264">
-    <context xpath="rdf:RDF/bf:Instance/bf:copyrightDate">
+    <context xpath="bf:Instance/bf:copyrightDate">
       <ind1 default=" "/>
       <ind2 default="4"/>
       <sf code="c">

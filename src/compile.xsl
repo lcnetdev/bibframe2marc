@@ -252,8 +252,11 @@
           <xsl:message terminate="yes">Invalid document: no RDF root element</xsl:message>
         </xsl:otherwise>
       </xsl:choose>
+      <xsl:apply-templates/>
+    </xsl:template>
 
-      <xsl:variable name="vAdminMetadata" select="rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata | rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata[not(/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata)]"/>
+    <xsl:template match="rdf:RDF">
+      <xsl:variable name="vAdminMetadata" select="bf:Instance/bf:adminMetadata/bf:AdminMetadata | bf:Work/bf:adminMetadata/bf:AdminMetadata[not(/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata)]"/>
 
       <xsl:variable name="vRecordId">
         <xsl:choose>
