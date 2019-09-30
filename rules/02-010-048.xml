@@ -750,4 +750,84 @@
     </case>
   </switch>
 
+  <switch>
+    <case test="bf:Work/bf:temporalCoverage">
+      <df tag="045">
+        <ind1 default=" ">
+          <switch>
+            <case test="count(bf:Work/bf:temporalCoverage[(@rdf:datatype='http://id.loc.gov/datatypes/edtf' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#date' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime') and not(contains(.,'X')) and not (contains(.,'/'))]) = 1">0</case>
+            <case test="count(bf:Work/bf:temporalCoverage[(@rdf:datatype='http://id.loc.gov/datatypes/edtf' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#date' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime') and not(contains(.,'X')) and not (contains(.,'/'))]) &gt; 1">1</case>
+            <case test="count(bf:Work/bf:temporalCoverage[(@rdf:datatype='http://id.loc.gov/datatypes/edtf' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#date' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime') and not(contains(.,'X')) and contains(.,'/')]) = 1">2</case>
+          </switch>
+        </ind1>
+        <ind2 default=" "/>
+        <sf code="a">
+          <select xpath="bf:Work/bf:temporalCoverage[@rdf:datatype='http://id.loc.gov/datatypes/edtf' and contains(.,'X')]">
+            <lookup map="df045timePeriods" targetField="code">
+              <lookupField name="edtfDate" xpath="."/>
+            </lookup>
+          </select>
+        </sf>
+        <select xpath="bf:Work/bf:temporalCoverage[not(contains(.,'X'))]">
+          <switch>
+            <case test="@rdf:datatype='http://id.loc.gov/datatypes/edtf' and contains(.,'/')">
+              <transform>
+                <xsl:variable name="vDate1">
+                    <xsl:call-template name="EDTF-Date1">
+                      <xsl:with-param name="pEDTFDate" select="."/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="vDate2">
+                  <xsl:call-template name="EDTF-Date2">
+                    <xsl:with-param name="pEDTFDate" select="."/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <marc:subfield code="b">
+                  <xsl:choose>
+                    <xsl:when test="substring($vDate1,1,1) = '-'">
+                      <xsl:value-of select="concat('c',translate($vDate1,' -:T',''))"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="concat('d',translate($vDate1,' -:T',''))"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </marc:subfield>
+                <marc:subfield code="b">
+                  <xsl:choose>
+                    <xsl:when test="substring($vDate2,1,1) = '-'">
+                      <xsl:value-of select="concat('c',translate($vDate2,' -:T',''))"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="concat('d',translate($vDate2,' -:T',''))"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </marc:subfield>
+              </transform>
+            </case>
+            <case test="(@rdf:datatype='http://id.loc.gov/datatypes/edtf' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#date' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime') and not (contains(.,'/'))">
+              <transform>
+                <marc:subfield code="b">
+                  <xsl:choose>
+                    <xsl:when test="substring(.,1,1) = '-'">
+                      <xsl:value-of select="concat('c',translate(.,' -:T',''))"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="concat('d',translate(.,' -:T',''))"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </marc:subfield>
+              </transform>
+            </case>
+            <case test="default">
+              <transform>
+                <xsl:message>Record <xsl:value-of select="$vRecordId"/>: no datatype for bf:temporalCoverage predicate, putting unformatted string into 045 $b</xsl:message>
+                <marc:subfield code="b"><xsl:value-of select="."/></marc:subfield>
+              </transform>
+            </case>
+          </switch>
+        </select>
+      </df>
+    </case>
+  </switch>
+
 </rules>
