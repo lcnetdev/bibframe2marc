@@ -173,4 +173,9 @@
     <x:expect label="...$b generated from EDTF or dateTime dates" test="//marc:datafield[@tag='045']/marc:subfield[@code='b'][1] = 'd19270401' and //marc:datafield[@tag='045']/marc:subfield[@code='b'][2] = 'd20190413'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 048">
+    <x:context href="../data/010-048/010-048.xml"/>
+    <x:expect label="generate 048 $a from bf:instrument/bf:ensemble/bf:voice properties" test="//marc:datafield[@tag='048']/marc:subfield[@code='a'] = 'bb01'"/>
+  </x:scenario>
+
 </x:description>

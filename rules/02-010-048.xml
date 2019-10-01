@@ -830,4 +830,57 @@
     </case>
   </switch>
 
+  <switch>
+    <case test="bf:Work/bf:instrument/bf:MusicInstrument or
+      bf:Work/bf:ensemble/bf:MusicEnsemble or
+      bf:Work/bf:voice/bf:MusicVoice">
+      <df tag="048">
+        <ind1 default=" "/>
+        <ind2 default=" "/>
+        <select xpath="bf:Work/bf:instrument/bf:MusicInstrument|bf:Work/bf:ensemble/bf:MusicEnsemble|bf:Work/bf:voice/bf:MusicVoice">
+          <sf code="a">
+            <transform>
+              <xsl:variable name="vType">
+                <xsl:choose>
+                  <xsl:when test="local-name() = 'MusicInstrument'"><xsl:value-of select="bf:instrumentalType"/></xsl:when>
+                  <xsl:when test="local-name() = 'MusicEnsemble'"><xsl:value-of select="bf:ensembleType"/></xsl:when>
+                  <xsl:when test="local-name() = 'MusicVoice'"><xsl:value-of select="bf:voiceType"/></xsl:when>
+                </xsl:choose>
+              </xsl:variable>
+              <xsl:variable name="vLabel"><xsl:value-of select="rdfs:label"/></xsl:variable>
+              <xsl:variable name="vCode">
+                <xsl:choose>
+                  <xsl:when test="rdfs:label and $vType != ''">
+                    <xsl:choose>
+                      <xsl:when test="$df048performers/performer[type=$vType and label=$vLabel]">
+                        <xsl:value-of select="$df048performers/performer[type=$vType and label=$vLabel]/code"/>
+                      </xsl:when>
+                      <xsl:when test="$df048performers/performer[type=$vType and not(label)]">
+                        <xsl:value-of select="$df048performers/performer[type=$vType and not(label)]/code"/>
+                      </xsl:when>
+                    </xsl:choose>
+                  </xsl:when>
+                  <xsl:when test="$vType != ''">
+                    <xsl:value-of select="$df048performers/performer[type=$vType and not(label)]/code"/>
+                  </xsl:when>
+                </xsl:choose>
+              </xsl:variable>
+              <xsl:variable name="vCount">
+                <xsl:if test="bf:count"><xsl:value-of select="format-number(bf:count,'00')"/></xsl:if>
+              </xsl:variable>
+              <xsl:choose>
+                <xsl:when test="$vCode != ''">
+                  <xsl:value-of select="concat($vCode,$vCount)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:message>Record <xsl:value-of select="$vRecordId"/>: no 048 performer match for <xsl:value-of select="name()"/>[<xsl:value-of select="position()"/>]</xsl:message>
+                </xsl:otherwise>
+              </xsl:choose>
+            </transform>
+          </sf>
+        </select>
+      </df>
+    </case>
+  </switch>
+
 </rules>
