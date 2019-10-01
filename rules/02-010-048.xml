@@ -636,25 +636,6 @@
             </xsl:choose>
           </xsl:for-each>
         </transform>
-
-        <!-- <sf code="a"> -->
-        <!--   <select xpath="bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]"> -->
-        <!--     <switch> -->
-        <!--       <case test="starts-with(@rdf:about,'http://id.loc.gov/vocabulary/languages/')"> -->
-        <!--         <transform><xsl:value-of select="substring-after(@rdf:about,'http://id.loc.gov/vocabulary/languages/')"/></transform> -->
-        <!--       </case> -->
-        <!--       <case test="madsrdf:code"><transform><xsl:value-of select="madsrdf:code"/></transform></case> -->
-        <!--       <case test="starts-with(rdf:value,'http://id.loc.gov/vocabulary/languages/')"> -->
-        <!--         <transform><xsl:value-of select="substring-after(rdf:value,'http://id.loc.gov/vocabulary/languages/')"/></transform> -->
-        <!--       </case> -->
-        <!--       <case test="starts-with(rdf:value/@rdf:resource,'http://id.loc.gov/vocabulary/languages/')"> -->
-        <!--         <transform><xsl:value-of select="substring-after(rdf:value/@rdf:resource,'http://id.loc.gov/vocabulary/languages/')"/></transform> -->
-        <!--       </case> -->
-        <!--       <case test="rdf:value"><transform><xsl:value-of select="rdf:value"/></transform></case> -->
-        <!--       <case test="default"><transform><xsl:value-of select="rdfs:label"/></transform></case> -->
-        <!--     </switch> -->
-        <!--   </select> -->
-        <!-- </sf> -->
         <select xpath="bf:Work/bf:language/bf:Language[not(bf:source) and bf:part]">
           <transform>
             <xsl:variable name="vSubfield">
