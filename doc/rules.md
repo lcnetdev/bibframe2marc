@@ -196,7 +196,7 @@ The following global variables in the generated stylesheet are available for use
   1. The value of the `pRecordId` parameter, if it is passed to the stylesheet
   2. The value in `/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value`, if there is no `bf:source` property or the `bf:source/bf:Source/rdfs:label` value is "DLC".
   3. `generate-id()` (default)
-* `pGenerationTimestamp`: The value of the `pGenerationTimestamp` stylesheet parameter. Defaults to `date:date-time()` if the function is available to the XSLT processer.
+* `pGenerationDatestamp`: The value of the `pGenerationDatestamp` stylesheet parameter. Defaults to `date:date-time()` if the function is available to the XSLT processer.
 * `vCurrentVersion`: The value of the `version` element of the top-level `rules` document.
 
 #### XSL named templates
