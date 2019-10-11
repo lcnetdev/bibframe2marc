@@ -526,7 +526,7 @@
           </xslt:when>
           <xslt:otherwise>
             <xslt:message terminate="yes">
-              <xslt:text>Multiple select blocks in non-repeatable target element </xslt:text><xslt:value-of select="ancestor::*/@tag"/> <xslt:if test="ancestor::bf2marc:sf">$<xslt:value-of select="parent::bf2marc:sf/@code"/>.</xslt:if>
+              <xslt:text>Multiple select blocks in non-repeatable target element </xslt:text><xslt:value-of select="ancestor::*/@tag"/> <xslt:if test="ancestor::bf2marc:sf">$<xslt:value-of select="parent::bf2marc:sf/@code"/>.</xslt:if><xslt:text> position=</xslt:text><xslt:value-of select="position()"/>
             </xslt:message>
           </xslt:otherwise>
         </xslt:choose>
@@ -634,7 +634,7 @@
               <xslt:choose>
                 <xslt:when test="child::*">
                   <xsl:variable name="vPosition-{position()}">
-                    <xslt:apply-templates mode="fieldTemplate">
+                    <xslt:apply-templates mode="fieldTemplate" select="child::*">
                       <xslt:with-param name="repeatable">false</xslt:with-param>
                     </xslt:apply-templates>
                   </xsl:variable>
