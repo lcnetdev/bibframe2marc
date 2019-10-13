@@ -760,12 +760,24 @@
           <switch>
             <case test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/geographicAreas/')">
               <sf code="a">
-                <transform><xsl:value-of select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/geographicAreas/')"/></transform>
+                <transform>
+                  <xsl:call-template name="tPadRight">
+                    <xsl:with-param name="pInput" select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/geographicAreas/')"/>
+                    <xsl:with-param name="pPadChar" select="'-'"/>
+                    <xsl:with-param name="pStringLength" select="7"/>
+                  </xsl:call-template>
+                </transform>
               </sf>
             </case>
             <case test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/geographicAreas/')]">
               <sf code="a">
-                <transform><xsl:value-of select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/geographicAreas/')"/></transform>
+                <transform>
+                  <xsl:call-template name="tPadRight">
+                    <xsl:with-param name="pInput" select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/geographicAreas/')"/>
+                    <xsl:with-param name="pPadChar" select="'-'"/>
+                    <xsl:with-param name="pStringLength" select="7"/>
+                  </xsl:call-template>
+                </transform>
               </sf>
             </case>
             <case test="bf:GeographicCoverage/bf:source/bf:Source/rdfs:label='ISO 3166'">
