@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:marc="http://www.loc.gov/MARC21/slim"
+               xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+               xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+               stylesheet="../../../bibframe2marc.xsl"
+               xslt-version="1.0">
+
+  <!-- To run this test file separately, uncomment the line below -->
+  <!-- <x:param name="pRecordId">test001</x:param> -->
+
+  <x:scenario label="MARC 001">
+    <x:context href="../data/001-008/001.xml"/>
+    <x:expect label="...should be generated from the vRecordId global variable"
+              test="marc:record/marc:controlfield[@tag='001'] = 'test001'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 003">
+    <x:context href="../data/001-008/003.xml"/>
+    <x:expect label="...should be generated from $vAdminMetadata/bf:source/bf:Source/bf:code"
+              test="marc:record/marc:controlfield[@tag='003'] = 'DLC'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 005">
+    <x:context href="../data/001-008/005.xml"/>
+    <x:expect label="...should be converted from $vAdminMetadata/bf:changeDate"
+              test="marc:record/marc:controlfield[@tag='005'] = '20040915141353.0'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 008">
+    <x:context href="../data/001-008/008.xml"/>
+    <x:expect label="008/00-05 generated from $vAdminMetadata/bf:creationDate"
+              test="substring(marc:record/marc:controlfield[@tag='008'],1,6) = '040520'"/>
+    <x:expect label="008/06-14 generated from date in bf:Instance/bf:provisionActivity/bf:ProvisionActivity"
+              test="substring(marc:record/marc:controlfield[@tag='008'],7,9) = 's2001    '"/>
+    <x:expect label="008/15-17 generated from bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place"
+              test="substring(marc:record/marc:controlfield[@tag='008'],16,3) = 'dk '"/>
+    <x:expect label="008/18-34 not coded"
+              test="substring(marc:record/marc:controlfield[@tag='008'],19,16)='                '"/>
+    <x:expect label="008/35-37 generated from bf:Work/bf:language"
+              test="substring(marc:record/marc:controlfield[@tag='008'],36,3)='dan'"/>
+    <x:expect label="008/38-39 not coded"
+              test="substring(marc:record/marc:controlfield[@tag='008'],39,2)=' |'"/>
+  </x:scenario>
+
+</x:description>

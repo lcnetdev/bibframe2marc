@@ -1,0 +1,215 @@
+<?xml version='1.0'?>
+<rules xmlns="http://www.loc.gov/bf2marc"
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
+       xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
+       xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
+       xmlns:marc="http://www.loc.gov/MARC21/slim"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <cf tag="001">
+    <transform><xsl:value-of select="$vRecordId"/></transform>
+  </cf>
+
+  <switch>
+    <case test="$vAdminMetadata/bf:source/bf:Source/bf:code">
+      <cf tag="003">
+        <transform>
+          <xsl:value-of select="$vAdminMetadata/bf:source/bf:Source/bf:code"/>
+        </transform>
+      </cf>
+    </case>
+  </switch>
+
+  <switch>
+    <case test="$vAdminMetadata/bf:changeDate">
+      <switch>
+        <case test="$vAdminMetadata/bf:changeDate/@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime'">
+          <cf tag="005">
+            <transform>
+              <xsl:value-of select="concat(substring($vAdminMetadata/bf:changeDate,1,4),substring($vAdminMetadata/bf:changeDate,6,2),substring($vAdminMetadata/bf:changeDate,9,2),substring($vAdminMetadata/bf:changeDate,12,2),substring($vAdminMetadata/bf:changeDate,15,2),substring($vAdminMetadata/bf:changeDate,18,2),'.0')"/>
+            </transform>
+          </cf>
+        </case>
+        <case test="default">
+          <transform>
+            <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed bf:changeDate. Invalid datatype for 005.</xsl:message>
+          </transform>
+        </case>
+      </switch>
+    </case>
+  </switch>
+
+  <cf tag="008">
+    <fixed-field>
+      <!-- 00-05 -->
+      <position default="700101">
+        <switch>
+          <case test="$vAdminMetadata/bf:creationDate">
+            <select xpath="$vAdminMetadata/bf:creationDate">
+              <switch>
+                <case test="@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#date' or @rdf:datatype='http://id.loc.gov/datatypes/edtf'">
+                  <transform><xsl:value-of select="translate(substring(.,3,8),'-','')"/></transform>
+                </case>
+                <case test="default">
+                  <transform>
+                    <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed bf:creationDate. Invalid datatype.</xsl:message>
+                  </transform>
+                </case>
+              </switch>
+            </select>
+          </case>
+          <case test="$pGenerationDatestamp != ''">
+            <transform><xsl:value-of select="translate(substring($pGenerationDatestamp,3,8),'-','')"/></transform>
+          </case>
+        </switch>
+      </position>
+
+      <!-- 06-14 -->
+      <position default="|||||||||">
+        <!-- there could easily be multiple provisionActivity properties, so there will be warnings -->
+        <!-- some date types are difficult to build from BIBFRAME, so keep this simple for now -->
+        <select xpath="bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:date|bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:date">
+          <switch>
+            <case test="@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#date'">
+              <transform><xsl:value-of select="concat('s',substring(.,1,4),'    ')"/></transform>
+            </case>
+            <case test="@rdf:datatype='http://id.loc.gov/datatypes/edtf'">
+              <switch>
+                <case test="contains(.,'/')">
+                  <switch>
+                    <case test="local-name(parent::*)='Production' or parent::*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production']">
+                      <transform><xsl:value-of select="concat('i',translate(substring(.,1,4),'X','u'),translate(substring(substring-after(.,'/'),1,4),'X','u'))"/></transform>
+                    </case>
+                    <case test="default">
+                      <switch>
+                        <case test="substring-after(.,'/')='..'">
+                          <transform><xsl:value-of select="concat('c',translate(substring(.,1,4),'X','u'),'    ')"/></transform>
+                        </case>
+                        <case test="default">
+                          <switch>
+                            <case test="ancestor::bf:Instance/bf:issuance/bf:Issuance/@rdf:about='http://id.lc.gov/vocabulary/issuance/serl' or ancestor::bf:Instance/bf:issuance/@rdf:resource='http://id.lc.gov/vocabulary/issuance/serl'">
+                              <transform><xsl:value-of select="concat('d',translate(substring(.,1,4),'X','u'),translate(substring(substring-after(.,'/'),1,4),'X','u'))"/></transform>
+                            </case>
+                            <case test="contains(.,'~')">
+                              <transform><xsl:value-of select="concat('q',translate(substring(.,1,4),'X','u'),translate(substring(substring-after(.,'/'),1,4),'X','u'))"/></transform>
+                            </case>
+                            <case test="default">
+                              <transform><xsl:value-of select="concat('m',translate(substring(.,1,4),'X','u'),translate(substring(substring-after(.,'/'),1,4),'X','u'))"/></transform>
+                            </case>
+                          </switch>
+                        </case>
+                      </switch>
+                    </case>
+                  </switch>
+                </case>
+                <case test="default">
+                  <switch>
+                    <case test="ancestor::bf:Instance/bf:copyrightDate">
+                      <transform><xsl:value-of select="concat('t',translate(substring(.,1,4),'X','u'),translate(substring(ancestor::bf:Instance/bf:copyrightDate,1,4),'X','u'))"/></transform>
+                    </case>
+                    <case test="contains(.,'~')">
+                      <transform><xsl:value-of select="concat('q',translate(substring(.,1,4),'X','u'),'    ')"/></transform>
+                    </case>
+                    <case test="default">
+                      <transform><xsl:value-of select="concat('s',translate(substring(.,1,4),'X','u'),'    ')"/></transform>
+                    </case>
+                  </switch>
+                </case>
+              </switch>
+            </case>
+            <case test="default">
+              <transform>
+                <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed bf:ProvisionActivity date. Invalid datatype.</xsl:message>
+              </transform>
+            </case>
+          </switch>
+        </select>
+      </position>
+
+      <!-- 15-17 -->
+      <position default="xx ">
+        <!-- there could easily be multiple provisionActivity properties, so there will be warnings -->
+        <select xpath="bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place[@rdf:resource]|
+                       bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place[*/@rdf:about]|
+                       bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place[*/*[local-name()='code']]|
+                       bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:place[@rdf:resource]|
+                       bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:place[*/@rdf:about]|
+                       bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:place[*/*[local-name()='code']]">
+          <switch>
+            <case test="*/*[local-name()='code']">
+              <switch>
+                <case test="string-length(*/*[local-name()='code']) = 3">
+                  <transform><xsl:value-of select="*/*[local-name()='code']"/></transform>
+                </case>
+                <case test="string-length(*/*[local-name()='code']) = 2">
+                  <transform><xsl:value-of select="concat(*/*[local-name()='code'],' ')"/></transform>
+                </case>
+              </switch>
+            </case>
+            <case test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/countries/')] or starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')">
+              <transform>
+                <xsl:variable name="vCode">
+                  <xsl:choose>
+                    <xsl:when test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/countries/')]">
+                      <xsl:value-of select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/countries/')"/>
+                    </xsl:when>
+                    <xsl:when test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')">
+                      <xsl:value-of select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')"/>
+                    </xsl:when>
+                  </xsl:choose>
+                </xsl:variable>
+                <xsl:choose>
+                  <xsl:when test="string-length($vCode)=3"><xsl:value-of select="$vCode"/></xsl:when>
+                  <xsl:when test="string-length($vCode)=2">
+                    <xsl:value-of select="concat($vCode,' ')"/>
+                  </xsl:when>
+                </xsl:choose>
+              </transform>
+            </case>
+          </switch>
+        </select>
+      </position>
+
+      <!-- 18-34 -->
+      <position default="                 "/>
+
+      <!-- 35-37 -->
+      <position default="   ">
+        <!-- will need to rely on the first bf:language property, there will likely be warnings -->
+        <select xpath="bf:Work/bf:language[@rdf:resource]|bf:Work/bf:language[*/@rdf:about]|bf:Work/bf:language[*/*[local-name()='code']]">
+          <switch>
+            <case test="*/*[local-name()='code']">
+              <switch>
+                <case test="string-length(*/*[local-name()='code']) = 3">
+                  <transform><xsl:value-of select="*/*[local-name()='code']"/></transform>
+                </case>
+              </switch>
+            </case>
+            <case test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/languages/')] or starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/languages/')">
+              <transform>
+                <xsl:variable name="vCode">
+                  <xsl:choose>
+                    <xsl:when test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/languages/')]">
+                      <xsl:value-of select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/languages/')"/>
+                    </xsl:when>
+                    <xsl:when test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/languages/')">
+                      <xsl:value-of select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/languages/')"/>
+                    </xsl:when>
+                  </xsl:choose>
+                </xsl:variable>
+                <xsl:if test="string-length($vCode)=3"><xsl:value-of select="$vCode"/></xsl:if>
+              </transform>
+            </case>
+          </switch>
+        </select>
+      </position>
+
+      <!-- 38-39 -->
+      <position default=" |"/>
+
+    </fixed-field>
+  </cf>
+
+</rules>
