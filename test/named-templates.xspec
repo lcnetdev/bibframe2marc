@@ -16,6 +16,15 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
                stylesheet="../bibframe2marc.xsl" xslt-version="1.0">
 
+  <x:scenario label="tPadRight">
+    <x:call template="tPadRight">
+      <x:param name="pInput" select="'a-ii'"/>
+      <x:param name="pPadChar" select="'-'"/>
+      <x:param name="pStringLength" select="7"/>
+    </x:call>
+    <x:expect label="Should return right padded string" select="'a-ii---'"/>
+  </x:scenario>
+
   <x:scenario label="EDTF templates">
 
     <x:scenario label="EDTF-Date1">
