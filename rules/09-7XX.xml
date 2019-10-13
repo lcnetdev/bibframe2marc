@@ -60,7 +60,15 @@
     <context xpath="bf:Work/bf:contribution/bf:Contribution[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']]">
       <ind1 default="2"/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false"><select xpath="madsrdf:elementList/madsrdf:NameElement/madsrdf:elementValue[1]"/></sf>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="madsrdf:elementList/madsrdf:NameElement/madsrdf:elementValue">
+            <select xpath="madsrdf:elementList/madsrdf:NameElement/madsrdf:elementValue[1]"/>
+          </case>
+          <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+          <case test="default"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
       <sf code="b">
         <select xpath="madsrdf:elementList/madsrdf:NameElement[position() > 1]">
           <select xpath="madsrdf:elementValue"/>
