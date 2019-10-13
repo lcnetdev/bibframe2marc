@@ -143,7 +143,7 @@
     <x:context href="../data/010-048/010-048.xml"/>
     <x:expect label="generate 042 from AdminMetadata/descriptionAuthentication" test="count(//marc:datafield[@tag='042']) = 1"/>
     <x:expect label="Each descriptionAuthentication generates an 042 $a" test="count(//marc:datafield[@tag='042']/marc:subfield[@code='a']) = 2"/>
-    <x:expect label="...with content from the bf:code or madsrdf:code property" test="//marc:datafield[@tag='042']/marc:subfield[@code='a'][1] = 'lc' and //marc:datafield[@tag='042']/marc:subfield[@code='a'][2] = 'nsdp'"/>
+    <x:expect label="...with content from the bf:code, rdf:value, or madsrdf:code property" test="//marc:datafield[@tag='042']/marc:subfield[@code='a'][1] = 'lc' and //marc:datafield[@tag='042']/marc:subfield[@code='a'][2] = 'nsdp'"/>
   </x:scenario>
 
   <x:scenario label="MARC 043">

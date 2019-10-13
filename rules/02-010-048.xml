@@ -725,7 +725,27 @@
         <ind1 default=" "/>
         <ind2 default=" "/>
         <sf code="a">
-          <select xpath="$vAdminMetadata/bf:descriptionAuthentication/*[local-name()='DescriptionAuthentication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/DescriptionAuthentication']]/*[local-name()='code']"/>
+          <select xpath="$vAdminMetadata/bf:descriptionAuthentication">
+            <switch>
+              <case test="*/rdf:value">
+                <transform><xsl:value-of select="*/rdf:value"/></transform>
+              </case>
+              <case test="*/*[local-name()='code']">
+                <transform><xsl:value-of select="*/*[local-name()='code']"/></transform>
+              </case>
+              <case test="starts-with(*/@rdf:about,'http://id.loc.gov/vocabulary/marcauthen/')">
+                <transform><xsl:value-of select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/marcauthen/')"/></transform>
+              </case>
+              <case test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/marcauthen/')">
+                <transform><xsl:value-of select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/marcauthen/')"/></transform>
+              </case>
+              <case test="default">
+                <transform>
+                  <xsl:message>Record <xsl:value-of select="$vRecordId"/>: missing value from bf:descriptionAuthentication property</xsl:message>
+                </transform>
+              </case>
+            </switch>
+          </select>
         </sf>
       </df>
     </case>
