@@ -21,6 +21,31 @@
     </context>
   </df>
 
+  <df tag="060">
+    <context xpath="bf:Work/bf:classification/bf:ClassificationNlm">
+      <ind1 default=" "/>
+      <ind2 default="4">
+        <switch>
+          <case test="bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnlm' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dnlm'">0</case>
+        </switch>
+      </ind2>
+      <sf code="a"><select xpath="bf:classificationPortion"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+    </context>
+  </df>
+
   <df tag="082">
     <context xpath="bf:Work/bf:classification/bf:ClassificationDdc">
       <ind1 default="7">
