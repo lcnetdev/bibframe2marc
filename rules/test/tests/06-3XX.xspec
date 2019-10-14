@@ -41,4 +41,12 @@
     <x:expect label="generate 338" test="count(//marc:datafield[@tag='338']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 340">
+    <x:context href="../data/3XX/340.xml"/>
+    <x:expect label="generate 340"
+              test="//marc:datafield[@tag='340']/marc:subfield[@code='a'] = 'plastic, metal'"/>
+    <x:expect label="bf:source property generates $2"
+              test="//marc:datafield[@tag='340']/marc:subfield[@code='2'] = 'rda'"/>
+  </x:scenario>
+
 </x:description>
