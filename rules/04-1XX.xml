@@ -56,4 +56,54 @@
     </context>
   </df>
 
+  <df tag="130" repeatable="false">
+    <context xpath="bf:Work/bf:title/bf:Title[
+      not(contains(rdf:type/@rdf:resource,'bibframe')) and
+      not(../../bf:contribution/bflc:PrimaryContribution) and
+      not(../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']) and
+      rdfs:label != ../../../bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label
+      ]">
+      <ind1 default="0">
+        <switch>
+          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+            <transform>
+              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+            </transform>
+          </case>
+        </switch>
+      </ind1>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="d"><select xpath="../../bf:legalDate"/></sf>
+      <sf code="f" repeatable="false"><select xpath="../../bf:originDate"/></sf>
+      <sf code="k"><select xpath="../../bf:natureOfContent"/></sf>
+      <!-- language is going to be a problem -->
+      <sf code="l" repeatable="false">
+        <select xpath="../../bf:language/*/rdfs:label|../../bf:language/*/madsrdf:authoritativeLabel"/>
+      </sf>
+      <sf code="m"><select xpath="../../bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
+      <sf code="n"><select xpath="bf:partNumber"/></sf>
+      <sf code="p"><select xpath="bf:partName"/></sf>
+      <sf code="r" repeatable="false"><select xpath="../../bf:musicKey"/></sf>
+      <sf code="s"><select xpath="../../bf:version"/></sf>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+    </context>
+  </df>
+
 </rules>
