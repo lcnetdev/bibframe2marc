@@ -55,4 +55,10 @@
               test="count(//marc:datafield[@tag='344']) = 7"/>
   </x:scenario>
 
+  <x:scenario label="MARC 347">
+    <x:context href="../data/3XX/347.xml"/>
+    <x:expect label="generate 347 from each matching bf:digitalCharacteristic property"
+              test="count(//marc:datafield[@tag='347']) = 2"/>
+  </x:scenario>
+
 </x:description>

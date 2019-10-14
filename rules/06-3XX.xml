@@ -337,4 +337,60 @@
     </context>
   </df>
 
+  <df tag="347">
+    <context xpath="bf:Instance/bf:digitalCharacteristic/bf:FileType |
+                    bf:Instance/bf:digitalCharacteristic/bf:EncodingFormat |
+                    bf:Instance/bf:digitalCharacteristic/bf:FileSize |
+                    bf:Instance/bf:digitalCharacteristic/bf:Resolution |
+                    bf:Instance/bf:digitalCharacteristic/bf:RegionalEncoding |
+                    bf:Instance/bf:digitalCharacteristic/bf:EncodedBitrate">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <switch>
+        <case test="local-name()='FileType'">
+          <sf code="a"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='EncodingFormat'">
+          <sf code="b"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='FileSize'">
+          <sf code="c"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='Resolution'">
+          <sf code="d"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='RegionalEncoding'">
+          <sf code="e"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='EncodedBitrate'">
+          <sf code="f"><select xpath="rdfs:label"/></sf>
+        </case>
+      </switch>
+      <sf code="0">
+        <select xpath="@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vSource">
+              <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vSource != ''">
+                <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
 </rules>
