@@ -16,6 +16,16 @@
               test="count(//marc:datafield[@tag='306']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 310-321">
+    <x:context href="../data/3XX/310-321.xml"/>
+    <x:expect label="First bf:frequency property of the Instances generates a 310"
+              test="//marc:datafield[@tag='310']/marc:subfield[@code='a'] = 'daily'"/>
+    <x:expect label="Subsequent bf:frequency properties generate 321s"
+              test="//marc:datafield[@tag='321'][1]/marc:subfield[@code='a'] = 'weekly'"/>
+    <x:expect label="bf:date property of bf:Frequency generates $b"
+              test="//marc:datafield[@tag='321'][1]/marc:subfield[@code='b'] = '1970-1985'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 336">
     <x:context href="../data/3XX/336.xml"/>
     <x:expect label="generate 336" test="count(//marc:datafield[@tag='336']) = 1"/>
