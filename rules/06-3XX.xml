@@ -273,4 +273,68 @@
     </context>
   </df>
 
+  <df tag="344">
+    <context xpath="bf:Instance/bf:soundCharacteristic/bf:RecordingMethod |
+                    bf:Instance/bf:soundCharacteristic/bf:RecordingMedium |
+                    bf:Instance/bf:soundCharacteristic/bf:PlayingSpeed |
+                    bf:Instance/bf:soundCharacteristic/bf:GrooveCharacteristics |
+                    bf:Instance/bf:soundCharacteristic/bf:TrackConfig |
+                    bf:Instance/bf:soundCharacteristic/bf:TapeConfig |
+                    bf:Instance/bf:soundCharacteristic/bf:PlaybackChannels |
+                    bf:Instance/bf:soundCharacteristic/bf:PlaybackCharacteristic">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <switch>
+        <case test="local-name()='RecordingMethod'">
+          <sf code="a"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='RecordingMedium'">
+          <sf code="b"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='PlayingSpeed'">
+          <sf code="c"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='GrooveCharacteristics'">
+          <sf code="d"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='TrackConfig'">
+          <sf code="e"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='TapeConfig'">
+          <sf code="f"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='PlaybackChannels'">
+          <sf code="g"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='PlaybackCharacteristic'">
+          <sf code="h"><select xpath="rdfs:label"/></sf>
+        </case>
+      </switch>
+      <sf code="0">
+        <select xpath="@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vSource">
+              <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vSource != ''">
+                <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
 </rules>
