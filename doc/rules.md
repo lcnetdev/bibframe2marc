@@ -14,7 +14,7 @@ The `Makefile` included with this project will generate a top-level `rules.xml` 
 
 ## XML elements
 
-* `rules`: the root element of any rules document. The `rules` element can contain the elements `version`, `file`, `map`, `cf`, `df`, and `switch`. The order of the rules determines the field order of the generated MARC record.
+* `rules`: the root element of any rules document. The `rules` element can contain the elements `version`, `file`, `map`, `cf`, `df`, `select`, and `switch`. The order of the rules determines the field order of the generated MARC record.
 
 ```xml
 <rules xmlns="http://www.loc.gov/bf2marc">
@@ -137,7 +137,7 @@ The `df` element is more complex. In addition to the rule building blocks docume
 
 * `select`: Use an XPath path expression to select a value for use in the target MARC data element, or a value or nodeset for processing. The output of a `select` element should be a string for use in a MARC data element. Note that the `select` element will also set the context for any contained XPath expressions. The `select` element generates an `xsl:for-each` element in the output stylesheet. In the context of a non-repeatable field or subfield, multiple `select` elements are not allowed.
 
-  * This element can be used with the `cf`, `ind1`, `ind2`, `sf`, `position`, and `case` elements.
+  * This element can be used with the `rules`, `cf`, `ind1`, `ind2`, `sf`, `position`, and `case` elements.
 
 ```xml
 <sf code="b" repeatable="false">
