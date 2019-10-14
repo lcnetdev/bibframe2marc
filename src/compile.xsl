@@ -324,10 +324,14 @@
 
   <!-- compile rules from included files -->
   <xslt:template match="bf2marc:file" mode="documentFrame">
-    <xslt:apply-templates select="document(.)/bf2marc:rules/bf2marc:file | document(.)/bf2marc:rules/bf2marc:cf | document(.)/bf2marc:rules/bf2marc:df | document(.)/bf2marc:rules/bf2marc:switch" mode="documentFrame"/>
+    <xslt:apply-templates select="document(.)/bf2marc:rules/bf2marc:file | document(.)/bf2marc:rules/bf2marc:cf | document(.)/bf2marc:rules/bf2marc:df | document(.)/bf2marc:rules/bf2marc:switch | document(.)/bf2marc:rules/bf2marc:select" mode="documentFrame"/>
   </xslt:template>
 
   <xslt:template match="bf2marc:switch" mode="documentFrame">
+    <xslt:apply-templates select="." mode="fieldTemplate"/>
+  </xslt:template>
+
+  <xslt:template match="bf2marc:select" mode="documentFrame">
     <xslt:apply-templates select="." mode="fieldTemplate"/>
   </xslt:template>
 

@@ -38,9 +38,6 @@
     </case>
   </switch>
 
-
-  <switch>
-    <case test="bf:Instance/bf:frequency/bf:Frequency">
   <select xpath="bf:Instance/bf:frequency/bf:Frequency">
     <switch>
       <case test="position() = 1">
@@ -69,8 +66,6 @@
       </case>
     </switch>
   </select>
-    </case>
-  </switch>
 
   <df tag="336">
     <context xpath="bf:Work/bf:content/*[local-name()='Content' or
@@ -177,6 +172,83 @@
       <sf code="b" repeatable="false">
         <select xpath="madsrdf:code"/>
       </sf>
+      <sf code="0">
+        <select xpath="@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vSource">
+              <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vSource != ''">
+                <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="340">
+    <context xpath="bf:Instance/bf:baseMaterial/bf:BaseMaterial |
+                    bf:Instance/bf:appliedMaterial/bf:AppliedMaterial |
+                    bf:Instance/bf:productionMethod/bf:ProductionMethod |
+                    bf:Instance/bf:mount/bf:Mount |
+                    bf:Instance/bf:reductionRatio/bf:ReductionRatio |
+                    bf:Work/bf:colorContent/bf:ColorContent |
+                    bf:Instance/bf:systemRequirement |
+                    bf:Instance/bf:generation/bf:Generation |
+                    bf:Instance/bf:layout/bf:Layout |
+                    bf:Instance/bf:bookFormat/bf:BookFormat |
+                    bf:Instance/bf:fontSize/bf:FontSize |
+                    bf:Instance/bf:polarity/bf:Polarity">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="local-name()='BaseMaterial'">
+          <sf code="a"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='AppliedMaterial'">
+          <sf code="c"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='ProductionMethod'">
+          <sf code="d"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='Mount'">
+          <sf code="e"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='reductionRatio'">
+          <sf code="f"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='ColorContent'">
+          <sf code="g"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='systemRequirement'">
+          <sf code="i"><select xpath="."/></sf>
+        </case>
+        <case test="local-name()='Generation'">
+          <sf code="j"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='Layout'">
+          <sf code="k"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='BookFormat'">
+          <sf code="m"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='FontSize'">
+          <sf code="n"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='Polarity'">
+          <sf code="o"><select xpath="rdfs:label"/></sf>
+        </case>
+      </switch>
       <sf code="0">
         <select xpath="@rdf:about"/>
       </sf>
