@@ -54,4 +54,10 @@
     <x:expect label="generate 525" test="count(//marc:datafield[@tag='525']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 538">
+    <x:context href="../data/5XX/538.xml"/>
+    <x:expect label="generate 538 from bf:systemRequirement property"
+              test="//marc:datafield[@tag='538']/marc:subfield[@code='a'] = 'Blu-ray disc; requires Blu-ray player.'"/>
+  </x:scenario>
+
 </x:description>
