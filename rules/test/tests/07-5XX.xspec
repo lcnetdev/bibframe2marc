@@ -43,6 +43,12 @@
               test="//marc:datafield[@tag='511']/marc:subfield[@code='a'] = 'Maggie Smith, Dame Judi Dench, Tom Wilkinson, Bill Nighy.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 520">
+    <x:context href="../data/5XX/520.xml"/>
+    <x:expect label="generate 520 from bf:summary property"
+              test="//marc:datafield[@tag='520']/marc:subfield[@code='a'] = 'Following the yearly tradition, this release will feature an array of Grammy-nominated artists. The bestselling collection includes categories representing nominees for Record of the Year, Album of the Year, Song of the Year, and more.'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 525">
     <x:context href="../data/5XX/525.xml"/>
     <x:expect label="generate 525" test="count(//marc:datafield[@tag='525']) = 1"/>
