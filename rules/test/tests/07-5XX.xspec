@@ -24,6 +24,12 @@
     <x:expect label="generate 500" test="count(//marc:datafield[@tag='500']) = 2"/>
   </x:scenario>
 
+  <x:scenario label="MARC 505">
+    <x:context href="../data/5XX/505.xml"/>
+    <x:expect label="generate 505 from bf:tableOfContents property"
+              test="count(//marc:datafield[@tag='505']) = 1"/>
+  </x:scenario>
+
   <x:scenario label="MARC 507">
     <x:context href="../data/5XX/507.xml"/>
     <x:expect label="generate 507 from scale property on Instance" test="count(//marc:datafield[@tag='507']) = 2"/>
