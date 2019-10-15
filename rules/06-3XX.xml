@@ -393,4 +393,32 @@
     </context>
   </df>
 
+  <df tag="362">
+    <context xpath="bf:Instance/bf:firstIssue">
+      <ind1 default="0"/>
+      <ind2 default=" "/>
+      <sf code="a">
+        <transform>
+          <xsl:variable name="vPosition" select="position()"/>
+          <xsl:variable name="vLastIssue">
+            <xsl:for-each select="../bf:lastIssue">
+              <xsl:if test="position() = $vPosition">
+                <xsl:value-of select="."/>
+              </xsl:if>
+            </xsl:for-each>
+          </xsl:variable>
+          <xsl:value-of select="concat(.,'-',$vLastIssue)"/>
+        </transform>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="362">
+    <context xpath="bf:Instance/bf:note/bf:Note[bf:noteType='Numbering']">
+      <ind1 default="1"/>
+      <ind2 default=" "/>
+      <sf code="a"><select xpath="rdfs:label"/></sf>
+    </context>
+  </df>
+
 </rules>
