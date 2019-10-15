@@ -62,6 +62,16 @@
     </context>
   </df>
 
+  <df tag="511">
+    <context xpath="bf:Instance/bf:credits[starts-with(text(),'Cast:')]">
+      <ind1 default="1"/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <transform><xsl:value-of select="normalize-space(substring-after(.,'Cast:'))"/></transform>
+      </sf>
+    </context>
+  </df>
+
   <df tag="525">
     <context xpath="*[local-name()='Instance' or local-name()='Work']/bf:supplementaryContent/bf:SupplementaryContent">
       <ind1 default=" "/>
