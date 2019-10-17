@@ -63,7 +63,18 @@
       <sf code="a"><select xpath="bf:classificationPortion"/></sf>
       <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
       <sf code="q" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
-      <sf code="2" repeatable="false"><select xpath="bf:edition[text()!='full' and text()!='abridged']"/></sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:edition[text()!='full' and text()!='abridged']">
+          <switch>
+            <case test="starts-with(.,'http://id.loc.gov/vocabulary/classSchemes/ddc')">
+              <transform>
+                <xsl:value-of select="substring-after(.,'http://id.loc.gov/vocabulary/classSchemes/ddc')"/>
+              </transform>
+            </case>
+            <case test="default"><transform><xsl:value-of select="."/></transform></case>
+          </switch>
+        </select>
+      </sf>
     </context>
   </df>
 
