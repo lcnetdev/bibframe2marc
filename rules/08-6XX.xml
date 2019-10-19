@@ -10,7 +10,9 @@
 
   <df tag="600">
     <context xpath="bf:Work/bf:subject/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']] |
-                    bf:Work/bf:subject/bf:Work/bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']]">
+                    bf:Work/bf:subject/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']]/madsrdf:componentList/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']] |
+                    bf:Work/bf:subject/bf:Work/bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']] |
+                    bf:Work/bf:subject/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']]/madsrdf:componentList/bf:Work/bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']]">
       <ind1 default="1">
         <switch>
           <case test="local-name()='FamilyName'">3</case>
@@ -18,13 +20,13 @@
       </ind1>
       <ind2 default="4">
         <switch>
-          <case test="bf:source/bf:Source/bf:code='lcsh' or ancestor::bf:subject/bf:Work/bf:source/bf:Source/bf:code='lcsh'">0</case>
-          <case test="bf:source/bf:Source/bf:code='lcshac' or ancestor::bf:subject/bf:Work/bf:source/bf:Source/bf:code='lcshac'">1</case>
-          <case test="bf:source/bf:Source/bf:code='mesh' or ancestor::bf:subject/bf:Work/bf:source/bf:Source/bf:code='mesh'">2</case>
-          <case test="bf:source/bf:Source/bf:code='nal' or ancestor::bf:subject/bf:Work/bf:source/bf:Source/bf:code='nal'">3</case>
-          <case test="bf:source/bf:Source/bf:code='cash' or ancestor::bf:subject/bf:Work/bf:source/bf:Source/bf:code='cash'">5</case>
-          <case test="bf:source/bf:Source/bf:code='rvm' or ancestor::bf:subject/bf:Work/bf:source/bf:Source/bf:code='rvm'">6</case>
-          <case test="bf:source/bf:Source/bf:code or ancestor::bf:subject/bf:Work/bf:source/bf:Source/bf:code">7</case>
+          <case test="bf:source/bf:Source/bf:code='lcsh' or ancestor::bf:subject/*/bf:source/bf:Source/bf:code='lcsh'">0</case>
+          <case test="bf:source/bf:Source/bf:code='lcshac' or ancestor::bf:subject/*/bf:source/bf:Source/bf:code='lcshac'">1</case>
+          <case test="bf:source/bf:Source/bf:code='mesh' or ancestor::bf:subject/*/bf:source/bf:Source/bf:code='mesh'">2</case>
+          <case test="bf:source/bf:Source/bf:code='nal' or ancestor::bf:subject/*/bf:source/bf:Source/bf:code='nal'">3</case>
+          <case test="bf:source/bf:Source/bf:code='cash' or ancestor::bf:subject/*/bf:source/bf:Source/bf:code='cash'">5</case>
+          <case test="bf:source/bf:Source/bf:code='rvm' or ancestor::bf:subject/*/bf:source/bf:Source/bf:code='rvm'">6</case>
+          <case test="bf:source/bf:Source/bf:code or ancestor::bf:subject/*/bf:source/bf:Source/bf:code">7</case>
         </switch>
       </ind2>
       <sf code="a" repeatable="false">
@@ -84,7 +86,7 @@
           </select>
         </sf>
       </select>
-      <select xpath="madsrdf:componentList/*">
+      <select xpath="ancestor::bf:subject/*/madsrdf:componentList/*">
         <switch>
           <case test="local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']">
             <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
@@ -107,8 +109,9 @@
     </context>
   </df>
 
+  <!-- need to add condition to make sure we don't pick up meeting names that should be 611 -->
   <df tag="650">
-    <context xpath="bf:Work/bf:subject/*[local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']]">
+    <context xpath="bf:Work/bf:subject/*[(local-name()='Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic'] or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Topic']) and not(madsrdf:componentList/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()=CorporateName or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']] or madsrdf:componentList/bf:Work)]">
       <ind1 default=" "/>
       <ind2 default="4">
         <switch>
