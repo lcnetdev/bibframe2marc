@@ -5,6 +5,19 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
+  <x:scenario label="MARC 600">
+    <x:context href="../data//6XX/600.xml"/>
+    <x:expect label="generate 600" test="count(//marc:datafield[@tag='600']) = 2"/>
+    <x:expect label="ind1 generated from class of bf:Agent"
+              test="//marc:datafield[@tag='600'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 generated from bf:source"
+              test="//marc:datafield[@tag='600'][2]/@ind2 = '0'"/>
+    <x:expect label="$a can be generated from name label"
+              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='a'] = 'Obama, Barack.'"/>
+    <x:expect label="$t from title of bf:subject/bf:Work"
+              test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='t'] = 'Faust.'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 650">
     <x:context href="../data/6XX/650.xml"/>
     <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 3"/>
