@@ -15,17 +15,23 @@
       <case test="*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or
                   local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or
                   local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or
+                  local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family'] or
                   local-name(madsrdf:componentList/*[1])='PersonalName' or madsrdf:componentList/*[1]/@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName' or
                   local-name(madsrdf:componentList/*[1])='FamilyName' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName' or
                   local-name(madsrdf:componentList/*[1])='Person' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person' or
-                  bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']] or
-                  madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']]]">
+                  local-name(madsrdf:componentList/*[1])='Family' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family' or
+                  bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']] or
+                  madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']]]">
         <df tag="600">
           <ind1 default="1">
             <switch>
-              <case test="*[local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or
+              <case test="*[local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family'] or
+                          local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or
+                          local-name(madsrdf:componentList/*[1])='Family' or madsrdf:componentList/*[1]/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family' or
                           local-name(madsrdf:componentList/*[1])='FamilyName' or madsrdf:componentList/*[1]/@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName' or
+                          bf:Work/bf:contribution/*/bf:agent/*[local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']] or
                           bf:Work/bf:contribution/*/bf:agent/*[local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName']] or
+                          madsrdf:componentList/*[1]/bf:Work/bf:contribution/*/bf:agent/*[local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']] or
                           madsrdf:componentList/*[1]/bf:Work/bf:contribution/*/bf:agent/*[local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName']]]">3</case>
             </switch>
           </ind1>
@@ -42,48 +48,44 @@
           </ind2>
 
           <!-- name subfields -->
-          <select xpath="*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']] |
+          <select xpath="*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']] |
                          */madsrdf:componentList/*[1] |
                          bf:Work/bf:contribution/*/bf:agent/* |
                          */madsrdf:componentList/*[1]/bf:Work/bf:contribution/*/bf:agent/*">
-            <switch>
-              <case test="local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']">
-                <sf code="a" repeatable="false">
-                  <switch>
-                    <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
-                      <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
-                    </case>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </sf>
-                <sf code="c">
-                  <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
-                </sf>
-                <sf code="d" repeatable="false">
-                  <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
-                </sf>
-                <sf code="e">
-                  <select xpath="../../bf:role/bf:Role/rdfs:label"/>
-                </sf>
-                <sf code="q" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
-                <sf code="4">
-                  <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
-                </sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                <sf code="0">
-                  <select xpath="bf:identifiedBy/bf:Identifier">
-                    <transform>
-                      <xsl:variable name="vIdType" select="rdfs:label"/>
-                      <xsl:choose>
-                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                      </xsl:choose>
-                    </transform>
-                  </select>
-                </sf>
-              </case>
-            </switch>
+            <sf code="a" repeatable="false">
+              <switch>
+                <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
+                  <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
+                </case>
+                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                <case test="default"><select xpath="rdfs:label"/></case>
+              </switch>
+            </sf>
+            <sf code="c">
+              <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
+            </sf>
+            <sf code="d" repeatable="false">
+              <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
+            </sf>
+            <sf code="e">
+              <select xpath="../../bf:role/bf:Role/rdfs:label"/>
+            </sf>
+            <sf code="q" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
+            <sf code="4">
+              <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
+            </sf>
+            <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+            <sf code="0">
+              <select xpath="bf:identifiedBy/bf:Identifier">
+                <transform>
+                  <xsl:variable name="vIdType" select="rdfs:label"/>
+                  <xsl:choose>
+                    <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                  </xsl:choose>
+                </transform>
+              </select>
+            </sf>
           </select>
 
           <!-- title subfields -->
