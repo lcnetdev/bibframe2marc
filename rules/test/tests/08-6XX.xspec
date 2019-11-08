@@ -20,6 +20,22 @@
               test="//marc:datafield[@tag='600'][3]/marc:subfield[@code='v'] = 'Interviews'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 610">
+    <x:context href="../data/6XX/610.xml"/>
+    <x:expect label="generate 610"
+              test="count(//marc:datafield[@tag='610']) = 3"/>
+    <x:expect label="ind1 generated from class of bf:Agent"
+              test="//marc:datafield[@tag='610'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 generated from bf:source"
+              test="//marc:datafield[@tag='610'][3]/@ind2 = '2'"/>
+    <x:expect label="first madsrdf:NameElement in $a"
+              test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='a'] = 'New York Academy of Medicine.'"/>
+    <x:expect label="subsequent NameElement in $b"
+              test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='b'] = 'Library'"/>
+    <x:expect label="generate subdivisions"
+              test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='v'] = 'Periodicals'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 650">
     <x:context href="../data/6XX/650.xml"/>
     <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 3"/>
