@@ -50,6 +50,20 @@
               test="//marc:datafield[@tag='611']/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 651">
+    <x:context href="../data/6XX/651.xml"/>
+    <x:expect label="generation 651"
+              test="count(//marc:datafield[@tag='651']) = 2"/>
+    <x:expect label="ind1 default to ' '"
+              test="//marc:datafield[@tag='651'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 generated from bf:source"
+              test="//marc:datafield[@tag='651'][2]/@ind2 = '7'"/>
+    <x:expect label="$a generated from first element in componentList or label"
+              test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='a'] = 'Maryland'"/>
+    <x:expect label="subdivisions generated from subsequent elements in componentList"
+              test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='x'] = 'Antiquities'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 650">
     <x:context href="../data/6XX/650.xml"/>
     <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 3"/>
