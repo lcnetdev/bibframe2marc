@@ -46,6 +46,9 @@
               <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
             </switch>
           </ind2>
+          <sf code="3" repeatable="false">
+            <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
 
           <!-- name subfields -->
           <select xpath="*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']] |
@@ -78,7 +81,7 @@
             <sf code="0">
               <select xpath="bf:identifiedBy/bf:Identifier">
                 <transform>
-                  <xsl:variable name="vIdType" select="rdfs:label"/>
+                  <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
                   <xsl:choose>
                     <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
                     <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
@@ -114,7 +117,7 @@
             <sf code="0">
               <select xpath="../../bf:identifiedBy/bf:Identifier">
                 <transform>
-                  <xsl:variable name="vIdType" select="rdfs:label"/>
+                  <xsl:variable name="vIdType" select="bf:source/bf:Soure/rdfs:label"/>
                   <xsl:choose>
                     <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
                     <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
@@ -195,6 +198,9 @@
               <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
             </switch>
           </ind2>
+          <sf code="3" repeatable="false">
+            <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
 
           <!-- name subfields -->
           <select xpath="*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']] |
@@ -224,7 +230,7 @@
             <sf code="0">
               <select xpath="bf:identifiedBy/bf:Identifier">
                 <transform>
-                  <xsl:variable name="vIdType" select="rdfs:label"/>
+                  <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
                   <xsl:choose>
                     <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
                     <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
@@ -261,7 +267,7 @@
             <sf code="0">
               <select xpath="../../bf:identifiedBy/bf:Identifier">
                 <transform>
-                  <xsl:variable name="vIdType" select="rdfs:label"/>
+                  <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
                   <xsl:choose>
                     <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
                     <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
@@ -333,6 +339,9 @@
               <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
             </switch>
           </ind2>
+          <sf code="3" repeatable="false">
+            <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
 
           <!-- name subfields -->
           <select xpath="*[local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']] |
@@ -365,7 +374,7 @@
             <sf code="0">
               <select xpath="bf:identifiedBy/bf:Identifier">
                 <transform>
-                  <xsl:variable name="vIdType" select="rdfs:label"/>
+                  <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
                   <xsl:choose>
                     <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
                     <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
@@ -402,7 +411,7 @@
             <sf code="0">
               <select xpath="../../bf:identifiedBy/bf:Identifier">
                 <transform>
-                  <xsl:variable name="vIdType" select="rdfs:label"/>
+                  <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
                   <xsl:choose>
                     <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
                     <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
@@ -454,13 +463,116 @@
         </df>
       </case>
 
+      <!-- 630 -->
+      <case test="*[local-name()='Work' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or
+                  local-name(madsrdf:componentList/*[1])='Work' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work']">
+        <df tag="630">
+          <ind1 default="0">
+            <select xpath="*/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]|*/madsrdf:componentList/*[1]/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]">
+              <switch>
+                <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+                  <transform>
+                    <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+                  </transform>
+                </case>
+              </switch>
+            </select>
+          </ind1>
+          <ind2 default="4">
+            <switch>
+              <case test="*/bf:source/bf:Source/bf:code='lcsh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+              <case test="*/bf:source/bf:Source/bf:code='lcshac' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+              <case test="*/bf:source/bf:Source/bf:code='mesh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
+              <case test="*/bf:source/bf:Source/bf:code='nal' or */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
+              <case test="*/bf:source/bf:Source/bf:code='cash' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
+              <case test="*/bf:source/bf:Source/bf:code='rvm' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
+              <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
+            </switch>
+          </ind2>
+          <sf code="3" repeatable="false">
+            <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
+          <select xpath="*/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]|*/madsrdf:componentList/*[1]/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]">
+            <sf code="a" repeatable="false">
+              <switch>
+                <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+                <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+              </switch>
+            </sf>
+            <sf code="d"><select xpath="../../bf:legalDate"/></sf>
+            <sf code="f" repeatable="false"><select xpath="../../bf:originDate"/></sf>
+            <sf code="k"><select xpath="../../bf:natureOfContent"/></sf>
+            <!-- language is going to be a problem -->
+            <sf code="l" repeatable="false">
+              <select xpath="../../bf:language/*/rdfs:label|../../bf:language/*/madsrdf:authoritativeLabel"/>
+            </sf>
+            <sf code="m"><select xpath="../../bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
+            <sf code="n"><select xpath="bf:partNumber"/></sf>
+            <sf code="p"><select xpath="bf:partName"/></sf>
+            <sf code="r" repeatable="false"><select xpath="../../bf:musicKey"/></sf>
+            <sf code="s"><select xpath="../../bf:version"/></sf>
+            <sf code="0"><select xpath="@rdf:about"/></sf>
+            <sf code="0">
+              <select xpath="bf:identifiedBy/bf:Identifier">
+                <transform>
+                  <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                  <xsl:choose>
+                    <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                  </xsl:choose>
+                </transform>
+              </select>
+            </sf>
+          </select>
+          <sf code="e">
+            <select xpath="*/bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
+          </sf>
+          <!-- subdivisions -->
+          <select xpath="*/madsrdf:componentList/*">
+            <switch>
+              <case test="position() &gt; 1">
+                <switch>
+                  <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
+                    <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  </case>
+                  <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
+                    <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  </case>
+                  <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
+                    <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  </case>
+                  <case test="default">
+                    <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  </case>
+                </switch>
+              </case>
+            </switch>
+          </select>
+          <!-- $2 if source not in ind2 -->
+          <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+            <switch>
+              <case test="text() != 'lcsh' and
+                          text() != 'lcshac' and
+                          text() != 'mesh' and
+                          text() != 'nal' and
+                          text() != 'cash' and
+                          text() != 'rvm'">
+                <sf code="2"><select xpath="."/></sf>
+              </case>
+            </switch>
+          </select>
+        </df>
+      </case>
+
       <!-- 651 -->
       <case test="*[local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic'] or
                   local-name()='Place' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place'] or
                   local-name(madsrdf:componentList/*[1])='Geographic' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic' or
-                  local-name(madsrdf:componentList/*[1])='Place' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place' or
-                  bf:contribution/*/bf:agent/*[local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic'] or local-name()='Place' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place']] or
-                  madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic'] or local-name()='Place' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place']]]">
+                  local-name(madsrdf:componentList/*[1])='Place' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place']">
         <df tag="651">
           <ind1 default=" "/>
           <ind2 default="4">
