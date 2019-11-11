@@ -60,6 +60,19 @@
               test="//marc:datafield[@tag='630'][1]/@ind2 = '0'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 648">
+    <x:context href="../data/6XX/648.xml"/>
+    <x:expect label="generate 648" test="count(//marc:datafield[@tag='648']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='648'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 from source"
+              test="//marc:datafield[@tag='648'][1]/@ind2 = '7'"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='648'][1]/marc:subfield[@code='a'] = '1862'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='648'][1]/marc:subfield[@code='2'] = 'fast'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 650">
     <x:context href="../data/6XX/650.xml"/>
     <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 3"/>
