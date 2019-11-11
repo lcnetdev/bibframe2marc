@@ -60,7 +60,6 @@
               test="//marc:datafield[@tag='630'][1]/@ind2 = '0'"/>
   </x:scenario>
 
-
   <x:scenario label="MARC 650">
     <x:context href="../data/6XX/650.xml"/>
     <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 3"/>
@@ -79,6 +78,17 @@
               test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='a'] = 'Maryland'"/>
     <x:expect label="subdivisions generated from subsequent elements in componentList"
               test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='x'] = 'Antiquities'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 653">
+    <x:context href="../data/6XX/653.xml"/>
+    <x:expect label="generate 653" test="count(//marc:datafield[@tag='653']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='653'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 based on class of subject"
+              test="//marc:datafield[@tag='653'][1]/@ind2 = '2'"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='653'][1]/marc:subfield[@code='a'] = 'UNICEF'"/>
   </x:scenario>
 
 </x:description>

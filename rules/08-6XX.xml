@@ -12,7 +12,7 @@
   <select xpath="bf:Work/bf:subject">
     <switch>
       <!-- 600 -->
-      <case test="*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or
+      <case test="*[(local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or
                   local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or
                   local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or
                   local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family'] or
@@ -21,7 +21,8 @@
                   local-name(madsrdf:componentList/*[1])='Person' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person' or
                   local-name(madsrdf:componentList/*[1])='Family' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family' or
                   bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']] or
-                  madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']]]">
+                  madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']]) and
+                  (madsrdf:componentList or madsrdf:authoritativeLabel)]">
         <df tag="600">
           <ind1 default="1">
             <switch>
@@ -170,14 +171,15 @@
       </case>
 
       <!-- 610 -->
-      <case test="*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or
+      <case test="*[(local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or
                   local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or
                   local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction'] or
                   local-name(madsrdf:componentList/*[1])='CorporateName' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName' or
                   local-name(madsrdf:componentList/*[1])='Organization' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization' or
                   local-name(madsrdf:componentList/*[1])='Jurisdiction' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction' or
                   bf:contribution/*/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']] or
-                  madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']]]">
+                  madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']]) and
+                  (madsrdf:componentList or madsrdf:authoritativeLabel)]">
         <df tag="610">
           <ind1 default="2">
             <switch>
@@ -320,12 +322,13 @@
       </case>
 
       <!-- 611 -->
-      <case test="*[local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or
+      <case test="*[(local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or
                   local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting'] or
                   local-name(madsrdf:componentList/*[1])='ConferenceName' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName' or
                   local-name(madsrdf:componentList/*[1])='Meeting' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting' or
                   bf:contribution/*/bf:agent/*[local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']] or
-                  madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']]]">
+                  madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']]) and
+                  (madsrdf:componentList or madsrdf:authoritativeLabel)]">
         <df tag="611">
           <ind1 default="2"/>
           <ind2 default="4">
@@ -464,8 +467,9 @@
       </case>
 
       <!-- 630 -->
-      <case test="*[local-name()='Work' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or
-                  local-name(madsrdf:componentList/*[1])='Work' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work']">
+      <case test="*[(local-name()='Work' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or
+                  local-name(madsrdf:componentList/*[1])='Work' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work') and
+                  (madsrdf:componentList or madsrdf:authoritativeLabel)]">
         <df tag="630">
           <ind1 default="0">
             <select xpath="*/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]|*/madsrdf:componentList/*[1]/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]">
@@ -569,10 +573,11 @@
       </case>
 
       <!-- 651 -->
-      <case test="*[local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic'] or
+      <case test="*[(local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic'] or
                   local-name()='Place' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place'] or
                   local-name(madsrdf:componentList/*[1])='Geographic' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic' or
-                  local-name(madsrdf:componentList/*[1])='Place' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place']">
+                  local-name(madsrdf:componentList/*[1])='Place' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place') and
+                  (madsrdf:componentList or madsrdf:authoritativeLabel)]">
         <df tag="651">
           <ind1 default=" "/>
           <ind2 default="4">
@@ -593,8 +598,8 @@
             <case test="*/madsrdf:componentList">
               <sf code="a" repeatable="false">
                 <switch>
-                    <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
+                  <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"/></case>
+                  <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                 </switch>
               </sf>
               <sf code="0"><select xpath="madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
@@ -665,8 +670,8 @@
         </df>
       </case>
 
-      <!-- everything else is a 650 -->
-      <case test="default">
+      <!-- all other authorized entries are 650s -->
+      <case test="*[madsrdf:componentList or madsrdf:authoritativeLabel]">
         <df tag="650">
           <ind1 default=" "/>
           <ind2 default="4">
@@ -687,8 +692,8 @@
             <case test="*/madsrdf:componentList">
               <sf code="a" repeatable="false">
                 <switch>
-                    <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
+                  <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"/></case>
+                  <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                 </switch>
               </sf>
               <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
@@ -756,6 +761,27 @@
               </case>
             </switch>
           </select>
+        </df>
+      </case>
+
+      <!-- unauthorized terms are 653s -->
+      <case test="default">
+        <df tag="653">
+          <ind1 default=" "/>
+          <ind2 default=" ">
+            <switch>
+              <case test="*[local-name() = 'Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic']]">0</case>
+              <case test="*[local-name() = 'Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']]">1</case>
+              <case test="*[local-name() = 'Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']]">2</case>
+              <case test="*[local-name() = 'Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']]">3</case>
+              <case test="*[local-name() = 'Temporal' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Temporal']]">4</case>
+              <case test="*[local-name() = 'Place' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place']]">5</case>
+              <case test="*[local-name() = 'GenreForm' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/GenreForm']]">6</case>
+            </switch>
+          </ind2>
+          <sf code="a">
+            <select xpath="*/rdfs:label"/>
+          </sf>
         </df>
       </case>
     </switch>
