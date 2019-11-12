@@ -120,4 +120,22 @@
               test="//marc:datafield[@tag='656'][1]/marc:subfield[@code='2'] = 'someCode'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 662">
+    <x:context href="../data/6XX/662.xml"/>
+    <x:expect label="generate 662"
+              test="count(//marc:datafield[@tag='662']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='662'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='662'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from madsrdf:Country"
+              test="//marc:datafield[@tag='662'][1]/marc:subfield[@code='a'] = 'Japan'"/>
+    <x:expect label="$c from madsrdf:County"
+              test="//marc:datafield[@tag='662'][1]/marc:subfield[@code='c'] = 'Hokkaido'"/>
+    <x:expect label="$g from madsrdf:Region"
+              test="//marc:datafield[@tag='662'][1]/marc:subfield[@code='g'] = 'Asahi-dake'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='662'][1]/marc:subfield[@code='2'] = 'pemracs'"/>
+  </x:scenario>
+
 </x:description>
