@@ -134,22 +134,50 @@
               <case test="position() &gt; 1">
                 <switch>
                   <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
-                    <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="v">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
-                    <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="y">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
-                    <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="z">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="default">
-                    <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="x">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                <sf code="0">
+                  <select xpath="bf:identifiedBy/bf:Identifier">
+                    <transform>
+                      <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                      <xsl:choose>
+                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                      </xsl:choose>
+                    </transform>
+                  </select>
+                </sf>
               </case>
             </switch>
           </select>
@@ -285,22 +313,50 @@
               <case test="position() &gt; 1">
                 <switch>
                   <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
-                    <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="v">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
-                    <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="y">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
-                    <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="z">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="default">
-                    <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="x">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                <sf code="0">
+                  <select xpath="bf:identifiedBy/bf:Identifier">
+                    <transform>
+                      <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                      <xsl:choose>
+                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                      </xsl:choose>
+                    </transform>
+                  </select>
+                </sf>
               </case>
             </switch>
           </select>
@@ -430,22 +486,50 @@
               <case test="position() &gt; 1">
                 <switch>
                   <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
-                    <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="v">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
-                    <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="y">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
-                    <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="z">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="default">
-                    <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="x">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                <sf code="0">
+                  <select xpath="bf:identifiedBy/bf:Identifier">
+                    <transform>
+                      <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                      <xsl:choose>
+                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                      </xsl:choose>
+                    </transform>
+                  </select>
+                </sf>
               </case>
             </switch>
           </select>
@@ -537,25 +621,54 @@
               <case test="position() &gt; 1">
                 <switch>
                   <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
-                    <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="v">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
-                    <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="y">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
-                    <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="z">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="default">
-                    <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="x">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                <sf code="0">
+                  <select xpath="bf:identifiedBy/bf:Identifier">
+                    <transform>
+                      <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                      <xsl:choose>
+                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                      </xsl:choose>
+                    </transform>
+                  </select>
+                </sf>
               </case>
             </switch>
           </select>
+
           <!-- $2 if source not in ind2 -->
           <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
             <switch>
@@ -603,27 +716,68 @@
                 </switch>
               </sf>
               <sf code="0"><select xpath="madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
+
+              <!-- subdivisions -->
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
                   <case test="position() &gt; 1">
                     <switch>
                       <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
-                        <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="v">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
-                        <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="y">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
-                        <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="z">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="default">
-                        <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="x">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                     </switch>
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="0">
+                      <select xpath="bf:identifiedBy/bf:Identifier">
+                        <transform>
+                          <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:choose>
+                            <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                            <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                          </xsl:choose>
+                        </transform>
+                      </select>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -732,6 +886,17 @@
               </case>
             </switch>
             <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+            <sf code="0">
+              <select xpath="bf:identifiedBy/bf:Identifier">
+                <transform>
+                  <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                  <xsl:choose>
+                    <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                  </xsl:choose>
+                </transform>
+              </select>
+            </sf>
           </select>
           <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
           <sf code="0">
@@ -782,27 +947,67 @@
                 </switch>
               </sf>
               <sf code="0"><select xpath="madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
+              <!-- subdivisions -->
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
                   <case test="position() &gt; 1">
                     <switch>
                       <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
-                        <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="v">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
-                        <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="y">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
-                        <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="z">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="default">
-                        <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="x">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                     </switch>
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="0">
+                      <select xpath="bf:identifiedBy/bf:Identifier">
+                        <transform>
+                          <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:choose>
+                            <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                            <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                          </xsl:choose>
+                        </transform>
+                      </select>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -869,27 +1074,67 @@
                 </switch>
               </sf>
               <sf code="0"><select xpath="madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
+              <!-- subdivisions -->
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
                   <case test="position() &gt; 1">
                     <switch>
                       <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
-                        <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="v">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
-                        <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="y">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
-                        <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="z">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="default">
-                        <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="x">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                     </switch>
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="0">
+                      <select xpath="bf:identifiedBy/bf:Identifier">
+                        <transform>
+                          <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:choose>
+                            <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                            <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                          </xsl:choose>
+                        </transform>
+                      </select>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -950,27 +1195,67 @@
                 </switch>
               </sf>
               <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="*/madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
+              <!-- subdivisions -->
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
                   <case test="position() &gt; 1">
                     <switch>
                       <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
-                        <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="v">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
-                        <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="y">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
-                        <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="z">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                       <case test="default">
-                        <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                        <sf code="x">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
                       </case>
                     </switch>
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="0">
+                      <select xpath="bf:identifiedBy/bf:Identifier">
+                        <transform>
+                          <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:choose>
+                            <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                            <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                          </xsl:choose>
+                        </transform>
+                      </select>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -1068,27 +1353,67 @@
             </switch>
           </sf>
           <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+          <sf code="0">
+            <select xpath="*/madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
+              <transform>
+                <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                <xsl:choose>
+                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                </xsl:choose>
+              </transform>
+            </select>
+          </sf>
+          <!-- subdivisions -->
           <select xpath="*/madsrdf:componentList/*">
             <switch>
               <case test="position() &gt; 1">
                 <switch>
                   <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
-                    <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="v">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
-                    <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="y">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
-                    <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="z">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                   <case test="default">
-                    <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="x">
+                      <switch>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                <sf code="0">
+                  <select xpath="bf:identifiedBy/bf:Identifier">
+                    <transform>
+                      <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                      <xsl:choose>
+                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                      </xsl:choose>
+                    </transform>
+                  </select>
+                </sf>
               </case>
             </switch>
           </select>
