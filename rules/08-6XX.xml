@@ -765,6 +765,80 @@
         </df>
       </case>
 
+      <!-- 656 -->
+      <case test="*[(local-name()='Occupation' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Occupation'] or
+                  local-name(madsrdf:componentList/*[1])='Occupation' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#Occupation') and
+                  (madsrdf:componentList or madsrdf:authoritativeLabel) and
+                  bf:source]">
+        <df tag="656">
+          <ind1 default=" "/>
+          <ind2 default="7"/>
+          <sf code="3" repeatable="false">
+            <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
+          <switch>
+            <case test="*/madsrdf:componentList">
+              <sf code="a" repeatable="false">
+                <switch>
+                  <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"/></case>
+                  <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
+                </switch>
+              </sf>
+              <sf code="0"><select xpath="madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <select xpath="*/madsrdf:componentList/*">
+                <switch>
+                  <case test="position() &gt; 1">
+                    <switch>
+                      <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
+                        <sf code="v"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                      </case>
+                      <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
+                        <sf code="y"><select xpath="madsrdf:authoritativeLabel"/></sf>
+                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                      </case>
+                      <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
+                        <sf code="z"><select xpath="madsrdf:authoritativeLabel"/></sf>
+                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                      </case>
+                      <case test="default">
+                        <sf code="x"><select xpath="madsrdf:authoritativeLabel|rdfs:label"/></sf>
+                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                      </case>
+                    </switch>
+                  </case>
+                </switch>
+              </select>
+            </case>
+            <case test="default">
+              <sf code="a" repeatable="false">
+                <switch>
+                  <case test="*/madsrdf:authoritativeLabel">
+                    <select xpath="*/madsrdf:authoritativeLabel[1]"/>
+                  </case>
+                  <case test="default"><select xpath="*/rdfs:label[1]"/></case>
+                </switch>
+              </sf>
+            </case>
+          </switch>
+          <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+          <sf code="0">
+            <select xpath="*/bf:identifiedBy/bf:Identifier">
+              <transform>
+                <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                <xsl:choose>
+                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                </xsl:choose>
+              </transform>
+            </select>
+          </sf>
+          <sf code="2" repeatable="false">
+            <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/>
+          </sf>
+        </df>
+      </case>
+
       <!-- all other authorized entries are 650s -->
       <case test="*[madsrdf:componentList or madsrdf:authoritativeLabel]">
         <df tag="650">

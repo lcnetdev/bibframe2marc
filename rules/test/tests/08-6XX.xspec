@@ -104,4 +104,20 @@
               test="//marc:datafield[@tag='653'][1]/marc:subfield[@code='a'] = 'UNICEF'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 656">
+    <x:context href="../data/6XX/656.xml"/>
+    <x:expect label="generate 656"
+              test="count(//marc:datafield[@tag='656']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='656'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to '7'"
+              test="//marc:datafield[@tag='656'][1]/@ind2 = '7'"/>
+    <x:expect label="$a from label of first element in componentList"
+              test="//marc:datafield[@tag='656'][1]/marc:subfield[@code='a'] = 'Chauffeurs'"/>
+    <x:expect label="generate subdivisions"
+              test="//marc:datafield[@tag='656'][1]/marc:subfield[@code='z'] = 'France'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='656'][1]/marc:subfield[@code='2'] = 'someCode'"/>
+  </x:scenario>
+
 </x:description>
