@@ -45,6 +45,17 @@
       </sf>
       <sf code="q" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
       <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
       <sf code="4">
         <switch>
           <case test="../../bf:role/*/madsrdf:code">
