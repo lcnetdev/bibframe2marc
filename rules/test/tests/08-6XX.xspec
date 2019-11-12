@@ -5,10 +5,159 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
+  <x:scenario label="MARC 600">
+    <x:context href="../data/6XX/600.xml"/>
+    <x:expect label="generate 600" test="count(//marc:datafield[@tag='600']) = 3"/>
+    <x:expect label="ind1 generated from class of bf:Agent"
+              test="//marc:datafield[@tag='600'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 generated from bf:source"
+              test="//marc:datafield[@tag='600'][2]/@ind2 = '0'"/>
+    <x:expect label="$a can be generated from name label"
+              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='a'] = 'Obama, Barack.'"/>
+    <x:expect label="$t from title of bf:subject/bf:Work"
+              test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='t'] = 'Faust.'"/>
+    <x:expect label="parse subdivisions"
+              test="//marc:datafield[@tag='600'][3]/marc:subfield[@code='v'] = 'Interviews'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 610">
+    <x:context href="../data/6XX/610.xml"/>
+    <x:expect label="generate 610"
+              test="count(//marc:datafield[@tag='610']) = 3"/>
+    <x:expect label="ind1 generated from class of bf:Agent"
+              test="//marc:datafield[@tag='610'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 generated from bf:source"
+              test="//marc:datafield[@tag='610'][3]/@ind2 = '2'"/>
+    <x:expect label="first madsrdf:NameElement in $a"
+              test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='a'] = 'New York Academy of Medicine.'"/>
+    <x:expect label="subsequent NameElement in $b"
+              test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='b'] = 'Library'"/>
+    <x:expect label="generate subdivisions"
+              test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='v'] = 'Periodicals'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 611">
+    <x:context href="../data/6XX/611.xml"/>
+    <x:expect label="generate 611"
+              test="count(//marc:datafield[@tag='611']) = 1"/>
+    <x:expect label="ind1 default to '2'"
+              test="//marc:datafield[@tag='611']/@ind1 = '2'"/>
+    <x:expect label="ind2 generated from bf:source"
+              test="//marc:datafield[@tag='611']/@ind2 = '0'"/>
+    <x:expect label="$a generated from label or from first elementList value"
+              test="//marc:datafield[@tag='611']/marc:subfield[@code='a'] = 'Codex Book Fair and Symposium.'"/>
+    <x:expect label="$c generated from GeographicElement"
+              test="//marc:datafield[@tag='611']/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 630">
+    <x:context href="../data/6XX/630.xml"/>
+    <x:expect label="generate 630"
+              test="count(//marc:datafield[@tag='630']) = 1"/>
+    <x:expect label="ind1 number of non-filing characters"
+              test="//marc:datafield[@tag='630'][1]/@ind1 = '4'"/>
+    <x:expect label="ind2 subject thesaurus"
+              test="//marc:datafield[@tag='630'][1]/@ind2 = '0'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 648">
+    <x:context href="../data/6XX/648.xml"/>
+    <x:expect label="generate 648" test="count(//marc:datafield[@tag='648']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='648'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 from source"
+              test="//marc:datafield[@tag='648'][1]/@ind2 = '7'"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='648'][1]/marc:subfield[@code='a'] = '1862'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='648'][1]/marc:subfield[@code='2'] = 'fast'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 650">
     <x:context href="../data/6XX/650.xml"/>
     <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 3"/>
-    <x:expect label="parse subdivisions" test="//marc:datafield[@tag='650'][1]/marc:subfield[@code='v']='Congresses'"/>
+    <x:expect label="parse subdivisions" test="//marc:datafield[@tag='650'][1]/marc:subfield[@code='x']='Security measures'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 651">
+    <x:context href="../data/6XX/651.xml"/>
+    <x:expect label="generate 651"
+              test="count(//marc:datafield[@tag='651']) = 2"/>
+    <x:expect label="ind1 default to ' '"
+              test="//marc:datafield[@tag='651'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 generated from bf:source"
+              test="//marc:datafield[@tag='651'][2]/@ind2 = '7'"/>
+    <x:expect label="$a generated from first element in componentList or label"
+              test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='a'] = 'Maryland'"/>
+    <x:expect label="subdivisions generated from subsequent elements in componentList"
+              test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='x'] = 'Antiquities'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 653">
+    <x:context href="../data/6XX/653.xml"/>
+    <x:expect label="generate 653" test="count(//marc:datafield[@tag='653']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='653'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 based on class of subject"
+              test="//marc:datafield[@tag='653'][1]/@ind2 = '2'"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='653'][1]/marc:subfield[@code='a'] = 'UNICEF'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 655">
+    <x:context href="../data/6XX/655.xml"/>
+    <x:expect label="generate 655"
+              test="count(//marc:datafield[@tag='655']) = 3"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='655'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 from URI"
+              test="//marc:datafield[@tag='655'][1]/@ind2 = '7'"/>
+    <x:expect label="...or from source"
+              test="//marc:datafield[@tag='655'][2]/@ind2= '7'"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='655'][3]/marc:subfield[@code='a'] = 'Popular music.'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='0'][1] = 'http://id.loc.gov/authorities/genreForms/gf2014026739'"/>
+    <x:expect label="...or from identifier"
+              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='0'][2] = '(OCoLC)fst01726574'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='2'] = 'fast'"/>
+    <x:expect label="or from URI"
+              test="//marc:datafield[@tag='655'][1]/marc:subfield[@code='2'] = 'lcgft'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 656">
+    <x:context href="../data/6XX/656.xml"/>
+    <x:expect label="generate 656"
+              test="count(//marc:datafield[@tag='656']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='656'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to '7'"
+              test="//marc:datafield[@tag='656'][1]/@ind2 = '7'"/>
+    <x:expect label="$a from label of first element in componentList"
+              test="//marc:datafield[@tag='656'][1]/marc:subfield[@code='a'] = 'Chauffeurs'"/>
+    <x:expect label="generate subdivisions"
+              test="//marc:datafield[@tag='656'][1]/marc:subfield[@code='z'] = 'France'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='656'][1]/marc:subfield[@code='2'] = 'someCode'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 662">
+    <x:context href="../data/6XX/662.xml"/>
+    <x:expect label="generate 662"
+              test="count(//marc:datafield[@tag='662']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='662'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='662'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from madsrdf:Country"
+              test="//marc:datafield[@tag='662'][1]/marc:subfield[@code='a'] = 'Japan'"/>
+    <x:expect label="$c from madsrdf:County"
+              test="//marc:datafield[@tag='662'][1]/marc:subfield[@code='c'] = 'Hokkaido'"/>
+    <x:expect label="$g from madsrdf:Region"
+              test="//marc:datafield[@tag='662'][1]/marc:subfield[@code='g'] = 'Asahi-dake'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='662'][1]/marc:subfield[@code='2'] = 'pemracs'"/>
   </x:scenario>
 
 </x:description>
