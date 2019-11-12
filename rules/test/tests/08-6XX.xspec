@@ -104,6 +104,28 @@
               test="//marc:datafield[@tag='653'][1]/marc:subfield[@code='a'] = 'UNICEF'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 655">
+    <x:context href="../data/6XX/655.xml"/>
+    <x:expect label="generate 655"
+              test="count(//marc:datafield[@tag='655']) = 3"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='655'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 from URI"
+              test="//marc:datafield[@tag='655'][1]/@ind2 = '7'"/>
+    <x:expect label="...or from source"
+              test="//marc:datafield[@tag='655'][2]/@ind2= '7'"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='655'][3]/marc:subfield[@code='a'] = 'Popular music.'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='0'][1] = 'http://id.loc.gov/authorities/genreForms/gf2014026739'"/>
+    <x:expect label="...or from identifier"
+              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='0'][2] = '(OCoLC)fst01726574'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='2'] = 'fast'"/>
+    <x:expect label="or from URI"
+              test="//marc:datafield[@tag='655'][1]/marc:subfield[@code='2'] = 'lcgft'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 656">
     <x:context href="../data/6XX/656.xml"/>
     <x:expect label="generate 656"
