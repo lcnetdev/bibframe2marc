@@ -36,11 +36,26 @@
                 <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
               </sf>
               <sf code="e">
-                <select xpath="../../bf:role/bf:Role/rdfs:label"/>
+                <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+                  <switch>
+                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                    <case test="default"><select xpath="rdfs:label"/></case>
+                  </switch>
+                </select>
               </sf>
               <!-- nac $u -->
               <sf code="4">
-                <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
+                <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
+                  <switch>
+                    <case test="madsrdf:code">
+                      <select xpath="madsrdf:code"/>
+                    </case>
+                    <case test="default"><select xpath="bf:code"/></case>
+                  </switch>
+                </select>
+              </sf>
+              <sf code="4">
+                <select xpath="../../bf:role/*/@rdf:about|../../bf:role/@rdf:resource"/>
               </sf>
               <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
               <sf code="0">
@@ -80,11 +95,26 @@
                 <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
               </sf>
               <sf code="j">
-                <select xpath="../../bf:role/bf:Role/rdfs:label"/>
+                <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+                  <switch>
+                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                    <case test="default"><select xpath="rdfs:label"/></case>
+                  </switch>
+                </select>
               </sf>
               <!-- nac $u -->
               <sf code="4">
-                <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
+                <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
+                  <switch>
+                    <case test="madsrdf:code">
+                      <select xpath="madsrdf:code"/>
+                    </case>
+                    <case test="default"><select xpath="bf:code"/></case>
+                  </switch>
+                </select>
+              </sf>
+              <sf code="4">
+                <select xpath="../../bf:role/*/@rdf:about|../../bf:role/@rdf:resource"/>
               </sf>
               <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
               <sf code="0">
@@ -127,16 +157,12 @@
                 <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
               </sf>
               <sf code="e">
-                <switch>
-                  <case test="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
-                    <select xpath="../../bf:role/*">
-                      <switch>
-                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                        <case test="rdfs:label"><select xpath="rdfs:label"/></case>
-                      </switch>
-                    </select>
-                  </case>
-                </switch>
+                <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+                  <switch>
+                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                    <case test="default"><select xpath="rdfs:label"/></case>
+                  </switch>
+                </select>
               </sf>
               <sf code="q" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
               <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
@@ -152,12 +178,17 @@
                 </select>
               </sf>
               <sf code="4">
-                <switch>
-                  <case test="../../bf:role/*/madsrdf:code">
-                    <select xpath="../../bf:role/*/madsrdf:code"/>
-                  </case>
-                  <case test="default"><select xpath="../../bf:role/*/bf:code"/></case>
-                </switch>
+                <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
+                  <switch>
+                    <case test="madsrdf:code">
+                      <select xpath="madsrdf:code"/>
+                    </case>
+                    <case test="default"><select xpath="bf:code"/></case>
+                  </switch>
+                </select>
+              </sf>
+              <sf code="4">
+                <select xpath="../../bf:role/*/@rdf:about|../../bf:role/@rdf:resource"/>
               </sf>
             </df>
           </case>
