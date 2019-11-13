@@ -10,6 +10,20 @@
     <x:expect label="generate 100" test="count(//marc:datafield[@tag='100']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 110">
+    <x:context href="../data/1XX/110.xml"/>
+    <x:expect label="generate 110"
+              test="count(//marc:datafield[@tag='110']) = 1"/>
+    <x:expect label="ind1 from class of agent"
+              test="//marc:datafield[@tag='110'][1]/@ind1 = '2'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='110'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='110'][1]/marc:subfield[@code='a'] = 'Unitarian Universalist Ministers Association'"/>
+    <x:expect label="$0 from URI of agent"
+              test="//marc:datafield[@tag='110'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n85033195'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 130">
     <x:context href="../data/1XX/130.xml"/>
     <x:expect label="generate 130 from Work title when Instance title doesn't match Work title and there is no bflc:PrimaryContribution" test="count(//marc:datafield[@tag='130']) = 1"/>
