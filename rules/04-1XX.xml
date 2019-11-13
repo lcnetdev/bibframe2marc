@@ -58,6 +58,50 @@
             </df>
           </case>
 
+          <!-- 111 -->
+          <case test="local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or
+                      local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']">
+            <df tag="111">
+              <ind1 default="2"/>
+              <ind2 default=" "/>
+              <sf code="a" repeatable="false">
+                <switch>
+                  <case test="madsrdf:elementList">
+                    <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+                  </case>
+                  <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                  <case test="default"><select xpath="rdfs:label"/></case>
+                </switch>
+              </sf>
+              <sf code="c">
+                <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
+              </sf>
+              <sf code="q">
+                <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
+              </sf>
+              <sf code="j">
+                <select xpath="../../bf:role/bf:Role/rdfs:label"/>
+              </sf>
+              <!-- nac $u -->
+              <sf code="4">
+                <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
+              </sf>
+              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
+              <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/bf:code"/></sf>
+            </df>
+          </case>
+
           <!-- default to 100 -->
           <case test="default">
             <df tag="100" repeatable="false">
@@ -129,11 +173,11 @@
 
   <df tag="130" repeatable="false">
     <context xpath="bf:Work/bf:title/bf:Title[
-      not(contains(rdf:type/@rdf:resource,'bibframe')) and
-      not(../../bf:contribution/bflc:PrimaryContribution) and
-      not(../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']) and
-      rdfs:label != ../../../bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label
-      ]">
+                    not(contains(rdf:type/@rdf:resource,'bibframe')) and
+                    not(../../bf:contribution/bflc:PrimaryContribution) and
+                    not(../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']) and
+                    rdfs:label != ../../../bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label
+                    ]">
       <ind1 default="0">
         <switch>
           <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
