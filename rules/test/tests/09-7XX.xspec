@@ -34,6 +34,18 @@
   <x:scenario label="MARC 710">
     <x:context href="../data/7XX/710.xml"/>
     <x:expect label="generate 710" test="count(//marc:datafield[@tag='710']) = 1"/>
+    <x:expect label="ind1 from class of agent"
+              test="//marc:datafield[@tag='710'][1]/@ind1 = '2'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='710'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from NameElement or label"
+              test="//marc:datafield[@tag='710'][1]/marc:subfield[@code='a'] = 'Fraunhofer VVS (Research group)'"/>
+    <x:expect label="$e from role"
+              test="//marc:datafield[@tag='710'][1]/marc:subfield[@code='e'] = 'Organizer'"/>
+    <x:expect label="$4 code from role"
+              test="//marc:datafield[@tag='710'][1]/marc:subfield[@code='4'][1] = 'orm'"/>
+    <x:expect label="$4 URI from role"
+              test="//marc:datafield[@tag='710'][1]/marc:subfield[@code='4'][2] = 'http://id.loc.gov/vocabulary/relators/orm'"/>
   </x:scenario>
 
 </x:description>
