@@ -39,6 +39,23 @@
               test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='t'] = 'Journal of the New York Academy of Medicine'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 811">
+    <x:context href="../data/8XX/811.xml"/>
+    <x:expect label="generate 811" test="count(//marc:datafield[@tag='811']) = 1"/>
+    <x:expect label="ind1 default to '2'"
+              test="//marc:datafield[@tag='811'][1]/@ind1 = '2'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='811'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from first element in elementList or label"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='a'] = 'Codex Book Fair and Symposium.'"/>
+    <x:expect label="$c from GeographicElement"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
+    <x:expect label="$0 from URI of agent"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/no2009024971'"/>
+    <x:expect label="$t from title"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='t'] = 'Book fair guides'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 852">
     <x:context href="../data/8XX/852.xml"/>
     <x:expect label="generate 852" test="count(//marc:datafield[@tag='852']) = 1"/>
