@@ -9,6 +9,21 @@
   <!-- <x:param name="vCurrentVersion">0.1.0-TEST</x:param> -->
   <!-- <x:param name="pGenerationDatestamp">NOW</x:param> -->
 
+  <!-- I know, a 490 isn't a 5XX -->
+  <x:scenario label="MARC 490">
+    <x:context href="../data/5XX/490.xml"/>
+    <x:expect label="generate 490"
+              test="count(//marc:datafield[@tag='490']) = 1"/>
+    <x:expect label="ind1 default to '0'"
+              test="//marc:datafield[@tag='490']/@ind1 = '0'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='490']/@ind2 = ' '"/>
+    <x:expect label="$a from seriesStatement"
+              test="//marc:datafield[@tag='490']/marc:subfield[@code='a'][1] = 'A series of unfortunate events'"/>
+    <x:expect label="$v from seriesEnumeration"
+              test="//marc:datafield[@tag='490']/marc:subfield[@code='v'][2] = 'no 14'"/>
+  </x:scenario>
+
   <x:scenario label="Default MARC field 500">
     <x:context href="../data/regression/bibframe.xml"/>
     <x:expect label="...all records should have the default 500 field"

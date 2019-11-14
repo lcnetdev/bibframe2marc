@@ -8,6 +8,26 @@
        xmlns:marc="http://www.loc.gov/MARC21/slim"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <!-- I know, a 490 isn't a 5XX -->
+  <switch>
+    <case test="bf:Instance/bf:seriesStatement or bf:Instance/bf:seriesEnumeration">
+      <df tag="490">
+        <ind1 default="0"/>
+        <ind2 default=" "/>
+        <select xpath="bf:Instance/bf:seriesStatement|bf:Instance/bf:seriesEnumeration">
+          <switch>
+            <case test="local-name()='seriesStatement'">
+              <sf code="a"><select xpath="."/></sf>
+            </case>
+            <case test="default">
+              <sf code="v"><select xpath="."/></sf>
+            </case>
+          </switch>
+        </select>
+      </df>
+    </case>
+  </switch>
+
   <df tag="500">
     <ind1 default=" "/>
     <ind2 default=" "/>
