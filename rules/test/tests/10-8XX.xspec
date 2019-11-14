@@ -56,6 +56,19 @@
               test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='t'] = 'Book fair guides'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 830">
+    <x:context href="../data/8XX/830.xml"/>
+    <x:expect label="generate 830" test="count(//marc:datafield[@tag='830']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='830'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 from titleSortKey"
+              test="//marc:datafield[@tag='830'][1]/@ind2 = '3'"/>
+    <x:expect label="$a from mainTitle or label"
+              test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='a'] = 'Actualités-Service'"/>
+    <x:expect label="$n from partNumber"
+              test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='n'] = 'No 293 (Supplement)'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 852">
     <x:context href="../data/8XX/852.xml"/>
     <x:expect label="generate 852" test="count(//marc:datafield[@tag='852']) = 1"/>

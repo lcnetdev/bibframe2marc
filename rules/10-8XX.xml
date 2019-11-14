@@ -388,6 +388,73 @@
           <!-- nac $7 -->
         </df>
       </case>
+
+      <!-- if no bf:contribution, fall back to 830 -->
+      <case test="default">
+        <df tag="830">
+          <ind1 default=" "/>
+          <ind2 default="0">
+            <switch>
+              <case test="bf:title/bf:Title[1]/bflc:titleSortKey and (string-length(bf:title/bf:Title[1]/bflc:titleSortKey) &lt; string-length(bf:title/bf:Title[1]/rdfs:label))">
+                <transform>
+                  <xsl:value-of select="string-length(bf:title/bf:Title[1]/rdfs:label) - string-length(bf:title/bf:Title[1]/bflc:titleSortKey)"/>
+                </transform>
+              </case>
+            </switch>
+          </ind2>
+          <sf code="3" repeatable="false">
+            <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
+          <sf code="a" repeatable="false">
+            <select xpath="bf:title/bf:Title[1]">
+              <switch>
+                <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+                <case test="default"><select xpath="rdfs:label"/></case>
+              </switch>
+            </select>
+          </sf>
+          <sf code="d"><select xpath="bf:legalDate"/></sf>
+          <sf code="f" repeatable="false"><select xpath="/bf:originDate"/></sf>
+          <sf code="k"><select xpath="bf:natureOfContent"/></sf>
+          <!-- language is going to be a problem -->
+          <sf code="l" repeatable="false">
+            <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
+          </sf>
+          <sf code="m"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
+          <sf code="n"><select xpath="bf:title/bf:Title[1]/bf:partNumber"/></sf>
+          <sf code="p"><select xpath="bf:title/bf:Title[1]/bf:partName"/></sf>
+          <sf code="r" repeatable="false"><select xpath="bf:musicKey"/></sf>
+          <sf code="s"><select xpath="bf:version"/></sf>
+          <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+          <!-- $v nac -->
+          <sf code="x" repeatable="false">
+            <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
+          </sf>
+          <sf code="w">
+            <select xpath="bf:identifiedBy/*[local-name()='Lccn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn']">
+              <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
+            </select>
+          </sf>
+          <!-- can't distinguish between $0 and $w unless $w is an LCCN -->
+          <sf code="0">
+            <select xpath="bf:identifiedBy/bf:Identifier[not(contains(rdf:type,'bibframe'))]">
+              <transform>
+                <xsl:variable name="vIdType" select="rdfs:label"/>
+                <xsl:choose>
+                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                </xsl:choose>
+              </transform>
+            </select>
+          </sf>
+          <sf code="2" repeatable="false">
+            <select xpath="../../bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/>
+          </sf>
+          <sf code="5" repeatable="false">
+            <select xpath="../../bflc:applicableInstitution/*/bf:code"/>
+          </sf>
+        </df>
+      </case>
     </switch>
   </select>
 
