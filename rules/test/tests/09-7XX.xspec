@@ -63,6 +63,19 @@
               test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/no2009024971'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 720">
+    <x:context href="../data/7XX/720.xml"/>
+    <x:expect label="generate 720" test="count(//marc:datafield[@tag='720']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='720'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='720'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label of agent"
+              test="//marc:datafield[@tag='720'][1]/marc:subfield[@code='a'] = 'Unitarian Universalist Ministers Association'"/>
+    <x:expect label="$e from role"
+              test="//marc:datafield[@tag='720'][1]/marc:subfield[@code='e'] = 'sponsor'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 730">
     <x:context href="../data/7XX/730.xml"/>
     <x:expect label="generate 730" test="count(//marc:datafield[@tag='730']) = 1"/>
