@@ -48,4 +48,19 @@
               test="//marc:datafield[@tag='710'][1]/marc:subfield[@code='4'][2] = 'http://id.loc.gov/vocabulary/relators/orm'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 711">
+    <x:context href="../data/7XX/711.xml"/>
+    <x:expect label="generate 711" test="count(//marc:datafield[@tag='711']) = 1"/>
+    <x:expect label="ind1 default to '2'"
+              test="//marc:datafield[@tag='711'][1]/@ind1 = '2'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='711'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from first element in elementList or label"
+              test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='a'] = 'Codex Book Fair and Symposium.'"/>
+    <x:expect label="$c from GeographicElement"
+              test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
+    <x:expect label="$0 from URI of agent"
+              test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/no2009024971'"/>
+  </x:scenario>
+
 </x:description>
