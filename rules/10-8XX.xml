@@ -80,7 +80,7 @@
 
           <!-- title subfields -->
           <sf code="t" repeatable="false">
-            <select xpath="bf:title/bf:Title[1]">
+            <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
               <switch>
                 <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
                 <case test="default"><select xpath="rdfs:label"/></case>
@@ -103,8 +103,8 @@
             <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
           </sf>
           <sf code="m"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
-          <sf code="n"><select xpath="bf:title/bf:Title[1]/bf:partNumber"/></sf>
-          <sf code="p"><select xpath="bf:title/bf:Title[1]/bf:partName"/></sf>
+          <sf code="n"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
+          <sf code="p"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
           <sf code="r" repeatable="false"><select xpath="bf:musicKey"/></sf>
           <sf code="s"><select xpath="bf:version"/></sf>
           <!-- $v nac -->
@@ -205,7 +205,7 @@
 
           <!-- title subfields -->
           <sf code="t" repeatable="false">
-            <select xpath="bf:title/bf:Title[1]">
+            <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
               <switch>
                 <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
                 <case test="default"><select xpath="rdfs:label"/></case>
@@ -228,8 +228,8 @@
             <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
           </sf>
           <sf code="m"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
-          <sf code="n"><select xpath="bf:title/bf:Title[1]/bf:partNumber"/></sf>
-          <sf code="p"><select xpath="bf:title/bf:Title[1]/bf:partName"/></sf>
+          <sf code="n"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
+          <sf code="p"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
           <sf code="r" repeatable="false"><select xpath="bf:musicKey"/></sf>
           <sf code="s"><select xpath="bf:version"/></sf>
           <!-- $v nac -->
@@ -331,7 +331,7 @@
 
           <!-- title subfields -->
           <sf code="t" repeatable="false">
-            <select xpath="bf:title/bf:Title[1]">
+            <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
               <switch>
                 <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
                 <case test="default"><select xpath="rdfs:label"/></case>
@@ -353,8 +353,8 @@
             <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
           </sf>
           <sf code="m"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
-          <sf code="n"><select xpath="bf:title/bf:Title[1]/bf:partNumber"/></sf>
-          <sf code="p"><select xpath="bf:title/bf:Title[1]/bf:partName"/></sf>
+          <sf code="n"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
+          <sf code="p"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
           <sf code="r" repeatable="false"><select xpath="bf:musicKey"/></sf>
           <sf code="s"><select xpath="bf:version"/></sf>
           <!-- $v nac -->
@@ -395,9 +395,9 @@
           <ind1 default=" "/>
           <ind2 default="0">
             <switch>
-              <case test="bf:title/bf:Title[1]/bflc:titleSortKey and (string-length(bf:title/bf:Title[1]/bflc:titleSortKey) &lt; string-length(bf:title/bf:Title[1]/rdfs:label))">
+              <case test="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey and (string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey) &lt; string-length(bf:title/bf:Title[1]/rdfs:label))">
                 <transform>
-                  <xsl:value-of select="string-length(bf:title/bf:Title[1]/rdfs:label) - string-length(bf:title/bf:Title[1]/bflc:titleSortKey)"/>
+                  <xsl:value-of select="string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/rdfs:label) - string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey)"/>
                 </transform>
               </case>
             </switch>
@@ -406,7 +406,7 @@
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
           <sf code="a" repeatable="false">
-            <select xpath="bf:title/bf:Title[1]">
+            <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
               <switch>
                 <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
                 <case test="default"><select xpath="rdfs:label"/></case>
@@ -421,8 +421,8 @@
             <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
           </sf>
           <sf code="m"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
-          <sf code="n"><select xpath="bf:title/bf:Title[1]/bf:partNumber"/></sf>
-          <sf code="p"><select xpath="bf:title/bf:Title[1]/bf:partName"/></sf>
+          <sf code="n"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
+          <sf code="p"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
           <sf code="r" repeatable="false"><select xpath="bf:musicKey"/></sf>
           <sf code="s"><select xpath="bf:version"/></sf>
           <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
