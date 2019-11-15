@@ -5,7 +5,13 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
-  <x:scenario label="MARC 800">
+  <!-- To run this test file separately, uncomment the lines below -->
+  <!-- <x:param name="vCurrentVersion">DLC bibframe2marc-xsl v0.1.0-TEST</x:param> -->
+  <!-- <x:param name="pGenerationDatestamp">19700101</x:param> -->
+  <!-- <x:param name="pSourceRecordId">http://example.org/test-record</x:param> -->
+  <!-- <x:param name="pConversionAgency">DLC</x:param> -->
+
+ <x:scenario label="MARC 800">
     <x:context href="../data/8XX/800.xml"/>
     <x:expect label="generate 800" test="count(//marc:datafield[@tag='800']) = 1"/>
     <x:expect label="ind1 from class of agent"
@@ -72,6 +78,22 @@
   <x:scenario label="MARC 852">
     <x:context href="../data/8XX/852.xml"/>
     <x:expect label="generate 852" test="count(//marc:datafield[@tag='852']) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="Default MARC field 884">
+    <x:context href="../data/regression/bibframe.xml"/>
+    <x:expect label="...all records should have the default 884 field"
+              test="count(//marc:datafield[@tag='884']) = 1"/>
+    <x:expect label="$a contains the converter name and version"
+              test="//marc:datafield[@tag='884'][1]/marc:subfield[@code='a'] = 'DLC bibframe2marc-xsl v0.1.0-TEST'"/>
+    <x:expect label="$g contains conversion date"
+              test="//marc:datafield[@tag='884'][1]/marc:subfield[@code='g']  = '19700101'"/>
+    <x:expect label="$k contains source record identifier"
+              test="//marc:datafield[@tag='884'][1]/marc:subfield[@code='k'] = 'http://example.org/test-record'"/>
+    <x:expect label="$q contains conversion agency"
+              test="//marc:datafield[@tag='884'][1]/marc:subfield[@code='q'] = 'DLC'"/>
+    <x:expect label="$u contains generation process URI"
+              test="//marc:datafield[@tag='884'][1]/marc:subfield[@code='u'] = 'https://github.com/lcnetdev/bibframe2marc-xsl'"/>
   </x:scenario>
 
 </x:description>
