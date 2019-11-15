@@ -144,6 +144,19 @@
               test="//marc:datafield[@tag='516'][1]/marc:subfield[@code='a'] = 'Computer programs.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 518">
+    <x:context href="../data/5XX/518.xml"/>
+    <x:expect label="generate 518" test="count(//marc:datafield[@tag='518']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='518'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='518'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='518'][1]/marc:subfield[@code='a'] = 'Recorded in Vienna in 1961, previously released as WST 17035.'"/>
+    <x:expect label="$3 from bflc:appliesTo"
+              test="//marc:datafield[@tag='518'][1]/marc:subfield[@code='3'] = 'Horse'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 520">
     <x:context href="../data/5XX/520.xml"/>
     <x:expect label="generate 520 from bf:summary property"
