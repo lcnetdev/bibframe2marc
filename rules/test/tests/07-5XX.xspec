@@ -79,6 +79,17 @@
               test="//marc:datafield[@tag='507'][1]/marc:subfield[@code='a'] = 'Scale 1:10 of the original'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 508">
+    <x:context href="../data/5XX/508.xml"/>
+    <x:expect label="generate 508" test="count(//marc:datafield[@tag='508']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='508'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='508'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from credits"
+              test="//marc:datafield[@tag='508'][1]/marc:subfield[@code='a'] = 'Producer, Joseph N. Ermolieff ; director, Lesley Selander ; screenplay, Theodore St. John ; music director, Michel Michelet.'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 511">
     <x:context href="../data/5XX/511.xml"/>
     <x:expect label="generate 511 from bf:credits property with 'Cast:' display constant"
