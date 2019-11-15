@@ -122,6 +122,17 @@
               test="//marc:datafield[@tag='513'][1]/marc:subfield[@code='a'] = 'Quarterly technical progress report; Jan.-Apr. 1, 1977.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 515">
+    <x:context href="../data/5XX/515.xml"/>
+    <x:expect label="generate 515" test="count(//marc:datafield[@tag='515']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='515'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='515'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='515'][1]/marc:subfield[@code='a'] = 'Issues for &lt;1980-1986&gt; called: &lt;2. Aufl.-5. Aufl.&gt;'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 520">
     <x:context href="../data/5XX/520.xml"/>
     <x:expect label="generate 520 from bf:summary property"
