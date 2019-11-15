@@ -33,9 +33,12 @@
         <xslt:param name="pRecordId" select="'default'"/>
         <xslt:param name="pGenerationDatestamp">
           <xslt:if test="function-available('date:date-time')">
-            <xslt:value-of select="date:date-time()"/>
+            <xslt:value-of select="translate(substring(date:date-time(),1,10),'-','')"/>
           </xslt:if>
         </xslt:param>
+        <xslt:param name="pSourceRecordId"/>
+        <xslt:param name="pConversionAgency"/>
+        <xslt:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc-xsl'"/>
         <xslt:variable name="vCurrentVersion">0.1.0-TEST</xslt:variable>
         <xslt:template match="/">
           <xslt:choose>

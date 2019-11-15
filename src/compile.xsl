@@ -27,11 +27,15 @@
 
       <xsl:param name="pRecordId" select="'default'"/>
 
+      <!-- parameters for 884 generation -->
       <xsl:param name="pGenerationDatestamp">
         <xsl:if test="function-available('date:date-time')">
-          <xsl:value-of select="date:date-time()"/>
+          <xsl:value-of select="translate(substring(date:date-time(),1,10),'-','')"/>
         </xsl:if>
       </xsl:param>
+      <xsl:param name="pSourceRecordId"/>
+      <xsl:param name="pConversionAgency"/>
+      <xsl:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc-xsl'"/>
 
       <xslt:apply-templates/>
 

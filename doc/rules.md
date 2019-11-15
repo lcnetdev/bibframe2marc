@@ -196,8 +196,12 @@ The following global variables in the generated stylesheet are available for use
   1. The value of the `pRecordId` parameter, if it is passed to the stylesheet
   2. The value in `/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value`, if there is no `bf:source` property or the `bf:source/bf:Source/rdfs:label` value is "DLC".
   3. `generate-id()` (default)
-* `pGenerationDatestamp`: The value of the `pGenerationDatestamp` stylesheet parameter. Defaults to `date:date-time()` if the function is available to the XSLT processer.
+* `pGenerationDatestamp`: The value of the `pGenerationDatestamp` stylesheet parameter. Defaults to `date:date-time()` if the function is available to the XSLT processer. For inclusion in an 884, should be in YYYYMMDD format (ISO 8601).
 * `vCurrentVersion`: The value of the `version` element of the top-level `rules` document.
+* `pSourceRecordId`: An identifier for the source record, perhaps a URI
+* `pConversionAgency`: MARC organization code of the institution doing the data generation.
+* `pGenerationUri`: Identifier for the generation process, e.g. a Github URL. Defaults to `https://github.com/lcnetdev/bibframe2marc-xsl`.
+
 
 #### XSL named templates
 
