@@ -119,14 +119,11 @@
   </df>
 
   <df tag="507">
-    <context xpath="bf:Instance/bf:scale">
+    <context xpath="bf:Work/bf:scale/*/bf:note/bf:Note">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" repeatable="false">
-        <switch>
-          <case test="bf:Scale"><select xpath="bf:Scale/rdfs:label"/></case>
-          <case test="default"><transform><xsl:value-of select="."/></transform></case>
-        </switch>
+        <select xpath="rdfs:label"/>
       </sf>
     </context>
   </df>

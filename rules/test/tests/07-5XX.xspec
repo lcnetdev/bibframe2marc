@@ -74,9 +74,9 @@
 
   <x:scenario label="MARC 507">
     <x:context href="../data/5XX/507.xml"/>
-    <x:expect label="generate 507 from scale property on Instance" test="count(//marc:datafield[@tag='507']) = 2"/>
-    <x:expect label="$a from scale literal" test="//marc:datafield[@tag='507'][1]/marc:subfield[@code='a'] = 'Scale 1:10 of the original'"/>
-    <x:expect label="...or from bf:Scale object" test="//marc:datafield[@tag='507'][2]/marc:subfield[@code='a'] = 'Scale 1:500,000; 1 in. equals 8 miles.'"/>
+    <x:expect label="generate 507 from scale property on Work" test="count(//marc:datafield[@tag='507']) = 1"/>
+    <x:expect label="$a from note label"
+              test="//marc:datafield[@tag='507'][1]/marc:subfield[@code='a'] = 'Scale 1:10 of the original'"/>
   </x:scenario>
 
   <x:scenario label="MARC 511">
