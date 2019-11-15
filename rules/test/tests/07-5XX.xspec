@@ -111,6 +111,17 @@
               test="//marc:datafield[@tag='511']/marc:subfield[@code='a'] = 'Maggie Smith, Dame Judi Dench, Tom Wilkinson, Bill Nighy.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 513">
+    <x:context href="../data/5XX/513.xml"/>
+    <x:expect label="generate 513" test="count(//marc:datafield[@tag='513']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='513'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='513'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='513'][1]/marc:subfield[@code='a'] = 'Quarterly technical progress report; Jan.-Apr. 1, 1977.'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 520">
     <x:context href="../data/5XX/520.xml"/>
     <x:expect label="generate 520 from bf:summary property"
