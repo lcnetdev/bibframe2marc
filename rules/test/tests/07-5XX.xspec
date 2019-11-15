@@ -133,6 +133,17 @@
               test="//marc:datafield[@tag='515'][1]/marc:subfield[@code='a'] = 'Issues for &lt;1980-1986&gt; called: &lt;2. Aufl.-5. Aufl.&gt;'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 516">
+    <x:context href="../data/5XX/516.xml"/>
+    <x:expect label="generate 516" test="count(//marc:datafield[@tag='516']) = 1"/>
+    <x:expect label="ind1 default to '8'"
+              test="//marc:datafield[@tag='516'][1]/@ind1 = '8'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='516'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='516'][1]/marc:subfield[@code='a'] = 'Computer programs.'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 520">
     <x:context href="../data/5XX/520.xml"/>
     <x:expect label="generate 520 from bf:summary property"
