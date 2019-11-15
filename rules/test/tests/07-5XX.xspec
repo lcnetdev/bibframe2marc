@@ -57,6 +57,21 @@
               test="count(//marc:datafield[@tag='505']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 506">
+    <x:context href="../data/5XX/506.xml"/>
+    <x:expect label="generate 506" test="count(//marc:datafield[@tag='506']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='506'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='506'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='506'][1]/marc:subfield[@code='a'] = 'Some restrictions apply. Consult restricted access file for restriction details'"/>
+    <x:expect label="$u from rdfs:label with anyURI datatype"
+              test="//marc:datafield[@tag='506'][1]/marc:subfield[@code='u'] = 'http://example.org/accessPolicy.html'"/>
+    <x:expect label="$5 from applicableInstitution"
+              test="//marc:datafield[@tag='506'][1]/marc:subfield[@code='5'] = 'MH'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 507">
     <x:context href="../data/5XX/507.xml"/>
     <x:expect label="generate 507 from scale property on Instance" test="count(//marc:datafield[@tag='507']) = 2"/>
