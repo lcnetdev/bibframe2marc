@@ -138,6 +138,36 @@
     </context>
   </df>
 
+  <df tag="510">
+    <context xpath="bf:Work/bflc:indexedIn/bf:Work|bf:Work/bf:references/bf:Work">
+      <ind1 default="0">
+        <switch>
+          <case test="local-name(..)='indexedIn' and bf:note/bf:Note[bf:noteType='Coverage']">2</case>
+          <case test="local-name(..)='references' and bf:note/bf:Note[bf:noteType='Location']">4</case>
+          <case test="local-name(..)='references'">3</case>
+        </switch>
+      </ind1>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <select xpath="bf:title/*">
+          <switch>
+            <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+            <case test="default"><select xpath="rdfs:label"/></case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:note/bf:Note[bf:noteType='Coverage']/rdfs:label"/>
+      </sf>
+      <sf code="c" repeatable="false">
+        <select xpath="bf:note/bf:Note[bf:noteType='Location']/rdfs:label"/>
+      </sf>
+      <sf code="x" repeatable="false">
+        <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
+      </sf>
+    </context>
+  </df>
+
   <df tag="511">
     <context xpath="bf:Instance/bf:credits[starts-with(text(),'Cast:')]">
       <ind1 default="1"/>

@@ -90,6 +90,21 @@
               test="//marc:datafield[@tag='508'][1]/marc:subfield[@code='a'] = 'Producer, Joseph N. Ermolieff ; director, Lesley Selander ; screenplay, Theodore St. John ; music director, Michel Michelet.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 510">
+    <x:context href="../data/5XX/510.xml"/>
+    <x:expect label="generate 510" test="count(//marc:datafield[@tag='510']) = 1"/>
+    <x:expect label="ind1 from class of property"
+              test="//marc:datafield[@tag='510'][1]/@ind1 = '2'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='510'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from title"
+              test="//marc:datafield[@tag='510'][1]/marc:subfield[@code='a'] = 'Index Medicus'"/>
+    <x:expect label="$b from coverage note"
+              test="//marc:datafield[@tag='510'][1]/marc:subfield[@code='b'] = 'v1n1, 1984-'"/>
+    <x:expect label="$x from Issn"
+              test="//marc:datafield[@tag='510'][1]/marc:subfield[@code='x'] = '0019-3879'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 511">
     <x:context href="../data/5XX/511.xml"/>
     <x:expect label="generate 511 from bf:credits property with 'Cast:' display constant"
