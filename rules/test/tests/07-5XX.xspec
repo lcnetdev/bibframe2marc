@@ -36,6 +36,21 @@
               test="//marc:datafield[@tag='501'][1]/marc:subfield[@code='a'] = 'With: Peer Gynt (Suite) no. 1-2 / Edvard Grieg -- Till Eulenspiegels lustige Streiche / Richard Strauss.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 502">
+    <x:context href="../data/5XX/502.xml"/>
+    <x:expect label="generate 502" test="count(//marc:datafield[@tag='502']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='502'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='502'][1]/@ind2 = ' '"/>
+    <x:expect label="$b from degree"
+              test="//marc:datafield[@tag='502'][1]/marc:subfield[@code='b'] = 'Ph.D'"/>
+    <x:expect label="$c from grantingInstitution"
+              test="//marc:datafield[@tag='502'][1]/marc:subfield[@code='c'] = 'University of Louisville'"/>
+    <x:expect label="$d from date"
+              test="//marc:datafield[@tag='502'][1]/marc:subfield[@code='d'] = '1997'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 505">
     <x:context href="../data/5XX/505.xml"/>
     <x:expect label="generate 505 from bf:tableOfContents property"
