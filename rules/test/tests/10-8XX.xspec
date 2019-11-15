@@ -5,6 +5,70 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
+  <x:scenario label="MARC 800">
+    <x:context href="../data/8XX/800.xml"/>
+    <x:expect label="generate 800" test="count(//marc:datafield[@tag='800']) = 1"/>
+    <x:expect label="ind1 from class of agent"
+              test="//marc:datafield[@tag='800'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='800'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label of agent"
+              test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='a'] = 'Snicket, Lemony.'"/>
+    <x:expect label="$0 from URI of agent"
+              test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='0'][1] = 'http://id.loc.gov/authorities/names/n99020360'"/>
+    <x:expect label="$4 from URI of role"
+              test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='4'] = 'http://id.loc.gov/vocabulary/relators/ctb'"/>
+    <x:expect label="$t from title"
+              test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='t'] = 'Series of unfortunate events (Recorded Books, Inc.)'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 810">
+    <x:context href="../data/8XX/810.xml"/>
+    <x:expect label="generate 810" test="count(//marc:datafield[@tag='810'])  = 1"/>
+    <x:expect label="ind1 from class of agent"
+              test="//marc:datafield[@tag='810'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='810'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from NameElement or label"
+              test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='a'] = 'New York Academy of Medicine.'"/>
+    <x:expect label="$b from subsequent NameElements"
+              test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='b'] = 'Library'"/>
+    <x:expect label="$0 from URI of agent"
+              test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='0'][1] = 'http://id.loc.gov/authorities/names/n83826031'"/>
+    <x:expect label="$t from title"
+              test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='t'] = 'Journal of the New York Academy of Medicine'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 811">
+    <x:context href="../data/8XX/811.xml"/>
+    <x:expect label="generate 811" test="count(//marc:datafield[@tag='811']) = 1"/>
+    <x:expect label="ind1 default to '2'"
+              test="//marc:datafield[@tag='811'][1]/@ind1 = '2'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='811'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from first element in elementList or label"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='a'] = 'Codex Book Fair and Symposium.'"/>
+    <x:expect label="$c from GeographicElement"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
+    <x:expect label="$0 from URI of agent"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/no2009024971'"/>
+    <x:expect label="$t from title"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='t'] = 'Book fair guides'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 830">
+    <x:context href="../data/8XX/830.xml"/>
+    <x:expect label="generate 830" test="count(//marc:datafield[@tag='830']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='830'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 from titleSortKey"
+              test="//marc:datafield[@tag='830'][1]/@ind2 = '3'"/>
+    <x:expect label="$a from mainTitle or label"
+              test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='a'] = 'Actualités-Service'"/>
+    <x:expect label="$n from partNumber"
+              test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='n'] = 'No 293 (Supplement)'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 852">
     <x:context href="../data/8XX/852.xml"/>
     <x:expect label="generate 852" test="count(//marc:datafield[@tag='852']) = 1"/>
