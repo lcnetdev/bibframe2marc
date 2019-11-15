@@ -25,6 +25,17 @@
     <x:expect label="generate 500" test="count(//marc:datafield[@tag='500']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 501">
+    <x:context href="../data/5XX/501.xml"/>
+    <x:expect label="generate 501" test="count(//marc:datafield[@tag='501']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='501'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='501'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='501'][1]/marc:subfield[@code='a'] = 'With: Peer Gynt (Suite) no. 1-2 / Edvard Grieg -- Till Eulenspiegels lustige Streiche / Richard Strauss.'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 505">
     <x:context href="../data/5XX/505.xml"/>
     <x:expect label="generate 505 from bf:tableOfContents property"
