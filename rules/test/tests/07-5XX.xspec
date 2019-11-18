@@ -185,6 +185,18 @@
               test="//marc:datafield[@tag='522'][1]/marc:subfield[@code='a'] = 'Canada.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 524">
+    <x:context href="../data/5XX/524.xml"/>
+    <x:expect label="generate 524" test="count(//marc:datafield[@tag='524']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='524'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='524'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='524'][1]/marc:subfield[@code='a'] = 'James Hazen Hyde Papers, 1891-1941, New York Historical Society.'"/>
+  </x:scenario>
+
+
   <x:scenario label="MARC 525">
     <x:context href="../data/5XX/525.xml"/>
     <x:expect label="generate 525" test="count(//marc:datafield[@tag='525']) = 1"/>
