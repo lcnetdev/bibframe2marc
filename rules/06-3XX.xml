@@ -421,4 +421,53 @@
     </context>
   </df>
 
+  <!-- 385 and 521 -->
+  <select xpath="bf:Work/bf:intendedAudience">
+    <switch>
+      <case test="@rdf:resource or bf:IntendedAudience[@rdf:about or bf:demographicGroup or bf:source]">
+        <df tag="385">
+          <ind1 default = " "/>
+          <ind2 default = " "/>
+          <sf code="3" repeatable="false">
+            <select xpath="bf:IntendedAudience/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
+          <sf code="m" repeatable="false">
+            <select xpath="bf:IntendedAudience/bf:demographicGroup/bf:DemographicGroup/rdfs:label"/>
+          </sf>
+          <sf code="n" repeatable="false">
+            <select xpath="bf:IntendedAudience/bf:demographicGroup/@rdf:resource |
+                           bf:IntendedAudience/bf:demographicGroup/bf:DemographicGroup/@rdf:about"/>
+          </sf>
+          <sf code="a">
+            <select xpath="bf:IntendedAudience/rdfs:label"/>
+          </sf>
+          <sf code="2" repeatable="false">
+            <select xpath="bf:IntendedAudience/bf:source/bf:Source/rdfs:label"/>
+          </sf>
+          <sf code="0">
+            <select xpath="@rdf:resource|bf:IntendedAudience/@rdf:about"/>
+          </sf>
+        </df>
+      </case>
+      <case test="default">
+        <df tag="521">
+          <ind1 default = " ">
+            <switch>
+              <case test="bf:IntendedAudience/bf:note/bf:Note/rdfs:label = 'reading grade level'">0</case>
+              <case test="bf:IntendedAudience/bf:note/bf:Note/rdfs:label = 'interest age level'">1</case>
+              <case test="bf:IntendedAudience/bf:note/bf:Note/rdfs:label = 'interest grade level'">2</case>
+            </switch>
+          </ind1>
+          <ind2 default = " "/>
+          <sf code="3" repeatable="false">
+            <select xpath="bf:IntendedAudience/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
+          <sf code="a">
+            <select xpath="bf:IntendedAudience/rdfs:label"/>
+          </sf>
+        </df>
+      </case>
+    </switch>
+  </select>
+
 </rules>

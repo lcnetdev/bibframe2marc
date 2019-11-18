@@ -163,6 +163,17 @@
               test="//marc:datafield[@tag='520']/marc:subfield[@code='a'] = 'Following the yearly tradition, this release will feature an array of Grammy-nominated artists. The bestselling collection includes categories representing nominees for Record of the Year, Album of the Year, Song of the Year, and more.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 521">
+    <x:context href="../data/5XX/521.xml"/>
+    <x:expect label="generate 521" test="count(//marc:datafield[@tag='521']) = 1"/>
+    <x:expect label="ind1 from note"
+              test="//marc:datafield[@tag='521'][1]/@ind1 = '2'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='521'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='521'][1]/marc:subfield[@code='a'] = 'K-3. Follet Library Book Co.'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 525">
     <x:context href="../data/5XX/525.xml"/>
     <x:expect label="generate 525" test="count(//marc:datafield[@tag='525']) = 1"/>
