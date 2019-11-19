@@ -270,6 +270,21 @@
               test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='n'][2] = 'Published in: Argosy, 1919.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 536">
+    <x:context href="../data/5XX/536.xml"/>
+    <x:expect label="generate 536" test="count(//marc:datafield[@tag='536']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='536'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='536'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='536'][1]/marc:subfield[@code='a'] = 'Sponsored by the Advanced Research Projects Agency through the Office of Naval Research'"/>
+    <x:expect label="$b from 'Contract' label"
+              test="//marc:datafield[@tag='536'][1]/marc:subfield[@code='b'] = 'N00014-68-A-0245-0007'"/>
+    <x:expect label="$c from 'Grant' label"
+              test="//marc:datafield[@tag='536'][1]/marc:subfield[@code='c'] = 'ARPA Order No. 2616'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 538">
     <x:context href="../data/5XX/538.xml"/>
     <x:expect label="generate 538 from bf:systemRequirement property"

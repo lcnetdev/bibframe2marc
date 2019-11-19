@@ -74,6 +74,50 @@
         </df>
       </case>
 
+      <case test="local-name(../..)='Instance' and bf:noteType='funding information'">
+        <df tag="536">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <select xpath="rdfs:label">
+            <switch>
+              <case test="starts-with(.,'Contract:')">
+                <sf code="b">
+                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Contract:'))"/></transform>
+                </sf>
+              </case>
+              <case test="starts-with(.,'Grant:')">
+                <sf code="c">
+                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Grant:'))"/></transform>
+                </sf>
+              </case>
+              <case test="starts-with(.,'Program element:')">
+                <sf code="e">
+                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Program element:'))"/></transform>
+                </sf>
+              </case>
+              <case test="starts-with(.,'Project:')">
+                <sf code="f">
+                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Project:'))"/></transform>
+                </sf>
+              </case>
+              <case test="starts-with(.,'Task:')">
+                <sf code="g">
+                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Task:'))"/></transform>
+                </sf>
+              </case>
+              <case test="starts-with(.,'Work unit:')">
+                <sf code="h">
+                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Work unit:'))"/></transform>
+                </sf>
+              </case>
+              <case test="default">
+                <sf code="a"><select xpath="."/></sf>
+              </case>
+            </switch>
+          </select>
+        </df>
+      </case>
+
       <case test="default">
         <df tag="500">
           <ind1 default=" "/>
