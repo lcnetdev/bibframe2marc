@@ -166,6 +166,19 @@
         </df>
       </case>
 
+      <case test="local-name(../..)='Instance' and bf:noteType='related material'">
+        <df tag="581">
+          <ind1 default="8"/>
+          <ind2 default=" "/>
+          <sf code="a" repeatable="false">
+            <select xpath="rdfs:label"/>
+          </sf>
+          <sf code="z">
+            <select xpath="bf:identifiedBy/*[local-name()='Isbn' or rdf:type/rdf:resource='http://id.loc.gov/ontologies/bibframe/Isbn']/rdf:value"/>
+          </sf>
+        </df>
+      </case>
+
       <case test="default">
         <df tag="500">
           <ind1 default=" "/>
