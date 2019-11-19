@@ -352,4 +352,15 @@
               test="//marc:datafield[@tag='555'][1]/marc:subfield[@code='u'] = 'http://hdl.loc.gov/loc.mss/eadmss.ms996001'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 561">
+    <x:context href="../data/5XX/561.xml"/>
+    <x:expect label="generate 561" test="count(//marc:datafield[@tag='561']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='561'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='561'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from custodialHistory"
+              test="//marc:datafield[@tag='561'][1]/marc:subfield[@code='a'] = 'From the collection of L. McGarry, 1948-1957.'"/>
+  </x:scenario>
+
 </x:description>
