@@ -223,6 +223,17 @@
               test="//marc:datafield[@tag='530'][1]/marc:subfield[@code='u'] = 'http://www.bartleby.com/99/index.html'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 532">
+    <x:context href="../data/5XX/532.xml"/>
+    <x:expect label="generate 532" test="count(//marc:datafield[@tag='532']) = 1"/>
+    <x:expect label="ind1 default to '8'"
+              test="//marc:datafield[@tag='532'][1]/@ind1 = '8'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='532'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='532'][1]/marc:subfield[@code='a'] = 'Open captioning in French and English'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 538">
     <x:context href="../data/5XX/538.xml"/>
     <x:expect label="generate 538 from bf:systemRequirement property"
