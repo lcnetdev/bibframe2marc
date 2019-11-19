@@ -291,4 +291,15 @@
               test="//marc:datafield[@tag='538']/marc:subfield[@code='a'] = 'Blu-ray disc; requires Blu-ray player.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 541">
+    <x:context href="../data/5XX/541.xml"/>
+    <x:expect label="generate 541" test="count(//marc:datafield[@tag='541']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='541'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='541'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='541'][1]/marc:subfield[@code='a'] = 'Literary rights of Carrie Chapman Catt have been dedicated to the public.'"/>
+  </x:scenario>
+
 </x:description>
