@@ -234,6 +234,27 @@
               test="//marc:datafield[@tag='532'][1]/marc:subfield[@code='a'] = 'Open captioning in French and English'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 533">
+    <x:context href="../data/5XX/533.xml"/>
+    <x:expect label="generate 533" test="count(//marc:datafield[@tag='533']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='533'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='533'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from carrier"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='a'] = 'Microfilm'"/>
+    <x:expect label="$b from ProvisionActivity/place"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='b'] = 'Millwood, N.Y.'"/>
+    <x:expect label="$c from ProvisionActivity/agent"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='c'] = 'KTO Microfilm'"/>
+    <x:expect label="$d from ProvisionActivity/date"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='d'] = '1966'"/>
+    <x:expect label="$e from extent"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='e'] = '5 microfilm reels : negative ; 35 mm.'"/>
+    <x:expect label="$n from bflc:appliesTo"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='n'] = '1950-1954'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 538">
     <x:context href="../data/5XX/538.xml"/>
     <x:expect label="generate 538 from bf:systemRequirement property"

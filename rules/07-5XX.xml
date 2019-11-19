@@ -303,6 +303,34 @@
     </context>
   </df>
 
+  <df tag="533">
+    <context xpath="//bf:Instance[@rdf:about=//bf:Instance/bf:hasReproduction/@rdf:resource]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <select xpath="bf:carrier/bf:Carrier/rdfs:label"/>
+      </sf>
+      <sf code="b">
+        <select xpath="bf:provisionActivity/bf:ProvisionActivity/bf:place/*/rdfs:label"/>
+      </sf>
+      <sf code="c">
+        <select xpath="bf:provisionActivity/bf:ProvisionActivity/bf:agent/*/rdfs:label"/>
+      </sf>
+      <sf code="d" repeatable="false">
+        <select xpath="bf:provisionActivity/bf:ProvisionActivity/bf:date"/>
+      </sf>
+      <sf code="e" repeatable="false">
+        <select xpath="bf:extent/bf:Extent/rdfs:label"/>
+      </sf>
+      <sf code="f">
+        <select xpath="bf:seriesStatement"/>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:note/bf:Note/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
   <df tag="538">
     <context xpath="bf:Instance/bf:systemRequirement/bf:SystemRequirement">
       <ind1 default=" "/>
