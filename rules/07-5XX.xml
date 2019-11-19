@@ -331,6 +331,43 @@
     </context>
   </df>
 
+  <df tag="534">
+    <context xpath="//bf:Instance[@rdf:about=//bf:Instance/bf:originalVersion/@rdf:resource]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <select xpath="bf:contribution/*/bf:agent/*/rdfs:label"/>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:editionStatement"/>
+      </sf>
+      <sf code="c" repeatable="false">
+        <select xpath="bf:provisionActivityStatement"/>
+      </sf>
+      <sf code="e" repeatable="false">
+        <select xpath="bf:extent/bf:Extent/rdfs:label"/>
+      </sf>
+      <sf code="f">
+        <select xpath="bf:seriesStatement"/>
+      </sf>
+      <sf code="k">
+        <select xpath="bf:title/*[local-name='KeyTitle' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/KeyTitle']/bf:mainTitle"/>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:note/bf:Note/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="t" repeatable="false">
+        <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:mainTitle"/>
+      </sf>
+      <sf code="x">
+        <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
+      </sf>
+      <sf code="z">
+        <select xpath="bf:identifiedBy/*[local-name()='Isbn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isbn']/rdf:value"/>
+      </sf>
+    </context>
+  </df>
+
   <df tag="538">
     <context xpath="bf:Instance/bf:systemRequirement/bf:SystemRequirement">
       <ind1 default=" "/>
