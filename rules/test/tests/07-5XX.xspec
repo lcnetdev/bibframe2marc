@@ -363,4 +363,15 @@
               test="//marc:datafield[@tag='561'][1]/marc:subfield[@code='a'] = 'From the collection of L. McGarry, 1948-1957.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 563">
+    <x:context href="../data/5XX/563.xml"/>
+    <x:expect label="generate 563" test="count(//marc:datafield[@tag='563']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='563'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='563'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='563'][1]/marc:subfield[@code='a'] = 'Gold-tooled morocco binding by Benjamin West, ca. 1840.'"/>
+  </x:scenario>
+
 </x:description>
