@@ -339,4 +339,17 @@
               test="//marc:datafield[@tag='550'][1]/marc:subfield[@code='a'] = 'Organ of the Potomac-side Naturalists'' Club.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 555">
+    <x:context href="../data/5XX/555.xml"/>
+    <x:expect label="generate 555" test="count(//marc:datafield[@tag='555']) = 1"/>
+    <x:expect label="ind1 from noteType"
+              test="//marc:datafield[@tag='555'][1]/@ind1 = '0'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='555'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='555'][1]/marc:subfield[@code='a'] = 'Available in the Manuscript Reading Room and on Internet.'"/>
+    <x:expect label="$u from label with datatype anyURI"
+              test="//marc:datafield[@tag='555'][1]/marc:subfield[@code='u'] = 'http://hdl.loc.gov/loc.mss/eadmss.ms996001'"/>
+  </x:scenario>
+
 </x:description>

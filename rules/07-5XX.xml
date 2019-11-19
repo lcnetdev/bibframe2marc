@@ -147,6 +147,25 @@
         </df>
       </case>
 
+      <case test="local-name(../..)='Instance' and
+                  (bf:noteType='index' or bf:noteType='finding aid')">
+        <df tag="555">
+          <ind1 default="8">
+            <switch>
+              <case test="bf:noteType='index'"><text> </text></case>
+              <case test="bf:noteType='finding aid'">0</case>
+            </switch>
+          </ind1>
+          <ind2 default=" "/>
+          <sf code="a" repeatable="false">
+            <select xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]"/>
+          </sf>
+          <sf code="u">
+            <select xpath="rdfs:label[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+          </sf>
+        </df>
+      </case>
+
       <case test="default">
         <df tag="500">
           <ind1 default=" "/>
