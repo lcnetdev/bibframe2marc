@@ -302,4 +302,17 @@
               test="//marc:datafield[@tag='541'][1]/marc:subfield[@code='a'] = 'Literary rights of Carrie Chapman Catt have been dedicated to the public.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 545">
+    <x:context href="../data/5XX/545.xml"/>
+    <x:expect label="generate 545" test="count(//marc:datafield[@tag='545']) = 1"/>
+    <x:expect label="ind1 from noteType"
+              test="//marc:datafield[@tag='545'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='545'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='545'][1]/marc:subfield[@code='a'] = 'The Faribault State School and Hospital provided care, treatment, training, and a variety of other services to mentally retarded individuals and their families.'"/>
+    <x:expect label="$u from label with datatype anyURI"
+              test="//marc:datafield[@tag='545'][1]/marc:subfield[@code='u'] = 'http://www.mnhs.org/library/findaids/80881.html'"/>
+  </x:scenario>
+
 </x:description>

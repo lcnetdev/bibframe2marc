@@ -118,6 +118,25 @@
         </df>
       </case>
 
+      <case test="local-name(../..)='Instance' and
+                  (bf:noteType='biographical data' or bf:noteType='administrative history')">
+        <df tag="545">
+          <ind1 default=" ">
+            <switch>
+              <case test="bf:noteType='biographical data'">0</case>
+              <case test="bf:noteType='administrative history'">1</case>
+            </switch>
+          </ind1>
+          <ind2 default=" "/>
+          <sf code="a" repeatable="false">
+            <select xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]"/>
+          </sf>
+          <sf code="u">
+            <select xpath="rdfs:label[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+          </sf>
+        </df>
+      </case>
+
       <case test="default">
         <df tag="500">
           <ind1 default=" "/>
