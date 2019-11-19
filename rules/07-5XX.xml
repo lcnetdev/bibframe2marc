@@ -261,6 +261,40 @@
     </context>
   </df>
 
+  <!-- 530/776 -->
+  <select xpath="//bf:Instance[@rdf:about=//bf:Instance/bf:otherPhysicalFormat/@rdf:resource]">
+    <switch>
+      <!-- 776 -->
+      <case test="bf:contribution or bf:editionStatement or bf:provisionActivityStatement or
+                  bf:part or bf:extent or bflc:relationship or bf:seriesStatement"/>
+      <!-- 530 -->
+      <case test="default">
+        <df tag="530">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <sf code="3" repeatable="false">
+            <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
+          <sf code="a" repeatable="false">
+            <select xpath="bf:note/bf:Note/rdfs:label"/>
+          </sf>
+          <sf code="b" repeatable="false">
+            <select xpath="bf:acquisitionSource/bf:AcquisitionSource/rdfs:label"/>
+          </sf>
+          <sf code="c" repeatable="false">
+            <select xpath="bf:acquisitionTerms"/>
+          </sf>
+          <sf code="d" repeatable="false">
+            <select xpath="bf:identifiedBy/*[local-name()='StockNumber' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/StockNumber']/rdf:value"/>
+          </sf>
+          <sf code="u">
+            <select xpath="bf:hasItem/bf:Item/bf:electronicLocator"/>
+          </sf>
+        </df>
+      </case>
+    </switch>
+  </select>
+
   <df tag="538">
     <context xpath="bf:Instance/bf:systemRequirement/bf:SystemRequirement">
       <ind1 default=" "/>
