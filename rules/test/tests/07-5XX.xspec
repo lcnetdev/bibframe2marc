@@ -315,4 +315,17 @@
               test="//marc:datafield[@tag='545'][1]/marc:subfield[@code='u'] = 'http://www.mnhs.org/library/findaids/80881.html'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 546">
+    <x:context href="../data/5XX/546.xml"/>
+    <x:expect label="generate 546" test="count(//marc:datafield[@tag='546']) = 2"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='546'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='546'][2]/@ind2 = ' '"/>
+    <x:expect label="$a from language note"
+              test="//marc:datafield[@tag='546'][1]/marc:subfield[@code='a'] = 'German'"/>
+    <x:expect label="$b from notation"
+              test="//marc:datafield[@tag='546'][2]/marc:subfield[@code='b'] = 'Fraktur'"/>
+  </x:scenario>
+
 </x:description>
