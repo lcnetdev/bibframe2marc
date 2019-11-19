@@ -328,4 +328,15 @@
               test="//marc:datafield[@tag='546'][2]/marc:subfield[@code='b'] = 'Fraktur'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 550">
+    <x:context href="../data/5XX/550.xml"/>
+    <x:expect label="generate 550" test="count(//marc:datafield[@tag='550']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='550'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='550'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='550'][1]/marc:subfield[@code='a'] = 'Organ of the Potomac-side Naturalists'' Club.'"/>
+  </x:scenario>
+
 </x:description>

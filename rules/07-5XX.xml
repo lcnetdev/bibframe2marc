@@ -137,6 +137,16 @@
         </df>
       </case>
 
+      <case test="local-name(../..)='Instance' and bf:noteType='issuing body'">
+        <df tag="550">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <sf code="a" repeatable="false">
+            <select xpath="rdfs:label"/>
+          </sf>
+        </df>
+      </case>
+
       <case test="default">
         <df tag="500">
           <ind1 default=" "/>
