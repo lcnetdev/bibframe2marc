@@ -385,4 +385,28 @@
               test="//marc:datafield[@tag='581'][1]/marc:subfield[@code='a'] ='Reproduction: Antiques, June 1952, p. 76.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 581">
+    <x:context href="../data/5XX/581.xml"/>
+    <x:expect label="generate 581" test="count(//marc:datafield[@tag='581']) = 1"/>
+    <x:expect label="ind1 default to '8'"
+              test="//marc:datafield[@tag='581'][1]/@ind1 = '8'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='581'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='581'][1]/marc:subfield[@code='a'] ='Reproduction: Antiques, June 1952, p. 76.'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 583">
+    <x:context href="../data/5XX/583.xml"/>
+    <x:expect label="generate 583" test="count(//marc:datafield[@tag='583']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='583'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='583'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='583'][1]/marc:subfield[@code='a'] ='transfer university archives'"/>
+    <x:expect label="$c from date"
+              test="//marc:datafield[@tag='583'][1]/marc:subfield[@code='c'] = '19770613'"/>
+  </x:scenario>
+
 </x:description>

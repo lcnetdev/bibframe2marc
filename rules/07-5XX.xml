@@ -566,4 +566,45 @@
     </context>
   </df>
 
+  <df tag="583">
+    <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='action']">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a" repeatable="false">
+        <transform>
+          <xsl:variable name="vLabel">
+            <xsl:for-each select="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
+              <xsl:value-of select="concat(.,' ')"/>
+            </xsl:for-each>
+          </xsl:variable>
+          <xsl:value-of select="normalize-space($vLabel)"/>
+        </transform>
+      </sf>
+      <sf code="c">
+        <select xpath="bf:date"/>
+      </sf>
+      <sf code="k">
+        <select xpath="bf:agent/*/rdfs:label"/>
+      </sf>
+      <sf code="l">
+        <select xpath="bf:status/*/rdfs:label"/>
+      </sf>
+      <sf code="u">
+        <select xpath="rdfs:label[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+      </sf>
+      <sf code="z">
+        <select xpath="bf:note/bf:Note/rdfs:label"/>
+      </sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+      <sf code="5">
+        <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
+      </sf>
+    </context>
+  </df>
+
 </rules>
