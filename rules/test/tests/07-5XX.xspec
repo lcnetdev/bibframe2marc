@@ -424,4 +424,15 @@
               test="//marc:datafield[@tag='585'][1]/marc:subfield[@code='a'] = 'Exhibited: Visions of City &amp; Country: Prints and Photographs of Nineteenth-Century France, organized by Worchester Art Museum and the American Federation of Arts, 1982.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 586">
+    <x:context href="../data/5XX/586.xml"/>
+    <x:expect label="generate 586" test="count(//marc:datafield[@tag='586']) = 1"/>
+    <x:expect label="ind1 default to '8'"
+              test="//marc:datafield[@tag='586'][1]/@ind1 = '8'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='586'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from awards"
+              test="//marc:datafield[@tag='586'][1]/marc:subfield[@code='a'] = 'Academy Award for Best Picture, 1987'"/>
+  </x:scenario>
+
 </x:description>
