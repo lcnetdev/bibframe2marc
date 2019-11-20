@@ -418,6 +418,9 @@
       <sf code="a" repeatable="false">
         <select xpath="bf:carrier/bf:Carrier/rdfs:label"/>
       </sf>
+      <sf code="m">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
       <sf code="b">
         <select xpath="bf:provisionActivity/bf:ProvisionActivity/bf:place/*/rdfs:label"/>
       </sf>
@@ -434,7 +437,7 @@
         <select xpath="bf:seriesStatement"/>
       </sf>
       <sf code="n">
-        <select xpath="bf:note/bf:Note/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
     </context>
   </df>
@@ -443,6 +446,9 @@
     <context xpath="//bf:Instance[@rdf:about=//bf:Instance/bf:originalVersion/@rdf:resource]">
       <ind1 default=" "/>
       <ind2 default=" "/>
+      <sf code="p">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
       <sf code="a" repeatable="false">
         <select xpath="bf:contribution/*/bf:agent/*/rdfs:label"/>
       </sf>
@@ -462,7 +468,7 @@
         <select xpath="bf:title/*[local-name='KeyTitle' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/KeyTitle']/bf:mainTitle"/>
       </sf>
       <sf code="n">
-        <select xpath="bf:note/bf:Note/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
       <sf code="t" repeatable="false">
         <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:mainTitle"/>

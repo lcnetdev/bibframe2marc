@@ -251,8 +251,8 @@
               test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='d'] = '1966'"/>
     <x:expect label="$e from extent"
               test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='e'] = '5 microfilm reels : negative ; 35 mm.'"/>
-    <x:expect label="$n from bflc:appliesTo"
-              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='n'] = '1950-1954'"/>
+    <x:expect label="$m from bflc:appliesTo"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='m'] = '1950-1954'"/>
   </x:scenario>
 
   <x:scenario label="MARC 534">
@@ -264,10 +264,10 @@
               test="//marc:datafield[@tag='534'][1]/@ind2 = ' '"/>
     <x:expect label="$a from contribution"
               test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='a'] = 'Frederick, John'"/>
-    <x:expect label="$n from bflc:appliesTo"
-              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='n'][1] = 'Originally issued'"/>
-    <x:expect label="...or from note"
-              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='n'][2] = 'Published in: Argosy, 1919.'"/>
+    <x:expect label="$p from bflc:appliesTo"
+              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='p'] = 'Originally issued'"/>
+    <x:expect label="$n from from note"
+              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='n'] = 'Published in: Argosy, 1919.'"/>
   </x:scenario>
 
   <x:scenario label="MARC 536">
