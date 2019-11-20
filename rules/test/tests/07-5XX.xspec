@@ -413,4 +413,15 @@
               test="//marc:datafield[@tag='583'][1]/marc:subfield[@code='c'] = '19770613'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 585">
+    <x:context href="../data/5XX/585.xml"/>
+    <x:expect label="generate 585" test="count(//marc:datafield[@tag='585']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='585'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='585'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='585'][1]/marc:subfield[@code='a'] = 'Exhibited: Visions of City &amp; Country: Prints and Photographs of Nineteenth-Century France, organized by Worchester Art Museum and the American Federation of Arts, 1982.'"/>
+  </x:scenario>
+
 </x:description>
