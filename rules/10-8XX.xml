@@ -480,4 +480,31 @@
     </context>
   </df>
 
+  <!-- default 884 for all records -->
+  <df tag="884">
+    <ind1 default=" "/>
+    <ind2 default=" "/>
+    <sf code="a"><transform><xsl:value-of select="$vCurrentVersion"/></transform></sf>
+    <switch>
+      <case test="$pGenerationDatestamp">
+        <sf code="g"><transform><xsl:value-of select="$pGenerationDatestamp"/></transform></sf>
+      </case>
+    </switch>
+    <switch>
+      <case test="$pSourceRecordId">
+        <sf code="k"><transform><xsl:value-of select="$pSourceRecordId"/></transform></sf>
+      </case>
+    </switch>
+    <switch>
+      <case test="$pConversionAgency">
+        <sf code="q"><transform><xsl:value-of select="$pConversionAgency"/></transform></sf>
+      </case>
+    </switch>
+    <switch>
+      <case test="$pGenerationUri">
+        <sf code="u"><transform><xsl:value-of select="$pGenerationUri"/></transform></sf>
+      </case>
+    </switch>
+  </df>
+
 </rules>

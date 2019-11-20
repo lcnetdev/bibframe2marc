@@ -21,6 +21,44 @@
     </context>
   </df>
 
+  <!-- 052/522 -->
+  <select xpath="bf:Work/bf:geographicCoverage">
+    <switch>
+      <case test="bf:GeographicCoverage[bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/lcc' or
+                  bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/lcc' or
+                  bf:source/bf:Source/rdfs:label='lcc']">
+        <df tag="052">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <sf code="a" repeatable="false">
+            <select xpath="bf:GeographicCoverage/rdfs:label"/>
+          </sf>
+          <sf code="0"><select xpath="bf:GeographicCoverage/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+          <sf code="0">
+            <select xpath="bf:GeographicCoverage/bf:identifiedBy/bf:Identifier">
+              <transform>
+                <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                <xsl:choose>
+                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                </xsl:choose>
+              </transform>
+            </select>
+          </sf>
+        </df>
+      </case>
+      <case test="not(@rdf:resource or bf:GeographicCoverage/@rdf:about or bf:GeographicCoverage/rdf:value)">
+        <df tag="522">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <sf code="a" repeatable="false">
+            <select xpath="bf:GeographicCoverage/rdfs:label"/>
+          </sf>
+        </df>
+      </case>
+    </switch>
+  </select>
+
   <df tag="060">
     <context xpath="bf:Work/bf:classification/bf:ClassificationNlm">
       <ind1 default=" "/>

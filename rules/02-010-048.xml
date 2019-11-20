@@ -313,7 +313,7 @@
   </df>
 
   <df tag="033">
-    <context xpath="bf:Work/bf:capture/bf:Capture">
+    <context xpath="bf:Work/bf:capture/bf:Capture[bf:date or bf:place]">
       <ind1 default=" ">
         <switch>
           <case test="count(bf:date)=1">
@@ -752,11 +752,17 @@
   </switch>
 
   <switch>
-    <case test="bf:Work/bf:geographicCoverage">
+    <case test="bf:Work/bf:geographicCoverage[not(bf:GeographicCoverage/bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/lcc') and
+                not(bf:GeographicCoverage/bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/lcc') and
+                not(bf:GeographicCoverage/bf:source/bf:Source/rdfs:label='lcc') and
+                (@rdf:resource or bf:GeographicCoverage/@rdf:about or bf:GeographicCoverage/rdf:value)]">
       <df tag="043">
         <ind1 default=" "/>
         <ind2 default=" "/>
-        <select xpath="bf:Work/bf:geographicCoverage">
+        <select xpath="bf:Work/bf:geographicCoverage[not(bf:GeographicCoverage/bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/lcc') and
+                       not(bf:GeographicCoverage/bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/lcc') and
+                       not(bf:GeographicCoverage/bf:source/bf:Source/rdfs:label='lcc') and
+                       (@rdf:resource or bf:GeographicCoverage/@rdf:about or bf:GeographicCoverage/rdf:value)]">
           <switch>
             <case test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/geographicAreas/')">
               <sf code="a">
@@ -781,10 +787,10 @@
               </sf>
             </case>
             <case test="bf:GeographicCoverage/bf:source/bf:Source/rdfs:label='ISO 3166'">
-              <sf code="c"><select xpath="bf:GeographicCoverage/rdfs:label"/></sf>
+              <sf code="c"><select xpath="bf:GeographicCoverage/rdf:value"/></sf>
             </case>
             <case test="default">
-              <sf code="b"><select xpath="bf:GeographicCoverage/rdfs:label"/></sf>
+              <sf code="b"><select xpath="bf:GeographicCoverage/rdf:value"/></sf>
               <sf code="2"><select xpath="bf:GeographicCoverage/bf:source/bf:Source/rdfs:label"/></sf>
             </case>
           </switch>
