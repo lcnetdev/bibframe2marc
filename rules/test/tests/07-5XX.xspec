@@ -435,4 +435,15 @@
               test="//marc:datafield[@tag='586'][1]/marc:subfield[@code='a'] = 'Academy Award for Best Picture, 1987'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 588">
+    <x:context href="../data/5XX/588.xml"/>
+    <x:expect label="generate 588" test="count(//marc:datafield[@tag='588']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='588'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='588'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='588'][1]/marc:subfield[@code='a'] = 'Description based on: Vol. XVIIII, no. 2 (winter 2018); title from cover.'"/>
+  </x:scenario>
+
 </x:description>
