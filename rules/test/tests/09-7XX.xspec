@@ -89,4 +89,21 @@
               test="//marc:datafield[@tag='730'][1]/marc:subfield[@code='n'] = 'No 293 (Supplement)'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 752">
+    <x:context href="../data/7XX/752.xml"/>
+    <x:expect label="generate 752" test="count(//marc:datafield[@tag='752']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='752'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='752'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from Country"
+              test="//marc:datafield[@tag='752'][1]/marc:subfield[@code='a'] = 'Japan'"/>
+    <x:expect label="$b from State"
+              test="//marc:datafield[@tag='752'][1]/marc:subfield[@code='b'] = 'Hokkaido'"/>
+    <x:expect label="$g from Region"
+              test="//marc:datafield[@tag='752'][1]/marc:subfield[@code='g'] = 'Asahi-dake'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='752'][1]/marc:subfield[@code='2'] = 'pemracs'"/>
+  </x:scenario>
+
 </x:description>
