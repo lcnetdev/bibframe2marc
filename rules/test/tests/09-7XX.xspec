@@ -106,4 +106,15 @@
               test="//marc:datafield[@tag='752'][1]/marc:subfield[@code='2'] = 'pemracs'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 753">
+    <x:context href="../data/7XX/753.xml"/>
+    <x:expect label="generate 753" test="count(//marc:datafield[@tag='753']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='753'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='753'][1]/@ind2 = ' '"/>
+    <x:expect label="$c from OperatingSystem"
+              test="//marc:datafield[@tag='753'][1]/marc:subfield[@code='c'] = 'Windows 98'"/>
+  </x:scenario>
+
 </x:description>

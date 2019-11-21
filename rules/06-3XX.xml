@@ -234,7 +234,11 @@
           <!-- text may be in a literal or in a SystemRequirement object -->
           <switch>
             <case test="bf:SystemRequirement">
-              <sf code="i"><select xpath="bf:SystemRequirement/rdfs:label"/></sf>
+              <switch>
+                <case test="not(contains(bf:SystemRequirement/rdf:type/@rdf:resource,'bflc'))">
+                  <sf code="i"><select xpath="bf:SystemRequirement/rdfs:label"/></sf>
+                </case>
+              </switch>
             </case>
             <case test="default">
               <sf code="i"><select xpath="."/></sf>

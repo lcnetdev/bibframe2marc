@@ -610,6 +610,42 @@
     </context>
   </df>
 
+  <df tag="753">
+    <context xpath="bf:Instance/bf:systemRequirement/*[
+                    local-name() = 'MachineModel' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/MachineModel' or
+                    local-name() = 'ProgrammingLanguage' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/ProgrammingLanguage' or
+                    local-name() = 'OperatingSystem' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/OperatingSystem']">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="local-name() = 'MachineModel' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/MachineModel'">
+          <sf code="a"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name() = 'ProgrammingLanguage' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/ProgrammingLanguage'">
+          <sf code="b"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name() = 'OperatingSystem' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/OperatingSystem'">
+          <sf code="c"><select xpath="rdfs:label"/></sf>
+        </case>
+      </switch>
+      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
   <!-- Rules for 776 coded with 530 -->
 
 </rules>
