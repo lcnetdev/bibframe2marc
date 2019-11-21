@@ -231,7 +231,15 @@
           <sf code="g"><select xpath="rdfs:label"/></sf>
         </case>
         <case test="local-name()='systemRequirement'">
-          <sf code="i"><select xpath="."/></sf>
+          <!-- text may be in a literal or in a SystemRequirement object -->
+          <switch>
+            <case test="bf:SystemRequirement">
+              <sf code="i"><select xpath="bf:SystemRequirement/rdfs:label"/></sf>
+            </case>
+            <case test="default">
+              <sf code="i"><select xpath="."/></sf>
+            </case>
+          </switch>
         </case>
         <case test="local-name()='Generation'">
           <sf code="j"><select xpath="rdfs:label"/></sf>
