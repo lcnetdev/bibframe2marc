@@ -529,6 +529,9 @@
         <xslt:choose>
           <xslt:when test="position() = 1 or $repeatable != 'false'">
             <xsl:for-each select="{@xpath}">
+              <xslt:for-each select="bf2marc:var">
+                <xsl:variable name="{@name}" select="{@xpath}"/>
+              </xslt:for-each>
               <xslt:choose>
                 <xslt:when test="$repeatable = 'false'">
                   <xsl:choose>
