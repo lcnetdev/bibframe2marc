@@ -493,6 +493,19 @@
       </x:expect>
     </x:scenario>
 
+    <x:scenario label="Select with variable">
+      <x:context mode="fieldTemplate">
+        <bf2marc:select xpath="rdfs:label">
+          <bf2marc:var name="vTestVar" xpath="'some value'"/>
+        </bf2marc:select>
+      </x:context>
+      <x:expect label="...should generate an xsl variable definition">
+        <xslt:for-each select="rdfs:label">
+          <xslt:variable name="vTestVar" select="'some value'"/>
+        </xslt:for-each>
+      </x:expect>
+    </x:scenario>
+
     <x:scenario label="select within sf element">
       <x:context mode="fieldTemplate">
         <bf2marc:sf code="a">
