@@ -117,4 +117,21 @@
               test="//marc:datafield[@tag='753'][1]/marc:subfield[@code='c'] = 'Windows 98'"/>
   </x:scenario>
 
+  <!-- these are pretty skeletal tests. All linking entries are processed more or less the same -->
+  <x:scenario label="MARC 7XX linking entries from Work">
+    <x:context href="../data/7XX/7XX-Links-Work.xml"/>
+    <x:expect label="generate linking entry from appropriate relatedTo subclass"
+              test="count(//marc:datafield[@tag='765']) = 1"/>
+    <x:expect label="ind1 default to '0'"
+              test="//marc:datafield[@tag='765'][1]/@ind1 = '0'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='765'][1]/@ind2 = ' '"/>
+    <x:expect label="$t from Instance title"
+              test="//marc:datafield[@tag='765'][1]/marc:subfield[@code='t'] = 'Mashinovedenie'"/>
+    <x:expect label="$w from Lccn"
+              test="//marc:datafield[@tag='765'][1]/marc:subfield[@code='w'][1] = '(DLC)   78648457 '"/>
+    <x:expect label="...or from Identifier"
+              test="//marc:datafield[@tag='765'][1]/marc:subfield[@code='w'][2] = '(OCoLC)4798581'"/>
+  </x:scenario>
+
 </x:description>
