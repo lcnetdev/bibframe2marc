@@ -10,7 +10,8 @@
 
   <!-- added entries -->
   <select xpath="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])] |
-                 bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution]">
+                 bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution] |
+                 bf:Work/bf:hasPart[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution]">
     <switch>
       <!-- 710 -->
       <case test="bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or
@@ -27,7 +28,11 @@
                           bf:contribution/*/bf:agent/*[local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']]">1</case>
             </switch>
           </ind1>
-          <ind2 default=" "/>
+          <ind2 default=" ">
+            <switch>
+              <case test="local-name(parent::*)='hasPart'">2</case>
+            </switch>
+          </ind2>
           <sf code="3" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
@@ -147,7 +152,11 @@
                   local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']]">
         <df tag="711">
           <ind1 default="2"/>
-          <ind2 default=" "/>
+          <ind2 default=" ">
+            <switch>
+              <case test="local-name(parent::*)='hasPart'">2</case>
+            </switch>
+          </ind2>
           <sf code="3" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
@@ -282,7 +291,11 @@
                           bf:contribution/*/bf:agent/*[local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName']]">3</case>
             </switch>
           </ind1>
-          <ind2 default=" "/>
+          <ind2 default=" ">
+            <switch>
+              <case test="local-name(parent::*)='hasPart'">2</case>
+            </switch>
+          </ind2>
           <sf code="3" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
@@ -442,7 +455,11 @@
           </case>
         </switch>
       </ind1>
-      <ind2 default=" "/>
+      <ind2 default=" ">
+        <switch>
+          <case test="local-name(parent::*)='hasPart'">2</case>
+        </switch>
+      </ind2>
       <sf code="3" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
@@ -646,6 +663,173 @@
     </context>
   </df>
 
+  <!-- Linking entries -->
+  <df tag="$vLinkTagFromWork">
+    <context xpath="bf:Instance/bf:hasSeries/bf:Work |
+                    bf:Instance/bf:hasSubseries/bf:Work |
+                    bf:Work/bf:translationOf/bf:Work |
+                    bf:Work/bf:translation/bf:Work |
+                    bf:Work/bf:supplement/bf:Work |
+                    bf:Work/bf:supplementTo/bf:Work |
+                    bf:Work/bf:partOf/bf:Work |
+                    bf:Work/bf:otherEdition/bf:Work |
+                    bf:Instance/bf:issuedWith/bf:Work |
+                    bf:Work/bf:continues/bf:Work |
+                    bf:Work/bf:continuesInPart/bf:Work |
+                    bf:Work/bf:precededBy/bf:Work |
+                    bf:Work/bf:mergerOf/bf:Work |
+                    bf:Work/bf:absorbed/bf:Work |
+                    bf:Work/bf:separatedBy/bf:Work |
+                    bf:Work/bf:continuedBy/bf:Work |
+                    bf:Work/bf:continuedInPartBy/bf:Work |
+                    bf:Work/bf:succeededFrom/bf:Work |
+                    bf:Work/bf:absorbedBy/bf:Work |
+                    bf:Work/bf:splitInto/bf:Work |
+                    bf:Work/bf:mergedToForm/bf:Work |
+                    bf:Work/bf:dataSource/bf:Work |
+                    bf:Work/bf:relatedTo/bf:Work">
+      <var name="vLinkTagFromWork">
+        <switch>
+          <case test="local-name(..)='translationOf'">765</case>
+        </switch>
+      </var>
+      <ind1 default="0"/>
+      <ind2 default=" ">
+        <switch>
+          <case test="local-name(parent::*)='continues'">0</case>
+          <case test="local-name(parent::*)='continuesInPart'">1</case>
+          <case test="local-name(parent::*)='precededBy'">2</case>
+          <case test="local-name(parent::*)='mergerOf'">4</case>
+          <case test="local-name(parent::*)='absorbed'">5</case>
+          <case test="local-name(parent::*)='separatedFrom'">7</case>
+          <case test="local-name(parent::*)='continuedBy'">0</case>
+          <case test="local-name(parent::*)='continuedInPartBy'">1</case>
+          <case test="local-name(parent::*)='succeededBy'">2</case>
+          <case test="local-name(parent::*)='absorbedBy'">4</case>
+          <case test="local-name(parent::*)='splitInto'">5</case>
+          <case test="local-name(parent::*)='mergedToForm'">7</case>
+        </switch>
+      </ind2>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a" repeatable="false">
+        <select xpath="bf:contribution/*[local-name()='PrimaryContribution' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']/bf:agent/*/rdfs:label"/>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:hasInstance/bf:Instance/bf:editionStatement"/>
+      </sf>
+      <sf code="c" repeatable="false">
+        <select xpath="bf:title/bf:Title/bf:qualifier"/>
+      </sf>
+      <sf code="d" repeatable="false">
+        <select xpath="bf:hasInstance/bf:Instance/bf:provisionActivityStatement"/>
+      </sf>
+      <sf code="e" repeatable="false">
+        <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
+      </sf>
+      <sf code="f" repeatable="false">
+        <select xpath="bf:hasInstance/bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place[@rdf:resource]|
+                       bf:hasInstance/bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place[*/@rdf:about]|
+                       bf:hasInstance/bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place[*/*[local-name()='code']]|
+                       bf:hasInstance/bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:place[@rdf:resource]|
+                       bf:hasInstance/bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:place[*/@rdf:about]|
+                       bf:hasInstance/bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:place[*/*[local-name()='code']]">
+          <switch>
+            <case test="*/*[local-name()='code']">
+              <select xpath="*/*[local-name()='code']"/>
+            </case>
+            <case test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/countries/')]">
+              <transform><xsl:value-of select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/countries/')"/></transform>
+            </case>
+            <case test="*[starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')]">
+              <transform><xsl:value-of select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')"/></transform>
+            </case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="g">
+        <select xpath="bf:hasInstance/bf:Instance/bf:part"/>
+      </sf>
+      <sf code="h" repeatable="false">
+        <select xpath="bf:hasInstance/bf:Instance/bf:extent/bf:Extent/rdfs:label"/>
+      </sf>
+      <sf code="i">
+        <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/*[rdfs:label or madsrdf:authoritativeLabel]">
+          <switch>
+            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+            <case test="default"><select xpath="rdfs:label"/></case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="i">
+        <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/*[madsrdf:code or bf:code]">
+          <switch>
+            <case test="madsrdf:code">
+              <select xpath="madsrdf:code"/>
+            </case>
+            <case test="default"><select xpath="bf:code"/></case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="i">
+        <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/*/@rdf:about|bflc:relationship/bflc:Relationship/bflc:relation/@rdf:resource"/>
+      </sf>
+      <sf code="j">
+        <select xpath="bf:hasInstance/bf:Instance/bf:seriesStatement"/>
+      </sf>
+      <sf code="n">
+        <select xpath="bf:note/bf:Note/rdfs:label|bf:hasInstance/bf:Instance/bf:note/bf:Note/rdfs:label"/>
+      </sf>
+      <switch>
+        <case test="bf:title/bf:Title/bf:mainTitle != bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle">
+          <sf code="s" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
+        </case>
+      </switch>
+      <sf code="t" repeatable="false">
+        <select xpath="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle"/>
+      </sf>
+      <select xpath="bf:hasInstance/bf:Instance/bf:identifiedBy/*">
+        <switch>
+          <case test="local-name()='ReportNumber' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ReportNumber'">
+            <sf code="r"><select xpath="rdf:value"/></sf>
+          </case>
+          <case test="local-name()='Strn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Strn'">
+            <sf code="u"><select xpath="rdf:value"/></sf>
+          </case>
+          <case test="local-name()='Lccn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn'">
+            <sf code="w">
+              <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
+            </sf>
+          </case>
+          <case test="local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn'">
+            <sf code="x"><select xpath="rdf:value"/></sf>
+          </case>
+          <case test="local-name()='Coden' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Coden'">
+            <sf code="y"><select xpath="rdf:value"/></sf>
+          </case>
+          <case test="local-name()='Isbn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isbn'">
+            <sf code="z"><select xpath="rdf:value"/></sf>
+          </case>
+          <case test="default">
+            <sf code="w">
+              <switch>
+                <case test="bf:source/bf:Source/rdfs:label">
+                  <transform><xsl:value-of select="concat('(',bf:source/bf:Source/rdfs:label,')',rdf:value)"/></transform>
+                </case>
+                <case test="default">
+                  <select xpath="rdf:value"/>
+                </case>
+              </switch>
+            </sf>
+          </case>
+        </switch>
+      </select>
+    </context>
+  </df>
+
+
   <!-- Rules for 776 coded with 530 -->
+
 
 </rules>

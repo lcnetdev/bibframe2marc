@@ -353,6 +353,22 @@
                 test="xslt:template/@match='bf:Instance' and xslt:template/@mode='generate-001'"/>
     </x:scenario>
 
+    <x:scenario label="Context with var element">
+      <x:context mode="generateTemplates">
+        <bf2marc:cf tag="001">
+          <bf2marc:context xpath="bf:Instance">
+            <bf2marc:var name="vTestVar">
+              <bf2marc:switch>
+                <bf2marc:case test="bf:edition">some value</bf2marc:case>
+              </bf2marc:switch>
+            </bf2marc:var>
+          </bf2marc:context>
+        </bf2marc:cf>
+      </x:context>
+      <x:expect label="...should generate a template with locally-scoped xsl variable"
+                test="xslt:template/xslt:variable/@name = 'vTestVar'"/>
+    </x:scenario>
+
     <x:scenario label="Non-repeatable field">
       <x:context mode="generateTemplates">
         <bf2marc:cf tag="001">
@@ -412,6 +428,25 @@
           <xslt:attribute name="tag">245</xslt:attribute>
         </marc:datafield>
       </x:expect>
+    </x:scenario>
+
+    <x:scenario label="variable as tag name">
+      <x:context mode="generateTemplates">
+        <bf2marc:df tag="$vTestTagVar">
+          <bf2marc:context xpath="bf:Work/bf:title/bf:Title|bf:Instance/bf:title/bf:Title">
+            <bf2marc:var name="vtestTagVar">
+              <bf2marc:switch>
+                <bf2marc:case test="local-name(../..)='Work'">130</bf2marc:case>
+                <bf2marc:case test="local-name(../..)='Instance'">245</bf2marc:case>
+              </bf2marc:switch>
+            </bf2marc:var>
+            <bf2marc:ind1 default=" "/>
+            <bf2marc:ind2 default=" "/>
+          </bf2marc:context>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="should generate field template with variable substitution"
+                test="xslt:template/marc:datafield/xslt:attribute/xslt:value-of/@select = '$vTestTagVar'"/>
     </x:scenario>
 
     <x:scenario label="ind1 or ind2 element">
@@ -493,7 +528,7 @@
       </x:expect>
     </x:scenario>
 
-    <x:scenario label="Select with variable">
+    <x:scenario label="Simple variable">
       <x:context mode="fieldTemplate">
         <bf2marc:select xpath="rdfs:label">
           <bf2marc:var name="vTestVar" xpath="'some value'"/>
@@ -502,6 +537,27 @@
       <x:expect label="...should generate an xsl variable definition">
         <xslt:for-each select="rdfs:label">
           <xslt:variable name="vTestVar" select="'some value'"/>
+        </xslt:for-each>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="Complex variable">
+      <x:context mode="fieldTemplate">
+        <bf2marc:select xpath="bf:Work/*">
+          <bf2marc:var name="vTag">
+            <bf2marc:switch>
+              <bf2marc:case test="local-name()='translationOf'">765</bf2marc:case>
+            </bf2marc:switch>
+          </bf2marc:var>
+        </bf2marc:select>
+      </x:context>
+      <x:expect label="...should generate xsl variable with inner processing">
+        <xslt:for-each select="bf:Work/*">
+          <xslt:variable name="vTag">
+            <xslt:choose>
+              <xslt:when test="local-name()='translationOf'"><xslt:text>765</xslt:text></xslt:when>
+            </xslt:choose>
+          </xslt:variable>
         </xslt:for-each>
       </x:expect>
     </x:scenario>

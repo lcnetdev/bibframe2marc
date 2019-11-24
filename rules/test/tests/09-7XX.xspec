@@ -31,6 +31,22 @@
               test="//marc:datafield[@tag='700'][2]/marc:subfield[@code='i'] = 'Motion picture adaptation of (work)'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 700 analytic entry">
+    <x:context href="../data/7XX/700-analytic.xml"/>
+    <x:expect label="generate 700"
+              test="count(//marc:datafield[@tag='700']) = 1"/>
+    <x:expect label="ind1 from class of agent"
+              test="//marc:datafield[@tag='700'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 from hasPart property"
+              test="//marc:datafield[@tag='700'][1]/@ind2 = '2'"/>
+    <x:expect label="$a from contribution"
+              test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='a'] = 'Nypsus, Marcus Iunius'"/>
+    <x:expect label="$t from title"
+              test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='t'] = 'Fluminis varatio'"/>
+    <x:expect label="$f from originDate"
+              test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='f'] = '1993'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 710">
     <x:context href="../data/7XX/710.xml"/>
     <x:expect label="generate 710" test="count(//marc:datafield[@tag='710']) = 1"/>
@@ -115,6 +131,45 @@
               test="//marc:datafield[@tag='753'][1]/@ind2 = ' '"/>
     <x:expect label="$c from OperatingSystem"
               test="//marc:datafield[@tag='753'][1]/marc:subfield[@code='c'] = 'Windows 98'"/>
+  </x:scenario>
+
+  <!-- these are pretty skeletal tests. All linking entries are processed more or less the same -->
+  <x:scenario label="MARC 7XX linking entries from Work">
+    <x:context href="../data/7XX/7XX-Links-Work.xml"/>
+    <x:expect label="generate linking entry from appropriate relatedTo subclass"
+              test="count(//marc:datafield[@tag='765']) = 1"/>
+    <x:expect label="ind1 default to '0'"
+              test="//marc:datafield[@tag='765'][1]/@ind1 = '0'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='765'][1]/@ind2 = ' '"/>
+    <x:expect label="$t from Instance title"
+              test="//marc:datafield[@tag='765'][1]/marc:subfield[@code='t'] = 'Mashinovedenie'"/>
+    <x:expect label="$w from Lccn"
+              test="//marc:datafield[@tag='765'][1]/marc:subfield[@code='w'][1] = '(DLC)   78648457 '"/>
+    <x:expect label="...or from Identifier"
+              test="//marc:datafield[@tag='765'][1]/marc:subfield[@code='w'][2] = '(OCoLC)4798581'"/>
+  </x:scenario>
+
+  <!-- note that rules for MARC 776 are with the 530 rules -->
+  <x:scenario label="MARC 776">
+    <x:context href="../data/7XX/776.xml"/>
+    <x:expect label="generate 776" test="count(//marc:datafield[@tag='776']) = 1"/>
+    <x:expect label="ind1 default to '0'"
+              test="//marc:datafield[@tag='776'][1]/@ind1 = '0'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='776'][1]/@ind2 = ' '"/>
+    <x:expect label="$3 from appliesTo"
+              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='3'] = 'Dispatches from U.S. consuls in Batavia, Java, Netherlands East Indies, 1818-1906'"/>
+    <x:expect label="$a from contribution"
+              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='a'] = 'U.S. consul of Java'"/>
+    <x:expect label="$t from title"
+              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='t'] = 'Dispatches'"/>
+    <x:expect label="$h from extent"
+              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='h'] = '1 microfilm reel'"/>
+    <x:expect label="$n from note"
+              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='n'] = 'Available in microfilm'"/>
+    <x:expect label="$u from Strn"
+              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='u'] = 'M449'"/>
   </x:scenario>
 
 </x:description>
