@@ -145,9 +145,9 @@ The `df` element is more complex. In addition to the rule building blocks docume
 </sf>
 ```
 
-* `var`: Create a locally-scoped XSL variable within a `select` context. The variable has the name from the `name` attribute and the value from the `xpath` attribute. It can be used within the `select` context in transforms and xpath expressions.
+* `var`: Create a locally-scoped XSL variable within a context. The variable has the name from the `name` attribute and the value from either the `xpath` attribute or from a internal `switch` element. The variable can be used within the current context in transforms and xpath expressions.
 
-  * This element can only be used with the `select` element.
+  * This element can only be used with the `context` and `select` elements.
 
 ```xml
 <select xpath="bf:title/*">

@@ -529,9 +529,6 @@
         <xslt:choose>
           <xslt:when test="position() = 1 or $repeatable != 'false'">
             <xsl:for-each select="{@xpath}">
-              <xslt:for-each select="bf2marc:var">
-                <xsl:variable name="{@name}" select="{@xpath}"/>
-              </xslt:for-each>
               <xslt:choose>
                 <xslt:when test="$repeatable = 'false'">
                   <xsl:choose>
@@ -762,6 +759,19 @@
             </xslt:message>
           </xslt:otherwise>
         </xslt:choose>
+      </xslt:otherwise>
+    </xslt:choose>
+  </xslt:template>
+
+  <xslt:template match="bf2marc:var" mode="fieldTemplate">
+    <xslt:choose>
+      <xslt:when test="@xpath">
+        <xsl:variable name="{@name}" select="{@xpath}"/>
+      </xslt:when>
+      <xslt:otherwise>
+        <xsl:variable name="{@name}">
+          <xslt:apply-templates mode="fieldTemplate" select="bf2marc:switch"/>
+        </xsl:variable>
       </xslt:otherwise>
     </xslt:choose>
   </xslt:template>
