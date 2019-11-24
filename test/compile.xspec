@@ -366,7 +366,7 @@
         </bf2marc:cf>
       </x:context>
       <x:expect label="...should generate a template with locally-scoped xsl variable"
-                test="xslt:template/xslt:choose/xslt:when/*/xslt:variable/@name = 'vTestVar'"/>
+                test="xslt:template/xslt:variable/@name = 'vTestVar'"/>
     </x:scenario>
 
     <x:scenario label="Non-repeatable field">
@@ -430,11 +430,24 @@
       </x:expect>
     </x:scenario>
 
-    <!-- <x:scenario label="variable as tag"> -->
-    <!--   <x:context mode="fieldTemplate"> -->
-    <!--     <bf2marc:select xpath="*[local-name()='Title' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Title']/rdfs:label"> -->
-    <!--       <bf2marc:var name="vClass" xpath="local-name()"/> -->
-    <!--       < -->
+    <x:scenario label="variable as tag name">
+      <x:context mode="generateTemplates">
+        <bf2marc:df tag="$vTestTagVar">
+          <bf2marc:context xpath="bf:Work/bf:title/bf:Title|bf:Instance/bf:title/bf:Title">
+            <bf2marc:var name="vtestTagVar">
+              <bf2marc:switch>
+                <bf2marc:case test="local-name(../..)='Work'">130</bf2marc:case>
+                <bf2marc:case test="local-name(../..)='Instance'">245</bf2marc:case>
+              </bf2marc:switch>
+            </bf2marc:var>
+            <bf2marc:ind1 default=" "/>
+            <bf2marc:ind2 default=" "/>
+          </bf2marc:context>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="should generate field template with variable substitution"
+                test="xslt:template/marc:datafield/xslt:attribute/xslt:value-of/@select = '$vTestTagVar'"/>
+    </x:scenario>
 
     <x:scenario label="ind1 or ind2 element">
       <x:context mode="fieldTemplate">

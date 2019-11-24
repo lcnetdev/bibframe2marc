@@ -346,10 +346,13 @@
         <xslt:otherwise><xslt:value-of select="@repeatable"/></xslt:otherwise>
       </xslt:choose>
     </xslt:variable>
+    <xslt:variable name="vTagName">
+      <xslt:value-of select="translate(@tag,'$','')"/>
+    </xslt:variable>
     <xslt:choose>
       <xslt:when test="bf2marc:context">
         <xslt:for-each select="bf2marc:context">
-          <xsl:apply-templates select="{@xpath}" mode="generate-{parent::*/@tag}">
+          <xsl:apply-templates select="{@xpath}" mode="generate-{$vTagName}">
             <xsl:with-param name="vRecordId" select="$vRecordId"/>
             <xsl:with-param name="vAdminMetadata" select="$vAdminMetadata"/>
           </xsl:apply-templates>
@@ -371,13 +374,17 @@
   </xslt:template>
 
   <xslt:template match="bf2marc:cf|bf2marc:df" mode="generateTemplates">
+    <xslt:variable name="vTagName">
+      <xslt:value-of select="translate(@tag,'$','')"/>
+    </xslt:variable>
     <xslt:for-each select="bf2marc:context">
       <xslt:choose>
         <xslt:when test="(local-name(parent::*) = 'df' and parent::*/@repeatable != 'false') or
                          position() = 1">
-          <xsl:template match="{@xpath}" mode="generate-{parent::*/@tag}">
+          <xsl:template match="{@xpath}" mode="generate-{$vTagName}">
             <xsl:param name="vRecordId"/>
             <xsl:param name="vAdminMetadata"/>
+            <xslt:apply-templates select="bf2marc:var" mode="fieldTemplate"/>
             <xslt:choose>
               <xslt:when test="local-name(parent::*) = 'cf' or parent::*/@repeatable = 'false'">
                 <xsl:choose>
@@ -387,7 +394,7 @@
                     </xslt:apply-templates>
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="parent::*/@tag"/>).</xsl:message>
+                    <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
                   </xsl:otherwise>
                 </xsl:choose>
               </xslt:when>
@@ -428,7 +435,16 @@
     </xslt:variable>
     <xslt:element name="{$vFieldElement}">
       <xslt:if test="@tag != 'LDR'">
-        <xsl:attribute name="tag"><xslt:value-of select="@tag"/></xsl:attribute>
+        <xsl:attribute name="tag">
+          <xslt:choose>
+            <xslt:when test="starts-with(@tag,'$')">
+              <xsl:value-of select="{@tag}"/>
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:value-of select="@tag"/>
+            </xslt:otherwise>
+          </xslt:choose>
+        </xsl:attribute>
       </xslt:if>
       <xslt:choose>
         <xslt:when test="local-name()='cf' and $vConstant != ''">
@@ -443,10 +459,10 @@
     </xslt:element>
   </xslt:template>
 
-  <!-- pass-through context elements -->
+  <!-- pass-through context elements, except for var elements -->
   <xslt:template match="bf2marc:context" mode="fieldTemplate">
     <xslt:param name="repeatable"/>
-    <xslt:apply-templates mode="fieldTemplate">
+    <xslt:apply-templates mode="fieldTemplate" select="*[not(local-name()='var')]">
       <xslt:with-param name="repeatable" select="$repeatable"/>
     </xslt:apply-templates>
   </xslt:template>
@@ -493,6 +509,9 @@
         <xslt:value-of select="."/>
       </xslt:for-each>
     </xslt:variable>
+    <xslt:variable name="vTagName">
+      <xslt:value-of select="translate(ancestor::*/@tag,'$','')"/>
+    </xslt:variable>
     <xslt:choose>
       <xslt:when test="$vConstant != ''">
         <marc:subfield code="{@code}"><xslt:value-of select="$vConstant"/></marc:subfield>
@@ -503,14 +522,14 @@
         </xslt:apply-templates>
       </xslt:when>
       <xslt:otherwise>
-        <xsl:variable name="v{ancestor::*/@tag}-{@code}">
+        <xsl:variable name="v{$vTagName}-{@code}">
           <xslt:apply-templates mode="fieldTemplate">
             <xslt:with-param name="repeatable" select="@repeatable"/>
           </xslt:apply-templates>
         </xsl:variable>
-        <xsl:if test="$v{ancestor::*/@tag}-{@code} != ''">
+        <xsl:if test="$v{$vTagName}-{@code} != ''">
           <marc:subfield code="{@code}">
-            <xsl:value-of select="$v{ancestor::*/@tag}-{@code}"/>
+            <xsl:value-of select="$v{$vTagName}-{@code}"/>
           </marc:subfield>
         </xsl:if>
       </xslt:otherwise>
@@ -538,7 +557,7 @@
                       </xslt:apply-templates>
                     </xsl:when>
                     <xsl:otherwise>
-                      <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target element <xslt:value-of select="ancestor::*/@tag"/><xslt:if test="ancestor::bf2marc:sf"> $<xslt:value-of select="ancestor::bf2marc:sf/@code"/></xslt:if>.</xsl:message>
+                      <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target element <xslt:value-of select="translate(ancestor::*/@tag,'$','')"/><xslt:if test="ancestor::bf2marc:sf"> $<xslt:value-of select="ancestor::bf2marc:sf/@code"/></xslt:if>.</xsl:message>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xslt:when>
