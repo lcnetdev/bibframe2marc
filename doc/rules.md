@@ -76,7 +76,7 @@ Two high-level elements are used to encode the conversion rules that generate MA
 </cf>
 ```
 
-* `df`: conversion rules for generating MARC data fields. The `df` element requires a `tag` attribute, which should contain a 3-character value. An optional boolean attribute, `repeatable`, if set to `"false"` will prevent the data field from being generated more than once.
+* `df`: conversion rules for generating MARC data fields. The `df` element requires a `tag` attribute, which should contain a 3-character value. An optional boolean attribute, `repeatable`, if set to `"false"` will prevent the data field from being generated more than once. The optional attribute `lang-xpath` holds an XPath expression that can be used to generate an `xml:lang` tag attribute on the data field.
 
 The `df` element is more complex. In addition to the rule building blocks documented below, the following elements are required:
 
@@ -85,7 +85,7 @@ The `df` element is more complex. In addition to the rule building blocks docume
   * `sf`: rules for generating MARC subfield values. At least one `sf` element is required. The `sf` element requires a `code` attribute, which should contain a 1-character value legal for a MARC subfield code. This element is repeatable within the `df` element. The order of `sf` elements determines the order of subfields in the generated MARC data field. An optional boolean attribute, `repeatable`, if set to `"false"`, will prevent the subfield from being generated more than once. These rules should generate strings.
 
 ```xml
-<df tag="500">
+<df tag="500" lang-xpath="rdfs:label">
   <ind1 default=" "/>
   <ind2 default=" "/>
   <sf code="a">

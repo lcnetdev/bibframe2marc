@@ -433,6 +433,11 @@
         <xslt:value-of select="."/>
       </xslt:for-each>
     </xslt:variable>
+    <xslt:if test="@lang-xpath">
+      <xsl:variable name="vXmlLang">
+        <xsl:value-of select="{@lang-xpath}/@xml:lang"/>
+      </xsl:variable>
+    </xslt:if>
     <xslt:element name="{$vFieldElement}">
       <xslt:if test="@tag != 'LDR'">
         <xsl:attribute name="tag">
@@ -445,6 +450,11 @@
             </xslt:otherwise>
           </xslt:choose>
         </xsl:attribute>
+        <xslt:if test="@lang-xpath">
+          <xsl:if test="$vXmlLang != ''">
+            <xsl:attribute name="xml:lang"><xsl:value-of select="$vXmlLang"/></xsl:attribute>
+          </xsl:if>
+        </xslt:if>
       </xslt:if>
       <xslt:choose>
         <xslt:when test="local-name()='cf' and $vConstant != ''">
