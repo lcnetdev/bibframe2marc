@@ -87,6 +87,14 @@
     <x:expect label="generate 247" test="count(//marc:datafield[@tag='247']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 250">
+    <x:context href="../data/2XX/250.xml"/>
+    <x:expect label="generate 250" test="count(//marc:datafield[@tag='250']) = 1"/>
+    <x:expect label="$a from editionStatement"
+              test="//marc:datafield[@tag='250'][1]/marc:subfield[@code='a'] = 'Third edition'"/>
+  </x:scenario>
+
+
   <x:scenario label="MARC 255">
     <x:context href="../data/2XX/255.xml"/>
     <x:expect label="generate 255 from scale or cartographicAttributes of Work" test="count(//marc:datafield[@tag='255']) = 3"/>
