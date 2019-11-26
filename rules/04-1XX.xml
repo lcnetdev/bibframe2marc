@@ -8,201 +8,146 @@
        xmlns:marc="http://www.loc.gov/MARC21/slim"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <select xpath="bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent/*">
-    <switch>
-      <case test="position() = 1">
+  <df tag="$vMainEntryTag" repeatable="false" lang-xpath="rdfs:label" lang-prefer="transliterated">
+    <context xpath="bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent/*">
+      <var name="vMainEntryTag">
         <switch>
-          <!-- 110 -->
           <case test="local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or
                       local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or
-                      local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">
-            <df tag="110">
-              <ind1 default="2">
-                <switch>
-                  <case test="local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">1</case>
-                </switch>
-              </ind1>
-              <ind2 default=" "/>
-              <sf code="a" repeatable="false">
-                <switch>
-                  <case test="madsrdf:elementList">
-                    <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
-                  </case>
-                  <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                  <case test="default"><select xpath="rdfs:label"/></case>
-                </switch>
-              </sf>
-              <sf code="b">
-                <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
-              </sf>
-              <sf code="e">
-                <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
-                  <switch>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </select>
-              </sf>
-              <!-- nac $u -->
-              <sf code="4">
-                <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
-                  <switch>
-                    <case test="madsrdf:code">
-                      <select xpath="madsrdf:code"/>
-                    </case>
-                    <case test="default"><select xpath="bf:code"/></case>
-                  </switch>
-                </select>
-              </sf>
-              <sf code="4">
-                <select xpath="../../bf:role/*/@rdf:about|../../bf:role/@rdf:resource"/>
-              </sf>
-              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-              <sf code="0">
-                <select xpath="bf:identifiedBy/bf:Identifier">
-                  <transform>
-                    <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
-                    <xsl:choose>
-                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                    </xsl:choose>
-                  </transform>
-                </select>
-              </sf>
-              <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/bf:code"/></sf>
-            </df>
-          </case>
-
-          <!-- 111 -->
+                      local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">110</case>
           <case test="local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or
-                      local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']">
-            <df tag="111">
-              <ind1 default="2"/>
-              <ind2 default=" "/>
-              <sf code="a" repeatable="false">
-                <switch>
-                  <case test="madsrdf:elementList">
-                    <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
-                  </case>
-                  <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                  <case test="default"><select xpath="rdfs:label"/></case>
-                </switch>
-              </sf>
-              <sf code="c">
-                <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
-              </sf>
-              <sf code="q">
-                <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
-              </sf>
-              <sf code="j">
-                <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
-                  <switch>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </select>
-              </sf>
-              <!-- nac $u -->
-              <sf code="4">
-                <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
-                  <switch>
-                    <case test="madsrdf:code">
-                      <select xpath="madsrdf:code"/>
-                    </case>
-                    <case test="default"><select xpath="bf:code"/></case>
-                  </switch>
-                </select>
-              </sf>
-              <sf code="4">
-                <select xpath="../../bf:role/*/@rdf:about|../../bf:role/@rdf:resource"/>
-              </sf>
-              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-              <sf code="0">
-                <select xpath="bf:identifiedBy/bf:Identifier">
-                  <transform>
-                    <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
-                    <xsl:choose>
-                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                    </xsl:choose>
-                  </transform>
-                </select>
-              </sf>
-              <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/bf:code"/></sf>
-            </df>
+                      local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']">111</case>
+          <case test="default">100</case>
+        </switch>
+      </var>
+      <ind1 default="2">
+        <switch>
+          <case test="$vMainEntryTag='100'">
+            <switch>
+              <case test="local-name()='FamilyName'">3</case>
+              <case test="default">1</case>
+            </switch>
           </case>
-
-          <!-- default to 100 -->
-          <case test="default">
-            <df tag="100" repeatable="false">
-              <ind1 default="1">
-                <switch>
-                  <case test="local-name()='FamilyName'">3</case>
-                </switch>
-              </ind1>
-              <ind2 default=" "/>
-              <sf code="a" repeatable="false">
-                <switch>
-                  <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
-                    <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
-                  </case>
-                  <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                  <case test="default"><select xpath="rdfs:label"/></case>
-                </switch>
-              </sf>
-              <sf code="c">
-                <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
-              </sf>
-              <sf code="d" repeatable="false">
-                <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
-              </sf>
-              <sf code="e">
-                <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
-                  <switch>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </select>
-              </sf>
-              <sf code="q" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
-              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-              <sf code="0">
-                <select xpath="bf:identifiedBy/bf:Identifier">
-                  <transform>
-                    <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
-                    <xsl:choose>
-                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                    </xsl:choose>
-                  </transform>
-                </select>
-              </sf>
-              <sf code="4">
-                <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
-                  <switch>
-                    <case test="madsrdf:code">
-                      <select xpath="madsrdf:code"/>
-                    </case>
-                    <case test="default"><select xpath="bf:code"/></case>
-                  </switch>
-                </select>
-              </sf>
-              <sf code="4">
-                <select xpath="../../bf:role/*/@rdf:about|../../bf:role/@rdf:resource"/>
-              </sf>
-            </df>
+          <case test="$vMainEntryTag='110'">
+            <switch>
+              <case test="local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">1</case>
+            </switch>
           </case>
         </switch>
-      </case>
-      <case test="default">
-        <transform>
-          <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Multiple primary contributors.</xsl:message>
-        </transform>
-      </case>
-    </switch>
-  </select>
+      </ind1>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <switch>
+          <case test="$vMainEntryTag='100'">
+            <switch>
+              <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
+                <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
+              </case>
+              <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+              <case test="default"><select xpath="rdfs:label"/></case>
+            </switch>
+          </case>
+          <case test="default">
+            <switch>
+              <case test="madsrdf:elementList">
+                <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+              </case>
+              <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+              <case test="default"><select xpath="rdfs:label"/></case>
+            </switch>
+          </case>
+        </switch>
+      </sf>
+      <switch>
+        <case test="$vMainEntryTag='110'">
+          <sf code="b">
+            <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="$vMainEntryTag='100'">
+          <sf code="c">
+            <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
+          </sf>
+        </case>
+        <case test="$vMainEntryTag='111'">
+          <sf code="c">
+            <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="$vMainEntryTag='100'">
+          <sf code="d" repeatable="false">
+            <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="$vMainEntryTag='100' or $vMainEntryTag='110'">
+          <sf code="e">
+            <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+              <switch>
+                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                <case test="default"><select xpath="rdfs:label"/></case>
+              </switch>
+            </select>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="$vMainEntryTag='111'">
+          <sf code="j">
+            <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+              <switch>
+                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                <case test="default"><select xpath="rdfs:label"/></case>
+              </switch>
+            </select>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="$vMainEntryTag='100'">
+          <sf code="q" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
+        </case>
+        <case test="$vMainEntryTag='111'">
+          <sf code="q">
+            <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
+          </sf>
+        </case>
+      </switch>
+      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="4">
+        <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
+          <switch>
+            <case test="madsrdf:code">
+              <select xpath="madsrdf:code"/>
+            </case>
+            <case test="default"><select xpath="bf:code"/></case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="4">
+        <select xpath="../../bf:role/*/@rdf:about|../../bf:role/@rdf:resource"/>
+      </sf>
+      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/bf:code"/></sf>
+    </context>
+  </df>
 
-  <df tag="130" repeatable="false">
+  <df tag="130" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:title/bf:Title[
                     not(contains(rdf:type/@rdf:resource,'bibframe')) and
                     not(../../bf:contribution/bflc:PrimaryContribution) and
