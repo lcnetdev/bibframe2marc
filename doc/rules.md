@@ -76,7 +76,7 @@ Two high-level elements are used to encode the conversion rules that generate MA
 </cf>
 ```
 
-* `df`: conversion rules for generating MARC data fields. The `df` element requires a `tag` attribute, which should contain a 3-character value. An optional boolean attribute, `repeatable`, if set to `"false"` will prevent the data field from being generated more than once.
+* `df`: conversion rules for generating MARC data fields. The `df` element requires a `tag` attribute, which should contain a 3-character value. An optional boolean attribute, `repeatable`, if set to `"false"` will prevent the data field from being generated more than once. The optional attribute `lang-xpath` holds an XPath expression that can be used to generate an `xml:lang` tag attribute on the data field. The optional attribue `lang-prefer` generates processing code that attempts to prefer vernacular or transliterated versions of literals, based on the `lang-xpath` and the cataloging language script parameter `pCatScript`.
 
 The `df` element is more complex. In addition to the rule building blocks documented below, the following elements are required:
 
@@ -85,7 +85,7 @@ The `df` element is more complex. In addition to the rule building blocks docume
   * `sf`: rules for generating MARC subfield values. At least one `sf` element is required. The `sf` element requires a `code` attribute, which should contain a 1-character value legal for a MARC subfield code. This element is repeatable within the `df` element. The order of `sf` elements determines the order of subfields in the generated MARC data field. An optional boolean attribute, `repeatable`, if set to `"false"`, will prevent the subfield from being generated more than once. These rules should generate strings.
 
 ```xml
-<df tag="500">
+<df tag="500" lang-xpath="rdfs:label">
   <ind1 default=" "/>
   <ind2 default=" "/>
   <sf code="a">
@@ -108,7 +108,7 @@ The `df` element is more complex. In addition to the rule building blocks docume
 </df>
 ```
 
-* `context`: Set the context for the contained processing rules. Required attribute `xpath` contains an XPath path expression to set the context. Any XPath expressions in the contained elements will be evaluated in the context set by the containing `context` element. If the context is not matched in the source document, the MARC element will not be generated. Generates an `xsl:template` element in the output stylesheet. Note that multiple context blocks in non-repeatable fields are not allowed. If there is a `context` block in an element, other processing rules will be ignored.
+* `context`: Set the context for the contained processing rules. Required attribute `xpath` contains an XPath path expression to set the context. Any XPath expressions in the contained elements will be evaluated in the context set by the containing `context` element. If the context is not matched in the source document, the MARC element will not be generated. Generates an `xsl:template` or `xsl:for-each` element in the output stylesheet. Note that multiple context blocks in non-repeatable fields are not allowed. If there is a `context` block in an element, other processing rules will be ignored.
 
   * This element can be used with the `cf` and `df` elements.
 
@@ -211,6 +211,7 @@ The following global variables in the generated stylesheet are available for use
   1. The value of the `pRecordId` parameter, if it is passed to the stylesheet
   2. The value in `/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value`, if there is no `bf:source` property or the `bf:source/bf:Source/rdfs:label` value is "DLC".
   3. `generate-id()` (default)
+* `pCatScript`: The ISO 15924 script subtag of the cataloging language, for dealing with multi-script records. Defaults to `Latn`.
 * `pGenerationDatestamp`: The value of the `pGenerationDatestamp` stylesheet parameter. Defaults to `date:date-time()` if the function is available to the XSLT processer. For inclusion in an 884, should be in YYYYMMDD format (ISO 8601).
 * `vCurrentVersion`: The value of the `version` element of the top-level `rules` document.
 * `pSourceRecordId`: An identifier for the source record, perhaps a URI
@@ -229,6 +230,7 @@ The following named templates are defined in the generated stylesheet for use in
 * `EDTF-TimePart`: Return the time part of a single EDTF date (not a range).
 * `EDTF-TimeDiff`: Return the time shift part of a single EDTF date (not a range).
 * `EDTF-to-033`: Return a string formatted as a date for the 033/263 fields from a single EDTF date (not a range).
+* `tScriptCode`: Extract the script subtag from an xml:lang attribute.
 
 #### Limitations
 

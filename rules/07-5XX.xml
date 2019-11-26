@@ -32,7 +32,7 @@
   <select xpath="bf:Instance/bf:note/bf:Note|bf:Work/bf:note/bf:Note">
     <switch>
       <case test="local-name(../..)='Instance' and bf:noteType='with'">
-        <df tag="501">
+        <df tag="501" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="a" repeatable="false">
@@ -45,7 +45,7 @@
       </case>
 
       <case test="local-name(../..)='Instance' and bf:noteType='report type'">
-        <df tag="513">
+        <df tag="513" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="a" repeatable="false">
@@ -55,7 +55,7 @@
       </case>
 
       <case test="local-name(../..)='Instance' and bf:noteType='issuance information'">
-        <df tag="515">
+        <df tag="515" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="a" repeatable="false">
@@ -65,7 +65,7 @@
       </case>
 
       <case test="local-name(../..)='Instance' and bf:noteType='type of computer data'">
-        <df tag="516">
+        <df tag="516" lang-xpath="rdfs:label">
           <ind1 default="8"/>
           <ind2 default=" "/>
           <sf code="a" repeatable="false">
@@ -75,7 +75,7 @@
       </case>
 
       <case test="local-name(../..)='Instance' and bf:noteType='funding information'">
-        <df tag="536">
+        <df tag="536" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <select xpath="rdfs:label">
@@ -120,7 +120,7 @@
 
       <case test="local-name(../..)='Instance' and
                   (bf:noteType='biographical data' or bf:noteType='administrative history')">
-        <df tag="545">
+        <df tag="545" lang-xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
           <ind1 default=" ">
             <switch>
               <case test="bf:noteType='biographical data'">0</case>
@@ -138,7 +138,7 @@
       </case>
 
       <case test="local-name(../..)='Instance' and bf:noteType='issuing body'">
-        <df tag="550">
+        <df tag="550" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="a" repeatable="false">
@@ -149,7 +149,7 @@
 
       <case test="local-name(../..)='Instance' and
                   (bf:noteType='index' or bf:noteType='finding aid')">
-        <df tag="555">
+        <df tag="555" lang-xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
           <ind1 default="8">
             <switch>
               <case test="bf:noteType='index'"><text> </text></case>
@@ -167,7 +167,7 @@
       </case>
 
       <case test="local-name(../..)='Instance' and bf:noteType='related material'">
-        <df tag="581">
+        <df tag="581" lang-xpath="rdfs:label">
           <ind1 default="8"/>
           <ind2 default=" "/>
           <sf code="a" repeatable="false">
@@ -180,7 +180,7 @@
       </case>
 
       <case test="local-name(../..)='Instance' and bf:noteType='exhibition'">
-        <df tag="585">
+        <df tag="585" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="3" repeatable="false">
@@ -196,7 +196,7 @@
       </case>
 
       <case test="local-name(../..)='Instance' and bf:noteType='description source'">
-        <df tag="588">
+        <df tag="588" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="a" repeatable="false">
@@ -209,7 +209,7 @@
       </case>
 
       <case test="default">
-        <df tag="500">
+        <df tag="500" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="3" repeatable="false">
@@ -235,7 +235,7 @@
     </switch>
   </select>
 
-  <df tag="502">
+  <df tag="502" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:dissertation/bf:Dissertation">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -260,7 +260,7 @@
     </context>
   </df>
 
-  <df tag="505">
+  <df tag="505" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:tableOfContents/bf:TableOfContents">
       <ind1 default="0"/>
       <ind2 default=" "/>
@@ -272,7 +272,7 @@
   <select xpath="bf:Instance/bf:usageAndAccessPolicy/*">
     <switch>
       <case test="local-name()='UsePolicy' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/UsePolicy'">
-        <df tag="540">
+        <df tag="540" lang-xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="3" repeatable="false">
@@ -296,7 +296,7 @@
         </df>
       </case>
       <case test="default">
-        <df tag="506">
+        <df tag="506" lang-xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="3" repeatable="false">
@@ -319,7 +319,7 @@
     </switch>
   </select>
 
-  <df tag="507">
+  <df tag="507" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:scale/*/bf:note/bf:Note">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -329,7 +329,7 @@
     </context>
   </df>
 
-  <df tag="508">
+  <df tag="508" lang-xpath=".">
     <context xpath="bf:Instance/bf:credits[not(starts-with(text(),'Cast:'))]">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -339,7 +339,7 @@
     </context>
   </df>
 
-  <df tag="510">
+  <df tag="510" lang-xpath="bf:title/*/bf:mainTitle">
     <context xpath="bf:Work/bflc:indexedIn/bf:Work|bf:Work/bf:references/bf:Work">
       <ind1 default="0">
         <switch>
@@ -369,7 +369,7 @@
     </context>
   </df>
 
-  <df tag="511">
+  <df tag="511" lang-xpath=".">
     <context xpath="bf:Instance/bf:credits[starts-with(text(),'Cast:')]">
       <ind1 default="1"/>
       <ind2 default=" "/>
@@ -379,7 +379,7 @@
     </context>
   </df>
 
-  <df tag="518">
+  <df tag="518" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:capture/bf:Capture[not(bf:date) and not(bf:place)]">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -392,7 +392,7 @@
     </context>
   </df>
 
-  <df tag="520">
+  <df tag="520" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:summary/bf:Summary">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -411,7 +411,7 @@
   <!-- rules for 521 coded with 385 -->
 
   <!-- rules for 522 coded with 052 -->
-  <df tag="524">
+  <df tag="524" lang-xpath=".">
     <context xpath="bf:Instance/bf:preferredCitation">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -419,7 +419,7 @@
     </context>
   </df>
 
-  <df tag="525">
+  <df tag="525" lang-xpath="rdfs:label">
     <context xpath="*[local-name()='Instance' or local-name()='Work']/bf:supplementaryContent/bf:SupplementaryContent">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -442,7 +442,7 @@
                   bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn'] or
                   bf:identifiedBy/*[local-name()='Coden' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Coden'] or
                   bf:identifiedBy/*[local-name()='Isbn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isbn']">
-        <df tag="776">
+        <df tag="776" lang-xpath="bf:title/*/rdfs:label">
           <ind1 default="0"/>
           <ind2 default=" "/>
           <sf code="3" repeatable="false">
@@ -585,7 +585,7 @@
     </switch>
   </select>
 
-  <df tag="532">
+  <df tag="532" lang-xpath=".">
     <context xpath="bf:Instance/bf:contentAccessibility/bf:ContentAccessibility/rdfs:label">
       <ind1 default="8"/>
       <ind2 default=" "/>
@@ -664,7 +664,7 @@
     </context>
   </df>
 
-  <df tag="538">
+  <df tag="538" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:systemRequirement/bf:SystemRequirement[not(contains(rdf:type/@rdf:resource,'bflc'))]">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -683,7 +683,7 @@
     </context>
   </df>
 
-  <df tag="541">
+  <df tag="541" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:immediateAcquisition/bf:ImmediateAcquisition">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -699,7 +699,7 @@
     </context>
   </df>
 
-  <df tag="546">
+  <df tag="546" lang-xpath="bf:note/bf:Note/rdfs:label">
     <context xpath="bf:Work/bf:language/bf:Language[bf:note/bf:Note/rdfs:label]">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -712,7 +712,7 @@
     </context>
   </df>
 
-  <df tag="546">
+  <df tag="546" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:notation/bf:Notation">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -725,7 +725,7 @@
     </context>
   </df>
 
-  <df tag="561">
+  <df tag="561" lang-xpath=".">
     <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:custodialHistory">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -735,7 +735,7 @@
     </context>
   </df>
 
-  <df tag="563">
+  <df tag="563" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='binding']">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -748,7 +748,7 @@
     </context>
   </df>
 
-  <df tag="583">
+  <df tag="583" lang-xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
     <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='action']">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -789,7 +789,7 @@
     </context>
   </df>
 
-  <df tag="586">
+  <df tag="586" lang-xpath=".">
     <context xpath="bf:Instance/bf:awards">
       <ind1 default="8"/>
       <ind2 default=" "/>

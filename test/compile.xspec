@@ -31,6 +31,7 @@
         <xslt:output encoding="UTF-8" method="xml" indent="yes"/>
         <xslt:strip-space elements="*"/>
         <xslt:param name="pRecordId" select="'default'"/>
+        <xslt:param name="pCatScript" select="'Latn'" />
         <xslt:param name="pGenerationDatestamp">
           <xslt:if test="function-available('date:date-time')">
             <xslt:value-of select="translate(substring(date:date-time(),1,10),'-','')"/>
@@ -39,6 +40,8 @@
         <xslt:param name="pSourceRecordId"/>
         <xslt:param name="pConversionAgency"/>
         <xslt:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc-xsl'"/>
+        <xslt:variable name="lower">abcdefghijklmnopqrstuvwxyz</xslt:variable>
+        <xslt:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xslt:variable>
         <xslt:variable name="vCurrentVersion">0.1.0-TEST</xslt:variable>
         <xslt:template match="/">
           <xslt:choose>
@@ -273,6 +276,24 @@
           </xslt:variable>
           <xslt:value-of select="concat($vYear,$vMonth,$vDay,$vTime,$vTimeDiff)" />
         </xslt:template>
+        <xslt:template name="tScriptCode">
+          <xslt:param name="pXmlLang" />
+          <xslt:if test="string-length($pXmlLang) >= 4">
+            <xslt:choose>
+              <xslt:when test="string-length($pXmlLang)=4 and translate(substring($pXmlLang,1,1),0123456789,'') != ''">
+                <xslt:value-of select="$pXmlLang" />
+              </xslt:when>
+              <xslt:when test="string-length(substring-before($pXmlLang,'-'))=4 and translate(substring($pXmlLang,1,1),0123456789,'') != ''">
+                <xslt:value-of select="substring-before($pXmlLang,'-')" />
+              </xslt:when>
+              <xslt:otherwise>
+                <xslt:call-template name="tScriptCode">
+                  <xslt:with-param name="pXmlLang" select="substring-after($pXmlLang,'-')" />
+                </xslt:call-template>
+              </xslt:otherwise>
+            </xslt:choose>
+          </xslt:if>
+        </xslt:template>
       </xslt:stylesheet>
     </x:expect>
   </x:scenario>
@@ -339,6 +360,16 @@
           <xslt:with-param name="vAdminMetadata" select="$vAdminMetadata"/>
         </xslt:apply-templates>
       </x:expect>
+    </x:scenario>
+
+    <x:scenario label="lang-prefer attribute on non-repeatable field">
+      <x:context mode="documentFrame">
+        <bf2marc:df tag="245" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="vernacular">
+          <bf2marc:context xpath="bf:Instance/bf:title/bf:Title[not(rdf:type)]"/>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="...should select nodes to process based on lang-xpath and default script"
+                test="//xslt:for-each[1]/@select='bf:Instance/bf:title/bf:Title[not(rdf:type)][bf:mainTitle/@xml:lang and not(contains(translate(bf:mainTitle/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]'"/>
     </x:scenario>
   </x:scenario>
 
@@ -426,6 +457,23 @@
       <x:expect label="...should generate frame for target MARC data field">
         <marc:datafield>
           <xslt:attribute name="tag">245</xslt:attribute>
+        </marc:datafield>
+      </x:expect>
+    </x:scenario>
+
+    <x:scenario label="lang-xpath attribute">
+      <x:context mode="fieldTemplate">
+        <bf2marc:df tag="245" lang-xpath="bf:mainTitle"/>
+      </x:context>
+      <x:expect label="...should generate xml:lang attribute for target MARC data field">
+        <xslt:variable name="vXmlLang">
+          <xslt:value-of select="bf:mainTitle/@xml:lang"/>
+        </xslt:variable>
+        <marc:datafield>
+          <xslt:attribute name="tag">245</xslt:attribute>
+          <xslt:if test="$vXmlLang != ''">
+            <xslt:attribute name="xml:lang"><xslt:value-of select="$vXmlLang"/></xslt:attribute>
+          </xslt:if>
         </marc:datafield>
       </x:expect>
     </x:scenario>

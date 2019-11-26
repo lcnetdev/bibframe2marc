@@ -27,6 +27,14 @@
               test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='l'] = 'English'"/>
   </x:scenario>
 
+  <x:scenario label="Multi-script 241/245">
+    <x:context href="../data/multi-script/241-245.xml"/>
+    <x:expect label="generate 241 from transliterated title"
+              test="count(//marc:datafield[@tag='241']) = 1"/>
+    <x:expect label="generate 245 from vernacular title"
+              test="count(//marc:datafield[@tag='245']) = 1"/>
+  </x:scenario>
+
   <x:scenario label="MARC 242">
     <x:context href="../data/2XX/242.xml"/>
     <x:expect label="generate 242" test="count(//marc:datafield[@tag='242']) = 1"/>

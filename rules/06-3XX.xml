@@ -8,7 +8,7 @@
        xmlns:marc="http://www.loc.gov/MARC21/slim"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <df tag="300">
+  <df tag="300" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:extent/bf:Extent">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -26,7 +26,7 @@
     </context>
   </df>
 
-  <df tag="306" repeatable="false">
+  <df tag="306" repeatable="false" lang-xpath=".">
     <context xpath="bf:Instance/bf:duration">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -39,7 +39,7 @@
   <select xpath="bf:Instance/bf:frequency/bf:Frequency">
     <switch>
       <case test="position() = 1">
-        <df tag="310">
+        <df tag="310" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="a" repeatable="false">
@@ -51,7 +51,7 @@
         </df>
       </case>
       <case test="default">
-        <df tag="321">
+        <df tag="321" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="a" repeatable="false">
@@ -65,7 +65,7 @@
     </switch>
   </select>
 
-  <df tag="336">
+  <df tag="336" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:content/*[local-name()='Content' or
                                                  rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Content'] or
                                                  local-name()='Authority' or
@@ -108,7 +108,7 @@
     </context>
   </df>
 
-  <df tag="337">
+  <df tag="337" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:media/*[local-name()='Media' or
                                                    rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Media'] or
                                                    local-name()='Authority' or
@@ -151,7 +151,7 @@
     </context>
   </df>
 
-  <df tag="338">
+  <df tag="338" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:carrier/*[local-name()='Carrier' or
                                                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Carrier'] or
                                                      local-name()='Authority' or
@@ -194,7 +194,7 @@
     </context>
   </df>
 
-  <df tag="340">
+  <df tag="340" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:baseMaterial/bf:BaseMaterial |
                     bf:Instance/bf:appliedMaterial/bf:AppliedMaterial |
                     bf:Instance/bf:productionMethod/bf:ProductionMethod |
@@ -283,7 +283,7 @@
     </context>
   </df>
 
-  <df tag="344">
+  <df tag="344" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:soundCharacteristic/bf:RecordingMethod |
                     bf:Instance/bf:soundCharacteristic/bf:RecordingMedium |
                     bf:Instance/bf:soundCharacteristic/bf:PlayingSpeed |
@@ -347,7 +347,7 @@
     </context>
   </df>
 
-  <df tag="347">
+  <df tag="347" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:digitalCharacteristic/bf:FileType |
                     bf:Instance/bf:digitalCharacteristic/bf:EncodingFormat |
                     bf:Instance/bf:digitalCharacteristic/bf:FileSize |
@@ -403,7 +403,7 @@
     </context>
   </df>
 
-  <df tag="362">
+  <df tag="362" lang-xpath=".">
     <context xpath="bf:Instance/bf:firstIssue">
       <ind1 default="0"/>
       <ind2 default=" "/>
@@ -423,7 +423,7 @@
     </context>
   </df>
 
-  <df tag="362">
+  <df tag="362" lang-xpath="rdfs:label">
     <context xpath="bf:Instance/bf:note/bf:Note[bf:noteType='Numbering']">
       <ind1 default="1"/>
       <ind2 default=" "/>
@@ -435,7 +435,7 @@
   <select xpath="bf:Work/bf:intendedAudience">
     <switch>
       <case test="@rdf:resource or bf:IntendedAudience[@rdf:about or bf:demographicGroup or bf:source]">
-        <df tag="385">
+        <df tag="385" lang-xpath="rdfs:label">
           <ind1 default = " "/>
           <ind2 default = " "/>
           <sf code="3" repeatable="false">
@@ -460,7 +460,7 @@
         </df>
       </case>
       <case test="default">
-        <df tag="521">
+        <df tag="521" lang-xpath="rdfs:label">
           <ind1 default = " ">
             <switch>
               <case test="bf:IntendedAudience/bf:note/bf:Note/rdfs:label = 'reading grade level'">0</case>
