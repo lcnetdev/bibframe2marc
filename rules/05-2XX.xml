@@ -213,9 +213,22 @@
       <sf code="b" repeatable="false">
         <select xpath="bf:subtitle"/>
       </sf>
-      <sf code="c" repeatable="false">
-        <select xpath="ancestor::bf:Instance/bf:responsibilityStatement"/>
-      </sf>
+      <switch>
+        <case test="$vXmlLang != ''">
+          <sf code="c">
+            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
+              <switch>
+                <case test="@xml:lang=$vXmlLang"><transform><xsl:value-of select="."/></transform></case>
+              </switch>
+            </select>
+          </sf>
+        </case>
+        <case test="default">
+          <sf code="c" repeatable="false">
+            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement"/>
+          </sf>
+        </case>
+      </switch>
       <sf code="n">
         <select xpath="bf:partNumber"/>
       </sf>
