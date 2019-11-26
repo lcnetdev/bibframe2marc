@@ -367,6 +367,7 @@
                     <xsl:choose>
                       <xsl:when test="{bf2marc:context/@xpath}[{@lang-xpath}/@xml:lang and not(contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
                         <xsl:for-each select="{bf2marc:context/@xpath}[{@lang-xpath}/@xml:lang and not(contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                          <xslt:apply-templates select="bf2marc:context/bf2marc:var" mode="fieldTemplate"/>
                           <xsl:choose>
                             <xsl:when test="position()=1">
                               <xslt:apply-templates select="." mode="fieldTemplate">
@@ -381,6 +382,7 @@
                       </xsl:when>
                       <xsl:otherwise>
                         <xsl:for-each select="{bf2marc:context/@xpath}">
+                          <xslt:apply-templates select="bf2marc:context/bf2marc:var" mode="fieldTemplate"/>
                           <xsl:choose>
                             <xsl:when test="position()=1">
                               <xslt:apply-templates select="." mode="fieldTemplate">
@@ -399,6 +401,7 @@
                     <xsl:choose>
                       <xsl:when test="{bf2marc:context/@xpath}[not({@lang-xpath}/@xml:lang) or contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                         <xsl:for-each select="{bf2marc:context/@xpath}[not({@lang-xpath}/@xml:lang) or contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                          <xslt:apply-templates select="bf2marc:context/bf2marc:var" mode="fieldTemplate"/>
                           <xsl:choose>
                             <xsl:when test="position()=1">
                               <xslt:apply-templates select="." mode="fieldTemplate">
@@ -413,6 +416,7 @@
                       </xsl:when>
                       <xsl:otherwise>
                         <xsl:for-each select="{bf2marc:context/@xpath}">
+                          <xslt:apply-templates select="bf2marc:context/bf2marc:var" mode="fieldTemplate"/>
                           <xsl:choose>
                             <xsl:when test="position()=1">
                               <xslt:apply-templates select="." mode="fieldTemplate">
