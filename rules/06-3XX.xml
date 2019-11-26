@@ -26,17 +26,15 @@
     </context>
   </df>
 
-  <switch>
-    <case test="bf:Instance/bf:duration">
-      <df tag="306" repeatable="false">
-        <ind1 default=" "/>
-        <ind2 default=" "/>
-        <sf code="a">
-          <select xpath="bf:Instance/bf:duration"/>
-        </sf>
-      </df>
-    </case>
-  </switch>
+  <df tag="306" repeatable="false">
+    <context xpath="bf:Instance/bf:duration">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a">
+        <select xpath="."/>
+      </sf>
+    </context>
+  </df>
 
   <select xpath="bf:Instance/bf:frequency/bf:Frequency">
     <switch>
