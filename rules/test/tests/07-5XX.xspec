@@ -5,7 +5,7 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
-  <!-- MARC 254 tests are here because it appears in BIBFRAME as a note -->
+  <!-- MARC 254/256 tests are here because they appear in BIBFRAME as notes -->
   <x:scenario label="MARC 254">
     <x:context href="../data/5XX/254.xml"/>
     <x:expect label="generate 254" test="count(//marc:datafield[@tag='254']) = 1"/>
@@ -15,6 +15,17 @@
               test="//marc:datafield[@tag='254']/@ind2 = ' '"/>
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='254']/marc:subfield[@code='a'] = 'Partitur'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 256">
+    <x:context href="../data/5XX/256.xml"/>
+    <x:expect label="generate 256" test="count(//marc:datafield[@tag='256']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='256']/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='256']/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='256']/marc:subfield[@code='a'] = 'Computer data (2 files : 876,000, 775,000 records)'"/>
   </x:scenario>
 
   <!-- I know, a 490 isn't a 5XX -->

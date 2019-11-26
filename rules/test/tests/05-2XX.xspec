@@ -109,6 +109,8 @@
     <x:expect label="$g from exclusionGRing" test="//marc:datafield[@tag='255']/marc:subfield[@code='g'] = 'W 84˚00´00ʺ--W 75˚00´00ʺ/N 40˚00´00ʺ--N 37˚30´00ʺ'"/>
   </x:scenario>
 
+  <!-- tests for MARC 256 in with notes in 5XX rules -->
+
   <x:scenario label="MARC 264">
     <x:context href="../data/2XX/264.xml"/>
     <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
