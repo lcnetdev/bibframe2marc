@@ -26,6 +26,7 @@
       <xsl:strip-space elements="*"/>
 
       <xsl:param name="pRecordId" select="'default'"/>
+      <xsl:param name="pCatScript" select="'Latn'"/>
 
       <!-- parameters for 884 generation -->
       <xsl:param name="pGenerationDatestamp">
@@ -36,6 +37,10 @@
       <xsl:param name="pSourceRecordId"/>
       <xsl:param name="pConversionAgency"/>
       <xsl:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc-xsl'"/>
+
+      <!-- for upper- and lower-case translation (ASCII only) -->
+      <xsl:variable name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable>
+      <xsl:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable>
 
       <xslt:apply-templates/>
 
@@ -351,12 +356,93 @@
     </xslt:variable>
     <xslt:choose>
       <xslt:when test="bf2marc:context">
-        <xslt:for-each select="bf2marc:context">
-          <xsl:apply-templates select="{@xpath}" mode="generate-{$vTagName}">
-            <xsl:with-param name="vRecordId" select="$vRecordId"/>
-            <xsl:with-param name="vAdminMetadata" select="$vAdminMetadata"/>
-          </xsl:apply-templates>
-        </xslt:for-each>
+        <xslt:choose>
+          <!-- special handling for language preference and non-repeatable fields -->
+          <!-- this relies on the script subtag being set in the xml:lang attribute -->
+          <xslt:when test="@lang-prefer and $vRepeatable='false'">
+            <xslt:choose>
+              <xslt:when test="@lang-xpath">
+                <xslt:choose>
+                  <xslt:when test="@lang-prefer='vernacular'">
+                    <xsl:choose>
+                      <xsl:when test="{bf2marc:context/@xpath}[{@lang-xpath}/@xml:lang and not(contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                        <xsl:for-each select="{bf2marc:context/@xpath}[{@lang-xpath}/@xml:lang and not(contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                          <xsl:choose>
+                            <xsl:when test="position()=1">
+                              <xslt:apply-templates select="." mode="fieldTemplate">
+                                <xslt:with-param name="repeatable" select="$vRepeatable"/>
+                              </xslt:apply-templates>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:for-each>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:for-each select="{bf2marc:context/@xpath}">
+                          <xsl:choose>
+                            <xsl:when test="position()=1">
+                              <xslt:apply-templates select="." mode="fieldTemplate">
+                                <xslt:with-param name="repeatable" select="$vRepeatable"/>
+                              </xslt:apply-templates>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:for-each>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xslt:when>
+                  <xslt:otherwise>
+                    <xsl:choose>
+                      <xsl:when test="{bf2marc:context/@xpath}[not({@lang-xpath}/@xml:lang) or contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                        <xsl:for-each select="{bf2marc:context/@xpath}[not({@lang-xpath}/@xml:lang) or contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                          <xsl:choose>
+                            <xsl:when test="position()=1">
+                              <xslt:apply-templates select="." mode="fieldTemplate">
+                                <xslt:with-param name="repeatable" select="$vRepeatable"/>
+                              </xslt:apply-templates>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:for-each>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:for-each select="{bf2marc:context/@xpath}">
+                          <xsl:choose>
+                            <xsl:when test="position()=1">
+                              <xslt:apply-templates select="." mode="fieldTemplate">
+                                <xslt:with-param name="repeatable" select="$vRepeatable"/>
+                              </xslt:apply-templates>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:for-each>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xslt:otherwise>
+                </xslt:choose>
+              </xslt:when>
+              <xslt:otherwise>
+                <xslt:message terminate="yes">lang-prefer attribute used without lang-xpath in rule for tag <xslt:value-of select="@tag"/>.</xslt:message>
+              </xslt:otherwise>
+            </xslt:choose>
+          </xslt:when>
+          <xslt:otherwise>
+            <xslt:for-each select="bf2marc:context">
+              <xsl:apply-templates select="{@xpath}" mode="generate-{$vTagName}">
+                <xsl:with-param name="vRecordId" select="$vRecordId"/>
+                <xsl:with-param name="vAdminMetadata" select="$vAdminMetadata"/>
+              </xsl:apply-templates>
+            </xslt:for-each>
+          </xslt:otherwise>
+        </xslt:choose>
       </xslt:when>
       <xslt:otherwise>
         <xslt:apply-templates select="." mode="fieldTemplate">

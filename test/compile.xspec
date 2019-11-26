@@ -31,6 +31,7 @@
         <xslt:output encoding="UTF-8" method="xml" indent="yes"/>
         <xslt:strip-space elements="*"/>
         <xslt:param name="pRecordId" select="'default'"/>
+        <xslt:param name="pCatScript" select="'Latn'" />
         <xslt:param name="pGenerationDatestamp">
           <xslt:if test="function-available('date:date-time')">
             <xslt:value-of select="translate(substring(date:date-time(),1,10),'-','')"/>
@@ -39,6 +40,8 @@
         <xslt:param name="pSourceRecordId"/>
         <xslt:param name="pConversionAgency"/>
         <xslt:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc-xsl'"/>
+        <xslt:variable name="lower">abcdefghijklmnopqrstuvwxyz</xslt:variable>
+        <xslt:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xslt:variable>
         <xslt:variable name="vCurrentVersion">0.1.0-TEST</xslt:variable>
         <xslt:template match="/">
           <xslt:choose>
@@ -339,6 +342,16 @@
           <xslt:with-param name="vAdminMetadata" select="$vAdminMetadata"/>
         </xslt:apply-templates>
       </x:expect>
+    </x:scenario>
+
+    <x:scenario label="lang-prefer attribute on non-repeatable field">
+      <x:context mode="documentFrame">
+        <bf2marc:df tag="245" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="vernacular">
+          <bf2marc:context xpath="bf:Instance/bf:title/bf:Title[not(rdf:type)]"/>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="...should select nodes to process based on lang-xpath and default script"
+                test="//xslt:for-each[1]/@select='bf:Instance/bf:title/bf:Title[not(rdf:type)][bf:mainTitle/@xml:lang and not(contains(translate(bf:mainTitle/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]'"/>
     </x:scenario>
   </x:scenario>
 
