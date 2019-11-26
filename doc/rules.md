@@ -230,6 +230,7 @@ The following named templates are defined in the generated stylesheet for use in
 * `EDTF-TimePart`: Return the time part of a single EDTF date (not a range).
 * `EDTF-TimeDiff`: Return the time shift part of a single EDTF date (not a range).
 * `EDTF-to-033`: Return a string formatted as a date for the 033/263 fields from a single EDTF date (not a range).
+* `tScriptCode`: Extract the script subtag from an xml:lang attribute.
 
 #### Limitations
 

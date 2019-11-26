@@ -276,6 +276,24 @@
           </xslt:variable>
           <xslt:value-of select="concat($vYear,$vMonth,$vDay,$vTime,$vTimeDiff)" />
         </xslt:template>
+        <xslt:template name="tScriptCode">
+          <xslt:param name="pXmlLang" />
+          <xslt:if test="string-length($pXmlLang) >= 4">
+            <xslt:choose>
+              <xslt:when test="string-length($pXmlLang)=4 and translate(substring($pXmlLang,1,1),0123456789,'') != ''">
+                <xslt:value-of select="$pXmlLang" />
+              </xslt:when>
+              <xslt:when test="string-length(substring-before($pXmlLang,'-'))=4 and translate(substring($pXmlLang,1,1),0123456789,'') != ''">
+                <xslt:value-of select="substring-before($pXmlLang,'-')" />
+              </xslt:when>
+              <xslt:otherwise>
+                <xslt:call-template name="tScriptCode">
+                  <xslt:with-param name="pXmlLang" select="substring-after($pXmlLang,'-')" />
+                </xslt:call-template>
+              </xslt:otherwise>
+            </xslt:choose>
+          </xslt:if>
+        </xslt:template>
       </xslt:stylesheet>
     </x:expect>
   </x:scenario>

@@ -71,4 +71,11 @@
 
   </x:scenario>
 
+  <x:scenario label="tScriptCode">
+    <x:call template="tScriptCode">
+      <x:param name="pXmlLang" select="'ko-KO-Hang-x-banana'"/>
+    </x:call>
+    <x:expect label="Should return the script code from the xml:lang attribute value" select="'Hang'"/>
+  </x:scenario>
+
 </x:description>

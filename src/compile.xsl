@@ -236,6 +236,26 @@
         <xsl:value-of select="concat($vYear,$vMonth,$vDay,$vTime,$vTimeDiff)"/>
       </xsl:template>
 
+      <!-- get the script code from an xml:lang attribute value -->
+      <xsl:template name="tScriptCode">
+        <xsl:param name="pXmlLang"/>
+        <xsl:if test="string-length($pXmlLang) &gt;= 4">
+          <xsl:choose>
+            <xsl:when test="string-length($pXmlLang)=4 and translate(substring($pXmlLang,1,1),0123456789,'') != ''">
+              <xsl:value-of select="$pXmlLang"/>
+            </xsl:when>
+              <xsl:when test="string-length(substring-before($pXmlLang,'-'))=4 and translate(substring($pXmlLang,1,1),0123456789,'') != ''">
+              <xsl:value-of select="substring-before($pXmlLang,'-')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="tScriptCode">
+                <xsl:with-param name="pXmlLang" select="substring-after($pXmlLang,'-')"/>
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:if>
+      </xsl:template>
+
     </xsl:stylesheet>
   </xslt:template>
 
@@ -489,9 +509,43 @@
                 </xsl:choose>
               </xslt:when>
               <xslt:otherwise>
-                <xslt:apply-templates select="parent::*" mode="fieldTemplate">
-                  <xslt:with-param name="repeatable" select="parent::*/@repeatable"/>
-                </xslt:apply-templates>
+                <xslt:choose>
+                  <xslt:when test="parent::*/@lang-prefer">
+                    <xslt:choose>
+                      <xslt:when test="parent::*/@lang-xpath">
+                        <xsl:variable name="vElementScript">
+                          <xsl:call-template name="tScriptCode">
+                            <xsl:with-param name="pXmlLang" select="{parent::*/@lang-xpath}/@xml:lang"/>
+                          </xsl:call-template>
+                        </xsl:variable>
+                        <xslt:choose>
+                          <xslt:when test="parent::*/@lang-prefer='vernacular'">
+                            <xsl:if test="$vElementScript != '' and translate($vElementScript,$upper,$lower) != translate($pCatScript,$upper,$lower)">
+                              <xslt:apply-templates select="parent::*" mode="fieldTemplate">
+                                <xslt:with-param name="repeatable" select="parent::*/@repeatable"/>
+                              </xslt:apply-templates>
+                            </xsl:if>
+                          </xslt:when>
+                          <xslt:otherwise>
+                            <xsl:if test="$vElementScript = '' or translate($vElementScript,$upper,$lower)=translate($pCatScript,$upper,$lower)">
+                              <xslt:apply-templates select="parent::*" mode="fieldTemplate">
+                                <xslt:with-param name="repeatable" select="parent::*/@repeatable"/>
+                              </xslt:apply-templates>
+                            </xsl:if>
+                          </xslt:otherwise>
+                        </xslt:choose>
+                      </xslt:when>
+                      <xslt:otherwise>
+                        <xslt:message terminate="yes">lang-prefer attribute used without lang-xpath in rule for tag <xslt:value-of select="parent::*/@tag"/>.</xslt:message>
+                      </xslt:otherwise>
+                    </xslt:choose>
+                  </xslt:when>
+                  <xslt:otherwise>
+                    <xslt:apply-templates select="parent::*" mode="fieldTemplate">
+                      <xslt:with-param name="repeatable" select="parent::*/@repeatable"/>
+                    </xslt:apply-templates>
+                  </xslt:otherwise>
+                </xslt:choose>
               </xslt:otherwise>
             </xslt:choose>
           </xsl:template>
