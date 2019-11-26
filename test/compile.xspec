@@ -33,9 +33,14 @@
         <xslt:param name="pRecordId" select="'default'"/>
         <xslt:param name="pCatScript" select="'Latn'" />
         <xslt:param name="pGenerationDatestamp">
-          <xslt:if test="function-available('date:date-time')">
-            <xslt:value-of select="translate(substring(date:date-time(),1,10),'-','')"/>
-          </xslt:if>
+          <xslt:choose>
+            <xslt:when test="function-available('date:date-time')">
+              <xslt:value-of select="translate(substring(date:date-time(),1,19),'-:T','')"/>
+            </xslt:when>
+            <xslt:when test="function-available('fn:current-dateTime')">
+              <xslt:value-of select="translate(substring(fn:current-dateTime(),1,19),'-:T','')"/>
+            </xslt:when>
+          </xslt:choose>
         </xslt:param>
         <xslt:param name="pSourceRecordId"/>
         <xslt:param name="pConversionAgency"/>
