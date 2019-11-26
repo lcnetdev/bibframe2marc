@@ -5,6 +5,18 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
+  <!-- MARC 254 tests are here because it appears in BIBFRAME as a note -->
+  <x:scenario label="MARC 254">
+    <x:context href="../data/5XX/254.xml"/>
+    <x:expect label="generate 254" test="count(//marc:datafield[@tag='254']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='254']/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='254']/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='254']/marc:subfield[@code='a'] = 'Partitur'"/>
+  </x:scenario>
+
   <!-- I know, a 490 isn't a 5XX -->
   <x:scenario label="MARC 490">
     <x:context href="../data/5XX/490.xml"/>
