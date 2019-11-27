@@ -202,20 +202,24 @@ The `df` element is more complex. In addition to the rule building blocks docume
 </cf>
 ```
 
-#### XSL variables
+#### XSL variables and stylesheet parameters
 
-The following global variables in the generated stylesheet are available for use in XSL fragments:
+The following global variables in the generated stylesheet are available for use in XSL fragments and XPath expressions:
 
 * `vAdminMetadata`: The node set that represents the `bf:AdminMetadata` object for the BIBFRAME description. By default, it is from the XPath `/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata` (the top-level `bf:Instance` subject). If there is no object at that path, the variable will be created from `/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata` (the top-level `bf:Work` subject).
 * `vRecordId`: A record ID that is calculated for the current BIBFRAME description, with this priority:
   1. The value of the `pRecordId` parameter, if it is passed to the stylesheet
   2. The value in `/rdf:RDF/bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value`, if there is no `bf:source` property or the `bf:source/bf:Source/rdfs:label` value is "DLC".
   3. `generate-id()` (default)
-* `pCatScript`: The ISO 15924 script subtag of the cataloging language, for dealing with multi-script records. Defaults to `Latn`.
-* `pGenerationDatestamp`: The value of the `pGenerationDatestamp` stylesheet parameter. Defaults to `date:date-time()` if the function is available to the XSLT processer. For inclusion in an 884, should be in YYYYMMDD format (ISO 8601).
 * `vCurrentVersion`: The value of the `version` element of the top-level `rules` document.
+
+In addition, the following string parameters can be passed to the stylesheet and used as global variables in XSL fragments and XPath expressions:
+
+* `pRecordId`: The assigned record ID for the description, e.g. for use in the MARC 001 control field.
+* `pGenerationDatestamp`: Defaults to `date:date-time()` or `fn:current-dateTime()` if the functions are available to the XSLT processer. Generated defaults are in `YYYYMMDDhhmmss.0` format (ISO 8601) for use in an 005 or 884.
+* `pConversionAgency`: MARC organization code of the institution doing the data generation, e.g. for use in the 003 or the 884. Defaults to `DLC`.
+* `pCatScript`: The ISO 15924 script subtag of the cataloging language, for dealing with multi-script records. Defaults to `Latn`.
 * `pSourceRecordId`: An identifier for the source record, perhaps a URI
-* `pConversionAgency`: MARC organization code of the institution doing the data generation.
 * `pGenerationUri`: Identifier for the generation process, e.g. a Github URL. Defaults to `https://github.com/lcnetdev/bibframe2marc-xsl`.
 
 

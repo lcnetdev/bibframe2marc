@@ -12,15 +12,23 @@
     <transform><xsl:value-of select="$vRecordId"/></transform>
   </cf>
 
-  <switch>
-    <case test="$vAdminMetadata/bf:source/bf:Source/bf:code">
-      <cf tag="003">
-        <transform>
-          <xsl:value-of select="$vAdminMetadata/bf:source/bf:Source/bf:code"/>
-        </transform>
-      </cf>
-    </case>
-  </switch>
+  <cf tag="003">
+    <switch>
+      <case test="$pConversionAgency != 'DLC' and $pRecordId != ''">
+        <transform><xsl:value-of select="$pConversionAgency"/></transform>
+      </case>
+      <case test="default">
+        <switch>
+          <case test="$vAdminMetadata/bf:identifiedBy/*[local-name()='Local' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local']/bf:assigner/*/*[local-name()='code']">
+            <transform>
+              <xsl:value-of select="$vAdminMetadata/bf:identifiedBy/*[local-name()='Local' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local']/bf:assigner/*/*[local-name()='code']"/>
+            </transform>
+          </case>
+          <case test="default"><transform><xsl:value-of select="$pConversionAgency"/></transform></case>
+        </switch>
+      </case>
+    </switch>
+  </cf>
 
   <switch>
     <case test="$vAdminMetadata/bf:changeDate">
