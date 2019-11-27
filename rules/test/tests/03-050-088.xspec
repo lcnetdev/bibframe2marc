@@ -33,6 +33,17 @@
     <x:expect label="$0 from rdf:value of Identifier" test="//marc:datafield[@tag='060']/marc:subfield[@code='0'][2] = '(NLM)Z675.M4'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 072" focus="072">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 072" test="count(//marc:datafield[@tag='072']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='072'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 from source"
+              test="//marc:datafield[@tag='072'][1]/@ind2 = '0'"/>
+    <x:expect label="$a from code"
+              test="//marc:datafield[@tag='072'][1]/marc:subfield[@code='a'] = 'S100'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 082">
     <x:context href="../data/050-088/050-088.xml"/>
     <x:expect label="generate 082" test="count(//marc:datafield[@tag='082']) = 1"/>

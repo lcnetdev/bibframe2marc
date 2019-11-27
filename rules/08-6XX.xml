@@ -9,7 +9,7 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- subjects -->
-  <select xpath="bf:Work/bf:subject">
+  <select xpath="bf:Work/bf:subject[not(*/*[local-name()='code'])]">
     <var name="vScriptSubtag">
       <transform>
         <xsl:call-template name="tScriptCode">

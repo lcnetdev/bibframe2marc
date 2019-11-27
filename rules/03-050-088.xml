@@ -89,6 +89,38 @@
     </context>
   </df>
 
+  <df tag="072">
+    <context xpath="bf:Work/bf:subject/bf:Topic[*[local-name()='code']]">
+      <ind1 default=" "/>
+      <ind2 default=" ">
+        <switch>
+          <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/agricola' or
+                      bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/agricola' or
+                      bf:Source/*[local-name()='code'] = 'agricola']">0</case>
+          <case test="bf:source">7</case>
+        </switch>
+      </ind2>
+      <sf code="a" repeatable="false"><select xpath="*[local-name()='code']"/></sf>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source[not(@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/agricola' or
+                       bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/agricola' or
+                       bf:Source/*[local-name()='code'] = 'agricola')]">
+          <switch>
+            <case test="contains(@rdf:resource,'bisacsh') or
+                        contains(bf:Source/@rdf:about,'bisacsh')">bisacsh</case>
+            <case test="bf:Source/*[local-name()='code']">
+              <select xpath="bf:Source/*[local-name()='code']"/>
+            </case>
+            <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+            <case test="bf:Source/@rdf:about"><transform><xsl:value-of select="bf:Source/@rdf:about"/></transform></case>
+            <case test="bf:Source/rdfs:label"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+            <case test="default">Unable to determine source</case>
+          </switch>
+        </select>
+      </sf>
+    </context>
+  </df>
+
   <df tag="082">
     <context xpath="bf:Work/bf:classification/bf:ClassificationDdc">
       <ind1 default="7">
