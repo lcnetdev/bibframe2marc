@@ -8,6 +8,8 @@
   <x:scenario label="MARC 050">
     <x:context href="../data/050-088/050-088.xml"/>
     <x:expect label="generate 050" test="count(//marc:datafield[@tag='050']) = 1"/>
+    <x:expect label="ind1 from heldBy property"
+              test="//marc:datafield[@tag='050'][1]/@ind1 = '0'"/>
   </x:scenario>
 
   <x:scenario label="MARC 052">

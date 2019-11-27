@@ -10,10 +10,15 @@
 
   <df tag="050">
     <context xpath="bf:Work/bf:classification/bf:ClassificationLcc[not(bf:source/bf:Source/rdfs:label='Library and Archives Canada')]">
-      <ind1 default=" "/>
+      <ind1 default=" ">
+        <switch>
+          <case test="ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='United States, Library of Congress' or *[local-name()='code']='DLC']">0</case>
+          <case test="not(ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='United States, Library of Congress' or *[local-name()='code']='DLC']) and ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy">1</case>
+        </switch>
+      </ind1>
       <ind2 default="0">
         <switch>
-          <case test="bf:source and bf:source/bf:Source/@rdf:about != 'http://id.loc.gov/vocabulary/organizations/dlc'">4</case>
+          <case test="bf:source and bf:source/bf:Source/@rdf:about != 'http://id.loc.gov/vocabulary/organizations/dlc' and not(bf:source/bf:Source/rdfs:label='DLC')">4</case>
         </switch>
       </ind2>
       <sf code="a"><select xpath="bf:classificationPortion"/></sf>
