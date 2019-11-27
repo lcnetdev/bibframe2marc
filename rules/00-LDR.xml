@@ -26,12 +26,14 @@
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography'] and bf:Instance/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manuscript']">f</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography']">e</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage']">g</case>
-          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Audio']">
-            <switch>
-              <case test="bf:Work/bf:content/bf:Content[@rdf:about='http://id.loc.gov/vocabulary/contentTypes/prm']">j</case>
-              <case test="default">i</case>
-            </switch>
-          </case>
+          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Audio']">j</case>
+          <!-- Keeping this older logic around in case we want to revive it. Decision was to simply default to "j" 11/27/2019 -->
+          <!-- <case> -->
+          <!--   <switch> -->
+          <!--     <case test="bf:Work/bf:content/bf:Content[@rdf:about='http://id.loc.gov/vocabulary/contentTypes/prm']">j</case> -->
+          <!--     <case test="default">i</case> -->
+          <!--   </switch> -->
+          <!-- </case> -->
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage']">k</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Electronic']">m</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MixedMaterial']">p</case>
