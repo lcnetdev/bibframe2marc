@@ -1,13 +1,18 @@
 <?xml version='1.0'?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
   <bf:Work rdf:about="http://example.org/003test#Work">
     <bf:adminMetadata>
       <bf:AdminMetadata>
-        <bf:source>
-          <bf:Source>
-            <bf:code>DLC</bf:code>
-          </bf:Source>
-        </bf:source>
+        <bf:identifiedBy>
+          <bf:Local>
+            <rdf:value>12345</rdf:value>
+            <bf:assigner>
+              <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
+                <madsrdf:code>OCoLC</madsrdf:code>
+              </bf:Agent>
+            </bf:assigner>
+          </bf:Local>
+        </bf:identifiedBy>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:hasInstance rdf:resource="http://example.org/003test#Instance"/>

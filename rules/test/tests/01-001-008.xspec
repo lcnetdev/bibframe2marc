@@ -16,9 +16,15 @@
               test="marc:record/marc:controlfield[@tag='001'] = 'test001'"/>
   </x:scenario>
 
-  <x:scenario label="MARC 003">
+  <x:scenario label="MARC 003 from adminMetadata">
     <x:context href="../data/001-008/003.xml"/>
-    <x:expect label="...should be generated from $vAdminMetadata/bf:source/bf:Source/bf:code"
+    <x:expect label="...should be generated from $vAdminMetadata Local identifier assigner"
+              test="marc:record/marc:controlfield[@tag='003'] = 'OCoLC'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 003 from parameter">
+    <x:context href="../data/001-008/003-2.xml"/>
+    <x:expect label="...or pConversionAgency"
               test="marc:record/marc:controlfield[@tag='003'] = 'DLC'"/>
   </x:scenario>
 
@@ -37,7 +43,7 @@
     <x:expect label="008/15-17 generated from bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place"
               test="substring(marc:record/marc:controlfield[@tag='008'],16,3) = 'dk '"/>
     <x:expect label="008/18-34 not coded"
-              test="substring(marc:record/marc:controlfield[@tag='008'],19,16)='                '"/>
+              test="substring(marc:record/marc:controlfield[@tag='008'],19,17)='           ||| | '"/>
     <x:expect label="008/35-37 generated from bf:Work/bf:language"
               test="substring(marc:record/marc:controlfield[@tag='008'],36,3)='dan'"/>
     <x:expect label="008/38-39 not coded"

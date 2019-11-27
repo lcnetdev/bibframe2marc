@@ -33,15 +33,15 @@
       <xsl:param name="pGenerationDatestamp">
         <xsl:choose>
           <xsl:when test="function-available('date:date-time')">
-            <xsl:value-of select="translate(substring(date:date-time(),1,19),'-:T','')"/>
+            <xsl:value-of select="concat(translate(substring(date:date-time(),1,19),'-:T',''),'.0')"/>
           </xsl:when>
           <xsl:when test="function-available('fn:current-dateTime')">
-            <xsl:value-of select="translate(substring(fn:current-dateTime(),1,19),'-:T','')"/>
+            <xsl:value-of select="concat(translate(substring(fn:current-dateTime(),1,19),'-:T',''),'.0')"/>
           </xsl:when>
         </xsl:choose>
       </xsl:param>
       <xsl:param name="pSourceRecordId"/>
-      <xsl:param name="pConversionAgency"/>
+      <xsl:param name="pConversionAgency" select="'DLC'"/>
       <xsl:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc-xsl'"/>
 
       <!-- for upper- and lower-case translation (ASCII only) -->

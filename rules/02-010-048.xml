@@ -420,7 +420,7 @@
       </switch>
       <select xpath="bf:place/bf:Place">
         <switch>
-          <case test="bf:source/bf:Source/rdf:value='lcc-g'">
+          <case test="bf:source/bf:Source/rdf:value='lcc-g' or bf:source/bf:Source/rdfs:label='lcc-g'">
             <switch>
               <case test="contains(rdf:value,' ')">
                 <transform>
@@ -437,7 +437,12 @@
           </case>
           <case test="default">
             <transform>
-              <marc:subfield code="p"><xsl:value-of select="rdfs:label"/></marc:subfield>
+              <marc:subfield code="p">
+                <xsl:choose>
+                  <xsl:when test="rdf:value"><xsl:value-of select="rdf:value"/></xsl:when>
+                  <xsl:otherwise><xsl:value-of select="rdfs:label"/></xsl:otherwise>
+                </xsl:choose>
+              </marc:subfield>
             </transform>
             <select xpath="bf:source/bf:Source/rdfs:label">
               <transform>
