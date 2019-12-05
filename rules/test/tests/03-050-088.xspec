@@ -23,6 +23,19 @@
               test="//marc:datafield[@tag='052'][1] = '4034 R4 R8'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 055">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 055" test="count(//marc:datafield[@tag='055']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='055'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to '0'"
+              test="//marc:datafield[@tag='055'][1]/@ind2 = '0'"/>
+    <x:expect label="$a from classificationPortion"
+              test="//marc:datafield[@tag='055'][1]/marc:subfield[@code='a'] = 'F5050 .2'"/>
+    <x:expect label="$b from itemPortion"
+              test="//marc:datafield[@tag='055'][1]/marc:subfield[@code='b'] = 'T5'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 060">
     <x:context href="../data/050-088/050-088.xml"/>
     <x:expect label="generate 060 from bf:ClassificationNlm" test="count(//marc:datafield[@tag='060']) = 1"/>
