@@ -12,8 +12,10 @@
     <context xpath="bf:Work/bf:classification/bf:ClassificationLcc[not(bf:source/bf:Source/rdfs:label='Library and Archives Canada')]">
       <ind1 default=" ">
         <switch>
-          <case test="ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='United States, Library of Congress' or *[local-name()='code']='DLC']">0</case>
-          <case test="not(ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='United States, Library of Congress' or *[local-name()='code']='DLC']) and ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy">1</case>
+          <case test="ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or
+                      ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc'">0</case>
+          <case test="not(ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc') and
+                      ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy">1</case>
         </switch>
       </ind1>
       <ind2 default="0">
