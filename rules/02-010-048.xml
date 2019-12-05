@@ -870,9 +870,81 @@
         <ind2 default=" "/>
         <sf code="a">
           <select xpath="bf:Work/bf:temporalCoverage[@rdf:datatype='http://id.loc.gov/datatypes/edtf' and contains(.,'X')]">
-            <lookup map="df045timePeriods" targetField="code">
-              <lookupField name="edtfDate" xpath="."/>
-            </lookup>
+            <switch>
+              <case test="contains(.,'/')">
+                <transform>
+                  <xsl:variable name="v045Date1">
+                    <xsl:variable name="vDate1">
+                      <xsl:call-template name="EDTF-Date1">
+                        <xsl:with-param name="pEDTFDate" select="."/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="starts-with($vDate1,'-')">
+                        <xsl:value-of select="$df045BCEtimePeriods/*[edtfDate=$vDate1]/code"/>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:variable name="vCentury" select="$df045CEtimePeriods/*[century=substring($vDate1,1,2)]/code"/>
+                        <xsl:variable name="vDecade">
+                          <xsl:choose>
+                            <xsl:when test="substring($vDate1,3,1)='X'">-</xsl:when>
+                            <xsl:otherwise><xsl:value-of select="substring($vDate1,3,1)"/></xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:variable>
+                        <xsl:value-of select="concat($vCentury,$vDecade)"/>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
+                  <xsl:variable name="v045Date2">
+                    <xsl:variable name="vDate2">
+                      <xsl:call-template name="EDTF-Date2">
+                        <xsl:with-param name="pEDTFDate" select="."/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="starts-with($vDate2,'-')">
+                        <xsl:value-of select="$df045BCEtimePeriods/*[edtfDate=$vDate2]/code"/>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:variable name="vCentury" select="$df045CEtimePeriods/*[century=substring($vDate2,1,2)]/code"/>
+                        <xsl:variable name="vDecade">
+                          <xsl:choose>
+                            <xsl:when test="substring($vDate2,3,1)='X'">-</xsl:when>
+                            <xsl:otherwise><xsl:value-of select="substring($vDate2,3,1)"/></xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:variable>
+                        <xsl:value-of select="concat($vCentury,$vDecade)"/>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
+                  <xsl:value-of select="concat($v045Date1,$v045Date2)"/>
+                </transform>
+              </case>
+              <case test="default">
+                <switch>
+                  <case test="starts-with(.,'-')">
+                    <transform>
+                      <xsl:variable name="vEdtfDate" select="."/>
+                      <xsl:value-of select="concat($df045BCEtimePeriods/*[edtfDate=$vEdtfDate]/code,$df045BCEtimePeriods/*[edtfDate=$vEdtfDate]/code)"/>
+                    </transform>
+                  </case>
+                  <case test="default">
+                    <transform>
+                      <xsl:variable name="vEdtfDate" select="."/>
+                      <xsl:variable name="vCentury" select="$df045CEtimePeriods/*[century=substring($vEdtfDate,1,2)]/code"/>
+                      <xsl:choose>
+                        <xsl:when test="substring($vEdtfDate,3,1)='X'">
+                          <xsl:value-of select="concat($vCentury,'-',$vCentury,'-')"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:value-of select="concat($vCentury,substring($vEdtfDate,3,1),$vCentury,substring($vEdtfDate,3,1))"/>
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    </transform>
+                  </case>
+                </switch>
+              </case>
+            </switch>
           </select>
         </sf>
         <select xpath="bf:Work/bf:temporalCoverage[not(contains(.,'X'))]">
