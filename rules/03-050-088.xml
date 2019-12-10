@@ -165,6 +165,23 @@
     </context>
   </df>
 
+  <df tag="074">
+    <context xpath="bf:Instance/bf:identifiedBy/*[bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dgpo' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dgpo']">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    translate(bf:status/bf:Status/rdfs:label,$upper,$lower)='invalid'">
+          <sf code="z"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+        </case>
+      </switch>
+    </context>
+  </df>
+
   <df tag="082">
     <context xpath="bf:Work/bf:classification/bf:ClassificationDdc">
       <ind1 default="7">

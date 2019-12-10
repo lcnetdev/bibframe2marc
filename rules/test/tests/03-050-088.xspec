@@ -68,6 +68,19 @@
               test="//marc:datafield[@tag='072'][1]/marc:subfield[@code='a'] = 'S100'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 074">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 074" test="count(//marc:datafield[@tag='074']) = 2"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='074'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='074'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdf:value"
+              test="//marc:datafield[@tag='074'][1]/marc:subfield[@code='a'] = '334-C-1'"/>
+    <x:expect label="$z from invalid value"
+              test="//marc:datafield[@tag='074'][2]/marc:subfield[@code='z'] = '334-C-11'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 082">
     <x:context href="../data/050-088/050-088.xml"/>
     <x:expect label="generate 082" test="count(//marc:datafield[@tag='082']) = 1"/>
