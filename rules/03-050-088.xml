@@ -271,4 +271,21 @@
     </context>
   </df>
 
+  <df tag="088">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='ReportNumber' or rdf:type='http://id.loc.gov/ontologies/bibframe/ReportNumber']">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    translate(bf:status/bf:Status/rdfs:label,$upper,$lower)='invalid'">
+          <sf code="z"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+        </case>
+      </switch>
+    </context>
+  </df>
+
 </rules>

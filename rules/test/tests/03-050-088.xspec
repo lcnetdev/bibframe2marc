@@ -110,4 +110,15 @@
               test="//marc:datafield[@tag='086'][1]/marc:subfield[@code='a']='A 13.28:F 61/2/981 Glacier'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 088">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 088" test="count(//marc:datafield[@tag='088']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='088'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='088'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdf:value"
+              test="//marc:datafield[@tag='088'][1]/marc:subfield[@code='a']='APA 3009'"/>
+  </x:scenario>
+
 </x:description>
