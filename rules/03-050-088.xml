@@ -9,7 +9,7 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <df tag="050">
-    <context xpath="bf:Work/bf:classification/bf:ClassificationLcc[not(bf:source/bf:Source/rdfs:label='Library and Archives Canada')]">
+    <context xpath="bf:Work/bf:classification/*[(local-name()='ClassificationLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationLcc') and not(bf:source/bf:Source/rdfs:label='Library and Archives Canada')]">
       <ind1 default=" ">
         <switch>
           <case test="ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or
@@ -67,7 +67,7 @@
   </select>
 
   <df tag="055">
-    <context xpath="bf:Work/bf:classification/bf:ClassificationLcc[bf:source/bf:Source/rdfs:label='Library and Archives Canada']">
+    <context xpath="bf:Work/bf:classification/*[(local-name()='ClassificationLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationLcc') and bf:source/bf:Source/rdfs:label='Library and Archives Canada']">
       <ind1 default=" "/>
       <ind2 default="0"/>
       <sf code="a" repeatable="false"><select xpath="bf:classificationPortion"/></sf>
@@ -87,7 +87,7 @@
   </df>
 
   <df tag="060">
-    <context xpath="bf:Work/bf:classification/bf:ClassificationNlm">
+    <context xpath="bf:Work/bf:classification/*[local-name()='ClassificationNlm' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationNlm']">
       <ind1 default=" "/>
       <ind2 default="4">
         <switch>
@@ -183,7 +183,7 @@
   </df>
 
   <df tag="082">
-    <context xpath="bf:Work/bf:classification/bf:ClassificationDdc">
+    <context xpath="bf:Work/bf:classification/*[local-name()='ClassificationDdc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationDdc']">
       <ind1 default="7">
         <switch>
           <case test="not(bf:edition)">0</case>
