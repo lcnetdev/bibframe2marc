@@ -236,4 +236,39 @@
     </context>
   </df>
 
+  <df tag="086">
+    <context xpath="bf:Instance/bf:classification/bf:Classification[bf:source]">
+      <ind1 default=" ">
+        <switch>
+          <case test="bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/sudocs' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/sudocs'">0</case>
+          <case test="bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/cacodoc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/cacodoc'">1</case>
+        </switch>
+      </ind1>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    translate(bf:status/bf:Status/rdfs:label,$upper,$lower)='invalid'">
+          <sf code="z"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false"><select xpath="rdfs:label"/></sf>
+        </case>
+      </switch>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+    </context>
+  </df>
+
 </rules>
