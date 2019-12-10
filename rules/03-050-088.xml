@@ -9,11 +9,13 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <df tag="050">
-    <context xpath="bf:Work/bf:classification/bf:ClassificationLcc[not(bf:source/bf:Source/rdfs:label='Library and Archives Canada')]">
+    <context xpath="bf:Work/bf:classification/*[(local-name()='ClassificationLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationLcc') and not(bf:source/bf:Source/rdfs:label='Library and Archives Canada')]">
       <ind1 default=" ">
         <switch>
-          <case test="ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='United States, Library of Congress' or *[local-name()='code']='DLC']">0</case>
-          <case test="not(ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='United States, Library of Congress' or *[local-name()='code']='DLC']) and ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy">1</case>
+          <case test="ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or
+                      ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc'">0</case>
+          <case test="not(ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc') and
+                      ancestor::rdf:RDF/bf:Instance/bf:hasItem/bf:Item/bf:heldBy">1</case>
         </switch>
       </ind1>
       <ind2 default="0">
@@ -64,14 +66,56 @@
     </switch>
   </select>
 
+  <df tag="055">
+    <context xpath="bf:Work/bf:classification/*[(local-name()='ClassificationLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationLcc') and bf:source/bf:Source/rdfs:label='Library and Archives Canada']">
+      <ind1 default=" "/>
+      <ind2 default="0"/>
+      <sf code="a" repeatable="false"><select xpath="bf:classificationPortion"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+    </context>
+  </df>
+
   <df tag="060">
-    <context xpath="bf:Work/bf:classification/bf:ClassificationNlm">
+    <context xpath="bf:Work/bf:classification/*[local-name()='ClassificationNlm' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationNlm']">
       <ind1 default=" "/>
       <ind2 default="4">
         <switch>
           <case test="bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnlm' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dnlm'">0</case>
         </switch>
       </ind2>
+      <sf code="a"><select xpath="bf:classificationPortion"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="070">
+    <context xpath="bf:Work/bf:classification/bf:Classification[bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnal' or
+                    bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dnal']">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
       <sf code="a"><select xpath="bf:classificationPortion"/></sf>
       <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
       <sf code="0"><select xpath="@rdf:about"/></sf>
@@ -121,8 +165,25 @@
     </context>
   </df>
 
+  <df tag="074">
+    <context xpath="bf:Instance/bf:identifiedBy/*[bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dgpo' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dgpo']">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    translate(bf:status/bf:Status/rdfs:label,$upper,$lower)='invalid'">
+          <sf code="z"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+        </case>
+      </switch>
+    </context>
+  </df>
+
   <df tag="082">
-    <context xpath="bf:Work/bf:classification/bf:ClassificationDdc">
+    <context xpath="bf:Work/bf:classification/*[local-name()='ClassificationDdc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationDdc']">
       <ind1 default="7">
         <switch>
           <case test="not(bf:edition)">0</case>
@@ -150,6 +211,80 @@
           </switch>
         </select>
       </sf>
+    </context>
+  </df>
+
+  <df tag="084">
+    <context xpath="bf:Work/bf:classification/bf:Classification[not(rdf:type or bf:source/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnal' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/organizations/dnal')]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a"><select xpath="bf:classificationPortion"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+    </context>
+  </df>
+
+  <df tag="086">
+    <context xpath="bf:Instance/bf:classification/bf:Classification[bf:source]">
+      <ind1 default=" ">
+        <switch>
+          <case test="bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/sudocs' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/sudocs'">0</case>
+          <case test="bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/cacodoc' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/cacodoc'">1</case>
+        </switch>
+      </ind1>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    translate(bf:status/bf:Status/rdfs:label,$upper,$lower)='invalid'">
+          <sf code="z"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false"><select xpath="rdfs:label"/></sf>
+        </case>
+      </switch>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType" select="rdfs:label"/>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+    </context>
+  </df>
+
+  <df tag="088">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='ReportNumber' or rdf:type='http://id.loc.gov/ontologies/bibframe/ReportNumber']">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    translate(bf:status/bf:Status/rdfs:label,$upper,$lower)='invalid'">
+          <sf code="z"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+        </case>
+      </switch>
     </context>
   </df>
 

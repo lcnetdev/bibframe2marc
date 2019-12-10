@@ -23,6 +23,19 @@
               test="//marc:datafield[@tag='052'][1] = '4034 R4 R8'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 055">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 055" test="count(//marc:datafield[@tag='055']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='055'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to '0'"
+              test="//marc:datafield[@tag='055'][1]/@ind2 = '0'"/>
+    <x:expect label="$a from classificationPortion"
+              test="//marc:datafield[@tag='055'][1]/marc:subfield[@code='a'] = 'F5050 .2'"/>
+    <x:expect label="$b from itemPortion"
+              test="//marc:datafield[@tag='055'][1]/marc:subfield[@code='b'] = 'T5'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 060">
     <x:context href="../data/050-088/050-088.xml"/>
     <x:expect label="generate 060 from bf:ClassificationNlm" test="count(//marc:datafield[@tag='060']) = 1"/>
@@ -31,6 +44,17 @@
     <x:expect label="$b from bf:itemPortion" test="//marc:datafield[@tag='060']/marc:subfield[@code='b'] = 'N532f'"/>
     <x:expect label="$0 from URI" test="//marc:datafield[@tag='060']/marc:subfield[@code='0'][1] = 'http://nlm.nih.gov/callnumbers/Z675_M4'"/>
     <x:expect label="$0 from rdf:value of Identifier" test="//marc:datafield[@tag='060']/marc:subfield[@code='0'][2] = '(NLM)Z675.M4'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 070">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 070 from bf:ClassificationNlm" test="count(//marc:datafield[@tag='070']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='070']/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='070']/@ind2 = ' '"/>
+    <x:expect label="$a from bf:classificationPortion" test="//marc:datafield[@tag='070']/marc:subfield[@code='a'] = '281.9'"/>
+    <x:expect label="$b from bf:itemPortion" test="//marc:datafield[@tag='070']/marc:subfield[@code='b'] = 'C81A'"/>
   </x:scenario>
 
   <x:scenario label="MARC 072">
@@ -44,9 +68,57 @@
               test="//marc:datafield[@tag='072'][1]/marc:subfield[@code='a'] = 'S100'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 074">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 074" test="count(//marc:datafield[@tag='074']) = 2"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='074'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='074'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdf:value"
+              test="//marc:datafield[@tag='074'][1]/marc:subfield[@code='a'] = '334-C-1'"/>
+    <x:expect label="$z from invalid value"
+              test="//marc:datafield[@tag='074'][2]/marc:subfield[@code='z'] = '334-C-11'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 082">
     <x:context href="../data/050-088/050-088.xml"/>
     <x:expect label="generate 082" test="count(//marc:datafield[@tag='082']) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 084">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 084" test="count(//marc:datafield[@tag='084']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='084'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='084'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from classificationPortion"
+              test="//marc:datafield[@tag='084'][1]/marc:subfield[@code='a'][2]='014'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='084'][1]/marc:subfield[@code='2']='frbnpnav'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 086">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 086" test="count(//marc:datafield[@tag='086']) = 1"/>
+    <x:expect label="ind1 from source"
+              test="//marc:datafield[@tag='086'][1]/@ind1 = '0'"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='086'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='086'][1]/marc:subfield[@code='a']='A 13.28:F 61/2/981 Glacier'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 088">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 088" test="count(//marc:datafield[@tag='088']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='088'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='088'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdf:value"
+              test="//marc:datafield[@tag='088'][1]/marc:subfield[@code='a']='APA 3009'"/>
   </x:scenario>
 
 </x:description>

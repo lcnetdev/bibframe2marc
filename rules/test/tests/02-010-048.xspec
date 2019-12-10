@@ -169,7 +169,7 @@
     <x:context href="../data/010-048/010-048.xml"/>
     <x:expect label="generate 045 from bf:temporalCoverage elements" test="count(//marc:datafield[@tag='045']) = 1"/>
     <x:expect label="...ind1 reflects nature of $b" test="//marc:datafield[@tag='045']/@ind1 = '2'"/>
-    <x:expect label="...$a generated from EDTF dates with decade 'XX'" test="//marc:datafield[@tag='045']/marc:subfield[@code='a'] = 'x'"/>
+    <x:expect label="...$a generated from EDTF dates with decade 'XX'" test="//marc:datafield[@tag='045']/marc:subfield[@code='a'] = 'x-x-'"/>
     <x:expect label="...$b generated from EDTF or dateTime dates" test="//marc:datafield[@tag='045']/marc:subfield[@code='b'][1] = 'd19270401' and //marc:datafield[@tag='045']/marc:subfield[@code='b'][2] = 'd20190413'"/>
   </x:scenario>
 
