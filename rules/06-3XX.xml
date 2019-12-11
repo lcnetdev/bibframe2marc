@@ -528,6 +528,36 @@
     </context>
   </df>
 
+  <df tag="352" lang-xpath="rdfs:label">
+    <context xpath="bf:Instance/bf:digitalCharacteristic/bf:CartographicDataType |
+                    bf:Instance/bf:digitalCharacteristic/bf:CartographicObjectType">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="local-name()='CartographicDataType'">
+          <sf code="a" repeatable="false"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='CartographicObjectType'">
+          <sf code="b"><select xpath="rdfs:label"/></sf>
+          <sf code="c">
+            <select xpath="bf:count">
+              <transform>
+                <xsl:choose>
+                  <xsl:when test="starts-with(.,'(')">
+                    <xsl:value-of select="."/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="concat('(',.,')')"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </transform>
+            </select>
+          </sf>
+        </case>
+      </switch>
+    </context>
+  </df>
+
   <df tag="362" lang-xpath=".">
     <context xpath="bf:Instance/bf:firstIssue">
       <ind1 default="0"/>

@@ -107,6 +107,17 @@
               test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='b'] = 'Arranged by form of material'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 352">
+    <x:context href="../data/3XX/352.xml"/>
+    <x:expect label="generate 352" test="count(//marc:datafield[@tag='352']) = 2"/>
+    <x:expect label="$a from CartographicDataType"
+              test="//marc:datafield[@tag='352'][1]/marc:subfield[@code='a'] = 'Vector'"/>
+    <x:expect label="$b from CartographicObjectType"
+              test="//marc:datafield[@tag='352'][2]/marc:subfield[@code='b'] = 'Point'"/>
+    <x:expect label="$c from CartographicObjectType count"
+              test="//marc:datafield[@tag='352'][2]/marc:subfield[@code='c'] = '(20171)'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 362">
     <x:context href="../data/3XX/362.xml"/>
     <x:expect label="generate formatted 362 from each bf:firstIssue/bf:lastIssue pair"
