@@ -87,6 +87,15 @@
               test="count(//marc:datafield[@tag='347']) = 2"/>
   </x:scenario>
 
+  <x:scenario label="MARC 348">
+    <x:context href="../data/3XX/348.xml"/>
+    <x:expect label="generate 348" test="count(//marc:datafield[@tag='348']) = 1"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='348'][1]/marc:subfield[@code='a'] = 'vocal score'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='348'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mmusicformat/vocalscore'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 362">
     <x:context href="../data/3XX/362.xml"/>
     <x:expect label="generate formatted 362 from each bf:firstIssue/bf:lastIssue pair"
