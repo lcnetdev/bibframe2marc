@@ -96,6 +96,17 @@
               test="//marc:datafield[@tag='348'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mmusicformat/vocalscore'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 351">
+    <x:context href="../data/3XX/351.xml"/>
+    <x:expect label="generate 351" test="count(//marc:datafield[@tag='351']) = 1"/>
+    <x:expect label="$c from hierarchicalLevel"
+              test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='c'] = 'Series'"/>
+    <x:expect label="$a from organization"
+              test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='a'] = 'Organized into five subseries'"/>
+    <x:expect label="$b from pattern"
+              test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='b'] = 'Arranged by form of material'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 362">
     <x:context href="../data/3XX/362.xml"/>
     <x:expect label="generate formatted 362 from each bf:firstIssue/bf:lastIssue pair"
