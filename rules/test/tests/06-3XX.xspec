@@ -55,6 +55,19 @@
               test="count(//marc:datafield[@tag='344']) = 7"/>
   </x:scenario>
 
+  <x:scenario label="MARC 345">
+    <x:context href="../data/3XX/345.xml"/>
+    <x:expect label="generate 345 from each bf:projectionCharacteristic property" test="count(//marc:datafield[@tag='345']) = 2"/>
+    <x:expect label="$a from PresentationFormat"
+              test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='a'] = 'Cinerama'"/>
+    <x:expect label="$0 from PresentationFormat URI"
+              test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mpresformat/ciner'"/>
+    <x:expect label="$2 from PresentationFormat source"
+              test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='2'] = 'rdapf'"/>
+    <x:expect label="$b from ProjectionSpeed label"
+              test="//marc:datafield[@tag='345'][2]/marc:subfield[@code='b'] = '24 fps'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 347">
     <x:context href="../data/3XX/347.xml"/>
     <x:expect label="generate 347 from each matching bf:digitalCharacteristic property"
