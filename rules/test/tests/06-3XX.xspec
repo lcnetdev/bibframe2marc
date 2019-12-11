@@ -68,6 +68,19 @@
               test="//marc:datafield[@tag='345'][2]/marc:subfield[@code='b'] = '24 fps'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 346">
+    <x:context href="../data/3XX/346.xml"/>
+    <x:expect label="generate 346 from each bf:videoCharacteristic property" test="count(//marc:datafield[@tag='346']) = 2"/>
+    <x:expect label="$a from VideoFormat"
+              test="//marc:datafield[@tag='346'][1]/marc:subfield[@code='a'] = 'VHS'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='346'][2]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mbroadstd/ntsc'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='346'][1]/marc:subfield[@code='2'] = 'rdavf'"/>
+    <x:expect label="$b from BroadcastStandard"
+              test="//marc:datafield[@tag='346'][2]/marc:subfield[@code='b'] = 'NTSC'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 347">
     <x:context href="../data/3XX/347.xml"/>
     <x:expect label="generate 347 from each matching bf:digitalCharacteristic property"
