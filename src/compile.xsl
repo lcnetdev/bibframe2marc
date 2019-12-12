@@ -20,7 +20,7 @@
     <xsl:stylesheet version="1.0"
                     xmlns:date="http://exslt.org/dates-and-times"
                     xmlns:fn="http://www.w3.org/2005/xpath-function"
-                    extension-element-prefixes="date"
+                    extension-element-prefixes="date fn"
                     exclude-result-prefixes="rdf rdfs bf bflc madsrdf local">
 
       <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
