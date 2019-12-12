@@ -95,13 +95,6 @@
               test="//marc:datafield[@tag='506'][1]/marc:subfield[@code='5'] = 'MH'"/>
   </x:scenario>
 
-  <x:scenario label="MARC 507">
-    <x:context href="../data/5XX/507.xml"/>
-    <x:expect label="generate 507 from scale property on Work" test="count(//marc:datafield[@tag='507']) = 1"/>
-    <x:expect label="$a from note label"
-              test="//marc:datafield[@tag='507'][1]/marc:subfield[@code='a'] = 'Scale 1:10 of the original'"/>
-  </x:scenario>
-
   <x:scenario label="MARC 508">
     <x:context href="../data/5XX/508.xml"/>
     <x:expect label="generate 508" test="count(//marc:datafield[@tag='508']) = 1"/>
