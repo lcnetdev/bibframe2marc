@@ -368,6 +368,17 @@
       </x:expect>
     </x:scenario>
 
+    <x:scenario label="Transform within document frame">
+      <x:context mode="documentFrame">
+        <bf2marc:transform>
+          <xslout:text>test</xslout:text>
+        </bf2marc:transform>
+      </x:context>
+      <x:expect label="...XSL should be copied into output stylesheet">
+        <xslt:text>test</xslt:text>
+      </x:expect>
+    </x:scenario>
+
     <x:scenario label="lang-prefer attribute on non-repeatable field">
       <x:context mode="documentFrame">
         <bf2marc:df tag="245" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="vernacular">
