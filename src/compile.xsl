@@ -19,7 +19,7 @@
   <xslt:template match="/">
     <xsl:stylesheet version="1.0"
                     xmlns:date="http://exslt.org/dates-and-times"
-                    xmlns:fn="http://www.w3.org/2005/xpath-function"
+                    xmlns:fn="http://www.w3.org/2005/xpath-functions"
                     extension-element-prefixes="date"
                     exclude-result-prefixes="rdf rdfs bf bflc madsrdf local">
 
