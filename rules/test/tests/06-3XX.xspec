@@ -55,10 +55,67 @@
               test="count(//marc:datafield[@tag='344']) = 7"/>
   </x:scenario>
 
+  <x:scenario label="MARC 345">
+    <x:context href="../data/3XX/345.xml"/>
+    <x:expect label="generate 345 from each bf:projectionCharacteristic property" test="count(//marc:datafield[@tag='345']) = 2"/>
+    <x:expect label="$a from PresentationFormat"
+              test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='a'] = 'Cinerama'"/>
+    <x:expect label="$0 from PresentationFormat URI"
+              test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mpresformat/ciner'"/>
+    <x:expect label="$2 from PresentationFormat source"
+              test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='2'] = 'rdapf'"/>
+    <x:expect label="$b from ProjectionSpeed label"
+              test="//marc:datafield[@tag='345'][2]/marc:subfield[@code='b'] = '24 fps'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 346">
+    <x:context href="../data/3XX/346.xml"/>
+    <x:expect label="generate 346 from each bf:videoCharacteristic property" test="count(//marc:datafield[@tag='346']) = 2"/>
+    <x:expect label="$a from VideoFormat"
+              test="//marc:datafield[@tag='346'][1]/marc:subfield[@code='a'] = 'VHS'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='346'][2]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mbroadstd/ntsc'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='346'][1]/marc:subfield[@code='2'] = 'rdavf'"/>
+    <x:expect label="$b from BroadcastStandard"
+              test="//marc:datafield[@tag='346'][2]/marc:subfield[@code='b'] = 'NTSC'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 347">
     <x:context href="../data/3XX/347.xml"/>
     <x:expect label="generate 347 from each matching bf:digitalCharacteristic property"
               test="count(//marc:datafield[@tag='347']) = 2"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 348">
+    <x:context href="../data/3XX/348.xml"/>
+    <x:expect label="generate 348" test="count(//marc:datafield[@tag='348']) = 1"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='348'][1]/marc:subfield[@code='a'] = 'vocal score'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='348'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mmusicformat/vocalscore'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 351">
+    <x:context href="../data/3XX/351.xml"/>
+    <x:expect label="generate 351" test="count(//marc:datafield[@tag='351']) = 1"/>
+    <x:expect label="$c from hierarchicalLevel"
+              test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='c'] = 'Series'"/>
+    <x:expect label="$a from organization"
+              test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='a'] = 'Organized into five subseries'"/>
+    <x:expect label="$b from pattern"
+              test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='b'] = 'Arranged by form of material'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 352">
+    <x:context href="../data/3XX/352.xml"/>
+    <x:expect label="generate 352" test="count(//marc:datafield[@tag='352']) = 2"/>
+    <x:expect label="$a from CartographicDataType"
+              test="//marc:datafield[@tag='352'][1]/marc:subfield[@code='a'] = 'Vector'"/>
+    <x:expect label="$b from CartographicObjectType"
+              test="//marc:datafield[@tag='352'][2]/marc:subfield[@code='b'] = 'Point'"/>
+    <x:expect label="$c from CartographicObjectType count"
+              test="//marc:datafield[@tag='352'][2]/marc:subfield[@code='c'] = '(20171)'"/>
   </x:scenario>
 
   <x:scenario label="MARC 362">

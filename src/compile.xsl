@@ -19,9 +19,9 @@
   <xslt:template match="/">
     <xsl:stylesheet version="1.0"
                     xmlns:date="http://exslt.org/dates-and-times"
-                    xmlns:fn="http://www.w3.org/2005/xpath-function"
+                    xmlns:fn="http://www.w3.org/2005/xpath-functions"
                     extension-element-prefixes="date"
-                    exclude-result-prefixes="rdf rdfs bf bflc madsrdf local">
+                    exclude-result-prefixes="fn rdf rdfs bf bflc madsrdf local">
 
       <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
       <xsl:strip-space elements="*"/>
@@ -359,7 +359,7 @@
 
   <!-- compile rules from included files -->
   <xslt:template match="bf2marc:file" mode="documentFrame">
-    <xslt:apply-templates select="document(.)/bf2marc:rules/bf2marc:file | document(.)/bf2marc:rules/bf2marc:cf | document(.)/bf2marc:rules/bf2marc:df | document(.)/bf2marc:rules/bf2marc:switch | document(.)/bf2marc:rules/bf2marc:select" mode="documentFrame"/>
+    <xslt:apply-templates select="document(.)/bf2marc:rules/bf2marc:file | document(.)/bf2marc:rules/bf2marc:cf | document(.)/bf2marc:rules/bf2marc:df | document(.)/bf2marc:rules/bf2marc:switch | document(.)/bf2marc:rules/bf2marc:select | document(.)/bf2marc:rules/bf2marc:transform" mode="documentFrame"/>
   </xslt:template>
 
   <xslt:template match="bf2marc:switch" mode="documentFrame">
@@ -367,6 +367,10 @@
   </xslt:template>
 
   <xslt:template match="bf2marc:select" mode="documentFrame">
+    <xslt:apply-templates select="." mode="fieldTemplate"/>
+  </xslt:template>
+
+  <xslt:template match="bf2marc:transform" mode="documentFrame">
     <xslt:apply-templates select="." mode="fieldTemplate"/>
   </xslt:template>
 

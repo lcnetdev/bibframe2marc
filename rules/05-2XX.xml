@@ -337,15 +337,26 @@
   <!-- rules for 254 in with 5XX (notes) -->
 
   <df tag="255">
-    <context xpath="bf:Work/bf:scale">
+    <context xpath="bf:Work/bf:scale[not(bf:Scale)]">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false">
-        <switch>
-          <case test="bf:Scale"><select xpath="bf:Scale/rdfs:label"/></case>
-          <case test="default"><transform><xsl:value-of select="."/></transform></case>
-        </switch>
-      </sf>
+      <sf code="a" repeatable="false"><select xpath="."/></sf>
+    </context>
+  </df>
+
+  <df tag="255">
+    <context xpath="bf:Work/bf:scale/bf:Scale/rdfs:label">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false"><select xpath="."/></sf>
+    </context>
+  </df>
+
+  <df tag="255">
+    <context xpath="bf:Work/bf:scale/bf:Scale/bf:note/bf:Note/rdfs:label">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false"><select xpath="."/></sf>
     </context>
   </df>
 

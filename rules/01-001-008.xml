@@ -40,6 +40,54 @@
             </transform>
           </cf>
         </case>
+        <case test="$vAdminMetadata/bf:changeDate/@rdf:datatype='http://www.w3.org/2001/XMLSchema#date'">
+          <cf tag="005">
+            <transform>
+              <xsl:value-of select="concat(substring($vAdminMetadata/bf:changeDate,1,4),substring($vAdminMetadata/bf:changeDate,6,2),substring($vAdminMetadata/bf:changeDate,9,2),'000000.0')"/>
+            </transform>
+          </cf>
+        </case>
+        <!-- attempt to convert an un-typed value that appears to be xsd:dateTime -->
+        <case test="string-length($vAdminMetadata/bf:changeDate) &gt;= 19 and
+                    substring($vAdminMetadata/bf:changeDate,5,1) = '-' and
+                    substring($vAdminMetadata/bf:changeDate,8,1) = '-' and
+                    substring($vAdminMetadata/bf:changeDate,11,1) = 'T' and
+                    substring($vAdminMetadata/bf:changeDate,14,1) = ':' and
+                    substring($vAdminMetadata/bf:changeDate,17,1) = ':'">
+          <cf tag="005">
+            <transform>
+              <xsl:value-of select="concat(substring($vAdminMetadata/bf:changeDate,1,4),substring($vAdminMetadata/bf:changeDate,6,2),substring($vAdminMetadata/bf:changeDate,9,2),substring($vAdminMetadata/bf:changeDate,12,2),substring($vAdminMetadata/bf:changeDate,15,2),substring($vAdminMetadata/bf:changeDate,18,2),'.0')"/>
+            </transform>
+          </cf>
+        </case>
+        <!-- attempt to convert an un-typed value that appears to be xsd:date -->
+        <case test="string-length($vAdminMetadata/bf:changeDate) &gt;= 10 and
+                    substring($vAdminMetadata/bf:changeDate,5,1) = '-' and
+                    substring($vAdminMetadata/bf:changeDate,8,1) = '-'">
+          <cf tag="005">
+            <transform>
+              <xsl:value-of select="concat(substring($vAdminMetadata/bf:changeDate,1,4),substring($vAdminMetadata/bf:changeDate,6,2),substring($vAdminMetadata/bf:changeDate,9,2),'000000.0')"/>
+            </transform>
+          </cf>
+        </case>
+        <!-- pass through something that appears to be ISO 8601 with no punctuation -->
+        <!-- this will miss non-ASCII alpha characters -->
+        <case test="string-length($vAdminMetadata/bf:changeDate) &gt;= 14 and
+                    translate($vAdminMetadata/bf:changeDate,'-:.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ','') = $vAdminMetadata/bf:changeDate">
+          <cf tag="005">
+            <transform>
+              <xsl:value-of select="concat(substring($vAdminMetadata/bf:changeDate,1,14),'.0')"/>
+            </transform>
+          </cf>
+        </case>
+        <case test="string-length($vAdminMetadata/bf:changeDate) &gt;= 8 and
+                    translate($vAdminMetadata/bf:changeDate,'-:.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ','') = $vAdminMetadata/bf:changeDate">
+          <cf tag="005">
+            <transform>
+              <xsl:value-of select="concat(substring($vAdminMetadata/bf:changeDate,1,8),'000000.0')"/>
+            </transform>
+          </cf>
+        </case>
         <case test="default">
           <transform>
             <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed bf:changeDate. Invalid datatype for 005.</xsl:message>
