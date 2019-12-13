@@ -17,7 +17,7 @@
     <x:context href="data/minimal.xml"/>
     <x:expect label="...should match expected">
       <xslt:stylesheet xmlns:date="http://exslt.org/dates-and-times"
-                       xmlns:fn="http://www.w3.org/2005/xpath-function"
+                       xmlns:fn="http://www.w3.org/2005/xpath-functions"
                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
                        xmlns:marc="http://www.loc.gov/MARC21/slim"
@@ -27,8 +27,8 @@
                        xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
                        xmlns:local="http://example.org/local"
                        version="1.0"
-                       extension-element-prefixes="date fn"
-                       exclude-result-prefixes="rdf rdfs bf bflc madsrdf local">
+                       extension-element-prefixes="date"
+                       exclude-result-prefixes="fn rdf rdfs bf bflc madsrdf local">
         <xslt:output encoding="UTF-8" method="xml" indent="yes"/>
         <xslt:strip-space elements="*"/>
         <xslt:param name="pRecordId" select="'default'"/>
