@@ -342,6 +342,15 @@
     </x:expect>
   </x:scenario>
 
+  <x:scenario label="key element">
+    <x:context mode="key">
+      <bf2marc:key name="kMusicMediumSource" match="bf:MusicMedium" use="bf:source/bf:Source/rdfs:label"/>
+    </x:context>
+    <x:expect label="...should generate an XSL key">
+      <xslt:key name="kMusicMediumSource" match="bf:MusicMedium" use="bf:source/bf:Source/rdfs:label"/>
+    </x:expect>
+  </x:scenario>
+
   <x:scenario label="Document frame">
     <x:scenario label="Rule without context element">
       <x:context mode="documentFrame">
