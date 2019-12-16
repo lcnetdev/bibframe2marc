@@ -194,7 +194,7 @@ The `df` element is more complex. In addition to the rule building blocks docume
 
 * `transform`: Provide an XSL fragment for processing the current context.
 
-  * This element can be used with the `cf`, `ind1`, `ind2`, `sf`, `position`, `case`, and `select` elements.
+  * This element can be used with the `rules`, `cf`, `ind1`, `ind2`, `sf`, `position`, `case`, and `select` elements.
 
 ```xml
 <cf tag="001">
