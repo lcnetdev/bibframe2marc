@@ -586,6 +586,214 @@
     </context>
   </df>
 
+
+  <!-- 382 -->
+  <key name="kMusicMediumSourceAppliesTo" match="bf:MusicMedium[bf:source/bf:Source/rdfs:label and bflc:appliesTo/bflc:AppliesTo/rdfs:label]" use="bf:source/bf:Source/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+  <key name="kMusicMediumNoSourceAppliesTo" match="bf:MusicMedium[not(bf:source/bf:Source/rdfs:label) and bflc:appliesTo/bflc:AppliesTo/rdfs:label]" use="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+  <key name="kMusicMediumSourceNoAppliesTo" match="bf:MusicMedium[bf:source/bf:Source/rdfs:label and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label)]" use="bf:source/bf:Source/rdfs:label"/>
+  <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[bf:source/bf:Source/rdfs:label and bflc:appliesTo/bflc:AppliesTo/rdfs:label and count(.|key('kMusicMediumSourceAppliesTo',bf:source/bf:Source/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label)[1]) = 1]">
+    <df tag="382">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <select xpath="key('kMusicMediumSourceAppliesTo',bf:source/bf:Source/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label)">
+        <switch>
+          <case test="starts-with(bf:instrumentalType,'doubling')">
+            <sf code="d"><transform><xsl:value-of select="substring(bf:instrumentalType,9)"/></transform></sf>
+          </case>
+          <case test="starts-with(bf:instrumentalType,'alternate')">
+            <sf code="p"><transform><xsl:value-of select="substring(bf:instrumentalType,10)"/></transform></sf>
+          </case>
+          <case test="starts-with(rdfs:label,'doubling')">
+            <sf code="d"><transform><xsl:value-of select="substring(rdfs:label,10)"/></transform></sf>
+          </case>
+          <case test="starts-with(rdfs:label,'alternate')">
+            <sf code="p"><transform><xsl:value-of select="substring(rdfs:label,11)"/></transform></sf>
+          </case>
+          <case test="substring(rdfs:label,string-length(rdfs:label) - 6) = 'soloist'">
+            <sf code="b"><transform><xsl:value-of select="substring(rdfs:label,1,string-length(rdfs:label) - 8)"/></transform></sf>
+          </case>
+          <case test="default">
+            <sf code="a"><transform><xsl:value-of select="rdfs:label"/></transform></sf>
+          </case>
+        </switch>
+        <sf code="n"><select xpath="bf:count"/></sf>
+        <sf code="v"><select xpath="bf:note/bf:Note/rdfs:label"/></sf>
+        <sf code="0">
+          <select xpath="@rdf:about"/>
+        </sf>
+        <sf code="0">
+          <select xpath="bf:identifiedBy/bf:Identifier">
+            <transform>
+              <xsl:variable name="vSource">
+                <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+              </xsl:variable>
+              <xsl:choose>
+                <xsl:when test="$vSource != ''">
+                  <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+                </xsl:when>
+                <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+              </xsl:choose>
+            </transform>
+          </select>
+        </sf>
+      </select>
+      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+    </df>
+  </select>
+  <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[not(bf:source/bf:Source/rdfs:label) and bflc:appliesTo/bflc:AppliesTo/rdfs:label and count(.|key('kMusicMediumNoSourceAppliesTo',bflc:appliesTo/bflc:AppliesTo/rdfs:label)[1]) = 1]">
+    <df tag="382">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <select xpath="key('kMusicMediumNoSourceAppliesTo',bflc:appliesTo/bflc:AppliesTo/rdfs:label)">
+        <switch>
+          <case test="starts-with(bf:instrumentalType,'doubling')">
+            <sf code="d"><transform><xsl:value-of select="substring(bf:instrumentalType,9)"/></transform></sf>
+          </case>
+          <case test="starts-with(bf:instrumentalType,'alternate')">
+            <sf code="p"><transform><xsl:value-of select="substring(bf:instrumentalType,10)"/></transform></sf>
+          </case>
+          <case test="starts-with(rdfs:label,'doubling')">
+            <sf code="d"><transform><xsl:value-of select="substring(rdfs:label,10)"/></transform></sf>
+          </case>
+          <case test="starts-with(rdfs:label,'alternate')">
+            <sf code="p"><transform><xsl:value-of select="substring(rdfs:label,11)"/></transform></sf>
+          </case>
+          <case test="substring(rdfs:label,string-length(rdfs:label) - 6) = 'soloist'">
+            <sf code="b"><transform><xsl:value-of select="substring(rdfs:label,1,string-length(rdfs:label) - 8)"/></transform></sf>
+          </case>
+          <case test="default">
+            <sf code="a"><transform><xsl:value-of select="rdfs:label"/></transform></sf>
+          </case>
+        </switch>
+        <sf code="n"><select xpath="bf:count"/></sf>
+        <sf code="v"><select xpath="bf:note/bf:Note/rdfs:label"/></sf>
+        <sf code="0">
+          <select xpath="@rdf:about"/>
+        </sf>
+        <sf code="0">
+          <select xpath="bf:identifiedBy/bf:Identifier">
+            <transform>
+              <xsl:variable name="vSource">
+                <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+              </xsl:variable>
+              <xsl:choose>
+                <xsl:when test="$vSource != ''">
+                  <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+                </xsl:when>
+                <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+              </xsl:choose>
+            </transform>
+          </select>
+        </sf>
+      </select>
+    </df>
+  </select>
+  <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[bf:source/bf:Source/rdfs:label and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label) and count(.|key('kMusicMediumSourceNoAppliesTo',bf:source/bf:Source/rdfs:label)[1]) = 1]">
+    <df tag="382">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <select xpath="key('kMusicMediumSourceNoAppliesTo',bf:source/bf:Source/rdfs:label)">
+        <switch>
+          <case test="starts-with(bf:instrumentalType,'doubling')">
+            <sf code="d"><transform><xsl:value-of select="substring(bf:instrumentalType,9)"/></transform></sf>
+          </case>
+          <case test="starts-with(bf:instrumentalType,'alternate')">
+            <sf code="p"><transform><xsl:value-of select="substring(bf:instrumentalType,10)"/></transform></sf>
+          </case>
+          <case test="starts-with(rdfs:label,'doubling')">
+            <sf code="d"><transform><xsl:value-of select="substring(rdfs:label,10)"/></transform></sf>
+          </case>
+          <case test="starts-with(rdfs:label,'alternate')">
+            <sf code="p"><transform><xsl:value-of select="substring(rdfs:label,11)"/></transform></sf>
+          </case>
+          <case test="substring(rdfs:label,string-length(rdfs:label) - 6) = 'soloist'">
+            <sf code="b"><transform><xsl:value-of select="substring(rdfs:label,1,string-length(rdfs:label) - 8)"/></transform></sf>
+          </case>
+          <case test="default">
+            <sf code="a"><transform><xsl:value-of select="rdfs:label"/></transform></sf>
+          </case>
+        </switch>
+        <sf code="n"><select xpath="bf:count"/></sf>
+        <sf code="v"><select xpath="bf:note/bf:Note/rdfs:label"/></sf>
+        <sf code="0">
+          <select xpath="@rdf:about"/>
+        </sf>
+        <sf code="0">
+          <select xpath="bf:identifiedBy/bf:Identifier">
+            <transform>
+              <xsl:variable name="vSource">
+                <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+              </xsl:variable>
+              <xsl:choose>
+                <xsl:when test="$vSource != ''">
+                  <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+                </xsl:when>
+                <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+              </xsl:choose>
+            </transform>
+          </select>
+        </sf>
+      </select>
+      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+    </df>
+  </select>
+  <switch>
+    <case test="bf:Work/bf:musicMedium/bf:MusicMedium[not(bf:source/bf:Source/rdfs:label) and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label)]">
+      <df tag="382">
+        <ind1 default=" "/>
+        <ind2 default=" "/>
+        <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[not(bf:source/bf:Source/rdfs:label) and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label)]">
+          <switch>
+            <case test="starts-with(bf:instrumentalType,'doubling')">
+              <sf code="d"><transform><xsl:value-of select="substring(bf:instrumentalType,9)"/></transform></sf>
+            </case>
+            <case test="starts-with(bf:instrumentalType,'alternate')">
+              <sf code="p"><transform><xsl:value-of select="substring(bf:instrumentalType,10)"/></transform></sf>
+            </case>
+            <case test="starts-with(rdfs:label,'doubling')">
+              <sf code="d"><transform><xsl:value-of select="substring(rdfs:label,10)"/></transform></sf>
+            </case>
+            <case test="starts-with(rdfs:label,'alternate')">
+              <sf code="p"><transform><xsl:value-of select="substring(rdfs:label,11)"/></transform></sf>
+            </case>
+            <case test="substring(rdfs:label,string-length(rdfs:label) - 6) = 'soloist'">
+              <sf code="b"><transform><xsl:value-of select="substring(rdfs:label,1,string-length(rdfs:label) - 8)"/></transform></sf>
+            </case>
+            <case test="default">
+              <sf code="a"><transform><xsl:value-of select="rdfs:label"/></transform></sf>
+            </case>
+          </switch>
+          <sf code="n"><select xpath="bf:count"/></sf>
+          <sf code="v"><select xpath="bf:note/bf:Note/rdfs:label"/></sf>
+          <sf code="0">
+            <select xpath="@rdf:about"/>
+          </sf>
+          <sf code="0">
+            <select xpath="bf:identifiedBy/bf:Identifier">
+              <transform>
+                <xsl:variable name="vSource">
+                  <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+                </xsl:variable>
+                <xsl:choose>
+                  <xsl:when test="$vSource != ''">
+                    <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+                  </xsl:when>
+                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                </xsl:choose>
+              </transform>
+            </select>
+          </sf>
+        </select>
+      </df>
+    </case>
+  </switch>
+
   <!-- 385 and 521 -->
   <select xpath="bf:Work/bf:intendedAudience">
     <switch>
