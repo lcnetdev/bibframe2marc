@@ -798,7 +798,7 @@
   <select xpath="bf:Work/bf:intendedAudience">
     <switch>
       <case test="@rdf:resource or bf:IntendedAudience[@rdf:about or bf:demographicGroup or bf:source]">
-        <df tag="385" lang-xpath="rdfs:label">
+        <df tag="385" lang-xpath="bf:IntendedAudience/rdfs:label">
           <ind1 default = " "/>
           <ind2 default = " "/>
           <sf code="3" repeatable="false">
@@ -823,7 +823,7 @@
         </df>
       </case>
       <case test="default">
-        <df tag="521" lang-xpath="rdfs:label">
+        <df tag="521" lang-xpath="bf:IntendedAudience/rdfs:label">
           <ind1 default = " ">
             <switch>
               <case test="bf:IntendedAudience/bf:note/bf:Note/rdfs:label = 'reading grade level'">0</case>
