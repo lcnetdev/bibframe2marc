@@ -794,6 +794,33 @@
     </case>
   </switch>
 
+  <!-- 383 -->
+  <switch>
+    <case test="bf:Work/bf:musicSerialNumber or
+                bf:Work/bf:musicOpusNumber or
+                bf:Work/bf:musicThematicNumber">
+      <df tag="383">
+        <ind1 default = " "/>
+        <ind2 default = " "/>
+        <select xpath="bf:Work/bf:musicSerialNumber |
+                       bf:Work/bf:musicOpusNumber |
+                       bf:Work/bf:musicThematicNumber">
+          <switch>
+            <case test="local-name() = 'musicSerialNumber'">
+              <sf code="a"><select xpath="."/></sf>
+            </case>
+            <case test="local-name() = 'musicOpusNumber'">
+              <sf code="b"><select xpath="."/></sf>
+            </case>
+            <case test="local-name() = 'musicThematicNumber'">
+              <sf code="c"><select xpath="."/></sf>
+            </case>
+          </switch>
+        </select>
+      </df>
+    </case>
+  </switch>
+
   <!-- 385 and 521 -->
   <select xpath="bf:Work/bf:intendedAudience">
     <switch>
