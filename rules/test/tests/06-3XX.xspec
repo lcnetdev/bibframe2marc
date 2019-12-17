@@ -130,6 +130,55 @@
               test="//marc:datafield[@tag='362' and @ind1='1']/marc:subfield[@code='a'] = 'Began with vol. 4, published in 1947.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 382">
+    <x:context href="../data/3XX/382.xml"/>
+    <x:expect label="generate 382" test="count(//marc:datafield[@tag='382']) = 2"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='382'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='382'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label with no display constant"
+              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='a'][1] = 'mixed chorus'"/>
+    <x:expect label="$b from 'soloist' label"
+              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='b'][1] = 'soprano voice'"/>
+    <x:expect label="$n from count"
+              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='n'][2] = '2'"/>
+    <x:expect label="$v from note on MusicMedium object"
+              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='v'] = 'SATB'"/>
+    <x:expect label="$v from free-floating note"
+              test="//marc:datafield[@tag='382'][2]/marc:subfield[@code='v'][1] = 'Total performers alongside ensembles: 5'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='0'][2] = 'http://id.loc.gov/authorities/performanceMediums/mp2013015071'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='2'] = 'lcmpt'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 383">
+    <x:context href="../data/3XX/383.xml"/>
+    <x:expect label="generate 383" test="count(//marc:datafield[@tag='383']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='383'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='383'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from musicSerialNumber"
+              test="//marc:datafield[@tag='383'][1]/marc:subfield[@code='a'] = 'no 14'"/>
+    <x:expect label="$b from musicOpusNumber"
+              test="//marc:datafield[@tag='383'][1]/marc:subfield[@code='b'] = 'op. 8, no. 1-4'"/>
+    <x:expect label="$c from musicThematicNumber"
+              test="//marc:datafield[@tag='383'][1]/marc:subfield[@code='c'][2] = 'RV 315'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 384">
+    <x:context href="../data/3XX/384.xml"/>
+    <x:expect label="generate 384" test="count(//marc:datafield[@tag='384']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='384'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='384'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from musicKey"
+              test="//marc:datafield[@tag='384'][1]/marc:subfield[@code='a'] = 'D minor'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 385">
     <x:context href="../data/3XX/385.xml"/>
     <x:expect label="generate 385" test="count(//marc:datafield[@tag='385']) = 2"/>

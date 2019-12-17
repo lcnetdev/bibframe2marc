@@ -64,6 +64,12 @@ The `Makefile` included with this project will generate a top-level `rules.xml` 
 </bf2marc:rules>
 ```
 
+* `key`: Build an XSLT key from a set of elements in the source document. The `key` element creates an `xsl:key` in the output stylesheet with the same attributes. This key can then be referenced in XPath expressions or XSL fragments.
+
+```xml
+<key name="kMusicMediumSource" match="bf:MusicMedium" use="bf:source/bf:Source/rdfs:label"/>
+```
+
 ### Building conversion rules
 
 Two high-level elements are used to encode the conversion rules that generate MARC fields.
@@ -194,7 +200,7 @@ The `df` element is more complex. In addition to the rule building blocks docume
 
 * `transform`: Provide an XSL fragment for processing the current context.
 
-  * This element can be used with the `cf`, `ind1`, `ind2`, `sf`, `position`, `case`, and `select` elements.
+  * This element can be used with the `rules`, `cf`, `ind1`, `ind2`, `sf`, `position`, `case`, and `select` elements.
 
 ```xml
 <cf tag="001">

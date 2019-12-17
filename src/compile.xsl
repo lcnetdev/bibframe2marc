@@ -271,6 +271,8 @@
 
     <xslt:apply-templates mode="map"/>
 
+    <xslt:apply-templates mode="key"/>
+
     <xsl:template match="/">
 
       <!-- rudimentary document validation -->
@@ -353,6 +355,17 @@
     </xslt:element>
 
     <xsl:variable name="{@name}" select="document('')/*/{concat('local:',@name)}"/>
+  </xslt:template>
+
+  <!-- templates for constructing keys: simple pass-through -->
+
+  <!-- compile keys from included files -->
+  <xslt:template match="bf2marc:file" mode="key">
+    <xslt:apply-templates select="document(.)/bf2marc:rules/bf2marc:file | document(.)/bf2marc:rules/bf2marc:key" mode="key"/>
+  </xslt:template>
+
+  <xslt:template match="bf2marc:key" mode="key">
+    <xsl:key name="{@name}" match="{@match}" use="{@use}"/>
   </xslt:template>
 
   <!-- templates for building the document frame -->
@@ -976,6 +989,7 @@
 
   <!-- suppress text from unmatched nodes -->
   <xslt:template match="text()" mode="map"/>
+  <xslt:template match="text()" mode="key"/>
   <xslt:template match="text()" mode="documentFrame"/>
   <xslt:template match="text()" mode="generateTemplates"/>
   <xslt:template match="text()" mode="fieldTemplate"/>

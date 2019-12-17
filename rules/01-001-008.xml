@@ -162,7 +162,8 @@
                 </case>
                 <case test="default">
                   <switch>
-                    <case test="ancestor::bf:Instance/bf:copyrightDate">
+                    <case test="ancestor::bf:Instance/bf:copyrightDate and
+                                ancestor::bf:Instance/bf:copyrightDate/@rdf:datatype='http://id.loc.gov/datatypes/edtf'">
                       <transform><xsl:value-of select="concat('t',translate(substring(.,1,4),'X','u'),translate(substring(ancestor::bf:Instance/bf:copyrightDate,1,4),'X','u'))"/></transform>
                     </case>
                     <case test="contains(.,'~')">
