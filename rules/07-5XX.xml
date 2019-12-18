@@ -353,7 +353,10 @@
   </df>
 
   <df tag="510" lang-xpath="bf:title/*/bf:mainTitle">
-    <context xpath="bf:Work/bflc:indexedIn/bf:Work|bf:Work/bf:references/bf:Work">
+    <context xpath="bf:Work/bflc:indexedIn/bf:Work |
+                    bf:Work/bf:references/bf:Work |
+                    bf:Instance/bflc:indexedIn/bf:Work |
+                    bf:Instance/bf:references/bf:Work">
       <ind1 default="0">
         <switch>
           <case test="local-name(..)='indexedIn' and bf:note/bf:Note[bf:noteType='Coverage' or bf:noteType='coverage']">2</case>
