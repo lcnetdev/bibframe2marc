@@ -444,20 +444,15 @@
   </df>
 
   <!-- 530/776 -->
-  <select xpath="//bf:Instance[@rdf:about=//bf:Instance/bf:otherPhysicalFormat/@rdf:resource]">
+  <select xpath="//bf:Instance[@rdf:about=/rdf:RDF/bf:Instance/bf:otherPhysicalFormat/@rdf:resource]">
     <switch>
       <!-- 776 -->
       <!-- rules should match 760-787 -->
       <case test="bf:contribution or bf:editionStatement or
                   bf:provisionActivityStatement or
-                  bf:title or bf:part or bf:extent or
+                  bf:part or bf:extent or
                   bflc:relationship or bf:seriesStatement or
-                  bf:identifiedBy/*[local-name()='ReportNumber' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ReportNumber'] or
-                  bf:identifiedBy/*[local-name()='Strn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Strn'] or
-                  bf:identifiedBy/*[local-name()='Lccn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn'] or
-                  bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn'] or
-                  bf:identifiedBy/*[local-name()='Coden' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Coden'] or
-                  bf:identifiedBy/*[local-name()='Isbn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isbn']">
+                  bf:identifiedBy/*[not(local-name()='StockNumber' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/StockNumber')]">
         <df tag="776" lang-xpath="bf:title/*/rdfs:label">
           <ind1 default="0"/>
           <ind2 default=" "/>
