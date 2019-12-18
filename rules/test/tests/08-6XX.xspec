@@ -58,6 +58,10 @@
               test="//marc:datafield[@tag='630'][1]/@ind1 = '4'"/>
     <x:expect label="ind2 subject thesaurus"
               test="//marc:datafield[@tag='630'][1]/@ind2 = '0'"/>
+    <x:expect label="$a from mainTitle"
+              test="//marc:datafield[@tag='630'][1]/marc:subfield[@code='a'] = 'Bible'"/>
+    <x:expect label="$p from partName"
+              test="//marc:datafield[@tag='630'][1]/marc:subfield[@code='p'] = 'Psalms'"/>
   </x:scenario>
 
   <x:scenario label="MARC 648">
