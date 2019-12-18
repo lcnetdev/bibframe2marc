@@ -228,6 +228,9 @@
         </df>
       </case>
 
+      <!-- these notes are picked up in the rules for data field 300, do not process here -->
+      <case test="local-name(../..)='Instance' and (translate(bf:noteType,$upper,$lower)='physical details' or translate(bf:noteType,$upper,$lower)='accompanying material')"/>
+
       <case test="default">
         <df tag="500" lang-xpath="rdfs:label">
           <ind1 default=" "/>
