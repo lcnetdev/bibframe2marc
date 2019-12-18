@@ -99,6 +99,8 @@
               test="//marc:datafield[@tag='651'][2]/@ind2 = '7'"/>
     <x:expect label="$a generated from first element in componentList or label"
               test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='a'] = 'Maryland'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='0'][1] = 'http://id.loc.gov/authorities/names/n79029831'"/>
     <x:expect label="subdivisions generated from subsequent elements in componentList"
               test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='x'] = 'Antiquities'"/>
   </x:scenario>

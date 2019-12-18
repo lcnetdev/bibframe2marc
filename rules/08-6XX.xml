@@ -1071,9 +1071,9 @@
                       <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                     </switch>
                   </sf>
-                  <sf code="0"><select xpath="madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
                   <sf code="0">
-                    <select xpath="madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
+                    <select xpath="*/madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
                       <transform>
                         <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
                         <xsl:choose>
