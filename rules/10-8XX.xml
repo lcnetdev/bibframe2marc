@@ -491,6 +491,35 @@
     </context>
   </df>
 
+  <df tag="856">
+    <context xpath="//bf:Item/bf:electronicLocator[@rdf:resource or */bflc:locator/@rdf:resource or */bflc:target/@rdf:resource] | bf:Instance/bf:supplementaryContent[@rdf:resource or */bflc:locator/@rdf:resource or */bflc:target/@rdf:resource]">
+      <var name="v856Uri">
+        <switch>
+          <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="*/bflc:locator"><transform><xsl:value-of select="*/bflc:locator/@rdf:resource"/></transform></case>
+          <case test="*/bflc:target"><transform><xsl:value-of select="*/bflc:target/@rdf:resource"/></transform></case>
+        </switch>
+      </var>
+      <ind1 default=" ">
+        <switch>
+          <case test="starts-with($v856Uri,'mailto')">0</case>
+          <case test="starts-with($v856Uri,'ftp')">1</case>
+          <case test="starts-with($v856Uri,'telnet') or starts-with($v856Uri,'ssh')">2</case>
+          <case test="starts-with($v856Uri,'http')">4</case>
+        </switch>
+      </ind1>
+      <ind2 default=" ">
+        <switch>
+          <case test="local-name()='supplementaryContent'">2</case>
+        </switch>
+      </ind2>
+      <sf code="u"><transform><xsl:value-of select="$v856Uri"/></transform></sf>
+      <sf code="z">
+        <select xpath="*/bf:note/bf:Note/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+
   <!-- default 884 for all records -->
   <df tag="884">
     <ind1 default=" "/>
