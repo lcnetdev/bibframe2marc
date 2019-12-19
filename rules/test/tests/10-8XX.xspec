@@ -80,6 +80,21 @@
     <x:expect label="generate 852" test="count(//marc:datafield[@tag='852']) = 1"/>
   </x:scenario>
 
+  <x:scenario label="MARC 856">
+    <x:context href="../data/8XX/856.xml"/>
+    <x:expect label="generate 856" test="count(//marc:datafield[@tag='856']) = 3"/>
+    <x:expect label="ind1 from URI protocol"
+              test="//marc:datafield[@tag='856'][1]/@ind1 = '4'"/>
+    <x:expect label="ind2 from supplementaryContent"
+              test="//marc:datafield[@tag='856'][3]/@ind2 = '2'"/>
+    <x:expect label="$u from electronicLocator"
+              test="//marc:datafield[@tag='856'][1]/marc:subfield[@code='u'] = 'http://something.example.org'"/>
+    <x:expect label="...or from locator/target"
+              test="//marc:datafield[@tag='856'][2]/marc:subfield[@code='u'] = 'http://something.else.example.org'"/>
+    <x:expect label="$z from note"
+              test="//marc:datafield[@tag='856'][2]/marc:subfield[@code='z'] = 'Souped up version'"/>
+  </x:scenario>
+
   <x:scenario label="Default MARC field 884">
     <x:context href="../data/regression/bibframe.xml"/>
     <x:expect label="...all records should have the default 884 field"

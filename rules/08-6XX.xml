@@ -655,47 +655,64 @@
               <sf code="3" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
-              <sf code="a" repeatable="false">
-                <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
-                  <switch>
-                    <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </select>
-              </sf>
-              <sf code="a" repeatable="false">
+              <switch>
+                <case test="*/madsrdf:componentList">
+                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  <sf code="0">
+                    <select xpath="*/bf:identifiedBy/bf:Identifier">
+                      <transform>
+                        <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:choose>
+                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                        </xsl:choose>
+                      </transform>
+                    </select>
+                  </sf>
+                </case>
+              </switch>
+              <select xpath="*[local-name()='Work' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work']] |
+                             */madsrdf:componentList/*[1]">
+                <sf code="a" repeatable="false">
+                  <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
+                    <switch>
+                      <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+                      <case test="default"><select xpath="rdfs:label"/></case>
+                    </switch>
+                  </select>
+                </sf>
+                <sf code="d"><select xpath="bf:legalDate"/></sf>
+                <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
+                <sf code="k"><select xpath="bf:natureOfContent"/></sf>
+                <!-- language is going to be a problem -->
+                <sf code="l" repeatable="false">
+                  <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
+                </sf>
+                <sf code="m"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
+                <sf code="n"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
+                <sf code="p"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
+                <sf code="r" repeatable="false"><select xpath="bf:musicKey"/></sf>
+                <sf code="s"><select xpath="bf:version"/></sf>
                 <switch>
-                  <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-                  <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+                  <case test="not(ancestor::bf:subject/*/madsrdf:componentList)">
+                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                    <sf code="0">
+                      <select xpath="bf:identifiedBy/bf:Identifier">
+                        <transform>
+                          <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:choose>
+                            <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                            <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                          </xsl:choose>
+                        </transform>
+                      </select>
+                    </sf>
+                  </case>
                 </switch>
-              </sf>
-              <sf code="d"><select xpath="bf:legalDate"/></sf>
-              <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
-              <sf code="k"><select xpath="bf:natureOfContent"/></sf>
-              <!-- language is going to be a problem -->
-              <sf code="l" repeatable="false">
-                <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
-              </sf>
-              <sf code="m"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
-              <sf code="n"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
-              <sf code="p"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
-              <sf code="r" repeatable="false"><select xpath="bf:musicKey"/></sf>
-              <sf code="s"><select xpath="bf:version"/></sf>
-              <sf code="0"><select xpath="@rdf:about"/></sf>
-              <sf code="0">
-                <select xpath="bf:identifiedBy/bf:Identifier">
-                  <transform>
-                    <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
-                    <xsl:choose>
-                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                    </xsl:choose>
-                  </transform>
-                </select>
-              </sf>
-              <sf code="e">
-                <select xpath="*/bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
-              </sf>
+                <sf code="e">
+                  <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
+                </sf>
+              </select>
               <!-- subdivisions -->
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
@@ -1054,9 +1071,9 @@
                       <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                     </switch>
                   </sf>
-                  <sf code="0"><select xpath="madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
                   <sf code="0">
-                    <select xpath="madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
+                    <select xpath="*/madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
                       <transform>
                         <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
                         <xsl:choose>
