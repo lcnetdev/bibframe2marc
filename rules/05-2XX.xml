@@ -70,7 +70,8 @@
     <context xpath="bf:Work/bf:title/bf:Title[
       not(contains(rdf:type/@rdf:resource,'bibframe')) and
       (../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']) and
-      rdfs:label != ../../../bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label
+      rdfs:label != ../../../bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label and
+      (../../../bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey and rdfs:label != ../../../bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey)
       ]">
       <ind1 default="1"/>
       <ind2 default="0">
