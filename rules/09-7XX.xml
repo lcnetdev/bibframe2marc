@@ -692,6 +692,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
                     bf:Work/bf:supplement/bf:Work[bf:hasInstance] |
                     bf:Work/bf:supplementTo/bf:Work[bf:hasInstance] |
                     bf:Work/bf:partOf/bf:Work[bf:hasInstance] |
+                    bf:Work/bf:hasPart/bf:Work[bf:hasInstance] |
                     bf:Work/bf:otherEdition/bf:Work[bf:hasInstance] |
                     bf:Instance/bf:issuedWith/bf:Work[bf:hasInstance] |
                     bf:Work/bf:continues/bf:Work[bf:hasInstance] |
@@ -717,6 +718,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
           <case test="local-name(..)='supplement'">770</case>
           <case test="local-name(..)='supplementTo'">772</case>
           <case test="local-name(..)='partOf'">773</case>
+          <case test="local-name(..)='hasPart'">774</case>
           <case test="local-name(..)='otherEdition'">775</case>
           <case test="local-name(..)='issuedWith'">777</case>
           <case test="local-name(..)='continues'">780</case>
