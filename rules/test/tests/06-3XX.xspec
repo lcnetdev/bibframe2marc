@@ -129,6 +129,21 @@
               test="//marc:datafield[@tag='362' and @ind1='1']/marc:subfield[@code='a'] = 'Began with vol. 4, published in 1947.'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 370">
+    <x:context href="../data/3XX/370.xml"/>
+    <x:expect label="generate 370" test="count(//marc:datafield[@tag='370']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='370'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='370'][1]/@ind2 = ' '"/>
+    <x:expect label="$g from label"
+              test="//marc:datafield[@tag='370'][1]/marc:subfield[@code='g'] = 'Loring Park (Minneapolis, Minn.)'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='370'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/subjects/sh97007512.html'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='370'][1]/marc:subfield[@code='2'] = 'lcsh'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 382">
     <x:context href="../data/3XX/382.xml"/>
     <x:expect label="generate 382" test="count(//marc:datafield[@tag='382']) = 2"/>
