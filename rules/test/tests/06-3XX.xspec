@@ -16,14 +16,13 @@
               test="count(//marc:datafield[@tag='306']) = 1"/>
   </x:scenario>
 
-  <x:scenario label="MARC 310-321">
-    <x:context href="../data/3XX/310-321.xml"/>
-    <x:expect label="First bf:frequency property of the Instances generates a 310"
-              test="//marc:datafield[@tag='310']/marc:subfield[@code='a'] = 'daily'"/>
-    <x:expect label="Subsequent bf:frequency properties generate 321s"
-              test="//marc:datafield[@tag='321'][1]/marc:subfield[@code='a'] = 'weekly'"/>
-    <x:expect label="bf:date property of bf:Frequency generates $b"
-              test="//marc:datafield[@tag='321'][1]/marc:subfield[@code='b'] = '1970-1985'"/>
+  <x:scenario label="MARC 310">
+    <x:context href="../data/3XX/310.xml"/>
+    <x:expect label="generate 310" test="count(//marc:datafield[@tag='310']) = 2"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='310'][1]/marc:subfield[@code='a'] = 'daily'"/>
+    <x:expect label="$b from date"
+              test="//marc:datafield[@tag='310'][2]/marc:subfield[@code='b'] = '1970-1985'"/>
   </x:scenario>
 
   <x:scenario label="MARC 336">
@@ -128,6 +127,21 @@
               test="count(//marc:datafield[@tag='362' and @ind1='1']) = 1"/>
     <x:expect label="generate $a from Note rdfs:label"
               test="//marc:datafield[@tag='362' and @ind1='1']/marc:subfield[@code='a'] = 'Began with vol. 4, published in 1947.'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 370">
+    <x:context href="../data/3XX/370.xml"/>
+    <x:expect label="generate 370" test="count(//marc:datafield[@tag='370']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='370'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='370'][1]/@ind2 = ' '"/>
+    <x:expect label="$g from label"
+              test="//marc:datafield[@tag='370'][1]/marc:subfield[@code='g'] = 'Loring Park (Minneapolis, Minn.)'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='370'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/subjects/sh97007512.html'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='370'][1]/marc:subfield[@code='2'] = 'lcsh'"/>
   </x:scenario>
 
   <x:scenario label="MARC 382">

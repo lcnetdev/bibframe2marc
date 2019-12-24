@@ -397,6 +397,16 @@
       <x:expect label="...should select nodes to process based on lang-xpath and default script"
                 test="//xslt:for-each[1]/@select='bf:Instance/bf:title/bf:Title[not(rdf:type)][bf:mainTitle/@xml:lang and not(contains(translate(bf:mainTitle/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]'"/>
     </x:scenario>
+
+    <x:scenario label="lang-prefer attribute on repeatable fields">
+      <x:context mode="documentFrame">
+        <bf2marc:df tag="250" lang-xpath="." lang-prefer="vernacular">
+          <bf2marc:context xpath="bf:Instance/bf:editionStatement"/>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="...should also select nodes based on lang-xpath and default script"
+                test="//xslt:for-each[1]/@select='bf:Instance/bf:editionStatement[./@xml:lang and not(contains(translate(./@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]'"/>
+    </x:scenario>
   </x:scenario>
 
   <x:scenario label="Template generation">

@@ -152,8 +152,8 @@
   <x:scenario label="MARC 516">
     <x:context href="../data/5XX/516.xml"/>
     <x:expect label="generate 516" test="count(//marc:datafield[@tag='516']) = 1"/>
-    <x:expect label="ind1 default to '8'"
-              test="//marc:datafield[@tag='516'][1]/@ind1 = '8'"/>
+    <x:expect label="ind1 default to ' '"
+              test="//marc:datafield[@tag='516'][1]/@ind1 = ' '"/>
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='516'][1]/@ind2 = ' '"/>
     <x:expect label="$a from rdfs:label"

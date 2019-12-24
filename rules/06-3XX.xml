@@ -36,34 +36,18 @@
     </context>
   </df>
 
-  <select xpath="bf:Instance/bf:frequency/bf:Frequency">
-    <switch>
-      <case test="position() = 1">
-        <df tag="310" lang-xpath="rdfs:label">
-          <ind1 default=" "/>
-          <ind2 default=" "/>
-          <sf code="a" repeatable="false">
-            <select xpath="rdfs:label"/>
-          </sf>
-          <sf code="b" repeatable="false">
-            <select xpath="bf:date"/>
-          </sf>
-        </df>
-      </case>
-      <case test="default">
-        <df tag="321" lang-xpath="rdfs:label">
-          <ind1 default=" "/>
-          <ind2 default=" "/>
-          <sf code="a" repeatable="false">
-            <select xpath="rdfs:label"/>
-          </sf>
-          <sf code="b" repeatable="false">
-            <select xpath="bf:date"/>
-          </sf>
-        </df>
-      </case>
-    </switch>
-  </select>
+  <df tag="310" lang-xpath="rdfs:label">
+    <context xpath="bf:Instance/bf:frequency/bf:Frequency">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" repeatable="false">
+        <select xpath="rdfs:label"/>
+      </sf>
+      <sf code="b" repeatable="false">
+        <select xpath="bf:date"/>
+      </sf>
+    </context>
+  </df>
 
   <df tag="336" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:content/*[local-name()='Content' or
@@ -586,6 +570,41 @@
     </context>
   </df>
 
+  <df tag="370" lang-xpath="rdfs:label|madsrdf:authoritativeLabel">
+    <context xpath="bf:Work/bf:originPlace/bf:Place">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="madsrdf:authoritiveLabel">
+          <sf code="g">
+            <transform><xsl:value-of select="madsrdf:authoritativeLabel"/></transform>
+          </sf>
+        </case>
+        <case test="default">
+          <sf code="g"><select xpath="rdfs:label"/></sf>
+        </case>
+      </switch>
+      <sf code="0">
+        <select xpath="@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vSource">
+              <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vSource != ''">
+                <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+    </context>
+  </df>
 
   <!-- 382 -->
   <key name="kMusicMediumSourceAppliesTo" match="bf:MusicMedium[bf:source/bf:Source/rdfs:label and bflc:appliesTo/bflc:AppliesTo/rdfs:label]" use="bf:source/bf:Source/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
