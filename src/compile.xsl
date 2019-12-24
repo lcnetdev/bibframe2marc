@@ -400,9 +400,9 @@
     <xslt:choose>
       <xslt:when test="bf2marc:context">
         <xslt:choose>
-          <!-- special handling for language preference and non-repeatable fields -->
-          <!-- this relies on the script subtag being set in the xml:lang attribute -->
-          <xslt:when test="@lang-prefer and $vRepeatable='false'">
+          <!-- special handling for language preference/non-repeatable -->
+          <!-- language handling relies on the script subtag being set in the xml:lang attribute -->
+          <xslt:when test="@lang-prefer">
             <xslt:choose>
               <xslt:when test="@lang-xpath">
                 <xslt:choose>
@@ -411,31 +411,49 @@
                       <xsl:when test="{bf2marc:context/@xpath}[{@lang-xpath}/@xml:lang and not(contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
                         <xsl:for-each select="{bf2marc:context/@xpath}[{@lang-xpath}/@xml:lang and not(contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
                           <xslt:apply-templates select="bf2marc:context/bf2marc:var" mode="fieldTemplate"/>
-                          <xsl:choose>
-                            <xsl:when test="position()=1">
+                          <xslt:choose>
+                            <xslt:when test="$vRepeatable='false'">
+                              <xsl:choose>
+                                <xsl:when test="position()=1">
+                                  <xslt:apply-templates select="." mode="fieldTemplate">
+                                    <xslt:with-param name="repeatable" select="$vRepeatable"/>
+                                  </xslt:apply-templates>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                  <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
+                                </xsl:otherwise>
+                              </xsl:choose>
+                            </xslt:when>
+                            <xslt:otherwise>
                               <xslt:apply-templates select="." mode="fieldTemplate">
                                 <xslt:with-param name="repeatable" select="$vRepeatable"/>
                               </xslt:apply-templates>
-                            </xsl:when>
-                            <xsl:otherwise>
-                              <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
-                            </xsl:otherwise>
-                          </xsl:choose>
+                            </xslt:otherwise>
+                          </xslt:choose>
                         </xsl:for-each>
                       </xsl:when>
                       <xsl:otherwise>
                         <xsl:for-each select="{bf2marc:context/@xpath}">
                           <xslt:apply-templates select="bf2marc:context/bf2marc:var" mode="fieldTemplate"/>
-                          <xsl:choose>
-                            <xsl:when test="position()=1">
+                          <xslt:choose>
+                            <xslt:when test="$vRepeatable='false'">
+                              <xsl:choose>
+                                <xsl:when test="position()=1">
+                                  <xslt:apply-templates select="." mode="fieldTemplate">
+                                    <xslt:with-param name="repeatable" select="$vRepeatable"/>
+                                  </xslt:apply-templates>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                  <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
+                                </xsl:otherwise>
+                              </xsl:choose>
+                            </xslt:when>
+                            <xslt:otherwise>
                               <xslt:apply-templates select="." mode="fieldTemplate">
                                 <xslt:with-param name="repeatable" select="$vRepeatable"/>
                               </xslt:apply-templates>
-                            </xsl:when>
-                            <xsl:otherwise>
-                              <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
-                            </xsl:otherwise>
-                          </xsl:choose>
+                            </xslt:otherwise>
+                          </xslt:choose>
                         </xsl:for-each>
                       </xsl:otherwise>
                     </xsl:choose>
@@ -445,31 +463,49 @@
                       <xsl:when test="{bf2marc:context/@xpath}[not({@lang-xpath}/@xml:lang) or contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                         <xsl:for-each select="{bf2marc:context/@xpath}[not({@lang-xpath}/@xml:lang) or contains(translate({@lang-xpath}/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                           <xslt:apply-templates select="bf2marc:context/bf2marc:var" mode="fieldTemplate"/>
-                          <xsl:choose>
-                            <xsl:when test="position()=1">
+                          <xslt:choose>
+                            <xslt:when test="$vRepeatable='false'">
+                              <xsl:choose>
+                                <xsl:when test="position()=1">
+                                  <xslt:apply-templates select="." mode="fieldTemplate">
+                                    <xslt:with-param name="repeatable" select="$vRepeatable"/>
+                                  </xslt:apply-templates>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                  <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
+                                </xsl:otherwise>
+                              </xsl:choose>
+                            </xslt:when>
+                            <xslt:otherwise>
                               <xslt:apply-templates select="." mode="fieldTemplate">
                                 <xslt:with-param name="repeatable" select="$vRepeatable"/>
                               </xslt:apply-templates>
-                            </xsl:when>
-                            <xsl:otherwise>
-                              <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
-                            </xsl:otherwise>
-                          </xsl:choose>
+                            </xslt:otherwise>
+                          </xslt:choose>
                         </xsl:for-each>
                       </xsl:when>
                       <xsl:otherwise>
                         <xsl:for-each select="{bf2marc:context/@xpath}">
                           <xslt:apply-templates select="bf2marc:context/bf2marc:var" mode="fieldTemplate"/>
-                          <xsl:choose>
-                            <xsl:when test="position()=1">
+                          <xslt:choose>
+                            <xslt:when test="$vRepeatable='false'">
+                              <xsl:choose>
+                                <xsl:when test="position()=1">
+                                  <xslt:apply-templates select="." mode="fieldTemplate">
+                                    <xslt:with-param name="repeatable" select="$vRepeatable"/>
+                                  </xslt:apply-templates>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                  <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
+                                </xsl:otherwise>
+                              </xsl:choose>
+                            </xslt:when>
+                            <xslt:otherwise>
                               <xslt:apply-templates select="." mode="fieldTemplate">
                                 <xslt:with-param name="repeatable" select="$vRepeatable"/>
                               </xslt:apply-templates>
-                            </xsl:when>
-                            <xsl:otherwise>
-                              <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (<xslt:value-of select="$vTagName"/>).</xsl:message>
-                            </xsl:otherwise>
-                          </xsl:choose>
+                            </xslt:otherwise>
+                          </xslt:choose>
                         </xsl:for-each>
                       </xsl:otherwise>
                     </xsl:choose>
@@ -532,43 +568,9 @@
                 </xsl:choose>
               </xslt:when>
               <xslt:otherwise>
-                <xslt:choose>
-                  <xslt:when test="parent::*/@lang-prefer">
-                    <xslt:choose>
-                      <xslt:when test="parent::*/@lang-xpath">
-                        <xsl:variable name="vElementScript">
-                          <xsl:call-template name="tScriptCode">
-                            <xsl:with-param name="pXmlLang" select="{parent::*/@lang-xpath}/@xml:lang"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xslt:choose>
-                          <xslt:when test="parent::*/@lang-prefer='vernacular'">
-                            <xsl:if test="$vElementScript != '' and translate($vElementScript,$upper,$lower) != translate($pCatScript,$upper,$lower)">
-                              <xslt:apply-templates select="parent::*" mode="fieldTemplate">
-                                <xslt:with-param name="repeatable" select="parent::*/@repeatable"/>
-                              </xslt:apply-templates>
-                            </xsl:if>
-                          </xslt:when>
-                          <xslt:otherwise>
-                            <xsl:if test="$vElementScript = '' or translate($vElementScript,$upper,$lower)=translate($pCatScript,$upper,$lower)">
-                              <xslt:apply-templates select="parent::*" mode="fieldTemplate">
-                                <xslt:with-param name="repeatable" select="parent::*/@repeatable"/>
-                              </xslt:apply-templates>
-                            </xsl:if>
-                          </xslt:otherwise>
-                        </xslt:choose>
-                      </xslt:when>
-                      <xslt:otherwise>
-                        <xslt:message terminate="yes">lang-prefer attribute used without lang-xpath in rule for tag <xslt:value-of select="parent::*/@tag"/>.</xslt:message>
-                      </xslt:otherwise>
-                    </xslt:choose>
-                  </xslt:when>
-                  <xslt:otherwise>
-                    <xslt:apply-templates select="parent::*" mode="fieldTemplate">
-                      <xslt:with-param name="repeatable" select="parent::*/@repeatable"/>
-                    </xslt:apply-templates>
-                  </xslt:otherwise>
-                </xslt:choose>
+                <xslt:apply-templates select="parent::*" mode="fieldTemplate">
+                  <xslt:with-param name="repeatable" select="parent::*/@repeatable"/>
+                </xslt:apply-templates>
               </xslt:otherwise>
             </xslt:choose>
           </xsl:template>
