@@ -795,6 +795,23 @@
       </x:expect>
     </x:scenario>
 
+    <x:scenario label="switch/case/select within sf element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:df tag="245">
+          <bf2marc:ind1 default=" "/>
+          <bf2marc:ind2 default=" "/>
+          <bf2marc:sf code="a">
+            <bf2marc:switch>
+              <bf2marc:case test="bf:mainTitle"><bf2marc:select xpath="bf:mainTitle"/></bf2marc:case>
+              <bf2marc:case test="rdfs:label"><bf2marc:select xpath="rdfs:label"/></bf2marc:case>
+            </bf2marc:switch>
+          </bf2marc:sf>
+        </bf2marc:df>
+      </x:context>
+      <x:expect label="...should create variable that holds only a single value"
+                test="marc:datafield/xslt:variable[@name='v245-a']/xslt:choose/xslt:when[1]/xslt:for-each/xslt:choose/xslt:when[1]/@test='position() = 1'"/>
+    </x:scenario>
+
     <x:scenario label="fixed-field/position">
       <x:context mode="fieldTemplate">
         <bf2marc:fixed-field>

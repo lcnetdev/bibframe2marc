@@ -910,7 +910,12 @@
       </xslt:when>
       <xslt:otherwise>
         <xslt:apply-templates mode="fieldTemplate">
-          <xslt:with-param name="repeatable" select="$repeatable"/>
+          <xslt:with-param name="repeatable">
+            <xslt:choose>
+              <xslt:when test="ancestor::bf2marc:sf">false</xslt:when>
+              <xslt:otherwise><xslt:value-of select="$repeatable"/></xslt:otherwise>
+            </xslt:choose>
+          </xslt:with-param>
           <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
         </xslt:apply-templates>
       </xslt:otherwise>
