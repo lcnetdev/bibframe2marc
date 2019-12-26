@@ -39,12 +39,14 @@
         </x:call>
         <x:expect label="Should be retained" select="'Private eyeballs.'"/>
       </x:scenario>
+
       <x:scenario label="Ending period with other punctuation">
         <x:call template="tChopPunct">
-          <x:param name="pString" select="'[Private eyeballs].'"/>
+          <x:param name="pString" select="'Private (eyeballs).'"/>
         </x:call>
-        <x:expect label="Should be removed" select="'Private eyeballs'"/>
+        <x:expect label="Should be removed" select="'Private (eyeballs)'"/>
       </x:scenario>
+
       <x:scenario label="Ending ellipsis">
         <x:call template="tChopPunct">
           <x:param name="pString" select="'Private eyeballs...'"/>
@@ -53,6 +55,21 @@
       </x:scenario>
     </x:scenario>
 
+  </x:scenario>
+
+  <x:scenario label="tLastIndex">
+    <x:call template="tLastIndex">
+      <x:param name="pString" select="'(This).'"/>
+      <x:param name="pSearch" select="')'"/>
+    </x:call>
+    <x:expect label="Should return last index position of search in string" select="6"/>
+  </x:scenario>
+
+  <x:scenario label="tReverseString">
+    <x:call template="tReverseString">
+      <x:param name="pString" select="'12345678'"/>
+    </x:call>
+    <x:expect label="Should reverse input string" select="'87654321'"/>
   </x:scenario>
 
   <x:scenario label="tPadRight">
