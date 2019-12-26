@@ -103,6 +103,44 @@
           <marc:record/>
         </xslt:template>
         <xslt:template match="text()"/>
+        <xslt:template name="tChopPunct">
+          <xslt:param name="pString"/>
+          <xslt:variable name="vChopStart" select="' ([&quot;{{'"/>
+          <xslt:variable name="vChopEnd" select="' :;,/=&#x2013;&#x2014;)]&quot;}}'"/>
+          <xslt:variable name="vLength" select="string-length($pString)"/>
+          <xslt:choose>
+            <xslt:when test="$vLength=0"/>
+            <xslt:when test="not($pString)"/>
+            <xslt:when test="contains($vChopStart,substring($pString,1,1))">
+              <xslt:call-template name="tChopPunct">
+                <xslt:with-param name="pString" select="substring($pString,2)"/>
+              </xslt:call-template>
+            </xslt:when>
+            <xslt:when test="substring($pString,$vLength,1)='.'">
+              <xslt:choose>
+                <xslt:when test="substring($pString,$vLength - 3,3)='...'">
+                  <xslt:value-of select="$pString"/>
+                </xslt:when>
+                <xslt:when test="contains($vChopEnd, substring($pString,$vLength - 1,1))">
+	                <xslt:call-template name="tChopPunct">
+	                  <xslt:with-param name="pString" select="substring($pString,1,$vLength - 2)"/>
+	                </xslt:call-template>
+                </xslt:when>
+                <xslt:otherwise>
+	                <xslt:value-of select="$pString"/>
+                </xslt:otherwise>
+              </xslt:choose>
+            </xslt:when>
+            <xslt:when test="contains($vChopEnd, substring($pString,$vLength,1))">
+	            <xslt:call-template name="tChopPunct">
+	              <xslt:with-param name="pString" select="substring($pString,1,$vLength - 1)"/>
+	            </xslt:call-template>
+            </xslt:when>
+            <xslt:otherwise>
+	            <xslt:value-of select="$pString"/>
+            </xslt:otherwise>
+          </xslt:choose>
+        </xslt:template>
         <xslt:template name="tPadRight">
           <xslt:param name="pInput" />
           <xslt:param name="pPadChar"
@@ -486,6 +524,16 @@
                 test="count(marc:controlfield/xslt:for-each)=1"/>
     </x:scenario>
 
+    <x:scenario label="chopPunct attribute in cf">
+      <x:context mode="fieldTemplate">
+        <bf2marc:cf tag="001" chopPunct="true">
+          <bf2marc:select xpath="bf:Instance/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local/rdf:value"/>
+        </bf2marc:cf>
+      </x:context>
+      <x:expect label="...should call tChopPunct template to process value"
+                test="count(//xslt:call-template[@name='tChopPunct']) = 1"/>
+    </x:scenario>
+
     <x:scenario label="df element">
       <x:context mode="fieldTemplate">
         <bf2marc:df tag="245"/>
@@ -598,6 +646,18 @@
       <x:expect label="...and use that variable to decide whether to generate the subfield"
                 test="marc:datafield/xslt:if/@test='$v245-a != '''''"/>
     </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="chopPunct attribute in sf">
+    <x:context mode="fieldTemplate">
+      <bf2marc:df tag="245">
+        <bf2marc:sf code="a" chopPunct="true">
+          <bf2marc:select xpath="bf:mainTitle"/>
+        </bf2marc:sf>
+      </bf2marc:df>
+    </x:context>
+    <x:expect label="...should call tChopPunct template to process value"
+              test="marc:datafield/xslt:for-each/marc:subfield/xslt:call-template/@name = 'tChopPunct'"/>
   </x:scenario>
 
   <x:scenario label="Rule building blocks">

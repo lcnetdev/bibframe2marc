@@ -52,6 +52,49 @@
 
       <!-- Conversion functions -->
 
+      <xsl:template name="tChopPunct">
+        <xsl:param name="pString"/>
+        <xsl:variable name="vChopStart" select="' ([&quot;{{'"/>
+        <xsl:variable name="vChopEnd" select="' :;,/=&#x2013;&#x2014;)]&quot;}}'"/>
+        <xsl:variable name="vLength" select="string-length($pString)"/>
+        <xsl:choose>
+          <xsl:when test="$vLength=0"/>
+          <xsl:when test="not($pString)"/>
+          <!-- remove leading characters -->
+          <xsl:when test="contains($vChopStart,substring($pString,1,1))">
+            <xsl:call-template name="tChopPunct">
+              <xsl:with-param name="pString" select="substring($pString,2)"/>
+            </xsl:call-template>
+          </xsl:when>
+          <!-- special handling for period -->
+          <!-- only remove if preceding character is another punctuation mark -->
+          <!-- allow for ellipsis -->
+          <xsl:when test="substring($pString,$vLength,1)='.'">
+            <xsl:choose>
+              <xsl:when test="substring($pString,$vLength - 3,3)='...'">
+                <xsl:value-of select="$pString"/>
+              </xsl:when>
+              <xsl:when test="contains($vChopEnd, substring($pString,$vLength - 1,1))">
+	              <xsl:call-template name="tChopPunct">
+	                <xsl:with-param name="pString" select="substring($pString,1,$vLength - 2)"/>
+	              </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+	              <xsl:value-of select="$pString"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:when test="contains($vChopEnd, substring($pString,$vLength,1))">
+	          <xsl:call-template name="tChopPunct">
+	            <xsl:with-param name="pString" select="substring($pString,1,$vLength - 1)"/>
+	          </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+	          <xsl:value-of select="$pString"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
+
       <xsl:template name="tPadRight">
         <xsl:param name="pInput"/>
         <xsl:param name="pPadChar" select="' '"/>
@@ -632,6 +675,7 @@
         <xslt:otherwise>
           <xslt:apply-templates mode="fieldTemplate">
             <xslt:with-param name="repeatable" select="$vRepeatable"/>
+            <xslt:with-param name="pChopPunct" select="@chopPunct"/>
           </xslt:apply-templates>
         </xslt:otherwise>
       </xslt:choose>
@@ -641,8 +685,10 @@
   <!-- pass-through context elements, except for var elements -->
   <xslt:template match="bf2marc:context" mode="fieldTemplate">
     <xslt:param name="repeatable"/>
+    <xslt:param name="pChopPunct"/>
     <xslt:apply-templates mode="fieldTemplate" select="*[not(local-name()='var')]">
       <xslt:with-param name="repeatable" select="$repeatable"/>
+      <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
     </xslt:apply-templates>
   </xslt:template>
 
@@ -698,12 +744,14 @@
       <xslt:when test="bf2marc:select">
         <xslt:apply-templates select="bf2marc:select" mode="fieldTemplate">
           <xslt:with-param name="repeatable" select="@repeatable"/>
+          <xslt:with-param name="pChopPunct" select="@chopPunct"/>
         </xslt:apply-templates>
       </xslt:when>
       <xslt:otherwise>
         <xsl:variable name="v{$vTagName}-{@code}">
           <xslt:apply-templates mode="fieldTemplate">
             <xslt:with-param name="repeatable" select="@repeatable"/>
+            <xslt:with-param name="pChopPunct" select="@chopPunct"/>
           </xslt:apply-templates>
         </xsl:variable>
         <xsl:if test="$v{$vTagName}-{@code} != ''">
@@ -717,10 +765,12 @@
 
   <xslt:template match="bf2marc:select" mode="fieldTemplate">
     <xslt:param name="repeatable"/>
+    <xslt:param name="pChopPunct"/>
     <xslt:choose>
       <xslt:when test="@xpath='.'">
         <xslt:apply-templates select="." mode="outerXSL">
           <xslt:with-param name="repeatable" select="$repeatable"/>
+          <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
         </xslt:apply-templates>
       </xslt:when>
       <xslt:otherwise>
@@ -733,6 +783,7 @@
                     <xsl:when test="position() = 1">
                       <xslt:apply-templates select="." mode="outerXSL">
                         <xslt:with-param name="repeatable" select="$repeatable"/>
+                        <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
                       </xslt:apply-templates>
                     </xsl:when>
                     <xsl:otherwise>
@@ -743,6 +794,7 @@
                 <xslt:otherwise>
                   <xslt:apply-templates select="." mode="outerXSL">
                     <xslt:with-param name="repeatable" select="$repeatable"/>
+                    <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
                   </xslt:apply-templates>
                 </xslt:otherwise>
               </xslt:choose>
@@ -760,17 +812,20 @@
 
   <xslt:template match="bf2marc:select" mode="outerXSL">
     <xslt:param name="repeatable"/>
+    <xslt:param name="pChopPunct"/>
     <xslt:choose>
       <xslt:when test="local-name(parent::*)='sf'">
         <marc:subfield code="{parent::bf2marc:sf/@code}">
           <xslt:apply-templates select="." mode="innerXSL">
             <xslt:with-param name="repeatable" select="$repeatable"/>
+            <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
           </xslt:apply-templates>
         </marc:subfield>
       </xslt:when>
       <xslt:otherwise>
         <xslt:apply-templates select="." mode="innerXSL">
           <xslt:with-param name="repeatable" select="$repeatable"/>
+          <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
         </xslt:apply-templates>
       </xslt:otherwise>
     </xslt:choose>
@@ -778,6 +833,7 @@
 
   <xslt:template match="bf2marc:select" mode="innerXSL">
     <xslt:param name="repeatable"/>
+    <xslt:param name="pChopPunct"/>
     <xslt:variable name="vConstant">
       <xslt:for-each select="text()|bf2marc:text">
         <xslt:value-of select="."/>
@@ -790,19 +846,33 @@
       <xslt:when test="child::*">
         <xslt:apply-templates mode="fieldTemplate">
           <xslt:with-param name="repeatable" select="$repeatable"/>
+          <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
         </xslt:apply-templates>
       </xslt:when>
-      <xslt:otherwise><xsl:value-of select="."/></xslt:otherwise>
+      <xslt:otherwise>
+        <xslt:choose>
+          <xslt:when test="$pChopPunct = 'true'">
+            <xsl:call-template name="tChopPunct">
+              <xsl:with-param name="pString" select="."/>
+            </xsl:call-template>
+          </xslt:when>
+          <xslt:otherwise>
+            <xsl:value-of select="."/>
+          </xslt:otherwise>
+        </xslt:choose>
+      </xslt:otherwise>
     </xslt:choose>
   </xslt:template>
 
   <xslt:template match="bf2marc:switch" mode="fieldTemplate">
     <xslt:param name="repeatable"/>
+    <xslt:param name="pChopPunct"/>
     <xsl:choose>
       <xslt:for-each select="bf2marc:case[@test != 'default']">
         <xsl:when test="{@test}">
           <xslt:apply-templates select="." mode="innerXSL">
             <xslt:with-param name="repeatable" select="$repeatable"/>
+            <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
           </xslt:apply-templates>
         </xsl:when>
       </xslt:for-each>
@@ -812,6 +882,7 @@
             <xsl:otherwise>
               <xslt:apply-templates select="." mode="innerXSL">
                 <xslt:with-param name="repeatable" select="$repeatable"/>
+                <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
               </xslt:apply-templates>
             </xsl:otherwise>
           </xslt:when>
@@ -827,6 +898,7 @@
 
   <xslt:template match="bf2marc:case" mode="innerXSL">
     <xslt:param name="repeatable"/>
+    <xslt:param name="pChopPunct"/>
     <xslt:variable name="vConstant">
       <xslt:for-each select="text()|bf2marc:text">
         <xslt:value-of select="."/>
@@ -839,6 +911,7 @@
       <xslt:otherwise>
         <xslt:apply-templates mode="fieldTemplate">
           <xslt:with-param name="repeatable" select="$repeatable"/>
+          <xslt:with-param name="pChopPunct" select="$pChopPunct"/>
         </xslt:apply-templates>
       </xslt:otherwise>
     </xslt:choose>
@@ -891,7 +964,6 @@
   </xslt:template>
 
   <xslt:template match="bf2marc:lookup" mode="fieldTemplate">
-    <xslt:param name="repeatable"/>
     <xslt:choose>
       <xslt:when test="@map != '' and @targetField != '' and count(bf2marc:lookupField) &gt; 0">
         <xslt:variable name="vConditions">
