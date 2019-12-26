@@ -772,6 +772,29 @@
       </x:expect>
     </x:scenario>
 
+    <x:scenario label="case with select element">
+      <x:context mode="fieldTemplate">
+        <bf2marc:switch>
+          <bf2marc:case test="bf:mainTitle"><bf2marc:select xpath="bf:mainTitle"/></bf2marc:case>
+          <bf2marc:case test="rdfs:label"><bf2marc:select xpath="rdfs:label"/></bf2marc:case>
+        </bf2marc:switch>
+      </x:context>
+      <x:expect label="...should generate xsl:for-each within xsl:when">
+        <xslt:choose>
+          <xslt:when test="bf:mainTitle">
+            <xslt:for-each select="bf:mainTitle">
+              <xslt:value-of select="."/>
+            </xslt:for-each>
+          </xslt:when>
+          <xslt:when test="rdfs:label">
+            <xslt:for-each select="rdfs:label">
+              <xslt:value-of select="."/>
+            </xslt:for-each>
+          </xslt:when>
+        </xslt:choose>
+      </x:expect>
+    </x:scenario>
+
     <x:scenario label="fixed-field/position">
       <x:context mode="fieldTemplate">
         <bf2marc:fixed-field>
