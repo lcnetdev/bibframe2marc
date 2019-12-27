@@ -17,10 +17,10 @@
         <select xpath="bf:Instance/bf:seriesStatement|bf:Instance/bf:seriesEnumeration">
           <switch>
             <case test="local-name()='seriesStatement'">
-              <sf code="a"><select xpath="."/></sf>
+              <sf code="a" chopPunct="true"><select xpath="."/></sf>
             </case>
             <case test="default">
-              <sf code="v"><select xpath="."/></sf>
+              <sf code="v" chopPunct="true"><select xpath="."/></sf>
             </case>
           </switch>
         </select>
@@ -35,7 +35,7 @@
         <df tag="254" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
         </df>
@@ -45,7 +45,7 @@
         <df tag="256" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
         </df>
@@ -55,7 +55,7 @@
         <df tag="501" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
           <sf code="5" repeatable="false">
@@ -68,7 +68,7 @@
         <df tag="513" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
         </df>
@@ -78,7 +78,7 @@
         <df tag="515" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
         </df>
@@ -88,7 +88,7 @@
         <df tag="516" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
         </df>
@@ -102,36 +102,60 @@
             <switch>
               <case test="starts-with(.,'Contract:')">
                 <sf code="b">
-                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Contract:'))"/></transform>
+                  <transform>
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="substring-after(.,'Contract:')"/>
+                    </xsl:call-template>
+                  </transform>
                 </sf>
               </case>
               <case test="starts-with(.,'Grant:')">
                 <sf code="c">
-                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Grant:'))"/></transform>
+                  <transform>
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="substring-after(.,'Grant:')"/>
+                    </xsl:call-template>
+                  </transform>
                 </sf>
               </case>
               <case test="starts-with(.,'Program element:')">
                 <sf code="e">
-                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Program element:'))"/></transform>
+                  <transform>
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="substring-after(.,'Program element:')"/>
+                    </xsl:call-template>
+                  </transform>
                 </sf>
               </case>
               <case test="starts-with(.,'Project:')">
                 <sf code="f">
-                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Project:'))"/></transform>
+                  <transform>
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="substring-after(.,'Project:')"/>
+                    </xsl:call-template>
+                  </transform>
                 </sf>
               </case>
               <case test="starts-with(.,'Task:')">
                 <sf code="g">
-                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Task:'))"/></transform>
+                  <transform>
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="substring-after(.,'Task:')"/>
+                    </xsl:call-template>
+                  </transform>
                 </sf>
               </case>
               <case test="starts-with(.,'Work unit:')">
                 <sf code="h">
-                  <transform><xsl:value-of select="normalize-space(substring-after(.,'Work unit:'))"/></transform>
+                  <transform>
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="substring-after(.,'Work unit:')"/>
+                    </xsl:call-template>
+                  </transform>
                 </sf>
               </case>
               <case test="default">
-                <sf code="a"><select xpath="."/></sf>
+                <sf code="a" chopPunct="true"><select xpath="."/></sf>
               </case>
             </switch>
           </select>
@@ -148,7 +172,7 @@
             </switch>
           </ind1>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]"/>
           </sf>
           <sf code="u">
@@ -161,7 +185,7 @@
         <df tag="550" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
         </df>
@@ -177,7 +201,7 @@
             </switch>
           </ind1>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]"/>
           </sf>
           <sf code="u">
@@ -190,7 +214,7 @@
         <df tag="581" lang-xpath="rdfs:label">
           <ind1 default="8"/>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
           <sf code="z">
@@ -203,10 +227,10 @@
         <df tag="585" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="3" repeatable="false">
+          <sf code="3" chopPunct="true" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
           <sf code="5" repeatable="false">
@@ -219,7 +243,7 @@
         <df tag="588" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label"/>
           </sf>
           <sf code="5" repeatable="false">
@@ -235,19 +259,24 @@
         <df tag="500" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="3" repeatable="false">
+          <sf code="3" chopPunct="true" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
           <sf code="a" repeatable="false">
             <transform>
-              <xsl:for-each select="rdfs:label">
-                <xsl:choose>
-                  <xsl:when test="position() = last()">
-                    <xsl:value-of select="."/>
-                  </xsl:when>
-                  <xsl:otherwise><xsl:value-of select="concat(.,' ')"/></xsl:otherwise>
-                </xsl:choose>
-              </xsl:for-each>
+              <xsl:variable name="vNoteText">
+                <xsl:for-each select="rdfs:label">
+                  <xsl:choose>
+                    <xsl:when test="position() = last()">
+                      <xsl:value-of select="."/>
+                    </xsl:when>
+                    <xsl:otherwise><xsl:value-of select="concat(.,' ')"/></xsl:otherwise>
+                  </xsl:choose>
+                </xsl:for-each>
+              </xsl:variable>
+              <xsl:call-template name="tChopPunct">
+                <xsl:with-param name="pString" select="$vNoteText"/>
+              </xsl:call-template>
             </transform>
           </sf>
           <sf code="5" repeatable="false">
@@ -262,19 +291,19 @@
     <context xpath="bf:Work/bf:dissertation/bf:Dissertation">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:degree"/>
       </sf>
-      <sf code="c" repeatable="false">
+      <sf code="c" chopPunct="true" repeatable="false">
         <select xpath="bf:grantingInstitution/*/rdfs:label"/>
       </sf>
-      <sf code="d" repeatable="false">
+      <sf code="d" chopPunct="true" repeatable="false">
         <select xpath="bf:date"/>
       </sf>
-      <sf code="g">
+      <sf code="g" chopPunct="true">
         <select xpath="bf:note/*/rdfs:label"/>
       </sf>
       <sf code="o">
@@ -287,7 +316,7 @@
     <context xpath="bf:Work/bf:tableOfContents/bf:TableOfContents">
       <ind1 default="0"/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false"><select xpath="rdfs:label"/></sf>
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
     </context>
   </df>
 
@@ -298,19 +327,19 @@
         <df tag="540" lang-xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="3" repeatable="false">
+          <sf code="3" chopPunct="true" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]"/>
           </sf>
-          <sf code="d" repeatable="false">
+          <sf code="d" chopPunct="true" repeatable="false">
             <select xpath="bf:note/bf:Note/rdfs:label"/>
           </sf>
           <sf code="u">
             <select xpath="rdfs:label[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
           </sf>
-          <sf code="2" repeatable="false">
+          <sf code="2" chopPunct="true" repeatable="false">
             <select xpath="bf:source/bf:Source/rdfs:label"/>
           </sf>
           <sf code="5" repeatable="false">
@@ -322,16 +351,16 @@
         <df tag="506" lang-xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="3" repeatable="false">
+          <sf code="3" chopPunct="true" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]"/>
           </sf>
           <sf code="u">
             <select xpath="rdfs:label[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
           </sf>
-          <sf code="2" repeatable="false">
+          <sf code="2" chopPunct="true" repeatable="false">
             <select xpath="bf:source/bf:Source/rdfs:label"/>
           </sf>
           <sf code="5" repeatable="false">
@@ -346,7 +375,7 @@
     <context xpath="bf:Instance/bf:credits[not(starts-with(text(),'Cast:'))]">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="."/>
       </sf>
     </context>
@@ -365,7 +394,7 @@
         </switch>
       </ind1>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="bf:title/*">
           <switch>
             <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
@@ -373,10 +402,10 @@
           </switch>
         </select>
       </sf>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:note/bf:Note[bf:noteType='Coverage' or bf:noteType='Coverage']/rdfs:label"/>
       </sf>
-      <sf code="c" repeatable="false">
+      <sf code="c" chopPunct="true" repeatable="false">
         <select xpath="bf:note/bf:Note[bf:noteType='Location' or bf:noteType='location']/rdfs:label"/>
       </sf>
       <sf code="x" repeatable="false">
@@ -390,7 +419,11 @@
       <ind1 default="1"/>
       <ind2 default=" "/>
       <sf code="a" repeatable="false">
-        <transform><xsl:value-of select="normalize-space(substring-after(.,'Cast:'))"/></transform>
+        <transform>
+          <xsl:call-template name="tChopPunct">
+            <xsl:with-param name="pString" select="substring-after(.,'Cast:')"/>
+          </xsl:call-template>
+        </transform>
       </sf>
     </context>
   </df>
@@ -399,10 +432,10 @@
     <context xpath="bf:Work/bf:capture/bf:Capture[not(bf:date) and not(bf:place)]">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
     </context>
@@ -412,10 +445,10 @@
     <context xpath="bf:Work/bf:summary/bf:Summary">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
       <sf code="u">
@@ -431,7 +464,7 @@
     <context xpath="bf:Instance/bf:preferredCitation">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a"><select xpath="."/></sf>
+      <sf code="a" chopPunct="true"><select xpath="."/></sf>
     </context>
   </df>
 
@@ -439,7 +472,7 @@
     <context xpath="*[local-name()='Instance' or local-name()='Work']/bf:supplementaryContent/bf:SupplementaryContent">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false"><select xpath="rdfs:label"/></sf>
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
     </context>
   </df>
 
@@ -456,22 +489,22 @@
         <df tag="776" lang-xpath="bf:title/*/rdfs:label">
           <ind1 default="0"/>
           <ind2 default=" "/>
-          <sf code="3" repeatable="false">
+          <sf code="3" chopPunct="true" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="bf:contribution/*[local-name()='PrimaryContribution' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']/bf:agent/*/rdfs:label"/>
           </sf>
-          <sf code="b" repeatable="false">
+          <sf code="b" chopPunct="true" repeatable="false">
             <select xpath="bf:editionStatement"/>
           </sf>
-          <sf code="c" repeatable="false">
+          <sf code="c" chopPunct="true" repeatable="false">
             <select xpath="bf:title/bf:Title/bf:qualifier"/>
           </sf>
-          <sf code="d" repeatable="false">
+          <sf code="d" chopPunct="true" repeatable="false">
             <select xpath="bf:provisionActivityStatement"/>
           </sf>
-          <sf code="e" repeatable="false">
+          <sf code="e" chopPunct="true" repeatable="false">
             <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
           </sf>
           <sf code="f" repeatable="false">
@@ -494,13 +527,13 @@
               </switch>
             </select>
           </sf>
-          <sf code="g">
+          <sf code="g" chopPunct="true">
             <select xpath="bf:part"/>
           </sf>
-          <sf code="h" repeatable="false">
+          <sf code="h" chopPunct="true" repeatable="false">
             <select xpath="bf:extent/bf:Extent/rdfs:label"/>
           </sf>
-          <sf code="i">
+          <sf code="i" chopPunct="true">
             <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/*[rdfs:label or madsrdf:authoritativeLabel]">
               <switch>
                 <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
@@ -521,13 +554,13 @@
           <sf code="i">
             <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/*/@rdf:about|bflc:relationship/bflc:Relationship/bflc:relation/@rdf:resource"/>
           </sf>
-          <sf code="j">
+          <sf code="j" chopPunct="true">
             <select xpath="bf:seriesStatement"/>
           </sf>
-          <sf code="n">
+          <sf code="n" chopPunct="true">
             <select xpath="bf:note/bf:Note/rdfs:label|bf:hasInstance/bf:Instance/bf:note/bf:Note/rdfs:label"/>
           </sf>
-          <sf code="t" repeatable="false">
+          <sf code="t" chopPunct="true" repeatable="false">
             <select xpath="bf:title/bf:Title/bf:mainTitle"/>
           </sf>
           <select xpath="bf:identifiedBy/*">
@@ -556,7 +589,13 @@
                 <sf code="w">
                   <switch>
                     <case test="bf:source/bf:Source/rdfs:label">
-                      <transform><xsl:value-of select="concat('(',bf:source/bf:Source/rdfs:label,')',rdf:value)"/></transform>
+                      <transform>
+                        <xsl:variable name="vSource">
+                          <xsl:call-template name="tChopPunct">
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          </xsl:call-template>
+                        </xsl:variable>
+                      <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/></transform>
                     </case>
                     <case test="default">
                       <select xpath="rdf:value"/>
@@ -573,16 +612,16 @@
         <df tag="530">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="3" repeatable="false">
+          <sf code="3" chopPunct="true" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <select xpath="bf:note/bf:Note/rdfs:label"/>
           </sf>
-          <sf code="b" repeatable="false">
+          <sf code="b" chopPunct="true" repeatable="false">
             <select xpath="bf:acquisitionSource/bf:AcquisitionSource/rdfs:label"/>
           </sf>
-          <sf code="c" repeatable="false">
+          <sf code="c" chopPunct="true" repeatable="false">
             <select xpath="bf:acquisitionTerms"/>
           </sf>
           <sf code="d" repeatable="false">
@@ -600,7 +639,7 @@
     <context xpath="bf:Instance/bf:contentAccessibility/bf:ContentAccessibility/rdfs:label">
       <ind1 default="8"/>
       <ind2 default=" "/>
-      <sf code="a"><select xpath="."/></sf>
+      <sf code="a" chopPunct="true"><select xpath="."/></sf>
     </context>
   </df>
 
@@ -608,28 +647,28 @@
     <context xpath="//bf:Instance[@rdf:about=//bf:Instance/bf:hasReproduction/@rdf:resource]">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="bf:carrier/bf:Carrier/rdfs:label"/>
       </sf>
-      <sf code="m">
+      <sf code="m" chopPunct="true">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="b">
+      <sf code="b" chopPunct="true">
         <select xpath="bf:provisionActivity/bf:ProvisionActivity/bf:place/*/rdfs:label"/>
       </sf>
-      <sf code="c">
+      <sf code="c" chopPunct="true">
         <select xpath="bf:provisionActivity/bf:ProvisionActivity/bf:agent/*/rdfs:label"/>
       </sf>
-      <sf code="d" repeatable="false">
+      <sf code="d" chopPunct="true" repeatable="false">
         <select xpath="bf:provisionActivity/bf:ProvisionActivity/bf:date"/>
       </sf>
-      <sf code="e" repeatable="false">
+      <sf code="e" chopPunct="true" repeatable="false">
         <select xpath="bf:extent/bf:Extent/rdfs:label"/>
       </sf>
-      <sf code="f">
+      <sf code="f" chopPunct="true">
         <select xpath="bf:seriesStatement"/>
       </sf>
-      <sf code="n">
+      <sf code="n" chopPunct="true">
         <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
     </context>
@@ -639,31 +678,31 @@
     <context xpath="//bf:Instance[@rdf:about=//bf:Instance/bf:originalVersion/@rdf:resource]">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="p">
+      <sf code="p" chopPunct="true">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="bf:contribution/*/bf:agent/*/rdfs:label"/>
       </sf>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:editionStatement"/>
       </sf>
-      <sf code="c" repeatable="false">
+      <sf code="c" chopPunct="true" repeatable="false">
         <select xpath="bf:provisionActivityStatement"/>
       </sf>
-      <sf code="e" repeatable="false">
+      <sf code="e" chopPunct="true" repeatable="false">
         <select xpath="bf:extent/bf:Extent/rdfs:label"/>
       </sf>
-      <sf code="f">
+      <sf code="f" chopPunct="true">
         <select xpath="bf:seriesStatement"/>
       </sf>
-      <sf code="k">
+      <sf code="k" chopPunct="true">
         <select xpath="bf:title/*[local-name='KeyTitle' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/KeyTitle']/bf:mainTitle"/>
       </sf>
-      <sf code="n">
+      <sf code="n" chopPunct="true">
         <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
-      <sf code="t" repeatable="false">
+      <sf code="t" chopPunct="true" repeatable="false">
         <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:mainTitle"/>
       </sf>
       <sf code="x">
@@ -679,10 +718,10 @@
     <context xpath="bf:Instance/bf:systemRequirement/bf:SystemRequirement[not(contains(rdf:type/@rdf:resource,'bflc'))]">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
       <sf code="u">
@@ -698,10 +737,10 @@
     <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:immediateAcquisition/bf:ImmediateAcquisition">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
       <sf code="5">
@@ -714,10 +753,10 @@
     <context xpath="bf:Work/bf:language/bf:Language[bf:note/bf:Note/rdfs:label]">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
     </context>
@@ -727,10 +766,10 @@
     <context xpath="bf:Work/bf:notation/bf:Notation">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="b">
+      <sf code="b" chopPunct="true">
         <select xpath="rdfs:label"/>
       </sf>
     </context>
@@ -740,7 +779,7 @@
     <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:custodialHistory">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="."/>
       </sf>
     </context>
@@ -750,7 +789,7 @@
     <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='binding' or bf:noteType='Binding']">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
       <sf code="5">
@@ -763,7 +802,7 @@
     <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='action' or bf:noteType='Action']">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="a" repeatable="false">
@@ -773,25 +812,27 @@
               <xsl:value-of select="concat(.,' ')"/>
             </xsl:for-each>
           </xsl:variable>
-          <xsl:value-of select="normalize-space($vLabel)"/>
+          <xsl:call-template name="tChopPunct">
+            <xsl:with-param name="pString" select="$vLabel"/>
+          </xsl:call-template>
         </transform>
       </sf>
-      <sf code="c">
+      <sf code="c" chopPunct="true">
         <select xpath="bf:date"/>
       </sf>
-      <sf code="k">
+      <sf code="k" chopPunct="true">
         <select xpath="bf:agent/*/rdfs:label"/>
       </sf>
-      <sf code="l">
+      <sf code="l" chopPunct="true">
         <select xpath="bf:status/*/rdfs:label"/>
       </sf>
       <sf code="u">
         <select xpath="rdfs:label[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
       </sf>
-      <sf code="z">
+      <sf code="z" chopPunct="true">
         <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
-      <sf code="2" repeatable="false">
+      <sf code="2" chopPunct="true" repeatable="false">
         <select xpath="bf:source/bf:Source/rdfs:label"/>
       </sf>
       <sf code="5">
@@ -804,7 +845,7 @@
     <context xpath="bf:Instance/bf:awards">
       <ind1 default="8"/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="."/>
       </sf>
     </context>

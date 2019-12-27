@@ -16,20 +16,20 @@
           <case test="bf:source/bf:Source/rdf:value = 'issnkey'"><text> </text></case>
         </switch>
       </ind2>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
           <case test="rdfs:label"><select xpath="rdfs:label"/></case>
         </switch>
       </sf>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:qualifier">
           <transform>
             <xsl:value-of select="concat('(',.,')')"/>
           </transform>
         </select>
       </sf>
-      <sf code="2">
+      <sf code="2" chopPunct="true">
         <select xpath="bf:source/bf:Source/rdfs:label"/>
       </sf>
     </context>
@@ -47,20 +47,20 @@
           </case>
         </switch>
       </ind2>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
           <case test="rdfs:label"><select xpath="rdfs:label"/></case>
         </switch>
       </sf>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:qualifier">
           <transform>
             <xsl:value-of select="concat('(',.,')')"/>
           </transform>
         </select>
       </sf>
-      <sf code="2">
+      <sf code="2" chopPunct="true">
         <select xpath="bf:source/bf:Source/rdfs:label"/>
       </sf>
     </context>
@@ -84,27 +84,31 @@
               </case>
             </switch>
           </ind2>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <switch>
               <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
               <case test="rdfs:label"><select xpath="rdfs:label"/></case>
             </switch>
           </sf>
-          <sf code="d"><select xpath="../../bf:legalDate"/></sf>
-          <sf code="f" repeatable="false"><select xpath="../../bf:originDate"/></sf>
-          <sf code="k"><select xpath="../../bf:natureOfContent"/></sf>
+          <sf code="d" chopPunct="true"><select xpath="../../bf:legalDate"/></sf>
+          <sf code="f" repeatable="false" chopPunct="true"><select xpath="../../bf:originDate"/></sf>
+          <sf code="k" chopPunct="true"><select xpath="../../bf:natureOfContent"/></sf>
           <!-- language is going to be a problem -->
-          <sf code="l" repeatable="false">
+          <sf code="l" chopPunct="true" repeatable="false">
             <select xpath="../../bf:language/*/rdfs:label|../../bf:language/*/madsrdf:authoritativeLabel"/>
           </sf>
-          <sf code="n"><select xpath="bf:partNumber"/></sf>
-          <sf code="p"><select xpath="bf:partName"/></sf>
-          <sf code="s"><select xpath="../../bf:version"/></sf>
+          <sf code="n" chopPunct="true"><select xpath="bf:partNumber"/></sf>
+          <sf code="p" chopPunct="true"><select xpath="bf:partName"/></sf>
+          <sf code="s" chopPunct="true"><select xpath="../../bf:version"/></sf>
           <sf code="0"><select xpath="@rdf:about"/></sf>
           <sf code="0">
             <select xpath="bf:identifiedBy/bf:Identifier">
               <transform>
-                <xsl:variable name="vIdType" select="rdfs:label"/>
+                <xsl:variable name="vIdType">
+                  <xsl:call-template name="tChopPunct">
+                    <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                  </xsl:call-template>
+                </xsl:variable>
                 <xsl:choose>
                   <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
                   <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
@@ -130,7 +134,7 @@
           </case>
         </switch>
       </ind2>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
     </context>
@@ -148,19 +152,19 @@
           </case>
         </switch>
       </ind2>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
           <case test="rdfs:label"><select xpath="rdfs:label"/></case>
         </switch>
       </sf>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:subtitle"/>
       </sf>
-      <sf code="n">
+      <sf code="n" chopPunct="true">
         <select xpath="bf:partNumber"/>
       </sf>
-      <sf code="p">
+      <sf code="p" chopPunct="true">
         <select xpath="bf:partName"/>
       </sf>
       <sf code="y" repeatable="false">
@@ -185,7 +189,7 @@
           </case>
         </switch>
       </ind2>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
           <case test="rdfs:label"><select xpath="rdfs:label"/></case>
@@ -206,35 +210,35 @@
           </case>
         </switch>
       </ind2>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
           <case test="rdfs:label"><select xpath="rdfs:label"/></case>
         </switch>
       </sf>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:subtitle"/>
       </sf>
       <switch>
         <case test="$vXmlLang != ''">
-          <sf code="c">
+          <sf code="c" chopPunct="true">
             <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
               <switch>
-                <case test="@xml:lang=$vXmlLang"><transform><xsl:value-of select="."/></transform></case>
+                <case test="@xml:lang=$vXmlLang"><select xpath="."/></case>
               </switch>
             </select>
           </sf>
         </case>
         <case test="default">
-          <sf code="c" repeatable="false">
+          <sf code="c" chopPunct="true" repeatable="false">
             <select xpath="ancestor::bf:Instance/bf:responsibilityStatement"/>
           </sf>
         </case>
       </switch>
-      <sf code="n">
+      <sf code="n" chopPunct="true">
         <select xpath="bf:partNumber"/>
       </sf>
-      <sf code="p">
+      <sf code="p" chopPunct="true">
         <select xpath="bf:partName"/>
       </sf>
     </context>
@@ -265,22 +269,22 @@
           <case test="bf:variantType = 'spine'">8</case>
         </switch>
       </ind2>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
           <case test="rdfs:label"><select xpath="rdfs:label"/></case>
         </switch>
       </sf>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:subtitle"/>
       </sf>
-      <sf code="f" repeatable="false">
+      <sf code="f" chopPunct="true" repeatable="false">
         <select xpath="bf:date"/>
       </sf>
-      <sf code="n">
+      <sf code="n" chopPunct="true">
         <select xpath="bf:partNumber"/>
       </sf>
-      <sf code="p">
+      <sf code="p" chopPunct="true">
         <select xpath="bf:partName"/>
       </sf>
       <sf code="5" repeatable="false">
@@ -297,29 +301,29 @@
                     bf:variantType = 'former']">
       <ind1 default="1"/>
       <ind2 default="0"/>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
           <case test="rdfs:label"><select xpath="rdfs:label"/></case>
         </switch>
       </sf>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:subtitle"/>
       </sf>
-      <sf code="f" repeatable="false">
+      <sf code="f" chopPunct="true" repeatable="false">
         <select xpath="bf:date"/>
       </sf>
-      <sf code="g" repeatable="false">
+      <sf code="g" chopPunct="true" repeatable="false">
         <select xpath="bf:qualifier">
           <transform>
             <xsl:value-of select="concat('(',.,')')"/>
           </transform>
         </select>
       </sf>
-      <sf code="n">
+      <sf code="n" chopPunct="true">
         <select xpath="bf:partNumber"/>
       </sf>
-      <sf code="p">
+      <sf code="p" chopPunct="true">
         <select xpath="bf:partName"/>
       </sf>
       <sf code="x" repeatable="false">
@@ -332,7 +336,7 @@
     <context xpath="bf:Instance/bf:editionStatement">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a"><select xpath="."/></sf>
+      <sf code="a" chopPunct="true"><select xpath="."/></sf>
     </context>
   </df>
 
@@ -342,7 +346,7 @@
     <context xpath="bf:Work/bf:scale[not(bf:Scale)]">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false"><select xpath="."/></sf>
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="."/></sf>
     </context>
   </df>
 
@@ -350,7 +354,7 @@
     <context xpath="bf:Work/bf:scale/bf:Scale/rdfs:label">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false"><select xpath="."/></sf>
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="."/></sf>
     </context>
   </df>
 
@@ -358,7 +362,7 @@
     <context xpath="bf:Work/bf:scale/bf:Scale/bf:note/bf:Note/rdfs:label">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false"><select xpath="."/></sf>
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="."/></sf>
     </context>
   </df>
 
@@ -366,7 +370,7 @@
     <context xpath="bf:Work/bf:cartographicAttributes/bf:Cartographic">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="b" repeatable="false">
+      <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:projection/bf:Projection/rdfs:label"/>
       </sf>
       <sf code="c" repeatable="false"><select xpath="bf:coordinates"/></sf>
@@ -398,39 +402,23 @@
           <case test="local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']">3</case>
         </switch>
       </ind2>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a">
+      <sf code="a" chopPunct="true">
         <select xpath="bf:place/*[local-name()='Place' or local-name()='Geographic' or local-name()='Authority']">
           <switch>
-            <case test="rdfs:label">
-              <transform>
-                <xsl:value-of select="concat(rdfs:label,':')"/>
-              </transform>
-            </case>
-            <case test="madsrdf:authoritativeLabel">
-              <transform>
-                <xsl:value-of select="concat(madsrdf:authoritativeLabel,':')"/>
-              </transform>
-            </case>
-            <case test="@rdf:about"><select xpath="@rdf:about"/></case>
+            <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+            <case test="@rdf:about"><transform><xsl:value-of select="@rdf:about"/></transform></case>
           </switch>
         </select>
       </sf>
-      <sf code="b">
-        <select xpath="bf:agent/bf:Agent/rdfs:label">
-          <transform>
-            <xsl:value-of select="concat(.,',')"/>
-          </transform>
-        </select>
+      <sf code="b" chopPunct="true">
+        <select xpath="bf:agent/bf:Agent/rdfs:label"/>
       </sf>
-      <sf code="c">
-        <select xpath="bf:date">
-          <transform>
-            <xsl:value-of select="concat(.,'.')"/>
-          </transform>
-        </select>
+      <sf code="c" chopPunct="true">
+        <select xpath="bf:date"/>
       </sf>
     </context>
   </df>
@@ -439,11 +427,7 @@
     <context xpath="bf:Instance/bf:copyrightDate">
       <ind1 default=" "/>
       <ind2 default="4"/>
-      <sf code="c">
-        <transform>
-          <xsl:value-of select="concat(.,'.')"/>
-        </transform>
-      </sf>
+      <sf code="c" chopPunct="true"><select xpath="."/></sf>
     </context>
   </df>
 

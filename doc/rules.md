@@ -74,7 +74,7 @@ The `Makefile` included with this project will generate a top-level `rules.xml` 
 
 Two high-level elements are used to encode the conversion rules that generate MARC fields.
 
-* `cf`: conversion rules for the generating MARC leader and control fields. These rules should generate strings. The `cf` element requires a `tag` attribute. The special attribute value `tag="LDR"` will generate a MARC leader.
+* `cf`: conversion rules for the generating MARC leader and control fields. These rules should generate strings. The `cf` element requires a `tag` attribute. The special attribute value `tag="LDR"` will generate a MARC leader. The optional attribute `chopPunct`, if set to "true", will remove enclosing parentheses brackets, braces, and quotes, and ending punctuation except for a period or ellipsis.
 
 ```xml
 <cf tag="001">
@@ -88,7 +88,7 @@ The `df` element is more complex. In addition to the rule building blocks docume
 
   * `ind1`: rule for generating the first indicator of the MARC data field. The `ind1` element requires a `default` attribute. This rule should generate a single character legal for a MARC indicator.
   * `ind2`: rule for generating the second indicator of the MARC data field. The `ind2` element requires a `default` attribute. This rule should generate a single character legal for a MARC indicator.
-  * `sf`: rules for generating MARC subfield values. At least one `sf` element is required. The `sf` element requires a `code` attribute, which should contain a 1-character value legal for a MARC subfield code. This element is repeatable within the `df` element. The order of `sf` elements determines the order of subfields in the generated MARC data field. An optional boolean attribute, `repeatable`, if set to `"false"`, will prevent the subfield from being generated more than once. These rules should generate strings.
+  * `sf`: rules for generating MARC subfield values. At least one `sf` element is required. The `sf` element requires a `code` attribute, which should contain a 1-character value legal for a MARC subfield code. The optional attribute `chopPunct`, if set to "true", will remove enclosing parentheses brackets, braces, and quotes, and ending punctuation except for a period or ellipsis. This element is repeatable within the `df` element. The order of `sf` elements determines the order of subfields in the generated MARC data field. An optional boolean attribute, `repeatable`, if set to `"false"`, will prevent the subfield from being generated more than once. These rules should generate strings.
 
 ```xml
 <df tag="500" lang-xpath="rdfs:label">
@@ -228,11 +228,11 @@ In addition, the following string parameters can be passed to the stylesheet and
 * `pSourceRecordId`: An identifier for the source record, perhaps a URI
 * `pGenerationUri`: Identifier for the generation process, e.g. a Github URL. Defaults to `https://github.com/lcnetdev/bibframe2marc-xsl`.
 
-
 #### XSL named templates
 
 The following named templates are defined in the generated stylesheet for use in XSL fragments:
 
+* `tChopPunct`: Chops enclosing quotes, parens, brackets, and end punctuation. Used internally when stylesheet parameters `pChopPunct` is "true".
 * `tPadRight`: Return a right-padded string.
 * `EDTF-Date1`: Return the first date from an EDTF date range. If the EDTF date is not a range, will simply return the date.
 * `EDTF-Date2`: Return the second date from an EDTF date range. If the EDTF date is not a range, will return an empty string.

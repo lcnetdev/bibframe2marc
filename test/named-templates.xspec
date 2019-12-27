@@ -1,20 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-               xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
-               xmlns:xslout="http://www.w3.org/1999/XSL/Transform"
-               xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-               xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-               xmlns:marc="http://www.loc.gov/MARC21/slim"
-               xmlns:bf="http://id.loc.gov/ontologies/bibframe/"
-               xmlns:bflc="http://id.loc.gov/ontologies/bflc/"
-               xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"
-               xmlns:bf2marc="http://www.loc.gov/bf2marc"
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../bibframe2marc.xsl" xslt-version="1.0">
 
--->
+  <x:scenario label="tChopPunct">
 
-<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
-               stylesheet="../bibframe2marc.xsl" xslt-version="1.0">
+    <x:scenario label="End punctuation">
+      <x:call template="tChopPunct">
+        <x:param name="pString" select="'Private eyeballs :'"/>
+      </x:call>
+      <x:expect label="Should be removed" select="'Private eyeballs'"/>
+    </x:scenario>
+
+    <x:scenario label="Enclosing parens">
+      <x:call template="tChopPunct">
+        <x:param name="pString" select="'(Private eyeballs)'"/>
+      </x:call>
+      <x:expect label="Should be removed" select="'Private eyeballs'"/>
+    </x:scenario>
+
+    <x:scenario label="Enclosing brackets">
+      <x:call template="tChopPunct">
+        <x:param name="pString" select="'[Private eyeballs]'"/>
+      </x:call>
+      <x:expect label="Should be removed" select="'Private eyeballs'"/>
+    </x:scenario>
+
+    <x:scenario label="Enclosing braces">
+      <x:call template="tChopPunct">
+        <x:param name="pString" select="'{Private eyeballs}'"/>
+      </x:call>
+      <x:expect label="Should be removed" select="'Private eyeballs'"/>
+    </x:scenario>
+
+    <x:scenario label="Ending period">
+      <x:scenario label="Ending period with no other punctuation">
+        <x:call template="tChopPunct">
+          <x:param name="pString" select="'Private eyeballs.'"/>
+        </x:call>
+        <x:expect label="Should be retained" select="'Private eyeballs.'"/>
+      </x:scenario>
+
+      <x:scenario label="Ending period with other punctuation">
+        <x:call template="tChopPunct">
+          <x:param name="pString" select="'Private (eyeballs).'"/>
+        </x:call>
+        <x:expect label="Should be removed" select="'Private (eyeballs)'"/>
+      </x:scenario>
+
+      <x:scenario label="Ending ellipsis">
+        <x:call template="tChopPunct">
+          <x:param name="pString" select="'Private eyeballs...'"/>
+        </x:call>
+        <x:expect label="Should be retained" select="'Private eyeballs...'"/>
+      </x:scenario>
+    </x:scenario>
+
+  </x:scenario>
+
+  <x:scenario label="tLastIndex">
+    <x:call template="tLastIndex">
+      <x:param name="pString" select="'(This).'"/>
+      <x:param name="pSearch" select="')'"/>
+    </x:call>
+    <x:expect label="Should return last index position of search in string" select="6"/>
+  </x:scenario>
+
+  <x:scenario label="tReverseString">
+    <x:call template="tReverseString">
+      <x:param name="pString" select="'12345678'"/>
+    </x:call>
+    <x:expect label="Should reverse input string" select="'87654321'"/>
+  </x:scenario>
 
   <x:scenario label="tPadRight">
     <x:call template="tPadRight">

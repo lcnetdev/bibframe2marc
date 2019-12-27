@@ -36,7 +36,7 @@
         </switch>
       </ind1>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false">
+      <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="$vMainEntryTag='100'">
             <switch>
@@ -60,33 +60,33 @@
       </sf>
       <switch>
         <case test="$vMainEntryTag='110'">
-          <sf code="b">
+          <sf code="b" chopPunct="true">
             <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
           </sf>
         </case>
       </switch>
       <switch>
         <case test="$vMainEntryTag='100'">
-          <sf code="c">
+          <sf code="c" chopPunct="true">
             <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
           </sf>
         </case>
         <case test="$vMainEntryTag='111'">
-          <sf code="c">
+          <sf code="c" chopPunct="true">
             <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
           </sf>
         </case>
       </switch>
       <switch>
         <case test="$vMainEntryTag='100'">
-          <sf code="d" repeatable="false">
+          <sf code="d" chopPunct="true" repeatable="false">
             <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
           </sf>
         </case>
       </switch>
       <switch>
         <case test="$vMainEntryTag='100' or $vMainEntryTag='110'">
-          <sf code="e">
+          <sf code="e" chopPunct="true">
             <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
               <switch>
                 <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
@@ -98,7 +98,7 @@
       </switch>
       <switch>
         <case test="$vMainEntryTag='111'">
-          <sf code="j">
+          <sf code="j" chopPunct="true">
             <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
               <switch>
                 <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
@@ -110,10 +110,10 @@
       </switch>
       <switch>
         <case test="$vMainEntryTag='100'">
-          <sf code="q" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
+          <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
         </case>
         <case test="$vMainEntryTag='111'">
-          <sf code="q">
+          <sf code="q" chopPunct="true">
             <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
           </sf>
         </case>
@@ -122,7 +122,11 @@
       <sf code="0">
         <select xpath="bf:identifiedBy/bf:Identifier">
           <transform>
-            <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+            <xsl:variable name="vIdType">
+              <xsl:call-template name="tChopPunct">
+                <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+              </xsl:call-template>
+            </xsl:variable>
             <xsl:choose>
               <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
               <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
@@ -165,27 +169,31 @@
             </switch>
           </ind1>
           <ind2 default=" "/>
-          <sf code="a" repeatable="false">
+          <sf code="a" chopPunct="true" repeatable="false">
             <switch>
               <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
               <case test="rdfs:label"><select xpath="rdfs:label"/></case>
             </switch>
           </sf>
-          <sf code="d"><select xpath="../../bf:legalDate"/></sf>
-          <sf code="f" repeatable="false"><select xpath="../../bf:originDate"/></sf>
-          <sf code="k"><select xpath="../../bf:natureOfContent"/></sf>
+          <sf code="d" chopPunct="true"><select xpath="../../bf:legalDate"/></sf>
+          <sf code="f" chopPunct="true" repeatable="false"><select xpath="../../bf:originDate"/></sf>
+          <sf code="k" chopPunct="true"><select xpath="../../bf:natureOfContent"/></sf>
           <!-- language is going to be a problem -->
-          <sf code="l" repeatable="false">
+          <sf code="l" chopPunct="true" repeatable="false">
             <select xpath="../../bf:language/*/rdfs:label|../../bf:language/*/madsrdf:authoritativeLabel"/>
           </sf>
-          <sf code="n"><select xpath="bf:partNumber"/></sf>
-          <sf code="p"><select xpath="bf:partName"/></sf>
-          <sf code="s"><select xpath="../../bf:version"/></sf>
+          <sf code="n" chopPunct="true"><select xpath="bf:partNumber"/></sf>
+          <sf code="p" chopPunct="true"><select xpath="bf:partName"/></sf>
+          <sf code="s" chopPunct="true"><select xpath="../../bf:version"/></sf>
           <sf code="0"><select xpath="@rdf:about"/></sf>
           <sf code="0">
             <select xpath="bf:identifiedBy/bf:Identifier">
               <transform>
-                <xsl:variable name="vIdType" select="rdfs:label"/>
+                <xsl:variable name="vIdType">
+                  <xsl:call-template name="tChopPunct">
+                    <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                  </xsl:call-template>
+                </xsl:variable>
                 <xsl:choose>
                   <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
                   <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
