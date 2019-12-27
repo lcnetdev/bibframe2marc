@@ -78,7 +78,7 @@
           <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
         </case>
       </switch>
-      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
     </context>
   </df>
 
@@ -96,9 +96,9 @@
           <sf code="a"><select xpath="rdf:value"/></sf>
         </case>
       </switch>
-      <sf code="b" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
-      <sf code="d" repeatable="false"><select xpath="bf:date"/></sf>
-      <sf code="i" repeatable="false"><select xpath="bf:note/bf:Note/rdfs:label"/></sf>
+      <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="d" chopPunct="true" repeatable="false"><select xpath="bf:date"/></sf>
+      <sf code="i" chopPunct="true" repeatable="false"><select xpath="bf:note/bf:Note/rdfs:label"/></sf>
     </context>
   </df>
 
@@ -114,10 +114,10 @@
         </case>
         <case test="default">
           <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
-          <sf code="c" repeatable="false"><select xpath="ancestor::bf:Instance/bf:acquisitionTerms"/></sf>
+          <sf code="c" chopPunct="true" repeatable="false"><select xpath="ancestor::bf:Instance/bf:acquisitionTerms"/></sf>
         </case>
       </switch>
-      <sf code="q"><select xpath="bf:qualifier"/></sf>
+      <sf chopPunct="true" code="q"><select xpath="bf:qualifier"/></sf>
     </context>
   </df>
 
@@ -154,7 +154,7 @@
           </switch>
         </case>
       </switch>
-      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
     </context>
   </df>
 
@@ -200,8 +200,8 @@
           <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
         </case>
       </switch>
-      <sf code="q"><select xpath="bf:qualifier"/></sf>
-      <sf code="2">
+      <sf code="q" chopPunct="true"><select xpath="bf:qualifier"/></sf>
+      <sf code="2" chopPunct="true">
         <switch>
           <case test="local-name()='Ansi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Ansi']">ansi</case>
           <case test="local-name()='Doi' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Doi']">doi</case>
@@ -236,7 +236,7 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="e" repeatable="false"><select xpath="rdf:value"/></sf>
-      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
       <sf code="5">
         <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
       </sf>
@@ -257,7 +257,7 @@
           <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
         </case>
       </switch>
-      <sf code="q"><select xpath="bf:qualifier"/></sf>
+      <sf chopPunct="true" code="q"><select xpath="bf:qualifier"/></sf>
     </context>
   </df>
 
@@ -281,8 +281,8 @@
       </ind1>
       <ind2 default="2"/>
       <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
-      <sf code="b" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
-      <sf code="q"><select xpath="bf:qualifier"/></sf>
+      <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="q" chopPunct="true"><select xpath="bf:qualifier"/></sf>
     </context>
   </df>
 
@@ -308,7 +308,7 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
-      <sf code="b" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
     </context>
   </df>
 
@@ -331,7 +331,7 @@
           <case test="bf:note/bf:Note[rdfs:label='finding']">2</case>
         </switch>
       </ind2>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <switch>
@@ -440,13 +440,21 @@
               <marc:subfield code="p">
                 <xsl:choose>
                   <xsl:when test="rdf:value"><xsl:value-of select="rdf:value"/></xsl:when>
-                  <xsl:otherwise><xsl:value-of select="rdfs:label"/></xsl:otherwise>
+                  <xsl:otherwise>
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="rdfs:label"/>
+                    </xsl:call-template>
+                  </xsl:otherwise>
                 </xsl:choose>
               </marc:subfield>
             </transform>
             <select xpath="bf:source/bf:Source/rdfs:label">
               <transform>
-                <marc:subfield code="2"><xsl:value-of select="."/></marc:subfield>
+                <marc:subfield code="2">
+                  <xsl:call-template name="tChopPunct">
+                    <xsl:with-param name="pString" select="."/>
+                  </xsl:call-template>
+                </marc:subfield>
               </transform>
             </select>
           </case>
@@ -466,7 +474,14 @@
           <sf code="z">
             <transform>
               <xsl:variable name="vIdSource">
-                <xsl:if test="bf:source/bf:Source/rdfs:label">(<xsl:value-of select="bf:source/bf:Source/rdfs:label"/>)</xsl:if>
+                <xsl:if test="bf:source/bf:Source/rdfs:label">
+                  <xsl:variable name="vChopped">
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('(',$vChopped,')')"/>
+                </xsl:if>
               </xsl:variable>
               <xsl:value-of select="concat($vIdSource,rdf:value)"/>
             </transform>
@@ -476,7 +491,14 @@
           <sf code="a" repeatable="false">
             <transform>
               <xsl:variable name="vIdSource">
-                <xsl:if test="bf:source/bf:Source/rdfs:label">(<xsl:value-of select="bf:source/bf:Source/rdfs:label"/>)</xsl:if>
+                <xsl:if test="bf:source/bf:Source/rdfs:label">
+                  <xsl:variable name="vChopped">
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('(',$vChopped,')')"/>
+                </xsl:if>
               </xsl:variable>
               <xsl:value-of select="concat($vIdSource,rdf:value)"/>
             </transform>
@@ -491,7 +513,7 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
-      <sf code="b" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
     </context>
   </df>
 
@@ -504,15 +526,15 @@
         </switch>
       </ind1>
       <ind2 default=" "/>
-      <sf code="3" repeatable="false">
+      <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="a" repeatable="false">
         <select xpath="bf:identifiedBy/*[local-name()='StockNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StudyNumber']]/rdf:value"/>
       </sf>
-      <sf code="b" repeatable="false"><select xpath="rdfs:label"/></sf>
-      <sf code="c"><select xpath="bf:acquisitionTerms"/></sf>
-      <sf code="n">
+      <sf code="b" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
+      <sf code="c" chopPunct="true"><select xpath="bf:acquisitionTerms"/></sf>
+      <sf code="n" chopPunct="true">
         <select xpath="bf:note/bf:Note/rdfs:label[text() != 'intervening source' and text() != 'current source']"/>
       </sf>
       <sf code="5"><select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/></sf>
@@ -526,7 +548,9 @@
         <ind2 default=" "/>
         <sf code="a" repeatable="false">
           <transform>
-            <xsl:value-of select="$vAdminMetadata/bflc:metadataLicensor/bflc:MetadataLicensor/rdfs:label|$vAdminMetadata/bflc:metadataLicensor/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
+            <xsl:call-template name="tChopPunct">
+              <xsl:with-param name="pString" select="$vAdminMetadata/bflc:metadataLicensor/bflc:MetadataLicensor/rdfs:label|$vAdminMetadata/bflc:metadataLicensor/*[local-name()='Authority' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']"/>
+            </xsl:call-template>
           </transform>
         </sf>
       </df>
@@ -672,7 +696,11 @@
                   <xsl:value-of select="substring-after(rdf:value/@rdf:resource,'http://id.loc.gov/vocabulary/languages/')"/>
                 </xsl:when>
                 <xsl:when test="rdf:value"><xsl:value-of select="rdf:value"/></xsl:when>
-                <xsl:otherwise><xsl:value-of select="rdfs:label"/></xsl:otherwise>
+                <xsl:otherwise>
+                  <xsl:call-template name="tChopPunct">
+                    <xsl:with-param name="pString" select="rdfs:label"/>
+                  </xsl:call-template>
+                </xsl:otherwise>
               </xsl:choose>
             </marc:subfield>
           </transform>
@@ -715,7 +743,9 @@
                 <xsl:value-of select="bf:source/bf:Source/@rdf:about"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:value-of select="bf:source/bf:Source/rdfs:label"/>
+                <xsl:call-template name="tChopPunct">
+                  <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                </xsl:call-template>
               </xsl:otherwise>
             </xsl:choose>
           </marc:subfield>
@@ -814,7 +844,11 @@
           <sf code="0">
             <select xpath="*/bf:identifiedBy/bf:Identifier">
               <transform>
-                <xsl:variable name="vIdType" select="bf:source/bf:Source/rdfs:label"/>
+                <xsl:variable name="vIdType">
+                  <xsl:call-template name="tChopPunct">
+                    <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                  </xsl:call-template>
+                </xsl:variable>
                 <xsl:choose>
                   <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
                   <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
@@ -849,7 +883,7 @@
             </case>
             <case test="default">
               <sf code="b"><select xpath="bf:Place/bf:code"/></sf>
-              <sf code="2"><select xpath="bf:Place/bf:source/bf:Source/rdfs:label"/></sf>
+              <sf code="2" chopPunct="true"><select xpath="bf:Place/bf:source/bf:Source/rdfs:label"/></sf>
             </case>
           </switch>
         </select>
@@ -1000,7 +1034,7 @@
             <case test="default">
               <transform>
                 <xsl:message>Record <xsl:value-of select="$vRecordId"/>: no datatype for bf:temporalCoverage predicate, putting unformatted string into 045 $b</xsl:message>
-                <marc:subfield code="b"><xsl:value-of select="."/></marc:subfield>
+                <marc:subfield chopPunct="true" code="b"><select xpath="."/></marc:subfield>
               </transform>
             </case>
           </switch>
