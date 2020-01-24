@@ -156,7 +156,7 @@
     <case test="count(bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]) = 1 and
                 count(bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]) = 1 and
                 not(bf:Work/bf:contribution/bflc:PrimaryContribution or bf:Work/bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']) and
-                (bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label or (bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey and bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey))">
+                (bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][not(bflc:titleSortKey)]/rdfs:label or (bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey and bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey))">
       <select xpath="bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
         <df tag="130" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
           <ind1 default="0">
