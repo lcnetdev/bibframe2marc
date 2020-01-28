@@ -45,7 +45,7 @@ The `Makefile` included with this project will generate a top-level `rules.xml` 
 <file>rules/00-LDR.xml</file>
 ```
 
-* `map`: Create a lookup table. The `map` element should contain a flat XML data structure. It has a required `name` attribute. It creates a variable with the name of the `name` attribute in the stylesheet that contains the data structure specified. This data structure can then be referenced in XPath expressions or using the `lookup` element.
+* `map`: Create a lookup table. The `map` element should contain a flat XML data structure. It has a required `name` attribute. It creates a variable with the name of the `name` attribute in the stylesheet that contains the data structure specified. This data structure can then be referenced in XPath expressions with the [exsl:node-set()](http://exslt.org/exsl/functions/node-set/index.html) function or using the `lookup` element.
 
 ```xml
 <bf2marc:rules xmlns:bf2marc="http://www.loc.gov/bf2marc">

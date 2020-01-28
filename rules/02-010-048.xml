@@ -915,10 +915,10 @@
                     </xsl:variable>
                     <xsl:choose>
                       <xsl:when test="starts-with($vDate1,'-')">
-                        <xsl:value-of select="$df045BCEtimePeriods/*[edtfDate=$vDate1]/code"/>
+                        <xsl:value-of select="exsl:node-set($df045BCEtimePeriods)/*[edtfDate=$vDate1]/code"/>
                       </xsl:when>
                       <xsl:otherwise>
-                        <xsl:variable name="vCentury" select="$df045CEtimePeriods/*[century=substring($vDate1,1,2)]/code"/>
+                        <xsl:variable name="vCentury" select="exsl:node-set($df045CEtimePeriods)/*[century=substring($vDate1,1,2)]/code"/>
                         <xsl:variable name="vDecade">
                           <xsl:choose>
                             <xsl:when test="substring($vDate1,3,1)='X'">-</xsl:when>
@@ -937,10 +937,10 @@
                     </xsl:variable>
                     <xsl:choose>
                       <xsl:when test="starts-with($vDate2,'-')">
-                        <xsl:value-of select="$df045BCEtimePeriods/*[edtfDate=$vDate2]/code"/>
+                        <xsl:value-of select="exsl:node-set($df045BCEtimePeriods)/*[edtfDate=$vDate2]/code"/>
                       </xsl:when>
                       <xsl:otherwise>
-                        <xsl:variable name="vCentury" select="$df045CEtimePeriods/*[century=substring($vDate2,1,2)]/code"/>
+                        <xsl:variable name="vCentury" select="exsl:node-set($df045CEtimePeriods)/*[century=substring($vDate2,1,2)]/code"/>
                         <xsl:variable name="vDecade">
                           <xsl:choose>
                             <xsl:when test="substring($vDate2,3,1)='X'">-</xsl:when>
@@ -959,13 +959,13 @@
                   <case test="starts-with(.,'-')">
                     <transform>
                       <xsl:variable name="vEdtfDate" select="."/>
-                      <xsl:value-of select="concat($df045BCEtimePeriods/*[edtfDate=$vEdtfDate]/code,$df045BCEtimePeriods/*[edtfDate=$vEdtfDate]/code)"/>
+                      <xsl:value-of select="concat(exsl:node-set($df045BCEtimePeriods)/*[edtfDate=$vEdtfDate]/code,exsl:node-set($df045BCEtimePeriods)/*[edtfDate=$vEdtfDate]/code)"/>
                     </transform>
                   </case>
                   <case test="default">
                     <transform>
                       <xsl:variable name="vEdtfDate" select="."/>
-                      <xsl:variable name="vCentury" select="$df045CEtimePeriods/*[century=substring($vEdtfDate,1,2)]/code"/>
+                      <xsl:variable name="vCentury" select="exsl:node-set($df045CEtimePeriods)/*[century=substring($vEdtfDate,1,2)]/code"/>
                       <xsl:choose>
                         <xsl:when test="substring($vEdtfDate,3,1)='X'">
                           <xsl:value-of select="concat($vCentury,'-',$vCentury,'-')"/>
@@ -1065,16 +1065,16 @@
                 <xsl:choose>
                   <xsl:when test="rdfs:label and $vType != ''">
                     <xsl:choose>
-                      <xsl:when test="$df048performers/performer[type=$vType and label=$vLabel]">
-                        <xsl:value-of select="$df048performers/performer[type=$vType and label=$vLabel]/code"/>
+                      <xsl:when test="exsl:node-set($df048performers)/performer[type=$vType and label=$vLabel]">
+                        <xsl:value-of select="exsl:node-set($df048performers)/performer[type=$vType and label=$vLabel]/code"/>
                       </xsl:when>
-                      <xsl:when test="$df048performers/performer[type=$vType and not(label)]">
-                        <xsl:value-of select="$df048performers/performer[type=$vType and not(label)]/code"/>
+                      <xsl:when test="exsl:node-set($df048performers)/performer[type=$vType and not(label)]">
+                        <xsl:value-of select="exsl:node-set($df048performers)/performer[type=$vType and not(label)]/code"/>
                       </xsl:when>
                     </xsl:choose>
                   </xsl:when>
                   <xsl:when test="$vType != ''">
-                    <xsl:value-of select="$df048performers/performer[type=$vType and not(label)]/code"/>
+                    <xsl:value-of select="exsl:node-set($df048performers)/performer[type=$vType and not(label)]/code"/>
                   </xsl:when>
                 </xsl:choose>
               </xsl:variable>

@@ -22,6 +22,10 @@ _bibframe2marc-xsl_ consists of an [XSLT 1.0 stylesheet](src/compile.xsl) that t
 
 ## Dependencies
 
+### Run-time dependencies
+
+* [exsl:node-set()](http://exslt.org/exsl/functions/node-set/index.html) -- the XSLT processor that will process the generated `bibframe2marc.xsl` stylesheet must support the `node-set()` function in order to use the `map` rules element.
+
 ### Build dependencies
 
 * [libxslt](http://xmlsoft.org/XSLT) -- specifically `xsltproc` -- is used by the root level `Makefile` to construct the `bibframe2marc.xsl` conversion stylesheet from the rules in the [rules](rules) subdirectory. Any XSLT 1.0 processor should be able to build the conversion stylesheet.
