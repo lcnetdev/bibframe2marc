@@ -16,7 +16,8 @@
   <x:scenario label="Basic regression">
     <x:context href="data/minimal.xml"/>
     <x:expect label="...should match expected">
-      <xslt:stylesheet xmlns:date="http://exslt.org/dates-and-times"
+      <xslt:stylesheet xmlns:exsl="http://exslt.org/common"
+                       xmlns:date="http://exslt.org/dates-and-times"
                        xmlns:fn="http://www.w3.org/2005/xpath-functions"
                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -27,7 +28,7 @@
                        xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
                        xmlns:local="http://example.org/local"
                        version="1.0"
-                       extension-element-prefixes="date"
+                       extension-element-prefixes="exsl date"
                        exclude-result-prefixes="fn rdf rdfs bf bflc madsrdf local">
         <xslt:output encoding="UTF-8" method="xml" indent="yes"/>
         <xslt:strip-space elements="*"/>
@@ -443,7 +444,7 @@
       </bf2marc:map>
     </x:context>
     <x:expect label="...should generate a variable with the embedded XML data structure">
-      <local:instruments>
+      <xslt:variable name="instruments">
         <instrument>
           <code>ba</code>
           <type>brass</type>
@@ -454,8 +455,7 @@
           <type>brass</type>
           <label>trumpet</label>
         </instrument>
-      </local:instruments>
-      <xslt:variable name="instruments" select="document('')/*/local:instruments"/>
+      </xslt:variable>
     </x:expect>
   </x:scenario>
 

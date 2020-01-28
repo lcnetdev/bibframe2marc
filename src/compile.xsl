@@ -18,9 +18,10 @@
 
   <xslt:template match="/">
     <xsl:stylesheet version="1.0"
+                    xmlns:exsl="http://exslt.org/common"
                     xmlns:date="http://exslt.org/dates-and-times"
                     xmlns:fn="http://www.w3.org/2005/xpath-functions"
-                    extension-element-prefixes="date"
+                    extension-element-prefixes="exsl date"
                     exclude-result-prefixes="fn rdf rdfs bf bflc madsrdf local">
 
       <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
@@ -471,13 +472,11 @@
   </xslt:template>
 
   <xslt:template match="bf2marc:map" mode="map">
-    <xslt:element name="{concat('local:',@name)}">
+    <xsl:variable name="{@name}">
       <xslt:for-each select="*">
         <xslt:copy-of select="."/>
       </xslt:for-each>
-    </xslt:element>
-
-    <xsl:variable name="{@name}" select="document('')/*/{concat('local:',@name)}"/>
+    </xsl:variable>
   </xslt:template>
 
   <!-- templates for constructing keys: simple pass-through -->
@@ -1088,11 +1087,11 @@
         <xslt:choose>
           <xslt:when test="local-name(parent::*)='sf'">
             <marc:subfield code="{parent::bf2marc:sf/@code}">
-              <xsl:value-of select="{concat('$',@map,'/*[',$vConditions,']/',@targetField)}"/>
+              <xsl:value-of select="{concat('exsl:node-set($',@map,')/*[',$vConditions,']/',@targetField)}"/>
             </marc:subfield>
           </xslt:when>
           <xslt:otherwise>
-            <xsl:value-of select="{concat('$',@map,'/*[',$vConditions,']/',@targetField)}"/>
+            <xsl:value-of select="{concat('exsl:node-set($',@map,')/*[',$vConditions,']/',@targetField)}"/>
           </xslt:otherwise>
         </xslt:choose>
       </xslt:when>
