@@ -45,7 +45,10 @@
 
   <x:scenario label="MARC 500">
     <x:context href="../data/5XX/500.xml"/>
-    <x:expect label="generate 500" test="count(//marc:datafield[@tag='500']) = 1"/>
+    <x:expect label="generate 500 from generic note property"
+              test="//marc:datafield[@tag='500'][1]/marc:subfield[@code='a'] = 'Avec des aquarelles de I''auteur'"/>
+    <x:expect label="generate 500 from bflc:CaptureStorage object"
+              test="//marc:datafield[@tag='500'][2]/marc:subfield[@code='a'] = 'Electrical capture, digital storage'"/>
   </x:scenario>
 
   <x:scenario label="MARC 501">
