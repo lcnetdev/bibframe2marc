@@ -65,7 +65,7 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],23,1) = 'j'"/>
     <x:expect label="BK 008/23 generated from bf:Instance/bf:carrier"
               test="substring(marc:record/marc:controlfield[@tag='008'],24,1) = 's'"/>
-    <x:expect label="BK 008/24-27 generated from bf:Work/bf:genreForm"
+    <x:expect label="BK 008/24-27 generated from bf:Work/bf:genreForm or bf:Work/bf:supplementaryContent"
               test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = 'bh  '"/>
     <x:expect label="BK 008/28 generated from bf:Work/bf:genreForm with gov doc URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],29,1) = 'f'"/>
@@ -79,6 +79,24 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],34,1) = '1'"/>
     <x:expect label="BK 008/34 generated from bf:Work/bf:genreForm with biography URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],35,1) = 'd'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 008 - CR">
+    <x:context href="../data/001-008/008-CR.xml"/>
+    <x:expect label="CR 008/18 generated from bf:Instance/bf:frequency URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],19,1) = 'm'"/>
+    <x:expect label="CR 008/19 generated from frequency/irregularity combo"
+              test="substring(marc:record/marc:controlfield[@tag='008'],20,1) = 'r'"/>
+    <x:expect label="CR 008/21 generated from bf:Instance/bf:genreForm URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],22,1) = 'p'"/>
+    <x:expect label="CR 008/24-27 generated from bf:Work/bf:genreForm or bf:Work/bf:supplementaryContent URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = ' o  '"/>
+    <x:expect label="CR 008/30-32 should be blank"
+              test="substring(marc:record/marc:controlfield[@tag='008'],31,3) = '   '"/>
+    <x:expect label="CR 008/33 generated from bf:Work/bf:notation URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],34,1) = 'a'"/>
+    <x:expect label="CR 008/34 generated from AdminMetadata entry convention note"
+              test="substring(marc:record/marc:controlfield[@tag='008'],35,1) = '0'"/>
   </x:scenario>
 
 </x:description>
