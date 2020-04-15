@@ -41,20 +41,44 @@
     </x:scenario>
   </x:scenario>
 
-  <x:scenario label="MARC 008">
-    <x:context href="../data/001-008/008.xml"/>
+  <x:scenario label="MARC 008 - all materials">
+    <x:context href="../data/001-008/008-all.xml"/>
     <x:expect label="008/00-05 generated from $vAdminMetadata/bf:creationDate"
               test="substring(marc:record/marc:controlfield[@tag='008'],1,6) = '040520'"/>
     <x:expect label="008/06-14 generated from date in bf:Instance/bf:provisionActivity/bf:ProvisionActivity"
               test="substring(marc:record/marc:controlfield[@tag='008'],7,9) = 's2001    '"/>
     <x:expect label="008/15-17 generated from bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place"
               test="substring(marc:record/marc:controlfield[@tag='008'],16,3) = 'dk '"/>
-    <x:expect label="008/18-34 not coded"
-              test="substring(marc:record/marc:controlfield[@tag='008'],19,17)='           ||| | '"/>
+    <x:expect label="008/32 not coded"
+              test="substring(marc:record/marc:controlfield[@tag='008'],33,1) = ' '"/>
     <x:expect label="008/35-37 generated from bf:Work/bf:language"
               test="substring(marc:record/marc:controlfield[@tag='008'],36,3)='dan'"/>
     <x:expect label="008/38-39 not coded"
               test="substring(marc:record/marc:controlfield[@tag='008'],39,2)=' |'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 008 - BK">
+    <x:context href="../data/001-008/008-BK.xml"/>
+    <x:expect label="BK 008/18-21 generated from bf:Instance/bf:illustrativeContent"
+              test="substring(marc:record/marc:controlfield[@tag='008'],19,4) = 'a   '"/>
+    <x:expect label="BK 008/22 generated from bf:Work/bf:intendedAudience"
+              test="substring(marc:record/marc:controlfield[@tag='008'],23,1) = 'j'"/>
+    <x:expect label="BK 008/23 generated from bf:Instance/bf:carrier"
+              test="substring(marc:record/marc:controlfield[@tag='008'],24,1) = 's'"/>
+    <x:expect label="BK 008/24-27 generated from bf:Work/bf:genreForm"
+              test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = 'bh  '"/>
+    <x:expect label="BK 008/28 generated from bf:Work/bf:genreForm with gov doc URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],29,1) = 'f'"/>
+    <x:expect label="BK 008/29 generated from bf:Work/bf:genreForm with conference URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],30,1) = '1'"/>
+    <x:expect label="BK 008/30 generated from bf:Work/bf:genreForm with Festschrift URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],31,1) = '1'"/>
+    <x:expect label="BK 008/31 generated from bf:Instance/bf:supplementaryContent with index label"
+              test="substring(marc:record/marc:controlfield[@tag='008'],32,1) = '1'"/>
+    <x:expect label="BK 008/33 generated from bf:Work/bf:genreForm with literary form URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],34,1) = '1'"/>
+    <x:expect label="BK 008/34 generated from bf:Work/bf:genreForm with biography URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],35,1) = 'd'"/>
   </x:scenario>
 
 </x:description>
