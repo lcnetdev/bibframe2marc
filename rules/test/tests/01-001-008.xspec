@@ -81,6 +81,14 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],35,1) = 'd'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 008 - CF">
+    <x:context href="../data/001-008/008-CF.xml"/>
+    <x:expect label="CR 008/23 generated from bf:Instance/bf:carrier URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],24,1) = 'q'"/>
+    <x:expect label="CR 008/26 generated from bf:Work/bf:genreForm URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],27,1) = 'a'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 008 - CR">
     <x:context href="../data/001-008/008-CR.xml"/>
     <x:expect label="CR 008/18 generated from bf:Instance/bf:frequency URI"
