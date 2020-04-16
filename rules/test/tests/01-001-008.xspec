@@ -103,6 +103,18 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],34,2) = 'l '"/>
   </x:scenario>
 
+  <x:scenario label="MARC 008 - MU">
+    <x:context href="../data/001-008/008-MU.xml"/>
+    <x:expect label="MU 008/18-19 generated from bf:Work/bf:genreForm URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],19,2) = 'mc'"/>
+    <x:expect label="MU 008/20 generated from bf:Work/bf:musicFormat URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],21,1) = 'c'"/>
+    <x:expect label="MU 008/24-29 generated from bf:Work/bf:supplementaryContent URIs"
+              test="substring(marc:record/marc:controlfield[@tag='008'],25,6) = 'd     '"/>
+    <x:expect label="MU 008/30-31 generated from bf:Work/bf:genreForm URIs"
+              test="substring(marc:record/marc:controlfield[@tag='008'],31,2) = 'h '"/>
+  </x:scenario>
+
   <x:scenario label="MARC 008 - CR">
     <x:context href="../data/001-008/008-CR.xml"/>
     <x:expect label="CR 008/18 generated from bf:Instance/bf:frequency URI"
