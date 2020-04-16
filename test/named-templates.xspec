@@ -81,6 +81,15 @@
     <x:expect label="Should return right padded string" select="'a-ii---'"/>
   </x:scenario>
 
+  <x:scenario label="tPadLeft">
+    <x:call template="tPadLeft">
+      <x:param name="pInput" select="'30'"/>
+      <x:param name="pPadChar" select="'0'"/>
+      <x:param name="pStringLength" select="3"/>
+    </x:call>
+    <x:expect label="Should return left padded string" select="'030'"/>
+  </x:scenario>
+
   <x:scenario label="EDTF templates">
 
     <x:scenario label="EDTF-Date1">

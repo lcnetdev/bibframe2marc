@@ -194,6 +194,24 @@
         </xsl:choose>
       </xsl:template>
 
+      <xsl:template name="tPadLeft">
+        <xsl:param name="pInput"/>
+        <xsl:param name="pPadChar" select="' '"/>
+        <xsl:param name="pStringLength" select="string-length($pInput)"/>
+        <xsl:choose>
+          <xsl:when test="string-length($pInput) &gt;= $pStringLength">
+            <xsl:value-of select="$pInput"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="tPadLeft">
+              <xsl:with-param name="pInput" select="concat($pPadChar,$pInput)"/>
+              <xsl:with-param name="pPadChar" select="$pPadChar"/>
+              <xsl:with-param name="pStringLength" select="$pStringLength"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
+
       <!-- EDTF functions -->
 
       <!-- Extract first date from a range -->

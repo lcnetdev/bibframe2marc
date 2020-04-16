@@ -243,6 +243,28 @@
             </xslt:otherwise>
           </xslt:choose>
         </xslt:template>
+        <xslt:template name="tPadLeft">
+          <xslt:param name="pInput" />
+          <xslt:param name="pPadChar"
+                      select="' '" />
+          <xslt:param name="pStringLength"
+                      select="string-length($pInput)" />
+          <xslt:choose>
+            <xslt:when test="string-length($pInput) >= $pStringLength">
+              <xslt:value-of select="$pInput" />
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:call-template name="tPadLeft">
+                <xslt:with-param name="pInput"
+                                 select="concat($pPadChar,$pInput)" />
+                <xslt:with-param name="pPadChar"
+                                 select="$pPadChar" />
+                <xslt:with-param name="pStringLength"
+                                 select="$pStringLength" />
+              </xslt:call-template>
+            </xslt:otherwise>
+          </xslt:choose>
+        </xslt:template>
         <xslt:template name="EDTF-Date1">
           <xslt:param name="pEDTFDate" />
           <xslt:choose>
