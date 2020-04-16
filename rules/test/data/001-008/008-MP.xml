@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+  <bf:Work rdf:about="http://bibframe.example.org/20983867#Work">
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+        <bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-05-23</bf:creationDate>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Cartography"/>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2011026387">
+        <rdfs:label>maps</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026158">
+        <rdfs:label>puzzles and games</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
+    </bf:language>
+    <bf:cartographicAttributes>
+      <bf:Cartographic>
+        <bf:projection>
+          <bf:Projection rdf:about="http://id.loc.gov/vocabulary/mprojection/ca">
+            <rdfs:label>Alber's equal area</rdfs:label>
+          </bf:Projection>
+        </bf:projection>
+      </bf:Cartographic>
+    </bf:cartographicAttributes>
+    <bf:cartographicAttributes>
+      <bf:Cartographic>
+        <bflc:relief>
+          <bflc:Relief rdf:about="http://id.loc.gov/vocabulary/mrelief/shad">
+            <rdfs:label>shading</rdfs:label>
+          </bflc:Relief>
+        </bflc:relief>
+      </bf:Cartographic>
+    </bf:cartographicAttributes>
+    <bf:hasInstance rdf:resource="http://bibframe.example.org/20983867#Instance"/>
+  </bf:Work>
+  <bf:Instance rdf:about="http://bibframe.example.org/20983867#Instance">
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print"/>
+    <bf:provisionActivity>
+      <bf:ProvisionActivity>
+        <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
+        <bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2019</bf:date>
+        <bf:place>
+          <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/dcu"/>
+        </bf:place>
+      </bf:ProvisionActivity>
+    </bf:provisionActivity>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+        <rdfs:label>volume</rdfs:label>
+        <bf:source>
+          <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdacarrier"/>
+        </bf:source>
+      </bf:Carrier>
+    </bf:carrier>
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+        <rdfs:label>single map</rdfs:label>
+      </bf:Issuance>
+    </bf:issuance>
+  </bf:Instance>
+</rdf:RDF>
