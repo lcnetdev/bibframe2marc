@@ -527,6 +527,39 @@
                 <xsl:value-of select="concat($vCompForm,$vMusicForm,'|')"/>
               </transform>
             </case>
+            <case test="$v008Format='VM'">
+              <switch>
+                <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage']">
+                  <transform>
+                    <xsl:variable name="vDuration">
+                      <xsl:choose>
+                        <xsl:when test="bf:Work/bf:duration[@rdf:datatype='http://www.w3.org/2001/XMLSchema#duration']">
+                          <xsl:value-of select="substring-before(substring-after(bf:Work/bf:duration[@rdf:datatype='http://www.w3.org/2001/XMLSchema#duration'],'PT'),'M')"/>
+                        </xsl:when>
+                        <xsl:when test="bf:Work/bf:duration[(. = number(.))]"><xsl:value-of select="bf:Work/bf:duration[(. = number(.))]"/></xsl:when>
+                        <xsl:when test="bf:Work/bf:duration[contains(.,'999')]">000</xsl:when>
+                        <xsl:otherwise>|||</xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:variable>
+                    <xsl:variable name="vDurationPadded">
+                      <xsl:call-template name="tPadLeft">
+                        <xsl:with-param name="pInput" select="$vDuration"/>
+                        <xsl:with-param name="pStringLength">3</xsl:with-param>
+                        <xsl:with-param name="pPadChar">0</xsl:with-param>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:variable name="vDurationFinal">
+                      <xsl:choose>
+                        <xsl:when test="$vDurationPadded &gt; 999">000</xsl:when>
+                        <xsl:otherwise><xsl:value-of select="$vDurationPadded"/></xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:variable>
+                    <xsl:value-of select="concat($vDurationFinal,' ')"/>
+                  </transform>
+                </case>
+                <case test="default"><text>nnn </text></case>
+              </switch>
+            </case>
           </switch>
         </position>
 
@@ -913,7 +946,8 @@
         <position default="| ">
           <switch>
             <case test="$v008Format='BK' or
-                        $v008Format='CR'">
+                        $v008Format='CR' or
+                        $v008Format='VM'">
               <transform>
                 <xsl:variable name="v008-33">
                   <xsl:choose>
@@ -949,6 +983,30 @@
                         <xsl:otherwise>|</xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
+                    <xsl:when test="$v008Format='VM'">
+                      <xsl:choose>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/aro' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/aro']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/kit' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/kit']">b</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/art' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/art']">c</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/dio' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/dio']">d</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/fls' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/fls']">f</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026158' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026158']">g</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027251' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027251']">i</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/gra' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/gra']">k</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/ted' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/ted']">l</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026406' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026406']">m</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/cha' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/cha']">n</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/fla' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/fla']">o</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/mic' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/mic']">p</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027245' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027245']">q</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/rea' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/rea']">r</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/sli' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/sli']">s</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/tra' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/tra']">t</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026723' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026723']">v</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/toy' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/toy']">w</xsl:when>
+                        <xsl:otherwise>|</xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:when>
                   </xsl:choose>
                 </xsl:variable>
                 <xsl:variable name="v008-34">
@@ -969,6 +1027,15 @@
                         <xsl:when test="contains($vAdminMetadata/bf:note/*[bf:noteType='metadata entry convention']/rdfs:label,'integrated') or
                                         contains($vAdminMetadata/bf:note/*[bf:noteType='metadata entry convention']/rdfs:label,'Integrated') ">2</xsl:when>
                         <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:when>
+                    <xsl:when test="$v008Format='VM'">
+                      <xsl:choose>
+                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/anim' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/anim']">a</xsl:when>
+                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/animlive' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/animlive']">c</xsl:when>
+                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/live' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/live']">l</xsl:when>
+                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/other' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/other']">z</xsl:when>
+                        <xsl:otherwise>|</xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                   </xsl:choose>

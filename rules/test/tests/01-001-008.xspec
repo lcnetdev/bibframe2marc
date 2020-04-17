@@ -133,4 +133,12 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],35,1) = '0'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 008 - VM">
+    <x:context href="../data/001-008/008-VM.xml"/>
+    <x:expect label="VM 008/18-21 generated from bf:Work/bf:duration"
+              test="substring(marc:record/marc:controlfield[@tag='008'],19,3) = '119'"/>
+    <x:expect label="VM 008/33 generated from bf:Work/bf:genreForm URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],34,1) = 'm'"/>
+  </x:scenario>
+
 </x:description>
