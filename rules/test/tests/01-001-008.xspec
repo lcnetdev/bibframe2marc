@@ -123,6 +123,10 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],20,1) = 'r'"/>
     <x:expect label="CR 008/21 generated from bf:Instance/bf:genreForm URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],22,1) = 'p'"/>
+    <x:expect label="CR 008/22 generated from bf:Instance/bf:note URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],23,1) = 'o'"/>
+    <x:expect label="CR 008/23 generated from bf:Instance/bf:carrier URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],24,1) = 'r'"/>
     <x:expect label="CR 008/24-27 generated from bf:Work/bf:genreForm or bf:Work/bf:supplementaryContent URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = ' o  '"/>
     <x:expect label="CR 008/30-32 should be blank"
