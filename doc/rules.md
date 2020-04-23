@@ -234,6 +234,7 @@ The following named templates are defined in the generated stylesheet for use in
 
 * `tChopPunct`: Chops enclosing quotes, parens, brackets, and end punctuation. Used internally when stylesheet parameters `pChopPunct` is "true".
 * `tPadRight`: Return a right-padded string.
+* `tPadLeft`: Return a left-padded string.
 * `EDTF-Date1`: Return the first date from an EDTF date range. If the EDTF date is not a range, will simply return the date.
 * `EDTF-Date2`: Return the second date from an EDTF date range. If the EDTF date is not a range, will return an empty string.
 * `EDTF-DatePart`: Return the date part of a single EDTF date (not a range).
