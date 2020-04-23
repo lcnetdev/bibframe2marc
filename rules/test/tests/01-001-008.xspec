@@ -98,7 +98,7 @@
     <x:expect label="MP 008/25 generated from bf:Work/bf:genreForm URI or bf:Instance/bf:issuance URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],26,1) = 'a'"/>
     <x:expect label="MP 008/29 generated from bf:Instance/bf:carrier, bf:Instance/bf:fontSize, or bf:Instance/bf:notation"
-              test="substring(marc:record/marc:controlfield[@tag='008'],30,1) = 'r'"/>
+              test="substring(marc:record/marc:controlfield[@tag='008'],30,1) = 'b'"/>
     <x:expect label="MP 008/33-34 generated from bf:Work/bf:genreForm URIs"
               test="substring(marc:record/marc:controlfield[@tag='008'],34,2) = 'l '"/>
   </x:scenario>
@@ -126,7 +126,7 @@
     <x:expect label="CR 008/22 generated from bf:Instance/bf:note URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],23,1) = 'o'"/>
     <x:expect label="CR 008/23 generated from bf:Instance/bf:carrier URI"
-              test="substring(marc:record/marc:controlfield[@tag='008'],24,1) = 'r'"/>
+              test="substring(marc:record/marc:controlfield[@tag='008'],24,1) = 'd'"/>
     <x:expect label="CR 008/24-27 generated from bf:Work/bf:genreForm or bf:Work/bf:supplementaryContent URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = ' o  '"/>
     <x:expect label="CR 008/30-32 should be blank"

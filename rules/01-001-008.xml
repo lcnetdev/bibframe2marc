@@ -592,7 +592,6 @@
                                         bf:Instance/bf:note/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/cr'] or
                                         bf:Instance/bf:note/*/*[local-name()='code']='cr'">o</xsl:when>
                         <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cz' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cz' or */*[local-name()='code']='cz']">s</xsl:when>
-                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/carriers/nc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/nc' or */*[local-name()='code']='nc']">r</xsl:when>
                         <xsl:when test="bf:Instance/bf:fontSize[@rdf:resource='http://id.loc.gov/vocabulary/mfont/lp'] or
                                         bf:Instance/bf:fontSize/*[@rdf:about='http://id.loc.gov/vocabulary/mfont/lp'] or
                                         bf:Instance/bf:fontSize/*[contains(rdfs:label,'large print')]">d</xsl:when>
@@ -602,7 +601,6 @@
                         <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
-
                     <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pre' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/pre' or */*[local-name='code']='pre']">a</xsl:when>
                     <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pri' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/pri' or */*[local-name='code']='pri']">b</xsl:when>
                     <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pad' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/pad' or */*[local-name='code']='pad']">c</xsl:when>
@@ -637,7 +635,6 @@
                                     bf:Instance/bf:carrier/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/cr'] or
                                     bf:Instance/bf:carrier/*/*[local-name()='code']='cr'">o</xsl:when>
                     <xsl:when test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cz' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cz' or */*[local-name()='code']='cz']">s</xsl:when>
-                    <xsl:when test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/nc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/nc' or */*[local-name()='code']='nc']">r</xsl:when>
                     <xsl:when test="bf:Instance/bf:fontSize[@rdf:resource='http://id.loc.gov/vocabulary/mfont/lp'] or
                                     bf:Instance/bf:fontSize/*[@rdf:about='http://id.loc.gov/vocabulary/mfont/lp'] or
                                     bf:Instance/bf:fontSize/*[contains(rdfs:label,'large print')]">d</xsl:when>
@@ -862,7 +859,7 @@
                 <case test="default">0</case>
               </switch>
             </case>
-            <case test="$v008Format='MP'">
+            <case test="$v008Format='MP' or $v008Format='VM'">
               <switch>
                 <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h'] or
                             bf:Instance/bf:carrier/*[@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h'] or
@@ -877,7 +874,6 @@
                             bf:Instance/bf:carrier/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/cr'] or
                             bf:Instance/bf:carrier/*/*[local-name()='code']='cr'">o</case>
                 <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cz' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cz' or */*[local-name()='code']='cz']">s</case>
-                <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/nc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/nc' or */*[local-name()='code']='nc']">r</case>
                 <case test="bf:Instance/bf:fontSize[@rdf:resource='http://id.loc.gov/vocabulary/mfont/lp'] or
                             bf:Instance/bf:fontSize/*[@rdf:about='http://id.loc.gov/vocabulary/mfont/lp'] or
                             bf:Instance/bf:fontSize/*[contains(rdfs:label,'large print')]">d</case>
