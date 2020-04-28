@@ -97,6 +97,236 @@
     </case>
   </switch>
 
+  <!-- Map 007 -->
+  <cf tag="007">
+    <context xpath="/rdf:RDF[(*[local-name()='Cartography'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography') and
+                    (bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026058' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026058' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026061' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026061' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026387' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026387' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027245' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027245' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026530' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026530' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026295' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026295')]">
+      <fixed-field>
+        <!-- 00-02 -->
+        <position default="a| ">
+          <switch>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026058' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026058'"><text>ad </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026061' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026061'"><text>ag </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026387' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026387'"><text>aj </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027245' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027245'"><text>aq </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026530' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026530'"><text>ar </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026295' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026295'"><text>as </text></case>
+          </switch>
+        </position>
+        <!-- 03-07 -->
+        <position default="||||"/>
+      </fixed-field>
+    </context>
+  </cf>
+
+  <!-- Electronic resource 007 -->
+  <cf tag="007">
+    <context xpath="/rdf:RDF[(*[local-name()='Electronic'] or bf:Instance/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Electronic') and
+                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/c' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/c')]">
+      <fixed-field>
+        <!-- 00-02 -->
+        <position default="c| ">
+          <switch>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ca' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ca']"><text>ca </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cb' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cb']"><text>cb </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cd']"><text>cd </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ce' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ce']"><text>ce </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cf']"><text>cf </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ch' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ch']"><text>ch </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ck' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ck']"><text>ck </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cr']"><text>cr </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cz' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cz']"><text>cz </text></case>
+          </switch>
+        </position>
+        <!-- 03-05 -->
+        <position default="|||"/>
+      </fixed-field>
+    </context>
+  </cf>
+
+  <!-- Globe 007 -->
+  <cf tag="007">
+    <context xpath="/rdf:RDF[(*[local-name()='Cartography'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography') and
+                    (bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026117' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026117' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026300' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026300')]">
+      <fixed-field>
+        <!-- 00-02 -->
+        <position default="d| ">
+          <switch>
+            <case test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026117' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026117']"><text>da </text></case>
+            <case test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026300' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026300']"><text>db </text></case>
+          </switch>
+        </position>
+        <!-- 03-05 -->
+        <position default="|||"/>
+      </fixed-field>
+    </context>
+  </cf>
+
+  <!-- Projected graphic 007 -->
+  <cf tag="007">
+    <context xpath="/rdf:RDF[(*[local-name()='StillImage'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage') and
+                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/g' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/g') and
+                    not(bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026406' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026406')]">
+      <fixed-field>
+        <!-- 00-02 -->
+        <position default="g| ">
+          <switch>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gc']"><text>gc </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gd']"><text>gd </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gf']"><text>gf </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mo' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mo']"><text>go </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gs' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gs']"><text>gs </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gt' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gt']"><text>gt </text></case>
+          </switch>
+        </position>
+        <!-- 03-08 -->
+        <position default="||||||"/>
+      </fixed-field>
+    </context>
+  </cf>
+
+  <!-- Microform 007 -->
+  <cf tag="007">
+    <context xpath="/rdf:RDF[bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h']">
+      <fixed-field>
+        <!-- 00-02 -->
+        <position default="h| ">
+          <switch>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ha' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ha']"><text>ha </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hb' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hb']"><text>hb </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hc']"><text>hc </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hd']"><text>hd </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/he' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/he']"><text>he </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hf']"><text>hf </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hg' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hg']"><text>hg </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hh' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hh']"><text>hh </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hj' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hj']"><text>hj </text></case>
+          </switch>
+        </position>
+        <!-- 03-12 -->
+        <position default="||||||||||"/>
+      </fixed-field>
+    </context>
+  </cf>
+
+  <!-- Nonprojected graphic 007 -->
+  <cf tag="007">
+    <context xpath="/rdf:RDF[(*[local-name()='StillImage'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage') and
+                    (bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027251' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027251' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027227' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027227' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm003277' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm003277' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm007391' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm007391' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm007730' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm007730' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm007028' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm007028' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm007718' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm007718' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027255' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027255' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026152' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026152' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm003055' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm003055' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2016026011' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2016026011' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/marcgt/fla' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/marcgt/fla' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026151' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026151' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm005289' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm005289' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm008530' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm008530' or
+                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027249' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027249')]">
+      <fixed-field>
+        <!-- 00-02 -->
+        <position default="k| ">
+          <switch>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027227' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027227'"><text>kc </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm003277' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm003277'"><text>kd </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm007391' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm007391'"><text>ke </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm007730' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm007730'"><text>kf </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm007028' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm007028'"><text>kg </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm007718' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm007718'"><text>kh </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027251' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027251'"><text>ki </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027255' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027255'"><text>kj </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026152' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026152'"><text>kk </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm003055' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm003055'"><text>kl </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2016026011' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2016026011'"><text>kn </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/marcgt/fla' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/marcgt/fla'"><text>ko </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026151' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026151'"><text>kp </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm005289' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm005289'"><text>kq </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/vocabulary/graphicMaterials/tgm008530' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/vocabulary/graphicMaterials/tgm008530'"><text>kr </text></case>
+            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027249' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027249'"><text>kv </text></case>
+          </switch>
+        </position>
+        <!-- 03-05 -->
+        <position default="|||"/>
+      </fixed-field>
+    </context>
+  </cf>
+
+  <!-- Motion picture 007 -->
+  <cf tag="007">
+    <context xpath="/rdf:RDF[(*[local-name()='MovingImage'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage') and
+                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/g' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/g') and
+                    (bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026406' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026406')]">
+      <fixed-field>
+        <!-- 00-02 -->
+        <position default="m| ">
+          <switch>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mc']"><text>mc </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mf']"><text>mf </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mo' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mo']"><text>mo </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mr']"><text>mr </text></case>
+          </switch>
+        </position>
+        <!-- 03-07 -->
+        <position default="|||||"/>
+      </fixed-field>
+    </context>
+  </cf>
+
+  <!-- Sound recording 007 -->
+  <cf tag="007">
+    <context xpath="/rdf:RDF[(*[local-name()='Audio'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Audio') and
+                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/s' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/s')]">
+      <fixed-field>
+        <!-- 00-02 -->
+        <position default="s| ">
+          <switch>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/sd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/sd']"><text>sd </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/se' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/se']"><text>se </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/sg' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/sg']"><text>sg </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/si' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/si']"><text>si </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/sq' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/sq']"><text>sq </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cr']"><text>sr </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/st' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/st']"><text>st </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/sw' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/sw']"><text>sw </text></case>
+          </switch>
+        </position>
+        <!-- 03-13 -->
+        <position default="|||||||||||"/>
+      </fixed-field>
+    </context>
+  </cf>
+
+  <!-- Vido recording 007 -->
+  <cf tag="007">
+    <context xpath="/rdf:RDF[(bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/v' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/v') and
+                    (bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026723' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026723')]">
+      <fixed-field>
+        <!-- 00-02 -->
+        <position default="v| ">
+          <switch>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vc']"><text>vc </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vd']"><text>vd </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vf']"><text>vf </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vr']"><text>vr </text></case>
+          </switch>
+        </position>
+        <!-- 03-08 -->
+        <position default="||||||"/>
+      </fixed-field>
+    </context>
+  </cf>
+
   <cf tag="008">
     <context xpath="/rdf:RDF">
       <var name="v008Format">

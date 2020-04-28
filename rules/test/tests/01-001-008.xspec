@@ -41,6 +41,72 @@
     </x:scenario>
   </x:scenario>
 
+  <x:scenario label="MARC 007">
+    <x:scenario label="007 - Map">
+      <x:context href="../data/001-008/007-map.xml"/>
+      <x:expect label="Map 007 generated when Work type is bf:Cartography and bf:Work/bf:genreForm has map URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'a'"/>
+      <x:expect label="007/01 from bf:Work/bf:genreForm URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'j'"/>
+    </x:scenario>
+    <x:scenario label="007 - Electronic resource">
+      <x:context href="../data/001-008/007-electronic.xml"/>
+      <x:expect label="Electronic resource 007 generated when Instance type is bf:Electronic"
+                test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'c'"/>
+      <x:expect label="007/01 from bf:Instance/bf:carrier URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'e'"/>
+    </x:scenario>
+    <x:scenario label="007 - Globe">
+      <x:context href="../data/001-008/007-globe.xml"/>
+      <x:expect label="Globe 007 generated when Work type is bf:Cartography and bf:Work/bf:genreForm has globe URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'd'"/>
+      <x:expect label="007/01 from bf:Work/bf:genreForm URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'a'"/>
+    </x:scenario>
+    <x:scenario label="007 - Projected graphic">
+      <x:context href="../data/001-008/007-proj-graphic.xml"/>
+      <x:expect label="Projected graphic 007 generated when Work type is bf:StillImage, bf:Instance/bf:media has projected graphic URI, and bf:Work/bf:genreForm does not have motion picture URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'g'"/>
+      <x:expect label="007/01 from bf:Instance/bf:carrier URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'o'"/>
+    </x:scenario>
+    <x:scenario label="007 - Microform">
+      <x:context href="../data/001-008/007-microform.xml"/>
+      <x:expect label="Microform 007 generated when bf:Instance/bf:media has microform URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'h'"/>
+      <x:expect label="007/01 from bf:Instance/bf:carrier URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'd'"/>
+    </x:scenario>
+    <x:scenario label="007 - Nonprojected graphic">
+      <x:context href="../data/001-008/007-nonproj-graphic.xml"/>
+      <x:expect label="Nonprojected graphic 007 generated when Work type is bf:StillImage and bf:Work/bf:genreForm has nonprojected graphic URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'k'"/>
+      <x:expect label="007/01 from bf:Work/bf:genreForm URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'j'"/>
+    </x:scenario>
+    <x:scenario label="007 - Motion picture">
+      <x:context href="../data/001-008/007-motion-picture.xml"/>
+      <x:expect label="Motion picture 007 generated when Work type is bf:MovingImage, bf:Instance/bf:media has projected graphic URI, and bf:Work/bf:genreForm has motion picture URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'm'"/>
+      <x:expect label="007/01 from bf:Instance/bf:carrier URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'r'"/>
+    </x:scenario>
+    <x:scenario label="007 - Sound recording">
+      <x:context href="../data/001-008/007-sound.xml"/>
+      <x:expect label="Sound recording 007 generated when Work type is bf:Audio, bf:Instance/bf:media has sound recording URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 's'"/>
+      <x:expect label="007/01 from bf:Instance/bf:carrier URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'd'"/>
+    </x:scenario>
+    <x:scenario label="007 - Video recording">
+      <x:context href="../data/001-008/007-video.xml"/>
+      <x:expect label="Video recording 007 generated when bf:Instance/bf:media has video recording URI and bf:Work/bf:genreForm has video recording URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'v'"/>
+      <x:expect label="007/01 from bf:Instance/bf:carrier URI"
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'f'"/>
+    </x:scenario>
+  </x:scenario>
+
   <x:scenario label="MARC 008 - all materials">
     <x:context href="../data/001-008/008-all.xml"/>
     <x:expect label="008/00-05 generated from $vAdminMetadata/bf:creationDate"
