@@ -1,4 +1,4 @@
-# Conversion rules
+# RDF2MARC Conversion Language
 
 Conversion rules for generating MARC fields are specified in a simple but flexible XML format, with elements in the namespace `http://www.loc.gov/bf2marc`. The conversion rules are used by the `compile.xsl` stylesheet to generate an XSL stylesheet for converting BIBFRAME descriptions encoded as RDF/XML to MARCXML.
 
