@@ -226,7 +226,7 @@ In addition, the following string parameters can be passed to the stylesheet and
 * `pConversionAgency`: MARC organization code of the institution doing the data generation, e.g. for use in the 003 or the 884. Defaults to `DLC`.
 * `pCatScript`: The ISO 15924 script subtag of the cataloging language, for dealing with multi-script records. Defaults to `Latn`.
 * `pSourceRecordId`: An identifier for the source record, perhaps a URI
-* `pGenerationUri`: Identifier for the generation process, e.g. a Github URL. Defaults to `https://github.com/lcnetdev/bibframe2marc-xsl`.
+* `pGenerationUri`: Identifier for the generation process, e.g. a Github URL. Defaults to `https://github.com/lcnetdev/bibframe2marc`.
 
 #### XSL named templates
 

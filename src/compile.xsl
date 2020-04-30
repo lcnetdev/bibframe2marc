@@ -43,7 +43,7 @@
       </xsl:param>
       <xsl:param name="pSourceRecordId"/>
       <xsl:param name="pConversionAgency" select="'DLC'"/>
-      <xsl:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc-xsl'"/>
+      <xsl:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc'"/>
 
       <!-- for upper- and lower-case translation (ASCII only) -->
       <xsl:variable name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable>

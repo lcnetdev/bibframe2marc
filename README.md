@@ -1,6 +1,6 @@
 
-[![CircleCI](https://circleci.com/gh/lcnetdev/bibframe2marc-xsl/tree/master.svg?style=svg)](https://circleci.com/gh/lcnetdev/bibframe2marc-xsl)
-# bibframe2marc-xsl
+[![CircleCI](https://circleci.com/gh/lcnetdev/bibframe2marc/tree/master.svg?style=svg)](https://circleci.com/gh/lcnetdev/bibframe2marc)
+# bibframe2marc
 
 XSLT 1.0 conversion from RDF/XML [BIBFRAME 2.0](http://www.loc.gov/bibframe/) to [MARCXML](http://www.loc.gov/marcxml/).
 
@@ -18,7 +18,7 @@ XSLT 1.0 conversion from RDF/XML [BIBFRAME 2.0](http://www.loc.gov/bibframe/) to
 
 ## Introduction
 
-_bibframe2marc-xsl_ consists of an [XSLT 1.0 stylesheet](src/compile.xsl) that takes a set of [XML rules](rules) and compiles them into another stylesheet (bibframe2marc.xsl). The conversion stylesheet takes an RDF/XML document representing a single BIBFRAME 2.0 description and converts it to a MARCXML document. The bibframe2marc.xsl stylesheet can be used as part of a conversion pipeline, as for example with the [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) perl library.
+_bibframe2marc_ consists of an [XSLT 1.0 stylesheet](src/compile.xsl) that takes a set of [XML rules](rules) and compiles them into another stylesheet (bibframe2marc.xsl). The conversion stylesheet takes an RDF/XML document representing a single BIBFRAME 2.0 description and converts it to a MARCXML document. The bibframe2marc.xsl stylesheet can be used as part of a conversion pipeline, as for example with the [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) perl library.
 
 ## Dependencies
 
@@ -82,10 +82,10 @@ The `test` target of the Makefile runs `test_compile`, `test_named_templates`, a
 
 ## See also
 
-* [Issue tracker](https://github.com/lcnetdev/bibframe2marc-xsl/issues) on GitHub
+* [Issue tracker](https://github.com/lcnetdev/bibframe2marc/issues) on GitHub
 * [Conversion rules documentation](doc/rules.md)
 * [Design notes](doc/design.md)
-* [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) -- a perl library that uses _bibframe2marc-xsl_ for BIBFRAME to MARC conversion
+* [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) -- a perl library that uses _bibframe2marc_ for BIBFRAME to MARC conversion
 * The [Bibliographic Framework Initiative](http://www.loc.gov/bibframe/) at the Library of Congress
 * The MARC to BIBFRAME conversion tool ([marc2bibframe2](https://github.com/lcnetdev/marc2bibframe2))
 

@@ -1,6 +1,6 @@
-# bibframe2marc-xsl design notes
+# bibframe2marc design notes
 
-_bibframe2marc-xsl_ is designed to be part of a conversion pipeline for converting BIBFRAME RDF descriptions to MARC records. By limiting the scope of the conversion to striped RDF/XML to MARCXML, the main intellectual work of specifying the conversion can be separated from all the mechanics of RDF dereferencing and inference and MARC format conversion, leaving those tasks to a wrapper application.
+_bibframe2marc_ is designed to be part of a conversion pipeline for converting BIBFRAME RDF descriptions to MARC records. By limiting the scope of the conversion to striped RDF/XML to MARCXML, the main intellectual work of specifying the conversion can be separated from all the mechanics of RDF dereferencing and inference and MARC format conversion, leaving those tasks to a wrapper application.
 
 The schema for constructing conversion rules (see [rules.md](rules.md)) is designed to allow for specifying a conversion based on XPath matching of the RDF/XML document.
 
@@ -18,7 +18,7 @@ This converter takes BIBFRAME descriptions and transforms them into MARC21 recor
 
 ## Conversion wrapper
 
-A sample application that uses _bibframe2marc-xsl_ is included with the [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) perl module.
+A sample application that uses _bibframe2marc_ is included with the [Biblio::BF2MARC](https://github.com/lcnetdev/biblio-bf2marc) perl module.
 
 * The wrapper script takes an RDF graph of BIBFRAME descriptions and attempts to coerce it into a set of RDF/XML documents with 2 nodes:
   * `<bf:Instance>`
