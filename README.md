@@ -39,7 +39,7 @@ _bibframe2marc_ consists of an [XSLT 1.0 stylesheet](src/compile.xsl) that takes
 
 ### Conversion rules
 
-The included set of [conversion rules](rules) represent an implementation of the BIBFRAME to MARC conversion specifications maintained by the Library of Congress. See the [Bibliographic Framework Initiative](http://www.loc.gov/bibframe/) at the Library of Congress for more details. The rules are implemented using an XML-based domain specific language -- the RDF2MARC Conversion Language. For details on the conversion language, see the [RDF2MARC rules documentation](doc/rules.md). For convenience, the conversion specifications are included in the [specs](specs) directory of this repository as Excel spreadsheets.
+The included set of [conversion rules](rules) represent an implementation of the [BIBFRAME to MARC conversion specifications](http://www.loc.gov/bibframe/bftm), maintained by the Library of Congress. The rules are implemented using an XML-based domain specific language -- the RDF2MARC Conversion Language. For details on the conversion language, see the [RDF2MARC rules documentation](doc/rules.md). For convenience, the conversion specifications are included in the [specs](specs) directory of this repository as Excel spreadsheets.
 
 ### Building
 
