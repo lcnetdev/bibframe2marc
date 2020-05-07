@@ -120,9 +120,18 @@
                   <xslt:with-param name="pSearch" select="')'"/>
                 </xslt:call-template>
               </xslt:variable>
-              <xslt:call-template name="tChopPunct">
-                <xslt:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
-              </xslt:call-template>
+              <xslt:choose>
+                <xslt:when test="$vCloseIndex &gt; 2">
+                  <xslt:call-template name="tChopPunct">
+                    <xslt:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
+                  </xslt:call-template>
+                </xslt:when>
+                <xslt:otherwise>
+                  <xslt:call-template name="tChopPunct">
+                    <xslt:with-param name="pString" select="substring($vNormString,2)"/>
+                  </xslt:call-template>
+                </xslt:otherwise>
+              </xslt:choose>
             </xslt:when>
             <xslt:when test="substring($vNormString,1,1) = '['">
               <xslt:variable name="vCloseIndex">
@@ -131,9 +140,18 @@
                   <xslt:with-param name="pSearch" select="']'"/>
                 </xslt:call-template>
               </xslt:variable>
-              <xslt:call-template name="tChopPunct">
-                <xslt:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
-              </xslt:call-template>
+              <xslt:choose>
+                <xslt:when test="$vCloseIndex &gt; 2">
+                  <xslt:call-template name="tChopPunct">
+                    <xslt:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
+                  </xslt:call-template>
+                </xslt:when>
+                <xslt:otherwise>
+                  <xslt:call-template name="tChopPunct">
+                    <xslt:with-param name="pString" select="substring($vNormString,2)"/>
+                  </xslt:call-template>
+                </xslt:otherwise>
+              </xslt:choose>
             </xslt:when>
             <xslt:when test="substring($vNormString,1,1) = '{{'">
               <xslt:variable name="vCloseIndex">
@@ -142,9 +160,18 @@
                   <xslt:with-param name="pSearch" select="'}}'"/>
                 </xslt:call-template>
               </xslt:variable>
-              <xslt:call-template name="tChopPunct">
-                <xslt:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
-              </xslt:call-template>
+              <xslt:choose>
+                <xslt:when test="$vCloseIndex &gt; 2">
+                  <xslt:call-template name="tChopPunct">
+                    <xslt:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
+                  </xslt:call-template>
+                </xslt:when>
+                <xslt:otherwise>
+                  <xslt:call-template name="tChopPunct">
+                    <xslt:with-param name="pString" select="substring($vNormString,2)"/>
+                  </xslt:call-template>
+                </xslt:otherwise>
+              </xslt:choose>
             </xslt:when>
             <xslt:when test="substring($vNormString,1,1) = '&quot;'">
               <xslt:variable name="vCloseIndex">
@@ -153,9 +180,18 @@
                   <xslt:with-param name="pSearch" select="'&quot;'"/>
                 </xslt:call-template>
               </xslt:variable>
-              <xslt:call-template name="tChopPunct">
-                <xslt:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
-              </xslt:call-template>
+              <xslt:choose>
+                <xslt:when test="$vCloseIndex &gt; 2">
+                  <xslt:call-template name="tChopPunct">
+                    <xslt:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
+                  </xslt:call-template>
+                </xslt:when>
+                <xslt:otherwise>
+                  <xslt:call-template name="tChopPunct">
+                    <xslt:with-param name="pString" select="substring($vNormString,2)"/>
+                  </xslt:call-template>
+                </xslt:otherwise>
+              </xslt:choose>
             </xslt:when>
             <xslt:when test="substring($vNormString,$vLength,1) = '.'">
               <xslt:choose>
@@ -168,6 +204,26 @@
               </xslt:choose>
             </xslt:when>
             <xslt:when test="contains($vPunct, substring($vNormString,$vLength,1))">
+	            <xslt:call-template name="tChopPunct">
+	              <xslt:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
+	            </xslt:call-template>
+            </xslt:when>
+            <xslt:when test="substring($vNormString,$vLength,1)=')' and not(contains($vNormString,'('))">
+	            <xslt:call-template name="tChopPunct">
+	              <xslt:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
+	            </xslt:call-template>
+            </xslt:when>
+            <xslt:when test="substring($vNormString,$vLength,1)=']' and not(contains($vNormString,'['))">
+	            <xslt:call-template name="tChopPunct">
+	              <xslt:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
+	            </xslt:call-template>
+            </xslt:when>
+            <xslt:when test="substring($vNormString,$vLength,1)='}}' and not(contains($vNormString,'{{'))">
+	            <xslt:call-template name="tChopPunct">
+	              <xslt:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
+	            </xslt:call-template>
+            </xslt:when>
+            <xslt:when test="substring($vNormString,$vLength,1)='&quot;' and not(contains($vNormString,'&quot;'))">
 	            <xslt:call-template name="tChopPunct">
 	              <xslt:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
 	            </xslt:call-template>

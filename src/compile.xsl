@@ -70,9 +70,18 @@
                 <xsl:with-param name="pSearch" select="')'"/>
               </xsl:call-template>
             </xsl:variable>
-            <xsl:call-template name="tChopPunct">
-              <xsl:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
-            </xsl:call-template>
+            <xsl:choose>
+              <xsl:when test="$vCloseIndex &gt; 2">
+                <xsl:call-template name="tChopPunct">
+                  <xsl:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="tChopPunct">
+                  <xsl:with-param name="pString" select="substring($vNormString,2)"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:when>
           <xsl:when test="substring($vNormString,1,1) = '['">
             <xsl:variable name="vCloseIndex">
@@ -81,9 +90,18 @@
                 <xsl:with-param name="pSearch" select="']'"/>
               </xsl:call-template>
             </xsl:variable>
-            <xsl:call-template name="tChopPunct">
-              <xsl:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
-            </xsl:call-template>
+            <xsl:choose>
+              <xsl:when test="$vCloseIndex &gt; 2">
+                <xsl:call-template name="tChopPunct">
+                  <xsl:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="tChopPunct">
+                  <xsl:with-param name="pString" select="substring($vNormString,2)"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:when>
           <xsl:when test="substring($vNormString,1,1) = '{{'">
             <xsl:variable name="vCloseIndex">
@@ -92,9 +110,18 @@
                 <xsl:with-param name="pSearch" select="'}}'"/>
               </xsl:call-template>
             </xsl:variable>
-            <xsl:call-template name="tChopPunct">
-              <xsl:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
-            </xsl:call-template>
+            <xsl:choose>
+              <xsl:when test="$vCloseIndex &gt; 2">
+                <xsl:call-template name="tChopPunct">
+                  <xsl:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="tChopPunct">
+                  <xsl:with-param name="pString" select="substring($vNormString,2)"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:when>
           <xsl:when test="substring($vNormString,1,1) = '&quot;'">
             <xsl:variable name="vCloseIndex">
@@ -103,9 +130,18 @@
                 <xsl:with-param name="pSearch" select="'&quot;'"/>
               </xsl:call-template>
             </xsl:variable>
-            <xsl:call-template name="tChopPunct">
-              <xsl:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
-            </xsl:call-template>
+            <xsl:choose>
+              <xsl:when test="$vCloseIndex &gt; 2">
+                <xsl:call-template name="tChopPunct">
+                  <xsl:with-param name="pString" select="concat(substring($vNormString,2,$vCloseIndex - 2),substring($vNormString,$vCloseIndex+1))"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="tChopPunct">
+                  <xsl:with-param name="pString" select="substring($vNormString,2)"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:when>
           <!-- special handling for period -->
           <!-- remove if there is other punctuation -->
@@ -120,6 +156,27 @@
             </xsl:choose>
           </xsl:when>
           <xsl:when test="contains($vPunct, substring($vNormString,$vLength,1))">
+	          <xsl:call-template name="tChopPunct">
+	            <xsl:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
+	          </xsl:call-template>
+          </xsl:when>
+          <!-- remove end enclosing punctuation if start character is not in string -->
+          <xsl:when test="substring($vNormString,$vLength,1)=')' and not(contains($vNormString,'('))">
+	          <xsl:call-template name="tChopPunct">
+	            <xsl:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
+	          </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="substring($vNormString,$vLength,1)=']' and not(contains($vNormString,'['))">
+	          <xsl:call-template name="tChopPunct">
+	            <xsl:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
+	          </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="substring($vNormString,$vLength,1)='}}' and not(contains($vNormString,'{{'))">
+	          <xsl:call-template name="tChopPunct">
+	            <xsl:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
+	          </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="substring($vNormString,$vLength,1)='&quot;' and not(contains($vNormString,'&quot;'))">
 	          <xsl:call-template name="tChopPunct">
 	            <xsl:with-param name="pString" select="substring($vNormString,1,$vLength - 1)"/>
 	          </xsl:call-template>

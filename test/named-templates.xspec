@@ -18,6 +18,20 @@
       <x:expect label="Should be removed" select="'Private eyeballs'"/>
     </x:scenario>
 
+    <x:scenario label="Opening parens without closing">
+      <x:call template="tChopPunct">
+        <x:param name="pString" select="'(2016 :'"/>
+      </x:call>
+      <x:expect label="Should be removed" select="'2016'"/>
+    </x:scenario>
+
+    <x:scenario label="Closing parens without opening">
+      <x:call template="tChopPunct">
+        <x:param name="pString" select="'Washington, D.C.),'"/>
+      </x:call>
+      <x:expect label="Should be removed" select="'Washington, D.C.'"/>
+    </x:scenario>
+
     <x:scenario label="Enclosing brackets">
       <x:call template="tChopPunct">
         <x:param name="pString" select="'[Private eyeballs]'"/>
