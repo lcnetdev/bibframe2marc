@@ -48,6 +48,8 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'a'"/>
       <x:expect label="007/01 from bf:Work/bf:genreForm URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'j'"/>
+      <x:expect label="007/02-07 default"
+                test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' |||||'"/>
     </x:scenario>
     <x:scenario label="007 - Electronic resource">
       <x:context href="../data/001-008/007-electronic.xml"/>
@@ -55,6 +57,8 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'c'"/>
       <x:expect label="007/01 from bf:Instance/bf:carrier URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'e'"/>
+      <x:expect label="007/02-13 default"
+                test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' |||||||||||'"/>
     </x:scenario>
     <x:scenario label="007 - Globe">
       <x:context href="../data/001-008/007-globe.xml"/>
@@ -62,6 +66,8 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'd'"/>
       <x:expect label="007/01 from bf:Work/bf:genreForm URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'a'"/>
+      <x:expect label="007/02-05 default"
+                test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' |||'"/>
     </x:scenario>
     <x:scenario label="007 - Projected graphic">
       <x:context href="../data/001-008/007-proj-graphic.xml"/>
@@ -69,6 +75,8 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'g'"/>
       <x:expect label="007/01 from bf:Instance/bf:carrier URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'o'"/>
+      <x:expect label="007/02-08 default"
+                test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' ||||||'"/>
     </x:scenario>
     <x:scenario label="007 - Microform">
       <x:context href="../data/001-008/007-microform.xml"/>
@@ -76,6 +84,8 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'h'"/>
       <x:expect label="007/01 from bf:Instance/bf:carrier URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'd'"/>
+      <x:expect label="007/02-12 default"
+                test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' ||||||||||'"/>
     </x:scenario>
     <x:scenario label="007 - Nonprojected graphic">
       <x:context href="../data/001-008/007-nonproj-graphic.xml"/>
@@ -83,6 +93,8 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'k'"/>
       <x:expect label="007/01 from bf:Work/bf:genreForm URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'j'"/>
+      <x:expect label="007/02-05 default"
+                test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' |||'"/>
     </x:scenario>
     <x:scenario label="007 - Motion picture">
       <x:context href="../data/001-008/007-motion-picture.xml"/>
@@ -90,6 +102,8 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'm'"/>
       <x:expect label="007/01 from bf:Instance/bf:carrier URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'r'"/>
+      <x:expect label="007/02-22 default"
+                test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' ||||||||||||||||||||'"/>
     </x:scenario>
     <x:scenario label="007 - Sound recording">
       <x:context href="../data/001-008/007-sound.xml"/>
@@ -97,6 +111,8 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 's'"/>
       <x:expect label="007/01 from bf:Instance/bf:carrier URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'd'"/>
+      <x:expect label="007/02-13 default"
+                test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' |||||||||||'"/>
     </x:scenario>
     <x:scenario label="007 - Video recording">
       <x:context href="../data/001-008/007-video.xml"/>
@@ -104,6 +120,8 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'v'"/>
       <x:expect label="007/01 from bf:Instance/bf:carrier URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'f'"/>
+      <x:expect label="007/02-08 default"
+                test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' ||||||'"/>
     </x:scenario>
   </x:scenario>
 
