@@ -10,6 +10,9 @@ jobs:
   build:
     docker:
       - image: circleci/buildpack-deps:scm
+        auth:
+          username: $DH_USERNAME
+          password: $DH_PASSWORD
     steps:
       - checkout
       - run:
