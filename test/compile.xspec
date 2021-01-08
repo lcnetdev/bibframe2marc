@@ -707,7 +707,7 @@
         <bf2marc:df tag="245" lang-xpath="bf:mainTitle"/>
       </x:context>
       <x:expect label="...should generate xml:lang attribute for target MARC data field"
-                test="marc:datafield/xslt:if/xslt:attribute[@name='xml:lang']"/>
+                test="marc:datafield/xslt:if/xslt:attribute/@name='xml:lang'"/>
     </x:scenario>
 
     <x:scenario label="variable as tag name">
