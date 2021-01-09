@@ -496,6 +496,35 @@
             </xslt:choose>
           </xslt:if>
         </xslt:template>
+        <xslt:template name="tUriCode">
+          <xslt:param name="pUri" />
+          <xslt:choose>
+            <xslt:when test="contains($pUri,'://')">
+              <xslt:if test="contains(substring-after($pUri,'://'),'/')">
+                <xslt:call-template name="tUriCode">
+                  <xslt:with-param name="pUri"
+                                   select="substring-after($pUri,'://')" />
+                </xslt:call-template>
+              </xslt:if>
+            </xslt:when>
+            <xslt:when test="contains($pUri,'/')">
+              <xslt:call-template name="tUriCode">
+                <xslt:with-param name="pUri"
+                                 select="substring-after($pUri,'/')" />
+              </xslt:call-template>
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:choose>
+                <xslt:when test="contains($pUri,'?')">
+                  <xslt:value-of select="substring-before($pUri,'?')" />
+                </xslt:when>
+                <xslt:otherwise>
+                  <xslt:value-of select="$pUri" />
+                </xslt:otherwise>
+              </xslt:choose>
+            </xslt:otherwise>
+          </xslt:choose>
+        </xslt:template>
       </xslt:stylesheet>
     </x:expect>
   </x:scenario>

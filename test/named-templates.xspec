@@ -157,4 +157,28 @@
     <x:expect label="Should return the script code from the xml:lang attribute value" select="'Hang'"/>
   </x:scenario>
 
+  <x:scenario label="tUriCode">
+
+    <x:scenario label="tUriCode returns last path element">
+      <x:call template="tUriCode">
+        <x:param name="pUri" select="'http://id.loc.gov/vocabulary/organizations/gyfmdb'"/>
+      </x:call>
+      <x:expect label="Should return the last path element of URI" select="'gyfmdb'"/>
+    </x:scenario>
+
+    <x:scenario label="...without query params">
+      <x:call template="tUriCode">
+        <x:param name="pUri" select="'http://id.loc.gov/vocabulary/organizations/gyfmdb?foo=bar'"/>
+      </x:call>
+      <x:expect label="Should return the last path element of URI" select="'gyfmdb'"/>
+    </x:scenario>
+
+    <x:scenario label="...if no path, return empty">
+      <x:call template="tUriCode">
+        <x:param name="pUri" select="'http://id.loc.gov'"/>
+      </x:call>
+      <x:expect label="Should return empty" select="()"/>
+    </x:scenario>
+
+  </x:scenario>
 </x:description>

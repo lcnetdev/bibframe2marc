@@ -461,6 +461,33 @@
         </xsl:if>
       </xsl:template>
 
+      <!-- get the code (last element) from a URI -->
+      <xsl:template name="tUriCode">
+        <xsl:param name="pUri"/>
+        <xsl:choose>
+          <xsl:when test="contains($pUri,'://')">
+            <xsl:if test="contains(substring-after($pUri,'://'),'/')">
+              <xsl:call-template name="tUriCode">
+                <xsl:with-param name="pUri" select="substring-after($pUri,'://')"/>
+              </xsl:call-template>
+            </xsl:if>
+          </xsl:when>
+          <xsl:when test="contains($pUri,'/')">
+            <xsl:call-template name="tUriCode">
+              <xsl:with-param name="pUri" select="substring-after($pUri,'/')"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:choose>
+              <xsl:when test="contains($pUri,'?')">
+                <xsl:value-of select="substring-before($pUri,'?')"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+            </xsl:choose>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
+
     </xsl:stylesheet>
   </xslt:template>
 
