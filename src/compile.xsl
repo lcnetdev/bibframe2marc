@@ -488,6 +488,32 @@
         </xsl:choose>
       </xsl:template>
 
+      <!-- generate marc:subfields by tokenizing a string -->
+      <xsl:template name="tToken2Subfields">
+        <xsl:param name="pString"/>
+        <xsl:param name="pSeparator" select="' '"/>
+        <xsl:param name="pSubfieldCode"/>
+        <xsl:choose>
+          <xsl:when test="contains($pString,$pSeparator)">
+            <marc:subfield>
+              <xsl:attribute name="code" select="$pSubfieldCode"/>
+              <xsl:value-of select="substring-before($pString,$pSeparator)"/>
+            </marc:subfield>
+            <xsl:call-template name="tToken2Subfields">
+              <xsl:with-param name="pString" select="substring-after($pString,$pSeparator)"/>
+              <xsl:with-param name="pSeparator" select="$pSeparator"/>
+              <xsl:with-param name="pSubfieldCode" select="$pSubfieldCode"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+            <marc:subfield>
+              <xsl:attribute name="code" select="$pSubfieldCode"/>
+              <xsl:value-of select="$pString"/>
+            </marc:subfield>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
+
     </xsl:stylesheet>
   </xslt:template>
 

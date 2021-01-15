@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../bibframe2marc.xsl" xslt-version="1.0">
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:marc="http://www.loc.gov/MARC21/slim"
+               stylesheet="../bibframe2marc.xsl"
+               xslt-version="1.0">
 
   <x:scenario label="tChopPunct">
 
@@ -181,4 +184,19 @@
     </x:scenario>
 
   </x:scenario>
+
+  <x:scenario label="tToken2Subfields">
+    <x:call template="tToken2Subfields">
+      <x:param name="pString" select="'here is a string'"/>
+      <x:param name="pSeparator" select="' '"/>
+      <x:param name="pSubfieldCode" select="'a'"/>
+    </x:call>
+    <x:expect label="...should return a subfield for each token">
+      <marc:subfield code="a">here</marc:subfield>
+      <marc:subfield code="a">is</marc:subfield>
+      <marc:subfield code="a">a</marc:subfield>
+      <marc:subfield code="a">string</marc:subfield>
+    </x:expect>
+  </x:scenario>
+
 </x:description>

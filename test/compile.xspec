@@ -525,6 +525,36 @@
             </xslt:otherwise>
           </xslt:choose>
         </xslt:template>
+        <xslt:template name="tToken2Subfields">
+          <xslt:param name="pString" />
+          <xslt:param name="pSeparator"
+                      select="' '" />
+          <xslt:param name="pSubfieldCode" />
+          <xslt:choose>
+            <xslt:when test="contains($pString,$pSeparator)">
+              <marc:subfield>
+                <xslt:attribute name="code"
+                                select="$pSubfieldCode" />
+                <xslt:value-of select="substring-before($pString,$pSeparator)" />
+              </marc:subfield>
+              <xslt:call-template name="tToken2Subfields">
+                <xslt:with-param name="pString"
+                                 select="substring-after($pString,$pSeparator)" />
+                <xslt:with-param name="pSeparator"
+                                 select="$pSeparator" />
+                <xslt:with-param name="pSubfieldCode"
+                                 select="$pSubfieldCode" />
+              </xslt:call-template>
+            </xslt:when>
+            <xslt:otherwise>
+              <marc:subfield>
+                <xslt:attribute name="code"
+                                select="$pSubfieldCode" />
+                <xslt:value-of select="$pString" />
+              </marc:subfield>
+            </xslt:otherwise>
+          </xslt:choose>
+        </xslt:template>
       </xslt:stylesheet>
     </x:expect>
   </x:scenario>
