@@ -526,14 +526,10 @@
   </df>
 
   <df tag="856">
-    <context xpath="//bf:Item/bf:electronicLocator[@rdf:resource or */bflc:locator/@rdf:resource or */bflc:target/@rdf:resource] | bf:Instance/bf:supplementaryContent[@rdf:resource or */bflc:locator/@rdf:resource or */bflc:target/@rdf:resource]">
-      <var name="v856Uri">
-        <switch>
-          <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-          <case test="*/bflc:locator"><transform><xsl:value-of select="*/bflc:locator/@rdf:resource"/></transform></case>
-          <case test="*/bflc:target"><transform><xsl:value-of select="*/bflc:target/@rdf:resource"/></transform></case>
-        </switch>
-      </var>
+    <context xpath="bf:Work/bf:tableOfContents/bf:TableOfContents[not(rdfs:label) and rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']] |
+                    bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']] |
+                    //bf:Item/bf:electronicLocator/*[rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']]">
+      <var name="v856Uri"><transform><xsl:value-of select="rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/></transform></var>
       <ind1 default=" ">
         <switch>
           <case test="starts-with($v856Uri,'mailto')">0</case>
@@ -544,12 +540,12 @@
       </ind1>
       <ind2 default=" ">
         <switch>
-          <case test="local-name()='supplementaryContent'">2</case>
+          <case test="local-name()='SupplementaryContent'">2</case>
         </switch>
       </ind2>
       <sf code="u"><transform><xsl:value-of select="$v856Uri"/></transform></sf>
       <sf code="z" chopPunct="true">
-        <select xpath="*/bf:note/bf:Note/rdfs:label"/>
+        <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
     </context>
   </df>

@@ -87,10 +87,8 @@
               test="//marc:datafield[@tag='856'][1]/@ind1 = '4'"/>
     <x:expect label="ind2 from supplementaryContent"
               test="//marc:datafield[@tag='856'][3]/@ind2 = '2'"/>
-    <x:expect label="$u from electronicLocator"
-              test="//marc:datafield[@tag='856'][1]/marc:subfield[@code='u'] = 'http://something.example.org'"/>
-    <x:expect label="...or from locator/target"
-              test="//marc:datafield[@tag='856'][2]/marc:subfield[@code='u'] = 'http://something.else.example.org'"/>
+    <x:expect label="$u from rdf:value"
+              test="//marc:datafield[@tag='856'][1]/marc:subfield[@code='u'] = 'http://toc.example.org'"/>
     <x:expect label="$z from note"
               test="//marc:datafield[@tag='856'][2]/marc:subfield[@code='z'] = 'Souped up version'"/>
   </x:scenario>
