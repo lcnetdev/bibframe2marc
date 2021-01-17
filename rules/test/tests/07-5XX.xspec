@@ -81,6 +81,10 @@
     <x:context href="../data/5XX/505.xml"/>
     <x:expect label="generate 505 from bf:tableOfContents property"
               test="count(//marc:datafield[@tag='505']) = 1"/>
+    <x:expect label="$a from rdfs:label"
+              test="starts-with(//marc:datafield[@tag='505']/marc:subfield[@code='a'],'Uptown funk')"/>
+    <x:expect label="$u from rdf:value"
+              test="//marc:datafield[@tag='505']/marc:subfield[@code='u'] = 'http://toc.example.org'"/>
   </x:scenario>
 
   <x:scenario label="MARC 506">
