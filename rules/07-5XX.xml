@@ -351,7 +351,7 @@
             <select xpath="rdfs:label[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
           </sf>
           <sf code="2" chopPunct="true" repeatable="false">
-            <select xpath="bf:source/bf:Source/rdfs:label"/>
+            <select xpath="bf:source/bf:Source/bf:code"/>
           </sf>
           <sf code="5" repeatable="false">
             <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
@@ -372,7 +372,7 @@
             <select xpath="rdfs:label[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
           </sf>
           <sf code="2" chopPunct="true" repeatable="false">
-            <select xpath="bf:source/bf:Source/rdfs:label"/>
+            <select xpath="bf:source/bf:Source/bf:code"/>
           </sf>
           <sf code="5" repeatable="false">
             <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
@@ -608,11 +608,11 @@
               <case test="default">
                 <sf code="w">
                   <switch>
-                    <case test="bf:source/bf:Source/rdfs:label">
+                    <case test="bf:source/bf:Source/bf:code">
                       <transform>
                         <xsl:variable name="vSource">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                       <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/></transform>
@@ -853,7 +853,7 @@
         <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
       <sf code="5">
         <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>

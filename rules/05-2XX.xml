@@ -13,7 +13,7 @@
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
-          <case test="bf:source/bf:Source/rdf:value = 'issnkey'"><text> </text></case>
+          <case test="bf:assigner/bf:Agent/bf:code = 'issnkey'"><text> </text></case>
         </switch>
       </ind2>
       <sf code="a" chopPunct="true" repeatable="false">
@@ -29,9 +29,13 @@
           </transform>
         </select>
       </sf>
-      <sf code="2" chopPunct="true">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
-      </sf>
+      <switch>
+        <case test="bf:assigner/bf:Agent[not(bf:code='issnkey')]">
+          <sf code="2" chopPunct="true">
+            <select xpath="bf:assigner/bf:Agent[not(bf:code='issnkey')]/bf:code"/>
+          </sf>
+        </case>
+      </switch>
     </context>
   </df>
 
@@ -59,9 +63,6 @@
             <xsl:value-of select="concat('(',.,')')"/>
           </transform>
         </select>
-      </sf>
-      <sf code="2" chopPunct="true">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
       </sf>
     </context>
   </df>

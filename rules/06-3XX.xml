@@ -89,7 +89,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
@@ -134,7 +134,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
@@ -179,7 +179,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
@@ -270,7 +270,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
@@ -336,7 +336,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
@@ -378,7 +378,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
@@ -420,7 +420,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
@@ -478,7 +478,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
@@ -512,7 +512,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/rdfs:label"/>
+        <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
@@ -613,22 +613,22 @@
           </transform>
         </select>
       </sf>
-      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/bf:code"/></sf>
     </context>
   </df>
 
   <!-- 382 -->
-  <key name="kMusicMediumSourceAppliesTo" match="bf:MusicMedium[bf:source/bf:Source/rdfs:label and bflc:appliesTo/bflc:AppliesTo/rdfs:label]" use="bf:source/bf:Source/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
-  <key name="kMusicMediumNoSourceAppliesTo" match="bf:MusicMedium[not(bf:source/bf:Source/rdfs:label) and bflc:appliesTo/bflc:AppliesTo/rdfs:label]" use="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
-  <key name="kMusicMediumSourceNoAppliesTo" match="bf:MusicMedium[bf:source/bf:Source/rdfs:label and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label)]" use="bf:source/bf:Source/rdfs:label"/>
-  <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[bf:source/bf:Source/rdfs:label and bflc:appliesTo/bflc:AppliesTo/rdfs:label and count(.|key('kMusicMediumSourceAppliesTo',bf:source/bf:Source/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label)[1]) = 1]">
+  <key name="kMusicMediumSourceAppliesTo" match="bf:MusicMedium[bf:source/bf:Source/bf:code and bflc:appliesTo/bflc:AppliesTo/rdfs:label]" use="bf:source/bf:Source/bf:code|bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+  <key name="kMusicMediumNoSourceAppliesTo" match="bf:MusicMedium[not(bf:source/bf:Source/bf:code) and bflc:appliesTo/bflc:AppliesTo/rdfs:label]" use="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+  <key name="kMusicMediumSourceNoAppliesTo" match="bf:MusicMedium[bf:source/bf:Source/bf:code and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label)]" use="bf:source/bf:Source/bf:code"/>
+  <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[bf:source/bf:Source/bf:code and bflc:appliesTo/bflc:AppliesTo/rdfs:label and count(.|key('kMusicMediumSourceAppliesTo',bf:source/bf:Source/bf:code|bflc:appliesTo/bflc:AppliesTo/rdfs:label)[1]) = 1]">
     <df tag="382">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <select xpath="key('kMusicMediumSourceAppliesTo',bf:source/bf:Source/rdfs:label|bflc:appliesTo/bflc:AppliesTo/rdfs:label)">
+      <select xpath="key('kMusicMediumSourceAppliesTo',bf:source/bf:Source/bf:code|bflc:appliesTo/bflc:AppliesTo/rdfs:label)">
         <switch>
           <case test="starts-with(bf:instrumentalType,'doubling')">
             <sf code="d"><transform><xsl:value-of select="substring(bf:instrumentalType,9)"/></transform></sf>
@@ -672,10 +672,10 @@
           </select>
         </sf>
       </select>
-      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/bf:code"/></sf>
     </df>
   </select>
-  <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[not(bf:source/bf:Source/rdfs:label) and bflc:appliesTo/bflc:AppliesTo/rdfs:label and count(.|key('kMusicMediumNoSourceAppliesTo',bflc:appliesTo/bflc:AppliesTo/rdfs:label)[1]) = 1]">
+  <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[not(bf:source/bf:Source/bf:code) and bflc:appliesTo/bflc:AppliesTo/rdfs:label and count(.|key('kMusicMediumNoSourceAppliesTo',bflc:appliesTo/bflc:AppliesTo/rdfs:label)[1]) = 1]">
     <df tag="382">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -728,11 +728,11 @@
       </select>
     </df>
   </select>
-  <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[bf:source/bf:Source/rdfs:label and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label) and count(.|key('kMusicMediumSourceNoAppliesTo',bf:source/bf:Source/rdfs:label)[1]) = 1]">
+  <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[bf:source/bf:Source/bf:code and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label) and count(.|key('kMusicMediumSourceNoAppliesTo',bf:source/bf:Source/bf:code)[1]) = 1]">
     <df tag="382">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <select xpath="key('kMusicMediumSourceNoAppliesTo',bf:source/bf:Source/rdfs:label)">
+      <select xpath="key('kMusicMediumSourceNoAppliesTo',bf:source/bf:Source/bf:code)">
         <switch>
           <case test="starts-with(bf:instrumentalType,'doubling')">
             <sf code="d"><transform><xsl:value-of select="substring(bf:instrumentalType,9)"/></transform></sf>
@@ -776,15 +776,15 @@
           </select>
         </sf>
       </select>
-      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/rdfs:label"/></sf>
+      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/bf:code"/></sf>
     </df>
   </select>
   <switch>
-    <case test="bf:Work/bf:musicMedium/bf:MusicMedium[not(bf:source/bf:Source/rdfs:label) and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label)]">
+    <case test="bf:Work/bf:musicMedium/bf:MusicMedium[not(bf:source/bf:Source/bf:code) and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label)]">
       <df tag="382">
         <ind1 default=" "/>
         <ind2 default=" "/>
-        <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[not(bf:source/bf:Source/rdfs:label) and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label)]">
+        <select xpath="bf:Work/bf:musicMedium/bf:MusicMedium[not(bf:source/bf:Source/bf:code) and not(bflc:appliesTo/bflc:AppliesTo/rdfs:label)]">
           <switch>
             <case test="starts-with(bf:instrumentalType,'doubling')">
               <sf code="d"><transform><xsl:value-of select="substring(bf:instrumentalType,9)"/></transform></sf>
@@ -888,7 +888,7 @@
             <select xpath="bf:IntendedAudience/rdfs:label"/>
           </sf>
           <sf code="2" chopPunct="true" repeatable="false">
-            <select xpath="bf:IntendedAudience/bf:source/bf:Source/rdfs:label"/>
+            <select xpath="bf:IntendedAudience/bf:source/bf:Source/bf:code"/>
           </sf>
           <sf code="0">
             <select xpath="@rdf:resource|bf:IntendedAudience/@rdf:about"/>
