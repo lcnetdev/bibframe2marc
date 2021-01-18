@@ -108,7 +108,7 @@ local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontolog
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -155,7 +155,7 @@ local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontolog
                   <transform>
                     <xsl:variable name="vIdType">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
@@ -247,7 +247,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -294,7 +294,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
                   <transform>
                     <xsl:variable name="vIdType">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
@@ -398,7 +398,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -444,7 +444,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
                   <transform>
                     <xsl:variable name="vIdType">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
@@ -557,7 +557,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
           <transform>
             <xsl:variable name="vIdType">
               <xsl:call-template name="tChopPunct">
-                <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
               </xsl:call-template>
             </xsl:variable>
             <xsl:choose>
@@ -586,7 +586,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
           <transform>
             <xsl:variable name="vIdType">
               <xsl:call-template name="tChopPunct">
-                <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
               </xsl:call-template>
             </xsl:variable>
             <xsl:choose>
@@ -661,7 +661,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
             <transform>
               <xsl:variable name="vIdType">
                 <xsl:call-template name="tChopPunct">
-                  <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                  <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                 </xsl:call-template>
               </xsl:variable>
               <xsl:choose>
@@ -723,7 +723,7 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
           <transform>
             <xsl:variable name="vIdType">
               <xsl:call-template name="tChopPunct">
-                <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
               </xsl:call-template>
             </xsl:variable>
             <xsl:choose>
@@ -914,11 +914,11 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
           <case test="default">
             <sf code="w">
               <switch>
-                <case test="bf:source/bf:Source/rdfs:label">
+                <case test="bf:source/bf:Source/bf:code">
                   <transform>
                     <xsl:variable name="vSource">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/></transform>

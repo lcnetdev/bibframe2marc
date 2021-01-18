@@ -79,7 +79,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -136,7 +136,7 @@
                   <transform>
                     <xsl:variable name="vIdType">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
@@ -212,7 +212,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -269,7 +269,7 @@
                   <transform>
                     <xsl:variable name="vIdType">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
@@ -346,7 +346,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -402,7 +402,7 @@
                   <transform>
                     <xsl:variable name="vIdType">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
@@ -474,7 +474,7 @@
                   <transform>
                     <xsl:variable name="vIdType">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
@@ -496,34 +496,6 @@
       </case>
     </switch>
   </select>
-
-  <df tag="852">
-    <context xpath="bf:Instance/bf:hasItem/bf:Item[bf:heldBy]">
-      <ind1 default=" "/>
-      <ind2 default=" "/>
-      <sf code="a" repeatable="false">
-        <select xpath="bf:heldBy/bf:Agent">
-          <switch>
-            <case test="rdfs:label">
-              <transform>
-                <xsl:call-template name="tChopPunct">
-                  <xsl:with-param name="pString" select="rdfs:label"/>
-                </xsl:call-template>
-              </transform>
-            </case>
-            <case test="@rdf:about"><select xpath="@rdf:about"/></case>
-            <case test="@rdf:resource"><select xpath="@rdf:resource"/></case>
-          </switch>
-        </select>
-      </sf>
-      <sf code="b" chopPunct="true"><select xpath="bf:sublocation/bf:Sublocation/rdfs:label"/></sf>
-      <sf code="h" repeatable="false"><select xpath="bf:identifiedBy/bf:ShelfMarkLcc/rdf:value"/></sf>
-      <sf code="p" repeatable="false"><select xpath="bf:identifiedBy/bf:Barcode/rdf:value"/></sf>
-      <sf code="u"><select xpath="bf:electronicLocator/@rdf:resource"/></sf>
-      <sf code="x" chopPunct="true"><select xpath="bf:note/bf:Note/rdfs:label"/></sf>
-      <sf code="x" chopPunct="true"><select xpath="bf:usageAndAccessPolicy/bf:AccessPolicy/rdfs:label"/></sf>
-    </context>
-  </df>
 
   <df tag="856">
     <context xpath="bf:Work/bf:tableOfContents/bf:TableOfContents[not(rdfs:label) and rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']] |
