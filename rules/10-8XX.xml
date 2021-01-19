@@ -9,7 +9,8 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- Series added entries -->
-  <select xpath="bf:Work/bf:hasSeries/*[local-name()='Work' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work']">
+  <select xpath="bf:Work/bf:hasSeries/*[local-name()='Work' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] |
+                 //bf:Item/bf:hasSeries/*[local-name()='Work' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work']">
     <var name="vScriptSubtag">
       <transform>
         <xsl:call-template name="tScriptCode">

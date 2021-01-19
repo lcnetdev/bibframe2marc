@@ -11,7 +11,10 @@
   <!-- added entries -->
   <select xpath="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])] |
                  bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution and not(bf:hasInstance)] |
-                 bf:Work/bf:hasPart[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution]">
+                 bf:Work/bf:hasPart[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution] |
+                 //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])] |
+                 //bf:Item/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution and not(bf:hasInstance)] |
+                 //bf:Item/bf:hasPart[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution]">
     <var name="vScriptSubtag">
       <transform>
         <xsl:choose>
@@ -501,7 +504,8 @@ local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/b
   </select>
 
   <df tag="730" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[not(bf:contribution or bf:hasInstance)]">
+    <context xpath="bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[not(bf:contribution or bf:hasInstance)] |
+                    //bf:Item/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[not(bf:contribution or bf:hasInstance)]">
       <ind1 default="0">
         <switch>
           <case test="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey and (string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey) &lt; string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/rdfs:label))">

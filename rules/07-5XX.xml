@@ -29,7 +29,7 @@
   </switch>
 
   <!-- notes -->
-  <select xpath="bf:Instance/bf:note/bf:Note|bf:Work/bf:note/bf:Note">
+  <select xpath="bf:Instance/bf:note/bf:Note|bf:Work/bf:note/bf:Note|//bf:Item/bf:note/bf:Note">
     <switch>
       <case test="local-name(../..)='Instance' and translate(bf:noteType,$upper,$lower)='musical presentation'">
         <df tag="254" lang-xpath="rdfs:label">
@@ -51,7 +51,7 @@
         </df>
       </case>
 
-      <case test="local-name(../..)='Instance' and translate(bf:noteType,$upper,$lower)='with'">
+      <case test="(local-name(../..)='Instance' or local-name(../..)='Item') and translate(bf:noteType,$upper,$lower)='with'">
         <df tag="501" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
@@ -223,7 +223,7 @@
         </df>
       </case>
 
-      <case test="local-name(../..)='Instance' and translate(bf:noteType,$upper,$lower)='exhibition'">
+      <case test="(local-name(../..)='Instance' or local-name(../..)='Item') and translate(bf:noteType,$upper,$lower)='exhibition'">
         <df tag="585" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
@@ -239,7 +239,7 @@
         </df>
       </case>
 
-      <case test="local-name(../..)='Instance' and translate(bf:noteType,$upper,$lower)='description source'">
+      <case test="(local-name(../..)='Instance' or local-name(../..)='Item') and translate(bf:noteType,$upper,$lower)='description source'">
         <df tag="588" lang-xpath="rdfs:label">
           <ind1 default=" "/>
           <ind2 default=" "/>
@@ -253,7 +253,7 @@
       </case>
 
       <!-- these notes are picked up in the rules for data field 300, do not process here -->
-      <case test="local-name(../..)='Instance' and (translate(bf:noteType,$upper,$lower)='physical details' or translate(bf:noteType,$upper,$lower)='accompanying material')"/>
+      <case test="(local-name(../..)='Instance' or local-name(../..)='Item') and (translate(bf:noteType,$upper,$lower)='physical details' or translate(bf:noteType,$upper,$lower)='accompanying material')"/>
 
       <case test="default">
         <df tag="500" lang-xpath="rdfs:label">
@@ -332,7 +332,7 @@
   </df>
 
   <!-- 506/540 -->
-  <select xpath="bf:Instance/bf:usageAndAccessPolicy/*">
+  <select xpath="bf:Instance/bf:usageAndAccessPolicy/* | //bf:Item/bf:usageAndAccessPolicy/*">
     <switch>
       <case test="local-name()='UsePolicy' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/UsePolicy'">
         <df tag="540" lang-xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
@@ -735,7 +735,8 @@
   </df>
 
   <df tag="538" lang-xpath="rdfs:label">
-    <context xpath="bf:Instance/bf:systemRequirement/bf:SystemRequirement[not(contains(rdf:type/@rdf:resource,'bflc'))]">
+    <context xpath="bf:Instance/bf:systemRequirement/bf:SystemRequirement[not(contains(rdf:type/@rdf:resource,'bflc'))] |
+                    //bf:Item/bf:systemRequirement/bf:SystemRequirement[not(contains(rdf:type/@rdf:resource,'bflc'))]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
@@ -754,7 +755,8 @@
   </df>
 
   <df tag="541" lang-xpath="rdfs:label">
-    <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:immediateAcquisition/bf:ImmediateAcquisition">
+    <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:immediateAcquisition/bf:ImmediateAcquisition |
+                    //bf:Item/bf:hasItem/bf:Item/bf:immediateAcquisition/bf:ImmediateAcquisition">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
@@ -806,7 +808,8 @@
   </df>
 
   <df tag="563" lang-xpath="rdfs:label">
-    <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='binding' or bf:noteType='Binding']">
+    <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='binding' or bf:noteType='Binding'] |
+                    //bf:Item/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='binding' or bf:noteType='Binding']">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false">
@@ -819,7 +822,8 @@
   </df>
 
   <df tag="583" lang-xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]">
-    <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='action' or bf:noteType='Action']">
+    <context xpath="bf:Instance/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='action' or bf:noteType='Action'] |
+                    //bf:Item/bf:hasItem/bf:Item/bf:note/bf:Note[bf:noteType='action' or bf:noteType='Action']">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">

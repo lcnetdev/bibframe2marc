@@ -269,7 +269,8 @@
   </df>
 
   <df tag="025">
-    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='LcOverseasAcq' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/LcOverseasAcq']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='LcOverseasAcq' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/LcOverseasAcq']] |
+                    //bf:Item/bf:identifiedBy/*[local-name()='LcOverseasAcq' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/LcOverseasAcq']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a"><select xpath="rdf:value"/></sf>
@@ -277,7 +278,8 @@
   </df>
 
   <df tag="026">
-    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Fingerprint' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Fingerprint']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Fingerprint' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Fingerprint']]|
+                    //bf:Item/bf:identifiedBy/*[local-name()='Fingerprint' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Fingerprint']]">
       <var name="vSourceUri">
         <switch>
           <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
@@ -615,7 +617,8 @@
   </df>
 
   <df tag="037">
-    <context xpath="bf:Instance/bf:acquisitionSource/bf:AcquisitionSource">
+    <context xpath="bf:Instance/bf:acquisitionSource/bf:AcquisitionSource |
+                    //bf:Item/bf:acquisitionSource/bf:AcquisitionSource">
       <ind1 default=" ">
         <switch>
           <case test="bf:note/bf:Note/rdfs:label[text()='intervening source']">2</case>

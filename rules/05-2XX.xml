@@ -255,6 +255,16 @@
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
                     ) and
                     not(bf:variantType = 'translated') and
+                    not(bf:variantType = 'former')] |
+                    //bf:Item/bf:title/*[(
+                      local-name()='VariantTitle' or
+                      local-name()='ParallelTitle' or
+                      local-name()='TranscribedTitle' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle'] or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle'] or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
+                    ) and
+                    not(bf:variantType = 'translated') and
                     not(bf:variantType = 'former')]">
       <ind1 default="1"/>
       <ind2 default=" ">
