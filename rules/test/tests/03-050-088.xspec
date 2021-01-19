@@ -104,6 +104,8 @@
               test="//marc:datafield[@tag='074'][1]/marc:subfield[@code='a'] = '334-C-1'"/>
     <x:expect label="$z from invalid value"
               test="//marc:datafield[@tag='074'][2]/marc:subfield[@code='z'] = '334-C-11'"/>
+    <x:expect label="Identifier with assigner dgpo should not generate 024"
+              test="count(//marc:datafield[@tag='024']) = 0"/>
   </x:scenario>
 
   <x:scenario label="MARC 082">
