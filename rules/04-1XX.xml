@@ -20,6 +20,12 @@
           <case test="default">100</case>
         </switch>
       </var>
+      <var name="vSourceUri">
+        <switch>
+          <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
+          <case test="bf:source/bf:Source/@rdf:about"><transform><xsl:value-of select="bf:source/bf:Source/@rdf:about"/></transform></case>
+        </switch>
+      </var>
       <ind1 default="2">
         <switch>
           <case test="$vMainEntryTag='100'">
@@ -147,7 +153,30 @@
       <sf code="4">
         <select xpath="../../bf:role/*/@rdf:about|../../bf:role/@rdf:resource"/>
       </sf>
-      <sf code="2" repeatable="false"><select xpath="bf:source/bf:Source/bf:code"/></sf>
+      <switch>
+        <case test="$vSourceUri != '' or bf:source/bf:Source/bf:code or bf:source/bf:Source/rdfs:label">
+          <sf code="2">
+            <switch>
+              <case test="bf:source/bf:Source/bf:code"><transform><xsl:value-of select="bf:source/bf:Source/bf:code"/></transform></case>
+              <case test="$vSourceUri != ''">
+                <switch>
+                  <case test="contains($vSourceUri,'id.loc.gov')">
+                    <sf code="2">
+                      <transform>
+                        <xsl:call-template name="tUriCode">
+                          <xsl:with-param name="pUri" select="$vSourceUri"/>
+                        </xsl:call-template>
+                      </transform>
+                    </sf>
+                  </case>
+                  <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                </switch>
+              </case>
+              <case test="default"><transform><xsl:value-of select="rdfs:label"/></transform></case>
+            </switch>
+          </sf>
+        </case>
+      </switch>
     </context>
   </df>
 
