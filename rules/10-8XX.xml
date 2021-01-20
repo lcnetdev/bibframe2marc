@@ -18,6 +18,12 @@
         </xsl:call-template>
       </transform>
     </var>
+    <var name="vContribSourceUri">
+      <switch>
+        <case test="bf:contribution/*/bf:agent/*/bf:source/@rdf:resource"><transform><xsl:value-of select="bf:contribution/*/bf:agent/*/bf:source/@rdf:resource"/></transform></case>
+        <case test="bf:contribution/*/bf:agent/*/bf:source/bf:Source/@rdf:about"><transform><xsl:value-of select="bf:contribution/*/bf:agent/*/bf:source/bf:Source/@rdf:about"/></transform></case>
+      </switch>
+    </var>
     <switch>
       <case test="$vScriptSubtag='' or translate($vScriptSubtag,$upper,$lower)=translate($pCatScript,$upper,$lower)">
         <switch>
@@ -147,9 +153,31 @@
                   </transform>
                 </select>
               </sf>
-              <sf code="2" repeatable="false">
-                <select xpath="bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/>
-              </sf>
+              <switch>
+                <case test="$vContribSourceUri != '' or bf:source/bf:Source/bf:code or bf:source/bf:Source/rdfs:label or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+                  <sf code="2">
+                    <switch>
+                      <case test="bf:source/bf:Source/bf:code"><transform><xsl:value-of select="bf:source/bf:Source/bf:code"/></transform></case>
+                      <case test="$vContribSourceUri != ''">
+                        <switch>
+                          <case test="contains($vContribSourceUri,'id.loc.gov')">
+                            <transform>
+                              <xsl:call-template name="tUriCode">
+                                <xsl:with-param name="pUri" select="$vContribSourceUri"/>
+                              </xsl:call-template>
+                            </transform>
+                          </case>
+                          <case test="default"><transform><xsl:value-of select="$vContribSourceUri"/></transform></case>
+                        </switch>
+                      </case>
+                      <case test="*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+                        <transform><xsl:value-of select="*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/></transform>
+                      </case>
+                      <case test="default"><transform><xsl:value-of select="bf:source/bf:Source/rdfs:label"/></transform></case>
+                    </switch>
+                  </sf>
+                </case>
+              </switch>
               <sf code="5">
                 <select xpath="bflc:applicableInstitution/*/bf:code"/>
               </sf>
@@ -280,9 +308,31 @@
                   </transform>
                 </select>
               </sf>
-              <sf code="2" repeatable="false">
-                <select xpath="bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/>
-              </sf>
+              <switch>
+                <case test="$vContribSourceUri != '' or bf:source/bf:Source/bf:code or bf:source/bf:Source/rdfs:label or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+                  <sf code="2">
+                    <switch>
+                      <case test="bf:source/bf:Source/bf:code"><transform><xsl:value-of select="bf:source/bf:Source/bf:code"/></transform></case>
+                      <case test="$vContribSourceUri != ''">
+                        <switch>
+                          <case test="contains($vContribSourceUri,'id.loc.gov')">
+                            <transform>
+                              <xsl:call-template name="tUriCode">
+                                <xsl:with-param name="pUri" select="$vContribSourceUri"/>
+                              </xsl:call-template>
+                            </transform>
+                          </case>
+                          <case test="default"><transform><xsl:value-of select="$vContribSourceUri"/></transform></case>
+                        </switch>
+                      </case>
+                      <case test="*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+                        <transform><xsl:value-of select="*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/></transform>
+                      </case>
+                      <case test="default"><transform><xsl:value-of select="bf:source/bf:Source/rdfs:label"/></transform></case>
+                    </switch>
+                  </sf>
+                </case>
+              </switch>
               <sf code="5">
                 <select xpath="bflc:applicableInstitution/*/bf:code"/>
               </sf>
@@ -413,9 +463,31 @@
                   </transform>
                 </select>
               </sf>
-              <sf code="2" repeatable="false">
-                <select xpath="bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/>
-              </sf>
+              <switch>
+                <case test="$vContribSourceUri != '' or bf:source/bf:Source/bf:code or bf:source/bf:Source/rdfs:label or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+                  <sf code="2">
+                    <switch>
+                      <case test="bf:source/bf:Source/bf:code"><transform><xsl:value-of select="bf:source/bf:Source/bf:code"/></transform></case>
+                      <case test="$vContribSourceUri != ''">
+                        <switch>
+                          <case test="contains($vContribSourceUri,'id.loc.gov')">
+                            <transform>
+                              <xsl:call-template name="tUriCode">
+                                <xsl:with-param name="pUri" select="$vContribSourceUri"/>
+                              </xsl:call-template>
+                            </transform>
+                          </case>
+                          <case test="default"><transform><xsl:value-of select="$vContribSourceUri"/></transform></case>
+                        </switch>
+                      </case>
+                      <case test="*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+                        <transform><xsl:value-of select="*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/></transform>
+                      </case>
+                      <case test="default"><transform><xsl:value-of select="bf:source/bf:Source/rdfs:label"/></transform></case>
+                    </switch>
+                  </sf>
+                </case>
+              </switch>
               <sf code="5">
                 <select xpath="bflc:applicableInstitution/*/bf:code"/>
               </sf>
