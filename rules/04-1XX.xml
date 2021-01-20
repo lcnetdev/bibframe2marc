@@ -30,7 +30,7 @@
         <switch>
           <case test="$vMainEntryTag='100'">
             <switch>
-              <case test="local-name()='FamilyName'">3</case>
+              <case test="contains(local-name(),'Family')">3</case>
               <case test="default">1</case>
             </switch>
           </case>
@@ -161,13 +161,11 @@
               <case test="$vSourceUri != ''">
                 <switch>
                   <case test="contains($vSourceUri,'id.loc.gov')">
-                    <sf code="2">
-                      <transform>
-                        <xsl:call-template name="tUriCode">
-                          <xsl:with-param name="pUri" select="$vSourceUri"/>
-                        </xsl:call-template>
-                      </transform>
-                    </sf>
+                    <transform>
+                      <xsl:call-template name="tUriCode">
+                        <xsl:with-param name="pUri" select="$vSourceUri"/>
+                      </xsl:call-template>
+                    </transform>
                   </case>
                   <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
                 </switch>
