@@ -6,13 +6,45 @@
                xslt-version="1.0">
 
   <x:scenario label="MARC 210">
-    <x:context href="../data/2XX/210.xml"/>
-    <x:expect label="generate 210" test="count(//marc:datafield[@tag='210']) = 1"/>
+    <x:scenario label="MARC 210 from Work">
+      <x:context href="../data/2XX/210-1.xml"/>
+      <x:expect label="generate 210 from Work AbbreviatedTitle"
+                test="count(//marc:datafield[@tag='210']) = 1"/>
+      <x:expect label="ind1 default to 0"
+                test="//marc:datafield[@tag='210']/@ind1 = '0'"/>
+      <x:expect label="ind2 blank if issnkey assigner"
+                test="//marc:datafield[@tag='210']/@ind2 = ' '"/>
+      <x:expect label="$a from mainTitle"
+                test="//marc:datafield[@tag='210']/marc:subfield[@code='a'] = 'Manage. improv. cost reduct. goals'"/>
+      <x:expect label="$b from qualifier in parens"
+                test="//marc:datafield[@tag='210']/marc:subfield[@code='b'] = '(Faridabad)'"/>
+    </x:scenario>
+    <x:scenario label="MARC 210 from Instance">
+      <x:context href="../data/2XX/210-2.xml"/>
+      <x:expect label="generate 210 from Instance AbbreviatedTitle"
+                test="count(//marc:datafield[@tag='210']) = 1"/>
+      <x:expect label="ind1 default to 0"
+                test="//marc:datafield[@tag='210']/@ind1 = '0'"/>
+      <x:expect label="ind2 default to 0"
+                test="//marc:datafield[@tag='210']/@ind2 = '0'"/>
+      <x:expect label="$a from mainTitle"
+                test="//marc:datafield[@tag='210']/marc:subfield[@code='a'] = 'JAMA'"/>
+      <x:expect label="$2 from assigner"
+                test="//marc:datafield[@tag='210']/marc:subfield[@code='2'] = 'dnlm'"/>
+    </x:scenario>
   </x:scenario>
 
   <x:scenario label="MARC 222">
     <x:context href="../data/2XX/222.xml"/>
     <x:expect label="generate 222" test="count(//marc:datafield[@tag='222']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='222']/@ind1 = ' '"/>
+    <x:expect label="ind2 from comparison between bflc:titleSortKey and rdfs:label"
+              test="//marc:datafield[@tag='222']/@ind2 = '4'"/>
+    <x:expect label="$a from mainTitle"
+              test="//marc:datafield[@tag='222']/marc:subfield[@code='a'] = 'The Sourdough'"/>
+    <x:expect label="$b from qualifier in parens"
+              test="//marc:datafield[@tag='222']/marc:subfield[@code='b'] = '(Faridabad)'"/>
   </x:scenario>
 
   <x:scenario label="MARC 240">
@@ -31,8 +63,12 @@
     <x:context href="../data/multi-script/241-245.xml"/>
     <x:expect label="generate 241 from transliterated title"
               test="count(//marc:datafield[@tag='241']) = 1"/>
+    <x:expect label="241 data from transliterated properties"
+              test="//marc:datafield[@tag='241']/marc:subfield[@code='a'] = 'Nei Menggu Lang Shan--Seerteng Shan shan qian huo dong duan lie dai di zhi tu'"/>
     <x:expect label="generate 245 from vernacular title"
               test="count(//marc:datafield[@tag='245']) = 1"/>
+    <x:expect label="245 data from vernacular properties"
+              test="//marc:datafield[@tag='245']/marc:subfield[@code='a'] = '内蒙古狼山--色尔滕山山前活动断裂带地质图'"/>
   </x:scenario>
 
   <x:scenario label="MARC 242">
@@ -80,11 +116,15 @@
   <x:scenario label="MARC 246">
     <x:context href="../data/2XX/246.xml"/>
     <x:expect label="generate 246" test="count(//marc:datafield[@tag='246']) = 1"/>
+    <x:expect label="$i from note"
+              test="//marc:datafield[@tag='246']/marc:subfield[@code='i'] = 'Cover title'"/>
   </x:scenario>
 
   <x:scenario label="MARC 247">
     <x:context href="../data/2XX/247.xml"/>
     <x:expect label="generate 247" test="count(//marc:datafield[@tag='247']) = 1"/>
+    <x:expect label="$b from subtitle"
+              test="//marc:datafield[@tag='247']/marc:subfield[@code='b'] = 'for every woman'"/>
   </x:scenario>
 
   <x:scenario label="MARC 250">

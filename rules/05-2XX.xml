@@ -9,8 +9,9 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <df tag="210" lang-xpath="bf:mainTitle">
-    <context xpath="bf:Instance/bf:title/*[local-name() = 'AbbreviatedTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AbbreviatedTitle']]">
-      <ind1 default="1"/>
+    <context xpath="bf:Instance/bf:title/*[local-name() = 'AbbreviatedTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AbbreviatedTitle']] |
+                    bf:Work/bf:title/*[local-name() = 'AbbreviatedTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AbbreviatedTitle']]">
+      <ind1 default="0"/>
       <ind2 default="0">
         <switch>
           <case test="bf:assigner/bf:Agent/bf:code = 'issnkey'"><text> </text></case>
@@ -126,25 +127,6 @@
     </context>
   </df>
 
-  <!-- Obsolete 241 tag used to hold Romanized title if there is also a vernacular title -->
-  <df tag="241" repeatable="false" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Instance/bf:title/bf:Title[not(rdf:type) and ancestor::bf:Instance/bf:title/bf:Title[not(rdf:type) and rdfs:label/@xml:lang and not(contains(rdfs:label/@xml:lang,'latn')) and not(contains(rdfs:label/@xml:lang,'Latn'))]]">
-      <ind1 default="1"/>
-      <ind2 default="0">
-        <switch>
-          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
-            <transform>
-              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
-            </transform>
-          </case>
-        </switch>
-      </ind2>
-      <sf code="a" chopPunct="true" repeatable="false">
-        <select xpath="rdfs:label"/>
-      </sf>
-    </context>
-  </df>
-
   <df tag="242" lang-xpath="bf:mainTitle">
     <context xpath="bf:Instance/bf:title/*[(local-name() = 'VariantTitle' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']) and bf:variantType = 'translated']">
       <ind1 default="1"/>
@@ -171,10 +153,6 @@
       </sf>
       <sf code="p" chopPunct="true">
         <select xpath="bf:partName"/>
-      </sf>
-      <sf code="y" repeatable="false">
-        <!-- pick up both bf:Language/bf:code and madsrdf:Language/madsrdf:code -->
-        <select xpath="bf:language/*[local-name()='Language']/*[local-name()='code']"/>
       </sf>
     </context>
   </df>
@@ -203,51 +181,138 @@
     </context>
   </df>
 
-  <df tag="245" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="vernacular">
-    <context xpath="bf:Instance/bf:title/bf:Title[not(rdf:type)]">
-      <ind1 default="1"/>
-      <ind2 default="0">
+  <!-- 241/245 -->
+  <select xpath="bf:Instance/bf:title/bf:Title[not(rdf:type)]">
+    <switch>
+      <case test="position() = 1">
         <switch>
-          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
-            <transform>
-              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
-            </transform>
+          <case test="bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang)]">
+            <!-- Obsolete 241 tag used to hold Romanized title if there is also a vernacular title -->
+            <!-- generated as proposed in https://www.loc.gov/marc/mac/2020/2020-dp05.html -->
+            <df tag="241">
+              <ind1 default="1"/>
+              <ind2 default="0">
+                <switch>
+                  <case test="bflc:titleSortKey[not(@xml:lang)] and (string-length(bflc:titleSortKey[not(@xml:lang)]) &lt; string-length(rdfs:label[not(@xml:lang)]))">
+                    <transform>
+                      <xsl:value-of select="string-length(rdfs:label[not(@xml:lang)]) - string-length(bflc:titleSortKey[not(@xml:lang)])"/>
+                    </transform>
+                  </case>
+                </switch>
+              </ind2>
+              <sf code="a" chopPunct="true" repeatable="false">
+                <switch>
+                  <case test="bf:mainTitle[not(@xml:lang)]"><select xpath="bf:mainTitle[not(@xml:lang)]"/></case>
+                  <case test="rdfs:label[not(@xml:lang)]"><select xpath="rdfs:label[not(@xml:lang)]"/></case>
+                </switch>
+              </sf>
+              <sf code="b" chopPunct="true" repeatable="false">
+                <select xpath="bf:subtitle[not(@xml:lang)]"/>
+              </sf>
+              <sf code="n" chopPunct="true">
+                <select xpath="bf:partNumber[not(@xml:lang)]"/>
+              </sf>
+              <sf code="p" chopPunct="true">
+                <select xpath="bf:partName[not(@xml:lang)]"/>
+              </sf>
+            </df>
           </case>
         </switch>
-      </ind2>
-      <sf code="a" chopPunct="true" repeatable="false">
-        <switch>
-          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
-        </switch>
-      </sf>
-      <sf code="b" chopPunct="true" repeatable="false">
-        <select xpath="bf:subtitle"/>
-      </sf>
-      <switch>
-        <case test="$vXmlLang != ''">
-          <sf code="c" chopPunct="true">
-            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
-              <switch>
-                <case test="@xml:lang=$vXmlLang"><select xpath="."/></case>
-              </switch>
-            </select>
+        <df tag="245" lang-xpath="bf:mainTitle[@xml:lang]">
+          <ind1 default="1"/>
+          <ind2 default="0">
+            <switch>
+              <case test="$vXmlLang = ''">
+                <switch>
+                  <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+                    <transform>
+                      <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+                    </transform>
+                  </case>
+                </switch>
+              </case>
+              <case test="default">
+                <switch>
+                  <case test="bflc:titleSortKey[@xml:lang] and (string-length(bflc:titleSortKey[@xml:lang]) &lt; string-length(rdfs:label[@xml:lang]))">
+                    <transform>
+                      <xsl:value-of select="string-length(rdfs:label[@xml:lang]) - string-length(bflc:titleSortKey[@xml:lang])"/>
+                    </transform>
+                  </case>
+                </switch>
+              </case>
+            </switch>
+          </ind2>
+          <sf code="a" chopPunct="true" repeatable="false">
+            <switch>
+              <case test="$vXmlLang = ''">
+                <switch>
+                  <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+                  <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+                </switch>
+              </case>
+              <case test="default">
+                <switch>
+                  <case test="bf:mainTitle[@xml:lang]"><select xpath="bf:mainTitle[@xml:lang]"/></case>
+                  <case test="rdfs:label[@xml:lang]"><select xpath="rdfs:label[@xml:lang]"/></case>
+                </switch>
+              </case>
+            </switch>
           </sf>
-        </case>
-        <case test="default">
-          <sf code="c" chopPunct="true" repeatable="false">
-            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement"/>
+          <sf code="b" chopPunct="true" repeatable="false">
+            <switch>
+              <case test="$vXmlLang = ''">
+                <select xpath="bf:subtitle"/>
+              </case>
+              <case test="default">
+                <select xpath="bf:subtitle[@xml:lang]"/>
+              </case>
+            </switch>
           </sf>
-        </case>
-      </switch>
-      <sf code="n" chopPunct="true">
-        <select xpath="bf:partNumber"/>
-      </sf>
-      <sf code="p" chopPunct="true">
-        <select xpath="bf:partName"/>
-      </sf>
-    </context>
-  </df>
+          <switch>
+            <case test="$vXmlLang = ''">
+              <sf code="c" chopPunct="true" repeatable="false">
+                <select xpath="ancestor::bf:Instance/bf:responsibilityStatement"/>
+              </sf>
+            </case>
+            <case test="default">
+              <sf code="c" chopPunct="true">
+                <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
+                  <switch>
+                    <case test="@xml:lang=$vXmlLang"><select xpath="."/></case>
+                  </switch>
+                </select>
+              </sf>
+            </case>
+          </switch>
+          <sf code="n" chopPunct="true">
+            <switch>
+              <case test="$vXmlLang = ''">
+                <select xpath="bf:partNumber"/>
+              </case>
+              <case test="default">
+                <select xpath="bf:partNumber[@xml:lang]"/>
+              </case>
+            </switch>
+          </sf>
+          <sf code="p" chopPunct="true">
+            <switch>
+              <case test="$vXmlLang = ''">
+                <select xpath="bf:partName"/>
+              </case>
+              <case test="default">
+                <select xpath="bf:partName[@xml:lang]"/>
+              </case>
+            </switch>
+          </sf>
+        </df>
+      </case>
+      <case test="default">
+        <transform>
+          <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Non-repeatable target field (245).</xsl:message>
+        </transform>
+      </case>
+    </switch>
+  </select>
 
   <df tag="246" lang-xpath="bf:mainTitle">
     <context xpath="bf:Instance/bf:title/*[(
@@ -284,6 +349,9 @@
           <case test="bf:variantType = 'spine'">8</case>
         </switch>
       </ind2>
+      <sf code="i" chopPunct="true" repeatable="false">
+        <select xpath="bf:note/bf:Note/rdfs:label"/>
+      </sf>
       <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
