@@ -67,60 +67,64 @@
     </context>
   </df>
 
-  <!-- MARC 240 -->
-  <switch>
-    <case test="count(bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]) = 1 and
-                count(bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]) = 1 and
-                (bf:Work/bf:contribution/bflc:PrimaryContribution or bf:Work/bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']) and
-                (bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label or (bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey and bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey))">
-      <select xpath="bf:Work/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
-        <df tag="240" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
-          <ind1 default="1"/>
-          <ind2 default="0">
-            <switch>
-              <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
-                <transform>
-                  <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
-                </transform>
-              </case>
-            </switch>
-          </ind2>
-          <sf code="a" chopPunct="true" repeatable="false">
-            <switch>
-              <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-              <case test="rdfs:label"><select xpath="rdfs:label"/></case>
-            </switch>
-          </sf>
-          <sf code="d" chopPunct="true"><select xpath="../../bf:legalDate"/></sf>
-          <sf code="f" repeatable="false" chopPunct="true"><select xpath="../../bf:originDate"/></sf>
-          <sf code="k" chopPunct="true"><select xpath="../../bf:natureOfContent"/></sf>
-          <!-- language is going to be a problem -->
+  <df tag="240" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
+    <context xpath="bf:Work[
+                    count(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]) = 1 and
+                    count(/rdf:RDF/bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]) = 1 and
+                    (bf:contribution/bflc:PrimaryContribution or bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']) and
+                    (bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != /rdf:RDF/bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][not(bflc:titleSortKey)]/rdfs:label or (/rdf:RDF/bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey and bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != /rdf:RDF/bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey))
+                    ]/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
+      <ind1 default="1"/>
+      <ind2 default="0">
+        <switch>
+          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+            <transform>
+              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+            </transform>
+          </case>
+        </switch>
+      </ind2>
+      <sf code="a" chopPunct="true" repeatable="false">
+        <switch>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+        </switch>
+      </sf>
+      <sf code="d" chopPunct="true"><select xpath="../../bf:legalDate"/></sf>
+      <sf code="f" chopPunct="true" repeatable="false"><select xpath="../../bf:originDate"/></sf>
+      <switch>
+        <case test="../../bf:translationOf">
           <sf code="l" chopPunct="true" repeatable="false">
             <select xpath="../../bf:language/*/rdfs:label|../../bf:language/*/madsrdf:authoritativeLabel"/>
           </sf>
-          <sf code="n" chopPunct="true"><select xpath="bf:partNumber"/></sf>
-          <sf code="p" chopPunct="true"><select xpath="bf:partName"/></sf>
-          <sf code="s" chopPunct="true"><select xpath="../../bf:version"/></sf>
-          <sf code="0"><select xpath="@rdf:about"/></sf>
-          <sf code="0">
-            <select xpath="bf:identifiedBy/bf:Identifier">
-              <transform>
-                <xsl:variable name="vIdType">
-                  <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:choose>
-                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                </xsl:choose>
-              </transform>
-            </select>
-          </sf>
-        </df>
-      </select>
-    </case>
-  </switch>
+        </case>
+      </switch>
+      <sf code="n" chopPunct="true"><select xpath="bf:partNumber"/></sf>
+      <switch>
+        <case test="../../bflc:arrangementOf">
+          <sf code="o">arrangement</sf>
+        </case>
+      </switch>
+      <sf code="p" chopPunct="true"><select xpath="bf:partName"/></sf>
+      <sf code="s" chopPunct="true"><select xpath="../../bf:version"/></sf>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType">
+              <xsl:call-template name="tChopPunct">
+                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+    </context>
+  </df>
 
   <!-- Obsolete 241 tag used to hold Romanized title if there is also a vernacular title -->
   <df tag="241" repeatable="false" lang-xpath="rdfs:label" lang-prefer="transliterated">
