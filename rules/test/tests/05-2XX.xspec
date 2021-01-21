@@ -134,7 +134,16 @@
               test="//marc:datafield[@tag='250'][1]/marc:subfield[@code='a'] = 'Third edition'"/>
   </x:scenario>
 
-  <!-- tests for MARC 254 in with notes in 5XX rules -->
+  <x:scenario label="MARC 254">
+    <x:context href="../data/2XX/254.xml"/>
+    <x:expect label="generate 254" test="count(//marc:datafield[@tag='254']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='254']/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='254']/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='254']/marc:subfield[@code='a'] = 'Partitur'"/>
+  </x:scenario>
 
   <x:scenario label="MARC 255">
     <x:context href="../data/2XX/255.xml"/>

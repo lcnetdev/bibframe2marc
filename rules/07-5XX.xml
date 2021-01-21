@@ -31,16 +31,6 @@
   <!-- notes -->
   <select xpath="bf:Instance/bf:note/bf:Note|bf:Work/bf:note/bf:Note|//bf:Item/bf:note/bf:Note">
     <switch>
-      <case test="local-name(../..)='Instance' and translate(bf:noteType,$upper,$lower)='musical presentation'">
-        <df tag="254" lang-xpath="rdfs:label">
-          <ind1 default=" "/>
-          <ind2 default=" "/>
-          <sf code="a" chopPunct="true" repeatable="false">
-            <select xpath="rdfs:label"/>
-          </sf>
-        </df>
-      </case>
-
       <case test="local-name(../..)='Instance' and translate(bf:noteType,$upper,$lower)='computer file characteristics'">
         <df tag="256" lang-xpath="rdfs:label">
           <ind1 default=" "/>
