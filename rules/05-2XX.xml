@@ -219,7 +219,11 @@
           </case>
         </switch>
         <df tag="245" lang-xpath="bf:mainTitle[@xml:lang]">
-          <ind1 default="1"/>
+          <ind1 default="0">
+            <switch>
+              <case test="/rdf:RDF/bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">1</case>
+            </switch>
+          </ind1>
           <ind2 default="0">
             <switch>
               <case test="$vXmlLang = ''">
