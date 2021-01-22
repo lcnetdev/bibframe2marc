@@ -110,15 +110,17 @@
 
   <x:scenario label="MARC 082">
     <x:context href="../data/050-088/050-088.xml"/>
-    <x:expect label="generate 082" test="count(//marc:datafield[@tag='082']) = 1"/>
+    <x:expect label="generate 082" test="count(//marc:datafield[@tag='082']) = 2"/>
     <x:expect label="ind1 from edition"
-              test="//marc:datafield[@tag='082']/@ind1 = '0'"/>
-    <x:expect label="ind2 from assigner"
-              test="//marc:datafield[@tag='082']/@ind2 = ' '"/>
+              test="//marc:datafield[@tag='082'][1]/@ind1 = '0'"/>
+    <x:expect label="ind2 = 0 if DLC assigner"
+              test="//marc:datafield[@tag='082'][2]/@ind2 = '0'"/>
+    <x:expect label="ind2 blank if no assigner"
+              test="//marc:datafield[@tag='082'][1]/@ind2 = ' '"/>
     <x:expect label="$a from classificationPortion"
-              test="//marc:datafield[@tag='082']/marc:subfield[@code='a'] = '621.389/2'"/>
+              test="//marc:datafield[@tag='082'][1]/marc:subfield[@code='a'] = '621.389/2'"/>
     <x:expect label="$2 from source"
-              test="//marc:datafield[@tag='082']/marc:subfield[@code='2'] = '23'"/>
+              test="//marc:datafield[@tag='082'][1]/marc:subfield[@code='2'] = '23'"/>
   </x:scenario>
 
   <x:scenario label="MARC 084">
