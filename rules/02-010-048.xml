@@ -58,18 +58,18 @@
           <sf code="2"><transform><xsl:value-of select="bf:source/bf:Source/*[local-name()='code'][1]"/></transform></sf>
         </case>
         <case test="$vSourceUri != ''">
-          <switch>
-            <case test="contains($vSourceUri,'id.loc.gov')">
-              <sf code="2">
+          <sf code="2">
+            <switch>
+              <case test="contains($vSourceUri,'id.loc.gov')">
                 <transform>
                   <xsl:call-template name="tUriCode">
                     <xsl:with-param name="pUri" select="$vSourceUri"/>
                   </xsl:call-template>
                 </transform>
-              </sf>
-            </case>
-            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
-          </switch>
+              </case>
+              <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+            </switch>
+          </sf>
         </case>
       </switch>
     </context>
@@ -114,18 +114,18 @@
               <sf code="2"><transform><xsl:value-of select="bf:source/bf:Source/*[local-name()='code'][1]"/></transform></sf>
             </case>
             <case test="$vSourceUri != ''">
-              <switch>
-                <case test="contains($vSourceUri,'id.loc.gov')">
-                  <sf code="2">
+              <sf code="2">
+                <switch>
+                  <case test="contains($vSourceUri,'id.loc.gov')">
                     <transform>
                       <xsl:call-template name="tUriCode">
                         <xsl:with-param name="pUri" select="$vSourceUri"/>
                       </xsl:call-template>
                     </transform>
-                  </sf>
-                </case>
-                <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
-              </switch>
+                  </case>
+                  <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                </switch>
+              </sf>
             </case>
           </switch>
         </case>
@@ -294,18 +294,18 @@
           <sf code="2"><transform><xsl:value-of select="bf:source/bf:Source/*[local-name()='code'][1]"/></transform></sf>
         </case>
         <case test="$vSourceUri != ''">
-          <switch>
-            <case test="contains($vSourceUri,'id.loc.gov')">
-              <sf code="2">
+          <sf code="2">
+            <switch>
+              <case test="contains($vSourceUri,'id.loc.gov')">
                 <transform>
                   <xsl:call-template name="tUriCode">
                     <xsl:with-param name="pUri" select="$vSourceUri"/>
                   </xsl:call-template>
                 </transform>
-              </sf>
-            </case>
-            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
-          </switch>
+              </case>
+              <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+            </switch>
+          </sf>
         </case>
       </switch>
       <sf code="5">
@@ -530,18 +530,18 @@
                 <sf code="2"><transform><xsl:value-of select="bf:source/bf:Source/*[local-name()='code'][1]"/></transform></sf>
               </case>
               <case test="$vSourceUri != ''">
-                <switch>
-                  <case test="contains($vSourceUri,'id.loc.gov')">
-                    <sf code="2">
+                <sf code="2">
+                  <switch>
+                    <case test="contains($vSourceUri,'id.loc.gov')">
                       <transform>
                         <xsl:call-template name="tUriCode">
                           <xsl:with-param name="pUri" select="$vSourceUri"/>
                         </xsl:call-template>
                       </transform>
-                    </sf>
-                  </case>
-                  <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
-                </switch>
+                    </case>
+                    <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                  </switch>
+                </sf>
               </case>
             </switch>
           </case>

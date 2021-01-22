@@ -7,13 +7,18 @@
 
   <x:scenario label="MARC 300">
     <x:context href="../data/3XX/300.xml"/>
-    <x:expect label="generate 300" test="count(//marc:datafield[@tag='300']) = 1"/>
+    <x:expect label="generate 300"
+              test="count(//marc:datafield[@tag='300']) = 1"/>
+    <x:expect label="$e from Instance accompanying note"
+              test="//marc:datafield[@tag='300']/marc:subfield[@code='e'] = 'answer book'"/>
   </x:scenario>
 
   <x:scenario label="MARC 306">
     <x:context href="../data/3XX/306.xml"/>
-    <x:expect label="Each bf:duration property of the Instance generates a 306"
+    <x:expect label="generate 306"
               test="count(//marc:datafield[@tag='306']) = 1"/>
+    <x:expect label="each duration property with xs:duration data type creates a $a in the 306"
+              test="count(//marc:datafield[@tag='306']/marc:subfield[@code='a']) = 2"/>
   </x:scenario>
 
   <x:scenario label="MARC 310">
@@ -23,6 +28,23 @@
               test="//marc:datafield[@tag='310'][1]/marc:subfield[@code='a'] = 'daily'"/>
     <x:expect label="$b from date"
               test="//marc:datafield[@tag='310'][2]/marc:subfield[@code='b'] = '1970-1985'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='310'][2]/marc:subfield[@code='2'] = 'freq'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='310'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/frequencies/dyl'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 321">
+    <x:context href="../data/3XX/321.xml"/>
+    <x:expect label="generate 321" test="count(//marc:datafield[@tag='321']) = 1"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='321']/marc:subfield[@code='a'] = 'weekly'"/>
+    <x:expect label="$b from date"
+              test="//marc:datafield[@tag='321']/marc:subfield[@code='b'] = '1970-1985'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='321']/marc:subfield[@code='2'] = 'freq'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='321']/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/frequencies/dyl'"/>
   </x:scenario>
 
   <x:scenario label="MARC 336">
@@ -201,13 +223,33 @@
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='385'][1]/@ind2 = ' '"/>
     <x:expect label="$0 from URI of intendedAudience"
-              test="//marc:datafield[@tag='385'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/maudience/ado'"/>
+              test="//marc:datafield[@tag='385'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/demographicTerms/dg2015060015'"/>
     <x:expect label="$m from demographicGroup"
               test="//marc:datafield[@tag='385'][2]/marc:subfield[@code='m'] = 'Age group'"/>
+    <x:expect label="$n from demographicGroup with URI"
+              test="//marc:datafield[@tag='385'][2]/marc:subfield[@code='n'] = 'Age'"/>
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='385'][2]/marc:subfield[@code='a'] = 'Youth'"/>
     <x:expect label="$2 from source"
               test="//marc:datafield[@tag='385'][2]/marc:subfield[@code='2'] = 'lcsh'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 386">
+    <x:context href="../data/3XX/386.xml"/>
+    <x:expect label="generate 386" test="count(//marc:datafield[@tag='386']) = 2"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='386'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='386'][1]/@ind2 = ' '"/>
+    <x:expect label="$0 from URI of bflc:creatorCharacteristic"
+              test="//marc:datafield[@tag='386'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/demographicTerms/dg2015060015'"/>
+    <x:expect label="$m from demographicGroup"
+              test="//marc:datafield[@tag='386'][2]/marc:subfield[@code='m'] = 'Age group'"/>
+    <x:expect label="$n from demographicGroup with URI"
+              test="//marc:datafield[@tag='386'][2]/marc:subfield[@code='n'] = 'Age'"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='386'][2]/marc:subfield[@code='a'] = 'Youth'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='386'][2]/marc:subfield[@code='2'] = 'lcsh'"/>
+  </x:scenario>
 </x:description>
