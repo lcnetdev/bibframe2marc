@@ -29,6 +29,8 @@
               test="//marc:datafield[@tag='700'][2]/marc:subfield[@code='t'] = 'These foolish things'"/>
     <x:expect label="$i from relationship"
               test="//marc:datafield[@tag='700'][2]/marc:subfield[@code='i'] = 'Motion picture adaptation of (work)'"/>
+    <x:expect label="$5 from bflc:applicableInsitution"
+              test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='5'] = 'DLC'"/>
   </x:scenario>
 
   <x:scenario label="MARC 700 analytic entry">
