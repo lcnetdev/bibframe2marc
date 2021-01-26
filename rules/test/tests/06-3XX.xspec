@@ -49,17 +49,30 @@
 
   <x:scenario label="MARC 336">
     <x:context href="../data/3XX/336.xml"/>
-    <x:expect label="generate 336" test="count(//marc:datafield[@tag='336']) = 1"/>
+    <x:expect label="generate 336"
+              test="count(//marc:datafield[@tag='336']) = 1"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='336']/marc:subfield[@code='a'] = 'text'"/>
+    <x:expect label="$b from code or URI"
+              test="//marc:datafield[@tag='336']/marc:subfield[@code='b'] = 'txt'"/>
   </x:scenario>
 
   <x:scenario label="MARC 337">
     <x:context href="../data/3XX/337.xml"/>
     <x:expect label="generate 337" test="count(//marc:datafield[@tag='337']) = 1"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='337']/marc:subfield[@code='a'] = 'unmediated'"/>
+    <x:expect label="$b from code or URI"
+              test="//marc:datafield[@tag='337']/marc:subfield[@code='b'] = 'n'"/>
   </x:scenario>
 
   <x:scenario label="MARC 338">
     <x:context href="../data/3XX/338.xml"/>
     <x:expect label="generate 338" test="count(//marc:datafield[@tag='338']) = 1"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='338']/marc:subfield[@code='a'] = 'volume'"/>
+    <x:expect label="$b from code or URI"
+              test="//marc:datafield[@tag='338']/marc:subfield[@code='b'] = 'nc'"/>
   </x:scenario>
 
   <x:scenario label="MARC 340">

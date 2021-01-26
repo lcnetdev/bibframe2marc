@@ -98,9 +98,25 @@
           <case test="default"><select xpath="rdfs:label"/></case>
         </switch>
       </sf>
-      <sf code="b" repeatable="false">
-        <select xpath="madsrdf:code"/>
-      </sf>
+      <switch>
+        <case test="*[local-name()='code']">
+          <sf code="b"><transform><xsl:value-of select="*[local-name()='code']"/></transform></sf>
+        </case>
+        <case test="@rdf:about">
+          <sf code="b">
+            <switch>
+              <case test="contains(@rdf:about,'id.loc.gov')">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="@rdf:about"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="default"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+            </switch>
+          </sf>
+        </case>
+      </switch>
       <sf code="0">
         <select xpath="@rdf:about"/>
       </sf>
@@ -143,9 +159,25 @@
           <case test="default"><select xpath="rdfs:label"/></case>
         </switch>
       </sf>
-      <sf code="b" repeatable="false">
-        <select xpath="madsrdf:code"/>
-      </sf>
+      <switch>
+        <case test="*[local-name()='code']">
+          <sf code="b"><transform><xsl:value-of select="*[local-name()='code']"/></transform></sf>
+        </case>
+        <case test="@rdf:about">
+          <sf code="b">
+            <switch>
+              <case test="contains(@rdf:about,'id.loc.gov')">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="@rdf:about"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="default"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+            </switch>
+          </sf>
+        </case>
+      </switch>
       <sf code="0">
         <select xpath="@rdf:about"/>
       </sf>
@@ -188,9 +220,25 @@
           <case test="default"><select xpath="rdfs:label"/></case>
         </switch>
       </sf>
-      <sf code="b" repeatable="false">
-        <select xpath="madsrdf:code"/>
-      </sf>
+      <switch>
+        <case test="*[local-name()='code']">
+          <sf code="b"><transform><xsl:value-of select="*[local-name()='code']"/></transform></sf>
+        </case>
+        <case test="@rdf:about">
+          <sf code="b">
+            <switch>
+              <case test="contains(@rdf:about,'id.loc.gov')">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="@rdf:about"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="default"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+            </switch>
+          </sf>
+        </case>
+      </switch>
       <sf code="0">
         <select xpath="@rdf:about"/>
       </sf>
