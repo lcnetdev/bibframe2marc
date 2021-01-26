@@ -139,16 +139,13 @@
               test="//marc:datafield[@tag='352'][2]/marc:subfield[@code='c'] = '20171'"/>
   </x:scenario>
 
-  <x:scenario label="MARC 362">
+  <!-- tests for generating unformatted 362 from note in 5XX -->
+  <x:scenario label="MARC 362 from firstIssue/lastIssue">
     <x:context href="../data/3XX/362.xml"/>
     <x:expect label="generate formatted 362 from each bf:firstIssue/bf:lastIssue pair"
               test="count(//marc:datafield[@tag='362' and @ind1='0']) = 1"/>
     <x:expect label="generate $a from bf:firstIssue/bf:lastIssue pair"
               test="//marc:datafield[@tag='362' and @ind1='0']/marc:subfield[@code='a'] = 'Vol. 45, no. 21 (Dec. 21, 1878)-v. 77, no. 84 (Mar. 4, 1895)'"/>
-    <x:expect label="generate unformatted 362 from 'Numbering' note"
-              test="count(//marc:datafield[@tag='362' and @ind1='1']) = 1"/>
-    <x:expect label="generate $a from Note rdfs:label"
-              test="//marc:datafield[@tag='362' and @ind1='1']/marc:subfield[@code='a'] = 'Began with vol. 4, published in 1947.'"/>
   </x:scenario>
 
   <x:scenario label="MARC 370">

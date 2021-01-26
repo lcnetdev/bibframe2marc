@@ -384,7 +384,7 @@
   </df>
 
   <df tag="033">
-    <context xpath="bf:Work/bf:capture/bf:Capture[bf:date or bf:place]">
+    <context xpath="bf:Work/bf:capture/bf:Capture[bf:date[@rdf:datatype='http://id.loc.gov/datatypes/edtf'] or bf:place/*[rdf:value]]">
       <var name="vSourceUri">
         <switch>
           <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
@@ -951,14 +951,14 @@
   <switch>
     <case test="bf:Work/bf:geographicCoverage[not(bf:GeographicCoverage/bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/lcc') and
                 not(bf:GeographicCoverage/bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/lcc') and
-                not(bf:GeographicCoverage/bf:source/bf:Source/rdfs:label='lcc') and
+                not(bf:GeographicCoverage/bf:source/bf:Source/bf:code='lcc') and
                 (@rdf:resource or bf:GeographicCoverage/@rdf:about or bf:GeographicCoverage/rdf:value)]">
       <df tag="043">
         <ind1 default=" "/>
         <ind2 default=" "/>
         <select xpath="bf:Work/bf:geographicCoverage[not(bf:GeographicCoverage/bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/lcc') and
                        not(bf:GeographicCoverage/bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/lcc') and
-                       not(bf:GeographicCoverage/bf:source/bf:Source/rdfs:label='lcc') and
+                       not(bf:GeographicCoverage/bf:source/bf:Source/bf:code='lcc') and
                        (@rdf:resource or bf:GeographicCoverage/@rdf:about or bf:GeographicCoverage/rdf:value)]">
           <switch>
             <case test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/geographicAreas/')">

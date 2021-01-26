@@ -580,6 +580,7 @@
     </context>
   </df>
 
+  <!-- rules for generating unformatted 362 from note in 5XX -->
   <df tag="362" lang-xpath=".">
     <context xpath="bf:Instance/bf:firstIssue">
       <ind1 default="0"/>
@@ -601,14 +602,6 @@
           </xsl:call-template>
         </transform>
       </sf>
-    </context>
-  </df>
-
-  <df tag="362" lang-xpath="rdfs:label">
-    <context xpath="bf:Instance/bf:note/bf:Note[bf:noteType='Numbering']">
-      <ind1 default="1"/>
-      <ind2 default=" "/>
-      <sf code="a" chopPunct="true"><select xpath="rdfs:label"/></sf>
     </context>
   </df>
 
