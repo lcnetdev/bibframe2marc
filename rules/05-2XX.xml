@@ -93,13 +93,13 @@
       </sf>
       <sf code="d" chopPunct="true"><select xpath="../../bf:legalDate"/></sf>
       <sf code="f" chopPunct="true" repeatable="false"><select xpath="../../bf:originDate"/></sf>
-      <switch>
-        <case test="../../bf:translationOf">
-          <sf code="l" chopPunct="true" repeatable="false">
-            <select xpath="../../bf:language/*/rdfs:label|../../bf:language/*/madsrdf:authoritativeLabel"/>
-          </sf>
-        </case>
-      </switch>
+      <!-- <switch> -->
+      <!--   <case test="../../bf:translationOf"> -->
+      <!--     <sf code="l" chopPunct="true" repeatable="false"> -->
+      <!--       <select xpath="../../bf:language/*/rdfs:label|../../bf:language/*/madsrdf:authoritativeLabel"/> -->
+      <!--     </sf> -->
+      <!--   </case> -->
+      <!-- </switch> -->
       <sf code="n" chopPunct="true"><select xpath="bf:partNumber"/></sf>
       <switch>
         <case test="../../bflc:arrangementOf">
