@@ -1,5 +1,5 @@
 <?xml version='1.0'?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:bflc="http://id.loc.gov/ontologies/bflc/">
   <bf:Work rdf:about="http://example.org/13600108#Work">
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
     <bf:adminMetadata>
@@ -16,11 +16,11 @@
       </bf:IntendedAudience>
     </bf:intendedAudience>
     <bf:genreForm rdf:resource="http://id.loc.gov/authorities/genreForms/gf2014026048"/>
-    <bf:genreForm>
-      <bf:GenreForm rdf:about="http://id.loc.gov/vocabulary/marcgt/gov">
-        <rdfs:label>federal or national government publication</rdfs:label>
-      </bf:GenreForm>
-    </bf:genreForm>
+    <bflc:governmentPubType>
+      <bflc:GovernmentPubType rdf:about="http://id.loc.gov/vocabulary/mgovtpubtype/f">
+        <rdfs:label>federal</rdfs:label>
+      </bflc:GovernmentPubType>
+    </bflc:governmentPubType>
     <bf:genreForm rdf:resource="http://id.loc.gov/authorities/genreForms/gf2014026068"/>
     <bf:genreForm rdf:resource="http://id.loc.gov/authorities/genreForms/gf2016026082"/>
     <bf:genreForm>
