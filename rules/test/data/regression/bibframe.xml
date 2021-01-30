@@ -1,53 +1,69 @@
-<?xml version='1.0'?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-  <bf:Work rdf:about="http://example.org/13600108#Work">
+  <bf:Work rdf:about="http://bibframe.example.org/13600108#Work">
     <bf:adminMetadata>
       <bf:AdminMetadata>
         <bf:generationProcess>
           <bf:GenerationProcess>
-            <rdfs:label>DLC marc2bibframe2 v1.4.0-SNAPSHOT</rdfs:label>
+            <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
+            <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-01-30T18:39:24-05:00</bf:generationDate>
           </bf:GenerationProcess>
         </bf:generationProcess>
         <bf:status>
           <bf:Status>
+            <rdfs:label>corrected or revised</rdfs:label>
             <bf:code>c</bf:code>
           </bf:Status>
         </bf:status>
         <bflc:encodingLevel>
-          <bflc:EncodingLevel>
-            <bf:code>f</bf:code>
+          <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+            <rdfs:label>full</rdfs:label>
           </bflc:EncodingLevel>
         </bflc:encodingLevel>
         <bf:descriptionConventions>
-          <bf:DescriptionConventions>
-            <bf:code>aacr</bf:code>
+          <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
+            <rdfs:label>aacr</rdfs:label>
           </bf:DescriptionConventions>
         </bf:descriptionConventions>
         <bf:identifiedBy>
           <bf:Local>
             <rdf:value>13600108</rdf:value>
+            <bf:assigner>
+              <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+                <bf:code>DLC</bf:code>
+              </bf:Agent>
+            </bf:assigner>
           </bf:Local>
         </bf:identifiedBy>
         <bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2004-09-15T14:13:53</bf:changeDate>
         <bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2004-05-20</bf:creationDate>
         <bf:assigner>
-          <bf:Agent>
+          <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
             <bf:code>DLC</bf:code>
           </bf:Agent>
         </bf:assigner>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+        <rdfs:label>text</rdfs:label>
+      </bf:Content>
+    </bf:content>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/dan"/>
     </bf:language>
+    <bf:illustrativeContent>
+      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
+        <rdfs:label>illustrations</rdfs:label>
+      </bf:Illustration>
+    </bf:illustrativeContent>
     <bf:intendedAudience>
       <bf:IntendedAudience rdf:about="http://id.loc.gov/vocabulary/maudience/juv">
         <rdfs:label>juvenile</rdfs:label>
       </bf:IntendedAudience>
     </bf:intendedAudience>
     <bf:genreForm>
-      <bf:GenreForm rdf:about="http://id.loc.gov/vocabulary/marcgt/fic">
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026339">
         <rdfs:label>fiction</rdfs:label>
       </bf:GenreForm>
     </bf:genreForm>
@@ -64,7 +80,7 @@
       <bf:Contribution>
         <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
         <bf:agent>
-          <bf:Agent rdf:about="http://example.org/13600108#Agent100-12">
+          <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n79022941">
             <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
             <bflc:name00MatchKey>Andersen, H. C. (Hans Christian), 1805-1875.</bflc:name00MatchKey>
             <bflc:primaryContributorName00MatchKey>Andersen, H. C. (Hans Christian), 1805-1875.</bflc:primaryContributorName00MatchKey>
@@ -77,18 +93,18 @@
         </bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <rdfs:label>Ole Lukøie /</rdfs:label>
+    <rdfs:label>Ole Luk&#xF8;ie</rdfs:label>
     <bf:title>
       <bf:Title>
-        <rdfs:label>Ole Lukøie /</rdfs:label>
-        <bflc:titleSortKey>Ole Lukøie /</bflc:titleSortKey>
-        <bf:mainTitle>Ole Lukøie</bf:mainTitle>
+        <rdfs:label>Ole Luk&#xF8;ie</rdfs:label>
+        <bflc:titleSortKey>Ole Luk&#xF8;ie</bflc:titleSortKey>
+        <bf:mainTitle>Ole Luk&#xF8;ie</bf:mainTitle>
       </bf:Title>
     </bf:title>
     <bf:contribution>
       <bf:Contribution>
         <bf:agent>
-          <bf:Agent rdf:about="http://example.org/13600108#Agent700-17">
+          <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n2004042506">
             <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
             <bflc:name00MatchKey>Dickmeiss, Otto,</bflc:name00MatchKey>
             <bflc:name00MarcKey>7001 $aDickmeiss, Otto,$eill.</bflc:name00MarcKey>
@@ -98,14 +114,14 @@
         <bf:role>
           <bf:Role>
             <rdfs:label>ill.</rdfs:label>
-            <bflc:relatorMatchKey>ill</bflc:relatorMatchKey>
           </bf:Role>
         </bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:hasInstance rdf:resource="http://example.org/13600108#Instance"/>
+    <bf:hasInstance rdf:resource="http://bibframe.example.org/13600108#Instance"/>
   </bf:Work>
-  <bf:Instance rdf:about="http://example.org/13600108#Instance">
+  <bf:Instance rdf:about="http://bibframe.example.org/13600108#Instance">
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print"/>
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono"/>
     </bf:issuance>
@@ -118,11 +134,16 @@
         </bf:place>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bf:illustrativeContent>
-      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
-        <rdfs:label>illustrations</rdfs:label>
-      </bf:Illustration>
-    </bf:illustrativeContent>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+        <rdfs:label>volume</rdfs:label>
+      </bf:Carrier>
+    </bf:carrier>
+    <bf:media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+        <rdfs:label>unmediated</rdfs:label>
+      </bf:Media>
+    </bf:media>
     <bf:identifiedBy>
       <bf:Lccn>
         <rdf:value>  2004436018</rdf:value>
@@ -133,32 +154,32 @@
         <rdf:value>8759517352</rdf:value>
       </bf:Isbn>
     </bf:identifiedBy>
-    <rdfs:label>Ole Lukøie /</rdfs:label>
+    <rdfs:label>Ole Luk&#xF8;ie</rdfs:label>
+    <bf:responsibilityStatement>H.C. Andersen ; illustrationer af Otto Dickmeiss</bf:responsibilityStatement>
     <bf:title>
       <bf:Title>
-        <rdfs:label>Ole Lukøie /</rdfs:label>
-        <bflc:titleSortKey>Ole Lukøie /</bflc:titleSortKey>
-        <bf:mainTitle>Ole Lukøie</bf:mainTitle>
+        <rdfs:label>Ole Luk&#xF8;ie</rdfs:label>
+        <bflc:titleSortKey>Ole Luk&#xF8;ie</bflc:titleSortKey>
+        <bf:mainTitle>Ole Luk&#xF8;ie</bf:mainTitle>
       </bf:Title>
     </bf:title>
-    <bf:responsibilityStatement>H.C. Andersen ; illustrationer af Otto Dickmeiss</bf:responsibilityStatement>
     <bf:provisionActivity>
       <bf:ProvisionActivity>
         <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
         <bf:place>
           <bf:Place>
-            <rdfs:label>København?</rdfs:label>
+            <rdfs:label>K&#xF8;benhavn?</rdfs:label>
           </bf:Place>
         </bf:place>
         <bf:agent>
-          <bf:Agent>
+          <bf:Agent rdf:about="http://id.loc.gov/entities/providers/9a86ba78972bd3250c782a20f8438845">
             <rdfs:label>Lindhardt og Ringhof</rdfs:label>
           </bf:Agent>
         </bf:agent>
         <bf:date>c2001</bf:date>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bf:provisionActivityStatement>[København?] : Lindhardt og Ringhof, c2001.</bf:provisionActivityStatement>
+    <bf:provisionActivityStatement>[K&#xF8;benhavn?] : Lindhardt og Ringhof, c2001.</bf:provisionActivityStatement>
     <bf:extent>
       <bf:Extent>
         <rdfs:label>1 v. (unpaged)</rdfs:label>
@@ -173,21 +194,26 @@
     <bf:dimensions>23 cm.</bf:dimensions>
     <bf:note>
       <bf:Note>
-        <rdfs:label>Text based on the original work published under the title "H.C. Andersens eventyr / kritisk udgivet efter de originale eventyrhæfter med varianter ved Erik Dal og kommentarer ved Erling Nielsen": Copenhagen : Danske Sprog- og Litteraturselskab : C.A. Reitzel, 1990.</rdfs:label>
+        <rdfs:label>Text based on the original work published under the title "H.C. Andersens eventyr / kritisk udgivet efter de originale eventyrh&#xE6;fter med varianter ved Erik Dal og kommentarer ved Erling Nielsen": Copenhagen : Danske Sprog- og Litteraturselskab : C.A. Reitzel, 1990.</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:instanceOf rdf:resource="http://example.org/13600108#Work"/>
+    <bf:instanceOf rdf:resource="http://bibframe.example.org/13600108#Work"/>
     <bf:hasItem>
-      <bf:Item rdf:about="http://example.org/13600108#Item050-11">
+      <bf:Item rdf:about="http://bibframe.example.org/13600108#Item050-11">
+        <bf:heldBy>
+          <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+            <bf:code>DLC</bf:code>
+          </bf:Agent>
+        </bf:heldBy>
         <bf:shelfMark>
           <bf:ShelfMarkLcc>
             <rdfs:label>PZ54.A498 2001</rdfs:label>
-            <bf:source>
-              <bf:Source rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-            </bf:source>
+            <bf:assigner>
+              <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
+            </bf:assigner>
           </bf:ShelfMarkLcc>
         </bf:shelfMark>
-        <bf:itemOf rdf:resource="http://example.org/13600108#Instance"/>
+        <bf:itemOf rdf:resource="http://bibframe.example.org/13600108#Instance"/>
       </bf:Item>
     </bf:hasItem>
   </bf:Instance>
