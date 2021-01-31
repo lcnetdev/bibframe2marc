@@ -725,11 +725,11 @@
           <case test="default">
             <sf code="w">
               <switch>
-                <case test="bf:source/bf:Source/bf:code">
+                <case test="bf:assigner/bf:Agent/bf:code">
                   <transform>
                     <xsl:variable name="vSource">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                        <xsl:with-param name="pString" select="bf:assigner/bf:Agent/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/></transform>
