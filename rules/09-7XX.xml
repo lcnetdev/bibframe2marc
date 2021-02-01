@@ -697,6 +697,9 @@
       <sf code="t" chopPunct="true" repeatable="false">
         <select xpath="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle"/>
       </sf>
+      <sf code="x" chopPunct="true" repeatable="false">
+        <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
+      </sf>
       <select xpath="bf:hasInstance/bf:Instance/bf:identifiedBy/*">
         <switch>
           <case test="local-name()='Local' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local'">
@@ -712,9 +715,6 @@
             <sf code="w">
               <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
             </sf>
-          </case>
-          <case test="local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn'">
-            <sf code="x"><select xpath="rdf:value"/></sf>
           </case>
           <case test="local-name()='Coden' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Coden'">
             <sf code="y"><select xpath="rdf:value"/></sf>
