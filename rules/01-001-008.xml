@@ -1176,7 +1176,7 @@
                 </xsl:choose>
               </transform>
             </case>
-            <case test="$v008Format='CR'"><text>  </text></case>
+            <case test="$v008Format='CR' or $v008Format='VM'"><text>  </text></case>
           </switch>
         </position>
 
@@ -1205,7 +1205,7 @@
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026339' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026339']">m</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026481' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026481']">p</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026363' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026363']">s</xsl:when>
-                        <xsl:otherwise>|</xsl:otherwise>
+                        <xsl:otherwise>0</xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                     <xsl:when test="$v008Format='CR'">
@@ -1222,7 +1222,7 @@
                         <xsl:when test="bf:Work/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mscript/j' or */@rdf:about='http://id.loc.gov/vocabulary/mscript/j' or */*[local-name()='code']='j']">j</xsl:when>
                         <xsl:when test="bf:Work/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mscript/k' or */@rdf:about='http://id.loc.gov/vocabulary/mscript/k' or */*[local-name()='code']='k']">k</xsl:when>
                         <xsl:when test="bf:Work/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mscript/l' or */@rdf:about='http://id.loc.gov/vocabulary/mscript/l' or */*[local-name()='code']='l']">l</xsl:when>
-                        <xsl:otherwise>|</xsl:otherwise>
+                        <xsl:otherwise><text> </text></xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                     <xsl:when test="$v008Format='VM'">
@@ -1349,7 +1349,7 @@
         </position>
 
         <!-- 38-39 -->
-        <position default=" |"/>
+        <position default="  "/>
 
       </fixed-field>
     </context>
