@@ -200,4 +200,26 @@
     </x:expect>
   </x:scenario>
 
+  <x:scenario label="tGetMARCAuth">
+    <x:scenario label="Fetch URL without processing">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'https://id.loc.gov/authorities/names/n79022941.marcxml.xml'"/>
+        <x:param name="pLoC" select="false()"/>
+      </x:call>
+      <x:expect label="...should return the document" test="/marc:record/marc:controlfield[@tag='001']='n79022941'"/>
+    </x:scenario>
+    <x:scenario label="Fetch LoC name authority URI">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'http://id.loc.gov/authorities/names/n79022941'"/>
+      </x:call>
+      <x:expect label="...should convert to URL and return the MARC authority" test="/marc:record/marc:controlfield[@tag='001']='n79022941'"/>
+    </x:scenario>
+    <x:scenario label="Authority not found">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'http://id.loc.gov/authorities/names/n000'"/>
+      </x:call>
+      <x:expect label="...should return empty" select="()"/>
+    </x:scenario>
+  </x:scenario>
+
 </x:description>

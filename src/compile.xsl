@@ -514,6 +514,29 @@
         </xsl:choose>
       </xsl:template>
 
+      <!-- get a MARC authority from a URI -->
+      <!-- special handling for id.loc.gov authorities -->
+      <xsl:template name="tGetMARCAuth">
+        <xsl:param name="pUri"/>
+        <xsl:param name="pLoC" select="true()"/>
+        <xsl:variable name="vUrl">
+          <xsl:choose>
+            <xsl:when test="$pLoC">
+              <xsl:choose>
+                <xsl:when test="contains($pUri,'id.loc.gov')">
+                  <xsl:value-of select="concat('https://',substring-after($pUri,'://'),'.marcxml.xml')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="$pUri"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:copy-of select="document($vUrl)"/>
+      </xsl:template>
+
     </xsl:stylesheet>
   </xslt:template>
 
