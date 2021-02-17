@@ -960,23 +960,18 @@
                        not(bf:GeographicCoverage/bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/lcc') and
                        not(bf:GeographicCoverage/bf:source/bf:Source/bf:code='lcc') and
                        (@rdf:resource or bf:GeographicCoverage/@rdf:about or bf:GeographicCoverage/rdf:value)]">
+          <var name="vUri">
+            <switch>
+              <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+              <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+            </switch>
+          </var>
           <switch>
-            <case test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/geographicAreas/')">
+            <case test="starts-with($vUri,'http://id.loc.gov/vocabulary/geographicAreas/')">
               <sf code="a">
                 <transform>
                   <xsl:call-template name="tPadRight">
-                    <xsl:with-param name="pInput" select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/geographicAreas/')"/>
-                    <xsl:with-param name="pPadChar" select="'-'"/>
-                    <xsl:with-param name="pStringLength" select="7"/>
-                  </xsl:call-template>
-                </transform>
-              </sf>
-            </case>
-            <case test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/geographicAreas/')]">
-              <sf code="a">
-                <transform>
-                  <xsl:call-template name="tPadRight">
-                    <xsl:with-param name="pInput" select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/geographicAreas/')"/>
+                    <xsl:with-param name="pInput" select="substring-after($vUri,'http://id.loc.gov/vocabulary/geographicAreas/')"/>
                     <xsl:with-param name="pPadChar" select="'-'"/>
                     <xsl:with-param name="pStringLength" select="7"/>
                   </xsl:call-template>
@@ -992,15 +987,8 @@
             </case>
           </switch>
           <switch>
-            <case test="@rdf:resource and not(starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/geographicAreas/'))">
-              <sf code="0"><transform><xsl:value-of select="@rdf:resource"/></transform></sf>
-            </case>
-            <case test="*[@rdf:about]">
-              <sf code="0">
-                <select xpath="*[@rdf:about and not(starts-with(@rdf:about,'http://id.loc.gov/vocabulary/geographicAreas/'))]">
-                  <transform><xsl:value-of select="@rdf:about"/></transform>
-                </select>
-              </sf>
+            <case test="$vUri != ''">
+              <sf code="0"><transform><xsl:value-of select="$vUri"/></transform></sf>
             </case>
           </switch>
           <sf code="0">
