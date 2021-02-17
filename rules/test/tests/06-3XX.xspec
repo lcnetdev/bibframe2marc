@@ -81,6 +81,8 @@
               test="//marc:datafield[@tag='340']/marc:subfield[@code='a'] = 'plastic, metal'"/>
     <x:expect label="bf:source property generates $2"
               test="//marc:datafield[@tag='340']/marc:subfield[@code='2'] = 'rda'"/>
+    <x:expect label="do not generate 340 from bf:systemRequirement property"
+              test="count(//marc:datafield[@tag='340']) = 1"/>
   </x:scenario>
 
   <x:scenario label="MARC 344">

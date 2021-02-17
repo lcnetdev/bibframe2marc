@@ -272,7 +272,6 @@
                     bf:Instance/bf:mount/bf:Mount |
                     bf:Instance/bf:reductionRatio/bf:ReductionRatio |
                     bf:Work/bf:colorContent/bf:ColorContent |
-                    bf:Instance/bf:systemRequirement |
                     bf:Instance/bf:generation/bf:Generation |
                     bf:Instance/bf:layout/bf:Layout |
                     bf:Instance/bf:bookFormat/bf:BookFormat |
@@ -298,21 +297,6 @@
         </case>
         <case test="local-name()='ColorContent'">
           <sf code="g" chopPunct="true"><select xpath="rdfs:label"/></sf>
-        </case>
-        <case test="local-name()='systemRequirement'">
-          <!-- text may be in a literal or in a SystemRequirement object -->
-          <switch>
-            <case test="bf:SystemRequirement">
-              <switch>
-                <case test="not(contains(bf:SystemRequirement/rdf:type/@rdf:resource,'bflc'))">
-                  <sf code="i" chopPunct="true"><select xpath="bf:SystemRequirement/rdfs:label"/></sf>
-                </case>
-              </switch>
-            </case>
-            <case test="default">
-              <sf code="i" chopPunct="true"><select xpath="."/></sf>
-            </case>
-          </switch>
         </case>
         <case test="local-name()='Generation'">
           <sf code="j" chopPunct="true"><select xpath="rdfs:label"/></sf>
