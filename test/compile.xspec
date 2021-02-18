@@ -605,17 +605,7 @@
               </xslt:otherwise>
             </xslt:choose>
           </xslt:variable>
-          <xslt:choose>
-            <xslt:when test="contains($vUrl,'lx2.loc.gov')">
-              <xslt:variable name="vSRUResp">
-                <xslt:copy-of select="document($vUrl)" />
-              </xslt:variable>
-              <xslt:copy-of select="$vSRUResp/zs:searchRetrieveResponse/zs:records/zs:record/zs:recordData/marc:record" />
-            </xslt:when>
-            <xslt:otherwise>
-              <xslt:copy-of select="document($vUrl)" />
-            </xslt:otherwise>
-          </xslt:choose>
+          <xslt:copy-of select="document($vUrl)" />
         </xslt:template>
       </xslt:stylesheet>
     </x:expect>

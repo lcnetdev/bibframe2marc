@@ -10,8 +10,6 @@
                  xmlns:bf2marc="http://www.loc.gov/bf2marc"
                  xmlns:local="http://example.org/local"
                  xmlns:exsl="http://exslt.org/common"
-                 xmlns:zs="http://docs.oasis-open.org/ns/search-ws/sruResponse"
-                 extension-element-prefixes="exsl"
                  exclude-result-prefixes="bf2marc">
 
   <xslt:namespace-alias stylesheet-prefix="xsl" result-prefix="xslt"/>
@@ -566,15 +564,7 @@
             <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <xsl:choose>
-          <xsl:when test="contains($vUrl,'lx2.loc.gov')">
-            <xsl:variable name="vSRUResp"><xsl:copy-of select="document($vUrl)"/></xsl:variable>
-            <xsl:copy-of select="$vSRUResp/zs:searchRetrieveResponse/zs:records/zs:record/zs:recordData/marc:record"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:copy-of select="document($vUrl)"/>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:copy-of select="document($vUrl)"/>
       </xsl:template>
 
     </xsl:stylesheet>
