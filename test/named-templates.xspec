@@ -208,11 +208,17 @@
       </x:call>
       <x:expect label="...should return the document" test="/marc:record/marc:controlfield[@tag='001']='n79022941'"/>
     </x:scenario>
-    <x:scenario label="Fetch LoC name authority URI">
+    <x:scenario label="Fetch LoC name authority URI pre-Y2K">
       <x:call template="tGetMARCAuth">
         <x:param name="pUri" select="'http://id.loc.gov/authorities/names/n79022941'"/>
       </x:call>
-      <x:expect label="...should convert to URL and return the MARC authority" test="/marc:record/marc:controlfield[@tag='001']='n79022941'"/>
+      <x:expect label="...should convert to SRU URL and return the MARC authority" test="/marc:record/marc:controlfield[@tag='001']='n  79022941 '"/>
+    </x:scenario>
+    <x:scenario label="Fetch LoC name authority URI post-Y2K">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'http://id.loc.gov/authorities/names/no2009024971'"/>
+      </x:call>
+      <x:expect label="...should convert to SRU URL and return the MARC authority" test="/marc:record/marc:controlfield[@tag='001']='no2009024971'"/>
     </x:scenario>
     <x:scenario label="Authority not found">
       <x:call template="tGetMARCAuth">

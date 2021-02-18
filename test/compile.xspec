@@ -563,8 +563,37 @@
             <xslt:choose>
               <xslt:when test="$pLoC">
                 <xslt:choose>
-                  <xslt:when test="contains($pUri,'id.loc.gov')">
-                    <xslt:value-of select="concat('https://',substring-after($pUri,'://'),'.marcxml.xml')" />
+                  <xslt:when test="contains($pUri,'id.loc.gov/authorities/')">
+                    <xslt:variable name="vUriLccn">
+                      <xslt:call-template name="tUriCode">
+                        <xslt:with-param name="pUri"
+                                         select="$pUri" />
+                      </xslt:call-template>
+                    </xslt:variable>
+                    <xslt:variable name="vLccnSearch">
+                      <xslt:variable name="vLccnNum">
+                        <xslt:value-of select="translate($vUriLccn,translate($vUriLccn,'0123456789',''),'')" />
+                      </xslt:variable>
+                      <xslt:choose>
+                        <xslt:when test="string-length($vLccnNum)=10">
+                          <xslt:value-of select="$vUriLccn" />
+                        </xslt:when>
+                        <xslt:otherwise>
+                          <xslt:value-of select="concat(translate(substring($vUriLccn,1,3),'0123456789',''),'%20',$vLccnNum)" />
+                        </xslt:otherwise>
+                      </xslt:choose>
+                    </xslt:variable>
+                    <xslt:choose>
+                      <xslt:when test="contains($pUri,'names')">
+                        <xslt:value-of select="concat('http://lx2.loc.gov:210/NAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')" />
+                      </xslt:when>
+                      <xslt:when test="contains($pUri,'subjects')">
+                        <xslt:value-of select="concat('http://lx2.loc.gov:210/SAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')" />
+                      </xslt:when>
+                      <xslt:otherwise>
+                        <xslt:value-of select="$pUri" />
+                      </xslt:otherwise>
+                    </xslt:choose>
                   </xslt:when>
                   <xslt:otherwise>
                     <xslt:value-of select="$pUri" />
@@ -576,7 +605,17 @@
               </xslt:otherwise>
             </xslt:choose>
           </xslt:variable>
-          <xslt:copy-of select="document($vUrl)" />
+          <xslt:choose>
+            <xslt:when test="contains($vUrl,'lx2.loc.gov')">
+              <xslt:variable name="vSRUResp">
+                <xslt:copy-of select="document($vUrl)" />
+              </xslt:variable>
+              <xslt:copy-of select="$vSRUResp/zs:searchRetrieveResponse/zs:records/zs:record/zs:recordData/marc:record" />
+            </xslt:when>
+            <xslt:otherwise>
+              <xslt:copy-of select="document($vUrl)" />
+            </xslt:otherwise>
+          </xslt:choose>
         </xslt:template>
       </xslt:stylesheet>
     </x:expect>

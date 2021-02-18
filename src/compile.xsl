@@ -9,6 +9,9 @@
                  xmlns:xsl="http://www.w3.org/1999/XSL/TransformAlias"
                  xmlns:bf2marc="http://www.loc.gov/bf2marc"
                  xmlns:local="http://example.org/local"
+                 xmlns:exsl="http://exslt.org/common"
+                 xmlns:zs="http://docs.oasis-open.org/ns/search-ws/sruResponse"
+                 extension-element-prefixes="exsl"
                  exclude-result-prefixes="bf2marc">
 
   <xslt:namespace-alias stylesheet-prefix="xsl" result-prefix="xslt"/>
@@ -515,7 +518,8 @@
       </xsl:template>
 
       <!-- get a MARC authority from a URI -->
-      <!-- special handling for id.loc.gov authorities -->
+      <!-- special handling for id.loc.gov authorities - convert to
+           SRU search to get around limitations of libxslt web client -->
       <xsl:template name="tGetMARCAuth">
         <xsl:param name="pUri"/>
         <xsl:param name="pLoC" select="true()"/>
@@ -523,8 +527,36 @@
           <xsl:choose>
             <xsl:when test="$pLoC">
               <xsl:choose>
-                <xsl:when test="contains($pUri,'id.loc.gov')">
-                  <xsl:value-of select="concat('https://',substring-after($pUri,'://'),'.marcxml.xml')"/>
+                <xsl:when test="contains($pUri,'id.loc.gov/authorities/')">
+                  <xsl:variable name="vUriLccn">
+                    <xsl:call-template name="tUriCode">
+                      <xsl:with-param name="pUri" select="$pUri"/>
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <!-- need to distinguish between pre/post Y2K LCCNs -->
+                  <xsl:variable name="vLccnSearch">
+                    <xsl:variable name="vLccnNum">
+                      <xsl:value-of select="translate($vUriLccn,translate($vUriLccn,'0123456789',''),'')"/>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="string-length($vLccnNum)=10">
+                        <!-- post Y2K -->
+                        <xsl:value-of select="$vUriLccn"/>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:value-of select="concat(translate(substring($vUriLccn,1,3),'0123456789',''),'%20',$vLccnNum)"/>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
+                  <xsl:choose>
+                    <xsl:when test="contains($pUri,'names')">
+                      <xsl:value-of select="concat('http://lx2.loc.gov:210/NAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')"/>
+                    </xsl:when>
+                    <xsl:when test="contains($pUri,'subjects')">
+                      <xsl:value-of select="concat('http://lx2.loc.gov:210/SAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')"/>
+                    </xsl:when>
+                    <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+                  </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:value-of select="$pUri"/>
@@ -534,7 +566,15 @@
             <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <xsl:copy-of select="document($vUrl)"/>
+        <xsl:choose>
+          <xsl:when test="contains($vUrl,'lx2.loc.gov')">
+            <xsl:variable name="vSRUResp"><xsl:copy-of select="document($vUrl)"/></xsl:variable>
+            <xsl:copy-of select="$vSRUResp/zs:searchRetrieveResponse/zs:records/zs:record/zs:recordData/marc:record"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:copy-of select="document($vUrl)"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:template>
 
     </xsl:stylesheet>
