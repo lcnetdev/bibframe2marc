@@ -107,11 +107,13 @@
 
   <x:scenario label="MARC 653">
     <x:context href="../data/6XX/653.xml"/>
-    <x:expect label="generate 653" test="count(//marc:datafield[@tag='653']) = 1"/>
+    <x:expect label="generate 653" test="count(//marc:datafield[@tag='653']) = 2"/>
     <x:expect label="ind1 default to blank"
               test="//marc:datafield[@tag='653'][1]/@ind1 = ' '"/>
     <x:expect label="ind2 based on class of subject"
               test="//marc:datafield[@tag='653'][1]/@ind2 = '2'"/>
+    <x:expect label="...default to blank for bf:Topic"
+              test="//marc:datafield[@tag='653'][2]/@ind2 = ' '"/>
     <x:expect label="$a from rdfs:label"
               test="//marc:datafield[@tag='653'][1]/marc:subfield[@code='a'] = 'UNICEF'"/>
   </x:scenario>

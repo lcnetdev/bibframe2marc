@@ -81,25 +81,38 @@
               test="//marc:datafield[@tag='340']/marc:subfield[@code='a'] = 'plastic, metal'"/>
     <x:expect label="bf:source property generates $2"
               test="//marc:datafield[@tag='340']/marc:subfield[@code='2'] = 'rda'"/>
+    <x:expect label="do not generate 340 from bf:systemRequirement property"
+              test="count(//marc:datafield[@tag='340']) = 1"/>
   </x:scenario>
 
   <x:scenario label="MARC 344">
     <x:context href="../data/3XX/344.xml"/>
     <x:expect label="generate 344 from each matching bf:soundCharacteristic property"
-              test="count(//marc:datafield[@tag='344']) = 7"/>
+              test="count(//marc:datafield[@tag='344']) = 8"/>
   </x:scenario>
 
   <x:scenario label="MARC 345">
-    <x:context href="../data/3XX/345.xml"/>
-    <x:expect label="generate 345 from each bf:projectionCharacteristic property" test="count(//marc:datafield[@tag='345']) = 2"/>
-    <x:expect label="$a from PresentationFormat"
-              test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='a'] = 'Cinerama'"/>
-    <x:expect label="$0 from PresentationFormat URI"
-              test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mpresformat/ciner'"/>
-    <x:expect label="$2 from PresentationFormat source"
-              test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='2'] = 'rdapf'"/>
-    <x:expect label="$b from ProjectionSpeed label"
-              test="//marc:datafield[@tag='345'][2]/marc:subfield[@code='b'] = '24 fps'"/>
+    <x:scenario label="345 $a/$b">
+      <x:context href="../data/3XX/345-1.xml"/>
+      <x:expect label="generate 345 from each bf:projectionCharacteristic property" test="count(//marc:datafield[@tag='345']) = 2"/>
+      <x:expect label="$a from PresentationFormat"
+                test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='a'] = 'Cinerama'"/>
+      <x:expect label="$0 from PresentationFormat URI"
+                test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mpresformat/ciner'"/>
+      <x:expect label="$2 from PresentationFormat source"
+                test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='2'] = 'rdapf'"/>
+      <x:expect label="$b from ProjectionSpeed label"
+                test="//marc:datafield[@tag='345'][2]/marc:subfield[@code='b'] = '24 fps'"/>
+    </x:scenario>
+    <x:scenario label="345 $d">
+      <x:context href="../data/3XX/345-2.xml"/>
+      <x:expect label="generate 345 from each Work/aspectRatio/AspectRatio/rdfs:label"
+                test="count(//marc:datafield[@tag='345']) = 2"/>
+      <x:expect label="$d from rdfs:label"
+                test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='d'] = 'anamorphic'"/>
+      <x:expect label="$0 from URI"
+                test="//marc:datafield[@tag='345'][2]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/maspect/wide'"/>
+    </x:scenario>
   </x:scenario>
 
   <x:scenario label="MARC 346">

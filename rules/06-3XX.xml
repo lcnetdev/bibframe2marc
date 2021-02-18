@@ -272,7 +272,6 @@
                     bf:Instance/bf:mount/bf:Mount |
                     bf:Instance/bf:reductionRatio/bf:ReductionRatio |
                     bf:Work/bf:colorContent/bf:ColorContent |
-                    bf:Instance/bf:systemRequirement |
                     bf:Instance/bf:generation/bf:Generation |
                     bf:Instance/bf:layout/bf:Layout |
                     bf:Instance/bf:bookFormat/bf:BookFormat |
@@ -298,21 +297,6 @@
         </case>
         <case test="local-name()='ColorContent'">
           <sf code="g" chopPunct="true"><select xpath="rdfs:label"/></sf>
-        </case>
-        <case test="local-name()='systemRequirement'">
-          <!-- text may be in a literal or in a SystemRequirement object -->
-          <switch>
-            <case test="bf:SystemRequirement">
-              <switch>
-                <case test="not(contains(bf:SystemRequirement/rdf:type/@rdf:resource,'bflc'))">
-                  <sf code="i" chopPunct="true"><select xpath="bf:SystemRequirement/rdfs:label"/></sf>
-                </case>
-              </switch>
-            </case>
-            <case test="default">
-              <sf code="i" chopPunct="true"><select xpath="."/></sf>
-            </case>
-          </switch>
         </case>
         <case test="local-name()='Generation'">
           <sf code="j" chopPunct="true"><select xpath="rdfs:label"/></sf>
@@ -360,7 +344,7 @@
     <context xpath="bf:Instance/bf:soundCharacteristic/bf:RecordingMethod |
                     bf:Instance/bf:soundCharacteristic/bf:RecordingMedium |
                     bf:Instance/bf:soundCharacteristic/bf:PlayingSpeed |
-                    bf:Instance/bf:soundCharacteristic/bf:GrooveCharacteristics |
+                    bf:Instance/bf:soundCharacteristic/bf:GrooveCharacteristic |
                     bf:Instance/bf:soundCharacteristic/bf:TrackConfig |
                     bf:Instance/bf:soundCharacteristic/bf:TapeConfig |
                     bf:Instance/bf:soundCharacteristic/bf:PlaybackChannels |
@@ -380,7 +364,7 @@
         <case test="local-name()='PlayingSpeed'">
           <sf code="c" chopPunct="true"><select xpath="rdfs:label"/></sf>
         </case>
-        <case test="local-name()='GrooveCharacteristics'">
+        <case test="local-name()='GrooveCharacteristic'">
           <sf code="d" chopPunct="true"><select xpath="rdfs:label"/></sf>
         </case>
         <case test="local-name()='TrackConfig'">
@@ -438,6 +422,40 @@
           <sf code="b" chopPunct="true"><select xpath="rdfs:label"/></sf>
         </case>
       </switch>
+      <sf code="0">
+        <select xpath="@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vSource">
+              <xsl:call-template name="tChopPunct">
+                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vSource != ''">
+                <xsl:value-of select="concat('(',$vSource,')',rdf:value)"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" chopPunct="true" repeatable="false">
+        <select xpath="bf:source/bf:Source/bf:code"/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="345" lang-xpath="rdfs:label">
+    <context xpath="bf:Work/bf:aspectRatio/bf:AspectRatio[rdfs:label]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="3" chopPunct="true" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="d" chopPunct="true"><select xpath="rdfs:label"/></sf>
       <sf code="0">
         <select xpath="@rdf:about"/>
       </sf>

@@ -478,11 +478,11 @@
 
   <df tag="264" lang-xpath="bf:place/*/rdfs:label" lang-prefer="vernacular">
     <context xpath="bf:Instance/bf:provisionActivity/*[
-                      local-name()='ProvisionActivity' or
-                      local-name()='Production' or
-                      local-name()='Publication' or
-                      local-name()='Distribution' or
-                      local-name()='Manufacture']">
+                    (local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production'] or
+                    local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution'] or
+                    local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']) or
+                    ((local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication']) and
+                    (*/*/rdfs:label or */*/madsrdf:authoritativeLabel))]">
       <ind1 default=" ">
         <switch>
           <case test="bf:status/bf:Status/rdfs:label='current'">3</case>
@@ -499,11 +499,11 @@
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="a" chopPunct="true">
-        <select xpath="bf:place/*[local-name()='Place' or local-name()='Geographic' or local-name()='Authority']">
+        <select xpath="bf:place/*[(local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
+                       (rdfs:label or madsrdf:authoritativeLabel)]">
           <switch>
             <case test="rdfs:label"><select xpath="rdfs:label"/></case>
             <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-            <case test="@rdf:about"><transform><xsl:value-of select="@rdf:about"/></transform></case>
           </switch>
         </select>
       </sf>
