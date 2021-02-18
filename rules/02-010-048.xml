@@ -948,68 +948,61 @@
     </case>
   </switch>
 
-  <switch>
-    <case test="bf:Work/bf:geographicCoverage[not(bf:GeographicCoverage/bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/lcc') and
-                not(bf:GeographicCoverage/bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/lcc') and
-                not(bf:GeographicCoverage/bf:source/bf:Source/bf:code='lcc') and
-                (@rdf:resource or bf:GeographicCoverage/@rdf:about or bf:GeographicCoverage/rdf:value)]">
-      <df tag="043">
-        <ind1 default=" "/>
-        <ind2 default=" "/>
-        <select xpath="bf:Work/bf:geographicCoverage[not(bf:GeographicCoverage/bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/lcc') and
-                       not(bf:GeographicCoverage/bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/lcc') and
-                       not(bf:GeographicCoverage/bf:source/bf:Source/bf:code='lcc') and
-                       (@rdf:resource or bf:GeographicCoverage/@rdf:about or bf:GeographicCoverage/rdf:value)]">
-          <var name="vUri">
-            <switch>
-              <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-              <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
-            </switch>
-          </var>
-          <switch>
-            <case test="starts-with($vUri,'http://id.loc.gov/vocabulary/geographicAreas/')">
-              <sf code="a">
-                <transform>
-                  <xsl:call-template name="tPadRight">
-                    <xsl:with-param name="pInput" select="substring-after($vUri,'http://id.loc.gov/vocabulary/geographicAreas/')"/>
-                    <xsl:with-param name="pPadChar" select="'-'"/>
-                    <xsl:with-param name="pStringLength" select="7"/>
-                  </xsl:call-template>
-                </transform>
-              </sf>
-            </case>
-            <case test="bf:GeographicCoverage/bf:source/bf:Source/bf:code='ISO 3166'">
-              <sf code="c"><select xpath="bf:GeographicCoverage/rdf:value"/></sf>
-            </case>
-            <case test="default">
-              <sf code="b"><select xpath="bf:GeographicCoverage/rdf:value"/></sf>
-              <sf code="2"><select xpath="bf:GeographicCoverage/bf:source/bf:Source/bf:code"/></sf>
-            </case>
-          </switch>
-          <switch>
-            <case test="$vUri != ''">
-              <sf code="0"><transform><xsl:value-of select="$vUri"/></transform></sf>
-            </case>
-          </switch>
-          <sf code="0">
-            <select xpath="*/bf:identifiedBy/bf:Identifier">
-              <transform>
-                <xsl:variable name="vIdType">
-                  <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:choose>
-                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                </xsl:choose>
-              </transform>
-            </select>
+  <df tag="043">
+    <context xpath="bf:Work/bf:geographicCoverage[not(bf:GeographicCoverage/bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/lcc') and
+                    not(bf:GeographicCoverage/bf:source/bf:Source/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/lcc') and
+                    not(bf:GeographicCoverage/bf:source/bf:Source/bf:code='lcc') and
+                    (@rdf:resource or bf:GeographicCoverage/@rdf:about or bf:GeographicCoverage/rdf:value)]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <var name="vUri">
+        <switch>
+          <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+        </switch>
+      </var>
+      <switch>
+        <case test="starts-with($vUri,'http://id.loc.gov/vocabulary/geographicAreas/')">
+          <sf code="a">
+            <transform>
+              <xsl:call-template name="tPadRight">
+                <xsl:with-param name="pInput" select="substring-after($vUri,'http://id.loc.gov/vocabulary/geographicAreas/')"/>
+                <xsl:with-param name="pPadChar" select="'-'"/>
+                <xsl:with-param name="pStringLength" select="7"/>
+              </xsl:call-template>
+            </transform>
           </sf>
+        </case>
+        <case test="bf:GeographicCoverage/bf:source/bf:Source/bf:code='ISO 3166'">
+          <sf code="c"><select xpath="bf:GeographicCoverage/rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <sf code="b"><select xpath="bf:GeographicCoverage/rdf:value"/></sf>
+          <sf code="2"><select xpath="bf:GeographicCoverage/bf:source/bf:Source/bf:code"/></sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="$vUri != ''">
+          <sf code="0"><transform><xsl:value-of select="$vUri"/></transform></sf>
+        </case>
+      </switch>
+      <sf code="0">
+        <select xpath="*/bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType">
+              <xsl:call-template name="tChopPunct">
+                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
         </select>
-      </df>
-    </case>
-  </switch>
+      </sf>
+    </context>
+  </df>
 
   <switch>
     <case test="bf:Work/bf:temporalCoverage">
