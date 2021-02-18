@@ -10,8 +10,27 @@
 
   <df tag="$vMainEntryTag" repeatable="false" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent/*">
+      <var name="vNameAuth">
+        <!-- only look up id.loc.gov name authorities -->
+        <switch>
+          <case test="contains(@rdf:about,'id.loc.gov/authorities/names')">
+            <transform>
+              <xsl:call-template name="tGetMARCAuth">
+                <xsl:with-param name="pUri" select="@rdf:about"/>
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
+      </var>
       <var name="vMainEntryTag">
         <switch>
+          <case test="exsl:node-set($vNameAuth)//marc:record">
+            <switch>
+              <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']">100</case>
+              <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']">110</case>
+              <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']">111</case>
+            </switch>
+          </case>
           <case test="local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or
                       local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or
                       local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">110</case>
@@ -28,6 +47,9 @@
       </var>
       <ind1 default="2">
         <switch>
+          <case test="exsl:node-set($vNameAuth)//marc:record">
+            <transform><xsl:value-of select="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/@ind1"/></transform>
+          </case>
           <case test="$vMainEntryTag='100'">
             <switch>
               <case test="contains(local-name(),'Family')">3</case>
@@ -42,86 +64,116 @@
         </switch>
       </ind1>
       <ind2 default=" "/>
-      <sf code="a" chopPunct="true" repeatable="false">
-        <switch>
-          <case test="$vMainEntryTag='100'">
-            <switch>
-              <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
-                <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
-              </case>
-              <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-              <case test="default"><select xpath="rdfs:label"/></case>
-            </switch>
-          </case>
-          <case test="default">
-            <switch>
-              <case test="madsrdf:elementList">
-                <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
-              </case>
-              <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-              <case test="default"><select xpath="rdfs:label"/></case>
-            </switch>
-          </case>
-        </switch>
-      </sf>
       <switch>
-        <case test="$vMainEntryTag='110'">
+        <case test="exsl:node-set($vNameAuth)//marc:record">
+          <sf code="a" chopPunct="true">
+            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='a']"/>
+          </sf>
           <sf code="b" chopPunct="true">
-            <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
+            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='b']"/>
           </sf>
-        </case>
-      </switch>
-      <switch>
-        <case test="$vMainEntryTag='100'">
           <sf code="c" chopPunct="true">
-            <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
+            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='c']"/>
           </sf>
-        </case>
-        <case test="$vMainEntryTag='111'">
-          <sf code="c" chopPunct="true">
-            <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
+          <sf code="d" chopPunct="true">
+            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='d']"/>
           </sf>
-        </case>
-      </switch>
-      <switch>
-        <case test="$vMainEntryTag='100'">
-          <sf code="d" chopPunct="true" repeatable="false">
-            <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
-          </sf>
-        </case>
-      </switch>
-      <switch>
-        <case test="$vMainEntryTag='100' or $vMainEntryTag='110'">
-          <sf code="e" chopPunct="true">
-            <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
-              <switch>
-                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                <case test="default"><select xpath="rdfs:label"/></case>
-              </switch>
-            </select>
-          </sf>
-        </case>
-      </switch>
-      <switch>
-        <case test="$vMainEntryTag='111'">
-          <sf code="j" chopPunct="true">
-            <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
-              <switch>
-                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                <case test="default"><select xpath="rdfs:label"/></case>
-              </switch>
-            </select>
-          </sf>
-        </case>
-      </switch>
-      <switch>
-        <case test="$vMainEntryTag='100'">
-          <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
-        </case>
-        <case test="$vMainEntryTag='111'">
           <sf code="q" chopPunct="true">
-            <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
+            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='q']"/>
           </sf>
+          <sf code="j" chopPunct="true">
+            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='j']"/>
+          </sf>
+          <sf code="n" chopPunct="true">
+            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='n']"/>
+          </sf>
+          <sf code="g" chopPunct="true">
+            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='g']"/>
+          </sf>
+        </case>
+        <case test="default">
+          <sf code="a" chopPunct="true" repeatable="false">
+            <switch>
+              <case test="$vMainEntryTag='100'">
+                <switch>
+                  <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
+                    <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
+                  </case>
+                  <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                  <case test="default"><select xpath="rdfs:label"/></case>
+                </switch>
+              </case>
+              <case test="default">
+                <switch>
+                  <case test="madsrdf:elementList">
+                    <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+                  </case>
+                  <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                  <case test="default"><select xpath="rdfs:label"/></case>
+                </switch>
+              </case>
+            </switch>
+          </sf>
+          <switch>
+            <case test="$vMainEntryTag='110'">
+              <sf code="b" chopPunct="true">
+                <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
+              </sf>
+            </case>
+          </switch>
+          <switch>
+            <case test="$vMainEntryTag='100'">
+              <sf code="c" chopPunct="true">
+                <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
+              </sf>
+            </case>
+            <case test="$vMainEntryTag='111'">
+              <sf code="c" chopPunct="true">
+                <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
+              </sf>
+            </case>
+          </switch>
+          <switch>
+            <case test="$vMainEntryTag='100'">
+              <sf code="d" chopPunct="true" repeatable="false">
+                <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
+              </sf>
+            </case>
+          </switch>
+          <switch>
+            <case test="$vMainEntryTag='100' or $vMainEntryTag='110'">
+              <sf code="e" chopPunct="true">
+                <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+                  <switch>
+                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                    <case test="default"><select xpath="rdfs:label"/></case>
+                  </switch>
+                </select>
+              </sf>
+            </case>
+          </switch>
+          <switch>
+            <case test="$vMainEntryTag='111'">
+              <sf code="j" chopPunct="true">
+                <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+                  <switch>
+                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                    <case test="default"><select xpath="rdfs:label"/></case>
+                  </switch>
+                </select>
+              </sf>
+            </case>
+          </switch>
+          <switch>
+            <case test="$vMainEntryTag='100'">
+              <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
+            </case>
+            <case test="$vMainEntryTag='111'">
+              <sf code="q" chopPunct="true">
+                <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
+              </sf>
+            </case>
+          </switch>
         </case>
       </switch>
       <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
