@@ -536,13 +536,27 @@
                     <xsl:variable name="vLccnNum">
                       <xsl:value-of select="translate($vUriLccn,translate($vUriLccn,'0123456789',''),'')"/>
                     </xsl:variable>
+                    <xsl:variable name="vPrefix">
+                      <xsl:value-of select="translate(substring($vUriLccn,1,3),'012345679 ','')"/>
+                    </xsl:variable>
                     <xsl:choose>
+                      <!-- post Y2K -->
                       <xsl:when test="string-length($vLccnNum)=10">
-                        <!-- post Y2K -->
-                        <xsl:value-of select="$vUriLccn"/>
+                        <xsl:choose>
+                          <xsl:when test="string-length($vPrefix) &lt; 2">
+                            <xsl:value-of select="concat($vPrefix,'%20',$vLccnNum)"/>
+                          </xsl:when>
+                          <xsl:otherwise><xsl:value-of select="$vUriLccn"/></xsl:otherwise>
+                        </xsl:choose>
                       </xsl:when>
+                      <!-- pre Y2K -->
                       <xsl:otherwise>
-                        <xsl:value-of select="concat(translate(substring($vUriLccn,1,3),'0123456789',''),'%20',$vLccnNum)"/>
+                        <xsl:choose>
+                          <xsl:when test="string-length($vPrefix) &lt; 3">
+                            <xsl:value-of select="concat($vPrefix,'%20',$vLccnNum)"/>
+                          </xsl:when>
+                          <xsl:otherwise><xsl:value-of select="$vUriLccn"/></xsl:otherwise>
+                        </xsl:choose>
                       </xsl:otherwise>
                     </xsl:choose>
                   </xsl:variable>
