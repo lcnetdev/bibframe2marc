@@ -66,30 +66,14 @@
       <ind2 default=" "/>
       <switch>
         <case test="exsl:node-set($vNameAuth)//marc:record">
-          <sf code="a" chopPunct="true">
-            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='a']"/>
-          </sf>
-          <sf code="b" chopPunct="true">
-            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='b']"/>
-          </sf>
-          <sf code="c" chopPunct="true">
-            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='c']"/>
-          </sf>
-          <sf code="d" chopPunct="true">
-            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='d']"/>
-          </sf>
-          <sf code="q" chopPunct="true">
-            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='q']"/>
-          </sf>
-          <sf code="j" chopPunct="true">
-            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='j']"/>
-          </sf>
-          <sf code="n" chopPunct="true">
-            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='n']"/>
-          </sf>
-          <sf code="g" chopPunct="true">
-            <select xpath="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[@code='g']"/>
-          </sf>
+          <transform>
+            <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[contains('abcdgqjn',@code)]">
+              <marc:subfield>
+                <xsl:attribute name="code" select="@code"/>
+                <xsl:value-of select="."/>
+              </marc:subfield>
+            </xsl:for-each>
+          </transform>
         </case>
         <case test="default">
           <sf code="a" chopPunct="true" repeatable="false">

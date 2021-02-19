@@ -50,10 +50,14 @@
               test="//marc:datafield[@tag='100']/@ind1 = '1'"/>
     <x:expect label="$a from authority"
               test="//marc:datafield[@tag='100']/marc:subfield[@code='a'] = 'Andersen, H. C.'"/>
-    <x:expect label="$q from authority"
-              test="//marc:datafield[@tag='100']/marc:subfield[@code='q'] = 'Hans Christian'"/>
+    <x:expect label="$q from authority (with punctuation)"
+              test="//marc:datafield[@tag='100']/marc:subfield[@code='q'] = '(Hans Christian),'"/>
     <x:expect label="$d from authority"
               test="//marc:datafield[@tag='100']/marc:subfield[@code='d'] = '1805-1875'"/>
+    <x:expect label="Subfield order from authority"
+              test="//marc:datafield[@tag='100']/marc:subfield[1]/@code='a' and
+                    //marc:datafield[@tag='100']/marc:subfield[2]/@code='q' and
+                    //marc:datafield[@tag='100']/marc:subfield[3]/@code='d'"/>
     <x:expect label="$0 from URI"
               test="//marc:datafield[@tag='100']/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n79022941'"/>
   </x:scenario>
