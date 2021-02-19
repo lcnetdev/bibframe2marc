@@ -69,7 +69,7 @@
           <transform>
             <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vMainEntryTag]/marc:subfield[contains('abcdgqjn',@code)]">
               <marc:subfield>
-                <xsl:attribute name="code" select="@code"/>
+                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
                 <xsl:value-of select="."/>
               </marc:subfield>
             </xsl:for-each>
