@@ -537,7 +537,7 @@
                       <xsl:value-of select="translate($vUriLccn,translate($vUriLccn,'0123456789',''),'')"/>
                     </xsl:variable>
                     <xsl:variable name="vPrefix">
-                      <xsl:value-of select="translate(substring($vUriLccn,1,3),'012345679 ','')"/>
+                      <xsl:value-of select="translate(substring($vUriLccn,1,3),'0123456789 ','')"/>
                     </xsl:variable>
                     <xsl:choose>
                       <!-- post Y2K -->

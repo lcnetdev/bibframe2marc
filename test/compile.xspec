@@ -575,7 +575,7 @@
                         <xslt:value-of select="translate($vUriLccn,translate($vUriLccn,'0123456789',''),'')" />
                       </xslt:variable>
                       <xslt:variable name="vPrefix">
-                        <xslt:value-of select="translate(substring($vUriLccn,1,3),'012345679 ','')" />
+                        <xslt:value-of select="translate(substring($vUriLccn,1,3),'0123456789 ','')" />
                       </xslt:variable>
                       <xslt:choose>
                         <xslt:when test="string-length($vLccnNum)=10">
