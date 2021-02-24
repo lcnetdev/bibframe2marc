@@ -78,7 +78,23 @@
     <x:expect label="$c from GeographicElement"
               test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
     <x:expect label="$0 from URI of agent"
-              test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/no2009024971'"/>
+              test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='0'] = 'http://example.com/authorities/names/no2009024971'"/>
+  </x:scenario>
+
+  <x:scenario label="Added entry from name authority">
+    <x:context href="../data/7XX/700-auth.xml"/>
+    <x:expect label="generate added entry"
+              test="count(//marc:datafield[@tag='700']) = 1"/>
+    <x:expect label="ind1 from authority"
+              test="//marc:datafield[@tag='700']/@ind1 = '1'"/>
+    <x:expect label="$a from authority (with punctuation)"
+              test="//marc:datafield[@tag='700']/marc:subfield[@code='a'] = 'Irby, James East,'"/>
+    <x:expect label="$d from authority"
+              test="//marc:datafield[@tag='700']/marc:subfield[@code='d'] = '1931-'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='700']/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/nr95040189'"/>
+    <x:expect label="Process other properties even with authority record"
+              test="//marc:datafield[@tag='700']/marc:subfield[@code='e'] = 'editor'"/>
   </x:scenario>
 
   <x:scenario label="MARC 720">
