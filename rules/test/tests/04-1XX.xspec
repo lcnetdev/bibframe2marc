@@ -8,6 +8,8 @@
   <x:scenario label="MARC 100">
     <x:context href="../data/1XX/100.xml"/>
     <x:expect label="generate 100" test="count(//marc:datafield[@tag='100']) = 1"/>
+    <x:expect label="$e from role"
+              test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='e'] = 'Author'"/>
   </x:scenario>
 
   <x:scenario label="MARC 110">
@@ -60,6 +62,8 @@
                     //marc:datafield[@tag='100']/marc:subfield[3]/@code='d'"/>
     <x:expect label="$0 from URI"
               test="//marc:datafield[@tag='100']/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n79022941'"/>
+    <x:expect label="Process other properties even with authority record"
+              test="//marc:datafield[@tag='100']/marc:subfield[@code='e'] = 'composer'"/>
   </x:scenario>
 
   <x:scenario label="MARC 130">
