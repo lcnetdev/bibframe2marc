@@ -125,18 +125,6 @@
             </case>
           </switch>
           <switch>
-            <case test="$vMainEntryTag='111'">
-              <sf code="j" chopPunct="true">
-                <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
-                  <switch>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </select>
-              </sf>
-            </case>
-          </switch>
-          <switch>
             <case test="$vMainEntryTag='100'">
               <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
             </case>
@@ -151,6 +139,18 @@
       <switch>
         <case test="$vMainEntryTag='100' or $vMainEntryTag='110'">
           <sf code="e" chopPunct="true">
+            <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+              <switch>
+                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                <case test="default"><select xpath="rdfs:label"/></case>
+              </switch>
+            </select>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="$vMainEntryTag='111'">
+          <sf code="j" chopPunct="true">
             <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
               <switch>
                 <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
