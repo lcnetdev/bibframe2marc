@@ -125,7 +125,7 @@
 
   <x:scenario label="MARC 084">
     <x:context href="../data/050-088/050-088.xml"/>
-    <x:expect label="generate 084" test="count(//marc:datafield[@tag='084']) = 1"/>
+    <x:expect label="generate 084" test="count(//marc:datafield[@tag='084']) = 2"/>
     <x:expect label="ind1 default to blank"
               test="//marc:datafield[@tag='084'][1]/@ind1 = ' '"/>
     <x:expect label="ind2 default to blank"
@@ -134,6 +134,8 @@
               test="//marc:datafield[@tag='084'][1]/marc:subfield[@code='a'][2]='014'"/>
     <x:expect label="$2 from source"
               test="//marc:datafield[@tag='084'][1]/marc:subfield[@code='2']='frbnpnav'"/>
+    <x:expect label="084 from unclassed Item - shelfMark - ShelfMark"
+              test="//marc:datafield[@tag='084'][2]/marc:subfield[@code='a']='MLCS 2021/32286 (P)'"/>
   </x:scenario>
 
   <x:scenario label="MARC 086">

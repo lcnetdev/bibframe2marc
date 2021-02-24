@@ -360,6 +360,54 @@
     </context>
   </df>
 
+  <df tag="084">
+    <context xpath="//bf:Item/bf:shelfMark/bf:ShelfMark[not(rdf:type)]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a"><select xpath="rdfs:label"/></sf>
+      <sf code="q">
+        <select xpath="bf:assigner">
+          <switch>
+            <case test="@rdf:resource">
+              <transform>
+                <xsl:call-template name="tUriCode">
+                  <xsl:with-param name="pUri" select="@rdf:resource"/>
+                </xsl:call-template>
+              </transform>
+            </case>
+            <case test="*/@rdf:about">
+              <transform>
+                <xsl:call-template name="tUriCode">
+                  <xsl:with-param name="pUri" select="*/@rdf:about"/>
+                </xsl:call-template>
+              </transform>
+            </case>
+            <case test="default">
+              <transform><xsl:value-of select="*/rdfs:label"/></transform>
+            </case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType">
+              <xsl:call-template name="tChopPunct">
+                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:source/bf:Source/bf:code"/></sf>
+    </context>
+  </df>
+
   <df tag="086">
     <context xpath="bf:Instance/bf:classification/bf:Classification[bf:source]">
       <ind1 default=" ">
