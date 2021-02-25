@@ -49,6 +49,13 @@
           <case test="default">100</case>
         </switch>
       </var>
+      <var name="vAuthSubfields">
+        <switch>
+          <case test="$vNameAuthTag='100'">abcdgjq</case>
+          <case test="$vNameAuthTag='110'">abcdgn</case>
+          <case test="$vNameAuthTag='111'">acdegnq</case>
+        </switch>
+      </var>
       <var name="vSourceUri">
         <switch>
           <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
@@ -129,7 +136,7 @@
           <switch>
             <case test="exsl:node-set($vNameAuth)//marc:record">
               <transform>
-                <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]/marc:subfield[contains('abcdgqjn',@code)]">
+                <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]/marc:subfield[contains($vAuthSubfields,@code)]">
                   <marc:subfield>
                     <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
                     <xsl:value-of select="."/>
