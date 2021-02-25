@@ -497,7 +497,7 @@
         <xsl:choose>
           <xsl:when test="contains($pString,$pSeparator)">
             <marc:subfield>
-              <xsl:attribute name="code" select="$pSubfieldCode"/>
+              <xsl:attribute name="code"><xsl:value-of select="$pSubfieldCode"/></xsl:attribute>
               <xsl:value-of select="substring-before($pString,$pSeparator)"/>
             </marc:subfield>
             <xsl:call-template name="tToken2Subfields">
@@ -508,7 +508,7 @@
           </xsl:when>
           <xsl:otherwise>
             <marc:subfield>
-              <xsl:attribute name="code" select="$pSubfieldCode"/>
+              <xsl:attribute name="code"><xsl:value-of select="$pSubfieldCode"/></xsl:attribute>
               <xsl:value-of select="$pString"/>
             </marc:subfield>
           </xsl:otherwise>
