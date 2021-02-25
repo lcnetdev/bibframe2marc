@@ -147,7 +147,8 @@
 
   <x:scenario label="MARC 255">
     <x:context href="../data/2XX/255.xml"/>
-    <x:expect label="generate 255 from scale or cartographicAttributes of Work" test="count(//marc:datafield[@tag='255']) = 4"/>
+    <x:expect label="generate 255 from scale or cartographicAttributes of Work (but only if correct properties are available)"
+              test="count(//marc:datafield[@tag='255']) = 4"/>
     <x:expect label="$a from scale literal" test="//marc:datafield[@tag='255'][1]/marc:subfield[@code='a'] = 'Scale varies'"/>
     <x:expect label="...or from bf:Scale object" test="//marc:datafield[@tag='255'][2]/marc:subfield[@code='a'] = 'Scale [ca. 1:90,000]'"/>
     <x:expect label="...or from bf:Scale/bf:note"
