@@ -24,6 +24,18 @@
         <case test="bf:contribution/*/bf:agent/*/bf:source/bf:Source/@rdf:about"><transform><xsl:value-of select="bf:contribution/*/bf:agent/*/bf:source/bf:Source/@rdf:about"/></transform></case>
       </switch>
     </var>
+    <var name="vNameAuth">
+      <!-- only look up id.loc.gov name authorities -->
+      <switch>
+        <case test="contains(bf:contribution/*/bf:agent/*/@rdf:about,'id.loc.gov/authorities/names')">
+          <transform>
+            <xsl:call-template name="tGetMARCAuth">
+              <xsl:with-param name="pUri" select="bf:contribution/*/bf:agent/*/@rdf:about"/>
+            </xsl:call-template>
+          </transform>
+        </case>
+      </switch>
+    </var>
     <switch>
       <case test="$vScriptSubtag='' or translate($vScriptSubtag,$upper,$lower)=translate($pCatScript,$upper,$lower)">
         <switch>
@@ -36,6 +48,9 @@
             <df tag="810">
               <ind1 default="2">
                 <switch>
+                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                    <transform><xsl:value-of select="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']/@ind1"/></transform>
+                  </case>
                   <case test="bf:contribution/*/bf:agent/*[local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']]">1</case>
                 </switch>
               </ind1>
@@ -46,18 +61,32 @@
 
               <!-- name subfields -->
               <select xpath="bf:contribution/*/bf:agent/*">
-                <sf code="a" chopPunct="true" repeatable="false">
-                  <switch>
-                    <case test="madsrdf:elementList">
-                      <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
-                    </case>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </sf>
-                <sf code="b" chopPunct="true">
-                  <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
-                </sf>
+                <switch>
+                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                    <transform>
+                      <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']/marc:subfield[contains('abcdgn',@code)]">
+                        <marc:subfield>
+                          <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                          <xsl:value-of select="."/>
+                        </marc:subfield>
+                      </xsl:for-each>
+                    </transform>
+                  </case>
+                  <case test="default">
+                    <sf code="a" chopPunct="true" repeatable="false">
+                      <switch>
+                        <case test="madsrdf:elementList">
+                          <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+                        </case>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
+                    <sf code="b" chopPunct="true">
+                      <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
+                    </sf>
+                  </case>
+                </switch>
                 <sf code="e" chopPunct="true">
                   <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
                     <switch>
@@ -180,7 +209,13 @@
                       local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']
                       ]">
             <df tag="811">
-              <ind1 default="2"/>
+              <ind1 default="2">
+                <switch>
+                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                    <transform><xsl:value-of select="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']/@ind1"/></transform>
+                  </case>
+                </switch>
+              </ind1>
               <ind2 default=" "/>
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
@@ -188,21 +223,35 @@
 
               <!-- name subfields -->
               <select xpath="bf:contribution/*/bf:agent/*">
-                <sf code="a" chopPunct="true" repeatable="false">
-                  <switch>
-                    <case test="madsrdf:elementList">
-                      <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
-                    </case>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </sf>
-                <sf code="c" chopPunct="true">
-                  <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
-                </sf>
-                <sf code="q" chopPunct="true">
-                  <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
-                </sf>
+                <switch>
+                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                    <transform>
+                      <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']/marc:subfield[contains('acdegnq',@code)]">
+                        <marc:subfield>
+                          <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                          <xsl:value-of select="."/>
+                        </marc:subfield>
+                      </xsl:for-each>
+                    </transform>
+                  </case>
+                  <case test="default">
+                    <sf code="a" chopPunct="true" repeatable="false">
+                      <switch>
+                        <case test="madsrdf:elementList">
+                          <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+                        </case>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
+                    <sf code="c" chopPunct="true">
+                      <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
+                    </sf>
+                    <sf code="q" chopPunct="true">
+                      <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
+                    </sf>
+                  </case>
+                </switch>
                 <sf code="j" chopPunct="true">
                   <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
                     <switch>
@@ -324,6 +373,9 @@
             <df tag="800">
               <ind1 default="1">
                 <switch>
+                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                    <transform><xsl:value-of select="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']/@ind1"/></transform>
+                  </case>
                   <case test="bf:contribution/*/bf:agent/*[local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName']]">3</case>
                 </switch>
               </ind1>
@@ -334,21 +386,36 @@
 
               <!-- name subfields -->
               <select xpath="bf:contribution/*/bf:agent/*">
-                <sf code="a" chopPunct="true" repeatable="false">
-                  <switch>
-                    <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
-                      <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
-                    </case>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </sf>
-                <sf code="c" chopPunct="true">
-                  <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
-                </sf>
-                <sf code="d" chopPunct="true" repeatable="false">
-                  <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
-                </sf>
+                <switch>
+                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                    <transform>
+                      <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']/marc:subfield[contains('abcdgjq',@code)]">
+                        <marc:subfield>
+                          <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                          <xsl:value-of select="."/>
+                        </marc:subfield>
+                      </xsl:for-each>
+                    </transform>
+                  </case>
+                  <case test="default">
+                    <sf code="a" chopPunct="true" repeatable="false">
+                      <switch>
+                        <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
+                          <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
+                        </case>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
+                    <sf code="c" chopPunct="true">
+                      <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
+                    </sf>
+                    <sf code="d" chopPunct="true" repeatable="false">
+                      <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
+                    </sf>
+                    <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
+                  </case>
+                </switch>
                 <sf code="e" chopPunct="true">
                   <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
                     <switch>
@@ -357,7 +424,6 @@
                     </switch>
                   </select>
                 </sf>
-                <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
                 <sf code="4">
                   <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
                     <switch>
