@@ -67,7 +67,7 @@
       </var>
       <ind1 default="2">
         <switch>
-          <case test="exsl:node-set($vNameAuth)//marc:record">
+          <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]">
             <transform><xsl:value-of select="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]/@ind1"/></transform>
           </case>
           <case test="$vAddEntryTag='700'">
@@ -134,7 +134,7 @@
 
           <!-- name subfields -->
           <switch>
-            <case test="exsl:node-set($vNameAuth)//marc:record">
+            <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]">
               <transform>
                 <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]/marc:subfield[contains($vAuthSubfields,@code)]">
                   <marc:subfield>

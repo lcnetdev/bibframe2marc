@@ -63,7 +63,7 @@
   </x:scenario>
 
   <x:scenario label="Series added entry from name authority">
-    <x:context href="../data/8XX/810-auth.xml"/>
+    <x:context href="../data/8XX/8XX-auth.xml"/>
     <x:expect label="generate added entry"
               test="count(//marc:datafield[@tag='810']) = 1"/>
     <x:expect label="ind1 from authority"
@@ -76,6 +76,8 @@
               test="//marc:datafield[@tag='810']/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n83826031'"/>
     <x:expect label="$t from title"
               test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='t'] = 'Journal of the New York Academy of Medicine'"/>
+    <x:expect label="Name auth with mismatched tag treated as no auth"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='a'] = 'American Psychopathological Association test meeting'"/>
   </x:scenario>
 
   <x:scenario label="MARC 830">

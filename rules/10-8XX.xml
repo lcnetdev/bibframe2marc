@@ -48,7 +48,7 @@
             <df tag="810">
               <ind1 default="2">
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']">
                     <transform><xsl:value-of select="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']/@ind1"/></transform>
                   </case>
                   <case test="bf:contribution/*/bf:agent/*[local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']]">1</case>
@@ -62,7 +62,7 @@
               <!-- name subfields -->
               <select xpath="bf:contribution/*/bf:agent/*">
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']">
                     <transform>
                       <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']/marc:subfield[contains('abcdgn',@code)]">
                         <marc:subfield>
@@ -211,7 +211,7 @@
             <df tag="811">
               <ind1 default="2">
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']">
                     <transform><xsl:value-of select="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']/@ind1"/></transform>
                   </case>
                 </switch>
@@ -224,7 +224,7 @@
               <!-- name subfields -->
               <select xpath="bf:contribution/*/bf:agent/*">
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']">
                     <transform>
                       <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']/marc:subfield[contains('acdegnq',@code)]">
                         <marc:subfield>
@@ -373,7 +373,7 @@
             <df tag="800">
               <ind1 default="1">
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']">
                     <transform><xsl:value-of select="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']/@ind1"/></transform>
                   </case>
                   <case test="bf:contribution/*/bf:agent/*[local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName']]">3</case>
@@ -387,7 +387,7 @@
               <!-- name subfields -->
               <select xpath="bf:contribution/*/bf:agent/*">
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']">
                     <transform>
                       <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']/marc:subfield[contains('abcdgjq',@code)]">
                         <marc:subfield>

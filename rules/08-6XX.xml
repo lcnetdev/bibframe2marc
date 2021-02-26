@@ -90,7 +90,7 @@
                   </switch>
                 </var>
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']">
                     <transform>
                       <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']/marc:subfield[contains('abcdgjq',@code)]">
                         <marc:subfield>
@@ -362,7 +362,7 @@
                   </switch>
                 </var>
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']">
                     <transform>
                       <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']/marc:subfield[contains('abcdgn',@code)]">
                         <marc:subfield>
@@ -623,7 +623,7 @@
                   </switch>
                 </var>
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:record">
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']">
                     <transform>
                       <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']/marc:subfield[contains('acdegnq',@code)]">
                         <marc:subfield>
