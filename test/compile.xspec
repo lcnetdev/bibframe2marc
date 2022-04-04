@@ -47,6 +47,7 @@
         <xslt:param name="pSourceRecordId"/>
         <xslt:param name="pConversionAgency" select="'DLC'"/>
         <xslt:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc'"/>
+        <xslt:param name="pSRULookup"/>
         <xslt:variable name="lower">abcdefghijklmnopqrstuvwxyz</xslt:variable>
         <xslt:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xslt:variable>
         <xslt:variable name="vCurrentVersion">0.1.0-TEST</xslt:variable>
@@ -533,8 +534,9 @@
           <xslt:choose>
             <xslt:when test="contains($pString,$pSeparator)">
               <marc:subfield>
-                <xslt:attribute name="code"
-                                select="$pSubfieldCode" />
+                <xslt:attribute name="code">
+                  <xslt:value-of select="$pSubfieldCode" />
+                </xslt:attribute>
                 <xslt:value-of select="substring-before($pString,$pSeparator)" />
               </marc:subfield>
               <xslt:call-template name="tToken2Subfields">
@@ -548,82 +550,87 @@
             </xslt:when>
             <xslt:otherwise>
               <marc:subfield>
-                <xslt:attribute name="code"
-                                select="$pSubfieldCode" />
+                <xslt:attribute name="code">
+                  <xslt:value-of select="$pSubfieldCode" />
+                </xslt:attribute>
                 <xslt:value-of select="$pString" />
               </marc:subfield>
             </xslt:otherwise>
           </xslt:choose>
         </xslt:template>
-        <xslt:template name="tGetMARCAuth">
-          <xslt:param name="pUri" />
-          <xslt:param name="pLoC"
-                      select="true()" />
-          <xslt:variable name="vUrl">
-            <xslt:choose>
-              <xslt:when test="$pLoC">
-                <xslt:choose>
-                  <xslt:when test="contains($pUri,'id.loc.gov/authorities/')">
-                    <xslt:variable name="vUriLccn">
-                      <xslt:call-template name="tUriCode">
-                        <xslt:with-param name="pUri"
-                                         select="$pUri" />
-                      </xslt:call-template>
-                    </xslt:variable>
-                    <xslt:variable name="vLccnSearch">
-                      <xslt:variable name="vLccnNum">
-                        <xslt:value-of select="translate($vUriLccn,translate($vUriLccn,'0123456789',''),'')" />
-                      </xslt:variable>
-                      <xslt:variable name="vPrefix">
-                        <xslt:value-of select="translate(substring($vUriLccn,1,3),'0123456789 ','')" />
-                      </xslt:variable>
-                      <xslt:choose>
-                        <xslt:when test="string-length($vLccnNum)=10">
-                          <xslt:choose>
-                            <xslt:when test="string-length($vPrefix) &lt; 2">
-                            <xslt:value-of select="concat($vPrefix,'%20',$vLccnNum)" />
-                          </xslt:when>
-                          <xslt:otherwise>
-                            <xslt:value-of select="$vUriLccn" />
-                          </xslt:otherwise>
-                        </xslt:choose>
-                      </xslt:when>
-                      <xslt:otherwise>
+   <xslt:template name="tGetMARCAuth">
+      <xslt:param name="pUri" />
+      <xslt:param name="pForceSRULookup"
+                    select="false()" />
+      <xslt:variable name="vUrl">
+         <xslt:choose>
+            <xslt:when test="contains($pUri,'id.loc.gov/authorities/')
+                            and not('.marcxml.xml' = substring($pUri, string-length($pUri) - 11))">
+               <xslt:choose>
+                  <xslt:when test="$pSRULookup='true' or $pForceSRULookup=true()">
+                     <xslt:variable name="vUriLccn">
+                        <xslt:call-template name="tUriCode">
+                           <xslt:with-param name="pUri"
+                                              select="$pUri" />
+                        </xslt:call-template>
+                     </xslt:variable>
+                     <xslt:variable name="vLccnSearch">
+                        <xslt:variable name="vLccnNum">
+                           <xslt:value-of select="translate($vUriLccn,translate($vUriLccn,'0123456789',''),'')" />
+                        </xslt:variable>
+                        <xslt:variable name="vPrefix">
+                           <xslt:value-of select="translate(substring($vUriLccn,1,3),'0123456789 ','')" />
+                        </xslt:variable>
                         <xslt:choose>
-                          <xslt:when test="string-length($vPrefix) &lt; 3">
-                          <xslt:value-of select="concat($vPrefix,'%20',$vLccnNum)" />
+                           <xslt:when test="string-length($vLccnNum)=10">
+                              <xslt:choose>
+                                 <xslt:when test="string-length($vPrefix) &lt; 2">
+                                    <xslt:value-of select="concat($vPrefix,'%20',$vLccnNum)" />
+                                 </xslt:when>
+                                 <xslt:otherwise>
+                                    <xslt:value-of select="$vUriLccn" />
+                                 </xslt:otherwise>
+                              </xslt:choose>
+                           </xslt:when>
+                           <xslt:otherwise>
+                              <xslt:choose>
+                                 <xslt:when test="string-length($vPrefix) &lt; 3">
+                                    <xslt:value-of select="concat($vPrefix,'%20',$vLccnNum)" />
+                                 </xslt:when>
+                                 <xslt:otherwise>
+                                    <xslt:value-of select="$vUriLccn" />
+                                 </xslt:otherwise>
+                              </xslt:choose>
+                           </xslt:otherwise>
+                        </xslt:choose>
+                     </xslt:variable>
+                     <xslt:choose>
+                        <xslt:when test="contains($pUri,'names')">
+                           <xslt:value-of select="concat('http://lx2.loc.gov:210/NAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')" />
+                        </xslt:when>
+                        <xslt:when test="contains($pUri,'subjects')">
+                           <xslt:value-of select="concat('http://lx2.loc.gov:210/SAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')" />
                         </xslt:when>
                         <xslt:otherwise>
-                          <xslt:value-of select="$vUriLccn" />
+                           <xslt:value-of select="$pUri" />
                         </xslt:otherwise>
-                      </xslt:choose>
-                    </xslt:otherwise>
-                  </xslt:choose>
-                    </xslt:variable>
-                    <xslt:choose>
-                      <xslt:when test="contains($pUri,'names')">
-                        <xslt:value-of select="concat('http://lx2.loc.gov:210/NAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')" />
-                      </xslt:when>
-                      <xslt:when test="contains($pUri,'subjects')">
-                        <xslt:value-of select="concat('http://lx2.loc.gov:210/SAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')" />
-                      </xslt:when>
-                      <xslt:otherwise>
-                        <xslt:value-of select="$pUri" />
-                      </xslt:otherwise>
-                    </xslt:choose>
+                     </xslt:choose>
                   </xslt:when>
                   <xslt:otherwise>
-                    <xslt:value-of select="$pUri" />
+                     <xslt:variable name="vPath">
+                        <xslt:value-of select="substring-after($pUri,'://id.loc.gov')" />
+                     </xslt:variable>
+                     <xslt:value-of select="concat('https://id.loc.gov',$vPath,'.marcxml.xml')" />
                   </xslt:otherwise>
-                </xslt:choose>
-              </xslt:when>
-              <xslt:otherwise>
-                <xslt:value-of select="$pUri" />
-              </xslt:otherwise>
-            </xslt:choose>
-          </xslt:variable>
-          <xslt:copy-of select="document($vUrl)" />
-        </xslt:template>
+               </xslt:choose>
+            </xslt:when>
+            <xslt:otherwise>
+               <xslt:value-of select="$pUri" />
+            </xslt:otherwise>
+         </xslt:choose>
+      </xslt:variable>
+      <xslt:copy-of select="document($vUrl)" />
+   </xslt:template>
       </xslt:stylesheet>
     </x:expect>
   </x:scenario>

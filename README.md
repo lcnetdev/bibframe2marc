@@ -57,6 +57,8 @@ The converion stylesheet can take the following parameters:
 
 * `pGenerationTimestamp` -- a timestamp for the conversion. If it is not provided, and if the `date:date-time()` function is available, it will be created from the value of `date:date-time()`.
 
+* `pSRULookup` -- parameter can be the string "true" or "false" (default "false"). If "true", use SRU to retrieve MARC authorities from the Library of Congress' SRU service instead of retrieving them directly by URL. This workaround is required for XSLT engines that have only rudimentary HTTP support (i.e., no HTTPS -- specifically, libxslt).
+
 ### Using the compiler stylesheet
 
 The conversion stylesheet is generated from the rules in the `rules` subdirectory by the compiler stylesheet `src/compile.xsl`. You can adapt the sample conversion provided to your own needs, or create your own conversion rules. For more information, see the [RDF2MARC rules documentation](doc/rules.md).

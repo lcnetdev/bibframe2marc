@@ -45,6 +45,7 @@
       <xsl:param name="pSourceRecordId"/>
       <xsl:param name="pConversionAgency" select="'DLC'"/>
       <xsl:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc'"/>
+      <xsl:param name="pSRULookup"/>
 
       <!-- for upper- and lower-case translation (ASCII only) -->
       <xsl:variable name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable>
@@ -516,16 +517,25 @@
       </xsl:template>
 
       <!-- get a MARC authority from a URI -->
-      <!-- special handling for id.loc.gov authorities - convert to
-           SRU search to get around limitations of libxslt web client -->
+
+      <!--
+          special handling for id.loc.gov authorities:
+          Change the extension on the resource to .marcxml.xml UNLESS
+          global variable pSRULookup is "true" (string eq), THEN
+          convert id.loc.gov lookup to SRU search to get around
+          limitations of libxslt web client. Can also force SRU
+          lookup with template param pForceSRULookup (for testing)
+      -->
+
       <xsl:template name="tGetMARCAuth">
         <xsl:param name="pUri"/>
-        <xsl:param name="pLoC" select="true()"/>
+        <xsl:param name="pForceSRULookup" select="false()"/>
         <xsl:variable name="vUrl">
           <xsl:choose>
-            <xsl:when test="$pLoC">
+            <xsl:when test="contains($pUri,'id.loc.gov/authorities/')
+                            and not('.marcxml.xml' = substring($pUri, string-length($pUri) - 11))">
               <xsl:choose>
-                <xsl:when test="contains($pUri,'id.loc.gov/authorities/')">
+                <xsl:when test="$pSRULookup='true' or $pForceSRULookup=true()">
                   <xsl:variable name="vUriLccn">
                     <xsl:call-template name="tUriCode">
                       <xsl:with-param name="pUri" select="$pUri"/>
@@ -571,7 +581,10 @@
                   </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:value-of select="$pUri"/>
+                  <xsl:variable name="vPath">
+                    <xsl:value-of select="substring-after($pUri,'://id.loc.gov')"/>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('https://id.loc.gov',$vPath,'.marcxml.xml')"/>
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:when>
