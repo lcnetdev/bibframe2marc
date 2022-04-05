@@ -17,8 +17,8 @@ jobs:
       - run:
           name: Checkout
           command: |
-            echo "Cloning $CIRCLE_REPOSITORY_URL"
-            git clone --no-checkout "$CIRCLE_REPOSITORY_URL" .
+            echo 'Cloning bibframe2marc'
+            git clone --no-checkout https://github.com/lcnetdev/bibframe2marc.git .
             if [ -n "$CIRCLE_TAG" ]; then
               echo "Checking out tag $CIRCLE_TAG"
               git checkout --force "$CIRCLE_TAG"
