@@ -9,12 +9,25 @@ workflows:
 jobs:
   build:
     docker:
-      - image: circleci/buildpack-deps:scm
+      - image: cimg/base:current
         auth:
           username: $DH_USERNAME
           password: $DH_PASSWORD
     steps:
-      - checkout
+      - run:
+          name: Checkout
+          command: |
+            echo 'Cloning bibframe2marc'
+            git clone --no-checkout https://github.com/lcnetdev/bibframe2marc.git .
+            if [ -n "$CIRCLE_TAG" ]; then
+              echo "Checking out tag $CIRCLE_TAG"
+              git checkout --force "$CIRCLE_TAG"
+              git reset --hard "$CIRCLE_SHA1"
+            else
+              echo "Checking out $CIRCLE_BRANCH branch"
+              git checkout --force -B "$CIRCLE_BRANCH" "$CIRCLE_SHA1"
+              git --no-pager log --no-color -n 1 --format='HEAD is now at %h %s'
+            fi
       - run:
           name: Install testing prerequisites
           command: |
