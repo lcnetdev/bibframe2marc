@@ -116,8 +116,14 @@
     <x:expect label="$a from Agent/code" test="//marc:datafield[@tag='040']/marc:subfield[@code='a'] = 'NBPol-G'"/>
     <x:expect label="$b from AdminMetadata/descriptionLanguage" test="//marc:datafield[@tag='040']/marc:subfield[@code='b'] = 'eng'"/>
     <x:expect label="$d from AdminMetadata/descriptionModifier" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][1] = 'CtY'"/>
-    <x:expect label="Final $d should always be DLC" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][2] = 'DLC'"/>
+    <x:expect label="Final $d from pConversionAgency" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][2] = 'DLC'"/>
     <x:expect label="$e from AdminMetadata/descriptionConventions" test="//marc:datafield[@tag='040']/marc:subfield[@code='e'][1] = 'rda'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 040 $d">
+    <x:context href="../data/010-048/040-test-sf-d.xml"/>
+    <x:expect label="$d should not be added from pConversionAgency if final $d matches"
+              test="count(//marc:datafield[@tag='040']/marc:subfield[@code='d']) = 1"/>
   </x:scenario>
 
   <x:scenario label="MARC 040 from authorities">
@@ -126,7 +132,7 @@
     <x:expect label="$b from AdminMetadata/descriptionLanguage" test="//marc:datafield[@tag='040']/marc:subfield[@code='b'] = 'eng'"/>
     <x:expect label="$c also from AdminMetadata/assigner" test="//marc:datafield[@tag='040']/marc:subfield[@code='c'] = 'Uk'"/>
     <x:expect label="$d from AdminMetadata/descriptionModifier" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][1] = 'cty'"/>
-    <x:expect label="Final $d should always be DLC" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][2] = 'DLC'"/>
+    <x:expect label="Final $d from pConversionAgency" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][2] = 'DLC'"/>
     <x:expect label="$e from AdminMetadata/descriptionConventions" test="//marc:datafield[@tag='040']/marc:subfield[@code='e'][1] = 'rda'"/>
   </x:scenario>
 

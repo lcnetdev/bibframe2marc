@@ -706,7 +706,48 @@
           </switch>
         </select>
       </sf>
-      <sf code="d">DLC</sf>
+      <switch>
+        <case test="count(../bf:descriptionModifier) &gt; 0">
+          <var name="vLastAgentUri">
+            <switch>
+              <case test="../bf:descriptionModifier[count(../bf:descriptionModifier)]/@rdf:resource">
+                <transform>
+                  <xsl:value-of select="../bf:descriptionModifier[count(../bf:descriptionModifier)]/@rdf:resource"/>
+                </transform>
+              </case>
+              <case test="../bf:descriptionModifier[count(../bf:descriptionModifier)]/*/@rdf:about">
+                <transform>
+                  <xsl:value-of select="../bf:descriptionModifier[count(../bf:descriptionModifier)]/*/@rdf:about"/>
+                </transform>
+              </case>
+            </switch>
+          </var>
+          <var name="vModifierCode">
+            <switch>
+              <case test="$vLastAgentUri != '' and contains($vLastAgentUri,'id.loc.gov')">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="$vLastAgentUri"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="default">
+                <transform>
+                  <xsl:value-of select="../bf:descriptionModifier[count(../bf:descriptionModifier)]/*/*[local-name()='code']"/>
+                </transform>
+              </case>
+            </switch>
+          </var>
+          <switch>
+            <case test="$vModifierCode != $pConversionAgency">
+              <sf code="d"><transform><xsl:value-of select="$pConversionAgency"/></transform></sf>
+            </case>
+          </switch>
+        </case>
+        <case test="default">
+          <sf code="d"><transform><xsl:value-of select="$pConversionAgency"/></transform></sf>
+        </case>
+      </switch>
       <sf code="e">
         <select xpath="../bf:descriptionConventions[not(contains(@rdf:resource,'isbd')) and
                                                     not(contains(*/@rdf:about,'isbd')) and
