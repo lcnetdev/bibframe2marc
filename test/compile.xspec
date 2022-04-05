@@ -629,7 +629,16 @@
             </xslt:otherwise>
          </xslt:choose>
       </xslt:variable>
-      <xslt:copy-of select="document($vUrl)" />
+      <xslt:variable name="vDoc"
+                     select="document($vUrl)" />
+      <xslt:choose>
+         <xslt:when test="$vDoc">
+            <xslt:copy-of select="$vDoc" />
+         </xslt:when>
+         <xslt:otherwise>
+            <marc:collection />
+         </xslt:otherwise>
+      </xslt:choose>
    </xslt:template>
       </xslt:stylesheet>
     </x:expect>
