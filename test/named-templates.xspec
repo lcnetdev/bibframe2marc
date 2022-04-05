@@ -186,18 +186,67 @@
   </x:scenario>
 
   <x:scenario label="tToken2Subfields">
-    <!-- note that this test fails for unknown reasons with newer versions of XSpec -->
     <x:call template="tToken2Subfields">
       <x:param name="pString" select="'here is a string'"/>
       <x:param name="pSeparator" select="' '"/>
       <x:param name="pSubfieldCode" select="'a'"/>
     </x:call>
-    <x:expect label="...should return a subfield for each token">
-      <marc:subfield code="a">here</marc:subfield>
-      <marc:subfield code="a">is</marc:subfield>
-      <marc:subfield code="a">a</marc:subfield>
-      <marc:subfield code="a">string</marc:subfield>
-    </x:expect>
+    <x:expect label="...should return a subfield for each token"
+              test="count(//marc:subfield[@code='a'])=4"/>
+    <x:expect label="...with correct values for each token"
+              test="//marc:subfield[@code='a'][1]='here' and
+                    //marc:subfield[@code='a'][2]='is' and
+                    //marc:subfield[@code='a'][3]='a' and
+                    //marc:subfield[@code='a'][4]='string'"/>
   </x:scenario>
 
+  <x:scenario label="tGetMARCAuth">
+    <x:scenario label="Fetch URL without processing">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'https://id.loc.gov/authorities/names/n79022941.marcxml.xml'"/>
+      </x:call>
+      <x:expect label="...should return the document" test="//marc:record/marc:controlfield[@tag='001']='n79022941'"/>
+    </x:scenario>
+    <x:scenario label="Fetch LoC URI using id.loc.gov">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'http://id.loc.gov/authorities/names/n79022941'"/>
+      </x:call>
+      <x:expect label="...should add correct extension and return the MARC authority" test="//marc:record/marc:controlfield[@tag='001']='n79022941'"/>
+    </x:scenario>
+    <x:scenario label="Fetch LoC name authority URI pre-Y2K">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'http://id.loc.gov/authorities/names/n79022941'"/>
+        <x:param name="pForceSRULookup" select="true()"/>
+      </x:call>
+      <x:expect label="...should convert to SRU URL and return the MARC authority" test="//marc:record/marc:controlfield[@tag='001']='n  79022941 '"/>
+    </x:scenario>
+    <x:scenario label="Fetch LoC name authority URI post-Y2K">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'http://id.loc.gov/authorities/names/no2009024971'"/>
+        <x:param name="pForceSRULookup" select="true()"/>
+      </x:call>
+      <x:expect label="...should convert to SRU URL and return the MARC authority" test="//marc:record/marc:controlfield[@tag='001']='no2009024971'"/>
+    </x:scenario>
+    <x:scenario label="Fetch LoC name authority URI post-Y2K with
+                       single character prefix">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'http://id.loc.gov/authorities/names/n2001038047'"/>
+        <x:param name="pForceSRULookup" select="true()"/>
+      </x:call>
+      <x:expect label="...should convert to SRU URL and return the MARC authority" test="//marc:record/marc:controlfield[@tag='001']='n 2001038047'"/>
+    </x:scenario>
+    <x:scenario label="Authority not found">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'http://id.loc.gov/authorities/names/n000'"/>
+      </x:call>
+      <x:expect label="...should return no MARC record" test="not(//marc:record)"/>
+    </x:scenario>
+    <x:scenario label="SRU authority not found">
+      <x:call template="tGetMARCAuth">
+        <x:param name="pUri" select="'http://id.loc.gov/authorities/names/n000'"/>
+        <x:param name="pForceSRULookup" select="true()"/>
+      </x:call>
+      <x:expect label="...should return no MARC record" test="not(//marc:record)"/>
+    </x:scenario>
+  </x:scenario>
 </x:description>

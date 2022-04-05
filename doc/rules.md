@@ -244,6 +244,7 @@ The following named templates are defined in the generated stylesheet for use in
 * `tScriptCode`: Extract the script subtag from an xml:lang attribute.
 * `tUriCode`: Extract the code (last path element) of an id.loc.gov URI
 * `tToken2Subfields`: Tokenize a string into a set of subfields
+* `tGetMARCAuth`: Return a MARC authority record from id.loc.gov as a node set. Note special processing for LOC authorities retrieves an SRU result set, so you may need to dig for the MARC record to use the values! See the test examples in rules/test/test/04-1XX.xspec.
 
 #### Limitations
 

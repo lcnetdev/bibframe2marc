@@ -16,6 +16,18 @@
                     //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/* |
                     //bf:Item/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution and not(bf:hasInstance)]/bf:contribution/*/bf:agent/* |
                     //bf:Item/bf:hasPart[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Work[bf:contribution]/bf:contribution/*/bf:agent/*">
+      <var name="vNameAuth">
+        <!-- only look up id.loc.gov name authorities -->
+        <switch>
+          <case test="contains(@rdf:about,'id.loc.gov/authorities/names')">
+            <transform>
+              <xsl:call-template name="tGetMARCAuth">
+                <xsl:with-param name="pUri" select="@rdf:about"/>
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
+      </var>
       <var name="vAddEntryTag">
         <switch>
           <case test="local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or
@@ -30,6 +42,20 @@
           <case test="default">720</case>
         </switch>
       </var>
+      <var name="vNameAuthTag">
+        <switch>
+          <case test="$vAddEntryTag='710'">110</case>
+          <case test="$vAddEntryTag='711'">111</case>
+          <case test="default">100</case>
+        </switch>
+      </var>
+      <var name="vAuthSubfields">
+        <switch>
+          <case test="$vNameAuthTag='100'">abcdgjq</case>
+          <case test="$vNameAuthTag='110'">abcdgn</case>
+          <case test="$vNameAuthTag='111'">acdegnq</case>
+        </switch>
+      </var>
       <var name="vSourceUri">
         <switch>
           <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
@@ -41,6 +67,9 @@
       </var>
       <ind1 default="2">
         <switch>
+          <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]">
+            <transform><xsl:value-of select="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]/@ind1"/></transform>
+          </case>
           <case test="$vAddEntryTag='700'">
             <switch>
               <case test="contains(local-name(),'Family')">3</case>
@@ -57,7 +86,6 @@
       </ind1>
       <ind2 default=" ">
         <switch>
-          <case test="$vAddEntryTag='720'"><text> </text></case>
           <case test="ancestor::bf:hasPart">2</case>
         </switch>
       </ind2>
@@ -105,53 +133,67 @@
           </transform>
 
           <!-- name subfields -->
-          <sf code="a" chopPunct="true" repeatable="false">
-            <switch>
-              <case test="madsrdf:elementList">
-                <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
-              </case>
-              <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-              <case test="default"><select xpath="rdfs:label"/></case>
-            </switch>
-          </sf>
           <switch>
-            <case test="$vAddEntryTag='710'">
-              <sf code="b" chopPunct="true">
-                <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
-              </sf>
+            <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]">
+              <transform>
+                <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]/marc:subfield[contains($vAuthSubfields,@code)]">
+                  <marc:subfield>
+                    <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                    <xsl:value-of select="."/>
+                  </marc:subfield>
+                </xsl:for-each>
+              </transform>
             </case>
-          </switch>
-          <switch>
-            <case test="$vAddEntryTag='700'">
-              <sf code="c" chopPunct="true">
-                <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
+            <case test="default">
+              <sf code="a" chopPunct="true" repeatable="false">
+                <switch>
+                  <case test="madsrdf:elementList">
+                    <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+                  </case>
+                  <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                  <case test="default"><select xpath="rdfs:label"/></case>
+                </switch>
               </sf>
-            </case>
-          </switch>
-          <switch>
-            <case test="$vAddEntryTag='711'">
-              <sf code="c" chopPunct="true">
-                <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
-              </sf>
-            </case>
-          </switch>
-          <switch>
-            <case test="$vAddEntryTag='700'">
-              <sf code="d" chopPunct="true" repeatable="false">
-                <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
-              </sf>
-            </case>
-          </switch>
-          <switch>
-            <case test="$vAddEntryTag='700'">
-              <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
-            </case>
-          </switch>
-          <switch>
-            <case test="$vAddEntryTag='711'">
-              <sf code="q" chopPunct="true">
-                <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
-              </sf>
+              <switch>
+                <case test="$vAddEntryTag='710'">
+                  <sf code="b" chopPunct="true">
+                    <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
+                  </sf>
+                </case>
+              </switch>
+              <switch>
+                <case test="$vAddEntryTag='700'">
+                  <sf code="c" chopPunct="true">
+                    <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
+                  </sf>
+                </case>
+              </switch>
+              <switch>
+                <case test="$vAddEntryTag='711'">
+                  <sf code="c" chopPunct="true">
+                    <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
+                  </sf>
+                </case>
+              </switch>
+              <switch>
+                <case test="$vAddEntryTag='700'">
+                  <sf code="d" chopPunct="true" repeatable="false">
+                    <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
+                  </sf>
+                </case>
+              </switch>
+              <switch>
+                <case test="$vAddEntryTag='700'">
+                  <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
+                </case>
+              </switch>
+              <switch>
+                <case test="$vAddEntryTag='711'">
+                  <sf code="q" chopPunct="true">
+                    <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
+                  </sf>
+                </case>
+              </switch>
             </case>
           </switch>
           <switch>

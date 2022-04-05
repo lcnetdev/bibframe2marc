@@ -21,7 +21,7 @@
     <x:expect label="$a from label of agent"
               test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='a'] = 'Snicket, Lemony.'"/>
     <x:expect label="$0 from URI of agent"
-              test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='0'][1] = 'http://id.loc.gov/authorities/names/n99020360'"/>
+              test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='0'][1] = 'http://example.com/authorities/names/n99020360'"/>
     <x:expect label="$4 from URI of role"
               test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='4'] = 'http://id.loc.gov/vocabulary/relators/ctb'"/>
     <x:expect label="$t from title"
@@ -40,7 +40,7 @@
     <x:expect label="$b from subsequent NameElements"
               test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='b'] = 'Library'"/>
     <x:expect label="$0 from URI of agent"
-              test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='0'][1] = 'http://id.loc.gov/authorities/names/n83826031'"/>
+              test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='0'][1] = 'http://example.com/authorities/names/n83826031'"/>
     <x:expect label="$t from title"
               test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='t'] = 'Journal of the New York Academy of Medicine'"/>
   </x:scenario>
@@ -57,9 +57,27 @@
     <x:expect label="$c from GeographicElement"
               test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
     <x:expect label="$0 from URI of agent"
-              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/no2009024971'"/>
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='0'] = 'http://example.com/authorities/names/no2009024971'"/>
     <x:expect label="$t from title"
               test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='t'] = 'Book fair guides'"/>
+  </x:scenario>
+
+  <x:scenario label="Series added entry from name authority">
+    <x:context href="../data/8XX/8XX-auth.xml"/>
+    <x:expect label="generate added entry"
+              test="count(//marc:datafield[@tag='810']) = 1"/>
+    <x:expect label="ind1 from authority"
+              test="//marc:datafield[@tag='810']/@ind1 = '2'"/>
+    <x:expect label="$a from authority (with punctuation)"
+              test="//marc:datafield[@tag='810']/marc:subfield[@code='a'] = 'New York Academy of Medicine.'"/>
+    <x:expect label="$b from authority"
+              test="//marc:datafield[@tag='810']/marc:subfield[@code='b'] = 'Library'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='810']/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n83826031'"/>
+    <x:expect label="$t from title"
+              test="//marc:datafield[@tag='810'][1]/marc:subfield[@code='t'] = 'Journal of the New York Academy of Medicine'"/>
+    <x:expect label="Name auth with mismatched tag treated as no auth"
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='a'] = 'American Psychopathological Association test meeting'"/>
   </x:scenario>
 
   <x:scenario label="MARC 830">

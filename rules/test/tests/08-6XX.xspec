@@ -50,6 +50,20 @@
               test="//marc:datafield[@tag='611']/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
   </x:scenario>
 
+  <x:scenario label="Subject added entry from name authority">
+    <x:context href="../data/6XX/600-auth.xml"/>
+    <x:expect label="generate added entry"
+              test="count(//marc:datafield[@tag='600']) = 1"/>
+    <x:expect label="$a from authority (with punctuation)"
+              test="//marc:datafield[@tag='600']/marc:subfield[@code='a'] = 'Goethe, Johann Wolfgang von,'"/>
+    <x:expect label="$d from authority"
+              test="//marc:datafield[@tag='600']/marc:subfield[@code='d'] = '1749-1832'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='600']/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n79003362'"/>
+    <x:expect label="$t from title"
+              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='t'] = 'Faust'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 630">
     <x:context href="../data/6XX/630.xml"/>
     <x:expect label="generate 630"
