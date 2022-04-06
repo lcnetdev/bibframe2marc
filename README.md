@@ -55,7 +55,17 @@ The converion stylesheet can take the following parameters:
 
 * `pRecordId` -- an internal system record ID for use (for example) in a MARC 001 control field. If `pRecordId` is not provided, the conversion will use the `generate-id()` function to generate a record ID.
 
+* `pCatScript` -- string for the default cataloging script found in `xml:lang` attributes. Defaults to `Latn`.
+
 * `pGenerationTimestamp` -- a timestamp for the conversion. If it is not provided, and if the `date:date-time()` function is available, it will be created from the value of `date:date-time()`.
+
+* `pSourceRecordId` -- parameter to set the source record ID, for use in conversion rules. Used in generating the [884](rules/10-8XX.xml).
+
+* `pConversionAgency` -- parameter to set the conversion agency (default "DLC"), for use in conversion rules. Used in generating the [884](rules/10-8XX.xml).
+
+* `pGenerationUri` -- parameter to set the generation URI (default "https://github.com/lcnetdev/bibframe2marc"). Used in generating the [884](rules/10-8XX.xml).
+
+* `pSRULookup` -- parameter can be the string "true" or "false" (default "false"). If "true", use SRU to retrieve MARC authorities from the Library of Congress' SRU service instead of retrieving them directly by URL. This workaround is required for XSLT engines that have only rudimentary HTTP support (i.e., no HTTPS -- specifically, libxslt).
 
 ### Using the compiler stylesheet
 

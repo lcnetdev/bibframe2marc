@@ -50,6 +50,20 @@
               test="//marc:datafield[@tag='611']/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
   </x:scenario>
 
+  <x:scenario label="Subject added entry from name authority">
+    <x:context href="../data/6XX/600-auth.xml"/>
+    <x:expect label="generate added entry"
+              test="count(//marc:datafield[@tag='600']) = 1"/>
+    <x:expect label="$a from authority (with punctuation)"
+              test="//marc:datafield[@tag='600']/marc:subfield[@code='a'] = 'Goethe, Johann Wolfgang von,'"/>
+    <x:expect label="$d from authority"
+              test="//marc:datafield[@tag='600']/marc:subfield[@code='d'] = '1749-1832'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='600']/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n79003362'"/>
+    <x:expect label="$t from title"
+              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='t'] = 'Faust'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 630">
     <x:context href="../data/6XX/630.xml"/>
     <x:expect label="generate 630"
@@ -107,11 +121,13 @@
 
   <x:scenario label="MARC 653">
     <x:context href="../data/6XX/653.xml"/>
-    <x:expect label="generate 653" test="count(//marc:datafield[@tag='653']) = 1"/>
+    <x:expect label="generate 653" test="count(//marc:datafield[@tag='653']) = 2"/>
     <x:expect label="ind1 default to blank"
               test="//marc:datafield[@tag='653'][1]/@ind1 = ' '"/>
     <x:expect label="ind2 based on class of subject"
               test="//marc:datafield[@tag='653'][1]/@ind2 = '2'"/>
+    <x:expect label="...default to blank for bf:Topic"
+              test="//marc:datafield[@tag='653'][2]/@ind2 = ' '"/>
     <x:expect label="$a from rdfs:label"
               test="//marc:datafield[@tag='653'][1]/marc:subfield[@code='a'] = 'UNICEF'"/>
   </x:scenario>

@@ -84,7 +84,7 @@
     <x:context href="../data/010-048/010-048.xml"/>
     <x:expect label="generate 036 from bf:StudyNumber" test="count(//marc:datafield[@tag='036']) = 1"/>
     <x:expect label="rdf:value goes in $a" test="//marc:datafield[@tag='036']/marc:subfield[@code='a'] = 'CNRS 84115'"/>
-    <x:expect label="bf:source goes in $b" test="//marc:datafield[@tag='036']/marc:subfield[@code='b'] = 'Centre national de la recherche scientifique'"/>
+    <x:expect label="bf:assigner goes in $b" test="//marc:datafield[@tag='036']/marc:subfield[@code='b'] = 'Centre national de la recherche scientifique'"/>
   </x:scenario>
 
   <x:scenario label="MARC 037">
@@ -93,7 +93,7 @@
     <x:expect label="I1 from note" test="//marc:datafield[@tag='037']/@ind1 = '3'"/>
     <x:expect label="$3 from appliesTo" test="//marc:datafield[@tag='037']/marc:subfield[@code='3'] = '2014'"/>
     <x:expect label="$a from StockNumber" test="//marc:datafield[@tag='037']/marc:subfield[@code='a'] = 'BL_12860042'"/>
-    <x:expect label="$b from rdfs:label" test="//marc:datafield[@tag='037']/marc:subfield[@code='b'] = 'Portico'"/>
+    <x:expect label="$b from source/Source/rdfs:label" test="//marc:datafield[@tag='037']/marc:subfield[@code='b'] = 'Portico'"/>
     <x:expect label="$c from acquisitionTerms" test="//marc:datafield[@tag='037']/marc:subfield[@code='c'] = '$175.00'"/>
     <x:expect label="$n from note" test="//marc:datafield[@tag='037']/marc:subfield[@code='n'] = 'paperback'"/>
     <x:expect label="$5 from applicableInstitution" test="//marc:datafield[@tag='037']/marc:subfield[@code='5'] = 'Uk'"/>
@@ -112,18 +112,27 @@
 
   <x:scenario label="MARC 040 from labels">
     <x:context href="../data/010-048/010-048.xml"/>
-    <x:expect label="generate 040 from AdminMetadata/source" test="count(//marc:datafield[@tag='040']) = 1"/>
-    <x:expect label="$a and $c from Agent/rdfs:label" test="//marc:datafield[@tag='040']/marc:subfield[@code='a'] = 'NBPol-G' and //marc:datafield[@tag='040']/marc:subfield[@code='c'] = 'NBPol-G'"/>
+    <x:expect label="generate 040 from AdminMetadata/assigner" test="count(//marc:datafield[@tag='040']) = 1"/>
+    <x:expect label="$a from Agent/code" test="//marc:datafield[@tag='040']/marc:subfield[@code='a'] = 'NBPol-G'"/>
     <x:expect label="$b from AdminMetadata/descriptionLanguage" test="//marc:datafield[@tag='040']/marc:subfield[@code='b'] = 'eng'"/>
     <x:expect label="$d from AdminMetadata/descriptionModifier" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][1] = 'CtY'"/>
+    <x:expect label="Final $d from pConversionAgency" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][2] = 'DLC'"/>
     <x:expect label="$e from AdminMetadata/descriptionConventions" test="//marc:datafield[@tag='040']/marc:subfield[@code='e'][1] = 'rda'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 040 $d">
+    <x:context href="../data/010-048/040-test-sf-d.xml"/>
+    <x:expect label="$d should not be added from pConversionAgency if final $d matches"
+              test="count(//marc:datafield[@tag='040']/marc:subfield[@code='d']) = 1"/>
   </x:scenario>
 
   <x:scenario label="MARC 040 from authorities">
     <x:context href="../data/010-048/040-codes.xml"/>
-    <x:expect label="$a and $c from AdminMetadata/source" test="//marc:datafield[@tag='040']/marc:subfield[@code='a'] = 'Uk' and //marc:datafield[@tag='040']/marc:subfield[@code='c'] = 'Uk'"/>
+    <x:expect label="$a from AdminMetadata/assigner" test="//marc:datafield[@tag='040']/marc:subfield[@code='a'] = 'Uk'"/>
     <x:expect label="$b from AdminMetadata/descriptionLanguage" test="//marc:datafield[@tag='040']/marc:subfield[@code='b'] = 'eng'"/>
-    <x:expect label="$d from AdminMetadata/descriptionModifier" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][1] = 'CtY'"/>
+    <x:expect label="$c also from AdminMetadata/assigner" test="//marc:datafield[@tag='040']/marc:subfield[@code='c'] = 'Uk'"/>
+    <x:expect label="$d from AdminMetadata/descriptionModifier" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][1] = 'cty'"/>
+    <x:expect label="Final $d from pConversionAgency" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][2] = 'DLC'"/>
     <x:expect label="$e from AdminMetadata/descriptionConventions" test="//marc:datafield[@tag='040']/marc:subfield[@code='e'][1] = 'rda'"/>
   </x:scenario>
 
@@ -134,7 +143,7 @@
     <x:expect label="$a from Language without part" test="//marc:datafield[@tag='041'][1]/marc:subfield[@code='a'] = 'eng'"/>
     <x:expect label="other subfields determined by part note" test="//marc:datafield[@tag='041'][1]/marc:subfield[@code='b'] = 'dan'"/>
     <x:expect label="Language with source generates new 041" test="//marc:datafield[@tag='041'][2]/marc:subfield[@code='a'] = 'en'"/>
-    <x:expect label="...with source in $2" test="//marc:datafield[@tag='041'][2]/marc:subfield[@code='2'] = 'http://id.loc.gov/vocabulary/iso639-1'"/>
+    <x:expect label="...with source in $2" test="//marc:datafield[@tag='041'][2]/marc:subfield[@code='2'] = 'iso639-1'"/>
   </x:scenario>
 
   <x:scenario label="MARC 042">
@@ -146,21 +155,16 @@
 
   <x:scenario label="MARC 043">
     <x:context href="../data/010-048/010-048.xml"/>
-    <x:expect label="generate 043 from geographicCoverage" test="count(//marc:datafield[@tag='043']) = 1"/>
-    <x:expect label="GeographicCoverage with URI http://id.loc.gov/vocabulary/geographicAreas/ generates $a" test="count(//marc:datafield[@tag='043']/marc:subfield[@code='a']) = 2 and //marc:datafield[@tag='043']/marc:subfield[@code='a'][1] = 'n-us---'"/>
-    <x:expect label="...other URIs generate $0" test="//marc:datafield[@tag='043']/marc:subfield[@code='0'] = 'http://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-LV'"/>
-    <x:expect label="GeographicCoverage with source ISO 3166 generates $c" test="//marc:datafield[@tag='043']/marc:subfield[@code='c'] = 'us'"/>
-    <x:expect label="...other sources generate $b" test="//marc:datafield[@tag='043']/marc:subfield[@code='b'] = 's-bl-ba'"/>
-    <x:expect label="...and $2" test="//marc:datafield[@tag='043']/marc:subfield[@code='2'] = 'BlRjBN'"/>
-  </x:scenario>
-
-  <x:scenario label="MARC 044">
-    <x:context href="../data/010-048/010-048.xml"/>
-    <x:expect label="generate 044 from bf:place" test="count(//marc:datafield[@tag='044']) = 1"/>
-    <x:expect label="URI http://id.loc.gov/vocabulary/countries/ generates $a" test="//marc:datafield[@tag='044']/marc:subfield[@code='a'][1] = 'lv' and //marc:datafield[@tag='044']/marc:subfield[@code='a'][2] = 'li'"/>
-    <x:expect label="source 'ISO 3166' generates $c" test="//marc:datafield[@tag='044']/marc:subfield[@code='c'] = 'cch-zh'"/>
-    <x:expect label="...other sources generate $b" test="//marc:datafield[@tag='044']/marc:subfield[@code='b'] = 'xna'"/>
-    <x:expect label="...with $2" test="//marc:datafield[@tag='044']/marc:subfield[@code='2'] = 'ausmarc'"/>
+    <x:expect label="generate 043 from geographicCoverage" test="count(//marc:datafield[@tag='043']) = 4"/>
+    <x:expect label="GeographicCoverage with URI http://id.loc.gov/vocabulary/geographicAreas/ generates $a"
+              test="//marc:datafield[@tag='043'][1]/marc:subfield[@code='a'][1] = 'n-us---'"/>
+    <x:expect label="...with accompanying $0"
+              test="//marc:datafield[@tag='043'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/geographicAreas/n-us'"/>
+    <x:expect label="...other URIs generate $0" test="//marc:datafield[@tag='043'][4]/marc:subfield[@code='0'] = 'http://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-LV'"/>
+    <x:expect label="GeographicCoverage with source ISO 3166 generates $c" test="//marc:datafield[@tag='043'][3]/marc:subfield[@code='c'] = 'us'"/>
+    <x:expect label="...other sources generate $b" test="//marc:datafield[@tag='043'][2]/marc:subfield[@code='b'] = 's-bl-ba'"/>
+    <x:expect label="...and $2" test="//marc:datafield[@tag='043'][2]/marc:subfield[@code='2'] = 'BlRjBN'"/>
+    <x:expect label="GeographicCoverage with identifiedBy property generates $0" test="//marc:datafield[@tag='043'][2]/marc:subfield[@code='0'] = '(DE-101c)310008891'"/>
   </x:scenario>
 
   <x:scenario label="MARC 045">

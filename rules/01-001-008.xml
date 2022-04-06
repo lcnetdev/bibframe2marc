@@ -138,8 +138,8 @@
           <switch>
             <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ca' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ca']"><text>ca </text></case>
             <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cb' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cb']"><text>cb </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cd']"><text>cd </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ce' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ce']"><text>ce </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cd']"><text>co </text></case>
+            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ce' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ce']"><text>cj </text></case>
             <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cf']"><text>cf </text></case>
             <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ch' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ch']"><text>ch </text></case>
             <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ck' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ck']"><text>ck </text></case>
@@ -311,11 +311,11 @@
     <context xpath="/rdf:RDF">
       <var name="v008Format">
         <switch>
+          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography']">MP</case>
           <case test="bf:Instance/bf:issuance/bf:Issuance[@rdf:about='http://id.loc.gov/vocabulary/issuance/serl'] or
                       bf:Instance/bf:issuance[@rdf:resource='http://id.loc.gov/vocabulary/issuance/serl'] or
                       bf:Instance/bf:issuance/bf:Issuance[@rdf:about='http://id.loc.gov/vocabulary/issuance/intg'] or
                       bf:Instance/bf:issuance[@rdf:resource='http://id.loc.gov/vocabulary/issuance/intg']">CR</case>
-          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography']">MP</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Audio'] or
                       bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/NotatedMusic']">MU</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage'] or
@@ -604,12 +604,12 @@
                 </xsl:variable>
                 <xsl:variable name="vCRType">
                   <xsl:choose>
-                    <xsl:when test="bf:Instance/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026081' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026081']">d</xsl:when>
-                    <xsl:when test="bf:Instance/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026373' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026373']">l</xsl:when>
-                    <xsl:when test="bf:Instance/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/ser' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/ser']">m</xsl:when>
-                    <xsl:when test="bf:Instance/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026132' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026132']">n</xsl:when>
-                    <xsl:when test="bf:Instance/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026139' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026139']">p</xsl:when>
-                    <xsl:when test="bf:Instance/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/web' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/web']">w</xsl:when>
+                    <xsl:when test="bf:Work/bflc:serialPubType[@rdf:resource='http://id.loc.gov/vocabulary/mserialpubtype/database' or */@rdf:about='http://id.loc.gov/vocabulary/mserialpubtype/database' or */*[local-name()='code']='database']">d</xsl:when>
+                    <xsl:when test="bf:Work/bflc:serialPubType[@rdf:resource='http://id.loc.gov/vocabulary/mserialpubtype/looseleaf' or */@rdf:about='http://id.loc.gov/vocabulary/mserialpubtype/looseleaf' or */*[local-name()='code']='looseleaf']">l</xsl:when>
+                    <xsl:when test="bf:Work/bflc:serialPubType[@rdf:resource='http://id.loc.gov/vocabulary/mserialpubtype/monoseries' or */@rdf:about='http://id.loc.gov/vocabulary/mserialpubtype/monoseries' or */*[local-name()='code']='monoseries']">m</xsl:when>
+                    <xsl:when test="bf:Work/bflc:serialPubType[@rdf:resource='http://id.loc.gov/vocabulary/mserialpubtype/newspaper' or */@rdf:about='http://id.loc.gov/vocabulary/mserialpubtype/newspaper' or */*[local-name()='code']='newspaper']">n</xsl:when>
+                    <xsl:when test="bf:Work/bflc:serialPubType[@rdf:resource='http://id.loc.gov/vocabulary/mserialpubtype/periodical' or */@rdf:about='http://id.loc.gov/vocabulary/mserialpubtype/periodical' or */*[local-name()='code']='periodical']">p</xsl:when>
+                    <xsl:when test="bf:Work/bflc:serialPubType[@rdf:resource='http://id.loc.gov/vocabulary/mserialpubtype/web' or */@rdf:about='http://id.loc.gov/vocabulary/mserialpubtype/web' or */*[local-name()='code']='web']">w</xsl:when>
                     <xsl:otherwise>|</xsl:otherwise>
                   </xsl:choose>
                 </xsl:variable>
@@ -789,9 +789,9 @@
                     <xsl:when test="$v008Format='MX'"><xsl:value-of select="' '"/></xsl:when>
                     <xsl:when test="$v008Format='CR'">
                       <xsl:choose>
-                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h'] or
-                                        bf:Instance/bf:note/*[@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h'] or
-                                        bf:Instance/bf:note/*/*[local-name()='code']='h'">a</xsl:when>
+                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hd'] or
+                                        bf:Instance/bf:note/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/hd'] or
+                                        bf:Instance/bf:note/*/*[local-name()='code']='hd'">a</xsl:when>
                         <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/carriers/he'] or
                                         bf:Instance/bf:note/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/he'] or
                                         bf:Instance/bf:note/*/*[local-name()='code']='he'">b</xsl:when>
@@ -801,24 +801,36 @@
                         <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cr'] or
                                         bf:Instance/bf:note/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/cr'] or
                                         bf:Instance/bf:note/*/*[local-name()='code']='cr'">o</xsl:when>
-                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cz' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cz' or */*[local-name()='code']='cz']">s</xsl:when>
-                        <xsl:when test="bf:Instance/bf:fontSize[@rdf:resource='http://id.loc.gov/vocabulary/mfont/lp'] or
-                                        bf:Instance/bf:fontSize/*[@rdf:about='http://id.loc.gov/vocabulary/mfont/lp'] or
-                                        bf:Instance/bf:fontSize/*[contains(rdfs:label,'large print')]">d</xsl:when>
-                        <xsl:when test="bf:Instance/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mtactile/brail'] or
-                                        bf:Instance/bf:notation/*[@rdf:about='http://id.loc.gov/vocabulary/mtactile/brail'] or
-                                        bf:Instance/bf:notation/*[contains(rdfs:label,'braille')]">f</xsl:when>
-                        <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
+                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cz' or
+                                        */@rdf:about='http://id.loc.gov/vocabulary/carriers/cz' or
+                                        */*[local-name()='code']='cz']">s</xsl:when>
+                        <xsl:otherwise><xsl:value-of select="'|'"/></xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
-                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pre' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/pre' or */*[local-name='code']='pre']">a</xsl:when>
-                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pri' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/pri' or */*[local-name='code']='pri']">b</xsl:when>
-                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pad' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/pad' or */*[local-name='code']='pad']">c</xsl:when>
-                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/ado' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/ado' or */*[local-name='code']='ado']">d</xsl:when>
-                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/adu' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/adu' or */*[local-name='code']='adu']">e</xsl:when>
-                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/spe' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/spe' or */*[local-name='code']='spe']">f</xsl:when>
-                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/gen' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/gen' or */*[local-name='code']='gen']">g</xsl:when>
-                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/juv' or */@rdf:about='http://id.loc.gov/vocabulary/maudience/juv' or */*[local-name='code']='juv']">j</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pre' or
+                                    */@rdf:about='http://id.loc.gov/vocabulary/maudience/pre'
+                                    or */*[local-name='code']='pre']">a</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pri' or
+                                    */@rdf:about='http://id.loc.gov/vocabulary/maudience/pri'
+                                    or */*[local-name='code']='pri']">b</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pad'
+                                    or */@rdf:about='http://id.loc.gov/vocabulary/maudience/pad'
+                                    or */*[local-name='code']='pad']">c</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/ado'
+                                    or */@rdf:about='http://id.loc.gov/vocabulary/maudience/ado'
+                                    or */*[local-name='code']='ado']">d</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/adu'
+                                    or */@rdf:about='http://id.loc.gov/vocabulary/maudience/adu'
+                                    or */*[local-name='code']='adu']">e</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/spe'
+                                    or */@rdf:about='http://id.loc.gov/vocabulary/maudience/spe'
+                                    or */*[local-name='code']='spe']">f</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/gen'
+                                    or */@rdf:about='http://id.loc.gov/vocabulary/maudience/gen'
+                                    or */*[local-name='code']='gen']">g</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/juv'
+                                    or */@rdf:about='http://id.loc.gov/vocabulary/maudience/juv'
+                                    or */*[local-name='code']='juv']">j</xsl:when>
                     <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                   </xsl:choose>
                 </xsl:variable>
@@ -832,9 +844,9 @@
                         <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
-                    <xsl:when test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h'] or
-                                    bf:Instance/bf:carrier/*[@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h'] or
-                                    bf:Instance/bf:carrier/*/*[local-name()='code']='h'">a</xsl:when>
+                    <xsl:when test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hd'] or
+                                    bf:Instance/bf:carrier/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/hd'] or
+                                    bf:Instance/bf:carrier/*/*[local-name()='code']='hd'">a</xsl:when>
                     <xsl:when test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/he'] or
                                     bf:Instance/bf:carrier/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/he'] or
                                     bf:Instance/bf:carrier/*/*[local-name()='code']='he'">b</xsl:when>
@@ -917,8 +929,8 @@
                 <xsl:variable name="vNoC">
                   <xsl:for-each select="bf:Work/bf:genreForm|bf:Work/bf:supplementaryContent">
                     <xsl:choose>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026038' or
-                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026038'">a</xsl:when>
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/msupplcont/bibliography' or
+                                      */@rdf:about='http://id.loc.gov/vocabulary/msupplcont/bibliography'">a</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026048' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026048'">b</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026057' or
@@ -937,42 +949,28 @@
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026112'">i</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026438' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026438'">j</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026088' or
-                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026088'">k</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026611' or
-                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026611'">l</xsl:when>
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/msupplcont/discography' or
+                                      */@rdf:about='http://id.loc.gov/vocabulary/msupplcont/discography'">k</xsl:when>
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026351' or
+                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026351'">l</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026039' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026039'">m</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/marcgt/sur' or
-                                      */@rdf:about='http://id.loc.gov/vocabulary/marcgt/sur'">n</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026168' or
-                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026168'">o</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026155' or
-                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026155'">p</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/marcgt/fil' or
-                                      */@rdf:about='http://id.loc.gov/vocabulary/marcgt/fil'">q</xsl:when>
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2019026014' or
+                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2019026014'">q</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026087' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026087'">r</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026181' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026181'">s</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2015026093' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2015026093'">t</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/marcgt/stp' or
-                                      */@rdf:about='http://id.loc.gov/vocabulary/marcgt/stp'">u</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026352' or
-                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026352'">v</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026349' or
-                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026349'">w</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026208' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026208'">y</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026707' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026707'">z</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/marcgt/off' or
-                                      */@rdf:about='http://id.loc.gov/vocabulary/marcgt/off'">2</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026055' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026055'">5</xsl:when>
-                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026362' or
-                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026362'">6</xsl:when>
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026266' or
+                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026266'">6</xsl:when>
                     </xsl:choose>
                   </xsl:for-each>
                 </xsl:variable>
@@ -1019,11 +1017,8 @@
             </case>
             <case test="$v008Format='MP'">
               <switch>
-                <case test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026300' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026300']"><text> d  </text></case>
-                <case test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026058' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026058']"><text> e  </text></case>
-                <case test="bf:Instance/bf:issuance[@rdf:resource='http://id.loc.gov/vocabulary/issuance/mono' or */@rdf:about='http://id.loc.gov/vocabulary/issuance/mono']"><text> a  </text></case>
-                <case test="bf:Instance/bf:issuance/bf:Issuance[@rdf:about='http://id.loc.gov/vocabulary/issuance/serl' and contains(rdfs:label,'series')]"><text> b  </text></case>
-                <case test="bf:Instance/bf:issuance/bf:Issuance[@rdf:about='http://id.loc.gov/vocabulary/issuance/serl' and contains(rdfs:label,'serial')]"><text> c  </text></case>
+                <case test="bf:Instance/bf:issuance[@rdf:resource='http://id.loc.gov/vocabulary/issuance/serl' or
+                            */@rdf:about='http://id.loc.gov/vocabulary/issuance/serl']"><text> b  </text></case>
                 <case test="default"><text> |  </text></case>
               </switch>
             </case>
@@ -1041,14 +1036,29 @@
                         $v008Format='MP' or
                         $v008Format='CR' or
                         $v008Format='VM'">
-              <select xpath="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/gov' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/gov']">
+              <select xpath="bf:Work/bflc:governmentPubType">
                 <switch>
-                  <case test="contains(*/rdfs:label,'autonomous')">a</case>
-                  <case test="contains(*/rdfs:label,'multilocal')">c</case>
-                  <case test="contains(*/rdfs:label,'federal')">f</case>
-                  <case test="contains(*/rdfs:label,'international')">i</case>
-                  <case test="contains(*/rdfs:label,'local')">l</case>
-                  <case test="contains(*/rdfs:label,'state')">s</case>
+                  <case test="@rdf:resource='http://id.loc.gov/vocabulary/mgovtpubtype/a' or
+                              */@rdf:about='http://id.loc.gov/vocabulary/mgovtpubtype/a' or
+                              */*[local-name()='code']='a'">a</case>
+                  <case test="@rdf:resource='http://id.loc.gov/vocabulary/mgovtpubtype/c' or
+                              */@rdf:about='http://id.loc.gov/vocabulary/mgovtpubtype/c' or
+                              */*[local-name()='code']='c'">c</case>
+                  <case test="@rdf:resource='http://id.loc.gov/vocabulary/mgovtpubtype/f' or
+                              */@rdf:about='http://id.loc.gov/vocabulary/mgovtpubtype/f' or
+                              */*[local-name()='code']='f'">f</case>
+                  <case test="@rdf:resource='http://id.loc.gov/vocabulary/mgovtpubtype/i' or
+                              */@rdf:about='http://id.loc.gov/vocabulary/mgovtpubtype/i' or
+                              */*[local-name()='code']='i'">i</case>
+                  <case test="@rdf:resource='http://id.loc.gov/vocabulary/mgovtpubtype/l' or
+                              */@rdf:about='http://id.loc.gov/vocabulary/mgovtpubtype/l' or
+                              */*[local-name()='code']='l'">l</case>
+                  <case test="@rdf:resource='http://id.loc.gov/vocabulary/mgovtpubtype/m' or
+                              */@rdf:about='http://id.loc.gov/vocabulary/mgovtpubtype/m' or
+                              */*[local-name()='code']='m'">m</case>
+                  <case test="@rdf:resource='http://id.loc.gov/vocabulary/mgovtpubtype/s' or
+                              */@rdf:about='http://id.loc.gov/vocabulary/mgovtpubtype/s' or
+                              */*[local-name()='code']='s'">s</case>
                   <case test="default">o</case>
                 </switch>
               </select>
@@ -1071,9 +1081,9 @@
             </case>
             <case test="$v008Format='MP' or $v008Format='VM'">
               <switch>
-                <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h'] or
-                            bf:Instance/bf:carrier/*[@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h'] or
-                            bf:Instance/bf:carrier/*/*[local-name()='code']='h'">a</case>
+                <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hd'] or
+                            bf:Instance/bf:carrier/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/hd'] or
+                            bf:Instance/bf:carrier/*/*[local-name()='code']='hd'">a</case>
                 <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/he'] or
                             bf:Instance/bf:carrier/*[@rdf:about='http://id.loc.gov/vocabulary/carriers/he'] or
                             bf:Instance/bf:carrier/*/*[local-name()='code']='he'">b</case>
@@ -1166,7 +1176,7 @@
                 </xsl:choose>
               </transform>
             </case>
-            <case test="$v008Format='CR'"><text>  </text></case>
+            <case test="$v008Format='CR' or $v008Format='VM'"><text>  </text></case>
           </switch>
         </position>
 
@@ -1195,7 +1205,7 @@
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026339' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026339']">m</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026481' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026481']">p</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026363' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026363']">s</xsl:when>
-                        <xsl:otherwise>|</xsl:otherwise>
+                        <xsl:otherwise>0</xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                     <xsl:when test="$v008Format='CR'">
@@ -1212,12 +1222,12 @@
                         <xsl:when test="bf:Work/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mscript/j' or */@rdf:about='http://id.loc.gov/vocabulary/mscript/j' or */*[local-name()='code']='j']">j</xsl:when>
                         <xsl:when test="bf:Work/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mscript/k' or */@rdf:about='http://id.loc.gov/vocabulary/mscript/k' or */*[local-name()='code']='k']">k</xsl:when>
                         <xsl:when test="bf:Work/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mscript/l' or */@rdf:about='http://id.loc.gov/vocabulary/mscript/l' or */*[local-name()='code']='l']">l</xsl:when>
-                        <xsl:otherwise>|</xsl:otherwise>
+                        <xsl:otherwise><text> </text></xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                     <xsl:when test="$v008Format='VM'">
                       <xsl:choose>
-                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/aro' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/aro']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027218' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027218']">a</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/kit' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/kit']">b</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/art' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/art']">c</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/vocabulary/marcgt/dio' or */@rdf:about='http://id.loc.gov/vocabulary/marcgt/dio']">d</xsl:when>
@@ -1263,10 +1273,10 @@
                     </xsl:when>
                     <xsl:when test="$v008Format='VM'">
                       <xsl:choose>
-                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/anim' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/anim']">a</xsl:when>
-                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/animlive' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/animlive']">c</xsl:when>
-                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/live' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/live']">l</xsl:when>
-                        <xsl:when test="bf:Instance/bf:note[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/other' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/other']">z</xsl:when>
+                        <xsl:when test="bf:Work/bflc:movingImageTechnique[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/anim' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/anim']">a</xsl:when>
+                        <xsl:when test="bf:Work/bflc:movingImageTechnique[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/animlive' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/animlive']">c</xsl:when>
+                        <xsl:when test="bf:Work/bflc:movingImageTechnique[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/live' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/live']">l</xsl:when>
+                        <xsl:when test="bf:Work/bflc:movingImageTechnique[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/other' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/other']">z</xsl:when>
                         <xsl:otherwise>|</xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
@@ -1339,7 +1349,7 @@
         </position>
 
         <!-- 38-39 -->
-        <position default=" |"/>
+        <position default="  "/>
 
       </fixed-field>
     </context>

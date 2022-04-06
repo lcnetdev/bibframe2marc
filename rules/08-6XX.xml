@@ -47,13 +47,25 @@
               </ind1>
               <ind2 default="4">
                 <switch>
-                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
-                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
-                  <case test="*/bf:source/bf:Source/bf:code='mesh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
-                  <case test="*/bf:source/bf:Source/bf:code='nal' or */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
-                  <case test="*/bf:source/bf:Source/bf:code='cash' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
-                  <case test="*/bf:source/bf:Source/bf:code='rvm' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
-                  <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+                  <case test="*/bf:source/bf:Source/bf:code='mesh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/mesh'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
+                  <case test="*/bf:source/bf:Source/bf:code='nal' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/nal'] or
+                              */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
+                  <case test="*/bf:source/bf:Source/bf:code='cash' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/cash'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
+                  <case test="*/bf:source/bf:Source/bf:code='rvm' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/rvm'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
+                  <case test="*/bf:source or */madsrdf:componentList/*[1]/bf:source">7</case>
                 </switch>
               </ind2>
               <sf code="3" chopPunct="true" repeatable="false">
@@ -65,21 +77,48 @@
                              */madsrdf:componentList/*[1] |
                              bf:Work/bf:contribution/*/bf:agent/* |
                              */madsrdf:componentList/*[1]/bf:Work/bf:contribution/*/bf:agent/*">
-                <sf code="a" chopPunct="true" repeatable="false">
+                <var name="vNameAuth">
+                  <!-- only look up id.loc.gov name authorities -->
                   <switch>
-                    <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
-                      <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
+                    <case test="contains(@rdf:about,'id.loc.gov/authorities/names')">
+                      <transform>
+                        <xsl:call-template name="tGetMARCAuth">
+                          <xsl:with-param name="pUri" select="@rdf:about"/>
+                        </xsl:call-template>
+                      </transform>
                     </case>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
                   </switch>
-                </sf>
-                <sf code="c" chopPunct="true">
-                  <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
-                </sf>
-                <sf code="d" chopPunct="true" repeatable="false">
-                  <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
-                </sf>
+                </var>
+                <switch>
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']">
+                    <transform>
+                      <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']/marc:subfield[contains('abcdgjq',@code)]">
+                        <marc:subfield>
+                          <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                          <xsl:value-of select="."/>
+                        </marc:subfield>
+                      </xsl:for-each>
+                    </transform>
+                  </case>
+                  <case test="default">
+                    <sf code="a" chopPunct="true" repeatable="false">
+                      <switch>
+                        <case test="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue">
+                          <select xpath="madsrdf:elementList/madsrdf:FullNameElement/madsrdf:elementValue[1]"/>
+                        </case>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
+                    <sf code="c" chopPunct="true">
+                      <select xpath="madsrdf:elementList/madsrdf:TermsOfAddressNameElement/madsrdf:elementValue"/>
+                    </sf>
+                    <sf code="d" chopPunct="true" repeatable="false">
+                      <select xpath="madsrdf:elementList/madsrdf:DateNameElement/madsrdf:elementValue"/>
+                    </sf>
+                    <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
+                  </case>
+                </switch>
                 <sf code="e" chopPunct="true">
                   <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
                     <switch>
@@ -88,7 +127,6 @@
                     </switch>
                   </select>
                 </sf>
-                <sf code="q" chopPunct="true" repeatable="false"><select xpath="madsrdf:fullerName/*/rdfs:label"/></sf>
                 <sf code="4">
                   <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
                     <switch>
@@ -108,7 +146,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -131,16 +169,6 @@
                   </select>
                 </sf>
                 <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
-                <sf code="h" chopPunct="true" repeatable="false">
-                  <select xpath="bf:genreForm/bf:GenreForm">
-                    <switch>
-                      <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                      <case test="default"><select xpath="rdfs:label"/></case>
-                    </switch>
-                  </select>
-                </sf>
-                <sf code="k" chopPunct="true"><select xpath="bf:natureOfContent"/></sf>
-                <!-- language is going to be a problem -->
                 <sf code="l" chopPunct="true" repeatable="false">
                   <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
                 </sf>
@@ -155,7 +183,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -211,7 +239,7 @@
                         <transform>
                           <xsl:variable name="vIdType">
                             <xsl:call-template name="tChopPunct">
-                              <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                              <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                             </xsl:call-template>
                           </xsl:variable>
                           <xsl:choose>
@@ -226,15 +254,44 @@
               </select>
 
               <!-- $2 if source not in ind2 -->
-              <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+              <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
+                <var name="vSourceUri">
+                  <switch>
+                    <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                    <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+                  </switch>
+                </var>
                 <switch>
-                  <case test="text() != 'lcsh' and
-                              text() != 'lcshac' and
-                              text() != 'mesh' and
-                              text() != 'nal' and
-                              text() != 'cash' and
-                              text() != 'rvm'">
-                    <sf code="2"><select xpath="."/></sf>
+                  <case test="$vSourceUri != 'http://id.loc.gov/authorities/subjects' and
+                              bf:Source/bf:code != 'lcsh' and
+                              $vSourceUri != 'http://id.loc.gov/authorities/childrensSubjects' and
+                              bf:Source/bf:code != 'lcshac' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/mesh' and
+                              bf:Source/bf:code != 'mesh' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/nal' and
+                              bf:Source/bf:code != 'nal' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/cash' and
+                              bf:Source/bf:code != 'cash' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/rvm' and
+                              bf:Source/bf:code != 'rvm'">
+                    <sf code="2">
+                      <switch>
+                        <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
+                        <case test="$vSourceUri != ''">
+                          <switch>
+                            <case test="contains($vSourceUri,'id.loc.gov')">
+                              <transform>
+                                <xsl:call-template name="tUriCode">
+                                  <xsl:with-param name="pUri" select="$vSourceUri"/>
+                                </xsl:call-template>
+                              </transform>
+                            </case>
+                            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                          </switch>
+                        </case>
+                        <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -262,13 +319,25 @@
               </ind1>
               <ind2 default="4">
                 <switch>
-                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
-                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
-                  <case test="*/bf:source/bf:Source/bf:code='mesh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
-                  <case test="*/bf:source/bf:Source/bf:code='nal' or */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
-                  <case test="*/bf:source/bf:Source/bf:code='cash' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
-                  <case test="*/bf:source/bf:Source/bf:code='rvm' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
-                  <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+                  <case test="*/bf:source/bf:Source/bf:code='mesh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/mesh'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
+                  <case test="*/bf:source/bf:Source/bf:code='nal' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/nal'] or
+                              */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
+                  <case test="*/bf:source/bf:Source/bf:code='cash' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/cash'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
+                  <case test="*/bf:source/bf:Source/bf:code='rvm' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/rvm'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
+                  <case test="*/bf:source or */madsrdf:componentList/*[1]/bf:source">7</case>
                 </switch>
               </ind2>
               <sf code="3" chopPunct="true" repeatable="false">
@@ -280,18 +349,44 @@
                              */madsrdf:componentList/*[1] |
                              bf:Work/bf:contribution/*/bf:agent/* |
                              */madsrdf:componentList/*[1]/bf:Work/bf:contribution/*/bf:agent/*">
-                <sf code="a" chopPunct="true" repeatable="false">
+                <var name="vNameAuth">
+                  <!-- only look up id.loc.gov name authorities -->
                   <switch>
-                    <case test="madsrdf:elementList">
-                      <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+                    <case test="contains(@rdf:about,'id.loc.gov/authorities/names')">
+                      <transform>
+                        <xsl:call-template name="tGetMARCAuth">
+                          <xsl:with-param name="pUri" select="@rdf:about"/>
+                        </xsl:call-template>
+                      </transform>
                     </case>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
                   </switch>
-                </sf>
-                <sf code="b" chopPunct="true">
-                  <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
-                </sf>
+                </var>
+                <switch>
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']">
+                    <transform>
+                      <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']/marc:subfield[contains('abcdgn',@code)]">
+                        <marc:subfield>
+                          <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                          <xsl:value-of select="."/>
+                        </marc:subfield>
+                      </xsl:for-each>
+                    </transform>
+                  </case>
+                  <case test="default">
+                    <sf code="a" chopPunct="true" repeatable="false">
+                      <switch>
+                        <case test="madsrdf:elementList">
+                          <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+                        </case>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
+                    <sf code="b" chopPunct="true">
+                      <select xpath="madsrdf:elementList/*[position() &gt; 1]/madsrdf:elementValue"/>
+                    </sf>
+                  </case>
+                </switch>
                 <sf code="e" chopPunct="true">
                   <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
                     <switch>
@@ -320,7 +415,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -344,16 +439,6 @@
                 </sf>
                 <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
                 <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
-                <sf code="h" chopPunct="true" repeatable="false">
-                  <select xpath="bf:genreForm/bf:GenreForm">
-                    <switch>
-                      <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                      <case test="default"><select xpath="rdfs:label"/></case>
-                    </switch>
-                  </select>
-                </sf>
-                <sf code="k" chopPunct="true"><select xpath="bf:natureOfContent"/></sf>
-                <!-- language is going to be a problem -->
                 <sf code="l" chopPunct="true" repeatable="false">
                   <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
                 </sf>
@@ -368,7 +453,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -424,7 +509,7 @@
                         <transform>
                           <xsl:variable name="vIdType">
                             <xsl:call-template name="tChopPunct">
-                              <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                              <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                             </xsl:call-template>
                           </xsl:variable>
                           <xsl:choose>
@@ -439,15 +524,44 @@
               </select>
 
               <!-- $2 if source not in ind2 -->
-              <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+              <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
+                <var name="vSourceUri">
+                  <switch>
+                    <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                    <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+                  </switch>
+                </var>
                 <switch>
-                  <case test="text() != 'lcsh' and
-                              text() != 'lcshac' and
-                              text() != 'mesh' and
-                              text() != 'nal' and
-                              text() != 'cash' and
-                              text() != 'rvm'">
-                    <sf code="2"><select xpath="."/></sf>
+                  <case test="$vSourceUri != 'http://id.loc.gov/authorities/subjects' and
+                              bf:Source/bf:code != 'lcsh' and
+                              $vSourceUri != 'http://id.loc.gov/authorities/childrensSubjects' and
+                              bf:Source/bf:code != 'lcshac' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/mesh' and
+                              bf:Source/bf:code != 'mesh' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/nal' and
+                              bf:Source/bf:code != 'nal' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/cash' and
+                              bf:Source/bf:code != 'cash' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/rvm' and
+                              bf:Source/bf:code != 'rvm'">
+                    <sf code="2">
+                      <switch>
+                        <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
+                        <case test="$vSourceUri != ''">
+                          <switch>
+                            <case test="contains($vSourceUri,'id.loc.gov')">
+                              <transform>
+                                <xsl:call-template name="tUriCode">
+                                  <xsl:with-param name="pUri" select="$vSourceUri"/>
+                                </xsl:call-template>
+                              </transform>
+                            </case>
+                            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                          </switch>
+                        </case>
+                        <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -466,13 +580,25 @@
               <ind1 default="2"/>
               <ind2 default="4">
                 <switch>
-                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
-                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
-                  <case test="*/bf:source/bf:Source/bf:code='mesh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
-                  <case test="*/bf:source/bf:Source/bf:code='nal' or */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
-                  <case test="*/bf:source/bf:Source/bf:code='cash' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
-                  <case test="*/bf:source/bf:Source/bf:code='rvm' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
-                  <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+                  <case test="*/bf:source/bf:Source/bf:code='mesh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/mesh'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
+                  <case test="*/bf:source/bf:Source/bf:code='nal' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/nal'] or
+                              */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
+                  <case test="*/bf:source/bf:Source/bf:code='cash' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/cash'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
+                  <case test="*/bf:source/bf:Source/bf:code='rvm' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/rvm'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
+                  <case test="*/bf:source or */madsrdf:componentList/*[1]/bf:source">7</case>
                 </switch>
               </ind2>
               <sf code="3" repeatable="false">
@@ -484,21 +610,47 @@
                              */madsrdf:componentList/*[1] |
                              bf:Work/bf:contribution/*/bf:agent/* |
                              */madsrdf:componentList/*[1]/bf:Work/bf:contribution/*/bf:agent/*">
-                <sf code="a" chopPunct="true" repeatable="false">
+                <var name="vNameAuth">
+                  <!-- only look up id.loc.gov name authorities -->
                   <switch>
-                    <case test="madsrdf:elementList">
-                      <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+                    <case test="contains(@rdf:about,'id.loc.gov/authorities/names')">
+                      <transform>
+                        <xsl:call-template name="tGetMARCAuth">
+                          <xsl:with-param name="pUri" select="@rdf:about"/>
+                        </xsl:call-template>
+                      </transform>
                     </case>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
                   </switch>
-                </sf>
-                <sf code="c" chopPunct="true">
-                  <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
-                </sf>
-                <sf code="q" chopPunct="true">
-                  <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
-                </sf>
+                </var>
+                <switch>
+                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']">
+                    <transform>
+                      <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']/marc:subfield[contains('acdegnq',@code)]">
+                        <marc:subfield>
+                          <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                          <xsl:value-of select="."/>
+                        </marc:subfield>
+                      </xsl:for-each>
+                    </transform>
+                  </case>
+                  <case test="default">
+                    <sf code="a" chopPunct="true" repeatable="false">
+                      <switch>
+                        <case test="madsrdf:elementList">
+                          <select xpath="madsrdf:elementList/*[1]/madsrdf:elementValue"/>
+                        </case>
+                        <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                        <case test="default"><select xpath="rdfs:label"/></case>
+                      </switch>
+                    </sf>
+                    <sf code="c" chopPunct="true">
+                      <select xpath="madsrdf:elementList/*[local-name()='GeographicElement' and position() &gt; 1]/madsrdf:elementValue"/>
+                    </sf>
+                    <sf code="q" chopPunct="true">
+                      <select xpath="madsrdf:elementList/*[local-name()='NameElement' and position() &gt; 1]/madsrdf:elementValue"/>
+                    </sf>
+                  </case>
+                </switch>
                 <sf code="j" chopPunct="true">
                   <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
                     <switch>
@@ -527,7 +679,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -551,16 +703,6 @@
                 </sf>
                 <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
                 <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
-                <sf code="h" chopPunct="true" repeatable="false">
-                  <select xpath="bf:genreForm/bf:GenreForm">
-                    <switch>
-                      <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                      <case test="default"><select xpath="rdfs:label"/></case>
-                    </switch>
-                  </select>
-                </sf>
-                <sf code="k" chopPunct="true"><select xpath="bf:natureOfContent"/></sf>
-                <!-- language is going to be a problem -->
                 <sf code="l" chopPunct="true" repeatable="false">
                   <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
                 </sf>
@@ -575,7 +717,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -631,7 +773,7 @@
                         <transform>
                           <xsl:variable name="vIdType">
                             <xsl:call-template name="tChopPunct">
-                              <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                              <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                             </xsl:call-template>
                           </xsl:variable>
                           <xsl:choose>
@@ -646,15 +788,44 @@
               </select>
 
               <!-- $2 if source not in ind2 -->
-              <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+              <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
+                <var name="vSourceUri">
+                  <switch>
+                    <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                    <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+                  </switch>
+                </var>
                 <switch>
-                  <case test="text() != 'lcsh' and
-                              text() != 'lcshac' and
-                              text() != 'mesh' and
-                              text() != 'nal' and
-                              text() != 'cash' and
-                              text() != 'rvm'">
-                    <sf code="2"><select xpath="."/></sf>
+                  <case test="$vSourceUri != 'http://id.loc.gov/authorities/subjects' and
+                              bf:Source/bf:code != 'lcsh' and
+                              $vSourceUri != 'http://id.loc.gov/authorities/childrensSubjects' and
+                              bf:Source/bf:code != 'lcshac' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/mesh' and
+                              bf:Source/bf:code != 'mesh' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/nal' and
+                              bf:Source/bf:code != 'nal' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/cash' and
+                              bf:Source/bf:code != 'cash' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/rvm' and
+                              bf:Source/bf:code != 'rvm'">
+                    <sf code="2">
+                      <switch>
+                        <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
+                        <case test="$vSourceUri != ''">
+                          <switch>
+                            <case test="contains($vSourceUri,'id.loc.gov')">
+                              <transform>
+                                <xsl:call-template name="tUriCode">
+                                  <xsl:with-param name="pUri" select="$vSourceUri"/>
+                                </xsl:call-template>
+                              </transform>
+                            </case>
+                            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                          </switch>
+                        </case>
+                        <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -679,13 +850,25 @@
               </ind1>
               <ind2 default="4">
                 <switch>
-                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
-                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
-                  <case test="*/bf:source/bf:Source/bf:code='mesh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
-                  <case test="*/bf:source/bf:Source/bf:code='nal' or */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
-                  <case test="*/bf:source/bf:Source/bf:code='cash' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
-                  <case test="*/bf:source/bf:Source/bf:code='rvm' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
-                  <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+                  <case test="*/bf:source/bf:Source/bf:code='mesh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/mesh'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
+                  <case test="*/bf:source/bf:Source/bf:code='nal' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/nal'] or
+                              */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
+                  <case test="*/bf:source/bf:Source/bf:code='cash' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/cash'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
+                  <case test="*/bf:source/bf:Source/bf:code='rvm' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/rvm'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
+                  <case test="*/bf:source or */madsrdf:componentList/*[1]/bf:source">7</case>
                 </switch>
               </ind2>
               <sf code="3" chopPunct="true" repeatable="false">
@@ -699,7 +882,7 @@
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -723,8 +906,6 @@
                 </sf>
                 <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
                 <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
-                <sf code="k" chopPunct="true"><select xpath="bf:natureOfContent"/></sf>
-                <!-- language is going to be a problem -->
                 <sf code="l" chopPunct="true" repeatable="false">
                   <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
                 </sf>
@@ -741,7 +922,7 @@
                         <transform>
                           <xsl:variable name="vIdType">
                             <xsl:call-template name="tChopPunct">
-                              <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                              <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                             </xsl:call-template>
                           </xsl:variable>
                           <xsl:choose>
@@ -801,7 +982,7 @@
                         <transform>
                           <xsl:variable name="vIdType">
                             <xsl:call-template name="tChopPunct">
-                              <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                              <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                             </xsl:call-template>
                           </xsl:variable>
                           <xsl:choose>
@@ -816,15 +997,44 @@
               </select>
 
               <!-- $2 if source not in ind2 -->
-              <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+              <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
+                <var name="vSourceUri">
+                  <switch>
+                    <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                    <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+                  </switch>
+                </var>
                 <switch>
-                  <case test="text() != 'lcsh' and
-                              text() != 'lcshac' and
-                              text() != 'mesh' and
-                              text() != 'nal' and
-                              text() != 'cash' and
-                              text() != 'rvm'">
-                    <sf code="2"><select xpath="."/></sf>
+                  <case test="$vSourceUri != 'http://id.loc.gov/authorities/subjects' and
+                              bf:Source/bf:code != 'lcsh' and
+                              $vSourceUri != 'http://id.loc.gov/authorities/childrensSubjects' and
+                              bf:Source/bf:code != 'lcshac' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/mesh' and
+                              bf:Source/bf:code != 'mesh' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/nal' and
+                              bf:Source/bf:code != 'nal' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/cash' and
+                              bf:Source/bf:code != 'cash' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/rvm' and
+                              bf:Source/bf:code != 'rvm'">
+                    <sf code="2">
+                      <switch>
+                        <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
+                        <case test="$vSourceUri != ''">
+                          <switch>
+                            <case test="contains($vSourceUri,'id.loc.gov')">
+                              <transform>
+                                <xsl:call-template name="tUriCode">
+                                  <xsl:with-param name="pUri" select="$vSourceUri"/>
+                                </xsl:call-template>
+                              </transform>
+                            </case>
+                            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                          </switch>
+                        </case>
+                        <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -841,13 +1051,25 @@
               <ind1 default=" "/>
               <ind2 default="4">
                 <switch>
-                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
-                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
-                  <case test="*/bf:source/bf:Source/bf:code='mesh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
-                  <case test="*/bf:source/bf:Source/bf:code='nal' or */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
-                  <case test="*/bf:source/bf:Source/bf:code='cash' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
-                  <case test="*/bf:source/bf:Source/bf:code='rvm' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
-                  <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+                  <case test="*/bf:source/bf:Source/bf:code='mesh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/mesh'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
+                  <case test="*/bf:source/bf:Source/bf:code='nal' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/nal'] or
+                              */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
+                  <case test="*/bf:source/bf:Source/bf:code='cash' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/cash'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
+                  <case test="*/bf:source/bf:Source/bf:code='rvm' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/rvm'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
+                  <case test="*/bf:source or */madsrdf:componentList/*[1]/bf:source">7</case>
                 </switch>
               </ind2>
               <switch>
@@ -858,7 +1080,7 @@
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -883,7 +1105,7 @@
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -938,7 +1160,7 @@
                             <transform>
                               <xsl:variable name="vIdType">
                                 <xsl:call-template name="tChopPunct">
-                                  <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                                  <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                                 </xsl:call-template>
                               </xsl:variable>
                               <xsl:choose>
@@ -970,7 +1192,7 @@
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -983,15 +1205,44 @@
                 </case>
               </switch>
               <!-- $2 if source not in ind2 -->
-              <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+              <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
+                <var name="vSourceUri">
+                  <switch>
+                    <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                    <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+                  </switch>
+                </var>
                 <switch>
-                  <case test="text() != 'lcsh' and
-                              text() != 'lcshac' and
-                              text() != 'mesh' and
-                              text() != 'nal' and
-                              text() != 'cash' and
-                              text() != 'rvm'">
-                    <sf code="2"><select xpath="."/></sf>
+                  <case test="$vSourceUri != 'http://id.loc.gov/authorities/subjects' and
+                              bf:Source/bf:code != 'lcsh' and
+                              $vSourceUri != 'http://id.loc.gov/authorities/childrensSubjects' and
+                              bf:Source/bf:code != 'lcshac' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/mesh' and
+                              bf:Source/bf:code != 'mesh' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/nal' and
+                              bf:Source/bf:code != 'nal' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/cash' and
+                              bf:Source/bf:code != 'cash' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/rvm' and
+                              bf:Source/bf:code != 'rvm'">
+                    <sf code="2">
+                      <switch>
+                        <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
+                        <case test="$vSourceUri != ''">
+                          <switch>
+                            <case test="contains($vSourceUri,'id.loc.gov')">
+                              <transform>
+                                <xsl:call-template name="tUriCode">
+                                  <xsl:with-param name="pUri" select="$vSourceUri"/>
+                                </xsl:call-template>
+                              </transform>
+                            </case>
+                            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                          </switch>
+                        </case>
+                        <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -1009,7 +1260,7 @@
                   <transform>
                     <xsl:variable name="vIdType">
                       <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                       </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
@@ -1084,7 +1335,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -1095,8 +1346,41 @@
                   </select>
                 </sf>
               </select>
+              <sf code="e" chopPunct="true">
+                <select xpath="*/bf:role/bf:Role/rdfs:label"/>
+              </sf>
               <sf code="2" repeatable="false">
-                <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/>
+                <select xpath="*/bf:source | */madsrdf:componentList/*[1]/bf:source">
+                  <var name="vSourceUri662">
+                    <switch>
+                      <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                      <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+                    </switch>
+                  </var>
+                  <switch>
+                    <case test="*/*[local-name()='code']">
+                      <transform><xsl:value-of select="*/*[local-name()='code']"/></transform>
+                    </case>
+                    <case test="$vSourceUri662 != ''">
+                      <switch>
+                        <case test="contains($vSourceUri662,'id.loc.gov')">
+                          <transform>
+                            <xsl:call-template name="tUriCode">
+                              <xsl:with-param name="pUri" select="$vSourceUri662"/>
+                            </xsl:call-template>
+                          </transform>
+                        </case>
+                        <case test="default"><transform><xsl:value-of select="$vSourceUri662"/></transform></case>
+                      </switch>
+                    </case>
+                    <case test="*/madsrdf:authoritativeLabel">
+                      <transform><xsl:value-of select="*/madsrdf:authoritativeLabel"/></transform>
+                    </case>
+                    <case test="default">
+                      <transform><xsl:value-of select="*/rdfs:label"/></transform>
+                    </case>
+                  </switch>
+                </select>
               </sf>
             </df>
           </case>
@@ -1111,13 +1395,25 @@
               <ind1 default=" "/>
               <ind2 default="4">
                 <switch>
-                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
-                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
-                  <case test="*/bf:source/bf:Source/bf:code='mesh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
-                  <case test="*/bf:source/bf:Source/bf:code='nal' or */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
-                  <case test="*/bf:source/bf:Source/bf:code='cash' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
-                  <case test="*/bf:source/bf:Source/bf:code='rvm' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
-                  <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+                  <case test="*/bf:source/bf:Source/bf:code='mesh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/mesh'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
+                  <case test="*/bf:source/bf:Source/bf:code='nal' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/nal'] or
+                              */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
+                  <case test="*/bf:source/bf:Source/bf:code='cash' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/cash'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
+                  <case test="*/bf:source/bf:Source/bf:code='rvm' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/rvm'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
+                  <case test="*/bf:source or */madsrdf:componentList/*[1]/bf:source">7</case>
                 </switch>
               </ind2>
               <switch>
@@ -1128,7 +1424,7 @@
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -1147,13 +1443,16 @@
                       <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                     </switch>
                   </sf>
+                  <sf code="e" chopPunct="true">
+                    <select xpath="*/bf:role/bf:Role/rdfs:label"/>
+                  </sf>
                   <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
                   <sf code="0">
                     <select xpath="*/madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -1207,7 +1506,7 @@
                             <transform>
                               <xsl:variable name="vIdType">
                                 <xsl:call-template name="tChopPunct">
-                                  <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                                  <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                                 </xsl:call-template>
                               </xsl:variable>
                               <xsl:choose>
@@ -1233,13 +1532,16 @@
                       <case test="default"><select xpath="*/rdfs:label[1]"/></case>
                     </switch>
                   </sf>
+                  <sf code="e" chopPunct="true">
+                    <select xpath="*/bf:role/bf:Role/rdfs:label"/>
+                  </sf>
                   <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
                   <sf code="0">
                     <select xpath="*/bf:identifiedBy/bf:Identifier">
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -1255,15 +1557,44 @@
                 <select xpath="*/bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
               </sf>
               <!-- $2 if source not in ind2 -->
-              <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+              <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
+                <var name="vSourceUri">
+                  <switch>
+                    <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                    <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+                  </switch>
+                </var>
                 <switch>
-                  <case test="text() != 'lcsh' and
-                              text() != 'lcshac' and
-                              text() != 'mesh' and
-                              text() != 'nal' and
-                              text() != 'cash' and
-                              text() != 'rvm'">
-                    <sf code="2"><select xpath="."/></sf>
+                  <case test="$vSourceUri != 'http://id.loc.gov/authorities/subjects' and
+                              bf:Source/bf:code != 'lcsh' and
+                              $vSourceUri != 'http://id.loc.gov/authorities/childrensSubjects' and
+                              bf:Source/bf:code != 'lcshac' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/mesh' and
+                              bf:Source/bf:code != 'mesh' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/nal' and
+                              bf:Source/bf:code != 'nal' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/cash' and
+                              bf:Source/bf:code != 'cash' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/rvm' and
+                              bf:Source/bf:code != 'rvm'">
+                    <sf code="2">
+                      <switch>
+                        <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
+                        <case test="$vSourceUri != ''">
+                          <switch>
+                            <case test="contains($vSourceUri,'id.loc.gov')">
+                              <transform>
+                                <xsl:call-template name="tUriCode">
+                                  <xsl:with-param name="pUri" select="$vSourceUri"/>
+                                </xsl:call-template>
+                              </transform>
+                            </case>
+                            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                          </switch>
+                        </case>
+                        <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -1286,7 +1617,7 @@
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -1311,7 +1642,7 @@
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -1365,7 +1696,7 @@
                             <transform>
                               <xsl:variable name="vIdType">
                                 <xsl:call-template name="tChopPunct">
-                                  <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                                  <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                                 </xsl:call-template>
                               </xsl:variable>
                               <xsl:choose>
@@ -1397,7 +1728,7 @@
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -1421,13 +1752,25 @@
               <ind1 default=" "/>
               <ind2 default="4">
                 <switch>
-                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
-                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
-                  <case test="*/bf:source/bf:Source/bf:code='mesh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
-                  <case test="*/bf:source/bf:Source/bf:code='nal' or */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
-                  <case test="*/bf:source/bf:Source/bf:code='cash' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
-                  <case test="*/bf:source/bf:Source/bf:code='rvm' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
-                  <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcsh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+                  <case test="*/bf:source/bf:Source/bf:code='lcshac' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+                  <case test="*/bf:source/bf:Source/bf:code='mesh' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/mesh'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
+                  <case test="*/bf:source/bf:Source/bf:code='nal' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/nal'] or
+                              */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
+                  <case test="*/bf:source/bf:Source/bf:code='cash' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/cash'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
+                  <case test="*/bf:source/bf:Source/bf:code='rvm' or
+                              */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/rvm'] or
+                              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
+                  <case test="*/bf:source or */madsrdf:componentList/*[1]/bf:source">7</case>
                 </switch>
               </ind2>
               <switch>
@@ -1438,7 +1781,7 @@
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -1457,13 +1800,16 @@
                       <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                     </switch>
                   </sf>
+                  <sf code="e" chopPunct="true">
+                    <select xpath="*/bf:role/bf:Role/rdfs:label"/>
+                  </sf>
                   <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
                   <sf code="0">
                     <select xpath="*/madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -1517,7 +1863,7 @@
                             <transform>
                               <xsl:variable name="vIdType">
                                 <xsl:call-template name="tChopPunct">
-                                  <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                                  <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                                 </xsl:call-template>
                               </xsl:variable>
                               <xsl:choose>
@@ -1543,13 +1889,16 @@
                       <case test="default"><select xpath="*/rdfs:label[1]"/></case>
                     </switch>
                   </sf>
+                  <sf code="e" chopPunct="true">
+                    <select xpath="*/bf:role/bf:Role/rdfs:label"/>
+                  </sf>
                   <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
                   <sf code="0">
                     <select xpath="*/bf:identifiedBy/bf:Identifier">
                       <transform>
                         <xsl:variable name="vIdType">
                           <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                           </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
@@ -1561,19 +1910,45 @@
                   </sf>
                 </case>
               </switch>
-              <sf code="e" chopPunct="true">
-                <select xpath="*/bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
-              </sf>
               <!-- $2 if source not in ind2 -->
-              <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+              <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
+                <var name="vSourceUri">
+                  <switch>
+                    <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                    <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+                  </switch>
+                </var>
                 <switch>
-                  <case test="text() != 'lcsh' and
-                              text() != 'lcshac' and
-                              text() != 'mesh' and
-                              text() != 'nal' and
-                              text() != 'cash' and
-                              text() != 'rvm'">
-                    <sf code="2"><select xpath="."/></sf>
+                  <case test="$vSourceUri != 'http://id.loc.gov/authorities/subjects' and
+                              bf:Source/bf:code != 'lcsh' and
+                              $vSourceUri != 'http://id.loc.gov/authorities/childrensSubjects' and
+                              bf:Source/bf:code != 'lcshac' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/mesh' and
+                              bf:Source/bf:code != 'mesh' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/nal' and
+                              bf:Source/bf:code != 'nal' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/cash' and
+                              bf:Source/bf:code != 'cash' and
+                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/rvm' and
+                              bf:Source/bf:code != 'rvm'">
+                    <sf code="2">
+                      <switch>
+                        <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
+                        <case test="$vSourceUri != ''">
+                          <switch>
+                            <case test="contains($vSourceUri,'id.loc.gov')">
+                              <transform>
+                                <xsl:call-template name="tUriCode">
+                                  <xsl:with-param name="pUri" select="$vSourceUri"/>
+                                </xsl:call-template>
+                              </transform>
+                            </case>
+                            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                          </switch>
+                        </case>
+                        <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+                      </switch>
+                    </sf>
                   </case>
                 </switch>
               </select>
@@ -1586,7 +1961,6 @@
               <ind1 default=" "/>
               <ind2 default=" ">
                 <switch>
-                  <case test="*[local-name() = 'Topic' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Topic']]">0</case>
                   <case test="*[local-name() = 'Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']]">1</case>
                   <case test="*[local-name() = 'Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']]">2</case>
                   <case test="*[local-name() = 'Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']]">3</case>
@@ -1607,17 +1981,29 @@
 
   <!-- genreForms -->
   <df tag="655" lang-xpath="*/rdfs:label" lang-prefer="tranliterated">
-    <context xpath="bf:Work/bf:genreForm">
+    <context xpath="bf:Work/bf:genreForm | //bf:Item/bf:genreForm">
       <ind1 default=" "/>
       <ind2 default="4">
         <switch>
-          <case test="*/bf:source/bf:Source/bf:code='lcsh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
-          <case test="*/bf:source/bf:Source/bf:code='lcshac' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
-          <case test="*/bf:source/bf:Source/bf:code='mesh' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
-          <case test="*/bf:source/bf:Source/bf:code='nal' or */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
-          <case test="*/bf:source/bf:Source/bf:code='cash' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
-          <case test="*/bf:source/bf:Source/bf:code='rvm' or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
-          <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">7</case>
+          <case test="*/bf:source/bf:Source/bf:code='lcsh' or
+                      */bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or
+                      */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+          <case test="*/bf:source/bf:Source/bf:code='lcshac' or
+                      */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
+                      */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+          <case test="*/bf:source/bf:Source/bf:code='mesh' or
+                      */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/mesh'] or
+                      */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
+          <case test="*/bf:source/bf:Source/bf:code='nal' or
+                      */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/nal'] or
+                      */madsrdf:componentList/*[1]/*/bf:source/bf:Source/bf:code='nal'">3</case>
+          <case test="*/bf:source/bf:Source/bf:code='cash' or
+                      */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/cash'] or
+                      */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cash'">5</case>
+          <case test="*/bf:source/bf:Source/bf:code='rvm' or
+                      */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/rvm'] or
+                      */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='rvm'">6</case>
+          <case test="*/bf:source or */madsrdf:componentList/*[1]/bf:source">7</case>
           <case test="contains(@rdf:resource,'id.loc.gov/authorities/genreForms') or contains(*/@rdf:about,'id.loc.gov/authorities/genreForms') or contains(@rdf:resource,'id.loc.gov/vocabulary/marcgt') or contains(*/@rdf:about,'id.loc.gov/vocabulary/marcgt')">7</case>
         </switch>
       </ind2>
@@ -1629,7 +2015,7 @@
               <transform>
                 <xsl:variable name="vIdType">
                   <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                   </xsl:call-template>
                 </xsl:variable>
                 <xsl:choose>
@@ -1654,7 +2040,7 @@
               <transform>
                 <xsl:variable name="vIdType">
                   <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                   </xsl:call-template>
                 </xsl:variable>
                 <xsl:choose>
@@ -1708,7 +2094,7 @@
                     <transform>
                       <xsl:variable name="vIdType">
                         <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                         </xsl:call-template>
                       </xsl:variable>
                       <xsl:choose>
@@ -1741,7 +2127,7 @@
               <transform>
                 <xsl:variable name="vIdType">
                   <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
                   </xsl:call-template>
                 </xsl:variable>
                 <xsl:choose>
@@ -1756,15 +2142,44 @@
       <!-- $2 if source not in ind2 -->
       <switch>
         <case test="*/bf:source/bf:Source/bf:code or */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
-          <select xpath="*/bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code">
+          <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
+            <var name="vSourceUri">
+              <switch>
+                <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+              </switch>
+            </var>
             <switch>
-              <case test="text() != 'lcsh' and
-                          text() != 'lcshac' and
-                          text() != 'mesh' and
-                          text() != 'nal' and
-                          text() != 'cash' and
-                          text() != 'rvm'">
-                <sf code="2"><select xpath="."/></sf>
+              <case test="$vSourceUri != 'http://id.loc.gov/authorities/subjects' and
+                          bf:Source/bf:code != 'lcsh' and
+                          $vSourceUri != 'http://id.loc.gov/authorities/childrensSubjects' and
+                          bf:Source/bf:code != 'lcshac' and
+                          $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/mesh' and
+                          bf:Source/bf:code != 'mesh' and
+                          $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/nal' and
+                          bf:Source/bf:code != 'nal' and
+                          $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/cash' and
+                          bf:Source/bf:code != 'cash' and
+                          $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/rvm' and
+                          bf:Source/bf:code != 'rvm'">
+                <sf code="2">
+                  <switch>
+                    <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
+                    <case test="$vSourceUri != ''">
+                      <switch>
+                        <case test="contains($vSourceUri,'id.loc.gov')">
+                          <transform>
+                            <xsl:call-template name="tUriCode">
+                              <xsl:with-param name="pUri" select="$vSourceUri"/>
+                            </xsl:call-template>
+                          </transform>
+                        </case>
+                        <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                      </switch>
+                    </case>
+                    <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+                  </switch>
+                </sf>
               </case>
             </switch>
           </select>

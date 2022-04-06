@@ -1,38 +1,21 @@
 <?xml version='1.0'?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-  <bf:Work rdf:about="http://example.org/534test#Work">
-    <bf:hasInstance>
-      <bf:Instance rdf:about="http://example.org/534test#Instance534">
-        <bf:originalVersionOf rdf:resource="http://example.org/534test#Instance"/>
+  <bf:Instance rdf:about="http://example.org/534test#Instance">
+    <bf:note>
+      <bf:Note>
+        <bf:noteType>original version</bf:noteType>
         <bflc:appliesTo>
           <bflc:AppliesTo>
             <rdfs:label>Originally issued</rdfs:label>
           </bflc:AppliesTo>
         </bflc:appliesTo>
-        <bf:contribution>
-          <bf:Contribution>
-            <bf:agent>
-              <bf:Agent>
-                <rdfs:label>Frederick, John</rdfs:label>
-              </bf:Agent>
-            </bf:agent>
-          </bf:Contribution>
-        </bf:contribution>
-        <bf:title>
-          <bf:Title>
-            <bf:mainTitle>Luck</bf:mainTitle>
-          </bf:Title>
-        </bf:title>
-        <bf:note>
-          <bf:Note>
-            <rdfs:label>Published in: Argosy, 1919.</rdfs:label>
-          </bf:Note>
-        </bf:note>
-      </bf:Instance>
-    </bf:hasInstance>
-    <bf:hasInstance rdf:resource="http://example.org/534test#Instance"/>
-  </bf:Work>
-  <bf:Instance rdf:about="http://example.org/534test#Instance">
-    <bf:originalVersion rdf:resource="http://example.org/534test#Instance534"/>
+        <rdfs:label>Frederick, John Luck Published in: Argosy, 1919.</rdfs:label>
+        <bf:identifiedBy>
+          <bf:Issn>
+            <rdf:value>1234-5678</rdf:value>
+          </bf:Issn>
+        </bf:identifiedBy>
+      </bf:Note>
+    </bf:note>
   </bf:Instance>
 </rdf:RDF>

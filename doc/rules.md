@@ -82,7 +82,7 @@ Two high-level elements are used to encode the conversion rules that generate MA
 </cf>
 ```
 
-* `df`: conversion rules for generating MARC data fields. The `df` element requires a `tag` attribute, which should contain a 3-character value. An optional boolean attribute, `repeatable`, if set to `"false"` will prevent the data field from being generated more than once. The optional attribute `lang-xpath` holds an XPath expression that can be used to generate an `xml:lang` tag attribute on the data field. The optional attribue `lang-prefer` generates processing code that attempts to prefer vernacular or transliterated versions of literals, based on the `lang-xpath` and the cataloging language script parameter `pCatScript`.
+* `df`: conversion rules for generating MARC data fields. The `df` element requires a `tag` attribute, which should contain a 3-character value. An optional boolean attribute, `repeatable`, if set to `"false"` will prevent the data field from being generated more than once. The optional attribute `lang-xpath` holds an XPath expression for a single property with an `xml:lang` attribute that can be used to generate an `xml:lang` tag attribute on the data field. _Note_: using an expression like `rdfs:label|bf:code` will result in unexpected results! The optional attribute `lang-prefer` generates processing code that attempts to prefer vernacular or transliterated versions of literals, based on the `lang-xpath` and the cataloging language script parameter `pCatScript`.
 
 The `df` element is more complex. In addition to the rule building blocks documented below, the following elements are required:
 
@@ -242,6 +242,9 @@ The following named templates are defined in the generated stylesheet for use in
 * `EDTF-TimeDiff`: Return the time shift part of a single EDTF date (not a range).
 * `EDTF-to-033`: Return a string formatted as a date for the 033/263 fields from a single EDTF date (not a range).
 * `tScriptCode`: Extract the script subtag from an xml:lang attribute.
+* `tUriCode`: Extract the code (last path element) of an id.loc.gov URI
+* `tToken2Subfields`: Tokenize a string into a set of subfields
+* `tGetMARCAuth`: Return a MARC authority record from id.loc.gov as a node set. Note special processing for LOC authorities retrieves an SRU result set, so you may need to dig for the MARC record to use the values! See the test examples in rules/test/test/04-1XX.xspec.
 
 #### Limitations
 

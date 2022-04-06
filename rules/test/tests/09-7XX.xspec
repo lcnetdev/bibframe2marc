@@ -29,6 +29,8 @@
               test="//marc:datafield[@tag='700'][2]/marc:subfield[@code='t'] = 'These foolish things'"/>
     <x:expect label="$i from relationship"
               test="//marc:datafield[@tag='700'][2]/marc:subfield[@code='i'] = 'Motion picture adaptation of (work)'"/>
+    <x:expect label="$5 from bflc:applicableInsitution"
+              test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='5'] = 'DLC'"/>
   </x:scenario>
 
   <x:scenario label="MARC 700 analytic entry">
@@ -76,7 +78,23 @@
     <x:expect label="$c from GeographicElement"
               test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
     <x:expect label="$0 from URI of agent"
-              test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/no2009024971'"/>
+              test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='0'] = 'http://example.com/authorities/names/no2009024971'"/>
+  </x:scenario>
+
+  <x:scenario label="Added entry from name authority">
+    <x:context href="../data/7XX/700-auth.xml"/>
+    <x:expect label="generate added entry"
+              test="count(//marc:datafield[@tag='700']) = 1"/>
+    <x:expect label="ind1 from authority"
+              test="//marc:datafield[@tag='700']/@ind1 = '1'"/>
+    <x:expect label="$a from authority (with punctuation)"
+              test="//marc:datafield[@tag='700']/marc:subfield[@code='a'] = 'Irby, James East,'"/>
+    <x:expect label="$d from authority"
+              test="//marc:datafield[@tag='700']/marc:subfield[@code='d'] = '1931-'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='700']/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/nr95040189'"/>
+    <x:expect label="Process other properties even with authority record"
+              test="//marc:datafield[@tag='700']/marc:subfield[@code='e'] = 'editor'"/>
   </x:scenario>
 
   <x:scenario label="MARC 720">
@@ -153,7 +171,6 @@
               test="//marc:datafield[@tag='787'][1]/marc:subfield[@code='x'] = '1552-5007'"/>
   </x:scenario>
 
-  <!-- note that rules for MARC 776 are with the 530 rules -->
   <x:scenario label="MARC 776">
     <x:context href="../data/7XX/776.xml"/>
     <x:expect label="generate 776" test="count(//marc:datafield[@tag='776']) = 1"/>
@@ -163,8 +180,6 @@
               test="//marc:datafield[@tag='776'][1]/@ind2 = ' '"/>
     <x:expect label="$3 from appliesTo"
               test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='3'] = 'Dispatches from U.S. consuls in Batavia, Java, Netherlands East Indies, 1818-1906'"/>
-    <x:expect label="$a from contribution"
-              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='a'] = 'U.S. consul of Java'"/>
     <x:expect label="$t from title"
               test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='t'] = 'Dispatches'"/>
     <x:expect label="$h from extent"

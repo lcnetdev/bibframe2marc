@@ -1,10 +1,21 @@
---- 1.1.0-SNAPSHOT
+--- 1.1.0-M2BF-1.6 2022/04/05
 
-Fix recursion bug in tChopPunct template related to un-matched enclosing punctuation.
-Update 007 conversion. Add extended fill characters.
-Update conversion based on updated specifications:
-  bf2marcSpec-LDR, 001-005-v1.1
-  bf2marcSpec-007-v1.1
+Interim release reflecting specification changes related to marc2bibframe v1.6.x
+
+Many changes and fixes, including:
+
+* Fix recursion bug in tChopPunct template related to un-matched enclosing punctuation.
+* Update 007 conversion. Add extended fill characters.
+* Updated conversion based on updated specifications for many control and data fields.
+* New named templates available for use in rules, including:
+    * tUriCode
+    * tToken2Subfields
+    * tGetMARCAuth
+* New feature to allow for pulling in MARC authority records from the Library of Congress
+  or other sources, and using that data to augment data fields generated from
+  BIBFRAME entities.
+
+See the README.md file and doc/rules.md for more details.
 
 --- 1.0.0 2020/04/30
 

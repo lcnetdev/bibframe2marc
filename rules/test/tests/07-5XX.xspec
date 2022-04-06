@@ -5,18 +5,7 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
-  <!-- MARC 254/256 tests are here because they appear in BIBFRAME as notes -->
-  <x:scenario label="MARC 254">
-    <x:context href="../data/5XX/254.xml"/>
-    <x:expect label="generate 254" test="count(//marc:datafield[@tag='254']) = 1"/>
-    <x:expect label="ind1 default to blank"
-              test="//marc:datafield[@tag='254']/@ind1 = ' '"/>
-    <x:expect label="ind2 default to blank"
-              test="//marc:datafield[@tag='254']/@ind2 = ' '"/>
-    <x:expect label="$a from label"
-              test="//marc:datafield[@tag='254']/marc:subfield[@code='a'] = 'Partitur'"/>
-  </x:scenario>
-
+  <!-- MARC 256/362 tests are here because they appear in BIBFRAME as notes -->
   <x:scenario label="MARC 256">
     <x:context href="../data/5XX/256.xml"/>
     <x:expect label="generate 256" test="count(//marc:datafield[@tag='256']) = 1"/>
@@ -26,6 +15,16 @@
               test="//marc:datafield[@tag='256']/@ind2 = ' '"/>
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='256']/marc:subfield[@code='a'] = 'Computer data (2 files : 876,000, 775,000 records)'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 362 from 'Numbering' note">
+    <x:context href="../data/5XX/362.xml"/>
+    <x:expect label="generate unformatted 362 from 'Numbering' note"
+              test="count(//marc:datafield[@tag='362' and @ind1='1']) = 1"/>
+    <x:expect label="generate $a from Note rdfs:label"
+              test="//marc:datafield[@tag='362' and @ind1='1']/marc:subfield[@code='a'] = 'Began with vol. 4, published in 1947.'"/>
+    <x:expect label="do not generate a 500 field"
+              test="count(//marc:datafield[@tag='500']) = 0"/>
   </x:scenario>
 
   <!-- I know, a 490 isn't a 5XX -->
@@ -38,9 +37,7 @@
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='490']/@ind2 = ' '"/>
     <x:expect label="$a from seriesStatement"
-              test="//marc:datafield[@tag='490']/marc:subfield[@code='a'][1] = 'A series of unfortunate events'"/>
-    <x:expect label="$v from seriesEnumeration"
-              test="//marc:datafield[@tag='490']/marc:subfield[@code='v'][2] = 'no 14'"/>
+              test="//marc:datafield[@tag='490']/marc:subfield[@code='a'][1] = 'A series of unfortunate events bk. 9'"/>
   </x:scenario>
 
   <x:scenario label="MARC 500">
@@ -77,10 +74,19 @@
               test="//marc:datafield[@tag='502'][1]/marc:subfield[@code='d'] = '1997'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 504">
+    <x:context href="../data/5XX/504.xml"/>
+    <x:expect label="generate 504" test="count(//marc:datafield[@tag='504']) = 1"/>
+  </x:scenario>
+
   <x:scenario label="MARC 505">
     <x:context href="../data/5XX/505.xml"/>
     <x:expect label="generate 505 from bf:tableOfContents property"
               test="count(//marc:datafield[@tag='505']) = 1"/>
+    <x:expect label="$a from rdfs:label"
+              test="starts-with(//marc:datafield[@tag='505']/marc:subfield[@code='a'],'Uptown funk')"/>
+    <x:expect label="$u from rdf:value"
+              test="//marc:datafield[@tag='505']/marc:subfield[@code='u'] = 'http://toc.example.org'"/>
   </x:scenario>
 
   <x:scenario label="MARC 506">
@@ -92,7 +98,7 @@
               test="//marc:datafield[@tag='506'][1]/@ind2 = ' '"/>
     <x:expect label="$a from rdfs:label"
               test="//marc:datafield[@tag='506'][1]/marc:subfield[@code='a'] = 'Some restrictions apply. Consult restricted access file for restriction details'"/>
-    <x:expect label="$u from rdfs:label with anyURI datatype"
+    <x:expect label="$u from rdf:value with anyURI datatype"
               test="//marc:datafield[@tag='506'][1]/marc:subfield[@code='u'] = 'http://example.org/accessPolicy.html'"/>
     <x:expect label="$5 from applicableInstitution"
               test="//marc:datafield[@tag='506'][1]/marc:subfield[@code='5'] = 'MH'"/>
@@ -164,16 +170,28 @@
   </x:scenario>
 
   <x:scenario label="MARC 518">
-    <x:context href="../data/5XX/518.xml"/>
-    <x:expect label="generate 518" test="count(//marc:datafield[@tag='518']) = 1"/>
-    <x:expect label="ind1 default to blank"
-              test="//marc:datafield[@tag='518'][1]/@ind1 = ' '"/>
-    <x:expect label="ind2 default to blank"
-              test="//marc:datafield[@tag='518'][1]/@ind2 = ' '"/>
-    <x:expect label="$a from rdfs:label"
-              test="//marc:datafield[@tag='518'][1]/marc:subfield[@code='a'] = 'Recorded in Vienna in 1961, previously released as WST 17035.'"/>
-    <x:expect label="$3 from bflc:appliesTo"
-              test="//marc:datafield[@tag='518'][1]/marc:subfield[@code='3'] = 'Horse'"/>
+    <x:scenario label="Generic 518 (only $a)">
+      <x:context href="../data/5XX/518-1.xml"/>
+      <x:expect label="generate 518" test="count(//marc:datafield[@tag='518']) = 1"/>
+      <x:expect label="ind1 default to blank"
+                test="//marc:datafield[@tag='518'][1]/@ind1 = ' '"/>
+      <x:expect label="ind2 default to blank"
+                test="//marc:datafield[@tag='518'][1]/@ind2 = ' '"/>
+      <x:expect label="$a from rdfs:label"
+                test="//marc:datafield[@tag='518'][1]/marc:subfield[@code='a'] = 'Recorded in Vienna in 1961, previously released as WST 17035.'"/>
+      <x:expect label="$3 from bflc:appliesTo"
+                test="//marc:datafield[@tag='518'][1]/marc:subfield[@code='3'] = 'Horse'"/>
+    </x:scenario>
+
+    <x:scenario label="More specific 518">
+      <x:context href="../data/5XX/518-2.xml"/>
+      <x:expect label="$o from note"
+                test="//marc:datafield[@tag='518']/marc:subfield[@code='o'] = 'Filmed on location'"/>
+      <x:expect label="$p from place"
+                test="//marc:datafield[@tag='518']/marc:subfield[@code='p'] = 'Rome and Venice'"/>
+      <x:expect label="$d from date"
+                test="//marc:datafield[@tag='518']/marc:subfield[@code='d'] = '1976 January through June'"/>
+    </x:scenario>
   </x:scenario>
 
   <x:scenario label="MARC 520">
@@ -185,7 +203,7 @@
               test="//marc:datafield[@tag='520'][2]/@ind2 = ' '"/>
     <x:expect label="$a from rdfs:label"
               test="//marc:datafield[@tag='520'][1]/marc:subfield[@code='a'] = 'Following the yearly tradition, this release will feature an array of Grammy-nominated artists. The bestselling collection includes categories representing nominees for Record of the Year, Album of the Year, Song of the Year, and more.'"/>
-    <x:expect label="$u from source"
+    <x:expect label="$u from rdf:value"
               test="//marc:datafield[@tag='520'][2]/marc:subfield[@code='u'] = 'http://www3.openu.ac.il/ouweb/owal/new_books1.book_desc?in_mis_cat=126558.'"/>
   </x:scenario>
 
@@ -222,10 +240,9 @@
               test="//marc:datafield[@tag='524'][1]/marc:subfield[@code='a'] = 'James Hazen Hyde Papers, 1891-1941, New York Historical Society.'"/>
   </x:scenario>
 
-
   <x:scenario label="MARC 525">
-    <x:context href="../data/5XX/525.xml"/>
-    <x:expect label="generate 525" test="count(//marc:datafield[@tag='525']) = 1"/>
+    <x:context href="../data/5XX/504.xml"/>
+    <x:expect label="do not generate 525" test="count(//marc:datafield[@tag='525']) = 0"/>
   </x:scenario>
 
   <x:scenario label="MARC 530">
@@ -237,15 +254,11 @@
               test="//marc:datafield[@tag='530'][1]/@ind2 = ' '"/>
     <x:expect label="$3 from appliesTo"
               test="//marc:datafield[@tag='530'][1]/marc:subfield[@code='3'] = 'Dispatches from U.S. consuls in Batavia, Java, Netherlands East Indies, 1818-1906'"/>
-    <x:expect label="$a from Instance note"
-              test="//marc:datafield[@tag='530'][1]/marc:subfield[@code='a'] = 'Available in microfilm'"/>
-    <x:expect label="$b from acquisitionSource"
-              test="//marc:datafield[@tag='530'][1]/marc:subfield[@code='b'] = 'National Archives'"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='530'][1]/marc:subfield[@code='a'] = 'Available in microfilm National Archives Standing order account required'"/>
     <x:expect label="$d from StockNumber"
               test="//marc:datafield[@tag='530'][1]/marc:subfield[@code='d'] = 'M449'"/>
-    <x:expect label="$c from acquistionTerms"
-              test="//marc:datafield[@tag='530'][1]/marc:subfield[@code='c'] = 'Standing order account required'"/>
-    <x:expect label="$u from Item electronicLocator"
+    <x:expect label="$u from rdf:value"
               test="//marc:datafield[@tag='530'][1]/marc:subfield[@code='u'] = 'http://www.bartleby.com/99/index.html'"/>
   </x:scenario>
 
@@ -267,18 +280,12 @@
               test="//marc:datafield[@tag='533'][1]/@ind1 = ' '"/>
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='533'][1]/@ind2 = ' '"/>
-    <x:expect label="$a from carrier"
-              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='a'] = 'Microfilm'"/>
-    <x:expect label="$b from ProvisionActivity/place"
-              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='b'] = 'Millwood, N.Y.'"/>
-    <x:expect label="$c from ProvisionActivity/agent"
-              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='c'] = 'KTO Microfilm'"/>
-    <x:expect label="$d from ProvisionActivity/date"
-              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='d'] = '1966'"/>
-    <x:expect label="$e from extent"
-              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='e'] = '5 microfilm reels : negative ; 35 mm.'"/>
-    <x:expect label="$m from bflc:appliesTo"
-              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='m'] = '1950-1954'"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='a'] = 'Microfilm Millwood, N.Y. KTO Microfilm 1966'"/>
+    <x:expect label="$3 from bflc:appliesTo"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='3'] = '1950-1954'"/>
+    <x:expect label="$5 from bflc:applicableInstitution"
+              test="//marc:datafield[@tag='533'][1]/marc:subfield[@code='5'] = 'DLC'"/>
   </x:scenario>
 
   <x:scenario label="MARC 534">
@@ -288,12 +295,12 @@
               test="//marc:datafield[@tag='534'][1]/@ind1 = ' '"/>
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='534'][1]/@ind2 = ' '"/>
-    <x:expect label="$a from contribution"
-              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='a'] = 'Frederick, John'"/>
-    <x:expect label="$p from bflc:appliesTo"
-              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='p'] = 'Originally issued'"/>
-    <x:expect label="$n from from note"
-              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='n'] = 'Published in: Argosy, 1919.'"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='a'] = 'Frederick, John Luck Published in: Argosy, 1919.'"/>
+    <x:expect label="$3 from bflc:appliesTo"
+              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='3'] = 'Originally issued'"/>
+    <x:expect label="$x from Issn"
+              test="//marc:datafield[@tag='534'][1]/marc:subfield[@code='x'] = '1234-5678'"/>
   </x:scenario>
 
   <x:scenario label="MARC 536">
@@ -315,6 +322,8 @@
     <x:context href="../data/5XX/538.xml"/>
     <x:expect label="generate 538 from bf:systemRequirement property"
               test="//marc:datafield[@tag='538']/marc:subfield[@code='a'] = 'Blu-ray disc; requires Blu-ray player.'"/>
+    <x:expect label="$u from URI in rdf:value"
+              test="//marc:datafield[@tag='538']/marc:subfield[@code='u'] = 'http://example.org/blu-ray'"/>
   </x:scenario>
 
   <x:scenario label="MARC 540">
@@ -326,7 +335,7 @@
               test="//marc:datafield[@tag='540'][1]/@ind2 = ' '"/>
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='540'][1]/marc:subfield[@code='a'] = 'Creative Commons Namensnennung - Nicht kommerziell - Keine Bearbeitungen CC BY-NC-ND 4.0'"/>
-    <x:expect label="$u from label with anyURI datatype"
+    <x:expect label="$u from rdf:value with anyURI datatype"
               test="//marc:datafield[@tag='540'][1]/marc:subfield[@code='u'] = 'http://creativecommons.org/licenses/by-nc-nd/4.0'"/>
     <x:expect label="$2 from source"
               test="//marc:datafield[@tag='540'][1]/marc:subfield[@code='2'] = 'cc'"/>
@@ -352,7 +361,7 @@
               test="//marc:datafield[@tag='545'][1]/@ind2 = ' '"/>
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='545'][1]/marc:subfield[@code='a'] = 'The Faribault State School and Hospital provided care, treatment, training, and a variety of other services to mentally retarded individuals and their families.'"/>
-    <x:expect label="$u from label with datatype anyURI"
+    <x:expect label="$u from rdf:value with datatype anyURI"
               test="//marc:datafield[@tag='545'][1]/marc:subfield[@code='u'] = 'http://www.mnhs.org/library/findaids/80881.html'"/>
   </x:scenario>
 
@@ -389,7 +398,7 @@
               test="//marc:datafield[@tag='555'][1]/@ind2 = ' '"/>
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='555'][1]/marc:subfield[@code='a'] = 'Available in the Manuscript Reading Room and on Internet.'"/>
-    <x:expect label="$u from label with datatype anyURI"
+    <x:expect label="$u from rdf:value with datatype anyURI"
               test="//marc:datafield[@tag='555'][1]/marc:subfield[@code='u'] = 'http://hdl.loc.gov/loc.mss/eadmss.ms996001'"/>
   </x:scenario>
 
@@ -437,6 +446,8 @@
               test="//marc:datafield[@tag='583'][1]/marc:subfield[@code='a'] ='transfer university archives'"/>
     <x:expect label="$c from date"
               test="//marc:datafield[@tag='583'][1]/marc:subfield[@code='c'] = '19770613'"/>
+    <x:expect label="$u from rdf:value with anyURI datatype"
+              test="//marc:datafield[@tag='583'][1]/marc:subfield[@code='u'] = 'http://karamelik.eastlib.ufl.edu/cgi-bin/conserve/rara.pl'"/>
   </x:scenario>
 
   <x:scenario label="MARC 585">
@@ -464,8 +475,8 @@
   <x:scenario label="MARC 588">
     <x:context href="../data/5XX/588.xml"/>
     <x:expect label="generate 588" test="count(//marc:datafield[@tag='588']) = 1"/>
-    <x:expect label="ind1 default to blank"
-              test="//marc:datafield[@tag='588'][1]/@ind1 = ' '"/>
+    <x:expect label="ind1 from display constant"
+              test="//marc:datafield[@tag='588'][1]/@ind1 = '0'"/>
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='588'][1]/@ind2 = ' '"/>
     <x:expect label="$a from label"

@@ -9,6 +9,7 @@
                  xmlns:xsl="http://www.w3.org/1999/XSL/TransformAlias"
                  xmlns:bf2marc="http://www.loc.gov/bf2marc"
                  xmlns:local="http://example.org/local"
+                 xmlns:exsl="http://exslt.org/common"
                  exclude-result-prefixes="bf2marc">
 
   <xslt:namespace-alias stylesheet-prefix="xsl" result-prefix="xslt"/>
@@ -44,6 +45,7 @@
       <xsl:param name="pSourceRecordId"/>
       <xsl:param name="pConversionAgency" select="'DLC'"/>
       <xsl:param name="pGenerationUri" select="'https://github.com/lcnetdev/bibframe2marc'"/>
+      <xsl:param name="pSRULookup"/>
 
       <!-- for upper- and lower-case translation (ASCII only) -->
       <xsl:variable name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable>
@@ -459,6 +461,146 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:if>
+      </xsl:template>
+
+      <!-- get the code (last element) from a URI -->
+      <xsl:template name="tUriCode">
+        <xsl:param name="pUri"/>
+        <xsl:choose>
+          <xsl:when test="contains($pUri,'://')">
+            <xsl:if test="contains(substring-after($pUri,'://'),'/')">
+              <xsl:call-template name="tUriCode">
+                <xsl:with-param name="pUri" select="substring-after($pUri,'://')"/>
+              </xsl:call-template>
+            </xsl:if>
+          </xsl:when>
+          <xsl:when test="contains($pUri,'/')">
+            <xsl:call-template name="tUriCode">
+              <xsl:with-param name="pUri" select="substring-after($pUri,'/')"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:choose>
+              <xsl:when test="contains($pUri,'?')">
+                <xsl:value-of select="substring-before($pUri,'?')"/>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+            </xsl:choose>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
+
+      <!-- generate marc:subfields by tokenizing a string -->
+      <xsl:template name="tToken2Subfields">
+        <xsl:param name="pString"/>
+        <xsl:param name="pSeparator" select="' '"/>
+        <xsl:param name="pSubfieldCode"/>
+        <xsl:choose>
+          <xsl:when test="contains($pString,$pSeparator)">
+            <marc:subfield>
+              <xsl:attribute name="code"><xsl:value-of select="$pSubfieldCode"/></xsl:attribute>
+              <xsl:value-of select="substring-before($pString,$pSeparator)"/>
+            </marc:subfield>
+            <xsl:call-template name="tToken2Subfields">
+              <xsl:with-param name="pString" select="substring-after($pString,$pSeparator)"/>
+              <xsl:with-param name="pSeparator" select="$pSeparator"/>
+              <xsl:with-param name="pSubfieldCode" select="$pSubfieldCode"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+            <marc:subfield>
+              <xsl:attribute name="code"><xsl:value-of select="$pSubfieldCode"/></xsl:attribute>
+              <xsl:value-of select="$pString"/>
+            </marc:subfield>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
+
+      <!-- get a MARC authority from a URI -->
+
+      <!--
+          special handling for id.loc.gov authorities:
+          Change the extension on the resource to .marcxml.xml UNLESS
+          global variable pSRULookup is "true" (string eq), THEN
+          convert id.loc.gov lookup to SRU search to get around
+          limitations of libxslt web client. Can also force SRU
+          lookup with template param pForceSRULookup (for testing)
+      -->
+
+      <xsl:template name="tGetMARCAuth">
+        <xsl:param name="pUri"/>
+        <xsl:param name="pForceSRULookup" select="false()"/>
+        <xsl:variable name="vUrl">
+          <xsl:choose>
+            <xsl:when test="contains($pUri,'id.loc.gov/authorities/')
+                            and not('.marcxml.xml' = substring($pUri, string-length($pUri) - 11))">
+              <xsl:choose>
+                <xsl:when test="$pSRULookup='true' or $pForceSRULookup=true()">
+                  <xsl:variable name="vUriLccn">
+                    <xsl:call-template name="tUriCode">
+                      <xsl:with-param name="pUri" select="$pUri"/>
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <!-- need to distinguish between pre/post Y2K LCCNs -->
+                  <xsl:variable name="vLccnSearch">
+                    <xsl:variable name="vLccnNum">
+                      <xsl:value-of select="translate($vUriLccn,translate($vUriLccn,'0123456789',''),'')"/>
+                    </xsl:variable>
+                    <xsl:variable name="vPrefix">
+                      <xsl:value-of select="translate(substring($vUriLccn,1,3),'0123456789 ','')"/>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <!-- post Y2K -->
+                      <xsl:when test="string-length($vLccnNum)=10">
+                        <xsl:choose>
+                          <xsl:when test="string-length($vPrefix) &lt; 2">
+                            <xsl:value-of select="concat($vPrefix,'%20',$vLccnNum)"/>
+                          </xsl:when>
+                          <xsl:otherwise><xsl:value-of select="$vUriLccn"/></xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:when>
+                      <!-- pre Y2K -->
+                      <xsl:otherwise>
+                        <xsl:choose>
+                          <xsl:when test="string-length($vPrefix) &lt; 3">
+                            <xsl:value-of select="concat($vPrefix,'%20',$vLccnNum)"/>
+                          </xsl:when>
+                          <xsl:otherwise><xsl:value-of select="$vUriLccn"/></xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
+                  <xsl:choose>
+                    <xsl:when test="contains($pUri,'names')">
+                      <xsl:value-of select="concat('http://lx2.loc.gov:210/NAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')"/>
+                    </xsl:when>
+                    <xsl:when test="contains($pUri,'subjects')">
+                      <xsl:value-of select="concat('http://lx2.loc.gov:210/SAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')"/>
+                    </xsl:when>
+                    <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+                  </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:variable name="vPath">
+                    <xsl:value-of select="substring-after($pUri,'://id.loc.gov')"/>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('https://id.loc.gov',$vPath,'.marcxml.xml')"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="vDoc" select="document($vUrl)"/>
+        <xsl:choose>
+          <xsl:when test="$vDoc">
+            <xsl:copy-of select="$vDoc"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- return empty collection so XSpec doesn't fail -->
+            <marc:collection/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:template>
 
     </xsl:stylesheet>

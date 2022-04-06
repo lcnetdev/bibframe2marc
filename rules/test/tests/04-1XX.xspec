@@ -8,6 +8,8 @@
   <x:scenario label="MARC 100">
     <x:context href="../data/1XX/100.xml"/>
     <x:expect label="generate 100" test="count(//marc:datafield[@tag='100']) = 1"/>
+    <x:expect label="$e from role"
+              test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='e'] = 'Author'"/>
   </x:scenario>
 
   <x:scenario label="MARC 110">
@@ -21,7 +23,9 @@
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='110'][1]/marc:subfield[@code='a'] = 'Unitarian Universalist Ministers Association'"/>
     <x:expect label="$0 from URI of agent"
-              test="//marc:datafield[@tag='110'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n85033195'"/>
+              test="//marc:datafield[@tag='110'][1]/marc:subfield[@code='0'] = 'http://example.com/authorities/names/n85033195'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='110'][1]/marc:subfield[@code='2'] = 'naf'"/>
   </x:scenario>
 
   <x:scenario label="MARC 111">
@@ -37,7 +41,29 @@
     <x:expect label="$c from GeographicElement"
               test="//marc:datafield[@tag='111'][1]/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
     <x:expect label="$0 from URI of agent"
-              test="//marc:datafield[@tag='111'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/no2009024971'"/>
+              test="//marc:datafield[@tag='111'][1]/marc:subfield[@code='0'] = 'http://example.com/authorities/names/no2009024971'"/>
+  </x:scenario>
+
+  <x:scenario label="Main entry from name authority">
+    <x:context href="../data/1XX/100-auth.xml"/>
+    <x:expect label="generate main entry"
+              test="count(//marc:datafield[@tag='100']) = 1"/>
+    <x:expect label="ind1 from authority"
+              test="//marc:datafield[@tag='100']/@ind1 = '1'"/>
+    <x:expect label="$a from authority"
+              test="//marc:datafield[@tag='100']/marc:subfield[@code='a'] = 'Andersen, H. C.'"/>
+    <x:expect label="$q from authority (with punctuation)"
+              test="//marc:datafield[@tag='100']/marc:subfield[@code='q'] = '(Hans Christian),'"/>
+    <x:expect label="$d from authority"
+              test="//marc:datafield[@tag='100']/marc:subfield[@code='d'] = '1805-1875'"/>
+    <x:expect label="Subfield order from authority"
+              test="//marc:datafield[@tag='100']/marc:subfield[1]/@code='a' and
+                    //marc:datafield[@tag='100']/marc:subfield[2]/@code='q' and
+                    //marc:datafield[@tag='100']/marc:subfield[3]/@code='d'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='100']/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n79022941'"/>
+    <x:expect label="Process other properties even with authority record"
+              test="//marc:datafield[@tag='100']/marc:subfield[@code='e'] = 'composer'"/>
   </x:scenario>
 
   <x:scenario label="MARC 130">

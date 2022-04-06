@@ -56,7 +56,7 @@
       <x:expect label="Electronic resource 007 generated when Work type is bf:Multimedia and Instance media is http://id.loc.gov/vocabulary/mediaTypes/c"
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'c'"/>
       <x:expect label="007/01 from bf:Instance/bf:carrier URI"
-                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'e'"/>
+                test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'j'"/>
       <x:expect label="007/02-13 default"
                 test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' |||||||||||'"/>
     </x:scenario>
@@ -136,7 +136,7 @@
     <x:expect label="008/35-37 generated from bf:Work/bf:language"
               test="substring(marc:record/marc:controlfield[@tag='008'],36,3)='dan'"/>
     <x:expect label="008/38-39 not coded"
-              test="substring(marc:record/marc:controlfield[@tag='008'],39,2)=' |'"/>
+              test="substring(marc:record/marc:controlfield[@tag='008'],39,2)='  '"/>
   </x:scenario>
 
   <x:scenario label="MARC 008 - BK">
@@ -149,7 +149,7 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],24,1) = 's'"/>
     <x:expect label="BK 008/24-27 generated from bf:Work/bf:genreForm or bf:Work/bf:supplementaryContent"
               test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = 'bh  '"/>
-    <x:expect label="BK 008/28 generated from bf:Work/bf:genreForm with gov doc URI"
+    <x:expect label="BK 008/28 generated from bflc:governmentPubType with gov doc URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],29,1) = 'f'"/>
     <x:expect label="BK 008/29 generated from bf:Work/bf:genreForm with conference URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],30,1) = '1'"/>
@@ -177,8 +177,8 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],19,4) = 'b   '"/>
     <x:expect label="MP 008/22-23 generated from bf:Work/bf:cartographicAttributes/bf:Cartographic/bf:projection URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],23,2) = 'ca'"/>
-    <x:expect label="MP 008/25 generated from bf:Work/bf:genreForm URI or bf:Instance/bf:issuance URI"
-              test="substring(marc:record/marc:controlfield[@tag='008'],26,1) = 'a'"/>
+    <x:expect label="MP 008/25 generated from bf:Instance/bf:issuance URI"
+              test="substring(marc:record/marc:controlfield[@tag='008'],26,1) = 'b'"/>
     <x:expect label="MP 008/29 generated from bf:Instance/bf:carrier, bf:Instance/bf:fontSize, or bf:Instance/bf:notation"
               test="substring(marc:record/marc:controlfield[@tag='008'],30,1) = 'b'"/>
     <x:expect label="MP 008/33-34 generated from bf:Work/bf:genreForm URIs"
@@ -203,14 +203,14 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],19,1) = 'm'"/>
     <x:expect label="CR 008/19 generated from frequency/irregularity combo"
               test="substring(marc:record/marc:controlfield[@tag='008'],20,1) = 'r'"/>
-    <x:expect label="CR 008/21 generated from bf:Instance/bf:genreForm URI"
+    <x:expect label="CR 008/21 generated from bf:Instance/bflc:serialPubType URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],22,1) = 'p'"/>
     <x:expect label="CR 008/22 generated from bf:Instance/bf:note URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],23,1) = 'o'"/>
     <x:expect label="CR 008/23 generated from bf:Instance/bf:carrier URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],24,1) = 'd'"/>
     <x:expect label="CR 008/24-27 generated from bf:Work/bf:genreForm or bf:Work/bf:supplementaryContent URI"
-              test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = ' o  '"/>
+              test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = ' k  '"/>
     <x:expect label="CR 008/30-32 should be blank"
               test="substring(marc:record/marc:controlfield[@tag='008'],31,3) = '   '"/>
     <x:expect label="CR 008/33 generated from bf:Work/bf:notation URI"
