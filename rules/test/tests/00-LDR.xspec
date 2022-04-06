@@ -9,22 +9,18 @@
     <x:context href="../data/regression/bibframe.xml"/>
     <x:expect label="...pos 00-04 should be blank"
               test="substring(marc:record/marc:leader,1,5) = '     '"/>
-    <x:expect label="...pos 05 determined by value of $vAdminMetadata/bf:status/bf:Status/bf:code"
-              test="substring(marc:record/marc:leader,6,1) = 'n'"/>
+    <x:expect label="...pos 05 determined by value of $vAdminMetadata/bf:status"
+              test="substring(marc:record/marc:leader,6,1) = 'c'"/>
     <x:expect label="...pos 06 determined by value of bf:Work/rdf:type/@rdf:resource"
               test="substring(marc:record/marc:leader,7,1) = 'a'"/>
     <x:expect label="...pos 07 determined by value of bf:Instance/rdf:type/@rdf:resource or rdf:RDF/bf:Instance/bf:issuance/bf:Issuance/@rdf:about"
               test="substring(marc:record/marc:leader,8,1) = 'm'"/>
-    <x:expect label="...pos 08 determined by value of rdf:RDF/bf:Instance/rdf:type/@rdf:resource"
-              test="substring(marc:record/marc:leader,9,1) = ' '"/>
-    <x:expect label="...pos 09-16 should be 'a22#####'"
-              test="substring(marc:record/marc:leader,10,8) = 'a22     '"/>
-    <x:expect label="...pos 17 determined by $vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel"
+    <x:expect label="...pos 08-16 should be '#a22#####'"
+              test="substring(marc:record/marc:leader,9,9) = ' a22     '"/>
+    <x:expect label="...pos 17 determined by $vAdminMetadata/bflc:encodingLevel"
               test="substring(marc:record/marc:leader,18,1) = ' '"/>
-    <x:expect label="...pos 18 determined by $vAdminMetadata/bf:descriptionConventions/bf:DescriptionConventions"
-              test="substring(marc:record/marc:leader,19,1) = 'a'"/>
-    <x:expect label="position 19-23 should be '#4500'"
-              test="substring(marc:record/marc:leader,20,5) = ' 4500'"/>
+    <x:expect label="...position 18-23 should be 'c#4500'"
+              test="substring(marc:record/marc:leader,19,6) = 'c 4500'"/>
   </x:scenario>
 
 </x:description>
