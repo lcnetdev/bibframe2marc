@@ -33,11 +33,15 @@
   <x:scenario label="MARC 022">
     <x:context href="../data/010-048/010-048.xml"/>
     <x:expect label="generate 022" test="count(//marc:datafield[@tag='022']) = 3"/>
+    <x:expect label="...with subfield $0 from URI"
+              test="//marc:datafield[@tag='022'][1]/marc:subfield[@code='0'] = 'https://example.com/issnl/1234-1231'"/>
   </x:scenario>
 
   <x:scenario label="MARC 024">
     <x:context href="../data/010-048/010-048.xml"/>
-    <x:expect label="generate 024" test="count(//marc:datafield[@tag='024']) = 1"/>
+    <x:expect label="generate 024" test="count(//marc:datafield[@tag='024']) = 2"/>
+    <x:expect label="Eidr identifier also generates 024"
+              test="//marc:datafield[@tag='024'][1]/marc:subfield[@code='a'] = '10.5240/2288-6D1C-1F5E-D437-85D1-C'"/>
   </x:scenario>
 
   <x:scenario label="MARC 025">
@@ -73,11 +77,31 @@
   <x:scenario label="MARC 033">
     <x:context href="../data/010-048/010-048.xml"/>
     <x:expect label="generate 033" test="count(//marc:datafield[@tag='033']) = 1"/>
+    <x:expect label="$b/$c from place URI"
+              test="//marc:datafield[@tag='033']/marc:subfield[@code='b'] = '6714' and //marc:datafield[@tag='033']/marc:subfield[@code='c'] = 'R7'"/>
+    <x:expect label="$p from Place label"
+              test="//marc:datafield[@tag='033']/marc:subfield[@code='p'] = 'Minneapolis City Hall-Hennepin County Courthouse (Minneapolis, Minn.)'"/>
+    <x:expect label="$2 from Place source"
+              test="//marc:datafield[@tag='033']/marc:subfield[@code='2'] = 'lcsh'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 034">
+    <x:context href="../data/010-048/010-048.xml"/>
+    <x:expect label="generate 034"
+              test="count(//marc:datafield[@tag='034']) = 1"/>
+    <x:expect label="$a code generated based on 'linear' or 'angular' rdfs:label"
+              test="//marc:datafield[@tag='034']/marc:subfield[@code='a'] = 'a'"/>
+    <x:expect label="$b/$c generated from rdf:value based on 'horizontal' or 'vertical' rdfs:label"
+              test="//marc:datafield[@tag='034']/marc:subfield[@code='b'] = '744000'"/>
   </x:scenario>
 
   <x:scenario label="MARC 035">
     <x:context href="../data/010-048/010-048.xml"/>
     <x:expect label="generate 035" test="count(//marc:datafield[@tag='035']) = 1"/>
+    <x:expect label="Control number from rdf:value"
+              test="contains(//marc:datafield[@tag='035']/marc:subfield[@code='a'],'814782')"/>
+    <x:expect label="Qualifier from assigner/Agent URI/code"
+              test="starts-with(//marc:datafield[@tag='035']/marc:subfield[@code='a'],'(OCoLC)')"/>
   </x:scenario>
 
   <x:scenario label="MARC 036">
@@ -155,12 +179,11 @@
 
   <x:scenario label="MARC 043">
     <x:context href="../data/010-048/010-048.xml"/>
-    <x:expect label="generate 043 from geographicCoverage" test="count(//marc:datafield[@tag='043']) = 4"/>
+    <x:expect label="generate 043 from geographicCoverage" test="count(//marc:datafield[@tag='043']) = 3"/>
     <x:expect label="GeographicCoverage with URI http://id.loc.gov/vocabulary/geographicAreas/ generates $a"
               test="//marc:datafield[@tag='043'][1]/marc:subfield[@code='a'][1] = 'n-us---'"/>
     <x:expect label="...with accompanying $0"
               test="//marc:datafield[@tag='043'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/geographicAreas/n-us'"/>
-    <x:expect label="...other URIs generate $0" test="//marc:datafield[@tag='043'][4]/marc:subfield[@code='0'] = 'http://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-LV'"/>
     <x:expect label="GeographicCoverage with source ISO 3166 generates $c" test="//marc:datafield[@tag='043'][3]/marc:subfield[@code='c'] = 'us'"/>
     <x:expect label="...other sources generate $b" test="//marc:datafield[@tag='043'][2]/marc:subfield[@code='b'] = 's-bl-ba'"/>
     <x:expect label="...and $2" test="//marc:datafield[@tag='043'][2]/marc:subfield[@code='2'] = 'BlRjBN'"/>
@@ -173,6 +196,16 @@
     <x:expect label="...ind1 reflects nature of $b" test="//marc:datafield[@tag='045']/@ind1 = '2'"/>
     <x:expect label="...$a generated from EDTF dates with decade 'XX'" test="//marc:datafield[@tag='045']/marc:subfield[@code='a'] = 'x-x-'"/>
     <x:expect label="...$b generated from EDTF or dateTime dates" test="//marc:datafield[@tag='045']/marc:subfield[@code='b'][1] = 'd19270401' and //marc:datafield[@tag='045']/marc:subfield[@code='b'][2] = 'd20190413'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 046">
+    <x:context href="../data/010-048/010-048.xml"/>
+    <x:expect label="generate 046 from EDTF-typed bf:originDate"
+              test="count(//marc:datafield[@tag='046']) = 1"/>
+    <x:expect label="$k from first part of date range (or date if no range)"
+              test="//marc:datafield[@tag='046']/marc:subfield[@code='k'] = '19981022'"/>
+    <x:expect label="$l from second part of date range"
+              test="//marc:datafield[@tag='046']/marc:subfield[@code='l'] = '19991231235959.0'"/>
   </x:scenario>
 
   <x:scenario label="MARC 048">

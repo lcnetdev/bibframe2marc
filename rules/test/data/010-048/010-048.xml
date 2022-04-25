@@ -70,12 +70,7 @@
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:identifiedBy>
-      <bf:Issn>
-        <rdf:value>0376-4583</rdf:value>
-      </bf:Issn>
-    </bf:identifiedBy>
-    <bf:identifiedBy>
-      <bf:IssnL>
+      <bf:IssnL rdf:about="https://example.com/issnl/1234-1231">
         <rdf:value>1234-1231</rdf:value>
       </bf:IssnL>
     </bf:identifiedBy>
@@ -89,6 +84,11 @@
         </bf:status>
       </bf:IssnL>
     </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Eidr>
+        <rdf:value>10.5240/2288-6D1C-1F5E-D437-85D1-C</rdf:value>
+      </bf:Eidr>
+    </bf:identifiedBy>
     <bf:capture>
       <bf:Capture>
         <bf:note>
@@ -97,16 +97,7 @@
           </bf:Note>
         </bf:note>
         <bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1978-09-10T20:00:00-04:00/1978-09-14T20:00:00-04:00</bf:date>
-        <bf:place>
-          <bf:Place>
-            <rdf:value>6714 R7</rdf:value>
-            <bf:source>
-              <bf:Source rdf:about="http://id.loc.gov/authorities/classification/G">
-                <bf:code>lcc-g</bf:code>
-              </bf:Source>
-            </bf:source>
-          </bf:Place>
-        </bf:place>
+        <bf:place rdf:resource="http://id.loc.gov/authorities/classification/G/6714.R7"/>
         <bf:place>
           <bf:Place>
             <rdfs:label>Minneapolis City Hall-Hennepin County Courthouse (Minneapolis, Minn.)</rdfs:label>
@@ -124,6 +115,17 @@
         </bflc:appliesTo>
       </bf:Capture>
     </bf:capture>
+    <bf:scale>
+      <bf:Scale>
+        <rdf:value>744000</rdf:value>
+        <rdfs:label>linear horizontal</rdfs:label>
+        <bflc:appliesTo>
+          <bflc:AppliesTo>
+            <rdfs:label>map</rdfs:label>
+          </bflc:AppliesTo>
+        </bflc:appliesTo>
+      </bf:Scale>
+    </bf:scale>
     <bf:language>
       <bf:Language>
         <rdf:value>http://id.loc.gov/vocabulary/languages/eng</rdf:value>
@@ -183,11 +185,9 @@
         </bf:source>
       </bf:GeographicCoverage>
     </bf:geographicCoverage>
-    <bf:geographicCoverage>
-      <bf:GeographicCoverage rdf:about="http://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-LV"/>
-    </bf:geographicCoverage>
     <bf:temporalCoverage rdf:datatype="http://id.loc.gov/datatypes/edtf">19XX</bf:temporalCoverage>
     <bf:temporalCoverage rdf:datatype="http://id.loc.gov/datatypes/edtf">1927-04-01/2019-04-13</bf:temporalCoverage>
+    <bf:originDate rdf:datatype="http://id.loc.gov/datatypes/edtf">1998-10-22/1999-12-31T23:59:59.0</bf:originDate>
     <bf:instrument>
       <bf:MusicInstrument>
         <rdfs:label>trumpet</rdfs:label>
@@ -212,6 +212,11 @@
           </bf:Status>
         </bf:status>
       </bf:Lccn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Issn>
+        <rdf:value>0376-4583</rdf:value>
+      </bf:Issn>
     </bf:identifiedBy>
     <bf:identifiedBy>
       <bf:Nbn>
