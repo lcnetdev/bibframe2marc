@@ -66,68 +66,40 @@
     </case>
   </switch>
 
-
   <df tag="052">
-    <context xpath="bf:Work/bf:geographicCoverage/bf:GeographicCoverage[bf:source/@rdf:resource='http://id.loc.gov/authorities/classification/G' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/authorities/classification/G']">
+    <context
+        xpath="bf:Work/bf:geographicCoverage[contains(@rdf:resource,'id.loc.gov/authorities/classification/G') or
+               contains(bf:GeographicCoverage/@rdf:about,'id.loc.gov/authorities/classification/G')]">
       <ind1 default=" "/>
       <ind2 default=" "/>
+      <var name="vUri">
+        <switch>
+          <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+        </switch>
+      </var>
+      <var name="v052Code">
+        <transform>
+          <xsl:call-template name="tUriCode">
+            <xsl:with-param name="pUri" select="$vUri"/>
+          </xsl:call-template>
+        </transform>
+      </var>
       <sf code="a">
-        <select xpath="rdfs:label[1]">
-          <switch>
-            <case test="contains(.,' ')">
-              <transform><xsl:value-of select="substring-before(.,' ')"/></transform>
-            </case>
-            <case test="default"><transform><xsl:value-of select="."/></transform></case>
-          </switch>
-        </select>
+        <switch>
+          <case test="contains($v052Code,'.')">
+            <transform><xsl:value-of select="substring-after(substring-before($v052Code,'.'),'G')"/></transform>
+          </case>
+          <case test="default"><transform><xsl:value-of select="substring-after($v052Code,'G')"/></transform></case>
+        </switch>
       </sf>
-      <!-- tokenize label to create $b -->
       <switch>
-        <case test="contains(rdfs:label[1],' ')">
-          <transform>
-            <xsl:call-template name="tToken2Subfields">
-              <xsl:with-param name="pString" select="substring-after(rdfs:label[1],' ')"/>
-              <xsl:with-param name="pSubfieldCode" select="'b'"/>
-              <xsl:with-param name="pSeparator" select="' '"/>
-            </xsl:call-template>
-          </transform>
+        <case test="contains($v052Code,'.')">
+          <sf code="b">
+            <transform><xsl:value-of select="substring-after($v052Code,'.')"/></transform>
+          </sf>
         </case>
       </switch>
-      <!-- additional labels generate $d -->
-      <switch>
-        <case test="count(rdfs:label) &gt; 1">
-          <select xpath="rdfs:label">
-            <switch>
-              <case test="position() &gt; 1">
-                <sf code="d">
-                  <switch>
-                    <case test="contains(.,' ')">
-                      <transform><xsl:value-of select="substring-after(.,' ')"/></transform>
-                    </case>
-                    <case test="default"><transform><xsl:value-of select="."/></transform></case>
-                  </switch>
-                </sf>
-              </case>
-            </switch>
-          </select>
-        </case>
-      </switch>
-      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-      <sf code="0">
-        <select xpath="bf:identifiedBy/bf:Identifier">
-          <transform>
-            <xsl:variable name="vIdType">
-              <xsl:call-template name="tChopPunct">
-                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-              </xsl:call-template>
-            </xsl:variable>
-            <xsl:choose>
-              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-            </xsl:choose>
-          </transform>
-        </select>
-      </sf>
     </context>
   </df>
 
@@ -292,12 +264,13 @@
         <switch>
           <case test="bf:edition = 'full'">0</case>
           <case test="bf:edition = 'abridged'">1</case>
-          <case test="not(bf:source)">0</case>
         </switch>
       </ind1>
       <ind2 default=" ">
         <switch>
-          <case test="bf:assigner/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or bf:assigner/*/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc'">0</case>
+          <case test="bf:assigner/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or
+                      bf:assigner/*/@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or
+                      //bf:Item/bf:heldBy[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc']">0</case>
           <case test="bf:assigner">4</case>
         </switch>
       </ind2>
@@ -340,6 +313,27 @@
       <ind2 default=" "/>
       <sf code="a"><select xpath="bf:classificationPortion"/></sf>
       <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
+      <sf code="q">
+        <select xpath="bf:assigner">
+          <var name="vUri">
+            <switch>
+              <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+              <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+            </switch>
+          </var>
+          <var name="vAssignerCode">
+            <transform>
+              <xsl:call-template name="tUriCode">
+                <xsl:with-param name="pUri" select="$vUri"/>
+              </xsl:call-template>
+            </transform>
+          </var>
+          <switch>
+            <case test="$vAssignerCode != ''"><transform><xsl:value-of select="$vAssignerCode"/></transform></case>
+            <case test="default"><transform><xsl:value-of select="*/rdfs:label"/></transform></case>
+          </switch>
+        </select>
+      </sf>
       <sf code="0"><select xpath="@rdf:about"/></sf>
       <sf code="0">
         <select xpath="bf:identifiedBy/bf:Identifier">
@@ -350,6 +344,7 @@
               </xsl:call-template>
             </xsl:variable>
             <xsl:choose>
+              <xsl:when test="rdf:value/@rdf:resource"><xsl:value-of select="rdf:value/@rdf:resource"/></xsl:when>
               <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
               <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
             </xsl:choose>
