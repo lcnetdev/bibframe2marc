@@ -1341,7 +1341,7 @@
       </xslt:when>
       <xslt:otherwise>
         <xsl:variable name="{@name}">
-          <xslt:apply-templates mode="fieldTemplate" select="bf2marc:switch|bf2marc:transform"/>
+          <xslt:apply-templates mode="fieldTemplate" select="bf2marc:switch|bf2marc:transform|bf2marc:lookup"/>
         </xsl:variable>
       </xslt:otherwise>
     </xslt:choose>

@@ -181,7 +181,7 @@ The `df` element is more complex. In addition to the rule building blocks docume
 
 * `lookup/lookupField`: These elements can be used to look up a value in a map using values from the current context, or using a static value. The `lookup` element has 2 required attributes: `map` identifies the map for the lookup, and `targetField` identifies the field in the map that contains the targeted value. A `lookup` element contains 1 or more `lookupField` elements, which are and-ed together to search the map. The `lookupField` element has a required `name` attribute that identifies the map field in which to look for the value. The optional `xpath` attribute contains an XPath expression in the current context to use as a lookup value. If there is no `xpath` attribute, the text value of the `lookupField` element is used as the lookup value.
 
-  * These elements can be used with the `cf`, `ind1`, `ind2`, `sf`, `position`, and `case` elements.
+  * These elements can be used with the `cf`, `ind1`, `ind2`, `sf`, `position`, `case` and `var` elements.
 
 ```xml
 <df tag="048">
