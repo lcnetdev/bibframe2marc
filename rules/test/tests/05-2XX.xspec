@@ -129,6 +129,8 @@
     <x:expect label="generate 250" test="count(//marc:datafield[@tag='250']) = 1"/>
     <x:expect label="$a from editionStatement"
               test="//marc:datafield[@tag='250'][1]/marc:subfield[@code='a'] = 'Third edition'"/>
+    <x:expect label="generate 880 from editionStatement with xml:lang attribute"
+              test="//marc:datafield[@tag='880']/marc:subfield[@code='a'] = '第三版'"/>
   </x:scenario>
 
   <x:scenario label="MARC 254">
@@ -160,9 +162,37 @@
 
   <!-- tests for MARC 256 in with notes in 5XX rules -->
 
+  <x:scenario label="MARC 257">
+    <x:context href="../data/2XX/257.xml"/>
+    <x:expect label="generate 257 from Instance/originPlace"
+              test="count(//marc:datafield[@tag='257']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='257']/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='257']/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='257']/marc:subfield[@code='a'] = 'France'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='257']/marc:subfield[@code='2'] = 'naf'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 263">
+    <x:context href="../data/2XX/263.xml"/>
+    <x:expect label="generate 263 from Instance/bflc:projectedProvisionDate"
+              test="count(//marc:datafield[@tag='263']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='263']/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='263']/@ind2 = ' '"/>
+    <x:expect label="$a from literal"
+              test="//marc:datafield[@tag='263']/marc:subfield[@code='a'] = '1999--'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 264">
     <x:context href="../data/2XX/264.xml"/>
     <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
+    <x:expect label="generate 880 from place label with xml:lang"
+              test="count(//marc:datafield[@tag='880']) = 1"/>
   </x:scenario>
 
 </x:description>

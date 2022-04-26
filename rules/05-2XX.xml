@@ -306,13 +306,35 @@
     </context>
   </df>
 
-  <df tag="250" lang-xpath="." lang-prefer="vernacular">
-    <context xpath="bf:Instance/bf:editionStatement">
-      <ind1 default=" "/>
-      <ind2 default=" "/>
-      <sf code="a" chopPunct="true"><select xpath="."/></sf>
-    </context>
-  </df>
+  <!-- 250/880 -->
+  <select xpath="bf:Instance/bf:editionStatement">
+    <var name="v880Script">
+      <switch>
+        <case test="@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
+          <lookup map="df880script" targetField="code">
+            <lookupField name="lang" xpath="translate(substring-after(@xml:lang,'-'),$upper,$lower)"/>
+          </lookup>
+        </case>
+      </switch>
+    </var>
+    <switch>
+      <case test="$v880Script != ''">
+        <df tag="880">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <sf code="6"><transform><xsl:value-of select="concat('250-00/',$v880Script)"/></transform></sf>
+          <sf code="a" chopPunct="true"><select xpath="."/></sf>
+        </df>
+      </case>
+      <case test="default">
+        <df tag="250">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <sf code="a" chopPunct="true"><select xpath="."/></sf>
+        </df>
+      </case>
+    </switch>
+  </select>
 
   <df tag="254" repeatable="false">
     <context xpath="bf:Work/bf:musicFormat/bf:MusicFormat">
@@ -368,45 +390,184 @@
 
   <!-- rules for 256 in with 5XX (notes) -->
 
-  <df tag="264" lang-xpath="bf:place/*/rdfs:label" lang-prefer="vernacular">
-    <context xpath="bf:Instance/bf:provisionActivity/*[
+  <df tag="257">
+    <context xpath="bf:Instance/bf:originPlace/bf:Place">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a"><select xpath="rdfs:label"/></sf>
+      <sf code="2">
+        <select xpath="bf:source">
+          <var name="vUri">
+            <switch>
+              <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+              <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+            </switch>
+          </var>
+          <var name="vSourceCode">
+            <transform>
+              <xsl:call-template name="tUriCode">
+                <xsl:with-param name="pUri" select="$vUri"/>
+              </xsl:call-template>
+            </transform>
+          </var>
+          <switch>
+            <case test="$vSourceCode != ''"><transform><xsl:value-of select="$vSourceCode"/></transform></case>
+            <case test="default"><transform><xsl:value-of select="*/bf:code"/></transform></case>
+          </switch>
+        </select>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="263" repeatable="false">
+    <context xpath="bf:Instance/bflc:projectedProvisionDate">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a"><select xpath="."/></sf>
+    </context>
+  </df>
+
+  <!-- 264/880 -->
+  <!-- $6 occurence offset at 10, after 20 will throw an error -->
+  <select xpath="bf:Instance/bf:provisionActivity/*[
                     (local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production'] or
                     local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution'] or
                     local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']) or
                     ((local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication']) and
                     (*/*/rdfs:label or */*/madsrdf:authoritativeLabel))]">
-      <ind1 default=" ">
-        <switch>
-          <case test="bf:status/bf:Status/rdfs:label='current'">3</case>
-        </switch>
-      </ind1>
-      <ind2 default="1">
-        <switch>
-          <case test="local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production']">0</case>
-          <case test="local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution']">2</case>
-          <case test="local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']">3</case>
-        </switch>
-      </ind2>
-      <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
-      </sf>
-      <sf code="a" chopPunct="true">
-        <select xpath="bf:place/*[(local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
-                       (rdfs:label or madsrdf:authoritativeLabel)]">
+    <var name="v880Script">
+      <switch>
+        <case test="bf:place/*/rdfs:label/@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
+          <lookup map="df880script" targetField="code">
+            <lookupField name="lang" xpath="translate(substring-after(bf:place/*/rdfs:label/@xml:lang,'-'),$upper,$lower)"/>
+          </lookup>
+        </case>
+      </switch>
+    </var>
+    <var name="v880Occurence">
+      <transform><xsl:value-of select="10+position()"/></transform>
+    </var>
+    <switch>
+      <case test="$v880Occurence &lt; 21">
+        <df tag="264">
+          <ind1 default=" ">
+            <switch>
+              <case test="bf:status/bf:Status/rdfs:label='current'">3</case>
+            </switch>
+          </ind1>
+          <ind2 default="1">
+            <switch>
+              <case test="local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production']">0</case>
+              <case test="local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution']">2</case>
+              <case test="local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']">3</case>
+            </switch>
+          </ind2>
           <switch>
-            <case test="rdfs:label"><select xpath="rdfs:label"/></case>
-            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+            <case test="$v880Script != ''">
+              <sf code="6"><transform><xsl:value-of select="concat('880-',$v880Occurence)"/></transform></sf>
+            </case>
           </switch>
-        </select>
-      </sf>
-      <sf code="b" chopPunct="true">
-        <select xpath="bf:agent/bf:Agent/rdfs:label"/>
-      </sf>
-      <sf code="c" chopPunct="true">
-        <select xpath="bf:date"/>
-      </sf>
-    </context>
-  </df>
+          <sf code="3" chopPunct="true" repeatable="false">
+            <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
+          <sf code="a" chopPunct="true">
+            <select xpath="bf:place/*[(local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
+                           (rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] or madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))])]">
+              <switch>
+                <case test="rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><select xpath="rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></case>
+                <case test="madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><select xpath="madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></case>
+              </switch>
+            </select>
+          </sf>
+          <sf code="b" chopPunct="true">
+            <select xpath="bf:agent/bf:Agent/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+          </sf>
+          <sf code="c" chopPunct="true">
+            <select xpath="bf:date[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+          </sf>
+        </df>
+        <switch>
+          <case test="$v880Script != ''">
+            <df tag="880">
+              <ind1 default=" ">
+                <switch>
+                  <case test="bf:status/bf:Status/rdfs:label='current'">3</case>
+                </switch>
+              </ind1>
+              <ind2 default="1">
+                <switch>
+                  <case test="local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production']">0</case>
+                  <case test="local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution']">2</case>
+                  <case test="local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']">3</case>
+                </switch>
+              </ind2>
+              <sf code="6"><transform><xsl:value-of select="concat('264-',$v880Occurence,'/',$v880Script)"/></transform></sf>
+              <sf code="a" chopPunct="true">
+                <select xpath="bf:place/*[(local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
+                               (rdfs:label[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))] or madsrdf:authoritativeLabel[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))])]">
+                  <switch>
+                    <case test="rdfs:label[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"><select xpath="rdfs:label[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/></case>
+                    <case test="madsrdf:authoritativeLabel[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"><select xpath="madsrdf:authoritativeLabel[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/></case>
+                  </switch>
+                </select>
+              </sf>
+              <sf code="b" chopPunct="true">
+                <select xpath="bf:agent/bf:Agent/rdfs:label[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+              </sf>
+              <sf code="c" chopPunct="true">
+                <select xpath="bf:date[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+              </sf>
+            </df>
+          </case>
+        </switch>
+      </case>
+      <case test="default">
+        <transform>
+          <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed node <xsl:value-of select="name()"/>. Maximum number of 264 fields reached (10).</xsl:message>
+        </transform>
+      </case>
+    </switch>
+  </select>
+
+  <!-- <df tag="264" lang-xpath="bf:place/*/rdfs:label" lang-prefer="vernacular"> -->
+  <!--   <context xpath="bf:Instance/bf:provisionActivity/*[ -->
+  <!--                   (local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production'] or -->
+  <!--                   local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution'] or -->
+  <!--                   local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']) or -->
+  <!--                   ((local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication']) and -->
+  <!--                   (*/*/rdfs:label or */*/madsrdf:authoritativeLabel))]"> -->
+  <!--     <ind1 default=" "> -->
+  <!--       <switch> -->
+  <!--         <case test="bf:status/bf:Status/rdfs:label='current'">3</case> -->
+  <!--       </switch> -->
+  <!--     </ind1> -->
+  <!--     <ind2 default="1"> -->
+  <!--       <switch> -->
+  <!--         <case test="local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production']">0</case> -->
+  <!--         <case test="local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution']">2</case> -->
+  <!--         <case test="local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']">3</case> -->
+  <!--       </switch> -->
+  <!--     </ind2> -->
+  <!--     <sf code="3" chopPunct="true" repeatable="false"> -->
+  <!--       <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+  <!--     </sf> -->
+  <!--     <sf code="a" chopPunct="true"> -->
+  <!--       <select xpath="bf:place/*[(local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and -->
+  <!--                      (rdfs:label or madsrdf:authoritativeLabel)]"> -->
+  <!--         <switch> -->
+  <!--           <case test="rdfs:label"><select xpath="rdfs:label"/></case> -->
+  <!--           <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case> -->
+  <!--         </switch> -->
+  <!--       </select> -->
+  <!--     </sf> -->
+  <!--     <sf code="b" chopPunct="true"> -->
+  <!--       <select xpath="bf:agent/bf:Agent/rdfs:label"/> -->
+  <!--     </sf> -->
+  <!--     <sf code="c" chopPunct="true"> -->
+  <!--       <select xpath="bf:date"/> -->
+  <!--     </sf> -->
+  <!--   </context> -->
+  <!-- </df> -->
 
   <df tag="264" repeatable="false">
     <context xpath="bf:Instance/bf:copyrightDate">
