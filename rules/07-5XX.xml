@@ -42,7 +42,7 @@
         </df>
       </case>
 
-      <case test="local-name(../..)='Instance' and translate(bf:noteType,$upper,$lower)='numbering'">
+      <case test="local-name(../..)='Instance' and (translate(bf:noteType,$upper,$lower)='numbering' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/number')">
         <df tag="362" lang-xpath="rdfs:label">
           <ind1 default="1"/>
           <ind2 default=" "/>
@@ -391,7 +391,7 @@
   </df>
 
   <df tag="504" lang-xpath="rdfs:label">
-    <context xpath="bf:Work/bf:supplementaryContent/bf:SupplementaryContent">
+    <context xpath="bf:Work/bf:supplementaryContent/bf:SupplementaryContent[not(@rdf:about)]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>

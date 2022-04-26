@@ -603,6 +603,38 @@
         </xsl:choose>
       </xsl:template>
 
+      <!-- generate marc:subfields by splitting a string with embedded subfields (i.e. bflc:readMarc382) -->
+      <xsl:template name="tReadMarc382">
+        <xsl:param name="pString"/>
+        <xsl:param name="pSeparator" select="'$'"/>
+        <xsl:choose>
+          <xsl:when test="starts-with($pString,$pSeparator)">
+            <!-- Do not generate $3, that should come from RDF -->
+            <xsl:if test="substring(substring-after($pString,$pSeparator),1,1) != '3'">
+              <marc:subfield>
+                <xsl:attribute name="code"><xsl:value-of select="substring(substring-after($pString,$pSeparator),1,1)"/></xsl:attribute>
+                <xsl:choose>
+                  <xsl:when test="contains(substring-after($pString,$pSeparator),$pSeparator)">
+                    <xsl:value-of select="substring-before(substring(substring-after($pString,$pSeparator),2),$pSeparator)"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="substring(substring-after($pString,$pSeparator),2)"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </marc:subfield>
+            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="contains(substring-after($pString,$pSeparator),$pSeparator)">
+                <xsl:call-template name="tReadMarc382">
+                  <xsl:with-param name="pString" select="concat($pSeparator,substring-after(substring-after($pString,$pSeparator),$pSeparator))"/>
+                  <xsl:with-param name="pSeparator" select="$pSeparator"/>
+                </xsl:call-template>
+              </xsl:when>
+            </xsl:choose>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:template>
+
     </xsl:stylesheet>
   </xslt:template>
 

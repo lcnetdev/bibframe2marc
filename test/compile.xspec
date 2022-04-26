@@ -640,6 +640,40 @@
          </xslt:otherwise>
       </xslt:choose>
    </xslt:template>
+   <xslt:template name="tReadMarc382">
+      <xslt:param name="pString" />
+      <xslt:param name="pSeparator"
+                    select="'$'" />
+      <xslt:choose>
+         <xslt:when test="starts-with($pString,$pSeparator)">
+            <xslt:if test="substring(substring-after($pString,$pSeparator),1,1) != '3'">
+               <marc:subfield>
+                  <xslt:attribute name="code">
+                     <xslt:value-of select="substring(substring-after($pString,$pSeparator),1,1)" />
+                  </xslt:attribute>
+                  <xslt:choose>
+                     <xslt:when test="contains(substring-after($pString,$pSeparator),$pSeparator)">
+                        <xslt:value-of select="substring-before(substring(substring-after($pString,$pSeparator),2),$pSeparator)" />
+                     </xslt:when>
+                     <xslt:otherwise>
+                        <xslt:value-of select="substring(substring-after($pString,$pSeparator),2)" />
+                     </xslt:otherwise>
+                  </xslt:choose>
+               </marc:subfield>
+            </xslt:if>
+            <xslt:choose>
+               <xslt:when test="contains(substring-after($pString,$pSeparator),$pSeparator)">
+                  <xslt:call-template name="tReadMarc382">
+                     <xslt:with-param name="pString"
+                                        select="concat($pSeparator,substring-after(substring-after($pString,$pSeparator),$pSeparator))" />
+                     <xslt:with-param name="pSeparator"
+                                        select="$pSeparator" />
+                  </xslt:call-template>
+               </xslt:when>
+            </xslt:choose>
+         </xslt:when>
+      </xslt:choose>
+   </xslt:template>
       </xslt:stylesheet>
     </x:expect>
   </x:scenario>

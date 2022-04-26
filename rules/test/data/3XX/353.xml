@@ -1,0 +1,27 @@
+<?xml version='1.0'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+  <bf:Work rdf:about="http://example.org/353test#Work">
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/creatorbio">
+        <rdfs:label>biography of creator</rdfs:label>
+        <bf:identifiedBy>
+          <bf:Identifier>
+            <rdf:value rdf:resource="http://example.com/bio"/>
+          </bf:Identifier>
+        </bf:identifiedBy>
+        <bf:source>
+          <bf:Source>
+            <bf:code>msupplcont</bf:code>
+          </bf:Source>
+        </bf:source>
+        <bflc:appliesTo>
+          <bflc:AppliesTo>
+            <rdfs:label>Bio supplement</rdfs:label>
+          </bflc:AppliesTo>
+        </bflc:appliesTo>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:hasInstance rdf:resource="http://example.org/353test#Instance"/>
+  </bf:Work>
+  <bf:Instance rdf:about="http://example.org/353test#Instance"/>
+</rdf:RDF>

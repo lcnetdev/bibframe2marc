@@ -87,8 +87,8 @@
 
   <x:scenario label="MARC 344">
     <x:context href="../data/3XX/344.xml"/>
-    <x:expect label="generate 344 from each matching bf:soundCharacteristic property"
-              test="count(//marc:datafield[@tag='344']) = 8"/>
+    <x:expect label="generate 344 from each matching property"
+              test="count(//marc:datafield[@tag='344']) = 9"/>
   </x:scenario>
 
   <x:scenario label="MARC 345">
@@ -104,12 +104,14 @@
       <x:expect label="$b from ProjectionSpeed label"
                 test="//marc:datafield[@tag='345'][2]/marc:subfield[@code='b'] = '24 fps'"/>
     </x:scenario>
-    <x:scenario label="345 $d">
+    <x:scenario label="345 $c/$d">
       <x:context href="../data/3XX/345-2.xml"/>
-      <x:expect label="generate 345 from each Work/aspectRatio/AspectRatio/rdfs:label"
+      <x:expect label="generate 345 from each Instance/aspectRatio/AspectRatio/rdf:value|rdfs:label"
                 test="count(//marc:datafield[@tag='345']) = 2"/>
+      <x:expect label="$c from rdf:value"
+                test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='c'] = 'anamorphic'"/>
       <x:expect label="$d from rdfs:label"
-                test="//marc:datafield[@tag='345'][1]/marc:subfield[@code='d'] = 'anamorphic'"/>
+                test="//marc:datafield[@tag='345'][2]/marc:subfield[@code='d'] = 'wide-screen'"/>
       <x:expect label="$0 from URI"
                 test="//marc:datafield[@tag='345'][2]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/maspect/wide'"/>
     </x:scenario>
@@ -148,7 +150,7 @@
     <x:expect label="generate 351" test="count(//marc:datafield[@tag='351']) = 1"/>
     <x:expect label="$c from hierarchicalLevel"
               test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='c'] = 'Series'"/>
-    <x:expect label="$a from organization"
+    <x:expect label="$a from collectionOrganization"
               test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='a'] = 'Organized into five subseries'"/>
     <x:expect label="$b from pattern"
               test="//marc:datafield[@tag='351'][1]/marc:subfield[@code='b'] = 'Arranged by form of material'"/>
@@ -163,6 +165,26 @@
               test="//marc:datafield[@tag='352'][2]/marc:subfield[@code='b'] = 'Point'"/>
     <x:expect label="$c from CartographicObjectType count"
               test="//marc:datafield[@tag='352'][2]/marc:subfield[@code='c'] = '20171'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 353">
+    <x:context href="../data/3XX/353.xml"/>
+    <x:expect label="generate 353 from Work/supplementaryContent/SupplementaryContent with URI"
+              test="count(//marc:datafield[@tag='353']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='353']/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='353']/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label"
+              test="//marc:datafield[@tag='353']/marc:subfield[@code='a'] = 'biography of creator'"/>
+    <x:expect label="$b from URI"
+              test="//marc:datafield[@tag='353']/marc:subfield[@code='b'] = 'creatorbio'"/>
+    <x:expect label="$0 from identifier"
+              test="//marc:datafield[@tag='353']/marc:subfield[@code='0'] = 'http://example.com/bio'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='353']/marc:subfield[@code='2'] = 'msupplcont'"/>
+    <x:expect label="$3 from appliesTo"
+              test="//marc:datafield[@tag='353']/marc:subfield[@code='3'] = 'Bio supplement'"/>
   </x:scenario>
 
   <!-- tests for generating unformatted 362 from note in 5XX -->
@@ -191,25 +213,19 @@
 
   <x:scenario label="MARC 382">
     <x:context href="../data/3XX/382.xml"/>
-    <x:expect label="generate 382" test="count(//marc:datafield[@tag='382']) = 2"/>
-    <x:expect label="ind1 default to blank"
-              test="//marc:datafield[@tag='382'][1]/@ind1 = ' '"/>
+    <x:expect label="generate 382" test="count(//marc:datafield[@tag='382']) = 1"/>
+    <x:expect label="ind1 from status"
+              test="//marc:datafield[@tag='382']/@ind1 = '1'"/>
     <x:expect label="ind2 default to blank"
-              test="//marc:datafield[@tag='382'][1]/@ind2 = ' '"/>
-    <x:expect label="$a from label with no display constant"
-              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='a'][1] = 'mixed chorus'"/>
-    <x:expect label="$b from 'soloist' label"
-              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='b'][1] = 'soprano voice'"/>
-    <x:expect label="$n from count"
-              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='n'][2] = '2'"/>
-    <x:expect label="$v from note on MusicMedium object"
-              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='v'] = 'SATB'"/>
-    <x:expect label="$v from free-floating note"
-              test="//marc:datafield[@tag='382'][2]/marc:subfield[@code='v'][1] = 'Total performers alongside ensembles: 5'"/>
-    <x:expect label="$0 from URI"
-              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='0'][2] = 'http://id.loc.gov/authorities/performanceMediums/mp2013015071'"/>
-    <x:expect label="$2 from source"
-              test="//marc:datafield[@tag='382'][1]/marc:subfield[@code='2'] = 'lcmpt'"/>
+              test="//marc:datafield[@tag='382']/@ind2 = ' '"/>
+    <x:expect label="$3 from bflc:appliesTo"
+              test="//marc:datafield[@tag='382']/marc:subfield[@code='3'] = 'Nach Bach'"/>
+    <x:expect label="Other subfields extracted from bflc:readMarc382"
+              test="//marc:datafield[@tag='382']/marc:subfield[@code='a'] = 'piano' and
+                    //marc:datafield[@tag='382']/marc:subfield[@code='n'][1] = '1' and
+                    //marc:datafield[@tag='382']/marc:subfield[@code='v'][1] = 'played on altered piano' and
+                    //marc:datafield[@tag='382']/marc:subfield[@code='p'] = 'baritone horn' and
+                    //marc:datafield[@tag='382']/marc:subfield[@code='n'][2] = '2'"/>
   </x:scenario>
 
   <x:scenario label="MARC 383">
