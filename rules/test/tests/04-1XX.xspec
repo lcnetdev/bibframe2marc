@@ -68,9 +68,31 @@
 
   <x:scenario label="MARC 130">
     <x:context href="../data/1XX/130.xml"/>
-    <x:expect label="generate 130 from Work title when Instance title doesn't match Work title and there is no bflc:PrimaryContribution" test="count(//marc:datafield[@tag='130']) = 1"/>
-    <x:expect label="ind1 generated when bflc:titleSortKey is shorter than label" test="//marc:datafield[@tag='130']/@ind1 = '0'"/>
-    <x:expect label="$a generated from mainTitle" test="//marc:datafield[@tag='130']/marc:subfield[@code='a'] = 'Morning call (San Francisco, Calif.)'"/>
+    <x:expect label="generate 130 from Work/expressionOf/Hub when Hub has no bflc:primaryContribution"
+              test="count(//marc:datafield[@tag='130']) = 1"/>
+    <x:expect label="ind1 generated when bflc:titleSortKey is shorter than bf:mainTitle" test="//marc:datafield[@tag='130']/@ind1 = '4'"/>
+    <x:expect label="$a generated from mainTitle"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='a'] = 'The Encyclopedia of Latin American history and culture. (1952). [between 1775 and 1800]. Manuscripts, Latin. violin, viola, D major. arr. O.T. Book 4. Selections'"/>
+    <x:expect label="$d from legalDate"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='d'] = '1952'"/>
+    <x:expect label="$f from originDate"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='f'] = '[between 1775 and 1800]'"/>
+    <x:expect label="$m from musicMedium"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='m'] = 'violin, viola'"/>
+    <x:expect label="$n from title/Title/partNumber"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='n'] = 'Book 4'"/>
+    <x:expect label="$p from title/Title/partName"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='p'] = 'O.T.'"/>
+    <x:expect label="$o from rdf:type = 'Arrangement'"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='o'] = 'arranged'"/>
+    <x:expect label="$r from musicKey"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='r'] = 'D major'"/>
+    <x:expect label="$s from version"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='s'] = 'Version the second'"/>
+    <x:expect label="$0 from URI or identifiedBy"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='0'] = '(ID)0001'"/>
+    <x:expect label="$2 from source"
+              test="//marc:datafield[@tag='130']/marc:subfield[@code='2'] = 'IndexData'"/>
   </x:scenario>
 
 </x:description>

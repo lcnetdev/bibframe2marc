@@ -9,8 +9,8 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- Series added entries -->
-  <select xpath="bf:Work/bf:hasSeries/*[local-name()='Work' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] |
-                 //bf:Item/bf:hasSeries/*[local-name()='Work' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work']">
+  <select xpath="bf:Work/bf:hasSeries/*[local-name()='Hub' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub'] |
+                 //bf:Item/bf:hasSeries/*[local-name()='Hub' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub']">
     <var name="vScriptSubtag">
       <transform>
         <xsl:call-template name="tScriptCode">
@@ -128,19 +128,9 @@
               </select>
 
               <!-- title subfields -->
-              <sf code="t" chopPunct="true" repeatable="false">
-                <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
-                  <switch>
-                    <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </select>
-              </sf>
+              <sf code="t" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
               <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
               <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
-              <sf code="l" chopPunct="true" repeatable="false">
-                <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
-              </sf>
               <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
               <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
               <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
@@ -293,19 +283,9 @@
               </select>
 
               <!-- title subfields -->
-              <sf code="t" chopPunct="true" repeatable="false">
-                <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
-                  <switch>
-                    <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </select>
-              </sf>
+              <sf code="t" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
               <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
               <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
-              <sf code="l" chopPunct="true" repeatable="false">
-                <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
-              </sf>
               <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
               <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
               <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
@@ -456,18 +436,8 @@
               </select>
 
               <!-- title subfields -->
-              <sf code="t" chopPunct="true" repeatable="false">
-                <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
-                  <switch>
-                    <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </select>
-              </sf>
+              <sf code="t" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
               <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
-              <sf code="l" chopPunct="true" repeatable="false">
-                <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
-              </sf>
               <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
               <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
               <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
@@ -534,12 +504,13 @@
           <!-- if no bf:contribution, fall back to 830 -->
           <case test="default">
             <df tag="830">
+              <!-- Except for 830-only fields, copied from 130 -->
               <ind1 default=" "/>
               <ind2 default="0">
                 <switch>
-                  <case test="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey and (string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey) &lt; string-length(bf:title/bf:Title[1]/rdfs:label))">
+                  <case test="bf:title/bf:Title/bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(bf:title/bf:Title/bf:mainTitle))">
                     <transform>
-                      <xsl:value-of select="string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/rdfs:label) - string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey)"/>
+                      <xsl:value-of select="string-length(bf:title/bf:Title/bf:mainTitle) - string-length(bf:title/bf:Title/bflc:titleSortKey)"/>
                     </transform>
                   </case>
                 </switch>
@@ -547,36 +518,10 @@
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
-              <sf code="a" chopPunct="true" repeatable="false">
-                <select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
-                  <switch>
-                    <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
-                  </switch>
-                </select>
-              </sf>
-              <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
-              <sf code="l" chopPunct="true" repeatable="false">
-                <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
-              </sf>
-              <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
-              <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
-              <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
-              <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
-              <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
+              <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
               <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-              <!-- $v nac -->
-              <sf code="x" repeatable="false">
-                <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
-              </sf>
-              <sf code="w">
-                <select xpath="bf:identifiedBy/*[local-name()='Lccn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn']">
-                  <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
-                </select>
-              </sf>
-              <!-- can't distinguish between $0 and $w unless $w is an LCCN -->
               <sf code="0">
-                <select xpath="bf:identifiedBy/bf:Identifier[not(contains(rdf:type,'bibframe'))]">
+                <select xpath="bf:identifiedBy/bf:Identifier">
                   <transform>
                     <xsl:variable name="vIdType">
                       <xsl:call-template name="tChopPunct">
@@ -590,9 +535,29 @@
                   </transform>
                 </select>
               </sf>
-              <sf code="2" repeatable="false">
-                <select xpath="bf:source/bf:Source/bf:code|*/madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code"/>
+              <sf code="d"><select xpath="bf:legalDate"/></sf>
+              <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
+              <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
+              <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title/bf:partNumber"/></sf>
+              <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title/bf:partName"/></sf>
+              <switch>
+                <case test="rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Arrangement'">
+                  <sf code="o">arranged</sf>
+                </case>
+              </switch>
+              <sf code="r" chopPunct="true"><select xpath="bf:musicKey"/></sf>
+              <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
+              <!-- $v nac -->
+              <sf code="x" repeatable="false">
+                <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
               </sf>
+              <!-- can't distinguish between $0 and $w unless $w is an LCCN -->
+              <sf code="w">
+                <select xpath="bf:identifiedBy/*[local-name()='Lccn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn']">
+                  <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
+                </select>
+              </sf>
+              <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
               <sf code="5">
                 <select xpath="bflc:applicableInstitution/*/bf:code"/>
               </sf>

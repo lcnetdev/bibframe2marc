@@ -48,15 +48,14 @@
   </x:scenario>
 
   <x:scenario label="MARC 240">
+    <!-- note same specs as MARC 130, tests are not all repeated here -->
     <x:context href="../data/2XX/240.xml"/>
-    <x:expect label="generate 240 when Instance and Work title differ and there is a bf:PrimaryContribution"
-              test="count(marc:record/marc:datafield[@tag='240']) = 1"/>
-    <x:expect label="ind2 generated from delta between rdfs:label and bflc:titleSortKey"
+    <x:expect label="generate 240 from Work/expressionOf/Hub when Hub has bflc:primaryContribution"
+              test="count(//marc:datafield[@tag='240']) = 1"/>
+    <x:expect label="ind2 generated from delta between bf:mainTitle and bflc:titleSortKey"
               test="marc:record/marc:datafield[@tag='240']/@ind2 = '0'"/>
     <x:expect label="$a generated from bf:mainTitle"
-              test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='a'] = 'Wilhelm Meisters Lehrjahre'"/>
-    <!-- <x:expect label="$l generated from bf:Work/bf:language/bf:Language/rdfs:label" -->
-    <!--           test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='l'] = 'English'"/> -->
+              test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='a'] = 'Sonata for kazoo. arr.'"/>
   </x:scenario>
 
   <x:scenario label="Multi-script 241/245">

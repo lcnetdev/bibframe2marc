@@ -81,14 +81,15 @@
   </x:scenario>
 
   <x:scenario label="MARC 830">
+    <!-- note that specs are the same as 130, not all tests repeated here -->
     <x:context href="../data/8XX/830.xml"/>
     <x:expect label="generate 830" test="count(//marc:datafield[@tag='830']) = 1"/>
     <x:expect label="ind1 default to blank"
               test="//marc:datafield[@tag='830'][1]/@ind1 = ' '"/>
     <x:expect label="ind2 from titleSortKey"
               test="//marc:datafield[@tag='830'][1]/@ind2 = '3'"/>
-    <x:expect label="$a from mainTitle or label"
-              test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='a'] = 'Actualités-Service'"/>
+    <x:expect label="$a from mainTitle"
+              test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='a'] = 'Le Actualités-Service. No 293 (Supplement)'"/>
     <x:expect label="$n from partNumber"
               test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='n'] = 'No 293 (Supplement)'"/>
   </x:scenario>

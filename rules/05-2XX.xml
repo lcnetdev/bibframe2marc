@@ -69,46 +69,20 @@
   </df>
 
   <df tag="240" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
-    <context xpath="bf:Work[
-                    count(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]) = 1 and
-                    count(/rdf:RDF/bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]) = 1 and
-                    (bf:contribution/bflc:PrimaryContribution or bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']) and
-                    (bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != /rdf:RDF/bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][not(bflc:titleSortKey)]/rdfs:label or (/rdf:RDF/bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey and bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/rdfs:label != /rdf:RDF/bf:Instance/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bflc:titleSortKey))
-                    ]/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))]">
+    <!-- This should be copied from tag 130 for all subfields -->
+    <context xpath="bf:Work/bf:expressionOf/bf:Hub[bf:contribution/bflc:PrimaryContribution or bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
-          <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(rdfs:label))">
+          <case test="bf:title/bf:Title/bflc:titleSortKey and (string-length(bf:title/bf:Title/bflc:titleSortKey) &lt; string-length(bf:title/bf:Title/bf:mainTitle))">
             <transform>
-              <xsl:value-of select="string-length(rdfs:label) - string-length(bflc:titleSortKey)"/>
+              <xsl:value-of select="string-length(bf:title/bf:Title/bf:mainTitle) - string-length(bf:title/bf:Title/bflc:titleSortKey)"/>
             </transform>
           </case>
         </switch>
       </ind2>
-      <sf code="a" chopPunct="true" repeatable="false">
-        <switch>
-          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
-        </switch>
-      </sf>
-      <sf code="d" chopPunct="true"><select xpath="../../bf:legalDate"/></sf>
-      <sf code="f" chopPunct="true" repeatable="false"><select xpath="../../bf:originDate"/></sf>
-      <!-- <switch> -->
-      <!--   <case test="../../bf:translationOf"> -->
-      <!--     <sf code="l" chopPunct="true" repeatable="false"> -->
-      <!--       <select xpath="../../bf:language/*/rdfs:label|../../bf:language/*/madsrdf:authoritativeLabel"/> -->
-      <!--     </sf> -->
-      <!--   </case> -->
-      <!-- </switch> -->
-      <sf code="n" chopPunct="true"><select xpath="bf:partNumber"/></sf>
-      <switch>
-        <case test="../../bflc:arrangementOf">
-          <sf code="o">arranged</sf>
-        </case>
-      </switch>
-      <sf code="p" chopPunct="true"><select xpath="bf:partName"/></sf>
-      <sf code="s" chopPunct="true"><select xpath="../../bf:version"/></sf>
-      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
+      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
       <sf code="0">
         <select xpath="bf:identifiedBy/bf:Identifier">
           <transform>
@@ -124,6 +98,19 @@
           </transform>
         </select>
       </sf>
+      <sf code="d"><select xpath="bf:legalDate"/></sf>
+      <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
+      <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
+      <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title/bf:partNumber"/></sf>
+      <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title/bf:partName"/></sf>
+      <switch>
+        <case test="rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Arrangement'">
+          <sf code="o">arranged</sf>
+        </case>
+      </switch>
+      <sf code="r" chopPunct="true"><select xpath="bf:musicKey"/></sf>
+      <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
+      <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
     </context>
   </df>
 
