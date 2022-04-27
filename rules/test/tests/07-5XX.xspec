@@ -31,13 +31,15 @@
   <x:scenario label="MARC 490">
     <x:context href="../data/5XX/490.xml"/>
     <x:expect label="generate 490"
-              test="count(//marc:datafield[@tag='490']) = 1"/>
+              test="count(//marc:datafield[@tag='490']) = 2"/>
     <x:expect label="ind1 default to '0'"
-              test="//marc:datafield[@tag='490']/@ind1 = '0'"/>
+              test="//marc:datafield[@tag='490'][1]/@ind1 = '0'"/>
     <x:expect label="ind2 default to blank"
-              test="//marc:datafield[@tag='490']/@ind2 = ' '"/>
+              test="//marc:datafield[@tag='490'][2]/@ind2 = ' '"/>
     <x:expect label="$a from seriesStatement"
               test="//marc:datafield[@tag='490']/marc:subfield[@code='a'][1] = 'A series of unfortunate events bk. 9'"/>
+    <x:expect label="generate 880 from vernacular seriesStatement"
+              test="//marc:datafield[@tag='880']/marc:subfield[@code='a'] = '一系列不幸事件'"/>
   </x:scenario>
 
   <x:scenario label="MARC 500">
