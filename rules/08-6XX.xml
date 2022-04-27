@@ -140,22 +140,6 @@
                 <sf code="4">
                   <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
                 </sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                <sf code="0">
-                  <select xpath="bf:identifiedBy/bf:Identifier">
-                    <transform>
-                      <xsl:variable name="vIdType">
-                        <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                        </xsl:call-template>
-                      </xsl:variable>
-                      <xsl:choose>
-                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                      </xsl:choose>
-                    </transform>
-                  </select>
-                </sf>
               </select>
 
               <!-- title subfields -->
@@ -167,22 +151,6 @@
                 <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
                 <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
                 <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                <sf code="0">
-                  <select xpath="bf:identifiedBy/bf:Identifier">
-                    <transform>
-                      <xsl:variable name="vIdType">
-                        <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                        </xsl:call-template>
-                      </xsl:variable>
-                      <xsl:choose>
-                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                      </xsl:choose>
-                    </transform>
-                  </select>
-                </sf>
               </select>
 
               <!-- subdivisions -->
@@ -223,26 +191,25 @@
                         </sf>
                       </case>
                     </switch>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                    <sf code="0">
-                      <select xpath="bf:identifiedBy/bf:Identifier">
-                        <transform>
-                          <xsl:variable name="vIdType">
-                            <xsl:call-template name="tChopPunct">
-                              <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                            </xsl:call-template>
-                          </xsl:variable>
-                          <xsl:choose>
-                            <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                            <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                          </xsl:choose>
-                        </transform>
-                      </select>
-                    </sf>
                   </case>
                 </switch>
               </select>
-
+              <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="*/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType">
+                      <xsl:call-template name="tChopPunct">
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
               <!-- $2 if source not in ind2 -->
               <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
                 <var name="vSourceUri">
@@ -399,22 +366,6 @@
                 <sf code="4">
                   <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
                 </sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                <sf code="0">
-                  <select xpath="bf:identifiedBy/bf:Identifier">
-                    <transform>
-                      <xsl:variable name="vIdType">
-                        <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                        </xsl:call-template>
-                      </xsl:variable>
-                      <xsl:choose>
-                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                      </xsl:choose>
-                    </transform>
-                  </select>
-                </sf>
               </select>
 
               <!-- title subfields -->
@@ -430,22 +381,6 @@
                 <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
                 <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
                 <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                <sf code="0">
-                  <select xpath="bf:identifiedBy/bf:Identifier">
-                    <transform>
-                      <xsl:variable name="vIdType">
-                        <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                        </xsl:call-template>
-                      </xsl:variable>
-                      <xsl:choose>
-                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                      </xsl:choose>
-                    </transform>
-                  </select>
-                </sf>
               </select>
 
               <!-- subdivisions -->
@@ -486,26 +421,25 @@
                         </sf>
                       </case>
                     </switch>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                    <sf code="0">
-                      <select xpath="bf:identifiedBy/bf:Identifier">
-                        <transform>
-                          <xsl:variable name="vIdType">
-                            <xsl:call-template name="tChopPunct">
-                              <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                            </xsl:call-template>
-                          </xsl:variable>
-                          <xsl:choose>
-                            <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                            <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                          </xsl:choose>
-                        </transform>
-                      </select>
-                    </sf>
                   </case>
                 </switch>
               </select>
-
+              <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="*/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType">
+                      <xsl:call-template name="tChopPunct">
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
               <!-- $2 if source not in ind2 -->
               <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
                 <var name="vSourceUri">
@@ -656,22 +590,6 @@
                 <sf code="4">
                   <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
                 </sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                <sf code="0">
-                  <select xpath="bf:identifiedBy/bf:Identifier">
-                    <transform>
-                      <xsl:variable name="vIdType">
-                        <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                        </xsl:call-template>
-                      </xsl:variable>
-                      <xsl:choose>
-                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                      </xsl:choose>
-                    </transform>
-                  </select>
-                </sf>
               </select>
 
               <!-- title subfields -->
@@ -687,22 +605,6 @@
                 <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
                 <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
                 <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                <sf code="0">
-                  <select xpath="bf:identifiedBy/bf:Identifier">
-                    <transform>
-                      <xsl:variable name="vIdType">
-                        <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                        </xsl:call-template>
-                      </xsl:variable>
-                      <xsl:choose>
-                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                      </xsl:choose>
-                    </transform>
-                  </select>
-                </sf>
               </select>
 
               <!-- subdivisions -->
@@ -743,26 +645,25 @@
                         </sf>
                       </case>
                     </switch>
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                    <sf code="0">
-                      <select xpath="bf:identifiedBy/bf:Identifier">
-                        <transform>
-                          <xsl:variable name="vIdType">
-                            <xsl:call-template name="tChopPunct">
-                              <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                            </xsl:call-template>
-                          </xsl:variable>
-                          <xsl:choose>
-                            <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                            <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                          </xsl:choose>
-                        </transform>
-                      </select>
-                    </sf>
                   </case>
                 </switch>
               </select>
-
+              <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="*/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType">
+                      <xsl:call-template name="tChopPunct">
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
               <!-- $2 if source not in ind2 -->
               <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
                 <var name="vSourceUri">
@@ -855,26 +756,6 @@
               <select xpath="*[local-name()='Work' or local-name()='Hub' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub']] |
                              */madsrdf:componentList/*[1]">
                 <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
-                <switch>
-                  <case test="not(ancestor::bf:subject/*/madsrdf:componentList)">
-                    <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                    <sf code="0">
-                      <select xpath="bf:identifiedBy/bf:Identifier">
-                        <transform>
-                          <xsl:variable name="vIdType">
-                            <xsl:call-template name="tChopPunct">
-                              <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                            </xsl:call-template>
-                          </xsl:variable>
-                          <xsl:choose>
-                            <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                            <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                          </xsl:choose>
-                        </transform>
-                      </select>
-                    </sf>
-                  </case>
-                </switch>
                 <sf code="d"><select xpath="bf:legalDate"/></sf>
                 <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
                 <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
@@ -933,7 +814,22 @@
                   </case>
                 </switch>
               </select>
-
+              <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="*/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType">
+                      <xsl:call-template name="tChopPunct">
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
               <!-- $2 if source not in ind2 -->
               <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
                 <var name="vSourceUri">
@@ -976,26 +872,6 @@
                   </case>
                 </switch>
               </select>
-              <switch>
-                <case test="*/madsrdf:componentList">
-                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                  <sf code="0">
-                    <select xpath="*/bf:identifiedBy/bf:Identifier">
-                      <transform>
-                        <xsl:variable name="vIdType">
-                          <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                        </xsl:choose>
-                      </transform>
-                    </select>
-                  </sf>
-                </case>
-              </switch>
             </df>
           </case>
 
@@ -1032,22 +908,6 @@
               </ind2>
               <switch>
                 <case test="*/madsrdf:componentList">
-                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                  <sf code="0">
-                    <select xpath="*/bf:identifiedBy/bf:Identifier">
-                      <transform>
-                        <xsl:variable name="vIdType">
-                          <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                        </xsl:choose>
-                      </transform>
-                    </select>
-                  </sf>
                   <sf code="3" chopPunct="true" repeatable="false">
                     <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
                   </sf>
@@ -1056,22 +916,6 @@
                       <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"/></case>
                       <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                     </switch>
-                  </sf>
-                  <sf code="0"><select xpath="madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                  <sf code="0">
-                    <select xpath="bf:identifiedBy/bf:Identifier">
-                      <transform>
-                        <xsl:variable name="vIdType">
-                          <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                        </xsl:choose>
-                      </transform>
-                    </select>
                   </sf>
 
                   <!-- subdivisions -->
@@ -1112,25 +956,25 @@
                             </sf>
                           </case>
                         </switch>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                        <sf code="0">
-                          <select xpath="bf:identifiedBy/bf:Identifier">
-                            <transform>
-                              <xsl:variable name="vIdType">
-                                <xsl:call-template name="tChopPunct">
-                                  <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                                </xsl:call-template>
-                              </xsl:variable>
-                              <xsl:choose>
-                                <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                                <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                              </xsl:choose>
-                            </transform>
-                          </select>
-                        </sf>
                       </case>
                     </switch>
                   </select>
+                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  <sf code="0">
+                    <select xpath="*/bf:identifiedBy/bf:Identifier">
+                      <transform>
+                        <xsl:variable name="vIdType">
+                          <xsl:call-template name="tChopPunct">
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                          </xsl:call-template>
+                        </xsl:variable>
+                        <xsl:choose>
+                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                        </xsl:choose>
+                      </transform>
+                    </select>
+                  </sf>
                 </case>
                 <case test="default">
                   <sf code="3" chopPunct="true" repeatable="false">
@@ -1212,22 +1056,6 @@
             <df tag="662">
               <ind1 default=" "/>
               <ind2 default=" "/>
-              <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-              <sf code="0">
-                <select xpath="*/bf:identifiedBy/bf:Identifier">
-                  <transform>
-                    <xsl:variable name="vIdType">
-                      <xsl:call-template name="tChopPunct">
-                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                      </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:choose>
-                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                    </xsl:choose>
-                  </transform>
-                </select>
-              </sf>
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
                   <case test="local-name()='Country' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Country']">
@@ -1287,23 +1115,23 @@
                     </sf>
                   </case>
                 </switch>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                <sf code="0">
-                  <select xpath="bf:identifiedBy/bf:Identifier">
-                    <transform>
-                      <xsl:variable name="vIdType">
-                        <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                        </xsl:call-template>
-                      </xsl:variable>
-                      <xsl:choose>
-                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                      </xsl:choose>
-                    </transform>
-                  </select>
-                </sf>
               </select>
+              <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0">
+                <select xpath="*/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType">
+                      <xsl:call-template name="tChopPunct">
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
               <sf code="e" chopPunct="true">
                 <select xpath="*/bf:role/bf:Role/rdfs:label"/>
               </sf>
@@ -1376,22 +1204,6 @@
               </ind2>
               <switch>
                 <case test="*/madsrdf:componentList">
-                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                  <sf code="0">
-                    <select xpath="*/bf:identifiedBy/bf:Identifier">
-                      <transform>
-                        <xsl:variable name="vIdType">
-                          <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                        </xsl:choose>
-                      </transform>
-                    </select>
-                  </sf>
                   <sf code="3" chopPunct="true" repeatable="false">
                     <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
                   </sf>
@@ -1403,22 +1215,6 @@
                   </sf>
                   <sf code="e" chopPunct="true">
                     <select xpath="*/bf:role/bf:Role/rdfs:label"/>
-                  </sf>
-                  <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                  <sf code="0">
-                    <select xpath="*/madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
-                      <transform>
-                        <xsl:variable name="vIdType">
-                          <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                        </xsl:choose>
-                      </transform>
-                    </select>
                   </sf>
                   <!-- subdivisions -->
                   <select xpath="*/madsrdf:componentList/*">
@@ -1458,25 +1254,25 @@
                             </sf>
                           </case>
                         </switch>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                        <sf code="0">
-                          <select xpath="bf:identifiedBy/bf:Identifier">
-                            <transform>
-                              <xsl:variable name="vIdType">
-                                <xsl:call-template name="tChopPunct">
-                                  <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                                </xsl:call-template>
-                              </xsl:variable>
-                              <xsl:choose>
-                                <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                                <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                              </xsl:choose>
-                            </transform>
-                          </select>
-                        </sf>
                       </case>
                     </switch>
                   </select>
+                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  <sf code="0">
+                    <select xpath="*/bf:identifiedBy/bf:Identifier">
+                      <transform>
+                        <xsl:variable name="vIdType">
+                          <xsl:call-template name="tChopPunct">
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                          </xsl:call-template>
+                        </xsl:variable>
+                        <xsl:choose>
+                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                        </xsl:choose>
+                      </transform>
+                    </select>
+                  </sf>
                 </case>
                 <case test="default">
                   <sf code="3" chopPunct="true" repeatable="false">
@@ -1489,9 +1285,6 @@
                       </case>
                       <case test="default"><select xpath="*/rdfs:label[1]"/></case>
                     </switch>
-                  </sf>
-                  <sf code="e" chopPunct="true">
-                    <select xpath="*/bf:role/bf:Role/rdfs:label"/>
                   </sf>
                   <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
                   <sf code="0">
@@ -1508,6 +1301,9 @@
                         </xsl:choose>
                       </transform>
                     </select>
+                  </sf>
+                  <sf code="e" chopPunct="true">
+                    <select xpath="*/bf:role/bf:Role/rdfs:label"/>
                   </sf>
                 </case>
               </switch>
@@ -1569,22 +1365,6 @@
               <ind2 default="7"/>
               <switch>
                 <case test="*/madsrdf:componentList">
-                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                  <sf code="0">
-                    <select xpath="*/bf:identifiedBy/bf:Identifier">
-                      <transform>
-                        <xsl:variable name="vIdType">
-                          <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                        </xsl:choose>
-                      </transform>
-                    </select>
-                  </sf>
                   <sf code="3" chopPunct="true" repeatable="false">
                     <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
                   </sf>
@@ -1593,22 +1373,6 @@
                       <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"/></case>
                       <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                     </switch>
-                  </sf>
-                  <sf code="0"><select xpath="madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                  <sf code="0">
-                    <select xpath="madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
-                      <transform>
-                        <xsl:variable name="vIdType">
-                          <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                        </xsl:choose>
-                      </transform>
-                    </select>
                   </sf>
                   <!-- subdivisions -->
                   <select xpath="*/madsrdf:componentList/*">
@@ -1648,25 +1412,25 @@
                             </sf>
                           </case>
                         </switch>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                        <sf code="0">
-                          <select xpath="bf:identifiedBy/bf:Identifier">
-                            <transform>
-                              <xsl:variable name="vIdType">
-                                <xsl:call-template name="tChopPunct">
-                                  <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                                </xsl:call-template>
-                              </xsl:variable>
-                              <xsl:choose>
-                                <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                                <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                              </xsl:choose>
-                            </transform>
-                          </select>
-                        </sf>
                       </case>
                     </switch>
                   </select>
+                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  <sf code="0">
+                    <select xpath="*/bf:identifiedBy/bf:Identifier">
+                      <transform>
+                        <xsl:variable name="vIdType">
+                          <xsl:call-template name="tChopPunct">
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                          </xsl:call-template>
+                        </xsl:variable>
+                        <xsl:choose>
+                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                        </xsl:choose>
+                      </transform>
+                    </select>
+                  </sf>
                 </case>
                 <case test="default">
                   <sf code="3" chopPunct="true" repeatable="false">
@@ -1733,22 +1497,6 @@
               </ind2>
               <switch>
                 <case test="*/madsrdf:componentList">
-                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                  <sf code="0">
-                    <select xpath="*/bf:identifiedBy/bf:Identifier">
-                      <transform>
-                        <xsl:variable name="vIdType">
-                          <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                        </xsl:choose>
-                      </transform>
-                    </select>
-                  </sf>
                   <sf code="3" chopPunct="true" repeatable="false">
                     <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
                   </sf>
@@ -1760,22 +1508,6 @@
                   </sf>
                   <sf code="e" chopPunct="true">
                     <select xpath="*/bf:role/bf:Role/rdfs:label"/>
-                  </sf>
-                  <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                  <sf code="0">
-                    <select xpath="*/madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
-                      <transform>
-                        <xsl:variable name="vIdType">
-                          <xsl:call-template name="tChopPunct">
-                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                          </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                        </xsl:choose>
-                      </transform>
-                    </select>
                   </sf>
                   <!-- subdivisions -->
                   <select xpath="*/madsrdf:componentList/*">
@@ -1815,25 +1547,25 @@
                             </sf>
                           </case>
                         </switch>
-                        <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                        <sf code="0">
-                          <select xpath="bf:identifiedBy/bf:Identifier">
-                            <transform>
-                              <xsl:variable name="vIdType">
-                                <xsl:call-template name="tChopPunct">
-                                  <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                                </xsl:call-template>
-                              </xsl:variable>
-                              <xsl:choose>
-                                <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                                <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                              </xsl:choose>
-                            </transform>
-                          </select>
-                        </sf>
                       </case>
                     </switch>
                   </select>
+                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                  <sf code="0">
+                    <select xpath="*/bf:identifiedBy/bf:Identifier">
+                      <transform>
+                        <xsl:variable name="vIdType">
+                          <xsl:call-template name="tChopPunct">
+                            <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                          </xsl:call-template>
+                        </xsl:variable>
+                        <xsl:choose>
+                          <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                          <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                        </xsl:choose>
+                      </transform>
+                    </select>
+                  </sf>
                 </case>
                 <case test="default">
                   <sf code="3" chopPunct="true" repeatable="false">
@@ -1967,22 +1699,6 @@
       </ind2>
       <switch>
         <case test="*/madsrdf:componentList">
-          <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-          <sf code="0">
-            <select xpath="*/bf:identifiedBy/bf:Identifier">
-              <transform>
-                <xsl:variable name="vIdType">
-                  <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:choose>
-                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                </xsl:choose>
-              </transform>
-            </select>
-          </sf>
           <sf code="3" chopPunct="true" repeatable="false">
             <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
@@ -1991,22 +1707,6 @@
               <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"/></case>
               <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
             </switch>
-          </sf>
-          <sf code="0"><select xpath="*/madsrdf:componentList/*[1]/@rdf:about[not(contains(.,'example.org'))]"/></sf>
-          <sf code="0">
-            <select xpath="*/madsrdf:componentList/*[1]/bf:identifiedBy/bf:Identifier">
-              <transform>
-                <xsl:variable name="vIdType">
-                  <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:choose>
-                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                </xsl:choose>
-              </transform>
-            </select>
           </sf>
           <!-- subdivisions -->
           <select xpath="*/madsrdf:componentList/*">
@@ -2046,25 +1746,25 @@
                     </sf>
                   </case>
                 </switch>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
-                <sf code="0">
-                  <select xpath="bf:identifiedBy/bf:Identifier">
-                    <transform>
-                      <xsl:variable name="vIdType">
-                        <xsl:call-template name="tChopPunct">
-                          <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                        </xsl:call-template>
-                      </xsl:variable>
-                      <xsl:choose>
-                        <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                        <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                      </xsl:choose>
-                    </transform>
-                  </select>
-                </sf>
               </case>
             </switch>
           </select>
+          <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org'))]"/></sf>
+          <sf code="0">
+            <select xpath="*/bf:identifiedBy/bf:Identifier">
+              <transform>
+                <xsl:variable name="vIdType">
+                  <xsl:call-template name="tChopPunct">
+                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:choose>
+                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                </xsl:choose>
+              </transform>
+            </select>
+          </sf>
         </case>
         <case test="default">
           <sf code="3" chopPunct="true" repeatable="false">
