@@ -124,6 +124,23 @@
               test="//marc:datafield[@tag='730'][1]/marc:subfield[@code='n'] = 'No 293 (Supplement)'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 740">
+    <x:context href="../data/7XX/740.xml"/>
+    <x:expect label="generate 740" test="count(//marc:datafield[@tag='740']) = 1"/>
+    <x:expect label="ind1 default to 0"
+              test="//marc:datafield[@tag='740']/@ind1 = '0'"/>
+    <x:expect label="ind2 from matched property"
+              test="//marc:datafield[@tag='740']/@ind2 = '2'"/>
+    <x:expect label="$a from title/mainTitle"
+              test="//marc:datafield[@tag='740']/marc:subfield[@code='a'] = 'Joint Legislative Committee on Matrimonial and Family Laws, proposed statute'"/>
+    <x:expect label="$n from partNumber"
+              test="//marc:datafield[@tag='740']/marc:subfield[@code='n'] = 'Part 1'"/>
+    <x:expect label="$p from partName"
+              test="//marc:datafield[@tag='740']/marc:subfield[@code='p'] = 'Economic aspects, custody, taxes'"/>
+    <x:expect label="$5 from bflc:applicableInstitution"
+              test="//marc:datafield[@tag='740']/marc:subfield[@code='5'] = 'MnMHCL'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 752">
     <x:context href="../data/7XX/752.xml"/>
     <x:expect label="generate 752" test="count(//marc:datafield[@tag='752']) = 1"/>
@@ -170,25 +187,6 @@
               test="//marc:datafield[@tag='765'][1]/marc:subfield[@code='w'][2] = '(OCoLC)4798581'"/>
     <x:expect label="$x from Issn"
               test="//marc:datafield[@tag='787'][1]/marc:subfield[@code='x'] = '1552-5007'"/>
-  </x:scenario>
-
-  <x:scenario label="MARC 776">
-    <x:context href="../data/7XX/776.xml"/>
-    <x:expect label="generate 776" test="count(//marc:datafield[@tag='776']) = 1"/>
-    <x:expect label="ind1 default to '0'"
-              test="//marc:datafield[@tag='776'][1]/@ind1 = '0'"/>
-    <x:expect label="ind2 default to blank"
-              test="//marc:datafield[@tag='776'][1]/@ind2 = ' '"/>
-    <x:expect label="$3 from appliesTo"
-              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='3'] = 'Dispatches from U.S. consuls in Batavia, Java, Netherlands East Indies, 1818-1906'"/>
-    <x:expect label="$t from title"
-              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='t'] = 'Dispatches'"/>
-    <x:expect label="$h from extent"
-              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='h'] = '1 microfilm reel'"/>
-    <x:expect label="$n from note"
-              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='n'] = 'Available in microfilm'"/>
-    <x:expect label="$u from Strn"
-              test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='u'] = 'M449'"/>
   </x:scenario>
 
 </x:description>
