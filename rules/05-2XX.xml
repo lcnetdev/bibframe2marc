@@ -352,19 +352,24 @@
     </context>
   </df>
 
-  <df tag="255">
-    <context xpath="bf:Work/bf:scale/bf:Scale/rdfs:label">
-      <ind1 default=" "/>
-      <ind2 default=" "/>
-      <sf code="a" chopPunct="true" repeatable="false"><select xpath="."/></sf>
-    </context>
-  </df>
+  <!-- 255 from Scale label -->
+  <select xpath="bf:Work/bf:scale/bf:Scale/rdfs:label">
+    <switch>
+      <case test="translate(.,$upper,$lower) != 'linear scale'">
+        <df tag="255">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <sf code="a" repeatable="false"><select xpath="."/></sf>
+        </df>
+      </case>
+    </switch>
+  </select>
 
   <df tag="255">
     <context xpath="bf:Work/bf:scale/bf:Scale/bf:note/bf:Note/rdfs:label">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" chopPunct="true" repeatable="false"><select xpath="."/></sf>
+      <sf code="a" repeatable="false"><select xpath="."/></sf>
     </context>
   </df>
 
