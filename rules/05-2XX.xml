@@ -578,7 +578,35 @@
     <context xpath="bf:Instance/bf:copyrightDate">
       <ind1 default=" "/>
       <ind2 default="4"/>
-      <sf code="c" chopPunct="true"><select xpath="."/></sf>
+      <var name="cDate">
+        <switch>
+          <case test="not(contains(., '©')) and ../rdf:type[@rdf:resource = (
+              'http://id.loc.gov/ontologies/bibframe/Print',
+              'http://id.loc.gov/ontologies/bibframe/Archival', 
+              'http://id.loc.gov/ontologies/bibframe/Manuscript', 
+              'http://id.loc.gov/ontologies/bibframe/Tactile', 
+              'http://id.loc.gov/ontologies/bibframe/Electronic'
+              )]">
+            <select xpath=".">
+              <transform>
+                <xsl:value-of select="concat('©', text())"/>
+              </transform>
+            </select>
+          </case>
+          <case test="default">
+            <select xpath=".">
+              <transform>
+                <xsl:value-of select="text()"/>
+              </transform>
+            </select>
+          </case>
+        </switch>
+      </var>
+      <sf code="c" chopPunct="true">
+          <transform>
+            <xsl:value-of select="$cDate"/>
+          </transform>
+      </sf>
     </context>
   </df>
 
