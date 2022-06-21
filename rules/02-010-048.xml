@@ -385,7 +385,7 @@
   </df>
 
   <df tag="033">
-    <context xpath="bf:Work/bf:capture/bf:Capture[bf:date[@rdf:datatype='http://id.loc.gov/datatypes/edtf'] or bf:place/*[rdf:value]]">
+    <context xpath="bf:Work/bf:capture/bf:Capture[bf:date[@rdf:datatype='http://id.loc.gov/datatypes/edtf'] or bf:place/@rdf:resource]">
       <var name="vSourceUri">
         <switch>
           <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
