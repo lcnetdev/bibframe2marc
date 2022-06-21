@@ -713,26 +713,6 @@
         </case>
       </switch>
       <sf code="c" repeatable="false"><select xpath="*/*[local-name()='code']"/></sf>
-      <sf code="d">
-        <select xpath="../bf:descriptionModifier">
-          <var name="vAgentUri">
-            <switch>
-              <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-              <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
-            </switch>
-          </var>
-          <switch>
-            <case test="$vAgentUri != '' and contains($vAgentUri,'id.loc.gov')">
-              <transform>
-                <xsl:call-template name="tUriCode">
-                  <xsl:with-param name="pUri" select="$vAgentUri"/>
-                </xsl:call-template>
-              </transform>
-            </case>
-            <case test="default"><transform><xsl:value-of select="*/*[local-name()='code']"/></transform></case>
-          </switch>
-        </select>
-      </sf>
       <switch>
         <case test="count(../bf:descriptionModifier) &gt; 0">
           <var name="vLastAgentUri">
@@ -766,13 +746,10 @@
             </switch>
           </var>
           <switch>
-            <case test="$vModifierCode != $pConversionAgency">
-              <sf code="d"><transform><xsl:value-of select="$pConversionAgency"/></transform></sf>
+            <case test="$vModifierCode != ''">
+              <sf code="d"><transform><xsl:value-of select="$vModifierCode"/></transform></sf>
             </case>
           </switch>
-        </case>
-        <case test="default">
-          <sf code="d"><transform><xsl:value-of select="$pConversionAgency"/></transform></sf>
         </case>
       </switch>
       <sf code="e">
