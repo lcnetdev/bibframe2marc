@@ -109,7 +109,7 @@
                 <sf code="4">
                   <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
                 </sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
                 <sf code="0">
                   <select xpath="bf:identifiedBy/bf:Identifier">
                     <transform>
@@ -145,7 +145,7 @@
                   <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
                 </select>
               </sf>
-              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
               <!-- can't distinguish between $0 and $w unless $w is an LCCN -->
               <sf code="0">
                 <select xpath="bf:identifiedBy/bf:Identifier[not(contains(rdf:type,'bibframe'))]">
@@ -264,7 +264,7 @@
                 <sf code="4">
                   <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
                 </sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
                 <sf code="0">
                   <select xpath="bf:identifiedBy/bf:Identifier">
                     <transform>
@@ -300,7 +300,7 @@
                   <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
                 </select>
               </sf>
-              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
               <!-- can't distinguish between $0 and $w unless $w is an LCCN -->
               <sf code="0">
                 <select xpath="bf:identifiedBy/bf:Identifier[not(contains(rdf:type,'bibframe'))]">
@@ -417,7 +417,7 @@
                 <sf code="4">
                   <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
                 </sf>
-                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+                <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
                 <sf code="0">
                   <select xpath="bf:identifiedBy/bf:Identifier">
                     <transform>
@@ -452,7 +452,7 @@
                   <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
                 </select>
               </sf>
-              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
               <!-- can't distinguish between $0 and $w unless $w is an LCCN -->
               <sf code="0">
                 <select xpath="bf:identifiedBy/bf:Identifier[not(contains(rdf:type,'bibframe'))]">
@@ -519,7 +519,7 @@
                 <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
               <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
-              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+              <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
               <sf code="0">
                 <select xpath="bf:identifiedBy/bf:Identifier">
                   <transform>
