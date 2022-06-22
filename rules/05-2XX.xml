@@ -18,12 +18,8 @@
         </switch>
       </ind2>
       <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:mainTitle"/></sf>
-      <sf code="b" chopPunct="true" repeatable="false">
-        <select xpath="bf:qualifier">
-          <transform>
-            <xsl:value-of select="concat('(',.,')')"/>
-          </transform>
-        </select>
+      <sf code="b" chopPunct="false" repeatable="false">
+        <select xpath="bf:qualifier" />
       </sf>
       <switch>
         <case test="bf:assigner/bf:Agent[not(bf:code='issnkey')]">
@@ -48,7 +44,7 @@
         </switch>
       </ind2>
       <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:mainTitle"/></sf>
-      <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:qualifier"/></sf>
+      <sf code="b" chopPunct="false" repeatable="false"><select xpath="bf:qualifier"/></sf>
     </context>
   </df>
 
