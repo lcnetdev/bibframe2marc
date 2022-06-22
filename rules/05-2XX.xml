@@ -470,10 +470,10 @@
               <sf code="6"><transform><xsl:value-of select="concat('880-',$v880Occurence)"/></transform></sf>
             </case>
           </switch>
-          <sf code="3" chopPunct="true" repeatable="false">
+          <sf code="3" chopPunct="false" repeatable="false">
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
-          <sf code="a" chopPunct="true">
+          <sf code="a" chopPunct="false">
             <select xpath="bf:place/*[(local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
                            (rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] or madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))])]">
               <switch>
@@ -482,10 +482,10 @@
               </switch>
             </select>
           </sf>
-          <sf code="b" chopPunct="true">
+          <sf code="b" chopPunct="false">
             <select xpath="bf:agent/bf:Agent/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
           </sf>
-          <sf code="c" chopPunct="true">
+          <sf code="c" chopPunct="false">
             <select xpath="bf:date[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
           </sf>
         </df>
@@ -505,7 +505,7 @@
                 </switch>
               </ind2>
               <sf code="6"><transform><xsl:value-of select="concat('264-',$v880Occurence,'/',$v880Script)"/></transform></sf>
-              <sf code="a" chopPunct="true">
+              <sf code="a" chopPunct="false">
                 <select xpath="bf:place/*[(local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
                                (rdfs:label[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))] or madsrdf:authoritativeLabel[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))])]">
                   <switch>
@@ -514,10 +514,10 @@
                   </switch>
                 </select>
               </sf>
-              <sf code="b" chopPunct="true">
+              <sf code="b" chopPunct="false">
                 <select xpath="bf:agent/bf:Agent/rdfs:label[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
               </sf>
-              <sf code="c" chopPunct="true">
+              <sf code="c" chopPunct="false">
                 <select xpath="bf:date[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
               </sf>
             </df>
