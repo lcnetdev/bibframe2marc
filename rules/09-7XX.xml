@@ -308,10 +308,10 @@
   </df>
 
   <df tag="730" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub |
-                    //bf:Item/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub |
-                    bf:Work/bf:hasPart/bf:Hub |
-                    //bf:Item/bf:hasPart/bf:Hub">
+    <context xpath="bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub[not(bf:contribution)] |
+                    //bf:Item/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub[not(bf:contribution)] |
+                    bf:Work/bf:hasPart/bf:Hub[not(bf:contribution)] |
+                    //bf:Item/bf:hasPart/bf:Hub[not(bf:contribution)]">
       <ind1 default="0">
         <switch>
           <case test="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey and (string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey) &lt; string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:mainTitle))">
