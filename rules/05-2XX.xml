@@ -165,7 +165,7 @@
       <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
       </sf>
-      <sf code="c" chopPunct="true" repeatable="false">
+      <sf code="c" chopPunct="false" repeatable="false">
         <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
       </sf>
       <sf code="n" chopPunct="true">
@@ -214,7 +214,7 @@
           <sf code="b" chopPunct="true" repeatable="false">
             <select xpath="bf:subtitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
           </sf>
-          <sf code="c" chopPunct="true" repeatable="false">
+          <sf code="c" chopPunct="false" repeatable="false">
             <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
           </sf>
           <sf code="n" chopPunct="true">
