@@ -66,7 +66,7 @@
         </switch>
       </ind2>
       <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
-      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(., 'REPLACE'))]"/></sf>
       <sf code="0">
         <select xpath="bf:identifiedBy/bf:Identifier">
           <transform>
@@ -82,6 +82,7 @@
           </transform>
         </select>
       </sf>
+      <!-- 
       <sf code="d"><select xpath="bf:legalDate"/></sf>
       <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
       <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
@@ -94,6 +95,7 @@
       </switch>
       <sf code="r" chopPunct="true"><select xpath="bf:musicKey"/></sf>
       <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
+      -->
       <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
     </context>
   </df>
