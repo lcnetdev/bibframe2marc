@@ -232,7 +232,7 @@
           <sf code="4">
             <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
           </sf>
-          <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+          <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
           <sf code="0">
             <select xpath="bf:identifiedBy/bf:Identifier">
               <transform>
@@ -252,6 +252,7 @@
           <!-- title subfields -->
           <select xpath="ancestor::bf:Hub">
             <sf code="t" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
+            <!-- 
             <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
             <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
             <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
@@ -260,7 +261,8 @@
             <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
             <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
             <sf code="x" repeatable="false" chopPunct="true"><select xpath="bf:identifier/*[local-name()=Issn or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/></sf>
-            <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
+            -->
+            <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
             <sf code="0">
               <select xpath="bf:identifiedBy/bf:Identifier">
                 <transform>
