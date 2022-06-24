@@ -88,7 +88,9 @@
   <x:scenario label="MARC 344">
     <x:context href="../data/3XX/344.xml"/>
     <x:expect label="generate 344 from each matching property"
-              test="count(//marc:datafield[@tag='344']) = 9"/>
+              test="count(//marc:datafield[@tag='344']) = 10"/>
+    <x:expect label="generate 344 from bflc:CaptureStorage object"
+      test="//marc:datafield[@tag='344'][last()]/marc:subfield[@code='j'] = 'Electrical capture, digital storage'"/>
   </x:scenario>
 
   <x:scenario label="MARC 345">
@@ -179,8 +181,8 @@
               test="//marc:datafield[@tag='353']/marc:subfield[@code='a'] = 'biography of creator'"/>
     <x:expect label="$b from URI"
               test="//marc:datafield[@tag='353']/marc:subfield[@code='b'] = 'creatorbio'"/>
-    <x:expect label="$0 from identifier"
-              test="//marc:datafield[@tag='353']/marc:subfield[@code='0'] = 'http://example.com/bio'"/>
+    <x:expect label="$0 from rdf:about"
+              test="//marc:datafield[@tag='353']/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/msupplcont/creatorbio'"/>
     <x:expect label="$2 from source"
               test="//marc:datafield[@tag='353']/marc:subfield[@code='2'] = 'msupplcont'"/>
     <x:expect label="$3 from appliesTo"
