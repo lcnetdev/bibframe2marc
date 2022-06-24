@@ -2,7 +2,7 @@
 
 ## v1.1.0
 
-Conversion updates based on specifications v1.7.1. See the Library of Congress' [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in this distribution in the [spec](spec/) directory. Changes of note:
+Conversion updates based on specifications v1.1.0. See the Library of Congress' [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in this distribution in the [spec](spec/) directory. Changes of note:
 
 * Retaining punctuation in various fields (210, 222, 264, 245, etc.)
 * Use new 344 for CaptureStorage and not 500.
