@@ -9,7 +9,7 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <df tag="050">
-    <context xpath="bf:Work/bf:classification/*[(local-name()='ClassificationLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationLcc') and not(bf:assigner[@rdf:resource='http://id.loc.gov/authorities/names/no2004037399' or */rdf:about='http://id.loc.gov/authorities/names/no2004037399' or */rdfs:label='Library and Archives Canada'])]">
+    <context xpath="bf:Work/bf:classification/*[bf:classificationPortion/text() and (local-name()='ClassificationLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationLcc') and not(bf:assigner[@rdf:resource='http://id.loc.gov/authorities/names/no2004037399' or */rdf:about='http://id.loc.gov/authorities/names/no2004037399' or */rdfs:label='Library and Archives Canada'])]">
       <ind1 default=" ">
         <switch>
           <case test="//bf:Item/bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or
