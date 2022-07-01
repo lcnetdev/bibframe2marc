@@ -337,13 +337,13 @@
   </df>
 
   <df tag="028">
-    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='AudioIssueNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AudioIssueNumber']] |
-                    bf:Instance/bf:identifiedBy/*[local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']] |
-                    bf:Instance/bf:identifiedBy/*[local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']] |
-                    bf:Instance/bf:identifiedBy/*[local-name()='MusicPublishingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublishingNumber']] |
-                    bf:Instance/bf:identifiedBy/*[local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']] |
-                    bf:Instance/bf:identifiedBy/*[local-name()='PublisherNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/PublisherNumber']] |
-                    bf:Instance/bf:identifiedBy/*[local-name()='MusicDistributorNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicDistributorNumber']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[(local-name()='AudioIssueNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AudioIssueNumber']) and rdf:value/text()] |
+          bf:Instance/bf:identifiedBy/*[(local-name()='MatrixNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MatrixNumber']) and rdf:value/text()] |
+          bf:Instance/bf:identifiedBy/*[(local-name()='MusicPlate' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPlate']) and rdf:value/text()] |
+          bf:Instance/bf:identifiedBy/*[(local-name()='MusicPublishingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicPublishingNumber']) and rdf:value/text()] |
+          bf:Instance/bf:identifiedBy/*[(local-name()='VideoRecordingNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VideoRecordingNumber']) and rdf:value/text()] |
+          bf:Instance/bf:identifiedBy/*[(local-name()='PublisherNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/PublisherNumber']) and rdf:value/text()] |
+          bf:Instance/bf:identifiedBy/*[(local-name()='MusicDistributorNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicDistributorNumber']) and rdf:value/text()]">
       <ind1 default="5">
         <switch>
           <case test="local-name()='AudioIssueNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/AudioIssueNumber']">0</case>
