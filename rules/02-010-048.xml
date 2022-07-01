@@ -154,7 +154,7 @@
   </df>
 
   <df tag="020">
-    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Isbn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isbn']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[(local-name()='Isbn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Isbn']) and rdf:value/text()]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
@@ -173,7 +173,10 @@
   </df>
 
   <df tag="022">
-    <context xpath="bf:Work/bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']] | bf:Work/bf:identifiedBy/*[local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']] | bf:Instance/bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']] | bf:Instance/bf:identifiedBy/*[local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']]">
+    <context xpath="bf:Work/bf:identifiedBy/*[(local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']) and rdf:value/text()] | 
+      bf:Work/bf:identifiedBy/*[(local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']) and rdf:value/text()] | 
+      bf:Instance/bf:identifiedBy/*[(local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']) and rdf:value/text()] | 
+      bf:Instance/bf:identifiedBy/*[(local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']) and rdf:value/text()]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
