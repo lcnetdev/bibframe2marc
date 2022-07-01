@@ -6,10 +6,17 @@
                xslt-version="1.0">
 
   <x:scenario label="MARC 100">
-    <x:context href="../data/1XX/100.xml"/>
+    <x:context href="../data/1XX/100-01.xml"/>
     <x:expect label="generate 100" test="count(//marc:datafield[@tag='100']) = 1"/>
     <x:expect label="$e from role"
               test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='e'] = 'Author'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 100 - 02">
+    <x:context href="../data/1XX/100-02.xml"/>
+    <x:expect label="generate 100" test="count(//marc:datafield[@tag='100']) = 1"/>
+    <x:expect label="$1 from URI"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/n79135565'"/>
   </x:scenario>
 
   <x:scenario label="MARC 110">

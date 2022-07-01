@@ -143,7 +143,13 @@
           </switch>
         </case>
       </switch>
-      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
+      <sf code="0">
+        <select xpath="@rdf:about[
+                                    not(contains(.,'example.org')) and 
+                                    not(contains(.,'REPLACE')) and 
+                                    not(contains(., '/agents/'))
+                ]"/>
+      </sf>
       <sf code="0">
         <select xpath="bf:identifiedBy/bf:Identifier">
           <transform>
@@ -158,6 +164,11 @@
             </xsl:choose>
           </transform>
         </select>
+      </sf>
+      <sf code="1">
+        <select xpath="@rdf:about[
+          contains(., '/agents/')
+          ]"/>
       </sf>
       <switch>
         <case test="$vMainEntryTag='100' or $vMainEntryTag='110'">
