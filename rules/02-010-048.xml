@@ -664,7 +664,12 @@
       <sf code="a" repeatable="false">
         <select xpath="bf:identifiedBy/*[local-name()='StockNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StudyNumber']]/rdf:value"/>
       </sf>
-      <sf code="b" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
+      <sf code="b" chopPunct="true" repeatable="false">
+        <switch>
+          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+          <case test="bf:source/bf:Source/rdfs:label"><select xpath="bf:source/bf:Source/rdfs:label"/></case>
+        </switch>
+      </sf>
       <sf code="c" chopPunct="true"><select xpath="bf:acquisitionTerms"/></sf>
       <sf code="n" chopPunct="true">
         <select xpath="bf:note/bf:Note/rdfs:label[text() != 'intervening source' and text() != 'current source']"/>

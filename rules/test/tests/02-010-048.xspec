@@ -115,14 +115,16 @@
 
   <x:scenario label="MARC 037">
     <x:context href="../data/010-048/010-048.xml"/>
-    <x:expect label="generate 037 from bf:acquisitionSource" test="count(//marc:datafield[@tag='037']) = 1"/>
-    <x:expect label="I1 from note" test="//marc:datafield[@tag='037']/@ind1 = '3'"/>
-    <x:expect label="$3 from appliesTo" test="//marc:datafield[@tag='037']/marc:subfield[@code='3'] = '2014'"/>
-    <x:expect label="$a from StockNumber" test="//marc:datafield[@tag='037']/marc:subfield[@code='a'] = 'BL_12860042'"/>
-    <x:expect label="$b from source/Source/rdfs:label" test="//marc:datafield[@tag='037']/marc:subfield[@code='b'] = 'Portico'"/>
-    <x:expect label="$c from acquisitionTerms" test="//marc:datafield[@tag='037']/marc:subfield[@code='c'] = '$175.00'"/>
-    <x:expect label="$n from note" test="//marc:datafield[@tag='037']/marc:subfield[@code='n'] = 'paperback'"/>
-    <x:expect label="$5 from applicableInstitution" test="//marc:datafield[@tag='037']/marc:subfield[@code='5'] = 'Uk'"/>
+    <x:expect label="generate 037 from bf:acquisitionSource" test="count(//marc:datafield[@tag='037']) = 2"/>
+    <x:expect label="I1 from note" test="//marc:datafield[@tag='037'][1]/@ind1 = '3'"/>
+    <x:expect label="$3 from appliesTo" test="//marc:datafield[@tag='037'][1]/marc:subfield[@code='3'] = '2014'"/>
+    <x:expect label="$a from StockNumber" test="//marc:datafield[@tag='037'][1]/marc:subfield[@code='a'] = 'BL_12860042'"/>
+    <x:expect label="$b from rdfs:label" test="//marc:datafield[@tag='037'][1]/marc:subfield[@code='b'] = 'Portico'"/>
+    <x:expect label="$c from acquisitionTerms" test="//marc:datafield[@tag='037'][1]/marc:subfield[@code='c'] = '$175.00'"/>
+    <x:expect label="$n from note" test="//marc:datafield[@tag='037'][1]/marc:subfield[@code='n'] = 'paperback'"/>
+    <x:expect label="$5 from applicableInstitution" test="//marc:datafield[@tag='037'][1]/marc:subfield[@code='5'] = 'Uk'"/>
+    
+    <x:expect label="$b from source/Source/rdfs:label" test="//marc:datafield[@tag='037'][2]/marc:subfield[@code='b'] = 'BLAHBLAHBLAH'"/>
   </x:scenario>
 
   <x:scenario label="MARC 038 from label">
