@@ -89,6 +89,8 @@
     <x:context href="../data/010-048/010-048.xml"/>
     <x:expect label="generate 034"
               test="count(//marc:datafield[@tag='034']) = 1"/>
+    <x:expect label="Make sure ind1 is 1"
+              test="//marc:datafield[@tag='034']/@ind1 = '1'"/>
     <x:expect label="$a code generated based on 'linear' or 'angular' rdfs:label"
               test="//marc:datafield[@tag='034']/marc:subfield[@code='a'] = 'a'"/>
     <x:expect label="$b/$c generated from rdf:value based on 'horizontal' or 'vertical' rdfs:label"
