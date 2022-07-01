@@ -188,11 +188,32 @@
               test="//marc:datafield[@tag='263']/marc:subfield[@code='a'] = '1999--'"/>
   </x:scenario>
 
-  <x:scenario label="MARC 264">
-    <x:context href="../data/2XX/264.xml"/>
+  <x:scenario label="MARC 264 - 01">
+    <x:context href="../data/2XX/264-01.xml"/>
     <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
     <x:expect label="generate 880 from place label with xml:lang"
               test="count(//marc:datafield[@tag='880']) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 264 - 02">
+    <x:context href="../data/2XX/264-02.xml"/>
+    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
+    <x:expect label="check for copyright symbol for Print material"
+      test="count(//marc:datafield[@tag='264' and @ind2='4']/marc:subfield[@code='c' and contains(., '©')]) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 264 - 03">
+    <x:context href="../data/2XX/264-03.xml"/>
+    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
+    <x:expect label="check for copyright symbol for Manuscript material"
+      test="count(//marc:datafield[@tag='264' and @ind2='4']/marc:subfield[@code='c' and contains(., '©')]) = 1"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 264 - 04">
+    <x:context href="../data/2XX/264-04.xml"/>
+    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
+    <x:expect label="check for copyright symbol for not-specified material"
+      test="count(//marc:datafield[@tag='264' and @ind2='4']/marc:subfield[@code='c' and contains(., '©')]) = 0"/>
   </x:scenario>
 
 </x:description>
