@@ -1255,7 +1255,7 @@
                       <xsl:choose>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026047' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026047']">a</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026049' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026049']">d</xsl:when>
-                        <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
+                        <xsl:otherwise>|</xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                     <xsl:when test="$v008Format='CR'">
@@ -1265,7 +1265,7 @@
                             <xsl:when test="contains(translate(rdfs:label,$upper,$lower),'successive')">0</xsl:when>
                             <xsl:when test="contains(translate(rdfs:label,$upper,$lower),'latest')">1</xsl:when>
                             <xsl:when test="contains(translate(rdfs:label,$upper,$lower),'integrated')">2</xsl:when>
-                            <xsl:otherwise><xsl:value-of select="'|'"/></xsl:otherwise>
+                            <xsl:otherwise>|</xsl:otherwise>
                           </xsl:choose>
                         </xsl:if>
                       </xsl:for-each>
