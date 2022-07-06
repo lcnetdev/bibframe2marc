@@ -233,7 +233,7 @@
   </df>
 
   <df tag="130" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:expressionOf/child::node()[(local-name() = 'Hub' or local-name() = 'Work') and not(../bf:contribution/bflc:PrimaryContribution) and not(../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]">
+    <context xpath="bf:Work/bf:expressionOf/child::node()[(local-name() = 'Hub' or local-name() = 'Work') and bf:title and not(../../bf:contribution/bflc:PrimaryContribution) and not(../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]">
       <ind1 default="0">
         <switch>
           <case test="bf:title/bf:Title/bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(bf:title/bf:Title/bf:mainTitle))">
