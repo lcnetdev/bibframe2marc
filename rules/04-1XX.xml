@@ -233,7 +233,7 @@
   </df>
 
   <df tag="130" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:expressionOf/bf:Hub[not(bf:contribution/bflc:PrimaryContribution or bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]">
+    <context xpath="bf:Work/bf:expressionOf/child::node()[(local-name() = 'Hub' or local-name() = 'Work') and not(../bf:contribution/bflc:PrimaryContribution) and not(../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]">
       <ind1 default="0">
         <switch>
           <case test="bf:title/bf:Title/bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(bf:title/bf:Title/bf:mainTitle))">
@@ -244,7 +244,16 @@
         </switch>
       </ind1>
       <ind2 default=" "/>
-      <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
+      <sf code="a" chopPunct="true" repeatable="false">
+        <switch>
+          <case test="bf:title/bf:Title/rdfs:label">
+            <select xpath="bf:title/bf:Title/rdfs:label"/>
+          </case>
+          <case test="bf:title/bf:Title/bf:mainTitle">
+            <select xpath="bf:title/bf:Title/bf:mainTitle"/>
+          </case>          
+        </switch>
+      </sf>
       <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(., 'REPLACE'))]"/></sf>
       <sf code="0">
         <select xpath="bf:identifiedBy/bf:Identifier">

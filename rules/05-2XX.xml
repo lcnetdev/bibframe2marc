@@ -50,7 +50,7 @@
 
   <df tag="240" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
     <!-- This should be copied from tag 130 for all subfields -->
-    <context xpath="bf:Work/bf:expressionOf/bf:Hub[bf:contribution/bflc:PrimaryContribution or bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">
+    <context xpath="bf:Work/bf:expressionOf/child::node()[local-name() = 'Hub' or local-name() = 'Work'][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
@@ -61,7 +61,16 @@
           </case>
         </switch>
       </ind2>
-      <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
+      <sf code="a" chopPunct="true" repeatable="false">
+        <switch>
+          <case test="bf:title/bf:Title/rdfs:label">
+            <select xpath="bf:title/bf:Title/rdfs:label"/>
+          </case>
+          <case test="bf:title/bf:Title/bf:mainTitle">
+            <select xpath="bf:title/bf:Title/bf:mainTitle"/>
+          </case>          
+        </switch>
+      </sf>
       <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(., 'REPLACE'))]"/></sf>
       <sf code="0">
         <select xpath="bf:identifiedBy/bf:Identifier">
