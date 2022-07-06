@@ -294,6 +294,12 @@
                 <xsl:value-of select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/classSchemes/ddc')"/>
               </transform>
             </case>
+            <!-- This is an old pattern that needs accommodation. -->
+            <case test="rdfs:Resource/rdfs:label">
+              <transform>
+                <xsl:value-of select="rdfs:Resource/rdfs:label"/>
+              </transform>
+            </case>
             <case test="default">
               <transform>
                 <xsl:call-template name="tChopPunct">
