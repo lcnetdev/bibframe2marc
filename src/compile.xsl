@@ -700,7 +700,7 @@
         </xsl:choose>
       </xsl:variable>
 
-      <marc:record>
+      <marc:record xml:space="preserve">
 
         <xslt:apply-templates mode="documentFrame"/>
 
