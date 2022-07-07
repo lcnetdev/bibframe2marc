@@ -446,7 +446,7 @@
                     local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution'] or
                     local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture'] or
                     local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication']) and
-                    (*/*/rdfs:label or */*/madsrdf:authoritativeLabel)]">
+                    (*/*/rdfs:label[not(@xml:lang)] or */*/madsrdf:authoritativeLabel[not(@xml:lang)])]">
     <var name="v880Script">
       <switch>
         <case test="bf:place/*/rdfs:label/@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
