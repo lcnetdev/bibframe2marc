@@ -582,8 +582,9 @@
                     <xsl:when test="bf:Instance/bf:frequency[@rdf:resource='http://id.loc.gov/vocabulary/frequencies/qrt' or */@rdf:about='http://id.loc.gov/vocabulary/frequencies/qrt' or */*[local-name()='code']='qrt']">q</xsl:when>
                     <xsl:when test="bf:Instance/bf:frequency[@rdf:resource='http://id.loc.gov/vocabulary/frequencies/smn' or */@rdf:about='http://id.loc.gov/vocabulary/frequencies/smn' or */*[local-name()='code']='smn']">s</xsl:when>
                     <xsl:when test="bf:Instance/bf:frequency[@rdf:resource='http://id.loc.gov/vocabulary/frequencies/tty' or */@rdf:about='http://id.loc.gov/vocabulary/frequencies/tty' or */*[local-name()='code']='tty']">t</xsl:when>
+                    <xsl:when test="bf:Instance/bf:frequency[@rdf:resource='http://id.loc.gov/vocabulary/frequencies/unk' or */@rdf:about='http://id.loc.gov/vocabulary/frequencies/unk' or */*[local-name()='code']='unk']">u</xsl:when>
                     <xsl:when test="bf:Instance/bf:frequency[@rdf:resource='http://id.loc.gov/vocabulary/frequencies/wkl' or */@rdf:about='http://id.loc.gov/vocabulary/frequencies/wkl' or */*[local-name()='code']='wkl']">w</xsl:when>
-                    <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
+                    <xsl:otherwise><xsl:value-of select="' '" /></xsl:otherwise>
                   </xsl:choose>
                 </xsl:variable>
                 <xsl:variable name="vRegularity">
@@ -794,23 +795,32 @@
                   <xsl:choose>
                     <xsl:when test="$v008Format='MX'"><xsl:value-of select="' '"/></xsl:when>
                     <xsl:when test="$v008Format='CR'">
-                      <xsl:for-each select="bf:Instance/bf:note/*[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/orig']">
-                        <xsl:if test="position()=1">
-                          <xsl:choose>
-                            <xsl:when test="translate(rdfs:label,$upper,$lower)='microfilm'">a</xsl:when>
-                            <xsl:when test="translate(rdfs:label,$upper,$lower)='microfiche'">b</xsl:when>
-                            <xsl:when test="translate(rdfs:label,$upper,$lower)='microopaque'">c</xsl:when>
-                            <xsl:when test="translate(rdfs:label,$upper,$lower)='large print'">d</xsl:when>
-                            <xsl:when test="translate(rdfs:label,$upper,$lower)='newspaper format'">e</xsl:when>
-                            <xsl:when test="translate(rdfs:label,$upper,$lower)='braille'">f</xsl:when>
-                            <xsl:when test="translate(rdfs:label,$upper,$lower)='online'">o</xsl:when>
-                            <xsl:when test="translate(rdfs:label,$upper,$lower)='direct electronic'">q</xsl:when>
-                            <xsl:when test="translate(rdfs:label,$upper,$lower)='electronic'">s</xsl:when>
-                            <xsl:otherwise><xsl:value-of select="'|'"/></xsl:otherwise>
-                          </xsl:choose>
-                        </xsl:if>
-                      </xsl:for-each>
+                      <xsl:value-of select="' '"/>
                     </xsl:when>
+                      <!--<xsl:choose>
+                        <xsl:when test="bf:Instance/bf:note/*[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/orig']">
+                          <xsl:for-each select="bf:Instance/bf:note/*[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/orig']">
+                            <xsl:if test="position()=1">
+                              <xsl:choose>
+                                <xsl:when test="translate(rdfs:label,$upper,$lower)='microfilm'">a</xsl:when>
+                                <xsl:when test="translate(rdfs:label,$upper,$lower)='microfiche'">b</xsl:when>
+                                <xsl:when test="translate(rdfs:label,$upper,$lower)='microopaque'">c</xsl:when>
+                                <xsl:when test="translate(rdfs:label,$upper,$lower)='large print'">d</xsl:when>
+                                <xsl:when test="translate(rdfs:label,$upper,$lower)='newspaper format'">e</xsl:when>
+                                <xsl:when test="translate(rdfs:label,$upper,$lower)='braille'">f</xsl:when>
+                                <xsl:when test="translate(rdfs:label,$upper,$lower)='online'">o</xsl:when>
+                                <xsl:when test="translate(rdfs:label,$upper,$lower)='direct electronic'">q</xsl:when>
+                                <xsl:when test="translate(rdfs:label,$upper,$lower)='electronic'">s</xsl:when>
+                                <xsl:otherwise><xsl:value-of select="'|'"/></xsl:otherwise>
+                              </xsl:choose>
+                            </xsl:if>
+                          </xsl:for-each>
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:value-of select="' '"/>
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    -->
                     <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/pre' or
                                     */@rdf:about='http://id.loc.gov/vocabulary/maudience/pre'
                                     or */*[local-name='code']='pre']">a</xsl:when>
