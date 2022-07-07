@@ -444,9 +444,9 @@
   <select xpath="bf:Instance/bf:provisionActivity/*[
                     (local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production'] or
                     local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution'] or
-                    local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']) or
-                    ((local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication']) and
-                    (*/*/rdfs:label or */*/madsrdf:authoritativeLabel))]">
+                    local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture'] or
+                    local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication']) and
+                    (*/*/rdfs:label or */*/madsrdf:authoritativeLabel)]">
     <var name="v880Script">
       <switch>
         <case test="bf:place/*/rdfs:label/@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">

@@ -390,7 +390,11 @@
         <position default="|||||||||">
           <!-- there could easily be multiple provisionActivity properties, so there will be warnings -->
           <!-- some date types are difficult to build from BIBFRAME, so keep this simple for now -->
-          <select xpath="bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:date|bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:date">
+          <select xpath="bf:Instance/bf:provisionActivity/bf:*[
+                local-name() = 'ProvisionActivity' or 
+                local-name() = 'Publication' or local-name() = 'Production' or 
+                local-name() = 'Distribution' or local-name() = 'Manufacture'
+              ]/bf:date|bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:date">
             <switch>
               <case test="@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#date'">
                 <transform><xsl:value-of select="concat('s',substring(.,1,4),'    ')"/></transform>
@@ -452,12 +456,12 @@
         <!-- 15-17 -->
         <position default="xx ">
           <!-- there could easily be multiple provisionActivity properties, so there will be warnings -->
-          <select xpath="bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place[@rdf:resource]|
-                         bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place[*/@rdf:about]|
-                         bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place[*/*[local-name()='code']]|
-                         bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:place[@rdf:resource]|
-                         bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:place[*/@rdf:about]|
-                         bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ProvisionActivity']/bf:place[*/*[local-name()='code']]">
+          <select xpath="bf:Instance/bf:provisionActivity/bf:*/bf:place[@rdf:resource]|
+                         bf:Instance/bf:provisionActivity/bf:*/bf:place[*/@rdf:about]|
+                         bf:Instance/bf:provisionActivity/bf:*/bf:place[*/*[local-name()='code']]|
+                         bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource[contains(., 'http://id.loc.gov/ontologies/bibframe/')]]/bf:place[@rdf:resource]|
+                         bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource[contains(., 'http://id.loc.gov/ontologies/bibframe/')]]/bf:place[*/@rdf:about]|
+                         bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource[contains(., 'http://id.loc.gov/ontologies/bibframe/')]]/bf:place[*/*[local-name()='code']]">
             <switch>
               <case test="*/*[local-name()='code']">
                 <switch>
