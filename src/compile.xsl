@@ -701,6 +701,7 @@
       </xsl:variable>
 
       <marc:record xml:space="preserve">
+      <!-- <marc:record> -->
 
         <xslt:apply-templates mode="documentFrame"/>
 
