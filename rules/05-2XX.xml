@@ -587,13 +587,13 @@
       <ind2 default="4"/>
       <var name="cDate">
         <switch>
-          <case test="not(contains(., '©')) and ../rdf:type[@rdf:resource = (
-              'http://id.loc.gov/ontologies/bibframe/Print',
-              'http://id.loc.gov/ontologies/bibframe/Archival', 
-              'http://id.loc.gov/ontologies/bibframe/Manuscript', 
-              'http://id.loc.gov/ontologies/bibframe/Tactile', 
-              'http://id.loc.gov/ontologies/bibframe/Electronic'
-              )]">
+          <case test="not(contains(., '©')) and ../rdf:type[
+              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Print' or 
+              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Archival' or 
+              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Manuscript' or  
+              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Tactile' or 
+              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Electronic'
+              ]">
             <select xpath=".">
               <transform>
                 <xsl:value-of select="concat('©', text())"/>
