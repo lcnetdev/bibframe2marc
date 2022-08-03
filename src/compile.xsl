@@ -980,6 +980,9 @@
       </xsl:variable>
     </xslt:if>
     <xslt:element name="{$vFieldElement}">
+      <xslt:if test="@tag = 'LDR' or local-name()='cf'">
+        <xsl:attribute name="xml:space">preserve</xsl:attribute>
+      </xslt:if>
       <xslt:if test="@tag != 'LDR'">
         <xsl:attribute name="tag">
           <xslt:choose>
