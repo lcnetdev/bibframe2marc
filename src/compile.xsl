@@ -238,7 +238,7 @@
       <xsl:template name="tPadRight">
         <xsl:param name="pInput"/>
         <xsl:param name="pPadChar" select="' '"/>
-        <xsl:param name="pStringLength" select="string-length($pInput)"/>
+        <xsl:param name="pStringLength" />
         <xsl:choose>
           <xsl:when test="string-length($pInput) &gt;= $pStringLength">
             <xsl:value-of select="$pInput"/>
@@ -700,8 +700,8 @@
         </xsl:choose>
       </xsl:variable>
 
-      <marc:record xml:space="preserve">
-      <!-- <marc:record> -->
+<!--      <marc:record xml:space="preserve">-->
+       <marc:record> 
 
         <xslt:apply-templates mode="documentFrame"/>
 
