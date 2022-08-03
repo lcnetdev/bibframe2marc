@@ -22,5 +22,21 @@
     <x:expect label="...position 18-23 should be 'c#4500'"
               test="substring(marc:record/marc:leader,19,6) = 'c 4500'"/>
   </x:scenario>
+  
+  <x:scenario label="Checking types - 01">
+    <x:context href="../data/exemplars/notatedmusic-manuscript-monograph-01.rdf"/>
+    <x:expect label="...pos 06 determined by value of bf:Work/rdf:type/@rdf:resource when NotatedMusic and Manuscript"
+      test="substring(marc:record/marc:leader,7,1) = 'd'"/>
+    <x:expect label="...pos 07 determined by value of bf:Work/rdf:type/@rdf:resource when Monograph"
+      test="substring(marc:record/marc:leader,8,1) = 'm'"/>
+  </x:scenario>
+  
+  <x:scenario label="Checking types - 02">
+    <x:context href="../data/exemplars/musicaudio-monograph-contributors-titles-identifiers.rdf"/>
+    <x:expect label="...pos 06 determined by value of bf:Work/rdf:type/@rdf:resource when MusicAudio"
+      test="substring(marc:record/marc:leader,7,1) = 'j'"/>
+    <x:expect label="...pos 07 determined by value of bf:Work/rdf:type/@rdf:resource when Monograph"
+      test="substring(marc:record/marc:leader,8,1) = 'm'"/>
+  </x:scenario>
 
 </x:description>
