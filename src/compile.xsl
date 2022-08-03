@@ -699,13 +699,11 @@
           <xsl:otherwise><xsl:value-of select="$pRecordId"/></xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
-
-<!--      <marc:record xml:space="preserve">-->
-       <marc:record> 
-
+      
+      <marc:record> 
         <xslt:apply-templates mode="documentFrame"/>
-
       </marc:record>
+    
     </xsl:template>
 
     <xslt:apply-templates mode="generateTemplates"/>
