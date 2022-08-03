@@ -980,23 +980,32 @@
       </xsl:variable>
     </xslt:if>
     <xslt:element name="{$vFieldElement}">
-      <xslt:if test="@tag != 'LDR'">
-        <xsl:attribute name="tag">
-          <xslt:choose>
-            <xslt:when test="starts-with(@tag,'$')">
-              <xsl:value-of select="{@tag}"/>
-            </xslt:when>
-            <xslt:otherwise>
-              <xslt:value-of select="@tag"/>
-            </xslt:otherwise>
-          </xslt:choose>
-        </xsl:attribute>
-        <xslt:if test="@lang-xpath">
-          <xsl:if test="$vXmlLang != ''">
-            <xsl:attribute name="xml:lang"><xsl:value-of select="$vXmlLang"/></xsl:attribute>
-          </xsl:if>
-        </xslt:if>
-      </xslt:if>
+      <xslt:choose>
+        <xslt:when test="@tag = 'LDR'">
+          <xsl:attribute name="xml:space">preserve</xsl:attribute>
+        </xslt:when>
+        <xslt:otherwise>
+          <xsl:attribute name="tag">
+            <xslt:choose>
+              <xslt:when test="starts-with(@tag,'$')">
+                <xsl:value-of select="{@tag}"/>
+              </xslt:when>
+              <xslt:otherwise>
+                <xslt:value-of select="@tag"/>
+              </xslt:otherwise>
+            </xslt:choose>
+          </xsl:attribute>
+          <xslt:if test="@tag = '008'">
+            <xsl:attribute name="xml:space">preserve</xsl:attribute>
+          </xslt:if>
+          <xslt:if test="@lang-xpath">
+            <xsl:if test="$vXmlLang != ''">
+              <xsl:attribute name="xml:lang"><xsl:value-of select="$vXmlLang"/></xsl:attribute>
+            </xsl:if>
+          </xslt:if>
+        </xslt:otherwise>
+      </xslt:choose>
+      
       <xslt:choose>
         <xslt:when test="local-name()='cf' and $vConstant != ''">
           <xsl:text><xslt:value-of select="$vConstant"/></xsl:text>
