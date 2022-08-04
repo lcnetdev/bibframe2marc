@@ -46,6 +46,14 @@
     <x:expect label="$0 from URI"
               test="//marc:datafield[@tag='321']/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/frequencies/dyl'"/>
   </x:scenario>
+  
+  <x:scenario label="MARC 334">
+    <x:context href="../data/exemplars/musicaudio-monograph-contributors-titles-identifiers.rdf"/>
+    <x:expect label="generate 334"
+      test="count(//marc:datafield[@tag='334']) = 1"/>
+    <x:expect label="$b from code or URI"
+      test="//marc:datafield[@tag='334']/marc:subfield[@code='b'] = 'mono'"/>
+  </x:scenario>
 
   <x:scenario label="MARC 336">
     <x:context href="../data/3XX/336.xml"/>
