@@ -390,7 +390,127 @@
         <position default="|||||||||">
           <!-- there could easily be multiple provisionActivity properties, so there will be warnings -->
           <!-- some date types are difficult to build from BIBFRAME, so keep this simple for now -->
-          <select xpath="bf:Instance/bf:provisionActivity/bf:*[
+          <switch>
+            <!-- Distribution and Production - 'p' -->
+            <case test="
+                  bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Distribution']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf' and
+                  bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
+                ">
+              <transform>
+                <xsl:variable name="date1">
+                  <xsl:value-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Distribution']/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                </xsl:variable>
+                <xsl:variable name="date2">
+                  <xsl:value-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production']/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                </xsl:variable>
+                <xsl:value-of select="translate(concat('p', $date1, $date2), 'X', 'u')"></xsl:value-of>
+              </transform>
+            </case>
+            
+            <case test="
+              bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
+              ">
+              <transform>
+                <xsl:variable name="vPA">
+                  <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production' and bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                </xsl:variable>
+                <xsl:variable name="date1">
+                  <xsl:value-of select="$vPA/bf:*/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                </xsl:variable>
+                <xsl:choose>
+                  <xsl:when test="$vPA/bf:*/bf:note/bf:Note/rdfs:label = 'inclusive collection dates'">
+                    <xsl:value-of select="translate(concat('i', translate($date1, '/', '')), 'X', 'u')"></xsl:value-of>
+                  </xsl:when>
+                  <xsl:when test="$vPA/bf:*/bf:note/bf:Note/rdfs:label = 'bulk collection dates'">
+                    <xsl:value-of select="translate(concat('k', translate($date1, '/', '')), 'X', 'u')"></xsl:value-of>
+                  </xsl:when>
+                </xsl:choose>
+              </transform>
+            </case>
+            
+            <!-- Publication resource/event has EDTF date. -->
+            <case test="
+              bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Publication']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
+              ">
+              <transform>
+                <xsl:variable name="vPA">
+                  <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Publication' and bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                </xsl:variable>
+                <xsl:variable name="theDate">
+                  <xsl:value-of select="$vPA/bf:*/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                </xsl:variable>
+                <xsl:variable name="date1">
+                  <xsl:choose>
+                    <xsl:when test="string-length($theDate)=4">
+                      <xsl:value-of select="substring($theDate, 1, 4)" />
+                    </xsl:when>
+                    <xsl:when test="contains($theDate ,'/')">
+                      <xsl:value-of select="substring-before($theDate, '/')" />
+                    </xsl:when>
+                    <xsl:when test="contains($theDate ,'-')">
+                      <xsl:value-of select="substring-before($theDate, '-')" />
+                    </xsl:when>
+                  </xsl:choose>
+                </xsl:variable>
+                <xsl:variable name="cDateExists">
+                  <xsl:choose>
+                    <xsl:when test="bf:Instance/bf:copyrightDate[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']">1</xsl:when>
+                    <xsl:otherwise>0</xsl:otherwise>
+                  </xsl:choose>
+                </xsl:variable>
+                <xsl:variable name="date2">
+                  <xsl:choose>
+                    <xsl:when test="$cDateExists = 1">
+                      <xsl:value-of select="bf:Instance/bf:copyrightDate[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                    </xsl:when>
+                    <xsl:when test="contains($theDate, '/..')">9999</xsl:when>
+                    <xsl:when test="contains($theDate, '/')">
+                      <xsl:value-of select="substring-after($theDate,'/')" />
+                    </xsl:when>
+                    <xsl:when test="contains($theDate, '-')">
+                      <xsl:value-of select="substring-after($theDate,'-')" />
+                    </xsl:when>
+                  </xsl:choose>
+                </xsl:variable>
+                <xsl:choose>
+                  <xsl:when test="string-length($date1) = 4 and $cDateExists = 1">
+                    <xsl:value-of select="translate(concat('t', $date1, $date2), 'X', 'u')" />
+                  </xsl:when>
+                  <xsl:when test="$vPA/bf:*/bf:status/bf:Status/@rdf:about = 'http://id.loc.gov/vocabulary/mstatus/current' and
+                    string-length($date1) = 4 and string-length($date2) = 4">
+                    <xsl:value-of select="translate(concat('c', $date1, $date2), 'X', 'u')" />
+                  </xsl:when>
+                  <xsl:when test="$vPA/bf:*/bf:status/bf:Status/@rdf:about = 'http://id.loc.gov/vocabulary/mstatus/ceased' and
+                                  string-length($date1) = 4 and string-length($date2) = 4">
+                    <xsl:value-of select="translate(concat('d', $date1, $date2), 'X', 'u')" />
+                  </xsl:when>
+                  <xsl:when test="string-length($date1)=4 and string-length($date2)=5 and 
+                                  (contains($date2, '~') or contains($date2, '?') or contains($date2, '%'))">
+                    <xsl:value-of select="translate(concat('q', $date1, $date2), 'X', 'u')" />
+                  </xsl:when>
+                  <xsl:when test="string-length($date1)=4 and string-length($date2)=4">
+                    <xsl:value-of select="translate(concat('m', $date1, $date2), 'X', 'u')" />
+                  </xsl:when>
+                  <xsl:when test="$date2 != ''">
+                    <xsl:choose>
+                      <xsl:when test="contains($date2, '-')">
+                        <xsl:value-of select="translate(concat('e', $date1, translate($date2, '-', '')), 'X', 'u')" />
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:value-of select="translate(concat('e', $date1, $date2, '||'), 'X', 'u')" />
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:when>
+                  <xsl:when test="string-length($date1) = 4">
+                    <xsl:value-of select="translate(concat('s', $date1, '||||'), 'X', 'u')" />
+                  </xsl:when>
+                </xsl:choose>
+              </transform>
+            </case>
+          </switch>
+              
+              
+          <!--<select xpath="bf:Instance/bf:provisionActivity/bf:*[
                 local-name() = 'ProvisionActivity' or 
                 local-name() = 'Publication' or local-name() = 'Production' or 
                 local-name() = 'Distribution' or local-name() = 'Manufacture'
@@ -450,7 +570,7 @@
                 </transform>
               </case>
             </switch>
-          </select>
+          </select>-->
         </position>
 
         <!-- 15-17 -->
