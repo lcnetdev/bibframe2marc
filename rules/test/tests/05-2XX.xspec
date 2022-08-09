@@ -189,16 +189,16 @@
   </x:scenario>
 
   <x:scenario label="MARC 264 - 01">
-    <x:context href="../data/2XX/264-01.xml"/>
-    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
-    <x:expect label="generate 880 from place label with xml:lang"
-              test="count(//marc:datafield[@tag='880']) = 1"/>
+    <x:context href="../data/exemplars/text-monograph-880s-008s.rdf"/>
+    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 1"/>
+    <x:expect label="generate 880 from 264 label with xml:lang"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and contains(., '264-')]]/marc:subfield[@code = 'a'] = '上海'"/>
   </x:scenario>
 
   <x:scenario label="MARC 264 - 02">
-    <x:context href="../data/2XX/264-02.xml"/>
+    <x:context href="../data/exemplars/text-monograph-classifications-008t.rdf"/>
     <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
-    <x:expect label="check for copyright symbol for Print material"
+    <x:expect label="check for copyright symbol"
       test="count(//marc:datafield[@tag='264' and @ind2='4']/marc:subfield[@code='c' and contains(., '©')]) = 1"/>
   </x:scenario>
 
@@ -210,10 +210,21 @@
   </x:scenario>
 
   <x:scenario label="MARC 264 - 04">
-    <x:context href="../data/2XX/264-04.xml"/>
+    <x:context href="../data/exemplars/text-monograph-classification-manufacture-008s.rdf"/>
     <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 2"/>
-    <x:expect label="check for copyright symbol for not-specified material"
-      test="count(//marc:datafield[@tag='264' and @ind2='4']/marc:subfield[@code='c' and contains(., '©')]) = 0"/>
+    <x:expect label="check that first 264 is publication"
+      test="//marc:datafield[@tag='264'][1]/@ind2 = '1'"/>
+    <x:expect label="check that second 264 is manufacture"
+      test="//marc:datafield[@tag='264'][2]/@ind2 = '3'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 264 - 05">
+    <x:context href="../data/exemplars/text-serial-SUBJECTS-relationships-008c.rdf"/>
+    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 3"/>
+    <x:expect label="check for that first 264 is current"
+      test="//marc:datafield[@tag='264' and @ind2='1'][1]/@ind1 = '3'"/>
+    <x:expect label="check for that third 264 is current"
+      test="//marc:datafield[@tag='264' and @ind2='1'][3]/@ind1 = '3'"/>
   </x:scenario>
 
 </x:description>
