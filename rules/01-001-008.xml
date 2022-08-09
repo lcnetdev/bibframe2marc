@@ -514,34 +514,13 @@
         <!-- 15-17 -->
         <position default="xx ">
           <!-- there could easily be multiple provisionActivity properties, so there will be warnings -->
-          <select xpath="bf:Instance/bf:provisionActivity/bf:*/bf:place[@rdf:resource]|
-                         bf:Instance/bf:provisionActivity/bf:*/bf:place[*/@rdf:about]|
-                         bf:Instance/bf:provisionActivity/bf:*/bf:place[*/*[local-name()='code']]|
-                         bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource[contains(., 'http://id.loc.gov/ontologies/bibframe/')]]/bf:place[@rdf:resource]|
-                         bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource[contains(., 'http://id.loc.gov/ontologies/bibframe/')]]/bf:place[*/@rdf:about]|
-                         bf:Instance/bf:provisionActivity/*[rdf:type/@rdf:resource[contains(., 'http://id.loc.gov/ontologies/bibframe/')]]/bf:place[*/*[local-name()='code']]">
+          <select xpath="bf:Instance/bf:provisionActivity/bf:*/bf:place/@rdf:resource|
+                         bf:Instance/bf:provisionActivity/bf:*/bf:place/bf:*/@rdf:about">
             <switch>
-              <case test="*/*[local-name()='code']">
-                <switch>
-                  <case test="string-length(*/*[local-name()='code']) = 3">
-                    <transform><xsl:value-of select="*/*[local-name()='code']"/></transform>
-                  </case>
-                  <case test="string-length(*/*[local-name()='code']) = 2">
-                    <transform><xsl:value-of select="concat(*/*[local-name()='code'],' ')"/></transform>
-                  </case>
-                </switch>
-              </case>
-              <case test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/countries/')] or starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')">
+              <case test="starts-with(.,'http://id.loc.gov/vocabulary/countries/')">
                 <transform>
                   <xsl:variable name="vCode">
-                    <xsl:choose>
-                      <xsl:when test="*[starts-with(@rdf:about,'http://id.loc.gov/vocabulary/countries/')]">
-                        <xsl:value-of select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/countries/')"/>
-                      </xsl:when>
-                      <xsl:when test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')">
-                        <xsl:value-of select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/countries/')"/>
-                      </xsl:when>
-                    </xsl:choose>
+                    <xsl:value-of select="substring-after(.,'http://id.loc.gov/vocabulary/countries/')"/>
                   </xsl:variable>
                   <xsl:choose>
                     <xsl:when test="string-length($vCode)=3"><xsl:value-of select="$vCode"/></xsl:when>
