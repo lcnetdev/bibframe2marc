@@ -83,40 +83,49 @@
   </df>
   
   <df tag="334" lang-xpath="rdfs:label" repeatable="true">
-    <context xpath="bf:Instance/bf:issuance/*[local-name()='Issuance' or
-      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issuance']]">
+    <context xpath="bf:Instance/bf:issuance">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true">
         <switch>
-          <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-          <case test="default"><select xpath="rdfs:label"/></case>
+          <case test="bf:*/madsrdf:authoritativeLabel"><select xpath="bf:*/madsrdf:authoritativeLabel"/></case>
+          <case test="default"><select xpath="bf:*/rdfs:label"/></case>
         </switch>
       </sf>
       <switch>
-        <case test="*[local-name()='code']">
-          <sf code="b"><transform><xsl:value-of select="*[local-name()='code']"/></transform></sf>
+        <case test="bf:*/*[local-name()='code']">
+          <sf code="b"><transform><xsl:value-of select="bf:*/*[local-name()='code']"/></transform></sf>
         </case>
-        <case test="@rdf:about">
+        <case test="@rdf:resource or bf:*/@rdf:about">
           <sf code="b">
             <switch>
-              <case test="contains(@rdf:about,'id.loc.gov')">
+              <case test="contains(@rdf:resource,'id.loc.gov')">
                 <transform>
                   <xsl:call-template name="tUriCode">
-                    <xsl:with-param name="pUri" select="@rdf:about"/>
+                    <xsl:with-param name="pUri" select="@rdf:resource"/>
                   </xsl:call-template>
                 </transform>
               </case>
-              <case test="default"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+              <case test="contains(bf:*/@rdf:about,'id.loc.gov')">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="bf:*/@rdf:about"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="default"><transform><xsl:value-of select="bf:*/@rdf:about"/></transform></case>
             </switch>
           </sf>
         </case>
       </switch>
       <sf code="0">
-        <select xpath="@rdf:about"/>
+        <select xpath="@rdf:resource"/>
       </sf>
       <sf code="0">
-        <select xpath="bf:identifiedBy/bf:Identifier">
+        <select xpath="bf:*/@rdf:about"/>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:*/bf:identifiedBy/bf:Identifier">
           <transform>
             <xsl:variable name="vIdType">
               <xsl:call-template name="tChopPunct">
@@ -133,27 +142,7 @@
         </select>
       </sf>
       <sf code="2" chopPunct="true" repeatable="false">
-        <select xpath="bf:source/bf:Source/bf:code"/>
-      </sf>
-    </context>
-    
-    <context xpath="bf:Instance/bf:issuance[@rdf:resource != '']">
-      <ind1 default=" "/>
-      <ind2 default=" "/>
-      <sf code="b">
-            <switch>
-              <case test="contains(@rdf:resource,'id.loc.gov')">
-                <transform>
-                  <xsl:call-template name="tUriCode">
-                    <xsl:with-param name="pUri" select="@rdf:resource"/>
-                  </xsl:call-template>
-                </transform>
-              </case>
-              <case test="default"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-            </switch>
-          </sf>
-      <sf code="0">
-        <select xpath="@rdf:resource"/>
+        <select xpath="bf:*/bf:source/bf:Source/bf:code"/>
       </sf>
     </context>
   </df>
