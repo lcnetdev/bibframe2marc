@@ -16,6 +16,10 @@ declare -A exemplars=(
 ["14437118"]="stillimage-collection-pnp-008i"
 ["12280298"]="musicaudio-monograph-contributions-008m"
 ["22724623"]="stillimage-monograph-subjects-pnp-008q"
+["20621601"]="text-monograph-classifications-008t"
+["1972268"]="text-monograph-classification-manufacture-008s"
+["22014581"]="text-monograph-880s-008s"
+
 )
 
 for key in "${!exemplars[@]}"; do
