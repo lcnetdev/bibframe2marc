@@ -99,7 +99,7 @@
               test="//marc:datafield[@tag='700']/marc:subfield[@code='e'] = 'editor'"/>
   </x:scenario>
 
-  <x:scenario label="MARC 720">
+  <x:scenario label="MARC 720 - 01">
     <x:context href="../data/7XX/720.xml"/>
     <x:expect label="generate 720" test="count(//marc:datafield[@tag='720']) = 1"/>
     <x:expect label="ind1 default to blank"
@@ -110,6 +110,19 @@
               test="//marc:datafield[@tag='720'][1]/marc:subfield[@code='a'] = 'Unitarian Universalist Ministers Association'"/>
     <x:expect label="$e from role"
               test="//marc:datafield[@tag='720'][1]/marc:subfield[@code='e'] = 'sponsor'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 720 - 02">
+    <x:context href="../data/exemplars/text-monograph-uncontrolledsubjects-uncontrollednames.rdf"/>
+    <x:expect label="generate 720" test="count(//marc:datafield[@tag='720']) = 15"/>
+    <x:expect label="ind1 default to blank"
+      test="//marc:datafield[@tag='720'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 default to blank"
+      test="//marc:datafield[@tag='720'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='720'][1]/marc:subfield[@code='a'] = 'Hannam, Mrs'"/>
+    <x:expect label="$e from role"
+      test="//marc:datafield[@tag='720'][1]/marc:subfield[@code='e'] = 'vocalist'"/>
   </x:scenario>
 
   <x:scenario label="MARC 730">

@@ -30,6 +30,7 @@
       </var>
       <var name="vAddEntryTag">
         <switch>
+          <case test="local-name()='Uncontrolled' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled']">720</case>
           <case test="local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or
                       local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or
                       local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or
@@ -81,7 +82,12 @@
               <case test="local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">1</case>
             </switch>
           </case>
-          <case test="$vAddEntryTag='720'"><text> </text></case>
+          <case test="$vAddEntryTag='720'">
+            <switch>
+              <case test="local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person']">1</case>
+              <case test="default"><text> </text></case>
+            </switch>
+          </case>
         </switch>
       </ind1>
       <ind2 default=" ">
