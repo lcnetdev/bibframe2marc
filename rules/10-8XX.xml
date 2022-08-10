@@ -9,8 +9,8 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- Series added entries -->
-  <select xpath="bf:Work/bf:hasSeries/*[local-name()='Hub' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub'] |
-                 //bf:Item/bf:hasSeries/*[local-name()='Hub' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub']">
+  <select xpath="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:*[not(bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t']) and not(bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t'])] |
+          //bf:Item/bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:*[not(bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t']) and not(bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t'])]">
     <var name="vScriptSubtag">
       <transform>
         <xsl:call-template name="tScriptCode">
@@ -136,7 +136,9 @@
               <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
               <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
               <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-              <!-- $v nac -->
+              <sf code="v" repeatable="false">
+                <select xpath="../../bf:seriesEnumeration"/>
+              </sf>
               <sf code="x" repeatable="false">
                 <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
               </sf>
@@ -291,7 +293,9 @@
               <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
               <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
               <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-              <!-- $v nac -->
+              <sf code="v" repeatable="false">
+                <select xpath="../../bf:seriesEnumeration"/>
+              </sf>
               <sf code="x" repeatable="false">
                 <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
               </sf>
@@ -443,7 +447,9 @@
               <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
               <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
               <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-              <!-- $v nac -->
+              <sf code="v" repeatable="false">
+                <select xpath="../../bf:seriesEnumeration"/>
+              </sf>
               <sf code="x" repeatable="false">
                 <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
               </sf>
@@ -547,9 +553,11 @@
               </switch>
               <sf code="r" chopPunct="true"><select xpath="bf:musicKey"/></sf>
               <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-              <!-- $v nac -->
               <sf code="x" repeatable="false">
                 <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
+              </sf>
+              <sf code="v" repeatable="false">
+                <select xpath="../../bf:seriesEnumeration"/>
               </sf>
               <!-- can't distinguish between $0 and $w unless $w is an LCCN -->
               <sf code="w">
