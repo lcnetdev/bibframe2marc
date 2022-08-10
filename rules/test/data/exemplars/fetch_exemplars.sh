@@ -20,6 +20,10 @@ declare -A exemplars=(
 ["1972268"]="text-monograph-classification-manufacture-008s"
 ["22014581"]="text-monograph-880s-008s"
 
+["16362995"]="text-monograph-uncontrolledsubjects-uncontrollednames"
+
+["21665525"]="text-monograph-series-matching490and830"
+["18602501"]="text-monograph-series-germansubjects"
 )
 
 for key in "${!exemplars[@]}"; do
