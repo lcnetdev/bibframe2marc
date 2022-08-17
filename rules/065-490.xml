@@ -30,7 +30,33 @@
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
-              <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
+              <var name="vMainTitle">
+                <switch>
+                  <case test="bf:title/bf:Title/bf:mainTitle"><select xpath="bf:title/bf:Title/bf:mainTitle"/></case>
+                </switch>
+              </var>
+              <var name="vParallelTitle">
+                <switch>
+                  <case test="bf:title/bf:ParallelTitle/bf:mainTitle"><select xpath="bf:title/bf:ParallelTitle/bf:mainTitle"/></case>
+                </switch>
+              </var>
+              <sf code="a" chopPunct="false" repeatable="true">
+                <switch>
+                  <case test="$vMainTitle != '' and $vParallelTitle != ''">
+                    <transform><xsl:value-of select="concat($vMainTitle, ' =')"/></transform>
+                  </case>
+                  <case test="$vMainTitle != ''">
+                    <transform><xsl:value-of select="$vMainTitle"/></transform>
+                  </case>
+                </switch>
+              </sf>
+              <sf code="a" chopPunct="false" repeatable="true">
+                <switch>
+                  <case test="$vParallelTitle != ''">
+                    <transform><xsl:value-of select="$vParallelTitle"/></transform>
+                  </case>
+                </switch>
+              </sf>
               <sf code="x" repeatable="true">
                 <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
               </sf>
