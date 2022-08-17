@@ -342,6 +342,7 @@
                     bf:Instance/bf:bookFormat/bf:BookFormat |
                     bf:Instance/bf:fontSize/bf:FontSize |
                     bf:Instance/bf:polarity/bf:Polarity |
+                    bf:Instance/bf:binding/bf:Binding |
                     bf:Work/bf:illustrativeContent/bf:Illustration">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -369,6 +370,9 @@
         </case>
         <case test="local-name()='Layout'">
           <sf code="k" chopPunct="true"><select xpath="rdfs:label"/></sf>
+        </case>
+        <case test="local-name()='Binding'">
+          <sf code="l" chopPunct="true"><select xpath="rdfs:label"/></sf>
         </case>
         <case test="local-name()='BookFormat'">
           <sf code="m" chopPunct="true"><select xpath="rdfs:label"/></sf>
