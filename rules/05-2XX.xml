@@ -446,12 +446,20 @@
                     local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution'] or
                     local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture'] or
                     local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication']) and
-                    (bflc:simplePlace or bflc:simpleAgent or bflc:simpleDate)]">
+                    (
+                      (bflc:simplePlace or bflc:simpleAgent or bflc:simpleDate) or 
+                      (bf:place/bf:*/rdfs:label or bf:agent/bf:*/rdfs:label or bf:date[not(@rdf:datatype)])
+                    )]">
     <var name="v880Script">
       <switch>
         <case test="bflc:simplePlace/@xml:lang and not(contains(translate(bflc:simplePlace/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
           <lookup map="df880script" targetField="code">
             <lookupField name="lang" xpath="translate(substring-after(bflc:simplePlace/@xml:lang,'-'),$upper,$lower)"/>
+          </lookup>
+        </case>
+        <case test="bf:place/*/rdfs:label/@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
+          <lookup map="df880script" targetField="code">
+            <lookupField name="lang" xpath="translate(substring-after(bf:place/*/rdfs:label/@xml:lang,'-'),$upper,$lower)"/>
           </lookup>
         </case>
       </switch>
@@ -484,13 +492,43 @@
             <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
           <sf code="a" chopPunct="false">
-             <select xpath="bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]" />
+             <switch>
+               <case test="bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                 <select xpath="bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]" />
+               </case>
+               <case test="bf:place/*[
+                      (local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
+                      rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
+                     ]">
+                 <select xpath="bf:place/bf:*/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+               </case>
+               <case test="bf:place/*[
+                      (local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
+                      madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
+                     ]">
+                 <select xpath="bf:place/bf:*/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+               </case>
+             </switch>
           </sf>
           <sf code="b" chopPunct="false">
-            <select xpath="bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+            <switch>
+              <case test="bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                <select xpath="bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+              </case>
+              <case test="bf:agent/bf:Agent/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                <select xpath="bf:agent/bf:Agent/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+              </case>
+            </switch>
           </sf>
           <sf code="c" chopPunct="false">
-            <select xpath="bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+            <switch>
+              <case test="bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                <select xpath="bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+              </case>
+              <case test="bf:date[not(@rdf:datatype) and not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                <select xpath="bf:date[not(@rdf:datatype) and not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+              </case>
+            </switch>
           </sf>
         </df>
         <switch>
@@ -511,13 +549,43 @@
               </ind2>
               <sf code="6"><transform><xsl:value-of select="concat('264-',$v880Occurence,'/',$v880Script)"/></transform></sf>
               <sf code="a" chopPunct="false">
-                <select xpath="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]" />
+                <switch>
+                  <case test="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                    <select xpath="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]" />
+                  </case>
+                  <case test="bf:place/*[
+                              (local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
+                              rdfs:label[@xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]
+                             ]">
+                    <select xpath="bf:place/bf:*/rdfs:label[@xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                  </case>
+                  <case test="bf:place/*[
+                              (local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
+                              madsrdf:authoritativeLabel[@xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]
+                             ]">
+                    <select xpath="bf:place/bf:*/madsrdf:authoritativeLabel[@xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                  </case>
+                </switch>
               </sf>
               <sf code="b" chopPunct="false">
-                <select xpath="bflc:simpleAgent[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                <switch>
+                  <case test="bflc:simpleAgent[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                    <select xpath="bflc:simpleAgent[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                  </case>
+                  <case test="bf:agent/bf:Agent/rdfs:label[@xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                    <select xpath="bf:agent/bf:Agent/rdfs:label[@xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                  </case>
+                </switch>
               </sf>
               <sf code="c" chopPunct="false">
-                <select xpath="bflc:simpleDate[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                <switch>
+                  <case test="bflc:simpleDate[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                    <select xpath="bflc:simpleDate[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                  </case>
+                  <case test="bf:date[not(@rdf:datatype) and @xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                    <select xpath="bf:date[not(@rdf:datatype) and @xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
