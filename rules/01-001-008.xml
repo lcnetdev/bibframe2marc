@@ -628,6 +628,7 @@
                     <xsl:otherwise><xsl:value-of select="' '" /></xsl:otherwise>
                   </xsl:choose>
                 </xsl:variable>
+                <xsl:value-of select="$vFrequency" />
                 <xsl:variable name="vRegularity">
                   <xsl:choose>
                     <xsl:when test="$vFrequency != ' '">
@@ -661,7 +662,9 @@
                     <xsl:otherwise>|</xsl:otherwise>
                   </xsl:choose>
                 </xsl:variable>
-                <xsl:value-of select="concat($vFrequency,$vRegularity,' ',$vCRType)"/>
+                <xsl:value-of select="$vRegularity"/>
+                <xsl:value-of select="' '"/>
+                <xsl:value-of select="$vCRType"/>
               </transform>
             </case>
             <case test="$v008Format='MP'">
