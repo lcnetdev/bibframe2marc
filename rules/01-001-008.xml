@@ -832,7 +832,7 @@
                         $v008Format='VM' or
                         $v008Format='MX'">
               <transform>
-                <xsl:variable name="v008-22">
+                <!--<xsl:variable name="v008-22">-->
                   <xsl:choose>
                     <xsl:when test="$v008Format='MX'"><xsl:value-of select="' '"/></xsl:when>
                     <xsl:when test="$v008Format='CR'">
@@ -888,8 +888,8 @@
                                     or */*[local-name='code']='juv']">j</xsl:when>
                     <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                   </xsl:choose>
-                </xsl:variable>
-                <xsl:variable name="v008-23">
+                <!--</xsl:variable>-->
+                <!--<xsl:variable name="v008-23">-->
                   <xsl:choose>
                     <xsl:when test="$v008Format='VM'"><xsl:value-of select="' '"/></xsl:when>
                     <xsl:when test="$v008Format='CF'">
@@ -920,8 +920,8 @@
                                     bf:Instance/bf:notation/*[contains(rdfs:label,'braille')]">f</xsl:when>
                     <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                   </xsl:choose>
-                </xsl:variable>
-                <xsl:value-of select="concat($v008-22,$v008-23)"/>
+                <!--</xsl:variable>-->
+                <!--<xsl:value-of select="concat($v008-22,$v008-23)"/>-->
               </transform>
             </case>
             <case test="$v008Format='MP'">
@@ -982,8 +982,18 @@
                         $v008Format='CR'">
               <transform>
                 <xsl:variable name="vNoC">
-                  <xsl:for-each select="bf:Work/bf:genreForm|bf:Work/bf:supplementaryContent">
+                  <!--<xsl:for-each select="bf:Work/bf:genreForm|bf:Work/bf:supplementaryContent">-->
+                  <xsl:for-each select="bf:Work/bf:supplementaryContent">
                     <xsl:choose>
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/msupplcont/bibliography' or
+                        */@rdf:about='http://id.loc.gov/vocabulary/msupplcont/bibliography'">b</xsl:when>
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/msupplcont/discography' or
+                        */@rdf:about='http://id.loc.gov/vocabulary/msupplcont/discography'">k</xsl:when>
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/msupplcont/film' or
+                        */@rdf:about='http://id.loc.gov/vocabulary/msupplcont/film'">q</xsl:when>
+                      
+                      <!--
+                        kefo note - match specs for 24-27 for now - 19 Aug 2022 - and so comment out  
                       <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/msupplcont/bibliography' or
                                       */@rdf:about='http://id.loc.gov/vocabulary/msupplcont/bibliography'">a</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026048' or
@@ -1026,6 +1036,7 @@
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026055'">5</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026266' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026266'">6</xsl:when>
+                      -->
                     </xsl:choose>
                   </xsl:for-each>
                 </xsl:variable>
