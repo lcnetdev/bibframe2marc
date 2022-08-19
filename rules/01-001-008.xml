@@ -1236,7 +1236,12 @@
                 </xsl:choose>
               </transform>
             </case>
-            <case test="$v008Format='CR' or $v008Format='VM'"><text>  </text></case>
+            <case test="$v008Format='CR' or $v008Format='VM'">
+              <transform>
+                <xsl:value-of select="' '"/>
+                <xsl:value-of select="' '"/>
+              </transform>
+            </case>
           </switch>
         </position>
 
