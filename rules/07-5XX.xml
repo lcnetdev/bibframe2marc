@@ -390,7 +390,11 @@
       </case>
 
       <!-- these notes are picked up in the rules for data field 300, do not process here -->
-      <case test="(local-name(../..)='Instance' or local-name(../..)='Item') and (translate(bf:noteType,$upper,$lower)='physical details' or translate(bf:noteType,$upper,$lower)='accompanying material')"/>
+      <case test="(local-name(../..)='Instance' or local-name(../..)='Item') and 
+                  (
+                    (translate(bf:noteType,$upper,$lower)='physical details' or translate(bf:noteType,$upper,$lower)='accompanying material') or 
+                    (rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/physical' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/accmat')
+                  )"/>
 
       <case test="default">
         <df tag="500" lang-xpath="rdfs:label">
