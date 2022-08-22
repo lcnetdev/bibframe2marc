@@ -393,26 +393,54 @@
           <switch>
             <!-- Distribution and Production - 'p' -->
             <case test="
-                  bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Distribution']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf' and
-                  bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
+                  (
+                    bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Distribution']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf' and
+                    bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
+                  ) or (
+                    bf:Instance/bf:provisionActivity/bf:Distribution/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf' and
+                    bf:Instance/bf:provisionActivity/bf:Production/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'                
+                  )
                 ">
               <transform>
                 <xsl:variable name="date1">
-                  <xsl:value-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Distribution']/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                  <xsl:choose>
+                    <xsl:when test="bf:Instance/bf:provisionActivity/bf:Distribution/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'">
+                      <xsl:value-of select="bf:Instance/bf:provisionActivity/bf:Distribution/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Distribution']/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />    
+                    </xsl:otherwise>
+                  </xsl:choose>
                 </xsl:variable>
                 <xsl:variable name="date2">
-                  <xsl:value-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production']/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                  <xsl:choose>
+                    <xsl:when test="bf:Instance/bf:provisionActivity/bf:Production/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'">
+                      <xsl:value-of select="bf:Instance/bf:provisionActivity/bf:Production/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />                      
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production']/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />    
+                    </xsl:otherwise>
+                  </xsl:choose>
                 </xsl:variable>
                 <xsl:value-of select="translate(concat('p', $date1, $date2), 'X', 'u')"></xsl:value-of>
               </transform>
             </case>
             
             <case test="
-              bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
+              bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf' 
+              or 
+              bf:Instance/bf:provisionActivity/bf:Production/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
               ">
               <transform>
                 <xsl:variable name="vPA">
-                  <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production' and bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                  <xsl:choose>
+                    <xsl:when test="bf:Instance/bf:provisionActivity/bf:Production/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'">
+                      <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:Production[bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Production' and bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />    
+                    </xsl:otherwise>
+                  </xsl:choose>                  
                 </xsl:variable>
                 <xsl:variable name="date1">
                   <xsl:value-of select="$vPA/bf:*/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
@@ -431,10 +459,19 @@
             <!-- Publication resource/event has EDTF date. -->
             <case test="
               bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Publication']/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
+              or
+              bf:Instance/bf:provisionActivity/bf:Publication/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
               ">
               <transform>
                 <xsl:variable name="vPA">
-                  <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Publication' and bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                  <xsl:choose>
+                    <xsl:when test="bf:Instance/bf:provisionActivity/bf:Publication/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'">
+                      <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:Publication[bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:ProvisionActivity[rdf:type/@rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Publication' and bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />    
+                    </xsl:otherwise>
+                  </xsl:choose>
                 </xsl:variable>
                 <xsl:variable name="theDate">
                   <xsl:value-of select="$vPA/bf:*/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
