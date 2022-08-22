@@ -169,19 +169,54 @@
         </case>
       </switch>
       <sf code="a" chopPunct="true" repeatable="false">
-        <select xpath="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+        <switch>
+          <case test="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <select xpath="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+          </case>
+          <case test="count(bf:mainTitle)=1 and bf:mainTitle[@xml:lang]">
+            <select xpath="bf:mainTitle[@xml:lang]" />
+          </case>
+        </switch>
       </sf>
       <sf code="b" chopPunct="true" repeatable="false">
-        <select xpath="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+        <switch>
+          <case test="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <select xpath="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+          </case>
+          <case test="count(bf:subtitle)=1 and bf:subtitle[@xml:lang]">
+            <select xpath="bf:subtitle[@xml:lang]" />
+          </case>
+        </switch>
       </sf>
       <sf code="c" chopPunct="false" repeatable="false">
-        <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+        <switch>
+          <case test="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+          </case>
+          <case test="count(ancestor::bf:Instance/bf:responsibilityStatement)=1 and ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
+            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]" />
+          </case>
+        </switch>
       </sf>
       <sf code="n" chopPunct="true">
-        <select xpath="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+        <switch>
+          <case test="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <select xpath="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+          </case>
+          <case test="count(bf:partNumber)=1 and bf:partNumber[@xml:lang]">
+            <select xpath="bf:partNumber[@xml:lang]" />
+          </case>
+        </switch>
       </sf>
       <sf code="p" chopPunct="true">
-        <select xpath="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+        <switch>
+          <case test="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <select xpath="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+          </case>
+          <case test="count(bf:partName)=1 and bf:partName[@xml:lang]">
+            <select xpath="bf:partName[@xml:lang]" />
+          </case>
+        </switch>
       </sf>
     </context>
   </df>
