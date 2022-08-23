@@ -1,3 +1,18 @@
+--- 2.0.0 2022/08/23
+
+This release reflects specification changes related to marc2bibframe v2.0.0.
+
+Changes include:
+
+* New Provision Activity conversion to separate encoded data in MARC 008 and transcribed data in MARC 26X. The 26X fields use new bflc properties bflc:simplePlace, bflc:simpleAgent and bflc:simpleDate to record literals. The 008 field uses existing bf:date and bf:place properties.
+* Series fields (4XX and 8XX) will create BF Hubs.
+* New Work types for Monograph, Serial, Series, Integrating, MusicAudio (subclass of Audio) and NonMusicAudio (subclass of Audio) created.
+* Address issues a number of issues with too few 008 values (resulting in too-short 008s), incorrect 008 dates, and empty fields.
+* Output 340 $l.
+* Output 720 based on Uncontrolled type.
+* Simplify 334 context processing.
+* More flexible xpath selection to accommodate various RDF/XML shapes. 
+
 --- 1.1.1 2022/08/03
 
 This is a patch release to address a variety of bugs.
