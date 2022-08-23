@@ -1329,7 +1329,7 @@
                         <xsl:when test="bf:Work/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mscript/j' or */@rdf:about='http://id.loc.gov/vocabulary/mscript/j' or */*[local-name()='code']='j']">j</xsl:when>
                         <xsl:when test="bf:Work/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mscript/k' or */@rdf:about='http://id.loc.gov/vocabulary/mscript/k' or */*[local-name()='code']='k']">k</xsl:when>
                         <xsl:when test="bf:Work/bf:notation[@rdf:resource='http://id.loc.gov/vocabulary/mscript/l' or */@rdf:about='http://id.loc.gov/vocabulary/mscript/l' or */*[local-name()='code']='l']">l</xsl:when>
-                        <xsl:otherwise><text> </text></xsl:otherwise>
+                        <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                     <xsl:when test="$v008Format='VM'">
