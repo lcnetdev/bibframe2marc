@@ -1010,6 +1010,7 @@
                 <case test="bf:Work/bf:cartographicAttributes/bf:Cartographic/bf:projection[@rdf:resource='http://id.loc.gov/vocabulary/mprojection/dg' or */@rdf:about='http://id.loc.gov/vocabulary/mprojection/dg' or */*[local-name()='code']='dg']">dg</case>
                 <case test="bf:Work/bf:cartographicAttributes/bf:Cartographic/bf:projection[@rdf:resource='http://id.loc.gov/vocabulary/mprojection/dh' or */@rdf:about='http://id.loc.gov/vocabulary/mprojection/dh' or */*[local-name()='code']='dh']">dh</case>
                 <case test="bf:Work/bf:cartographicAttributes/bf:Cartographic/bf:projection[@rdf:resource='http://id.loc.gov/vocabulary/mprojection/dl' or */@rdf:about='http://id.loc.gov/vocabulary/mprojection/dl' or */*[local-name()='code']='dl']">dl</case>
+                <case test="default"><text>  </text></case>
               </switch>
             </case>
           </switch>
@@ -1227,13 +1228,14 @@
                     <xsl:when test="$v008Format='MP'"><xsl:value-of select="' '"/></xsl:when>
                   </xsl:choose>
                 </xsl:variable>
+                <xsl:value-of select="$v008-30"/>
                 <xsl:variable name="v008-31">
                   <xsl:choose>
                     <xsl:when test="bf:Instance/bf:supplementaryContent/*[contains(rdfs:label,'index')]">1</xsl:when>
                     <xsl:otherwise>|</xsl:otherwise>
                   </xsl:choose>
                 </xsl:variable>
-                <xsl:value-of select="concat($v008-30,$v008-31)"/>
+                <xsl:value-of select="$v008-31"/>
               </transform>
             </case>
             <case test="$v008Format='MU'">
