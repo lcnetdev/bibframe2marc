@@ -4,15 +4,19 @@
 
 Conversion updates based on specifications v2.0. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
 
-* New Provision Activity conversion to separate encoded data in MARC 008 and transcribed data in MARC 26X. The 26X fields use new bflc properties bflc:simplePlace, bflc:simpleAgent and bflc:simpleDate to record literals. The 008 field uses existing bf:date and bf:place properties.
+* Use new Work types to set Leader/06 and Leader/07 bytes.
 
-* Series fields (4XX and 8XX) will create BF Hubs.
+* Use new 334 field for Issuance.
 
-* New Work types for Monograph, Serial, Series, Integrating, MusicAudio (subclass of Audio) and NonMusicAudio (subclass of Audio) created.
+* Create 490 and 8XX fields from Hubs.
+
+* Create 264 fields from bflc:simplePlace, bflc:simpleAgent and bflc:simplePlace literals.
+
+* Create 720 fields when bf:agent has type Uncontrolled.
 
 * Address issues a number of issues with too few 008 values (resulting in too-short 008s), incorrect 008 dates, and empty fields.
 
-See the [NEWS](NEWS) file and the [updated specifications](spec/) for full details of changes. Changes from v1.7.1 in the specifications are marked in red.
+See the [NEWS](NEWS) file and the [updated specifications](spec/) for full details of changes. Changes from v1.1.1 in the specifications are marked in red.
 
 ## v1.1.1
 

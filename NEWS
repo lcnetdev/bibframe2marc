@@ -4,12 +4,13 @@ This release reflects specification changes related to marc2bibframe v2.0.0.
 
 Changes include:
 
-* New Provision Activity conversion to separate encoded data in MARC 008 and transcribed data in MARC 26X. The 26X fields use new bflc properties bflc:simplePlace, bflc:simpleAgent and bflc:simpleDate to record literals. The 008 field uses existing bf:date and bf:place properties.
-* Series fields (4XX and 8XX) will create BF Hubs.
-* New Work types for Monograph, Serial, Series, Integrating, MusicAudio (subclass of Audio) and NonMusicAudio (subclass of Audio) created.
+* Use new Work types to set Leader/06 and Leader/07 bytes.
+* Use new 334 field for Issuance.
+* Create 490 and 8XX fields from Hubs.
+* Create 264 fields from bflc:simplePlace, bflc:simpleAgent and bflc:simplePlace literals.
+* Create 720 fields when bf:agent has type Uncontrolled.
 * Address issues a number of issues with too few 008 values (resulting in too-short 008s), incorrect 008 dates, and empty fields.
 * Output 340 $l.
-* Output 720 based on Uncontrolled type.
 * Simplify 334 context processing.
 * More flexible xpath selection to accommodate various RDF/XML shapes. 
 
