@@ -1358,6 +1358,7 @@
                     </xsl:when>
                   </xsl:choose>
                 </xsl:variable>
+                <xsl:value-of select="$v008-33" />
                 <xsl:variable name="v008-34">
                   <xsl:choose>
                     <xsl:when test="$v008Format='BK'">
@@ -1390,7 +1391,7 @@
                     </xsl:when>
                   </xsl:choose>
                 </xsl:variable>
-                <xsl:value-of select="concat($v008-33,$v008-34)"/>
+                <xsl:value-of select="$v008-34" />
               </transform>
             </case>
             <case test="$v008Format='MP'">
