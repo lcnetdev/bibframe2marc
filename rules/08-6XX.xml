@@ -305,6 +305,7 @@
               <select xpath="*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']] |
                              */madsrdf:componentList/*[1] |
                              bf:Hub/bf:contribution/*/bf:agent/* |
+                             */bf:contribution/*/bf:agent/* |
                              */madsrdf:componentList/*[1]/bf:Hub/bf:contribution/*/bf:agent/*">
                 <var name="vNameAuth">
                   <!-- only look up id.loc.gov name authorities -->
@@ -369,19 +370,38 @@
               </select>
 
               <!-- title subfields -->
-              <select xpath="bf:Hub">
-                <sf code="t" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
-                <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
-                <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
-                <sf code="l" chopPunct="true" repeatable="false">
-                  <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
-                </sf>
-                <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
-                <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
-                <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
-                <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
-                <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-              </select>
+              <switch>
+                <case test="bf:Hub">
+                  <select xpath="bf:Hub">
+                    <sf code="t" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
+                    <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
+                    <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
+                    <sf code="l" chopPunct="true" repeatable="false">
+                      <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
+                    </sf>
+                    <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
+                    <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partNumber"/></sf>
+                    <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
+                    <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
+                    <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
+                  </select>
+                </case>
+                <case test="*/bf:title">
+                  <select xpath="*/bf:title/bf:Title">
+                    <sf code="t" chopPunct="true" repeatable="false"><select xpath="bf:mainTitle"/></sf>
+                    <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
+                    <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
+                    <sf code="l" chopPunct="true" repeatable="false">
+                      <select xpath="bf:language/*/rdfs:label|bf:language/*/madsrdf:authoritativeLabel"/>
+                    </sf>
+                    <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
+                    <sf code="n" chopPunct="true"><select xpath="bf:partNumber"/></sf>
+                    <sf code="p" chopPunct="true"><select xpath="bf:partName"/></sf>
+                    <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
+                    <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
+                  </select>
+                </case>
+              </switch>
 
               <!-- subdivisions -->
               <select xpath="*/madsrdf:componentList/*">
