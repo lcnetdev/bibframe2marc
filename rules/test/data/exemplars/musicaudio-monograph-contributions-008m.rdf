@@ -4,8 +4,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.0.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-23T18:12:20.232206-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.1.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-21T14:55:30.450494-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -147,8 +147,8 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/12280298#Hub490-46">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
+	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/12280298#Hub490-46">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
 		<rdfs:label>transcribed</rdfs:label>
@@ -159,7 +159,7 @@
 		<bf:mainTitle>Personality series</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	  </bf:Hub>
+	  </bf:Series>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -171,8 +171,8 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/12280298#Topic650-51">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label>Musicals--Excerpts.</rdfs:label>
-	<madsrdf:authoritativeLabel>Musicals--Excerpts.</madsrdf:authoritativeLabel>
+	<rdfs:label>Musicals--Excerpts</rdfs:label>
+	<madsrdf:authoritativeLabel>Musicals--Excerpts</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/authorities/subjects"/>
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
@@ -400,7 +400,7 @@
 	<rdfs:label>Electrical capture, Analog electrical storage</rdfs:label>
       </bflc:CaptureStorage>
     </bf:soundCharacteristic>
-    <bf:provisionActivity>
+    <bf:provisionActivity xmlns:exsl="http://exslt.org/common">
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1943/1945</bf:date>

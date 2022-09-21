@@ -4,8 +4,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.0.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-23T18:12:20.685791-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.1.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-21T14:55:30.852498-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -96,8 +96,8 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/2971034#Hub490-17">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
+	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/2971034#Hub490-17">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
 		<rdfs:label>transcribed</rdfs:label>
@@ -108,15 +108,15 @@
 		<bf:mainTitle>Calabar studies in African literature</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	  </bf:Hub>
+	  </bf:Series>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/2971034#Topic650-19">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label>African literature--History and criticism--Congresses.</rdfs:label>
-	<madsrdf:authoritativeLabel>African literature--History and criticism--Congresses.</madsrdf:authoritativeLabel>
+	<rdfs:label>African literature--History and criticism--Congresses</rdfs:label>
+	<madsrdf:authoritativeLabel>African literature--History and criticism--Congresses</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/authorities/subjects"/>
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
@@ -135,8 +135,8 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/2971034#Topic650-20">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label>African literature (English)--History and criticism--Congresses.</rdfs:label>
-	<madsrdf:authoritativeLabel>African literature (English)--History and criticism--Congresses.</madsrdf:authoritativeLabel>
+	<rdfs:label>African literature (English)--History and criticism--Congresses</rdfs:label>
+	<madsrdf:authoritativeLabel>African literature (English)--History and criticism--Congresses</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/authorities/subjects"/>
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
@@ -155,8 +155,8 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/2971034#Topic650-21">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label>History in literature--Congresses.</rdfs:label>
-	<madsrdf:authoritativeLabel>History in literature--Congresses.</madsrdf:authoritativeLabel>
+	<rdfs:label>History in literature--Congresses</rdfs:label>
+	<madsrdf:authoritativeLabel>History in literature--Congresses</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/authorities/subjects"/>
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
@@ -269,7 +269,7 @@
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/2971034#Instance">
     <bf:issuance rdf:resource="http://id.loc.gov/vocabulary/issuance/mono"/>
-    <bf:provisionActivity>
+    <bf:provisionActivity xmlns:exsl="http://exslt.org/common">
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1991</bf:date>

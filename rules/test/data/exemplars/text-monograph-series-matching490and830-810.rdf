@@ -4,8 +4,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.0.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-23T18:12:18.407204-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.1.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-21T14:55:28.713058-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -68,8 +68,8 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Hub490-16">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
+	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Hub490-16">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
 		<rdfs:label>transcribed</rdfs:label>
@@ -80,39 +80,36 @@
 		<bf:mainTitle>SIAK scientific series</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	  </bf:Hub>
+	  </bf:Series>
 	</bf:relatedTo>
 	<bf:seriesEnumeration>5</bf:seriesEnumeration>
       </bflc:Relationship>
     </bflc:relationship>
-    <bf:language>
-      <bf:Language>
-	<bf:note>
-	  <bf:Note>
-	    <rdfs:label>Aus dem Dt. übers.</rdfs:label>
-	  </bf:Note>
-	</bf:note>
-      </bf:Language>
-    </bf:language>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/lang"/>
+	<rdfs:label>Aus dem Dt. übers.</rdfs:label>
+      </bf:Note>
+    </bf:note>
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/resources/REPLACE/16998093#GenreForm655-18">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
-	<rdfs:label>Aufsatzsammlung.</rdfs:label>
-	<madsrdf:authoritativeLabel>Aufsatzsammlung.</madsrdf:authoritativeLabel>
+	<rdfs:label>Aufsatzsammlung</rdfs:label>
+	<madsrdf:authoritativeLabel>Aufsatzsammlung</madsrdf:authoritativeLabel>
       </bf:GenreForm>
     </bf:genreForm>
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Topic650-19">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
-	<rdfs:label>Korruption.</rdfs:label>
-	<madsrdf:authoritativeLabel>Korruption.</madsrdf:authoritativeLabel>
+	<rdfs:label>Korruption</rdfs:label>
+	<madsrdf:authoritativeLabel>Korruption</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Topic650-20">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
-	<rdfs:label>Korruption.</rdfs:label>
-	<madsrdf:authoritativeLabel>Korruption.</madsrdf:authoritativeLabel>
+	<rdfs:label>Korruption</rdfs:label>
+	<madsrdf:authoritativeLabel>Korruption</madsrdf:authoritativeLabel>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/swd">
 	    <bf:code>swd</bf:code>
@@ -123,8 +120,8 @@
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/resources/REPLACE/16998093#GenreForm655-21">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
-	<rdfs:label>Aufsatzsammlung.</rdfs:label>
-	<madsrdf:authoritativeLabel>Aufsatzsammlung.</madsrdf:authoritativeLabel>
+	<rdfs:label>Aufsatzsammlung</rdfs:label>
+	<madsrdf:authoritativeLabel>Aufsatzsammlung</madsrdf:authoritativeLabel>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/swd">
 	    <bf:code>swd</bf:code>
@@ -230,7 +227,7 @@
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Instance">
     <bf:issuance rdf:resource="http://id.loc.gov/vocabulary/issuance/mono"/>
-    <bf:provisionActivity>
+    <bf:provisionActivity xmlns:exsl="http://exslt.org/common">
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2010</bf:date>
