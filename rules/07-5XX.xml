@@ -388,6 +388,13 @@
           </sf>
         </df>
       </case>
+      
+      <!-- these notes are picked up in the rules for data field 300, do not process here -->
+      <case test="(local-name(../..)='Work' and 
+        (
+          translate(bf:noteType,$upper,$lower)='language' or 
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/lang'
+        ))"/>
 
       <!-- these notes are picked up in the rules for data field 300, do not process here -->
       <case test="(local-name(../..)='Instance' or local-name(../..)='Item') and 
@@ -672,15 +679,15 @@
     </context>
   </df>
 
-  <df tag="546" lang-xpath="bf:note/bf:Note/rdfs:label">
-    <context xpath="bf:Work/bf:language/bf:Language[bf:note/bf:Note/rdfs:label]">
+  <df tag="546" lang-xpath="rdfs:label">
+    <context xpath="bf:Work/bf:note/bf:Note[rdf:type/@rdf:resource = 'http://id.loc.gov/vocabulary/mnotetype/lang']">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="a" chopPunct="true" repeatable="false">
-        <select xpath="bf:note/bf:Note/rdfs:label"/>
+        <select xpath="rdfs:label"/>
       </sf>
     </context>
   </df>
