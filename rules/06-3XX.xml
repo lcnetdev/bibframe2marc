@@ -670,13 +670,14 @@
   </df>
 
   <df tag="348" lang-xpath="rdfs:label">
-    <context xpath="bf:Instance/bf:musicFormat/bf:MusicFormat">
+    <context xpath="bf:Instance/bf:musicFormat/bf:MusicFormat | bf:Instance/bf:notation/bf:MusicNotation">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a" chopPunct="true"><select xpath="rdfs:label"/></sf>
+      <sf code="a" chopPunct="true"><select xpath="../bf:MusicFormat/rdfs:label"/></sf>
+      <sf code="c" chopPunct="true"><select xpath="../bf:MusicNotation/rdfs:label"/></sf>
       <sf code="0">
         <select xpath="@rdf:about"/>
       </sf>
