@@ -432,7 +432,7 @@
               bf:Instance/bf:provisionActivity/bf:Production/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
               ">
               <transform>
-                <xsl:variable name="vPA">
+                <xsl:variable name="vPAprenodeset">
                   <xsl:choose>
                     <xsl:when test="bf:Instance/bf:provisionActivity/bf:Production/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'">
                       <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:Production[bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
@@ -442,6 +442,7 @@
                     </xsl:otherwise>
                   </xsl:choose>                  
                 </xsl:variable>
+                <xsl:variable name="vPA" select="exsl:node-set($vPAprenodeset)" />
                 <xsl:variable name="date1">
                   <xsl:value-of select="$vPA/bf:*/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
                 </xsl:variable>
@@ -463,7 +464,7 @@
               bf:Instance/bf:provisionActivity/bf:Publication/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'
               ">
               <transform>
-                <xsl:variable name="vPA">
+                <xsl:variable name="vPAprenodeset">
                   <xsl:choose>
                     <xsl:when test="bf:Instance/bf:provisionActivity/bf:Publication/bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'">
                       <xsl:copy-of select="bf:Instance/bf:provisionActivity/bf:Publication[bf:date/@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
@@ -473,6 +474,7 @@
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:variable>
+                <xsl:variable name="vPA" select="exsl:node-set($vPAprenodeset)" />
                 <xsl:variable name="theDate">
                   <xsl:value-of select="$vPA/bf:*/bf:date[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
                 </xsl:variable>
