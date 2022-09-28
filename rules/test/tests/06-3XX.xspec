@@ -148,11 +148,15 @@
 
   <x:scenario label="MARC 348">
     <x:context href="../data/3XX/348.xml"/>
-    <x:expect label="generate 348" test="count(//marc:datafield[@tag='348']) = 1"/>
+    <x:expect label="generate 348" test="count(//marc:datafield[@tag='348']) = 2"/>
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='348'][1]/marc:subfield[@code='a'] = 'vocal score'"/>
     <x:expect label="$0 from URI"
               test="//marc:datafield[@tag='348'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/mmusicformat/vocalscore'"/>
+    <x:expect label="$c from label"
+              test="//marc:datafield[@tag='348'][2]/marc:subfield[@code='c'] = 'graphic notation'"/>
+    <x:expect label="$0 from URI"
+              test="//marc:datafield[@tag='348'][2]/marc:subfield[@code='0'] = 'https://id.loc.gov/vocabulary/mmusnotation/graph'"/>
   </x:scenario>
 
   <x:scenario label="MARC 351">
