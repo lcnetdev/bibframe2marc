@@ -21,9 +21,10 @@
     <switch>
       <case test="$vScriptSubtag='' or translate($vScriptSubtag,$upper,$lower)=translate($pCatScript,$upper,$lower)">
             <df tag="490">
-              <ind1 default="1">
+              <ind1 default="0">
                 <switch>
-                  <case test="rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled'">0</case>
+                  <case test="../../../../bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:Hub[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
+                  <case test="../../../../bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:Series[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
                 </switch>
               </ind1>
               <ind2 default=" "/>
@@ -40,23 +41,27 @@
                   <case test="bf:title/bf:ParallelTitle/bf:mainTitle"><select xpath="bf:title/bf:ParallelTitle/bf:mainTitle"/></case>
                 </switch>
               </var>
-              <sf code="a" chopPunct="false" repeatable="true">
+              
                 <switch>
                   <case test="$vMainTitle != '' and $vParallelTitle != ''">
-                    <transform><xsl:value-of select="concat($vMainTitle, ' =')"/></transform>
+                    <sf code="a" chopPunct="false" repeatable="true">
+                        <transform><xsl:value-of select="concat($vMainTitle, ' =')"/></transform>
+                    </sf>
                   </case>
                   <case test="$vMainTitle != ''">
-                    <transform><xsl:value-of select="$vMainTitle"/></transform>
+                    <sf code="a" chopPunct="false" repeatable="true">
+                        <transform><xsl:value-of select="$vMainTitle"/></transform>
+                    </sf>
                   </case>
                 </switch>
-              </sf>
-              <sf code="a" chopPunct="false" repeatable="true">
                 <switch>
                   <case test="$vParallelTitle != ''">
-                    <transform><xsl:value-of select="$vParallelTitle"/></transform>
+                    <sf code="a" chopPunct="false" repeatable="true">
+                        <transform><xsl:value-of select="$vParallelTitle"/></transform>
+                    </sf>
                   </case>
                 </switch>
-              </sf>
+
               <sf code="x" repeatable="true">
                 <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
               </sf>

@@ -14,8 +14,8 @@
  <x:scenario label="MARC 490 - Test 01">
    <x:context href="../data/exemplars/text-monograph-series-unmatched490sand830.rdf"/>
     <x:expect label="generate 800" test="count(//marc:datafield[@tag='490']) = 2"/>
-    <x:expect label="ind1 is 0, meaning unmatched with an 8XX"
-              test="//marc:datafield[@tag='490'][1]/@ind1 = '0'"/>
+    <x:expect label="ind1 is 1, because there is a Series 8XX present"
+              test="//marc:datafield[@tag='490'][1]/@ind1 = '1'"/>
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='490'][1]/@ind2 = ' '"/>
     <x:expect label="$a from label of agent"
