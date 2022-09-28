@@ -61,6 +61,7 @@
   <x:scenario label="MARC 242">
     <x:context href="../data/2XX/242.xml"/>
     <x:expect label="generate 242" test="count(//marc:datafield[@tag='242']) = 1"/>
+    <x:expect label="generate 242 $y" test="//marc:datafield[@tag='242']/marc:subfield[@code='y'] = 'est'"/>
   </x:scenario>
 
   <x:scenario label="MARC 243">

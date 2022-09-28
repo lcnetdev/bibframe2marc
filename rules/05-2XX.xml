@@ -121,6 +121,20 @@
       <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:subtitle"/></sf>
       <sf code="n" chopPunct="true"><select xpath="bf:partNumber"/></sf>
       <sf code="p" chopPunct="true"><select xpath="bf:partName"/></sf>
+        <var name="langCode">
+          <lookup map="languages" targetField="iso6392">
+            <lookupField name="xmllang" xpath="bf:mainTitle/@xml:lang"/>
+          </lookup>
+        </var>
+       <switch>
+        <case test="$langCode != ''">
+          <sf code="y">
+              <transform>
+                <xsl:value-of select="$langCode" />
+              </transform>
+          </sf>
+        </case>
+      </switch>
     </context>
   </df>
 
