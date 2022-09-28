@@ -722,6 +722,41 @@
           </sf>
         </case>
       </switch>
+      <sf code="e">
+        <select xpath="../bf:descriptionConventions[not(contains(@rdf:resource,'isbd')) and
+                                                    not(contains(*/@rdf:about,'isbd')) and
+                                                    not(*/rdf:value='isbd') and
+                                                    not(*/*[local-name()='code']='isbd') and
+                                                    not(*/rdfs:label='isbd') and
+                                                    not(contains(@rdf:resource,'aacr')) and
+                                                    not(contains(*/@rdf:about,'aacr')) and
+                                                    not(*/rdf:value='aacr') and
+                                                    not(*/*[local-name()='code']='aacr') and
+                                                    not(*/rdfs:label='aacr')]">
+          <var name="vConvUri">
+            <switch>
+              <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+              <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+            </switch>
+          </var>
+          <switch>
+            <case test="$vConvUri != '' and contains($vConvUri,'id.loc.gov')">
+              <transform>
+                <xsl:call-template name="tUriCode">
+                  <xsl:with-param name="pUri" select="$vConvUri"/>
+                </xsl:call-template>
+              </transform>
+            </case>
+            <case test="*/rdf:value">
+              <transform><xsl:value-of select="*/rdf:value"/></transform>
+            </case>
+            <case test="*/*[local-name()='code']">
+              <transform><xsl:value-of select="*/*[local-name()='code']"/></transform>
+            </case>
+            <case test="default"><transform><xsl:value-of select="*/rdfs:label"/></transform></case>
+          </switch>
+        </select>
+      </sf>
       <sf code="c" repeatable="false"><select xpath="*/*[local-name()='code']"/></sf>
       <switch>
         <case test="count(../bf:descriptionModifier) &gt; 0">
@@ -762,36 +797,6 @@
           </switch>
         </case>
       </switch>
-      <sf code="e">
-        <select xpath="../bf:descriptionConventions[not(contains(@rdf:resource,'isbd')) and
-                                                    not(contains(*/@rdf:about,'isbd')) and
-                                                    not(*/rdf:value='isbd') and
-                                                    not(*/*[local-name()='code']='isbd') and
-                                                    not(*/rdfs:label='isbd')]">
-          <var name="vConvUri">
-            <switch>
-              <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-              <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
-            </switch>
-          </var>
-          <switch>
-            <case test="$vConvUri != '' and contains($vConvUri,'id.loc.gov')">
-              <transform>
-                <xsl:call-template name="tUriCode">
-                  <xsl:with-param name="pUri" select="$vConvUri"/>
-                </xsl:call-template>
-              </transform>
-            </case>
-            <case test="*/rdf:value">
-              <transform><xsl:value-of select="*/rdf:value"/></transform>
-            </case>
-            <case test="*/*[local-name()='code']">
-              <transform><xsl:value-of select="*/*[local-name()='code']"/></transform>
-            </case>
-            <case test="default"><transform><xsl:value-of select="*/rdfs:label"/></transform></case>
-          </switch>
-        </select>
-      </sf>
     </context>
   </df>
 
