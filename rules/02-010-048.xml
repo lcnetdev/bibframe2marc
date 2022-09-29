@@ -705,7 +705,44 @@
       </var>
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="a" repeatable="false"><select xpath="*/*[local-name()='code']"/></sf>
+      <var name="vAuri">
+          <switch>
+              <case test="@rdf:resource">
+                <transform>
+                  <xsl:value-of select="@rdf:resource"/>
+                </transform>
+              </case>
+              <case test="*/@rdf:about">
+                <transform>
+                  <xsl:value-of select="*/@rdf:about"/>
+                </transform>
+              </case>
+            </switch>
+          </var>
+      <var name="vAcode">
+        <switch>
+          <case test="*/*[local-name()='code']">
+            <transform>
+                <xsl:value-of select="*/*[local-name()='code']"/>
+            </transform>
+          </case>
+          <case test="$vAuri != '' and contains($vAuri,'id.loc.gov')">
+            <transform>
+              <xsl:call-template name="tUriCode">
+                <xsl:with-param name="pUri" select="$vAuri"/>
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
+      </var>
+      <switch>
+        <case test="$vAcode = 'dlc'">
+            <sf code="a" repeatable="false"><transform><xsl:value-of select="translate($vAcode,$lower,$upper)"/></transform></sf>
+        </case>
+        <case test="$vAcode != ''">
+            <sf code="a" repeatable="false"><transform><xsl:value-of select="$vAcode"/></transform></sf>
+        </case>
+      </switch>
       <switch>
         <case test="$vLanguageUri != '' and contains($vLanguageUri,'id.loc.gov')">
           <sf code="b">
@@ -757,7 +794,15 @@
           </switch>
         </select>
       </sf>
-      <sf code="c" repeatable="false"><select xpath="*/*[local-name()='code']"/></sf>
+      <!-- Logic for $c was/is identical to $a, so just using the $a stuff here. -->
+      <switch>
+        <case test="$vAcode = 'dlc'">
+            <sf code="c" repeatable="false"><transform><xsl:value-of select="translate($vAcode,$lower,$upper)"/></transform></sf>
+        </case>
+        <case test="$vAcode != ''">
+            <sf code="c" repeatable="false"><transform><xsl:value-of select="$vAcode"/></transform></sf>
+        </case>
+      </switch>
       <switch>
         <case test="count(../bf:descriptionModifier) &gt; 0">
           <var name="vLastAgentUri">
