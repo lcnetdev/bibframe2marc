@@ -791,6 +791,9 @@
             </switch>
           </var>
           <switch>
+            <case test="$vModifierCode = 'dlc'">
+              <sf code="d"><transform><xsl:value-of select="translate($vModifierCode,$lower,$upper)"/></transform></sf>
+            </case>
             <case test="$vModifierCode != ''">
               <sf code="d"><transform><xsl:value-of select="$vModifierCode"/></transform></sf>
             </case>
