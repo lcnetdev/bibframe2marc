@@ -63,7 +63,7 @@
                            $vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/@rdf:about">
               <var name="vLdr17" xpath="substring(.,string-length(.))"/>
               <switch>
-                <case test="$vLdr17='f'"><text> </text></case>
+                <case test="$vLdr17='f'"><transform><xsl:value-of select="' '"/></transform></case>
                 <case test="default"><transform><xsl:value-of select="$vLdr17"/></transform></case>
               </switch>
             </select>
