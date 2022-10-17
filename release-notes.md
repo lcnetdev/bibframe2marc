@@ -1,19 +1,27 @@
 # bibframe2marc release notes
 
+## v2.1.0
+
+Conversion updates based on specifications v2.1. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
+
+* Add support for converting bf:binding to 240$l.
+* Make 040 subfield order:  $abecd 
+* Add support for outputting 348.
+* Ensure BF language notes go to 546.
+* Update BF Series processing for appropriate 490 or Series 8XX fields.
+* Output 242$y.
+
+See the [NEWS](NEWS) file and the [updated specifications](spec/) for full details of changes. Changes from v2.0.0 in the specifications are marked in red.
+
 ## v2.0.0
 
 Conversion updates based on specifications v2.0. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
 
 * Use new Work types to set Leader/06 and Leader/07 bytes.
-
 * Use new 334 field for Issuance.
-
 * Create 490 and 8XX fields from Hubs.
-
 * Create 264 fields from bflc:simplePlace, bflc:simpleAgent and bflc:simplePlace literals.
-
 * Create 720 fields when bf:agent has type Uncontrolled.
-
 * Address issues a number of issues with too few 008 values (resulting in too-short 008s), incorrect 008 dates, and empty fields.
 
 See the [NEWS](NEWS) file and the [updated specifications](spec/) for full details of changes. Changes from v1.1.1 in the specifications are marked in red.
