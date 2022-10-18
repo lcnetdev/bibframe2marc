@@ -4,7 +4,7 @@
 
 Conversion updates based on specifications v2.1. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
 
-* Add support for converting bf:binding to 240$l.
+* Add support for converting bf:binding to 340$l.
 * Make 040 subfield order:  $abecd 
 * Add support for outputting 348.
 * Ensure BF language notes go to 546.
