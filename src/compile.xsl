@@ -532,10 +532,14 @@
         <xsl:param name="pForceSRULookup" select="false()"/>
         <xsl:variable name="vUrl">
           <xsl:choose>
-            <xsl:when test="contains($pUri,'id.loc.gov/authorities/')
+            <xsl:when test="( 
+                              contains($pUri,'id.loc.gov/authorities/') or 
+                              contains($pUri,'id.loc.gov/rwos/agents') or 
+                              contains($pUri,'id.loc.gov/resources/hubs')
+                            )
                             and not('.marcxml.xml' = substring($pUri, string-length($pUri) - 11))">
               <xsl:choose>
-                <xsl:when test="$pSRULookup='true' or $pForceSRULookup=true()">
+                <xsl:when test="($pSRULookup='true' or $pForceSRULookup=true()) and contains($pUri,'id.loc.gov/authorities/')">
                   <xsl:variable name="vUriLccn">
                     <xsl:call-template name="tUriCode">
                       <xsl:with-param name="pUri" select="$pUri"/>
@@ -581,8 +585,18 @@
                   </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
+                  <xsl:variable name="vLookupURI">
+                    <xsl:choose>
+                      <xsl:when test="contains($pUri, 'id.loc.gov/rwos/agents')">
+                        <xsl:value-of select="concat(substring-before($pUri,'rwos/agents'), 'authorities/names/', substring-after($pUri,'authorities/names/'))"/>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:value-of select="$pUri"/>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
                   <xsl:variable name="vPath">
-                    <xsl:value-of select="substring-after($pUri,'://id.loc.gov')"/>
+                    <xsl:value-of select="substring-after($vLookupURI,'://id.loc.gov')"/>
                   </xsl:variable>
                   <xsl:value-of select="concat('https://id.loc.gov',$vPath,'.marcxml.xml')"/>
                 </xsl:otherwise>
@@ -592,6 +606,7 @@
           </xsl:choose>
         </xsl:variable>
         <xsl:variable name="vDoc" select="document($vUrl)"/>
+        <xsl:message><xsl:value-of select="$vUrl"/></xsl:message>
         <xsl:choose>
           <xsl:when test="$vDoc">
             <xsl:copy-of select="$vDoc"/>

@@ -5,9 +5,14 @@ URLBASE=$1
 declare -A exemplars=(
 
 ["6520336"]="text-contributors-instancecontributor"
+["22818936"]="text-contributors-relationship"
 
 )
 
 for key in "${!exemplars[@]}"; do
-    curl $URLBASE/$key.marc-pkg.xml > ${exemplars[$key]}.rdf
+    if [[ $URLBASE == *"8230"* ]]; then
+        curl $URLBASE/$key.marc-pkg.xml > bfdb.${exemplars[$key]}.rdf
+    else
+        curl $URLBASE/$key.cbd.rdf > id.${exemplars[$key]}.rdf
+    fi
 done
