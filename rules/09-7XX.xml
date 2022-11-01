@@ -9,6 +9,103 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- added entries -->
+  <!-- added entries -->
+  <df tag="$vAddRelationTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
+    <context xpath="bf:Work/bflc:relationship/bflc:Relationship/bf:relatedTo[contains(@rdf:resource, 'hubs')]|
+                    bf:Work/bflc:relationship/bflc:Relationship/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')]">
+      <var name="relURI">
+        <switch>
+          <case test="contains(@rdf:resource,'id.loc.gov/resources/hubs')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.loc.gov/resources/hubs')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+        </switch>
+      </var>
+      <var name="vRelResourcePreNS">
+        <!-- only look up id.loc.gov name authorities -->
+        <switch>
+          <case test="$relURI != ''">
+            <transform>
+              <xsl:call-template name="tGetMARCAuth">
+                <xsl:with-param name="pUri" select="$relURI"/>
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
+      </var>
+      <var name="vRelResource"><transform><xsl:copy-of select="exsl:node-set($vRelResourcePreNS)"/></transform></var>
+      <var name="vAddRelationTag">
+        <switch>
+          <case test="$vRelResource//marc:record">
+            <switch>
+              <case test="$vRelResource//marc:datafield[@tag='100']">700</case>
+              <case test="$vRelResource//marc:datafield[@tag='110']">710</case>
+              <case test="$vRelResource//marc:datafield[@tag='111']">711</case>
+              <case test="$vRelResource//marc:datafield[@tag='130']">730</case>
+            </switch>
+          </case>
+        </switch>
+      </var>
+      <var name="vValidSubfields">
+        <switch>
+          <case test="$vAddRelationTag='700'">abcdgjq</case>
+          <case test="$vAddRelationTag='710'">abcdgn</case>
+          <case test="$vAddRelationTag='711'">acdegnq</case>
+          <case test="$vAddRelationTag='730'">adfghklmnoprs</case>
+        </switch>
+      </var>
+      <switch>
+        <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]">
+          <transform>
+            <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains($vValidSubfields,@code)]">
+              <marc:subfield>
+                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                <xsl:value-of select="."/>
+              </marc:subfield>
+            </xsl:for-each>
+          </transform>
+        </case>
+      </switch>
+      <switch>
+        <case test="$vRelResource//marc:datafield[@tag = '240'] and $vAddRelationTag != '730'">
+          <transform>
+            <xsl:for-each select="$vRelResource//marc:datafield[@tag = '240']/marc:subfield[contains('adfghklmnoprs',@code)]">
+              <marc:subfield>
+                <xsl:choose>
+                  <xsl:when test="@code = 'a'">
+                    <xsl:attribute name="code">t</xsl:attribute>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                  </xsl:otherwise>
+                </xsl:choose>
+                <xsl:value-of select="."/>
+              </marc:subfield>
+            </xsl:for-each>
+          </transform>
+        </case>
+      </switch>
+      <sf code="4">
+        <select xpath="../../bf:role/*[madsrdf:code or bf:code]">
+          <switch>
+            <case test="madsrdf:code">
+              <select xpath="madsrdf:code"/>
+            </case>
+            <case test="default"><select xpath="bf:code"/></case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="4">
+        <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
+      </sf>
+      <sf code="1">
+        <switch>
+          <case test="$relURI != ''">
+            <transform><xsl:value-of select="$relURI"/></transform>
+          </case>
+        </switch>
+      </sf>
+    </context>
+  </df>
+      
   <df tag="$vAddEntryTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/* |
                     bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub/bf:contribution/*/bf:agent/* |
