@@ -6,6 +6,7 @@ declare -A exemplars=(
 
 ["6520336"]="text-contributors-instancecontributor"
 ["22818936"]="text-contributors-relationship"
+["20178796"]="musicaudio-mono-relationships"
 
 )
 

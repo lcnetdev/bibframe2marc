@@ -534,7 +534,7 @@
           <xsl:choose>
             <xsl:when test="( 
                               contains($pUri,'id.loc.gov/authorities/') or 
-                              contains($pUri,'id.loc.gov/rwos/agents') or 
+                              contains($pUri,'id.loc.gov/rwo/agents') or 
                               contains($pUri,'id.loc.gov/resources/hubs')
                             )
                             and not('.marcxml.xml' = substring($pUri, string-length($pUri) - 11))">
@@ -587,8 +587,8 @@
                 <xsl:otherwise>
                   <xsl:variable name="vLookupURI">
                     <xsl:choose>
-                      <xsl:when test="contains($pUri, 'id.loc.gov/rwos/agents')">
-                        <xsl:value-of select="concat(substring-before($pUri,'rwos/agents'), 'authorities/names/', substring-after($pUri,'authorities/names/'))"/>
+                      <xsl:when test="contains($pUri, 'id.loc.gov/rwo/agents')">
+                        <xsl:value-of select="concat(substring-before($pUri,'rwo/agents'), 'authorities/names/', substring-after($pUri,'rwo/agents/'))"/>
                       </xsl:when>
                       <xsl:otherwise>
                         <xsl:value-of select="$pUri"/>
@@ -640,7 +640,6 @@
           </xsl:choose>
         </xsl:variable>
         <xsl:variable name="vDoc" select="document($vUrl)"/>
-        <xsl:message><xsl:value-of select="$vDoc/rdf:RDF/madsrdf:*/madsrdf:authoritativeLabel"/></xsl:message>
         <xsl:choose>
           <xsl:when test="$vDoc">
             <xsl:value-of select="$vDoc/rdf:RDF/madsrdf:*/madsrdf:authoritativeLabel[1]" />
