@@ -617,6 +617,36 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:template>
+      
+      <!--
+        Special handling for label lookups at id.loc.gov
+        Might have to do something like system-property('xsl:vendor') if HTTPS gives problems.
+      -->
+      <xsl:template name="tGetLabel">
+        <xsl:param name="pUri"/>
+        <xsl:variable name="vUrl">
+          <xsl:choose>
+            <xsl:when test="( 
+              contains($pUri,'id.loc.gov/entities/') or 
+              contains($pUri,'id.loc.gov/vocabulary/')
+              )
+              and not('.madsrdf_raw.rdf' = substring($pUri, string-length($pUri) - 16))">
+              <xsl:variable name="vPath">
+                <xsl:value-of select="substring-after($pUri,'://id.loc.gov')"/>
+              </xsl:variable>
+              <xsl:value-of select="concat('https://id.loc.gov',$vPath,'.madsrdf_raw.rdf')"/>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="vDoc" select="document($vUrl)"/>
+        <xsl:message><xsl:value-of select="$vDoc/rdf:RDF/madsrdf:*/madsrdf:authoritativeLabel"/></xsl:message>
+        <xsl:choose>
+          <xsl:when test="$vDoc">
+            <xsl:value-of select="$vDoc/rdf:RDF/madsrdf:*/madsrdf:authoritativeLabel[1]" />
+          </xsl:when>
+        </xsl:choose>
+      </xsl:template>
 
       <!-- generate marc:subfields by splitting a string with embedded subfields (i.e. bflc:readMarc382) -->
       <xsl:template name="tReadMarc382">
