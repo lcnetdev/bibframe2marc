@@ -31,22 +31,14 @@
           <case test="contains(@rdf:about,'id.loc.gov')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
-      <var name="vRelResourcePreNS">
-        <!-- only look up id.loc.gov name authorities -->
-        <switch>
-          <case test="marc:record">
-            <transform><xsl:copy-of select="marc:record"/></transform>
-          </case>
-          <case test="$relURI != ''">
-            <transform>
-              <xsl:call-template name="tGetMARCAuth">
-                <xsl:with-param name="pUri" select="$relURI"/>
-              </xsl:call-template>
-            </transform>
-          </case>
-        </switch>
+      <var name="vRelResource">
+        <transform>
+          <xsl:call-template name="tGetRelResource">
+            <xsl:with-param name="pRelUri" select="$relURI"/>
+            <xsl:with-param name="pContext" select="."/>
+          </xsl:call-template>
+        </transform>
       </var>
-      <var name="vRelResource"><transform><xsl:copy-of select="exsl:node-set($vRelResourcePreNS)"/></transform></var>
       <var name="vAddedEntryNameTag">
         <switch>
           <case test="$vRelResource//marc:record">
@@ -116,7 +108,7 @@
         </case>
         <case test="ancestor::node()/bf:role/bf:Role[bf:code or madsrdf:code]">
           <sf code="4">
-            <select xpath="ancestor::node()/bf:role/bf:Role/*:code" />
+            <select xpath="ancestor::node()/bf:role/bf:Role/*[local-name() = 'code']" />
           </sf>
         </case>
       </switch>
@@ -147,19 +139,14 @@
           <case test="contains(@rdf:about,'id.loc.gov/resources/hubs')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
-      <var name="vRelResourcePreNS">
-        <!-- only look up id.loc.gov name authorities -->
-        <switch>
-          <case test="$relURI != ''">
-            <transform>
-              <xsl:call-template name="tGetMARCAuth">
-                <xsl:with-param name="pUri" select="$relURI"/>
-              </xsl:call-template>
-            </transform>
-          </case>
-        </switch>
+      <var name="vRelResource">
+        <transform>
+          <xsl:call-template name="tGetRelResource">
+            <xsl:with-param name="pRelUri" select="$relURI"/>
+            <xsl:with-param name="pContext" select="."/>
+          </xsl:call-template>
+        </transform>
       </var>
-      <var name="vRelResource"><transform><xsl:copy-of select="exsl:node-set($vRelResourcePreNS)"/></transform></var>
       <var name="vAddRelationTag">
         <switch>
           <case test="$vRelResource//marc:record">

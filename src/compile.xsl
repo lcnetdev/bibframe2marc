@@ -517,6 +517,24 @@
       </xsl:template>
 
       <!-- get a MARC authority from a URI -->
+      
+      <xsl:template name="tGetRelResource">
+        <xsl:param name="pRelUri"/>
+        <xsl:param name="pContext"/>
+        <xsl:choose>
+          <xsl:when test="$pContext//marc:record">
+            <xsl:copy-of select="exsl:node-set($pContext//marc:record)"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:variable name="vRelResourcePreNS">
+              <xsl:call-template name="tGetMARCAuth">
+                <xsl:with-param name="pUri" select="$pRelUri"/>
+              </xsl:call-template>          
+            </xsl:variable>
+            <xsl:copy-of select="exsl:node-set($vRelResourcePreNS)"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:template>
 
       <!--
           special handling for id.loc.gov authorities:

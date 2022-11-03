@@ -1792,7 +1792,7 @@
             </select>
           </sf>
         </case>
-        <case test="default">
+        <case test="*/madsrdf:authoritativeLabel">
           <sf code="3" chopPunct="true" repeatable="false">
             <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
@@ -1820,6 +1820,33 @@
                 </xsl:choose>
               </transform>
             </select>
+          </sf>
+        </case>
+        <case test="@rdf:resource or */@rdf:about">
+          <var name="relURI">
+            <switch>
+              <case test="contains(@rdf:resource,'id.loc.gov')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+              <case test="contains(*/@rdf:about,'id.loc.gov')"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
+            </switch>
+          </var>
+          <var name="vRelResource">
+            <transform>
+              <xsl:call-template name="tGetRelResource">
+                <xsl:with-param name="pRelUri" select="$relURI"/>
+                <xsl:with-param name="pContext" select="*"/>
+              </xsl:call-template>
+            </transform>
+          </var>
+          <transform>
+            <xsl:for-each select="$vRelResource//marc:datafield[@tag = '155']">
+              <marc:subfield>
+                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                <xsl:value-of select="."/>
+              </marc:subfield>
+            </xsl:for-each>
+          </transform>
+          <sf code="0">
+            <select xpath="$relURI"/>
           </sf>
         </case>
       </switch>

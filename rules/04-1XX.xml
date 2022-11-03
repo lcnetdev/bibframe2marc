@@ -19,19 +19,14 @@
           <case test="contains(@rdf:about,'id.loc.gov/rwo/agents')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
-      <var name="vNameAuthPreNodeSet">
-        <!-- only look up id.loc.gov name authorities -->
-        <switch>
-          <case test="$agentURI != ''">
-            <transform>
-              <xsl:call-template name="tGetMARCAuth">
-                <xsl:with-param name="pUri" select="$agentURI"/>
-              </xsl:call-template>
-            </transform>
-          </case>
-        </switch>
+      <var name="vNameAuth">
+        <transform>
+          <xsl:call-template name="tGetRelResource">
+            <xsl:with-param name="pRelUri" select="$agentURI"/>
+            <xsl:with-param name="pContext" select="."/>
+          </xsl:call-template>
+        </transform>
       </var>
-      <var name="vNameAuth"><transform><xsl:copy-of select="exsl:node-set($vNameAuthPreNodeSet)"/></transform></var>
       <var name="vMainEntryTag">
         <switch>
           <case test="$vNameAuth//marc:record">
