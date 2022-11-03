@@ -9,6 +9,61 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- subjects -->
+  <df tag="$vSubjectTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
+    <context xpath="
+      bf:Work/bf:subject[@rdf:resource] |
+      bf:Work/bf:subject/*[@rdf:about and not(rdfs:label) and not(madsrdf:authoritativeLabel)]
+      ">
+      
+      <var name="relURI">
+        <switch>
+          <case test="contains(@rdf:resource,'id.loc.gov')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.loc.gov')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+        </switch>
+      </var>
+      <var name="vRelResource">
+        <transform>
+          <xsl:call-template name="tGetRelResource">
+            <xsl:with-param name="pRelUri" select="$relURI"/>
+            <xsl:with-param name="pContext" select="."/>
+          </xsl:call-template>
+        </transform>
+      </var>
+      <var name="vSubjectTag">
+        <switch>
+          <case test="$vRelResource//marc:record">
+            <switch>
+              <case test="$vRelResource//marc:datafield[@tag='100']">600</case>
+              <case test="$vRelResource//marc:datafield[@tag='110']">610</case>
+              <case test="$vRelResource//marc:datafield[@tag='111']">611</case>
+              <case test="$vRelResource//marc:datafield[@tag='130']">630</case>
+              <case test="$vRelResource//marc:datafield[@tag='150']">650</case>
+              <case test="$vRelResource//marc:datafield[@tag='151']">651</case>
+            </switch>
+          </case>
+        </switch>
+      </var>
+      <var name="vValidSubfields">
+        <switch>
+          <case test="$vSubjectTag='600'">abcdgjq</case>
+          <case test="$vSubjectTag='610'">abcdgn</case>
+          <case test="$vSubjectTag='611'">acdegnq</case>
+          <case test="$vSubjectTag='630'">adfghklmnoprs</case>
+          <case test="$vSubjectTag='650'">a</case>
+          <case test="$vSubjectTag='651'">a</case>
+        </switch>
+      </var>
+      <transform>
+        <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains($vValidSubfields,@code)]">
+          <marc:subfield>
+            <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+            <xsl:value-of select="."/>
+          </marc:subfield>
+        </xsl:for-each>
+      </transform>
+    </context>
+  </df>
+
   <select xpath="bf:Work/bf:subject[not(*/*[local-name()='code'])]">
     <var name="vScriptSubtag">
       <transform>
