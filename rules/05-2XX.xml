@@ -48,9 +48,66 @@
     </context>
   </df>
 
+  <!-- 
+    This handles the relationship/Relationship pattern for what will 
+    become a Name/Title or Title added entry.
+    It is predicated on a Hub being referenced.
+  -->
+  <df tag="240" lang-xpath="rdfs:label" lang-prefer="transliterated">
+    <context xpath="bf:Work/bf:expressionOf[contains(@rdf:resource, 'hubs')][../bf:contribution/bflc:PrimaryContribution or ../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']] |
+      bf:Work/bf:expressionOf/bf:*[contains(@rdf:about, 'hubs')][../bf:contribution/bflc:PrimaryContribution or ../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]
+      ">
+      
+      <var name="relURI">
+        <switch>
+          <case test="contains(@rdf:resource,'id.loc.gov/resources/hubs')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.loc.gov/resources/hubs')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+        </switch>
+      </var>
+      <var name="vRelResourcePreNS">
+        <!-- only look up id.loc.gov name authorities -->
+        <switch>
+          <case test="$relURI != ''">
+            <transform>
+              <xsl:call-template name="tGetMARCAuth">
+                <xsl:with-param name="pUri" select="$relURI"/>
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
+      </var>
+      <var name="vRelResource"><transform><xsl:copy-of select="exsl:node-set($vRelResourcePreNS)"/></transform></var>
+      
+      <ind1 default="1"/>
+      <ind2 default=" ">
+        <select xpath="$vRelResource//marc:datafield[@tag = '240']/@ind2" />
+      </ind2>
+      <switch>
+        <case test="$vRelResource//marc:datafield[@tag = '240']">
+          <transform>
+            <xsl:for-each select="$vRelResource//marc:datafield[@tag = '240']/marc:subfield[contains('adfghklmnoprs',@code)]">
+              <marc:subfield>
+                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                <xsl:value-of select="."/>
+              </marc:subfield>
+            </xsl:for-each>
+          </transform>
+        </case>
+      </switch>
+      
+      <sf code="1">
+        <switch>
+          <case test="$relURI != ''">
+            <transform><xsl:value-of select="$relURI"/></transform>
+          </case>
+        </switch>
+      </sf>
+    </context>
+  </df>
+  
   <df tag="240" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
     <!-- This should be copied from tag 130 for all subfields -->
-    <context xpath="bf:Work/bf:expressionOf/child::node()[(local-name() = 'Hub' or local-name() = 'Work') and bf:title][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">
+    <context xpath="bf:Work/bf:expressionOf/child::node()[not(@rdf:about) and (local-name() = 'Hub' or local-name() = 'Work') and bf:title][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
@@ -63,15 +120,11 @@
       </ind2>
       <sf code="a" chopPunct="true" repeatable="false">
         <switch>
-          <case test="bf:title/bf:Title/rdfs:label">
-            <select xpath="bf:title/bf:Title/rdfs:label"/>
-          </case>
           <case test="bf:title/bf:Title/bf:mainTitle">
             <select xpath="bf:title/bf:Title/bf:mainTitle"/>
           </case>          
         </switch>
       </sf>
-      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(., 'REPLACE'))]"/></sf>
       <sf code="0">
         <select xpath="bf:identifiedBy/bf:Identifier">
           <transform>
@@ -87,7 +140,7 @@
           </transform>
         </select>
       </sf>
-      <!-- 
+
       <sf code="d"><select xpath="bf:legalDate"/></sf>
       <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
       <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
@@ -100,7 +153,7 @@
       </switch>
       <sf code="r" chopPunct="true"><select xpath="bf:musicKey"/></sf>
       <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-      -->
+
       <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
     </context>
   </df>
