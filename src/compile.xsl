@@ -623,17 +623,26 @@
             <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <xsl:variable name="vDoc" select="document($vUrl)"/>
-        <xsl:message><xsl:value-of select="$vUrl"/></xsl:message>
         <xsl:choose>
-          <xsl:when test="$vDoc">
-            <xsl:copy-of select="$vDoc"/>
+          <xsl:when test="$vUrl != ''">
+            <xsl:variable name="vDoc" select="document($vUrl)"/>
+            <xsl:message><xsl:value-of select="$vUrl"/></xsl:message>
+            <xsl:choose>
+              <xsl:when test="$vDoc">
+                <xsl:copy-of select="$vDoc"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <!-- return empty collection so XSpec doesn't fail -->
+                <marc:collection/>
+              </xsl:otherwise>
+            </xsl:choose>    
           </xsl:when>
           <xsl:otherwise>
             <!-- return empty collection so XSpec doesn't fail -->
             <marc:collection/>
           </xsl:otherwise>
         </xsl:choose>
+        
       </xsl:template>
       
       <!--
