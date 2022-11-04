@@ -83,6 +83,14 @@
           </marc:subfield>
         </xsl:for-each>
       </transform>
+      <transform>
+        <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains('vxyz',@code)]">
+          <marc:subfield>
+            <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+            <xsl:value-of select="."/>
+          </marc:subfield>
+        </xsl:for-each>
+      </transform>
       <sf code="2">
         <switch>
           <case test="contains($relURI, '/names/')">naf</case>
