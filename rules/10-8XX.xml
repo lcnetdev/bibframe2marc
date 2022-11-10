@@ -9,6 +9,92 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- Series added entries -->
+  <df tag="$vSeriesTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
+    <context xpath="
+      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
+      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')]
+      ">
+      
+      <var name="relURI">
+        <switch>
+          <case test="contains(@rdf:resource,'id.loc.gov')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.loc.gov')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+        </switch>
+      </var>
+      <var name="vRelResource">
+        <transform>
+          <xsl:call-template name="tGetRelResource">
+            <xsl:with-param name="pRelUri" select="$relURI"/>
+            <xsl:with-param name="pContext" select="."/>
+          </xsl:call-template>
+        </transform>
+      </var>
+      <var name="vSeriesTag">
+        <switch>
+          <case test="$vRelResource//marc:record">
+            <switch>
+              <case test="$vRelResource//marc:datafield[@tag='100']">800</case>
+              <case test="$vRelResource//marc:datafield[@tag='110']">810</case>
+              <case test="$vRelResource//marc:datafield[@tag='111']">811</case>
+              <case test="$vRelResource//marc:datafield[@tag='130']">830</case>
+            </switch>
+          </case>
+        </switch>
+      </var>
+      <var name="vValidSubfields">
+        <switch>
+          <case test="$vSeriesTag='800'">abcdgjq</case>
+          <case test="$vSeriesTag='810'">abcdgn</case>
+          <case test="$vSeriesTag='811'">acdegnq</case>
+          <case test="$vSeriesTag='830'">adfghklmnoprs</case>
+        </switch>
+      </var>
+      <ind1>
+        <switch>
+          <case test="$vSeriesTag = '830'">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2" />
+          </case>
+          <case test="default">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+          </case>
+        </switch>
+      </ind1>
+      <ind2>
+        <switch>
+          <case test="$vSeriesTag = '830'">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+          </case>
+          <case test="default">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2" />
+          </case>
+        </switch>
+      </ind2>
+      <transform>
+        <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains($vValidSubfields,@code)]">
+          <marc:subfield>
+            <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+            <xsl:value-of select="."/>
+          </marc:subfield>
+        </xsl:for-each>
+      </transform>
+      <sf code="v" repeatable="false">
+        <select xpath="../bf:seriesEnumeration"/>
+      </sf>
+      <sf code="x" repeatable="false">
+        <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
+      </sf>
+      <sf code="w">
+        <select xpath="bf:identifiedBy/*[local-name()='Lccn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn']">
+          <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
+        </select>
+      </sf>
+      <sf code="0">
+        <select xpath="$relURI"/>
+      </sf>
+    </context>
+  </df>
+
+
   <select xpath="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:*[not(bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t']) and not(bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t'])] |
           //bf:Item/bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:*[not(bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t']) and not(bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t'])]">
     <var name="vScriptSubtag">

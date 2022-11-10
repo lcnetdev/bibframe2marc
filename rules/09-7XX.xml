@@ -125,8 +125,8 @@
     It is predicated on a Hub being referenced.
   -->
   <df tag="$vAddRelationTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bflc:relationship/bflc:Relationship/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
-                    bf:Work/bflc:relationship/bflc:Relationship/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')] |
+    <context xpath="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries'))]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
+                    bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries'))]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')] |
                     bf:Work/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
                     bf:Work/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')] |
                     bf:Work/bf:hasPart[contains(@rdf:resource, 'hubs')] |
@@ -508,7 +508,6 @@
           <!-- title subfields -->
           <select xpath="ancestor::bf:Hub">
             <sf code="t" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
-            <!-- 
             <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
             <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:originDate"/></sf>
             <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
@@ -517,7 +516,6 @@
             <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
             <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
             <sf code="x" repeatable="false" chopPunct="true"><select xpath="bf:identifier/*[local-name()=Issn or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/></sf>
-            -->
             <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
             <sf code="0">
               <select xpath="bf:identifiedBy/bf:Identifier">
