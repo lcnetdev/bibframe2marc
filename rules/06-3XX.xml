@@ -865,7 +865,7 @@
       </sf>
       <transform>
         <xsl:call-template name="tReadMarc382">
-          <xsl:with-param name="pString" select="bflc:readMarc382"/>
+          <xsl:with-param name="pString" select="substring(bflc:readMarc382, 6)"/>
         </xsl:call-template>
       </transform>
     </context>

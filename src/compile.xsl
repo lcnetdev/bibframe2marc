@@ -525,6 +525,29 @@
           <xsl:when test="$pContext//marc:record">
             <xsl:copy-of select="exsl:node-set($pContext//marc:record)"/>
           </xsl:when>
+          <xsl:when test="$pContext//bflc:marcKey">
+            <marc:record>
+              <marc:datafield>
+                <xsl:attribute name="tag">
+                  <xsl:choose>
+                    <xsl:when test="substring($pContext//bflc:marcKey, 2, 2) = '00'">100</xsl:when>
+                    <xsl:when test="substring($pContext//bflc:marcKey, 2, 2) = '10'">110</xsl:when>
+                    <xsl:when test="substring($pContext//bflc:marcKey, 2, 2) = '11'">111</xsl:when>
+                    <xsl:when test="substring($pContext//bflc:marcKey, 2, 2) = '30'">130</xsl:when>
+                    <xsl:when test="substring($pContext//bflc:marcKey, 2, 2) = '50'">150</xsl:when>
+                    <xsl:when test="substring($pContext//bflc:marcKey, 2, 2) = '51'">151</xsl:when>
+                    <xsl:when test="substring($pContext//bflc:marcKey, 2, 2) = '55'">155</xsl:when>
+                    <xsl:otherwise><xsl:value-of select="substring($pContext//bflc:marcKey, 1, 3)" /></xsl:otherwise>
+                  </xsl:choose>
+                </xsl:attribute>
+                <xsl:attribute name="ind1" select="substring($pContext//bflc:marcKey, 4, 1)" />
+                <xsl:attribute name="ind2" select="substring($pContext//bflc:marcKey, 5, 1)" />
+                <xsl:call-template name="tParseMarcKey">
+                  <xsl:with-param name="pString" select="substring($pContext//bflc:marcKey, 6)" />
+                </xsl:call-template>
+              </marc:datafield>
+            </marc:record>
+          </xsl:when>
           <xsl:otherwise>
             <xsl:variable name="vRelResourcePreNS">
               <xsl:call-template name="tGetMARCAuth">
@@ -670,6 +693,36 @@
         <xsl:choose>
           <xsl:when test="$vDoc">
             <xsl:value-of select="$vDoc/rdf:RDF/madsrdf:*/madsrdf:authoritativeLabel[1]" />
+          </xsl:when>
+        </xsl:choose>
+      </xsl:template>
+      
+      <!-- generate marc:subfields by splitting a string with embedded subfields (i.e. bflc:readMarc382) -->
+      <xsl:template name="tParseMarcKey">
+        <xsl:param name="pString"/>
+        <xsl:param name="pSeparator" select="'$'"/>
+        <xsl:choose>
+          <xsl:when test="starts-with($pString,$pSeparator)">
+              <marc:subfield>
+                <xsl:attribute name="code"><xsl:value-of select="substring(substring-after($pString,$pSeparator),1,1)"/></xsl:attribute>
+                <xsl:choose>
+                  <xsl:when test="contains(substring-after($pString,$pSeparator),$pSeparator)">
+                    <xsl:value-of select="substring-before(substring(substring-after($pString,$pSeparator),2),$pSeparator)"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="substring(substring-after($pString,$pSeparator),2)"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </marc:subfield>
+            
+            <xsl:choose>
+              <xsl:when test="contains(substring-after($pString,$pSeparator),$pSeparator)">
+                <xsl:call-template name="tParseMarcKey">
+                  <xsl:with-param name="pString" select="concat($pSeparator,substring-after(substring-after($pString,$pSeparator),$pSeparator))"/>
+                  <xsl:with-param name="pSeparator" select="$pSeparator"/>
+                </xsl:call-template>
+              </xsl:when>
+            </xsl:choose>
           </xsl:when>
         </xsl:choose>
       </xsl:template>
