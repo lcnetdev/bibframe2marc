@@ -5,6 +5,7 @@ URLBASE=$1
 declare -A exemplars=(
 
 ["18344194"]="musicaudio-monograph-contributors-titles-identifiers"
+["19537131"]="musicaudio-monograph-hamilton-contributos-subjects-genreforms"
 ["20779915"]="notatedmusic-monograph-genreforms"
 ["21340497"]="notatedmusic-monograph-subjects-paralleltitle-contributors-genreforms"
 ["10496140"]="notatedmusic-manuscript-monograph-01"
