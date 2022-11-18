@@ -573,6 +573,11 @@
                     //bf:Item/bf:hasPart/bf:Hub[not(bf:contribution)]">
       <ind1 default="0">
         <switch>
+          <case test="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:nonSortNum">
+            <transform>
+              <xsl:value-of select="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:nonSortNum"/>
+            </transform>
+          </case>
           <case test="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey and (string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey) &lt; string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:mainTitle))">
             <transform>
               <xsl:value-of select="string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:mainTitle) - string-length(bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:titleSortKey)"/>

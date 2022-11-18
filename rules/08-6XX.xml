@@ -724,6 +724,11 @@
               <ind1 default="0">
                 <select xpath="*/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]|*/madsrdf:componentList/*[1]/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]">
                   <switch>
+                    <case test="bflc:nonSortNum">
+                      <transform>
+                        <xsl:value-of select="bflc:nonSortNum"/>
+                      </transform>
+                    </case>
                     <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(bf:mainTitle))">
                       <transform>
                         <xsl:value-of select="string-length(bf:mainTitle) - string-length(bflc:titleSortKey)"/>

@@ -36,6 +36,11 @@
       <ind1 default=" "/>
       <ind2 default="0">
         <switch>
+          <case test="bflc:nonSortNum">
+            <transform>
+              <xsl:value-of select="bflc:nonSortNum"/>
+            </transform>
+          </case>
           <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(bf:mainTitle))">
             <transform>
               <xsl:value-of select="string-length(bf:mainTitle) - string-length(bflc:titleSortKey)"/>
@@ -117,6 +122,11 @@
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
+          <case test="bf:title/bf:Title/bflc:nonSortNum">
+            <transform>
+              <xsl:value-of select="bf:title/bf:Title/bflc:nonSortNum"/>
+            </transform>
+          </case>
           <case test="bf:title/bf:Title/bflc:titleSortKey and (string-length(bf:title/bf:Title/bflc:titleSortKey) &lt; string-length(bf:title/bf:Title/bf:mainTitle))">
             <transform>
               <xsl:value-of select="string-length(bf:title/bf:Title/bf:mainTitle) - string-length(bf:title/bf:Title/bflc:titleSortKey)"/>
@@ -170,6 +180,11 @@
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
+          <case test="bflc:nonSortNum">
+            <transform>
+              <xsl:value-of select="bflc:nonSortNum"/>
+            </transform>
+          </case>
           <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(bf:mainTitle))">
             <transform>
               <xsl:value-of select="string-length(bf:mainTitle) - string-length(bflc:titleSortKey)"/>
@@ -213,6 +228,11 @@
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
+          <case test="bflc:nonSortNum">
+            <transform>
+              <xsl:value-of select="bflc:nonSortNum"/>
+            </transform>
+          </case>
           <case test="bflc:titleSortKey and (string-length(bflc:titleSortKey) &lt; string-length(bf:mainTitle))">
             <transform>
               <xsl:value-of select="string-length(bf:mainTitle) - string-length(bflc:titleSortKey)"/>
@@ -236,6 +256,11 @@
       </ind1>
       <ind2 default="0">
         <switch>
+          <case test="bflc:nonSortNum[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform>
+              <xsl:value-of select="bflc:nonSortNum[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+            </transform>
+          </case>
           <case test="bflc:titleSortKey[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] and
                       (string-length(bflc:titleSortKey[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]) &lt; string-length(bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]))">
             <transform>
@@ -317,6 +342,11 @@
           </ind1>
           <ind2 default="0">
             <switch>
+              <case test="bflc:nonSortNum[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform>
+                  <xsl:value-of select="bflc:nonSortNum[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                </transform>
+              </case>
               <case test="bflc:titleSortKey[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))] and
                           (string-length(bflc:titleSortKey[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]) &lt; string-length(bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]))">
                 <transform>
