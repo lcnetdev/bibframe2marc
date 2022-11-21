@@ -649,7 +649,7 @@
         <xsl:choose>
           <xsl:when test="$vUrl != ''">
             <xsl:variable name="vDoc" select="document($vUrl)"/>
-            <xsl:message><xsl:value-of select="$vUrl"/></xsl:message>
+            <!-- <xsl:message><xsl:value-of select="$vUrl"/></xsl:message> -->
             <xsl:choose>
               <xsl:when test="$vDoc">
                 <xsl:copy-of select="$vDoc"/>
