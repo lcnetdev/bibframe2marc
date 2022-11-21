@@ -12,13 +12,13 @@
   <df tag="$vSubjectTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="
       bf:Work/bf:subject[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
-      bf:Work/bf:subject/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, 'REPLACE')) and not(rdfs:label) and not(madsrdf:authoritativeLabel)] |
+      bf:Work/bf:subject/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
       bf:Work/bf:subject/*[bflc:marcKey or marc:record] |
       bf:Work/bf:genreForm[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
-      bf:Work/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, 'REPLACE')) and not(rdfs:label) and not(madsrdf:authoritativeLabel)] |
+      bf:Work/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
       bf:Work/bf:genreForm/*[bflc:marcKey or marc:record] |
       //bf:Item/bf:genreForm[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
-      //bf:Item/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, 'REPLACE')) and not(rdfs:label) and not(madsrdf:authoritativeLabel)] |
+      //bf:Item/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
       //bf:Item/bf:genreForm/*[bflc:marcKey or marc:record] 
       ">
       <!--
@@ -78,6 +78,15 @@
           <case test="contains($relURI, '/names/') or contains($relURI, '/genreForms/') or 
                       contains($relURI, '/demographicTerms/') or contains($relURI, '/graphicMaterials/') or 
                       contains($relURI, '/fast/')">7</case>
+
+          <case test="madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/subjects'] or 
+                      bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects']">0</case>
+          <case test="madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects'] or 
+                      bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects']">1</case>
+          <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh']">2</case>
+          <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal']">3</case>
+          <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash']">5</case>
+          <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm']">6</case>
         </switch>
       </ind2>
       <transform>
@@ -1440,15 +1449,15 @@
     <context xpath="bf:Work/bf:genreForm[
                       not(@rdf:resource) and 
                       (
-                        not(@rdf:about) and 
+                        not(contains(bf:*/@rdf:about, '/authorities/')) and 
                         (*/rdfs:label or */madsrdf:authoritativeLabel)
                       ) and
                       not(*/marc:record)
                     ] | 
-                    //bf:Item/bf:genreFormnot[
+                    //bf:Item/bf:genreForm[
                       not(@rdf:resource) and 
                       (
-                        not(@rdf:about) and 
+                        not(contains(bf:*/@rdf:about, '/authorities/')) and 
                         (*/rdfs:label or */madsrdf:authoritativeLabel)
                       ) and
                       not(*/marc:record)
@@ -1579,7 +1588,7 @@
             </select>
           </sf>
         </case>
-        <case test="*/madsrdf:authoritativeLabel">
+        <case test="*/madsrdf:authoritativeLabel or */rdfs:label">
           <sf code="3" chopPunct="true" repeatable="false">
             <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
@@ -1607,33 +1616,6 @@
                 </xsl:choose>
               </transform>
             </select>
-          </sf>
-        </case>
-        <case test="@rdf:resource or */@rdf:about">
-          <var name="relURI">
-            <switch>
-              <case test="contains(@rdf:resource,'id.loc.gov')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-              <case test="contains(*/@rdf:about,'id.loc.gov')"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
-            </switch>
-          </var>
-          <var name="vRelResource">
-            <transform>
-              <xsl:call-template name="tGetRelResource">
-                <xsl:with-param name="pRelUri" select="$relURI"/>
-                <xsl:with-param name="pContext" select="*"/>
-              </xsl:call-template>
-            </transform>
-          </var>
-          <transform>
-            <xsl:for-each select="$vRelResource//marc:datafield[@tag = '155']">
-              <marc:subfield>
-                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
-                <xsl:value-of select="."/>
-              </marc:subfield>
-            </xsl:for-each>
-          </transform>
-          <sf code="0">
-            <select xpath="$relURI"/>
           </sf>
         </case>
       </switch>
