@@ -65,6 +65,20 @@
         <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
       </ind1>
       <ind2 default=" "/>
+      
+      <switch>
+        <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]">
+          <transform>
+            <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains($vValidSubfields,@code)]">
+              <marc:subfield>
+                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                <xsl:value-of select="."/>
+              </marc:subfield>
+            </xsl:for-each>
+          </transform>
+        </case>
+      </switch>
+
       <sf code="e">
         <select xpath="ancestor::node()/bf:role/bf:Role/rdfs:label|ancestor::node()/bf:role/bf:Role/madsrdf:authoritativeLabel" />
       </sf>
@@ -86,22 +100,9 @@
           </switch>
         </var>
         <sf code="e">
-          <transform><xsl:value-of select="$vRelationLabel"/></transform>
+          <transform><xsl:value-of select="translate($vRelationLabel, $upper, $lower)"/></transform>
         </sf>
       </select>
-      
-      <switch>
-        <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]">
-          <transform>
-            <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains($vValidSubfields,@code)]">
-              <marc:subfield>
-                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
-                <xsl:value-of select="."/>
-              </marc:subfield>
-            </xsl:for-each>
-          </transform>
-        </case>
-      </switch>
       
       <switch>
         <case test="ancestor::node()/bf:role/bf:Role/@rdf:about or ancestor::node()/bf:role/@rdf:resource">
