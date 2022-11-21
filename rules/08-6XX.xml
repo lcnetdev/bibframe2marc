@@ -21,13 +21,15 @@
       //bf:Item/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, 'REPLACE')) and not(rdfs:label) and not(madsrdf:authoritativeLabel)] |
       //bf:Item/bf:genreForm/*[bflc:marcKey or marc:record] 
       ">
+      <!--
       <transform>
         <xsl:message><xsl:value-of select="name(.)"/></xsl:message>
       </transform>
+      -->
       <var name="relURI">
         <switch>
-          <case test="contains(@rdf:resource,'id.loc.gov') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-          <case test="contains(@rdf:about,'id.loc.gov') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+          <case test="contains(@rdf:resource,'id.') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
       <var name="vRelResource">
@@ -74,7 +76,8 @@
           <case test="contains($relURI, '/mesh/')">2</case>
           <case test="contains($relURI, '/nalt/')">3</case>
           <case test="contains($relURI, '/names/') or contains($relURI, '/genreForms/') or 
-                      contains($relURI, '/demographicTerms/') or contains($relURI, '/graphicMaterials/')">7</case>
+                      contains($relURI, '/demographicTerms/') or contains($relURI, '/graphicMaterials/') or 
+                      contains($relURI, '/fast/')">7</case>
         </switch>
       </ind2>
       <transform>
@@ -99,6 +102,7 @@
           <case test="contains($relURI, '/genreForms/')">lcgft</case>
           <case test="contains($relURI, '/demogrpahicTerms/')">lcdgt</case>
           <case test="contains($relURI, '/graphicMaterials/')">lctgm</case>
+          <case test="contains($relURI, '/fast/')">fast</case>
         </switch>
       </sf>
       <switch>
@@ -222,22 +226,25 @@
                              */madsrdf:componentList/*[1] |
                              bf:Hub/bf:contribution/*/bf:agent/* |
                              */madsrdf:componentList/*[1]/bf:Hub/bf:contribution/*/bf:agent/*">
-                <var name="vNameAuth">
-                  <!-- only look up id.loc.gov name authorities -->
-                  <switch>
-                    <case test="contains(@rdf:about,'id.loc.gov/authorities/names')">
-                      <transform>
-                        <xsl:call-template name="tGetMARCAuth">
-                          <xsl:with-param name="pUri" select="@rdf:about"/>
-                        </xsl:call-template>
-                      </transform>
-                    </case>
-                  </switch>
-                </var>
+                
+                    <var name="relURI">
+                        <switch>
+                            <case test="contains(@rdf:resource,'id.') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                            <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+                        </switch>
+                    </var>
+                    <var name="vRelResource">
+                        <transform>
+                            <xsl:call-template name="tGetRelResource">
+                                <xsl:with-param name="pRelUri" select="$relURI"/>
+                                <xsl:with-param name="pContext" select="."/>
+                            </xsl:call-template>
+                        </transform>
+                    </var>
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']">
+                  <case test="$vRelResource/marc:record/marc:datafield[@tag='100']">
                     <transform>
-                      <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='100']/marc:subfield[contains('abcdgjq',@code)]">
+                      <xsl:for-each select="$vRelResource/marc:record/marc:datafield[@tag='100']/marc:subfield[contains('abcdgjq',@code)]">
                         <marc:subfield>
                           <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
                           <xsl:value-of select="."/>
@@ -394,22 +401,24 @@
                              bf:Hub/bf:contribution/*/bf:agent/* |
                              */bf:contribution/*/bf:agent/* |
                              */madsrdf:componentList/*[1]/bf:Hub/bf:contribution/*/bf:agent/*">
-                <var name="vNameAuth">
-                  <!-- only look up id.loc.gov name authorities -->
-                  <switch>
-                    <case test="contains(@rdf:about,'id.loc.gov/authorities/names')">
-                      <transform>
-                        <xsl:call-template name="tGetMARCAuth">
-                          <xsl:with-param name="pUri" select="@rdf:about"/>
-                        </xsl:call-template>
-                      </transform>
-                    </case>
-                  </switch>
-                </var>
+                <var name="relURI">
+                        <switch>
+                            <case test="contains(@rdf:resource,'id.') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                            <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+                        </switch>
+                    </var>
+                    <var name="vRelResource">
+                        <transform>
+                            <xsl:call-template name="tGetRelResource">
+                                <xsl:with-param name="pRelUri" select="$relURI"/>
+                                <xsl:with-param name="pContext" select="."/>
+                            </xsl:call-template>
+                        </transform>
+                    </var>
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']">
+                  <case test="$vRelResource/marc:record/marc:datafield[@tag='110']">
                     <transform>
-                      <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='110']/marc:subfield[contains('abcdgn',@code)]">
+                      <xsl:for-each select="$vRelResource/marc:record/marc:datafield[@tag='110']/marc:subfield[contains('abcdgn',@code)]">
                         <marc:subfield>
                           <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
                           <xsl:value-of select="."/>
@@ -577,22 +586,24 @@
                              */madsrdf:componentList/*[1] |
                              bf:Hub/bf:contribution/*/bf:agent/* |
                              */madsrdf:componentList/*[1]/bf:Hub/bf:contribution/*/bf:agent/*">
-                <var name="vNameAuth">
-                  <!-- only look up id.loc.gov name authorities -->
-                  <switch>
-                    <case test="contains(@rdf:about,'id.loc.gov/authorities/names')">
-                      <transform>
-                        <xsl:call-template name="tGetMARCAuth">
-                          <xsl:with-param name="pUri" select="@rdf:about"/>
-                        </xsl:call-template>
-                      </transform>
-                    </case>
-                  </switch>
-                </var>
+                <var name="relURI">
+                        <switch>
+                            <case test="contains(@rdf:resource,'id.') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+                            <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+                        </switch>
+                    </var>
+                    <var name="vRelResource">
+                        <transform>
+                            <xsl:call-template name="tGetRelResource">
+                                <xsl:with-param name="pRelUri" select="$relURI"/>
+                                <xsl:with-param name="pContext" select="."/>
+                            </xsl:call-template>
+                        </transform>
+                    </var>
                 <switch>
-                  <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']">
+                  <case test="$vRelResource/marc:record/marc:datafield[@tag='111']">
                     <transform>
-                      <xsl:for-each select="exsl:node-set($vNameAuth)//marc:datafield[@tag='111']/marc:subfield[contains('acdegnq',@code)]">
+                      <xsl:for-each select="$vRelResource/marc:record/marc:datafield[@tag='111']/marc:subfield[contains('acdegnq',@code)]">
                         <marc:subfield>
                           <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
                           <xsl:value-of select="."/>
@@ -946,47 +957,9 @@
                 </case>
               </switch>
               <!-- $2 if source not in ind2 -->
-              <select xpath="*/bf:source|*/madsrdf:componentList/*[1]/bf:source">
-                <var name="vSourceUri">
-                  <switch>
-                    <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-                    <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
-                  </switch>
-                </var>
-                <switch>
-                  <case test="$vSourceUri != 'http://id.loc.gov/authorities/subjects' and
-                              bf:Source/bf:code != 'lcsh' and
-                              $vSourceUri != 'http://id.loc.gov/authorities/childrensSubjects' and
-                              bf:Source/bf:code != 'lcshac' and
-                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/mesh' and
-                              bf:Source/bf:code != 'mesh' and
-                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/nal' and
-                              bf:Source/bf:code != 'nal' and
-                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/cash' and
-                              bf:Source/bf:code != 'cash' and
-                              $vSourceUri != 'http://id.loc.gov/vocabulary/subjectSchemes/rvm' and
-                              bf:Source/bf:code != 'rvm'">
-                    <sf code="2">
-                      <switch>
-                        <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
-                        <case test="$vSourceUri != ''">
-                          <switch>
-                            <case test="contains($vSourceUri,'id.loc.gov')">
-                              <transform>
-                                <xsl:call-template name="tUriCode">
-                                  <xsl:with-param name="pUri" select="$vSourceUri"/>
-                                </xsl:call-template>
-                              </transform>
-                            </case>
-                            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
-                          </switch>
-                        </case>
-                        <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
-                      </switch>
-                    </sf>
-                  </case>
-                </switch>
-              </select>
+              <sf code="2">
+                <select xpath="$vSf2val[. != '']" />
+              </sf>s
             </df>
           </case>
 
