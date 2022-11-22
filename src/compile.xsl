@@ -10,6 +10,7 @@
                  xmlns:bf2marc="http://www.loc.gov/bf2marc"
                  xmlns:local="http://example.org/local"
                  xmlns:exsl="http://exslt.org/common"
+                 xmlns:xdmp="http://marklogic.com/xdmp"
                  exclude-result-prefixes="bf2marc">
 
   <xslt:namespace-alias stylesheet-prefix="xsl" result-prefix="xslt"/>
@@ -21,8 +22,9 @@
     <xsl:stylesheet version="1.0"
                     xmlns:exsl="http://exslt.org/common"
                     xmlns:date="http://exslt.org/dates-and-times"
+                    xmlns:xdmp="http://marklogic.com/xdmp"
                     xmlns:fn="http://www.w3.org/2005/xpath-functions"
-                    extension-element-prefixes="exsl date"
+                    extension-element-prefixes="exsl date xdmp"
                     exclude-result-prefixes="fn rdf rdfs bf bflc madsrdf local">
 
       <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
@@ -648,7 +650,16 @@
         </xsl:variable>
         <xsl:choose>
           <xsl:when test="$vUrl != ''">
-            <xsl:variable name="vDoc" select="document($vUrl)"/>
+            <xsl:variable name="vDoc">
+              <xsl:choose>
+                <xsl:when test="function-available('xdmp:document-get')">
+                  <xsl:copy-of select="xdmp:document-get($vUrl)" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:copy-of select="document($vUrl)" />
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
             <!-- <xsl:message><xsl:value-of select="$vUrl"/></xsl:message> -->
             <xsl:choose>
               <xsl:when test="$vDoc">
@@ -689,7 +700,16 @@
             <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <xsl:variable name="vDoc" select="document($vUrl)"/>
+        <xsl:variable name="vDoc">
+          <xsl:choose>
+            <xsl:when test="function-available('xdmp:document-get')">
+              <xsl:copy-of select="xdmp:document-get($vUrl)" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:copy-of select="document($vUrl)" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
         <xsl:choose>
           <xsl:when test="$vDoc">
             <xsl:value-of select="$vDoc/rdf:RDF/madsrdf:*/madsrdf:authoritativeLabel[1]" />
