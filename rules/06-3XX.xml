@@ -1008,18 +1008,17 @@
         <select xpath="bflc:CreatorCharacteristic/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="m" chopPunct="true" repeatable="false">
-        <select xpath="bflc:CreatorCharacteristic/bflc:demographicGroup/bflc:DemographicGroup[not(@rdf:about)]/rdfs:label"/>
+        <select xpath="bflc:CreatorCharacteristic/bflc:demographicGroup/bflc:DemographicGroup/rdfs:label"/>
       </sf>
       <sf code="n" chopPunct="true" repeatable="false">
         <select xpath="bflc:CreatorCharacteristic/bflc:demographicGroup[@rdf:resource or */@rdf:about]">
           <var name="vDGUri">
             <switch>
               <case test="@rdf:resource"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-              <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:resource"/></transform></case>
+              <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
             </switch>
           </var>
           <switch>
-            <case test="*/rdfs:label"><transform><xsl:value-of select="*/rdfs:label"/></transform></case>
             <case test="contains($vDGUri,'id.loc.gov')">
               <transform>
                 <xsl:call-template name="tUriCode">
