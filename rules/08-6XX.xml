@@ -32,7 +32,7 @@
           <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
-      <var name="vRelResource">
+      <var name="vRelResourcePreNS">
         <transform>
           <xsl:call-template name="tGetRelResource">
             <xsl:with-param name="pRelUri" select="$relURI"/>
@@ -40,6 +40,7 @@
           </xsl:call-template>
         </transform>
       </var>
+      <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
       <var name="vSubjectTag">
         <switch>
           <case test="$vRelResource//marc:record">
@@ -117,7 +118,7 @@
       <switch>
         <case test="$relURI != ''">
           <sf code="0">
-            <select xpath="$relURI"/>
+            <transform><xsl:value-of select="$relURI" /></transform>
           </sf>
         </case>
       </switch>
@@ -224,7 +225,11 @@
                 </switch>
               </ind1>
               <ind2 default="4">
-                <select xpath="$vInd2Val" />
+                <switch>
+                  <case test="$vInd2Val != ''">
+                    <transform><xsl:value-of select="$vInd2Val"/></transform>
+                  </case>
+                </switch>
               </ind2>
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
@@ -242,7 +247,7 @@
                             <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
                         </switch>
                     </var>
-                    <var name="vRelResource">
+                    <var name="vRelResourcePreNS">
                         <transform>
                             <xsl:call-template name="tGetRelResource">
                                 <xsl:with-param name="pRelUri" select="$relURI"/>
@@ -250,6 +255,7 @@
                             </xsl:call-template>
                         </transform>
                     </var>
+                <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
                 <switch>
                   <case test="$vRelResource/marc:record/marc:datafield[@tag='100']">
                     <transform>
@@ -373,7 +379,11 @@
               </sf>
               <!-- $2 if source not in ind2 -->
               <sf code="2">
-                <select xpath="$vSf2val[. != '']" />
+                <switch>
+                  <case test="$vSf2val != ''">
+                    <transform><xsl:value-of select="$vSf2val"/></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -398,7 +408,11 @@
                 </switch>
               </ind1>
               <ind2 default="4">
-                <select xpath="$vInd2Val" />
+                <switch>
+                  <case test="$vInd2Val != ''">
+                    <transform><xsl:value-of select="$vInd2Val"/></transform>
+                  </case>
+                </switch>
               </ind2>
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
@@ -416,7 +430,7 @@
                             <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
                         </switch>
                     </var>
-                    <var name="vRelResource">
+                    <var name="vRelResourcePreNS">
                         <transform>
                             <xsl:call-template name="tGetRelResource">
                                 <xsl:with-param name="pRelUri" select="$relURI"/>
@@ -424,6 +438,7 @@
                             </xsl:call-template>
                         </transform>
                     </var>
+                    <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
                 <switch>
                   <case test="$vRelResource/marc:record/marc:datafield[@tag='110']">
                     <transform>
@@ -568,7 +583,11 @@
               </sf>
               <!-- $2 if source not in ind2 -->
               <sf code="2">
-                <select xpath="$vSf2val[. != '']" />
+                <switch>
+                  <case test="$vSf2val != ''">
+                    <transform><xsl:value-of select="$vSf2val"/></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -584,7 +603,11 @@
             <df tag="611">
               <ind1 default="2"/>
               <ind2 default="4">
-                <select xpath="$vInd2Val" />
+                <switch>
+                  <case test="$vInd2Val != ''">
+                    <transform><xsl:value-of select="$vInd2Val"/></transform>
+                  </case>
+                </switch>
               </ind2>
               <sf code="3" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
@@ -601,7 +624,7 @@
                             <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
                         </switch>
                     </var>
-                    <var name="vRelResource">
+                    <var name="vRelResourcePreNS">
                         <transform>
                             <xsl:call-template name="tGetRelResource">
                                 <xsl:with-param name="pRelUri" select="$relURI"/>
@@ -609,6 +632,7 @@
                             </xsl:call-template>
                         </transform>
                     </var>
+                    <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
                 <switch>
                   <case test="$vRelResource/marc:record/marc:datafield[@tag='111']">
                     <transform>
@@ -736,7 +760,11 @@
               </sf>
               <!-- $2 if source not in ind2 -->
               <sf code="2">
-                <select xpath="$vSf2val[. != '']" />
+                <switch>
+                  <case test="$vSf2val != ''">
+                    <transform><xsl:value-of select="$vSf2val"/></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -765,7 +793,11 @@
                 </select>
               </ind1>
               <ind2 default="4">
-                <select xpath="$vInd2Val" />
+                <switch>
+                  <case test="$vInd2Val != ''">
+                    <transform><xsl:value-of select="$vInd2Val"/></transform>
+                  </case>
+                </switch>
               </ind2>
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
@@ -849,7 +881,11 @@
               </sf>
               <!-- $2 if source not in ind2 -->
               <sf code="2">
-                <select xpath="$vSf2val[. != '']" />
+                <switch>
+                  <case test="$vSf2val != ''">
+                    <transform><xsl:value-of select="$vSf2val"/></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -863,7 +899,11 @@
             <df tag="648">
               <ind1 default=" "/>
               <ind2 default="4">
-                <select xpath="$vInd2Val" />
+                <switch>
+                  <case test="$vInd2Val != ''">
+                    <transform><xsl:value-of select="$vInd2Val"/></transform>
+                  </case>
+                </switch>
               </ind2>
               <switch>
                 <case test="*/madsrdf:componentList">
@@ -967,8 +1007,12 @@
               </switch>
               <!-- $2 if source not in ind2 -->
               <sf code="2">
-                <select xpath="$vSf2val[. != '']" />
-              </sf>s
+                <switch>
+                  <case test="$vSf2val != ''">
+                    <transform><xsl:value-of select="$vSf2val"/></transform>
+                  </case>
+                </switch>
+              </sf>
             </df>
           </case>
 
@@ -1057,7 +1101,11 @@
                 <select xpath="*/bf:role/bf:Role/rdfs:label"/>
               </sf>
               <sf code="2">
-                <select xpath="$vSf2val[. != '']" />
+                <switch>
+                  <case test="$vSf2val != ''">
+                    <transform><xsl:value-of select="$vSf2val"/></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -1071,7 +1119,11 @@
             <df tag="651">
               <ind1 default=" "/>
               <ind2 default="4">
-                <select xpath="$vInd2Val" />
+                <switch>
+                  <case test="$vInd2Val != ''">
+                    <transform><xsl:value-of select="$vInd2Val"/></transform>
+                  </case>
+                </switch>
               </ind2>
               <switch>
                 <case test="*/madsrdf:componentList">
@@ -1183,7 +1235,11 @@
               </sf>
               <!-- $2 if source not in ind2 -->
               <sf code="2">
-                <select xpath="$vSf2val[. != '']" />
+                <switch>
+                  <case test="$vSf2val != ''">
+                    <transform><xsl:value-of select="$vSf2val"/></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -1296,7 +1352,11 @@
                 </case>
               </switch>
               <sf code="2">
-                <select xpath="$vSf2val[. != '']" />
+                <switch>
+                  <case test="$vSf2val != ''">
+                    <transform><xsl:value-of select="$vSf2val"/></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -1306,7 +1366,11 @@
             <df tag="650">
               <ind1 default=" "/>
               <ind2 default="4">
-                <select xpath="$vInd2Val" />
+                <switch>
+                  <case test="$vInd2Val != ''">
+                    <transform><xsl:value-of select="$vInd2Val"/></transform>
+                  </case>
+                </switch>
               </ind2>
               <switch>
                 <case test="*/madsrdf:componentList[1]/*[1]/madsrdf:authoritativeLabel">
@@ -1415,7 +1479,11 @@
               </switch>
               <!-- $2 if source not in ind2 -->
               <sf code="2">
-                <select xpath="$vSf2val[. != '']" />
+                <switch>
+                  <case test="$vSf2val != ''">
+                    <transform><xsl:value-of select="$vSf2val"/></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -1517,7 +1585,11 @@
       </var>
       <ind1 default=" "/>
       <ind2 default="4">
-        <select xpath="$vInd2Val" />
+        <switch>
+          <case test="$vInd2Val != ''">
+            <transform><xsl:value-of select="$vInd2Val"/></transform>
+          </case>
+        </switch>
       </ind2>
       <switch>
         <case test="*/madsrdf:componentList">
@@ -1621,7 +1693,11 @@
       </switch>
       <!-- $2 if source not in ind2 -->
       <sf code="2">
-        <select xpath="$vSf2val[. != '']" />
+        <switch>
+          <case test="$vSf2val != ''">
+            <transform><xsl:value-of select="$vSf2val"/></transform>
+          </case>
+        </switch>
       </sf>
       <sf code="5" repeatable="false">
         <select xpath="*/bflc:applicableInstitution/*/bf:code"/>

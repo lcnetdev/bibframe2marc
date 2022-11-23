@@ -52,6 +52,10 @@
       <!-- for upper- and lower-case translation (ASCII only) -->
       <xsl:variable name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable>
       <xsl:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable>
+      
+      <xsl:variable name="xslProcessor">
+        <xsl:value-of select="system-property('xslt:vendor')" />
+      </xsl:variable>
 
       <xslt:apply-templates/>
 
@@ -525,7 +529,7 @@
         <xsl:param name="pContext"/>
         <xsl:choose>
           <xsl:when test="$pContext//marc:record">
-            <xsl:copy-of select="exsl:node-set($pContext//marc:record)"/>
+            <xsl:copy-of select="$pContext//marc:record"/>
           </xsl:when>
           <xsl:when test="$pContext//bflc:marcKey">
             <marc:record>
@@ -542,8 +546,12 @@
                     <xsl:otherwise><xsl:value-of select="substring($pContext//bflc:marcKey, 1, 3)" /></xsl:otherwise>
                   </xsl:choose>
                 </xsl:attribute>
-                <xsl:attribute name="ind1" select="substring($pContext//bflc:marcKey, 4, 1)" />
-                <xsl:attribute name="ind2" select="substring($pContext//bflc:marcKey, 5, 1)" />
+                <xsl:attribute name="ind1">
+                  <xsl:value-of select="substring($pContext//bflc:marcKey, 4, 1)" />
+                </xsl:attribute> 
+                <xsl:attribute name="ind2">
+                  <xsl:value-of select="substring($pContext//bflc:marcKey, 5, 1)" />
+                </xsl:attribute> 
                 <xsl:call-template name="tParseMarcKey">
                   <xsl:with-param name="pString" select="substring($pContext//bflc:marcKey, 6)" />
                 </xsl:call-template>
@@ -556,7 +564,18 @@
                 <xsl:with-param name="pUri" select="$pRelUri"/>
               </xsl:call-template>          
             </xsl:variable>
-            <xsl:copy-of select="exsl:node-set($vRelResourcePreNS)"/>
+            <!-- 
+              In the interest of dashing future expectations, it is not possible
+              to call exsl:node-set() at this juncture.  In XSLT 1.0 parlance, 
+              templates return result tree fragments, which can only be used as 
+              strings would be.  They need to be converted to node-sets downstream
+              from here.
+              See https://www.w3.org/TR/xslt-10/#section-Result-Tree-Fragments
+              One might discover that Saxon and MarkLogic, and possibly other 
+              processors, are forgiving of this rule, but then you will find out 
+              that xsltproc is not.
+            -->
+            <xsl:copy-of select="$vRelResourcePreNS"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:template>
@@ -582,7 +601,7 @@
                             )
                             and not('.marcxml.xml' = substring($pUri, string-length($pUri) - 11))">
               <xsl:choose>
-                <xsl:when test="($pSRULookup='true' or $pForceSRULookup=true()) and contains($pUri,'id.loc.gov/authorities/')">
+                <xsl:when test="($xslProcessor='libxslt' or $pSRULookup='true' or $pForceSRULookup=true())">
                   <xsl:variable name="vUriLccn">
                     <xsl:call-template name="tUriCode">
                       <xsl:with-param name="pUri" select="$pUri"/>
@@ -618,10 +637,10 @@
                     </xsl:choose>
                   </xsl:variable>
                   <xsl:choose>
-                    <xsl:when test="contains($pUri,'names')">
+                    <xsl:when test="contains($pUri,'names') or contains($pUri,'agents')">
                       <xsl:value-of select="concat('http://lx2.loc.gov:210/NAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')"/>
                     </xsl:when>
-                    <xsl:when test="contains($pUri,'subjects')">
+                    <xsl:when test="contains($pUri,'ubjects') or contains($pUri,'genreForm')">
                       <xsl:value-of select="concat('http://lx2.loc.gov:210/SAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')"/>
                     </xsl:when>
                     <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
@@ -685,6 +704,7 @@
       -->
       <xsl:template name="tGetLabel">
         <xsl:param name="pUri"/>
+        <xsl:if test="$xslProcessor != 'libxslt'">
         <xsl:variable name="vUrl">
           <xsl:choose>
             <xsl:when test="( 
@@ -715,6 +735,7 @@
             <xsl:value-of select="$vDoc/rdf:RDF/madsrdf:*/madsrdf:authoritativeLabel[1]" />
           </xsl:when>
         </xsl:choose>
+        </xsl:if>
       </xsl:template>
       
       <!-- generate marc:subfields by splitting a string with embedded subfields (i.e. bflc:readMarc382) -->
@@ -886,7 +907,7 @@
 
   <!-- compile rules from included files -->
   <xslt:template match="bf2marc:file" mode="documentFrame">
-    <xslt:apply-templates select="document(.)/bf2marc:rules/bf2marc:file | document(.)/bf2marc:rules/bf2marc:cf | document(.)/bf2marc:rules/bf2marc:df | document(.)/bf2marc:rules/bf2marc:switch | document(.)/bf2marc:rules/bf2marc:select | document(.)/bf2marc:rules/bf2marc:transform" mode="documentFrame"/>
+    <xslt:apply-templates select="document(.)/bf2marc:rules/bf2marc:file | document(.)/bf2marc:rules/bf2marc:cf | document(.)/bf2marc:rules/bf2marc:df | document(.)/bf2marc:rules/bf2marc:switch | document(.)/bf2marc:rules/bf2marc:select | document(.)/bf2marc:rules/bf2marc:transform | document(.)/bf2marc:rules/bf2marc:if" mode="documentFrame"/>
   </xslt:template>
 
   <xslt:template match="bf2marc:switch" mode="documentFrame">
@@ -899,6 +920,12 @@
 
   <xslt:template match="bf2marc:transform" mode="documentFrame">
     <xslt:apply-templates select="." mode="fieldTemplate"/>
+  </xslt:template>
+
+  <xslt:template match="bf2marc:if" mode="documentFrame">
+    <xsl:if test="{@test}">
+      <xslt:apply-templates mode="documentFrame"/>
+    </xsl:if>
   </xslt:template>
 
   <xslt:template match="bf2marc:cf|bf2marc:df" mode="documentFrame">

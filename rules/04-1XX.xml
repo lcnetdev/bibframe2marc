@@ -19,7 +19,7 @@
           <case test="contains(@rdf:about,'id.loc.gov/rwo/agents')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
-      <var name="vNameAuth">
+      <var name="vNameAuthPreNS">
         <transform>
           <xsl:call-template name="tGetRelResource">
             <xsl:with-param name="pRelUri" select="$agentURI"/>
@@ -27,6 +27,7 @@
           </xsl:call-template>
         </transform>
       </var>
+      <var name="vNameAuth" xpath="exsl:node-set($vNameAuthPreNS)" />
       <var name="vMainEntryTag">
         <switch>
           <case test="$vNameAuth//marc:record">
