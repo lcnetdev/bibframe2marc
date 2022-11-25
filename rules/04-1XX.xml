@@ -10,7 +10,8 @@
 
   <df tag="$vMainEntryTag" repeatable="false" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent[@rdf:resource]|
-                    bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent/bf:*">
+                    bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent/bf:* |
+                    bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent/madsrdf:*">
       <var name="agentURI">
         <switch>
           <case test="contains(@rdf:resource,'id.loc.gov/authorities/names')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>

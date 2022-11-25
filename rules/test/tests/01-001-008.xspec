@@ -105,7 +105,7 @@
     </x:scenario>
     <x:scenario label="007 - Sound recording">
       <x:context href="../data/001-008/007-sound.xml"/>
-      <x:expect label="Sound recording 007 generated when Work type is bf:Audio, bf:Instance/bf:media has sound recording URI"
+      <x:expect label="Sound recording 007 generated when Work type is bf:MusicAudio, bf:Instance/bf:media has sound recording URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 's'"/>
       <x:expect label="007/01 from bf:Instance/bf:carrier URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'd'"/>
