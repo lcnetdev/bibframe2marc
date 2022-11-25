@@ -129,7 +129,12 @@
   <select xpath="bf:Work/bf:subject[
                   not(@rdf:resource) and 
                   (
-                    not(*/@rdf:about) and 
+                    (
+                      not(*/@rdf:about) or 
+                      contains(*/@rdf:about, 'example') or 
+                      contains(*/@rdf:about, 'REPLACE') or 
+                      contains(*/@rdf:about, '/fast/')
+                    ) and
                     not(*/bflc:marcKey) and 
                     (*/rdfs:label or */madsrdf:authoritativeLabel or */madsrdf:componentList)
                   ) and
@@ -1362,7 +1367,11 @@
           </case>
 
           <!-- all other authorized entries are 650s -->
-          <case test="*[madsrdf:componentList or madsrdf:authoritativeLabel or rdfs:label]">
+          <!-- 
+            well, not all others. If there is a hint of structure or source to this, it should be a 650.
+            Otherwise, the default is 653, below.
+          -->
+          <case test="*[madsrdf:componentList or madsrdf:authoritativeLabel or (rdfs:label and (madsrdf:* or bf:source))]">
             <df tag="650">
               <ind1 default=" "/>
               <ind2 default="4">

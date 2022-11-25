@@ -5,7 +5,7 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
-  <x:scenario label="MARC 600">
+  <x:scenario label="MARC 600 - test 01">
     <x:context href="../data/6XX/600.xml"/>
     <x:expect label="generate 600" test="count(//marc:datafield[@tag='600']) = 3"/>
     <x:expect label="ind1 generated from class of bf:Agent"
@@ -34,6 +34,35 @@
               test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='b'] = 'Library'"/>
     <x:expect label="generate subdivisions"
               test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='v'] = 'Periodicals'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 600 - test 02">
+    <x:context href="../data/exemplars/musicaudio-monograph-hamilton-contributos-subjects-genreforms.rdf"/>
+    <x:expect label="generate 600s from various marcKeys" test="count(//marc:datafield[@tag='600']) = 2"/>
+
+    <x:expect label="ind1 from marcKey/ind1"
+      test="//marc:datafield[@tag='600'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 from source logic"
+      test="//marc:datafield[@tag='600'][1]/@ind2 = '7'"/>
+    <x:expect label="$a from marcKey/a"
+      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='a'] = 'Hamilton, Alexander,'"/>
+    <x:expect label="$d from marcKey/d"
+      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='d'] = '1757-1804.'"/>
+    <x:expect label="$2 from source logic"
+      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='2'] = 'fast'"/>
+    <x:expect label="$4 from URI"
+      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='0'] = 'http://id.worldcat.org/fast/00031768'"/>
+    
+    <x:expect label="ind1 from marcKey/ind1"
+      test="//marc:datafield[@tag='600'][2]/@ind1 = '1'"/>
+    <x:expect label="ind2 from source logic"
+      test="//marc:datafield[@tag='600'][2]/@ind2 = '0'"/>
+    <x:expect label="$a from marcKey/a"
+      test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='a'] = 'Hamilton, Alexander,'"/>
+    <x:expect label="$d from marcKey/d"
+      test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='d'] = '1757-1804'"/>
+    <x:expect label="$4 from URI"
+      test="count(//marc:datafield[@tag='600'][2]/marc:subfield[@code='0']) = 0"/>
   </x:scenario>
 
   <x:scenario label="MARC 611">
@@ -138,13 +167,13 @@
     <x:expect label="...or from source"
               test="//marc:datafield[@tag='655'][2]/@ind2= '7'"/>
     <x:expect label="$a from label"
-              test="//marc:datafield[@tag='655'][3]/marc:subfield[@code='a'] = 'Popular music.'"/>
+              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='a'] = 'Popular music'"/>
     <x:expect label="$0 from URI"
-              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='0'][1] = 'http://id.loc.gov/authorities/genreForms/gf2014026739'"/>
+              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='0'][1] = 'http://id.loc.gov/authorities/genreForms/gf2014027009'"/>
     <x:expect label="...or from identifier"
-              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='0'][2] = '(OCoLC)fst01726574'"/>
+              test="//marc:datafield[@tag='655'][3]/marc:subfield[@code='0'][1] = '(OCoLC)fst01726574'"/>
     <x:expect label="$2 from source"
-              test="//marc:datafield[@tag='655'][2]/marc:subfield[@code='2'] = 'fast'"/>
+              test="//marc:datafield[@tag='655'][3]/marc:subfield[@code='2'] = 'fast'"/>
     <x:expect label="or from URI"
               test="//marc:datafield[@tag='655'][1]/marc:subfield[@code='2'] = 'lcgft'"/>
   </x:scenario>
