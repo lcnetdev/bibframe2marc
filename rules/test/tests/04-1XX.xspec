@@ -19,6 +19,26 @@
       test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/n79135565'"/>
   </x:scenario>
 
+  <x:scenario label="MARC 100 - 03">
+    <x:context href="../data/exemplars/notatedmusic-monograph-genreforms.rdf"/>
+    <x:expect label="generate 100 from marcKey" test="count(//marc:datafield[@tag='100']) = 1"/>
+    <x:expect label="$d exists from marcKey and matches"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='d'] = '1811-1886,'"/>
+    <x:expect label="$e exists from marcKey and matches"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='e'] = 'composer'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 100 - 04">
+    <x:context href="../data/exemplars/id.notatedmusic-monograph-genreforms.rdf"/>
+    <x:expect label="generate 100 from marcKey" test="count(//marc:datafield[@tag='100']) = 1"/>
+    <x:expect label="$d exists from marcKey and matches"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='d'] = '1811-1886'"/>
+    <x:expect label="$e exists from marcKey and matches relator code"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='e'] = 'cmp'"/>
+    <x:expect label="$1 exists from marcKey and matches"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/n79079048'"/>
+  </x:scenario>
+
   <x:scenario label="MARC 110">
     <x:context href="../data/1XX/110.xml"/>
     <x:expect label="generate 110"
