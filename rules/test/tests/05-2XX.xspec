@@ -47,7 +47,7 @@
               test="//marc:datafield[@tag='222']/marc:subfield[@code='b'] = 'Faridabad'"/>
   </x:scenario>
 
-  <x:scenario label="MARC 240">
+  <x:scenario label="MARC 240 - test 01">
     <!-- note same specs as MARC 130, tests are not all repeated here -->
     <x:context href="../data/2XX/240.xml"/>
     <x:expect label="generate 240 from Work/expressionOf/Hub when Hub has bflc:primaryContribution"
@@ -57,7 +57,32 @@
     <x:expect label="$a generated from bf:mainTitle"
               test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='a'] = 'Sonata for kazoo. arr.'"/>
   </x:scenario>
+  
+  <x:scenario label="MARC 240 - test 02">
+    <x:context href="../data/exemplars/musicaudio-monograph-contributors-titles-identifiers.rdf"/>
+    <x:expect label="generate 240 from marcKeys in Work/expressionOf/Hub"
+      test="count(//marc:datafield[@tag='240']) = 1"/>
+    <x:expect label="$a generated from marcKey/a"
+      test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='a'] = 'Caprices,'"/>
+    <x:expect label="$n generated from marcKey/n"
+      test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='n'] = 'M.S. 25;'"/>
+    <x:expect label="$o generated from marcKey/o"
+      test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='o'] = 'arranged'"/>
+  </x:scenario>
 
+  <x:scenario label="MARC 240 - test 03">
+    <x:context href="../data/exemplars/id.musicaudio-monograph-contributors-titles-identifiers.rdf"/>
+    <x:expect label="generate 240 from lookups in Work/expressionOf/Hub"
+      test="count(//marc:datafield[@tag='240']) = 1"/>
+    <x:expect label="$a generated from lookup/a"
+      test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='a'] = 'Caprices,'"/>
+    <x:expect label="$n generated from lookup/n"
+      test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='n'] = 'M.S. 25;'"/>
+    <x:expect label="$o generated from lookup/o"
+      test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='o'] = 'arranged'"/>
+    <x:expect label="$1 generated from URI"
+      test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='1'] = 'http://id.loc.gov/resources/hubs/3d21ae7f-526c-2810-0bac-412a9275b15b'"/>
+  </x:scenario>
   <x:scenario label="MARC 242">
     <x:context href="../data/2XX/242.xml"/>
     <x:expect label="generate 242" test="count(//marc:datafield[@tag='242']) = 1"/>
