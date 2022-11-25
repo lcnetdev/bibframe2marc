@@ -118,7 +118,7 @@
   
   <df tag="240" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
     <!-- This should be copied from tag 130 for all subfields -->
-    <context xpath="bf:Work/bf:expressionOf/child::node()[not(@rdf:resource) and not(@rdf:about) and (local-name() = 'Hub' or local-name() = 'Work') and bf:title][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">
+    <context xpath="bf:Work/bf:expressionOf/child::node()[not(contains(@rdf:resource, 'hubs')) and not(contains(@rdf:about, 'hubs')) and (local-name() = 'Hub' or local-name() = 'Work') and bf:title][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
