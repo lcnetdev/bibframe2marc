@@ -9,8 +9,11 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- Series added entries -->
-  <df tag="$vSeriesTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="
+  <if test="$xslProcessor != 'libxslt'">
+    <df tag="$vSeriesTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
+      <context xpath="
+      bf:Work/bf:hasSeries[contains(@rdf:resource, 'hubs')] |
+      bf:Work/bf:hasSeries/bf:*[contains(@rdf:about, 'hubs')] |
       bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
       bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')]
       ">
@@ -92,8 +95,23 @@
         <select xpath="$relURI"/>
       </sf>
     </context>
-  </df>
-
+    </df>
+  </if>
+  
+  <if test="$xslProcessor = 'libxslt'">
+    <switch>
+      <case test="
+        bf:Work/bf:hasSeries[contains(@rdf:resource, 'hubs')] |
+        bf:Work/bf:hasSeries/bf:*[contains(@rdf:about, 'hubs')] |
+        bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
+        bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')]
+        ">
+        <transform>
+          <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed relationship node(s)/Hub(s) <xsl:value-of select="name()"/>.  Repeatable target field 8XX.</xsl:message>
+        </transform>
+      </case>
+    </switch>
+  </if>
 
   <select xpath="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:*[not(bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t']) and not(bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t'])] |
           //bf:Item/bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:*[not(bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t']) and not(bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t'])]">
