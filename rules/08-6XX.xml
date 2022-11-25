@@ -129,9 +129,9 @@
   <select xpath="bf:Work/bf:subject[
                   not(@rdf:resource) and 
                   (
-                    not(@rdf:about) and 
+                    not(*/@rdf:about) and 
                     not(*/bflc:marcKey) and 
-                    (*/rdfs:label or */madsrdf:authoritativeLabel)
+                    (*/rdfs:label or */madsrdf:authoritativeLabel or */madsrdf:componentList)
                   ) and
                   not(*/*[local-name()='code'])]
           ">
@@ -1373,7 +1373,7 @@
                 </switch>
               </ind2>
               <switch>
-                <case test="*/madsrdf:componentList[1]/*[1]/madsrdf:authoritativeLabel">
+                <case test="*/madsrdf:componentList[1]/*[1]/madsrdf:authoritativeLabel or */madsrdf:componentList[1]/*[1]/rdfs:label">
                   <sf code="3" chopPunct="true" repeatable="false">
                     <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
                   </sf>
