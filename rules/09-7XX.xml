@@ -276,7 +276,8 @@
   </if>
   
   <if test="$xslProcessor = 'libxslt'">
-      <context xpath="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries'))]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
+      <switch>
+        <case test="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries'))]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
         bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries'))]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')] |
         bf:Work/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
         bf:Work/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')] |
@@ -286,7 +287,8 @@
         <transform>
           <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed relationship node(s)/Hub(s) <xsl:value-of select="name()"/>.  Repeatable target field 7XX.</xsl:message>
         </transform>
-      </context>
+        </case>
+      </switch>
   </if>
   <!-- 
     This handles patterns for what will become a Name added entry or Name/Title, Title Entry.
