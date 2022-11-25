@@ -179,6 +179,24 @@ The `df` element is more complex. In addition to the rule building blocks docume
 </sf>
 ```
 
+* `if`: This element provides basic confitional processing. An `if` element is only supported as a childe of `rules` but can contain any other element. Each `if` requires a `test` attribute, which contains an XPath expression. If the XPath expression evaluates to `true()`, the `if` element matches.
+
+```xml
+  <if test="$xslProcessor = 'libxslt'">
+      <switch>
+        <case test="bf:Work/bf:hasPart[contains(@rdf:resource, 'hubs')]
+        ">
+        <transform>
+          <xsl:message>Record <xsl:value-of select="$vRecordId"/>: 
+              Unprocessed relationship node(s)/Hub(s) 
+              <xsl:value-of select="name()"/>.  Repeatable target 
+              field 7XX.</xsl:message>
+        </transform>
+        </case>
+      </switch>
+  </if>
+```
+
 * `lookup/lookupField`: These elements can be used to look up a value in a map using values from the current context, or using a static value. The `lookup` element has 2 required attributes: `map` identifies the map for the lookup, and `targetField` identifies the field in the map that contains the targeted value. A `lookup` element contains 1 or more `lookupField` elements, which are and-ed together to search the map. The `lookupField` element has a required `name` attribute that identifies the map field in which to look for the value. The optional `xpath` attribute contains an XPath expression in the current context to use as a lookup value. If there is no `xpath` attribute, the text value of the `lookupField` element is used as the lookup value.
 
   * These elements can be used with the `cf`, `ind1`, `ind2`, `sf`, `position`, `case` and `var` elements.
@@ -244,12 +262,15 @@ The following named templates are defined in the generated stylesheet for use in
 * `tScriptCode`: Extract the script subtag from an xml:lang attribute.
 * `tUriCode`: Extract the code (last path element) of an id.loc.gov URI
 * `tToken2Subfields`: Tokenize a string into a set of subfields
-* `tGetMARCAuth`: Return a MARC authority record from id.loc.gov as a node set. Note special processing for LOC authorities retrieves an SRU result set, so you may need to dig for the MARC record to use the values! See the test examples in rules/test/test/04-1XX.xspec.
+* `tGetRelResource`: Return a MARC record. Template will convert marcKey to small MARC record or call `tGetMARCAuth`. MARC record may be an authority or BibHub. If using xsltproc, must process template result set with exsl:node-set().
+* `tGetMARCAuth`: Return a MARC record from id.loc.gov as a node set. Note special processing for LOC authorities retrieves an SRU result set, so you may need to dig for the MARC record to use the values! See the test examples in rules/test/test/04-1XX.xspec.
+* `tGetLabel`: Return a label for a resource based in URI. Expects to lookup data at ID.LOC.GOV.  Will not work with xsltproc.
 
 #### Limitations
 
 * The behavior of `context` and `select` blocks in a non-repeatable field is somewhat limiting. For a non-repeatable field, there can only be one `context` or `select` block.
-
+* Lookup support is aggravated by xsltproc limitations, principally a lack of support for HTTPS.
+* 
 ## XML namespaces
 
 The generated stylesheet uses the following namespace prefixes:

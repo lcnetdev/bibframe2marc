@@ -1,5 +1,16 @@
 # bibframe2marc release notes
 
+## v2.2.0
+
+Conversion updates based on specifications v2.2. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
+
+* Support for bflc:marcKey property.
+* Support for ID.LOC.GOV lookup support using Saxonica or MarkLogic XSLT processors.
+* Partial support for Names, Subjects, and GenreForm lookups with xsltprocessor.
+* Support for bflc:nonSortNum property.
+
+See the [NEWS](NEWS) file and the [updated specifications](spec/) for full details of changes. Changes from v2.1.0 in the specifications are marked in red.
+
 ## v2.1.0
 
 Conversion updates based on specifications v2.1. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
