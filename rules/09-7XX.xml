@@ -298,11 +298,11 @@
     No URIs for Hubs or Agents.
   -->
   <df tag="$vAddEntryTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE'))] |
+    <context xpath="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
                     bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub/bf:contribution/*/bf:agent/* |
                     bf:Work/bf:hasPart[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub/bf:contribution/*/bf:agent/* |
-                    bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE'))] |
-                    //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE'))] |
+                    bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
+                    //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
                     //bf:Item/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub/bf:contribution/*/bf:agent/* |
                     //bf:Item/bf:hasPart[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub/bf:contribution/*/bf:agent/*">
       <var name="vNameAuthPreNS">
