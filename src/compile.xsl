@@ -54,7 +54,18 @@
       <xsl:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable>
       
       <xsl:variable name="xslProcessor">
-        <xsl:value-of select="system-property('xslt:vendor')" />
+        <!-- xsl:vendor, when compiled with xsltproc, works, meaning the output is xsl for elements and xsl:vendor and the tests pass. -->
+        <!-- xsl:vendor, when compiled with saxon, fails, meaning the output is xslt for elements and xsl for xsl:vendor and 'xsl' has not been defined. -->
+        <!-- xslt:vendor, when compiled with xsltproc, fails, meaning the output is xsl for elements and xslt for xslt:vendor. -->
+        <!-- xslt:vendor, when compiled with saxon, works, meaning he output is xslt for elements and xslt for xslt:vendor. Tests pass. -->
+        <xslt:choose>
+          <xslt:when test="system-property('xslt:vendor') = 'libxslt'">
+            <xsl:value-of select="system-property('xsl:vendor')" />
+          </xslt:when>
+          <xslt:otherwise>
+            <xsl:value-of select="system-property('xslt:vendor')" />
+          </xslt:otherwise>
+        </xslt:choose>
       </xsl:variable>
 
       <xslt:apply-templates/>
