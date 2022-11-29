@@ -308,10 +308,11 @@
       <var name="vNameAuthPreNS">
         <!-- only look up id.loc.gov name authorities -->
         <switch>
-          <case test="contains(@rdf:about,'id.loc.gov/authorities/names')">
+          <case test="bflc:marcKey">
             <transform>
-              <xsl:call-template name="tGetMARCAuth">
+              <xsl:call-template name="tGetRelResource">
                 <xsl:with-param name="pUri" select="@rdf:about"/>
+                <xsl:with-param name="pContext" select="."/>
               </xsl:call-template>
             </transform>
           </case>
