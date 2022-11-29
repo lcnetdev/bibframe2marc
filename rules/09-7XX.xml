@@ -357,6 +357,36 @@
       <var name="vWorkUri">
         <transform><xsl:value-of select="../../../../@rdf:about"/></transform>
       </var>
+      
+      <var name="vTitleResourcePreNS">
+        <!-- only look up id.loc.gov name authorities -->
+        <switch>
+          <case test="../../../../bf:title/bf:Title/bflc:marcKey">
+            <transform>
+              <xsl:call-template name="tGetRelResource">
+                <xsl:with-param name="pUri" select="@rdf:about"/>
+                <xsl:with-param name="pContext" select="../../../../bf:title/bf:Title"/>
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
+      </var>
+      <var name="vTitleResource" xpath="exsl:node-set($vTitleResourcePreNS)" />
+      <var name="vTitleTag">
+        <switch>
+          <case test="$vAddEntryTag='710'">110</case>
+          <case test="$vAddEntryTag='711'">111</case>
+          <case test="default">100</case>
+        </switch>
+      </var>
+      <var name="vTitleSubfields">
+        <switch>
+          <case test="$vTitleTag='100'">fhklmnoprst</case>
+          <case test="$vTitleTag='110'">fhklmnoprst</case>
+          <case test="$vTitleTag='111'">fhklnpst</case>
+        </switch>
+      </var>
+      
       <ind1 default="2">
         <switch>
           <case test="exsl:node-set($vNameAuth)//marc:datafield[@tag=$vNameAuthTag]">
@@ -547,6 +577,18 @@
           </sf>
 
           <!-- title subfields -->
+          <switch>
+            <case test="exsl:node-set($vTitleResource)//marc:datafield[@tag=$vTitleTag]">
+              <transform>
+                <xsl:for-each select="exsl:node-set($vTitleResource)//marc:datafield[@tag=$vTitleTag]/marc:subfield[contains($vTitleSubfields,@code)]">
+                  <marc:subfield>
+                    <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                    <xsl:value-of select="."/>
+                  </marc:subfield>
+                </xsl:for-each>
+              </transform>
+            </case>
+            <case test="default">
           <select xpath="ancestor::bf:Hub">
             <sf code="t" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
             <sf code="d" chopPunct="true"><select xpath="bf:legalDate"/></sf>
@@ -556,6 +598,10 @@
             <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bf:partName"/></sf>
             <sf code="r" chopPunct="true" repeatable="false"><select xpath="bf:musicKey"/></sf>
             <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
+          </select>
+            </case>
+          </switch>
+            <select xpath="ancestor::bf:Hub">
             <sf code="x" repeatable="false" chopPunct="true"><select xpath="bf:identifier/*[local-name()=Issn or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/></sf>
             <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
             <sf code="0">
@@ -605,10 +651,25 @@
   </df>
 
   <df tag="730" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub[not(bf:contribution)] |
-                    //bf:Item/bf:relatedTo[not(contains(rdf:type/@rdf:resource,'bibframe'))]/bf:Hub[not(bf:contribution)] |
-                    bf:Work/bf:hasPart/bf:Hub[not(bf:contribution)] |
-                    //bf:Item/bf:hasPart/bf:Hub[not(bf:contribution)]">
+    <context xpath="bf:Work/bf:relatedTo/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs'))] |
+                    //bf:Item/bf:relatedTo/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs'))] |
+                    bf:Work/bf:hasPart/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs'))] |
+                    //bf:Item/bf:hasPart/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs'))]">
+     
+      <var name="vTitleResourcePreNS">
+        <switch>
+          <case test="bf:title/bf:Title/bflc:marcKey">
+            <transform>
+              <xsl:call-template name="tGetRelResource">
+                <xsl:with-param name="pUri" select="@rdf:about"/>
+                <xsl:with-param name="pContext" select="bf:title/bf:Title"/>
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
+      </var>
+      <var name="vTitleResource" xpath="exsl:node-set($vTitleResourcePreNS)" />
+      
       <ind1 default="0">
         <switch>
           <case test="bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]/bflc:nonSortNum">
@@ -642,23 +703,21 @@
           </marc:subfield>
         </xsl:for-each>
       </transform>
-      <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
-      <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
-      <sf code="0">
-        <select xpath="bf:identifiedBy/bf:Identifier">
+      
+      <!-- title subfields -->
+      <switch>
+        <case test="$vTitleResource//marc:datafield[@tag='130']">
           <transform>
-            <xsl:variable name="vIdType">
-              <xsl:call-template name="tChopPunct">
-                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-              </xsl:call-template>
-            </xsl:variable>
-            <xsl:choose>
-              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-            </xsl:choose>
+            <xsl:for-each select="$vTitleResource//marc:datafield[@tag='130']/marc:subfield[contains('adfghklmnoprst',@code)]">
+              <marc:subfield>
+                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                <xsl:value-of select="."/>
+              </marc:subfield>
+            </xsl:for-each>
           </transform>
-        </select>
-      </sf>
+        </case>
+        <case test="default">
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
       <sf code="d"><select xpath="bf:legalDate"/></sf>
       <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
       <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
@@ -672,6 +731,9 @@
       <sf code="r" chopPunct="true"><select xpath="bf:musicKey"/></sf>
       <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
       <sf code="x" repeatable="false" chopPunct="true"><select xpath="bf:identifier/*[local-name()=Issn or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/></sf>
+        </case>
+      </switch>
+ 
       <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
       <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
       <sf code="0">

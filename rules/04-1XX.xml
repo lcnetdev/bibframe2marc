@@ -280,6 +280,20 @@
 
   <df tag="130" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:expressionOf/child::node()[(local-name() = 'Hub' or local-name() = 'Work') and bf:title and not(../../bf:contribution/bflc:PrimaryContribution) and not(../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]">
+      <var name="vTitleResourcePreNS">
+        <switch>
+          <case test="bf:title/bf:Title/bflc:marcKey">
+            <transform>
+              <xsl:call-template name="tGetRelResource">
+                <xsl:with-param name="pUri" select="@rdf:about"/>
+                <xsl:with-param name="pContext" select="bf:title/bf:Title"/>
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
+      </var>
+      <var name="vTitleResource" xpath="exsl:node-set($vTitleResourcePreNS)" />
+
       <ind1 default="0">
         <switch>
           <case test="bf:title/bf:Title/bflc:nonSortNum">
@@ -295,6 +309,20 @@
         </switch>
       </ind1>
       <ind2 default=" "/>
+      
+      <!-- title subfields -->
+      <switch>
+        <case test="$vTitleResource//marc:datafield[@tag='130']">
+          <transform>
+            <xsl:for-each select="$vTitleResource//marc:datafield[@tag='130']/marc:subfield[contains('adfghklmnoprst',@code)]">
+              <marc:subfield>
+                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                <xsl:value-of select="."/>
+              </marc:subfield>
+            </xsl:for-each>
+          </transform>
+        </case>
+        <case test="default">
       <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:title/bf:Title/rdfs:label">
@@ -305,6 +333,21 @@
           </case>          
         </switch>
       </sf>
+      <sf code="d"><select xpath="bf:legalDate"/></sf>
+      <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
+      <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
+      <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title/bf:partNumber"/></sf>
+      <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title/bf:partName"/></sf>
+      <switch>
+        <case test="rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Arrangement'">
+          <sf code="o">arranged</sf>
+        </case>
+      </switch>
+      <sf code="r" chopPunct="true"><select xpath="bf:musicKey"/></sf>
+      <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
+        </case>
+      </switch>
+
       <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(., 'REPLACE'))]"/></sf>
       <sf code="0">
         <select xpath="bf:identifiedBy/bf:Identifier">
@@ -321,20 +364,6 @@
           </transform>
         </select>
       </sf>
-      <!-- 
-      <sf code="d"><select xpath="bf:legalDate"/></sf>
-      <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
-      <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
-      <sf code="n" chopPunct="true"><select xpath="bf:title/bf:Title/bf:partNumber"/></sf>
-      <sf code="p" chopPunct="true"><select xpath="bf:title/bf:Title/bf:partName"/></sf>
-      <switch>
-        <case test="rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Arrangement'">
-          <sf code="o">arranged</sf>
-        </case>
-      </switch>
-      <sf code="r" chopPunct="true"><select xpath="bf:musicKey"/></sf>
-      <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-      -->
       <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
     </context>
   </df>

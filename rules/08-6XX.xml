@@ -781,6 +781,28 @@
                       madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub') and
                       (madsrdf:componentList or madsrdf:authoritativeLabel)]">
             <df tag="630">
+              <var name="vTitleResourcePreNS">
+                <switch>
+                  <case test="*/bf:title/bf:Title/bflc:marcKey">
+                    <transform>
+                      <xsl:call-template name="tGetRelResource">
+                        <xsl:with-param name="pUri" select="@rdf:about"/>
+                        <xsl:with-param name="pContext" select="*/bf:title/bf:Title"/>
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="*/madsrdf:componentList/bf:*[1]/bf:title/bf:Title/bflc:marcKey">
+                    <transform>
+                      <xsl:call-template name="tGetRelResource">
+                        <xsl:with-param name="pUri" select="@rdf:about"/>
+                        <xsl:with-param name="pContext" select="*/madsrdf:componentList/bf:*[1]/bf:title/bf:Title"/>
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                </switch>
+              </var>
+              <var name="vTitleResource" xpath="exsl:node-set($vTitleResourcePreNS)" />
+              
               <ind1 default="0">
                 <select xpath="*/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]|*/madsrdf:componentList/*[1]/bf:title/bf:Title[not(contains(rdf:type/@rdf:resource,'bibframe'))][1]">
                   <switch>
@@ -807,6 +829,20 @@
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
+              
+              <!-- title subfields -->
+              <switch>
+                <case test="$vTitleResource//marc:datafield[@tag='130']">
+                  <transform>
+                    <xsl:for-each select="$vTitleResource//marc:datafield[@tag='130']/marc:subfield[contains('adfghklmnoprst',@code)]">
+                      <marc:subfield>
+                        <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                        <xsl:value-of select="."/>
+                      </marc:subfield>
+                    </xsl:for-each>
+                  </transform>
+                </case>
+                <case test="default">
               <select xpath="*[local-name()='Work' or local-name()='Hub' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub']] |
                              */madsrdf:componentList/*[1]">
                 <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
@@ -827,6 +863,8 @@
                   <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
                 </sf>
               </select>
+                </case>
+              </switch>
               <!-- subdivisions -->
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
