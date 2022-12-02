@@ -60,8 +60,7 @@
   -->
   <df tag="240" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:expressionOf[contains(@rdf:resource, 'hubs')][../bf:contribution/bflc:PrimaryContribution or ../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']] |
-      bf:Work/bf:expressionOf/bf:*[contains(@rdf:about, 'hubs')][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']] |
-      bf:Work/bf:expressionOf/bf:*[(bflc:marcKey or marc:record) and (../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]
+      bf:Work/bf:expressionOf/bf:*[contains(@rdf:about, 'hubs') or bflc:marcKey or marc:record][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]
       ">
       
       <var name="relURI">
@@ -79,6 +78,14 @@
         </transform>
       </var>
       <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
+      
+      <switch>
+        <case test="$xslProcessor='libxslt' and contains($relURI, 'resources/hubs') and not(bflc:marcKey)">
+          <transform>
+            <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed expressionOf node/Hub.  No 240 output.</xsl:message>
+          </transform>
+        </case>
+      </switch>
 
       <ind1 default="1"/>
       <ind2 default=" " />
@@ -96,7 +103,7 @@
         </case>
         <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]">
           <transform> 
-            <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains('hklmnoprst',@code)]">
+            <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[(@code = 't' or preceding-sibling::marc:subfield[@code = 't']) and contains('dgfhklmnoprst',@code)]">
               <marc:subfield>
                 <xsl:attribute name="code"><xsl:value-of select="translate(@code, 't', 'a')"/></xsl:attribute>
                 <xsl:value-of select="."/>
