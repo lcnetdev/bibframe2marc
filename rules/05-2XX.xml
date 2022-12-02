@@ -61,7 +61,7 @@
   <df tag="240" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:expressionOf[contains(@rdf:resource, 'hubs')][../bf:contribution/bflc:PrimaryContribution or ../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']] |
       bf:Work/bf:expressionOf/bf:*[contains(@rdf:about, 'hubs')][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']] |
-      bf:Work/bf:expressionOf/bf:*[(bf:title/bf:Title/bflc:marcKey or bf:title/bf:Title/marc:record) and (../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]
+      bf:Work/bf:expressionOf/bf:*[(bflc:marcKey or marc:record) and (../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]
       ">
       
       <var name="relURI">
@@ -70,35 +70,35 @@
           <case test="contains(@rdf:about,'id.loc.gov/resources/hubs')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
-      <var name='vContext'>
-        <switch>
-          <case test="bf:title/bf:Title[bflc:marcKey or marc:record]">
-            <transform><xsl:copy-of select="bf:title/bf:Title" /></transform>
-          </case>
-          <case test="default">
-            <transform><xsl:copy-of select="." /></transform>
-          </case>
-        </switch>
-      </var>
-      <var name="vRelResource">
+      <var name="vRelResourcePreNS">
         <transform>
           <xsl:call-template name="tGetRelResource">
             <xsl:with-param name="pRelUri" select="$relURI"/>
-            <xsl:with-param name="pContext" select="$vContext"/>
+            <xsl:with-param name="pContext" select="."/>
           </xsl:call-template>
         </transform>
       </var>
-      
+      <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
+
       <ind1 default="1"/>
-      <ind2 default=" ">
-        <select xpath="$vRelResource//marc:datafield[@tag = '240']/@ind2" />
-      </ind2>
+      <ind2 default=" " />
       <switch>
         <case test="$vRelResource//marc:datafield[@tag = '240']">
-          <transform>
-            <xsl:for-each select="$vRelResource//marc:datafield[@tag = '240']/marc:subfield[contains('adfghklmnoprs',@code)]">
+          <!-- This was from a looked up resource, so a fuller MARC record, not a marcKey, -->
+          <transform> 
+            <xsl:for-each select="$vRelResource//marc:datafield[@tag = '240']/marc:subfield">
               <marc:subfield>
                 <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                <xsl:value-of select="."/>
+              </marc:subfield>
+            </xsl:for-each>
+          </transform>
+        </case>
+        <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]">
+          <transform> 
+            <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains('hklmnoprst',@code)]">
+              <marc:subfield>
+                <xsl:attribute name="code"><xsl:value-of select="translate(@code, 't', 'a')"/></xsl:attribute>
                 <xsl:value-of select="."/>
               </marc:subfield>
             </xsl:for-each>
@@ -121,6 +121,7 @@
     <context xpath="bf:Work/bf:expressionOf/child::node()[
         not(contains(@rdf:resource, 'hubs')) and not(contains(@rdf:about, 'hubs')) and 
         not(contains(@rdf:resource, 'REPLACE')) and not(contains(@rdf:about, 'REPLACE')) and 
+        not(bflc:marcKey or marc:record) and 
         (local-name() = 'Hub' or local-name() = 'Work') and bf:title][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">
       <ind1 default="1"/>
       <ind2 default="0">

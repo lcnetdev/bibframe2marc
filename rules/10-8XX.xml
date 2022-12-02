@@ -14,24 +14,36 @@
       <context xpath="
       bf:Work/bf:hasSeries[contains(@rdf:resource, 'hubs')] |
       bf:Work/bf:hasSeries/bf:*[contains(@rdf:about, 'hubs')] |
+      bf:Work/bf:hasSeries/bf:*[bf:title/bf:Title/bflc:marcKey] |
+      
       bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
-      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')]
+      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')] |
+      
+      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation/*[contains(@rdf:about, 'hasSeries')]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
+      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation/*[contains(@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs')] |
+
+      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries')]]/bf:relatedTo/bf:*[bf:title/bf:Title/bflc:marcKey] |
+      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation/*[contains(@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[bf:title/bf:Title/bflc:marcKey]
       ">
       
       <var name="relURI">
         <switch>
-          <case test="contains(@rdf:resource,'id.loc.gov')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-          <case test="contains(@rdf:about,'id.loc.gov')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+          <case test="contains(@rdf:resource,'id.loc.gov') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.loc.gov') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
-      <var name="vRelResource">
+      <var name="vRelResourcePreNS">
         <transform>
           <xsl:call-template name="tGetRelResource">
             <xsl:with-param name="pRelUri" select="$relURI"/>
-            <xsl:with-param name="pContext" select="."/>
+            <xsl:with-param name="pContext" select="bf:title/bf:Title"/>
           </xsl:call-template>
         </transform>
       </var>
+      <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
+      <transform>
+        <xsl:message><xsl:value-of select="$vRelResource//marc:datafield[@tag='110']"/></xsl:message>
+      </transform>
       <var name="vSeriesTag">
         <switch>
           <case test="$vRelResource//marc:record">
@@ -49,7 +61,7 @@
           <case test="$vSeriesTag='800'">abcdgjq</case>
           <case test="$vSeriesTag='810'">abcdgn</case>
           <case test="$vSeriesTag='811'">acdegnq</case>
-          <case test="$vSeriesTag='830'">adfghklmnoprs</case>
+          <case test="$vSeriesTag='830'">adfghklmnoprst</case>
         </switch>
       </var>
       <ind1>
