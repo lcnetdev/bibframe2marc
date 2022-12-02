@@ -14,10 +14,8 @@
   <!-- 
     This handles the pattern for what will become a Name added entry.
     It is predicated on a URI being referenced for the Name/Agent.
-    It will only trigger if libxslt is not the processor and is predicated on there 
-    being no bflc:marcKey.
+    It is predicated on there being no bflc:marcKey.
   -->
-  <if test="$xslProcessor != 'libxslt'">
   <df tag="$vAddedEntryNameLookupTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="
       bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/') and not(bflc:marcKey)] |
@@ -59,9 +57,9 @@
       </var>
       <var name="vValidSubfields">
         <switch>
-          <case test="$vAddedEntryNameTag='700'">abcdgjq</case>
-          <case test="$vAddedEntryNameTag='710'">abcdgn</case>
-          <case test="$vAddedEntryNameTag='711'">acdegnq</case>
+          <case test="$vAddedEntryNameLookupTag='700'">abcdgjq</case>
+          <case test="$vAddedEntryNameLookupTag='710'">abcdgn</case>
+          <case test="$vAddedEntryNameLookupTag='711'">acdegnq</case>
         </switch>
       </var>
       
@@ -137,26 +135,6 @@
       
     </context>
   </df>
-  </if>
-  
-  <if test="$xslProcessor = 'libxslt'">
-    <switch>
-      <case test="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/') and not(bflc:marcKey)] |
-        bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/bf:*[contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/') and not(bflc:marcKey)] |
-        bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/madsrdf:*[contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/') and not(bflc:marcKey)] |
-        bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/') and not(bflc:marcKey)] |
-        bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/bf:*[contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/') and not(bflc:marcKey)] |
-        bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/madsrdf:*[contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/') and not(bflc:marcKey)] |
-        //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/') and not(bflc:marcKey)] |
-        //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/bf:*[contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/') and not(bflc:marcKey)] |
-        //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/madsrdf:*[contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/') and not(bflc:marcKey)]        
-        ">
-        <transform>
-          <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed contribution node(s)/Hub(s) <xsl:value-of select="name()"/>.  Repeatable target field 7XX.</xsl:message>
-        </transform>
-      </case>
-    </switch>
-  </if>
 
   <!-- This is for when there is a marcKey present. -->
   <df tag="$vAddedEntryNameMarcKeyTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
@@ -193,9 +171,9 @@
       </var>
       <var name="vValidSubfields">
         <switch>
-          <case test="$vAddedEntryNameTag='700'">abcdgjq</case>
-          <case test="$vAddedEntryNameTag='710'">abcdgn</case>
-          <case test="$vAddedEntryNameTag='711'">acdegnq</case>
+          <case test="$vAddedEntryNameMarcKeyTag='700'">abcdgjq</case>
+          <case test="$vAddedEntryNameMarcKeyTag='710'">abcdgn</case>
+          <case test="$vAddedEntryNameMarcKeyTag='711'">acdegnq</case>
         </switch>
       </var>
       
@@ -280,8 +258,8 @@
   -->
   <if test="$xslProcessor != 'libxslt'">
     <df tag="$vAddRelationLookupTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
-      <context xpath="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries'))]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
-        bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries'))]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)] |
+      <context xpath="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries')) and not(contains(bflc:Relation/@rdf:about, 'hasSeries'))]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
+        bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries')) and not(contains(bflc:Relation/@rdf:about, 'hasSeries'))]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)] |
         bf:Work/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
         bf:Work/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)] |
         bf:Work/bf:hasPart[contains(@rdf:resource, 'hubs')] |
@@ -317,10 +295,10 @@
         </var>
         <var name="vValidSubfields">
           <switch>
-            <case test="$vAddRelationTag='700'">abcdgjq</case>
-            <case test="$vAddRelationTag='710'">abcdgn</case>
-            <case test="$vAddRelationTag='711'">acdegnq</case>
-            <case test="$vAddRelationTag='730'">adfghklmnoprs</case>
+            <case test="$vAddRelationLookupTag='700'">abcdfghjklmnopqrst</case>
+            <case test="$vAddRelationLookupTag='710'">abcdfghklmnoprst</case>
+            <case test="$vAddRelationLookupTag='711'">acdeghklnpqst</case>
+            <case test="$vAddRelationLookupTag='730'">adfghklmnoprst</case>
           </switch>
         </var>
         
@@ -373,7 +351,7 @@
           </case>
         </switch>
         <switch>
-          <case test="$vRelResource//marc:datafield[@tag = '240'] and $vAddRelationTag != '730'">
+          <case test="$vRelResource//marc:datafield[@tag = '240'] and $vAddRelationLookupTag != '730'">
             <transform>
               <xsl:for-each select="$vRelResource//marc:datafield[@tag = '240']/marc:subfield[contains('adfghklmnoprs',@code)]">
                 <marc:subfield>
@@ -430,7 +408,7 @@
   
   <!-- This handles the relationship/Relationship pattern when there is a marcKey present. -->
   <df tag="$vAddRelationMarcKeyTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries'))]]/bf:relatedTo/bf:*[bflc:marcKey or marc:record] |
+    <context xpath="bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[not(contains(@rdf:resource, 'hasSeries')) and not(contains(bflc:Relation/@rdf:about, 'hasSeries'))]]/bf:relatedTo/bf:*[bflc:marcKey or marc:record] |
                     bf:Work/bf:relatedTo/bf:*[bflc:marcKey or marc:record] |
                     bf:Work/bf:hasPart/bf:*[bflc:marcKey or marc:record]
             ">
@@ -463,10 +441,10 @@
       </var>
       <var name="vValidSubfields">
         <switch>
-          <case test="$vAddRelationTag='700'">abcdgjq</case>
-          <case test="$vAddRelationTag='710'">abcdgn</case>
-          <case test="$vAddRelationTag='711'">acdegnq</case>
-          <case test="$vAddRelationTag='730'">adfghklmnoprs</case>
+          <case test="$vAddRelationMarcKeyTag='700'">abcdfghjklmnopqrst</case>
+          <case test="$vAddRelationMarcKeyTag='710'">abcdfghklmnoprst</case>
+          <case test="$vAddRelationMarcKeyTag='711'">acdeghklnpqst</case>
+          <case test="$vAddRelationMarcKeyTag='730'">adfghklmnoprst</case>
         </switch>
       </var>
       
@@ -519,7 +497,7 @@
         </case>
       </switch>
       <switch>
-        <case test="$vRelResource//marc:datafield[@tag = '240'] and $vAddRelationTag != '730'">
+        <case test="$vRelResource//marc:datafield[@tag = '240'] and $vAddRelationMarcKeyTag != '730'">
           <transform>
             <xsl:for-each select="$vRelResource//marc:datafield[@tag = '240']/marc:subfield[contains('adfghklmnoprs',@code)]">
               <marc:subfield>
@@ -564,12 +542,12 @@
   -->
   <df tag="$vAddEntryTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
-                    bf:Work/bf:relatedTo/bf:Hub/bf:contribution/*/bf:agent/* |
-                    bf:Work/bf:hasPart/bf:Hub/bf:contribution/*/bf:agent/* |
+                    bf:Work/bf:relatedTo/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/* |
+                    bf:Work/bf:hasPart/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/* |
                     bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
                     //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
-                    //bf:Item/bf:relatedTo/bf:Hub/bf:contribution/*/bf:agent/* |
-                    //bf:Item/bf:hasPart/bf:Hub/bf:contribution/*/bf:agent/*">
+                    //bf:Item/bf:relatedTo/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/* |
+                    //bf:Item/bf:hasPart/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/*">
       <var name="vNameAuthPreNS">
         <!-- only look up id.loc.gov name authorities -->
         <switch>
