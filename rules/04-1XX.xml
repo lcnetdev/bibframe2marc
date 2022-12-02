@@ -279,20 +279,24 @@
   </df>
 
   <df tag="130" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:expressionOf/child::node()[(local-name() = 'Hub' or local-name() = 'Work') and bf:title and not(../../bf:contribution/bflc:PrimaryContribution) and not(../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]">
+    <context xpath="bf:Work/bf:expressionOf/bf:*[(local-name() = 'Hub' or local-name() = 'Work') and bf:title and not(../../bf:contribution/bflc:PrimaryContribution) and not(../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]">
       <var name="vTitleResourcePreNS">
-        <switch>
-          <case test="bf:title/bf:Title/bflc:marcKey">
-            <transform>
-              <xsl:call-template name="tGetRelResource">
-                <xsl:with-param name="pUri" select="@rdf:about"/>
-                <xsl:with-param name="pContext" select="bf:title/bf:Title"/>
-              </xsl:call-template>
-            </transform>
-          </case>
-        </switch>
+        <transform>
+          <xsl:call-template name="tGetRelResource">
+            <xsl:with-param name="pUri" select="@rdf:about"/>
+            <xsl:with-param name="pContext" select="."/>
+          </xsl:call-template>
+        </transform>
       </var>
       <var name="vTitleResource" xpath="exsl:node-set($vTitleResourcePreNS)" />
+      
+      <switch>
+        <case test="$xslProcessor='libxslt' and contains(@rdf:about, 'resources/hubs') and not(bflc:marcKey)">
+          <transform>
+            <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed expressionOf node/Hub.  No 130 output.</xsl:message>
+          </transform>
+        </case>
+      </switch>
 
       <ind1 default="0">
         <switch>
