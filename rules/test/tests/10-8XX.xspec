@@ -22,8 +22,8 @@
               test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='a'] = 'Rowling, J. K.'"/>
     <!--<x:expect label="$0 from URI of agent"
               test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='0'][1] = 'http://example.com/authorities/names/n99020360'"/>-->
-    <x:expect label="$4 from URI of role"
-              test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='4'] = 'http://id.loc.gov/vocabulary/relators/ctb'"/>
+    <!-- <x:expect label="$4 from URI of role"
+              test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='4'] = 'http://id.loc.gov/vocabulary/relators/ctb'"/> -->
     <x:expect label="$t from title"
       test="//marc:datafield[@tag='800'][1]/marc:subfield[@code='t'] = 'Harry Potter series'"/>
   </x:scenario>
@@ -51,11 +51,11 @@
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='811'][1]/@ind2 = ' '"/>
     <x:expect label="$a from first element in elementList or label"
-              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='a'] = 'University of Calabar International Conference on African Literature and the English Language'"/>
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='a'] = 'University of Calabar International Conference on African Literature and the English Language.'"/>
     <!--<x:expect label="$0 from URI of agent"
               test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='0'] = 'http://example.com/authorities/names/no2009024971'"/>-->
     <x:expect label="$t from title"
-              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='t'] = 'Calabar studies in African literature'"/>
+              test="//marc:datafield[@tag='811'][1]/marc:subfield[@code='t'] = 'Calabar studies in African literature.'"/>
   </x:scenario>
 
 <!-- kefo note (15 Aug 2022): Disabled the below for now.  I think this is related to grabbing the info from ID. -->

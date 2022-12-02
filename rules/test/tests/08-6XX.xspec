@@ -9,13 +9,13 @@
     <x:context href="../data/6XX/600.xml"/>
     <x:expect label="generate 600" test="count(//marc:datafield[@tag='600']) = 3"/>
     <x:expect label="ind1 generated from class of bf:Agent"
-              test="//marc:datafield[@tag='600'][1]/@ind1 = '1'"/>
+              test="//marc:datafield[@tag='600'][2]/@ind1 = '1'"/>
     <x:expect label="ind2 generated from bf:source"
-              test="//marc:datafield[@tag='600'][2]/@ind2 = '0'"/>
+              test="//marc:datafield[@tag='600'][1]/@ind2 = '0'"/>
     <x:expect label="$a can be generated from name label"
-              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='a'] = 'Obama, Barack.'"/>
+              test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='a'] = 'Obama, Barack.'"/>
     <x:expect label="$t from title of bf:subject/bf:Work"
-              test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='t'] = 'Faust'"/>
+              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='t'] = 'Faust.'"/>
     <x:expect label="parse subdivisions"
               test="//marc:datafield[@tag='600'][3]/marc:subfield[@code='v'] = 'Interviews'"/>
   </x:scenario>
@@ -86,9 +86,9 @@
     <x:expect label="$a from authority (with punctuation)"
               test="//marc:datafield[@tag='600']/marc:subfield[@code='a'] = 'Goethe, Johann Wolfgang von,'"/>
     <x:expect label="$d from authority"
-              test="//marc:datafield[@tag='600']/marc:subfield[@code='d'] = '1749-1832'"/>
+              test="//marc:datafield[@tag='600']/marc:subfield[@code='d'] = '1749-1832.'"/>
     <x:expect label="$t from title"
-              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='t'] = 'Faust'"/>
+              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='t'] = 'Faust.'"/>
   </x:scenario>
 
   <x:scenario label="MARC 630">
