@@ -669,7 +669,9 @@
                     <xsl:when test="contains($pUri,'ubjects') or contains($pUri,'genreForm')">
                       <xsl:value-of select="concat('http://lx2.loc.gov:210/SAF?query=bath.lccn%3d',$vLccnSearch,'&amp;recordSchema=marcxml&amp;maximumRecords=1')"/>
                     </xsl:when>
-                    <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+                    <xsl:otherwise>
+                      <xsl:message>Desire to look up <xsl:value-of select="$pUri"/> but using xsltproc. No lookup occurred.</xsl:message>
+                      <xsl:value-of select="$pUri"/></xsl:otherwise>
                   </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
@@ -694,7 +696,7 @@
           </xsl:choose>
         </xsl:variable>
         <xsl:choose>
-          <xsl:when test="$vUrl != ''">
+          <xsl:when test="$vUrl != '' and not($xslProcessor='libxslt' and contains($vUrl, 'resources/hubs'))">
             <xsl:variable name="vDoc">
               <xsl:choose>
                 <xsl:when test="function-available('xdmp:document-get')">
