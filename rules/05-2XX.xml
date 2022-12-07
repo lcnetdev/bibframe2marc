@@ -605,7 +605,7 @@
                     local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication']) and
                     (
                       (bflc:simplePlace or bflc:simpleAgent or bflc:simpleDate) or 
-                      (bf:place/bf:*/rdfs:label or bf:agent/bf:*/rdfs:label or bf:date[not(@rdf:datatype)])
+                      (bf:place/bf:*[not(@rdf:about)]/rdfs:label or bf:agent/bf:*[not(@rdf:about)]/rdfs:label or bf:date[not(@rdf:datatype)])
                     )]">
     <var name="v880Script">
       <switch>
