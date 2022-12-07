@@ -554,6 +554,7 @@
                     <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '50'">150</xsl:when>
                     <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '51'">151</xsl:when>
                     <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '55'">155</xsl:when>
+                    <xsl:when test="substring($pContext/bflc:marcKey, 1, 3) = '440'">130</xsl:when>
                     <xsl:otherwise><xsl:value-of select="substring($pContext/bflc:marcKey, 1, 3)" /></xsl:otherwise>
                   </xsl:choose>
                 </xsl:attribute>
