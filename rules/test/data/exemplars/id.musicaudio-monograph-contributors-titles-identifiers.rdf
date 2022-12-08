@@ -17,7 +17,7 @@
     </bf:carrier>
     <bf:soundCharacteristic>
       <bf:PlayingSpeed rdf:about="http://id.loc.gov/vocabulary/mplayspeed/f">
-	<rdfs:label>1.4 m. per sec.</rdfs:label>
+	<rdfs:label>1.4 m/s</rdfs:label>
       </bf:PlayingSpeed>
     </bf:soundCharacteristic>
     <bf:soundCharacteristic>
@@ -42,7 +42,7 @@
     </bf:soundCharacteristic>
     <bf:soundCharacteristic>
       <bflc:CaptureStorage rdf:about="http://id.loc.gov/vocabulary/mcapturestorage/dist">
-	<rdfs:label>Electrical capture, digital storage</rdfs:label>
+	<rdfs:label>Electrical capture, Digital storage</rdfs:label>
       </bflc:CaptureStorage>
     </bf:soundCharacteristic>
     <bf:provisionActivity>
@@ -51,7 +51,7 @@
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2008</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/cau">
-	    <rdfs:label>California</rdfs:label>
+	    <rdfs:label xml:lang="en">California</rdfs:label>
 	  </bf:Place>
 	</bf:place>
       </bf:ProvisionActivity>
@@ -85,7 +85,9 @@
       <bf:Local>
 	<rdf:value>ocn311097395</rdf:value>
 	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc"/>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
       </bf:Local>
     </bf:identifiedBy>
@@ -160,23 +162,8 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/18344194">
-	<bflc:aap>Paganini, Nicolò, 1782-1840. Paganini's 24 caprices</bflc:aap>
-      </bf:Work>
-    </bf:instanceOf>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/18344194-050-16">
-	<bf:shelfMark xmlns:streams="info:lc/streams#">
-	  <bf:ShelfMark>
-	    <rdfs:label>SDC 42748</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMark>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/18344194"/>
+    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/18344194-050-16"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -186,28 +173,28 @@
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	  <bf:Status>
 	    <rdfs:label>corrected or revised</rdfs:label>
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	    <rdfs:label>full</rdfs:label>
-	  </bflc:EncodingLevel>
+	  </madsrdf:Authority>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label>aacr</rdfs:label>
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>18344194</rdf:value>
 	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<bf:code>DLC</bf:code>
-	      </bf:Agent>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -217,18 +204,18 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr27 2014-10-22 z-client $i qr27 2014-10-22</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>FBO</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/fbo" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>Boca Raton Public Library</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
-	    <bf:code>lccopycat</bf:code>
+	    <rdfs:label>LC Copy Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
@@ -237,23 +224,56 @@
   <bf:Work rdf:about="http://id.loc.gov/resources/works/18344194">
     <bflc:aap>Paganini, Nicolò, 1782-1840. Paganini's 24 caprices</bflc:aap>
     <bflc:aap-normalized>paganininicolò17821840paganini's24caprices</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Audio"/>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/prm"/>
-    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/zxx"/>
-    <bf:supplementaryContent rdf:resource="http://id.loc.gov/vocabulary/msupplcont/creatorbio"/>
-    <bf:supplementaryContent rdf:resource="http://id.loc.gov/vocabulary/msupplcont/performerhistory"/>
-    <bf:supplementaryContent rdf:resource="http://id.loc.gov/vocabulary/msupplcont/historicalinfo"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Audio" xmlns:streams="info:lc/streams#"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/prm">
+	<rdfs:label>performed music</rdfs:label>
+      </bf:Content>
+    </bf:content>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/zxx">
+	<rdfs:label xml:lang="en">No linguistic content</rdfs:label>
+      </bf:Language>
+    </bf:language>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/creatorbio">
+	<rdfs:label>biography of creator</rdfs:label>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/performerhistory">
+	<rdfs:label>history of performer or ensemble</rdfs:label>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/historicalinfo">
+	<rdfs:label>historical information</rdfs:label>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
     <bf:language>
       <bf:Language>
 	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<rdf:value>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</rdf:value>
       </bf:Language>
     </bf:language>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79105881"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution" xmlns:streams="info:lc/streams#"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n79105881">
+	    <rdfs:label>Paganini, Nicolò, 1782-1840</rdfs:label>
+	    <bflc:marcKey>1001 $aPaganini, Nicolò,$d1782-1840</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+	    <rdfs:label>Contributor</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:expressionOf rdf:resource="http://id.loc.gov/resources/hubs/3d21ae7f-526c-2810-0bac-412a9275b15b"/>
@@ -271,18 +291,31 @@
     </bf:capture>
     <bf:subject>
       <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic" xmlns:streams="info:lc/streams#"/>
 	<rdfs:label>Viola music, Arranged.</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Viola music, Arranged.</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/authorities/subjects" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"/>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of
+            Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
 	<bflc:aap-normalized>violamusicarranged</bflc:aap-normalized>
-	<bf:source rdf:resource="http://id.loc.gov/authorities/subjects"/>
       </bf:Topic>
     </bf:subject>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n2005078391"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/prf"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n2005078391">
+	    <rdfs:label>Slapin, Scott, 1974-</rdfs:label>
+	    <bflc:marcKey>1001 $aSlapin, Scott,$d1974-</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
+	    <rdfs:label>Performer</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
@@ -295,13 +328,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T22:58:10-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/f"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/aacr"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>full</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>18344194</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-10-24T16:46:09</bf:changeDate>
@@ -310,21 +360,37 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr27 2014-10-22 z-client $i qr27 2014-10-22</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>FBO</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/fbo" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>Boca Raton Public Library</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/lccopycat"/>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
+	    <rdfs:label>LC Copy Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/18344194-050-16">
-    <bf:heldBy rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+    <bf:heldBy>
+      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label>United States, Library of Congress</rdfs:label>
+      </madsrdf:CorporateName>
+    </bf:heldBy>
     <bf:shelfMark>
       <bf:ShelfMark>
 	<rdfs:label>SDC 42748</rdfs:label>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:ShelfMark>
     </bf:shelfMark>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
@@ -337,13 +403,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T22:58:10-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/f"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/aacr"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>full</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>18344194</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-10-24T16:46:09</bf:changeDate>
@@ -352,12 +435,20 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr27 2014-10-22 z-client $i qr27 2014-10-22</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>FBO</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/fbo" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>Boca Raton Public Library</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/lccopycat"/>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
+	    <rdfs:label>LC Copy Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Item>

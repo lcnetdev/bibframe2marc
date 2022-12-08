@@ -1,6 +1,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/16362995">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print" xmlns:streams="info:lc/streams#"/>
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
@@ -12,7 +12,7 @@
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1792</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/ie">
-	    <rdfs:label>Ireland</rdfs:label>
+	    <rdfs:label xml:lang="en">Ireland</rdfs:label>
 	  </bf:Place>
 	</bf:place>
       </bf:ProvisionActivity>
@@ -35,16 +35,16 @@
     <bf:identifiedBy>
       <bf:Local>
 	<rdf:value> ALG7459</rdf:value>
-	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/sirsi"/>
-	</bf:assigner>
+	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/sirsi"/>
       </bf:Local>
     </bf:identifiedBy>
     <bf:identifiedBy>
       <bf:Local>
 	<rdf:value>VAUP91-B3968</rdf:value>
 	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/cstrlin"/>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/cstrlin" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>Research Libraries Information Network</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
       </bf:Local>
     </bf:identifiedBy>
@@ -106,35 +106,9 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/16362995">
-	<bflc:aap>The Farmer : a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin</bflc:aap>
-      </bf:Work>
-    </bf:instanceOf>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/16362995-050-12">
-	<bf:shelfMark xmlns:streams="info:lc/streams#">
-	  <bf:ShelfMarkLcc>
-	    <rdfs:label>ML48 [S9866]</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMarkLcc>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/16362995-051-13">
-	<bf:shelfMark xmlns:streams="info:lc/streams#">
-	  <bf:ShelfMark>
-	    <rdfs:label>Microfilm Music 1854, reel 201.</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMark>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/16362995"/>
+    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/16362995-050-12"/>
+    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/16362995-051-13"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -144,28 +118,28 @@
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	  <bf:Status>
 	    <rdfs:label>corrected or revised</rdfs:label>
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/3">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/3" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	    <rdfs:label>abbreviated</rdfs:label>
-	  </bflc:EncodingLevel>
+	  </madsrdf:Authority>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label>aacr</rdfs:label>
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>16362995</rdf:value>
 	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<bf:code>DLC</bf:code>
-	      </bf:Agent>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -174,34 +148,59 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 3 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $e vl34 2012-03-02 microfilm added</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>ViU</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/viu" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>University of Virginia</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/16362995">
-    <bflc:aap>The Farmer : a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin</bflc:aap>
-    <bflc:aap-normalized>thefarmer:acomicoperaintwoacts:asitisperformedatthetheatresroyalinlondonanddublin</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/txt"/>
-    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-    <bf:genreForm rdf:resource="http://id.loc.gov/authorities/genreForms/gf2014026339"/>
-    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+    <bflc:aap>Hannam, Mrs. Farmer : a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin</bflc:aap>
+    <bflc:aap-normalized>hannammrsfarmer:acomicoperaintwoacts:asitisperformedatthetheatresroyalinlondonanddublin</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text" xmlns:streams="info:lc/streams#"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+      </bf:Content>
+    </bf:content>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	<rdfs:label xml:lang="en">English</rdfs:label>
+      </bf:Language>
+    </bf:language>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026339">
+	<rdfs:label xml:lang="en">Fiction</rdfs:label>
+	<bflc:marcKey>155  $aFiction</bflc:marcKey>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:language>
+      <bf:Language>
+	<rdf:value>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</rdf:value>
+      </bf:Language>
+    </bf:language>
     <bf:classification>
       <bf:ClassificationLcc>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
 	<bf:classificationPortion>ML48</bf:classificationPortion>
 	<bf:itemPortion>[S9866]</bf:itemPortion>
       </bf:ClassificationLcc>
     </bf:classification>
-    <bf:expressionOf rdf:resource="http://id.loc.gov/resources/hubs/97f97488-1b37-26d9-a770-14b5f3b4d795"/>
+    <bf:expressionOf rdf:resource="http://id.loc.gov/resources/hubs/1e662d93-6a38-52da-150c-53a0fedb2f55"/>
     <rdfs:label>The Farmer : a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin</rdfs:label>
     <bf:title>
       <bf:Title>
@@ -214,7 +213,30 @@
 	<rdfs:label>Performance: Dublin, Theatres Royal, 1792?</rdfs:label>
       </bf:Capture>
     </bf:capture>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh85094942"/>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject" xmlns:streams="info:lc/streams#"/>
+	<rdfs:label>Operas--Librettos.</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Operas--Librettos.</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of
+            Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85094914">
+	    <rdfs:label xml:lang="en">Operas</rdfs:label>
+	    <bflc:marcKey>150  $aOperas</bflc:marcKey>
+	  </madsrdf:Topic>
+	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001588">
+	    <rdfs:label xml:lang="en">Librettos</rdfs:label>
+	    <bflc:marcKey>185  $vLibrettos</bflc:marcKey>
+	  </madsrdf:GenreForm>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>operaslibrettos</bflc:aap-normalized>
+      </bf:Topic>
+    </bf:subject>
     <bf:subject>
       <bf:Topic>
 	<rdfs:label>Dormont</rdfs:label>
@@ -291,140 +313,230 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>Hannam, Mrs.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n82208047"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n82208047">
+	    <rdfs:label>Shield, William, 1748-1829</rdfs:label>
+	    <bflc:marcKey>1001 $aShield, William,$d1748-1829</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
 	<bf:role>
 	  <bf:Role>
 	    <rdfs:label>supposed composer.</rdfs:label>
 	  </bf:Role>
 	</bf:role>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/compilerposer"/>
+	<bf:role>
+	  <bf:Role>
+	    <rdfs:label>compilerposer.</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n80123409"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/lbt"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n80123409">
+	    <rdfs:label>O'Keeffe, John, 1747-1833</rdfs:label>
+	    <bflc:marcKey>1001 $aO'Keeffe, John,$d1747-1833</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/lbt">
+	    <rdfs:label>Librettist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n88050197"/>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n88050197">
+	    <rdfs:label>Mitchell, Mr.</rdfs:label>
+	    <bflc:marcKey>1001 $aMitchell,$cMr.</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>Duffy, Mr.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n88175780"/>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n88175780">
+	    <rdfs:label>King, Mr.</rdfs:label>
+	    <bflc:marcKey>1001 $aKing,$cMr.</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>Brett, Alphonse, Mr.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>O'Rahilly, Thomas Francis, Mr.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>Owenfon, Mr.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>Cherry, Mr.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>barret, Mr.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/no89013846"/>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/no89013846">
+	    <rdfs:label>Smith, Mr.</rdfs:label>
+	    <bflc:marcKey>1001 $aSmith,$cMr.</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n86143801"/>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n86143801">
+	    <rdfs:label>Marshall, Mrs.</rdfs:label>
+	    <bflc:marcKey>1001 $aMarshall,$cMrs.</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>Hitchcock, Orra White, 1796-1863, Mrs.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>Chalmers, Mrs.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/vocalist"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/#NAME?">
+	    <rdfs:label>Vocalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
@@ -438,13 +550,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T21:00:51-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/3"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/aacr"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/3" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>abbreviated</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>16362995</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-09-14T12:41:44</bf:changeDate>
@@ -452,20 +581,32 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 3 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $e vl34 2012-03-02 microfilm added</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>ViU</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/viu" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>University of Virginia</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/16362995-050-12">
-    <bf:heldBy rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+    <bf:heldBy>
+      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label>United States, Library of Congress</rdfs:label>
+      </madsrdf:CorporateName>
+    </bf:heldBy>
     <bf:shelfMark>
       <bf:ShelfMarkLcc>
 	<rdfs:label>ML48 [S9866]</rdfs:label>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
@@ -478,13 +619,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T21:00:51-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/3"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/aacr"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/3" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>abbreviated</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>16362995</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-09-14T12:41:44</bf:changeDate>
@@ -492,20 +650,32 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 3 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $e vl34 2012-03-02 microfilm added</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>ViU</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/viu" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>University of Virginia</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Item>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/16362995-051-13">
-    <bf:heldBy rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+    <bf:heldBy>
+      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label>United States, Library of Congress</rdfs:label>
+      </madsrdf:CorporateName>
+    </bf:heldBy>
     <bf:shelfMark>
       <bf:ShelfMark>
 	<rdfs:label>Microfilm Music 1854, reel 201.</rdfs:label>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:ShelfMark>
     </bf:shelfMark>
     <bf:note>
@@ -523,13 +693,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T21:00:51-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/3"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/aacr"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/3" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>abbreviated</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>16362995</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-09-14T12:41:44</bf:changeDate>
@@ -537,11 +724,15 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 3 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $e vl34 2012-03-02 microfilm added</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>ViU</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/viu" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>University of Virginia</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Item>

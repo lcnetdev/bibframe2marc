@@ -1,6 +1,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/20621601">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print" xmlns:streams="info:lc/streams#"/>
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
@@ -12,7 +12,7 @@
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2019</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/enk">
-	    <rdfs:label>England</rdfs:label>
+	    <rdfs:label xml:lang="en">England</rdfs:label>
 	  </bf:Place>
 	</bf:place>
       </bf:ProvisionActivity>
@@ -35,7 +35,7 @@
 	<rdf:value>9781315097855</rdf:value>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/cancinv">
-	    <rdfs:label>invalid</rdfs:label>
+	    <rdfs:label>canceled or invalid</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bf:qualifier>e-book</bf:qualifier>
@@ -88,17 +88,11 @@
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdamedia"/>
-	</bf:source>
       </bf:Media>
     </bf:media>
     <bf:carrier>
       <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
 	<rdfs:label>volume</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdacarrier"/>
-	</bf:source>
       </bf:Carrier>
     </bf:carrier>
     <bf:seriesStatement>Routledge studies in modern European history ; 61</bf:seriesStatement>
@@ -108,23 +102,8 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/20621601">
-	<bflc:aap>Krause, Scott H., Bringing Cold War democracy to West Berlin : a shared German-American project, 1940-1972</bflc:aap>
-      </bf:Work>
-    </bf:instanceOf>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/20621601-050-14">
-	<bf:shelfMark xmlns:streams="info:lc/streams#">
-	  <bf:ShelfMarkLcc>
-	    <rdfs:label>DD881.K695 2019</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMarkLcc>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20621601"/>
+    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/20621601-050-14"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -134,28 +113,28 @@
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	  <bf:Status>
 	    <rdfs:label>corrected or revised</rdfs:label>
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	    <rdfs:label>full</rdfs:label>
-	  </bflc:EncodingLevel>
+	  </madsrdf:Authority>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
-	    <rdfs:label>isbd</rdfs:label>
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20621601</rdf:value>
 	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<bf:code>DLC</bf:code>
-	      </bf:Agent>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -170,23 +149,23 @@
 	  </bf:Agent>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
-	    <rdfs:label>English</rdfs:label>
-	  </bf:Language>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdf:value>rda</rdf:value>
+	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
-	    <bf:code>pcc</bf:code>
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
@@ -195,16 +174,44 @@
   <bf:Work rdf:about="http://id.loc.gov/resources/works/20621601">
     <bflc:aap>Krause, Scott H., Bringing Cold War democracy to West Berlin : a shared German-American project, 1940-1972</bflc:aap>
     <bflc:aap-normalized>krausescotthbringingcoldwardemocracytowestberlin:asharedgermanamericanproject19401972</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
-    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-    <bf:illustrativeContent rdf:resource="http://id.loc.gov/vocabulary/millus/ill"/>
-    <bf:supplementaryContent rdf:resource="http://id.loc.gov/vocabulary/msupplcont/bibliography"/>
-    <bf:supplementaryContent rdf:resource="http://id.loc.gov/vocabulary/msupplcont/index"/>
-    <bf:geographicCoverage rdf:resource="http://id.loc.gov/vocabulary/geographicAreas/e-gw"/>
-    <bf:geographicCoverage rdf:resource="http://id.loc.gov/vocabulary/geographicAreas/n-us"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text" xmlns:streams="info:lc/streams#"/>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	<rdfs:label xml:lang="en">English</rdfs:label>
+      </bf:Language>
+    </bf:language>
+    <bf:illustrativeContent>
+      <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/millus/ill" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label>Illustrations</rdfs:label>
+      </madsrdf:Authority>
+    </bf:illustrativeContent>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/bibliography">
+	<rdfs:label>bibliography</rdfs:label>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/index">
+	<rdfs:label>index</rdfs:label>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:geographicCoverage>
+      <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/e-gw">
+	<rdfs:label xml:lang="en">Germany (West)</rdfs:label>
+      </bf:GeographicCoverage>
+    </bf:geographicCoverage>
+    <bf:geographicCoverage>
+      <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/n-us">
+	<rdfs:label xml:lang="en">United States</rdfs:label>
+      </bf:GeographicCoverage>
+    </bf:geographicCoverage>
     <bf:classification>
       <bf:ClassificationLcc>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
 	<bf:classificationPortion>DD881</bf:classificationPortion>
 	<bf:itemPortion>.K695 2019</bf:itemPortion>
       </bf:ClassificationLcc>
@@ -218,14 +225,27 @@
 	  </bf:Source>
 	</bf:source>
 	<bf:edition>full</bf:edition>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:ClassificationDdc>
     </bf:classification>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/no2018096422"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/aut"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution" xmlns:streams="info:lc/streams#"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/no2018096422">
+	    <rdfs:label>Krause, Scott H.</rdfs:label>
+	    <bflc:marcKey>1001 $aKrause, Scott H.</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
+	    <rdfs:label>Author</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <rdfs:label>Bringing Cold War democracy to West Berlin : a shared German-American project, 1940-1972</rdfs:label>
@@ -235,7 +255,11 @@
 	<bf:mainTitle>Bringing Cold War democracy to West Berlin : a shared German-American project, 1940-1972</bf:mainTitle>
       </bf:Title>
     </bf:title>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/txt"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+      </bf:Content>
+    </bf:content>
     <bf:summary>
       <bf:Summary>
 	<rdfs:label>"Within the span of a generation, Nazi Germany's former capital, Berlin, found a new role as a symbol of freedom and resilient democracy in the Cold War. This book unearths how this remarkable transformation derived from a network of liberal American occupation officials, and returned émigrés, or remigrés, of the Marxist Social Democratic Party (SPD). This network derived from lengthy physical and political journeys. After fleeing Hitler, German-speaking self-professed 'revolutionary socialists' emphasized 'anti-totalitarianism' in New Deal America and contributed to its intelligence apparatus. These experiences made these remigrés especially adept at cultural translation in postwar Berlin against Stalinism. This book provides a new explanation for the alignment of Germany's principal left-wing party with the Western camp. While the Cold War has traditionally been analyzed from the perspective of decision makers in Moscow or Washington, this study demonstrates the agency of hitherto marginalized on the conflict's first battlefield. Examining local political culture and social networks underscores how both Berliners and émigrés understood the East-West competition over the rubble that the Nazis left behind as a chance to reinvent themselves as democrats and cultural mediators, respectively. As this network popularized an anti-Communist, pro-Western Left, this book identifies how often ostracized émigrés made a crucial contribution to the Federal Republic of Germany's democratization"-- Provided by publisher.</rdfs:label>
@@ -251,10 +275,102 @@
 	<rdfs:label>Berlin, capital of ruins, 1945-1948 -- Origins of the outpost network, 1933-1949 -- Rise of the outpost narrative in the wake of the Berlin airlift, 1948-1953 -- Triple Crisis, 1953 -- Ascent to leadership, 1954-1961 -- Public acceptance and reinterpretation, 1961-1972 -- Conclusion: Excavating the outpost of freedom on the spree.</rdfs:label>
       </bf:TableOfContents>
     </bf:tableOfContents>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh85013353"/>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh2010110278"/>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh2008115210"/>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh2007100429"/>
+    <bf:subject>
+      <bf:Place>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject" xmlns:streams="info:lc/streams#"/>
+	<rdfs:label>Berlin (Germany)--Politics and government--1945-1990.</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Berlin (Germany)--Politics and government--1945-1990.</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of
+            Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic>http://id.loc.gov/authorities/subjects/collection_LCNAF<madsrdf:authoritativeLabel>Berlin (Germany)</madsrdf:authoritativeLabel></madsrdf:Geographic>
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2002011436">
+	    <rdfs:label xml:lang="en">Politics and government</rdfs:label>
+	    <bflc:marcKey>180  $xPolitics and government</bflc:marcKey>
+	  </madsrdf:Topic>
+	  <madsrdf:Temporal>http://id.loc.gov/authorities/subjects/collection_Subdivisions<madsrdf:authoritativeLabel>1945-1990</madsrdf:authoritativeLabel></madsrdf:Temporal>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>berlin(germany)politicsandgovernment19451990</bflc:aap-normalized>
+      </bf:Place>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject" xmlns:streams="info:lc/streams#"/>
+	<rdfs:label>Reconstruction (1939-1951)--Germany (West)</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Reconstruction (1939-1951)--Germany (West)</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of
+            Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85111866">
+	    <rdfs:label xml:lang="en">Reconstruction (1939-1951)</rdfs:label>
+	    <bflc:marcKey>150  $aReconstruction (1939-1951)</bflc:marcKey>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/authorities/names/n80125937-781">
+	    <rdfs:label>Germany (West)</rdfs:label>
+	    <bflc:marcKey>181  $zGermany (West)</bflc:marcKey>
+	  </madsrdf:Geographic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>reconstruction(19391951)germany(west)</bflc:aap-normalized>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Place>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject" xmlns:streams="info:lc/streams#"/>
+	<rdfs:label>Germany (West)--Foreign relations--United States.</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Germany (West)--Foreign relations--United States.</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of
+            Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic>http://id.loc.gov/authorities/subjects/collection_LCNAF<madsrdf:authoritativeLabel>Germany (West)</madsrdf:authoritativeLabel></madsrdf:Geographic>
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh00005791">
+	    <rdfs:label xml:lang="en">Foreign relations</rdfs:label>
+	    <bflc:marcKey>180  $xForeign relations</bflc:marcKey>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/authorities/names/n78095330-781">
+	    <rdfs:label>United States</rdfs:label>
+	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
+	  </madsrdf:Geographic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>germany(west)foreignrelationsunitedstates</bflc:aap-normalized>
+      </bf:Place>
+    </bf:subject>
+    <bf:subject>
+      <bf:Place>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject" xmlns:streams="info:lc/streams#"/>
+	<rdfs:label>United States--Foreign relations--Germany (West)</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">United States--Foreign relations--Germany (West)</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of
+            Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic>http://id.loc.gov/authorities/subjects/collection_LCNAF<madsrdf:authoritativeLabel>United States</madsrdf:authoritativeLabel></madsrdf:Geographic>
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh00005791">
+	    <rdfs:label xml:lang="en">Foreign relations</rdfs:label>
+	    <bflc:marcKey>180  $xForeign relations</bflc:marcKey>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/authorities/names/n80125937-781">
+	    <rdfs:label>Germany (West)</rdfs:label>
+	    <bflc:marcKey>181  $zGermany (West)</bflc:marcKey>
+	  </madsrdf:Geographic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>unitedstatesforeignrelationsgermany(west)</bflc:aap-normalized>
+      </bf:Place>
+    </bf:subject>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/20621601"/>
     <bf:adminMetadata>
@@ -265,13 +381,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T19:27:51-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/f"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/isbd"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>full</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20621601</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-11-09T14:35:07</bf:changeDate>
@@ -284,19 +417,43 @@
 	    <bf:code>LBSOR/DLC</bf:code>
 	  </bf:Agent>
 	</bf:assigner>
-	<bf:descriptionLanguage rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/rda"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/pcc"/>
+	<bf:descriptionLanguage>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/20621601-050-14">
-    <bf:heldBy rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+    <bf:heldBy>
+      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label>United States, Library of Congress</rdfs:label>
+      </madsrdf:CorporateName>
+    </bf:heldBy>
     <bf:shelfMark>
       <bf:ShelfMarkLcc>
 	<rdfs:label>DD881.K695 2019</rdfs:label>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
@@ -309,13 +466,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T19:27:51-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/f"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/isbd"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>full</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20621601</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-11-09T14:35:07</bf:changeDate>
@@ -328,10 +502,26 @@
 	    <bf:code>LBSOR/DLC</bf:code>
 	  </bf:Agent>
 	</bf:assigner>
-	<bf:descriptionLanguage rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/rda"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/pcc"/>
+	<bf:descriptionLanguage>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Item>

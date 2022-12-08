@@ -1,6 +1,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/20525980">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Manuscript"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Manuscript" xmlns:streams="info:lc/streams#"/>
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
@@ -11,7 +11,7 @@
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/xxu">
-	    <rdfs:label>United States</rdfs:label>
+	    <rdfs:label xml:lang="en">United States</rdfs:label>
 	  </bf:Place>
 	</bf:place>
       </bf:ProvisionActivity>
@@ -46,11 +46,7 @@
     </bf:extent>
     <bf:dimensions>cm.</bf:dimensions>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/20525980">
-	<bflc:aap>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p</bflc:aap>
-      </bf:Work>
-    </bf:instanceOf>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20525980"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -60,28 +56,28 @@
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	  <bf:Status>
 	    <rdfs:label>corrected or revised</rdfs:label>
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/5" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	    <rdfs:label>preliminary</rdfs:label>
-	  </bflc:EncodingLevel>
+	  </madsrdf:Authority>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
-	    <rdfs:label>isbd</rdfs:label>
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20525980</rdf:value>
 	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<bf:code>DLC</bf:code>
-	      </bf:Agent>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -91,23 +87,23 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a hh05 2018-06-01 On Order for Music Division</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
-	    <rdfs:label>English</rdfs:label>
-	  </bf:Language>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdf:value>rda</rdf:value>
+	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
-	    <bf:code>pcc</bf:code>
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<bf:status>
@@ -122,8 +118,12 @@
   <bf:Work rdf:about="http://id.loc.gov/resources/works/20525980">
     <bflc:aap>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p</bflc:aap>
     <bflc:aap-normalized>georgegershwinthemesfrom"anamericaninparis"holographmusicmanuscript1p</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic"/>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/ntm"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic" xmlns:streams="info:lc/streams#"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/ntm">
+	<rdfs:label>notated music</rdfs:label>
+      </bf:Content>
+    </bf:content>
     <rdfs:label>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p.</rdfs:label>
     <bf:title>
       <bf:Title>
@@ -141,13 +141,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-09T09:39:12-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/5"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/isbd"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/5" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>preliminary</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20525980</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-01T19:33:35</bf:changeDate>
@@ -155,10 +172,26 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d 2 $e ncip $f 20 $g y-music</lclocal:d906>
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a hh05 2018-06-01 On Order for Music Division</lclocal:d955>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionLanguage rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/rda"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/pcc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
+	<bf:descriptionLanguage>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
 	<bf:status>
 	  <bf:Status>
 	    <rdf:type rdf:resource="https://id.loc.gov/vocabulary/mstatus/supp"/>

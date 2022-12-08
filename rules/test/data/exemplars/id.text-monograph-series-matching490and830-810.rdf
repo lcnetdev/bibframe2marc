@@ -1,6 +1,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/16998093">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print" xmlns:streams="info:lc/streams#"/>
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
@@ -12,7 +12,7 @@
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2010</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/au">
-	    <rdfs:label>Austria</rdfs:label>
+	    <rdfs:label xml:lang="en">Austria</rdfs:label>
 	  </bf:Place>
 	</bf:place>
       </bf:ProvisionActivity>
@@ -76,11 +76,7 @@
     <bf:seriesStatement>SIAK scientific series 5</bf:seriesStatement>
     <bf:seriesStatement>Sicherheitsakademie &lt;Wien&gt; SIAK scientific series 5.</bf:seriesStatement>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/16998093">
-	<bflc:aap>Corruption</bflc:aap>
-      </bf:Work>
-    </bf:instanceOf>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/16998093"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -90,28 +86,28 @@
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	  <bf:Status>
 	    <rdfs:label>corrected or revised</rdfs:label>
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/5" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	    <rdfs:label>preliminary</rdfs:label>
-	  </bflc:EncodingLevel>
+	  </madsrdf:Authority>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label>aacr</rdfs:label>
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>16998093</rdf:value>
 	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<bf:code>DLC</bf:code>
-	      </bf:Agent>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -121,19 +117,27 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a ff70 2011-10-13 $a ff00 2011-10-28 to GS/SBCG</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/16998093">
-    <bflc:aap>Corruption</bflc:aap>
-    <bflc:aap-normalized>corruption</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/txt"/>
-    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+    <bflc:aap>Jakubowicz, Linda Corruption</bflc:aap>
+    <bflc:aap-normalized>jakubowiczlindacorruption</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text" xmlns:streams="info:lc/streams#"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+      </bf:Content>
+    </bf:content>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	<rdfs:label xml:lang="en">English</rdfs:label>
+      </bf:Language>
+    </bf:language>
     <rdfs:label>Corruption</rdfs:label>
     <bf:title>
       <bf:Title>
@@ -157,14 +161,14 @@
     </bf:language>
     <bf:genreForm>
       <bf:GenreForm>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic" xmlns:streams="info:lc/streams#"/>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Aufsatzsammlung.</madsrdf:authoritativeLabel>
 	<rdfs:label>Aufsatzsammlung.</rdfs:label>
       </bf:GenreForm>
     </bf:genreForm>
     <bf:subject>
       <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic" xmlns:streams="info:lc/streams#"/>
 	<rdfs:label>Korruption.</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Korruption.</madsrdf:authoritativeLabel>
 	<bflc:aap-normalized>korruption</bflc:aap-normalized>
@@ -172,37 +176,103 @@
     </bf:subject>
     <bf:subject>
       <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic" xmlns:streams="info:lc/streams#"/>
 	<rdfs:label>Korruption.</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Korruption.</madsrdf:authoritativeLabel>
 	<bflc:aap-normalized>korruption</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/swd" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"/>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/swd"/>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/swd">
+	    <rdfs:label>Schlagwortnormdatei</rdfs:label>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
       </bf:Topic>
     </bf:subject>
     <bf:genreForm>
       <bf:GenreForm>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic" xmlns:streams="info:lc/streams#"/>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Aufsatzsammlung.</madsrdf:authoritativeLabel>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/swd"/>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/swd">
+	    <bf:code>swd</bf:code>
+	  </bf:Source>
+	</bf:source>
 	<rdfs:label>Aufsatzsammlung.</rdfs:label>
       </bf:GenreForm>
     </bf:genreForm>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/no2012003139"/>
-	<bf:role rdf:resource="http://id.loc.gov/entities/roles/hrsg"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/edt"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/no2012003139">
+	    <rdfs:label>Jakubowicz, Linda</rdfs:label>
+	    <bflc:marcKey>1001 $aJakubowicz, Linda</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role>
+	    <rdfs:label>Hrsg.</rdfs:label>
+	  </bf:Role>
+	</bf:role>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/edt">
+	    <rdfs:label>Editor</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n00010534"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/aut"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n00010534">
+	    <rdfs:label>Fiedler, Franz</rdfs:label>
+	    <bflc:marcKey>1001 $aFiedler, Franz</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
+	    <rdfs:label>Author</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:hasSeries rdf:resource="http://id.loc.gov/resources/hubs/e81a779d-be3d-76ce-79c1-a1797447405e"/>
-    <bf:hasSeries rdf:resource="http://id.loc.gov/resources/hubs/26d96881-bb7a-8b53-a96d-12a50c040da7"/>
+    <bf:hasSeries>
+      <bf:Work>
+	<bflc:aap>SIAK scientific series</bflc:aap>
+	<bflc:aap-normalized>siakscientificseries</bflc:aap-normalized>
+	<rdfs:label>SIAK scientific series</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>SIAK scientific series</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Work>
+    </bf:hasSeries>
+    <bf:hasSeries>
+      <bf:Work>
+	<bflc:aap>Sicherheitsakademie &lt;Wien&gt; SIAK scientific series</bflc:aap>
+	<bflc:aap-normalized>sicherheitsakademie&lt;wien&gt;siakscientificseries</bflc:aap-normalized>
+	<rdfs:label>Sicherheitsakademie &lt;Wien&gt; SIAK scientific series</rdfs:label>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label>Sicherheitsakademie &lt;Wien&gt;</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+		<rdfs:label>Contributor</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>SIAK scientific series</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Work>
+    </bf:hasSeries>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/16998093"/>
     <bf:adminMetadata>
@@ -213,13 +283,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T19:44:48-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/5"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/aacr"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/5" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>preliminary</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>16998093</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-10-28T08:41:08</bf:changeDate>
@@ -227,7 +314,11 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c origres $d 3 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a ff70 2011-10-13 $a ff00 2011-10-28 to GS/SBCG</lclocal:d955>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>

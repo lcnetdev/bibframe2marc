@@ -11,7 +11,7 @@
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1839</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/au">
-	    <rdfs:label>Austria</rdfs:label>
+	    <rdfs:label xml:lang="en">Austria</rdfs:label>
 	  </bf:Place>
 	</bf:place>
       </bf:ProvisionActivity>
@@ -26,7 +26,7 @@
 	<rdf:value>   64045636 </rdf:value>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/cancinv">
-	    <rdfs:label>invalid</rdfs:label>
+	    <rdfs:label>canceled or invalid</rdfs:label>
 	  </bf:Status>
 	</bf:status>
       </bf:Lccn>
@@ -83,17 +83,11 @@
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdamedia"/>
-	</bf:source>
       </bf:Media>
     </bf:media>
     <bf:carrier>
       <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
 	<rdfs:label>volume</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdacarrier"/>
-	</bf:source>
       </bf:Carrier>
     </bf:carrier>
     <bf:note>
@@ -117,35 +111,9 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/20779915">
-	<bflc:aap>Liszt, Franz, 1811-1886 Grande fantaisie de bravoure sur La clochette de Paganini</bflc:aap>
-      </bf:Work>
-    </bf:instanceOf>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/20779915-050-12">
-	<bf:shelfMark>
-	  <bf:ShelfMarkLcc>
-	    <rdfs:label>ML31.H43e no. 43</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMarkLcc>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/20779915-051-13">
-	<bf:shelfMark>
-	  <bf:ShelfMarkLcc>
-	    <rdfs:label>86/20,226 (Mus) item 121</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMarkLcc>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20779915"/>
+    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/20779915-050-12"/>
+    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/20779915-051-13"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -160,22 +128,22 @@
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	    <rdfs:label>full</rdfs:label>
-	  </bflc:EncodingLevel>
+	  </madsrdf:Authority>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
-	    <bf:code>isbd</bf:code>
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20779915</rdf:value>
 	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<bf:code>DLC</bf:code>
-	      </bf:Agent>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -184,28 +152,28 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c premver $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $i vk39 2018-12-13 $e vk39 2019-01-09 sent to Music Division</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
-	    <rdfs:label>English</rdfs:label>
-	  </bf:Language>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <bf:code>rda</bf:code>
+	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
-	    <bf:code>pcc</bf:code>
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a consortiumLC</lclocal:d985>
@@ -217,13 +185,34 @@
     <bflc:aap>Liszt, Franz, 1811-1886 Grande fantaisie de bravoure sur La clochette de Paganini</bflc:aap>
     <bflc:aap-normalized>lisztfranz18111886grandefantaisiedebravouresurlaclochettedepaganini</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic"/>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/ntm"/>
-    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/zxx"/>
-    <bf:genreForm rdf:resource="http://id.loc.gov/authorities/genreForms/gf2018026018"/>
-    <bf:musicFormat rdf:resource="http://id.loc.gov/vocabulary/mmusicformat/score"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/ntm">
+	<rdfs:label>notated music</rdfs:label>
+      </bf:Content>
+    </bf:content>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/zxx">
+	<rdfs:label xml:lang="en">No linguistic content</rdfs:label>
+      </bf:Language>
+    </bf:language>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2018026018">
+	<rdfs:label xml:lang="en">Fantasias (Music)</rdfs:label>
+	<bflc:marcKey>155  $aFantasias (Music)</bflc:marcKey>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:musicFormat>
+      <bf:MusicFormat rdf:about="http://id.loc.gov/vocabulary/mmusicformat/score">
+	<rdfs:label>score</rdfs:label>
+      </bf:MusicFormat>
+    </bf:musicFormat>
     <bf:classification>
       <bf:ClassificationLcc>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
 	<bf:classificationPortion>ML31</bf:classificationPortion>
 	<bf:itemPortion>.H43e no. 43</bf:itemPortion>
       </bf:ClassificationLcc>
@@ -231,8 +220,17 @@
     <bf:contribution>
       <bf:Contribution>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79079048"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/cmp"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n79079048">
+	    <rdfs:label>Liszt, Franz, 1811-1886</rdfs:label>
+	    <bflc:marcKey>1001 $aLiszt, Franz,$d1811-1886</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/cmp">
+	    <rdfs:label>Composer</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:title>
@@ -240,7 +238,11 @@
 	<bf:mainTitle>Grande fantaisie de bravoure sur La clochette de Paganini</bf:mainTitle>
       </bf:Title>
     </bf:title>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/ntm"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/ntm">
+	<rdfs:label>notated music</rdfs:label>
+      </bf:Content>
+    </bf:content>
     <bf:musicMedium>
       <bf:MusicMedium>
 	<bflc:readMarc382>$apiano$n1$s1$2lcmpt</bflc:readMarc382>
@@ -252,10 +254,30 @@
 	<rdfs:label>Staff notation</rdfs:label>
       </bf:Notation>
     </bf:notation>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh85105702"/>
-    <bf:genreForm rdf:resource="http://id.loc.gov/authorities/genreForms/gf2014027077"/>
-    <bf:genreForm rdf:resource="http://id.loc.gov/authorities/genreForms/gf2014026932"/>
-    <bf:genreForm rdf:resource="http://id.loc.gov/authorities/genreForms/gf2014026084"/>
+    <bf:subject>
+      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85105702" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label xml:lang="en">Potpourris (Piano)</rdfs:label>
+	<bflc:marcKey>150 0$aPotpourris (Piano)</bflc:marcKey>
+      </madsrdf:Topic>
+    </bf:subject>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014027077">
+	<rdfs:label xml:lang="en">Scores</rdfs:label>
+	<bflc:marcKey>155  $aScores</bflc:marcKey>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026932">
+	<rdfs:label xml:lang="en">Medleys (Music)</rdfs:label>
+	<bflc:marcKey>155  $aMedleys (Music)</bflc:marcKey>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026084">
+	<rdfs:label xml:lang="en">Derivative works</rdfs:label>
+	<bflc:marcKey>155  $aDerivative works</bflc:marcKey>
+      </bf:GenreForm>
+    </bf:genreForm>
     <bf:expressionOf rdf:resource="http://id.loc.gov/resources/hubs/cf128180-b682-6e6a-e2a8-efed3c7f9c6e"/>
     <bf:references>
       <bf:Work>
@@ -286,7 +308,11 @@
 		<rdfs:label>Paganini, Nicolò, 1782-1840</rdfs:label>
 	      </bf:Agent>
 	    </bf:agent>
-	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	    <bf:role>
+	      <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/relators/ctb" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>Contributor</rdfs:label>
+	      </madsrdf:Authority>
+	    </bf:role>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -307,7 +333,11 @@
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
     <bflc:relationship>
       <bflc:Relationship>
-	<bflc:relation rdf:resource="http://id.loc.gov/entities/relationships/basedon"/>
+	<bflc:relation>
+	  <bflc:Relation rdf:about="http://id.loc.gov/entities/relationships/basedon">
+	    <rdfs:label>Based on</rdfs:label>
+	  </bflc:Relation>
+	</bflc:relation>
 	<bf:relatedTo>
 	  <bf:Hub>
 	    <bflc:aap>Paganini, Nicolò, 1782-1840 Concertos, violin, orchestra, no. 2, op. 7, B minor. Rondò. Rondò</bflc:aap>
@@ -320,7 +350,11 @@
 		    <rdfs:label>Paganini, Nicolò, 1782-1840</rdfs:label>
 		  </bf:Agent>
 		</bf:agent>
-		<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+		<bf:role>
+		  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/relators/ctb" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		    <rdfs:label>Contributor</rdfs:label>
+		  </madsrdf:Authority>
+		</bf:role>
 	      </bf:Contribution>
 	    </bf:contribution>
 	    <bf:title>
@@ -350,36 +384,79 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-28T01:41:40.935652-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/f"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/isbd"/>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>full</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20779915</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-27T10:44:59</bf:changeDate>
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-13</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c premver $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $i vk39 2018-12-13 $e vk39 2019-01-09 sent to Music Division</lclocal:d955>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionLanguage rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/rda"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/pcc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
+	<bf:descriptionLanguage>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a consortiumLC</lclocal:d985>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a musliszt</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-    <bf:expressionOf rdf:resource="http://id.loc.gov/resources/hubs/cf128180-b682-6e6a-e2a8-efed3c7f9c6e"/>
   </bf:Work>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/20779915-050-12">
-    <bf:heldBy rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+    <bf:heldBy>
+      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label>United States, Library of Congress</rdfs:label>
+      </madsrdf:CorporateName>
+    </bf:heldBy>
     <bf:shelfMark>
       <bf:ShelfMarkLcc>
 	<rdfs:label>ML31.H43e no. 43</rdfs:label>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
@@ -389,7 +466,11 @@
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20779915-050-12</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:generationProcess>
@@ -398,29 +479,69 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-28T01:41:40.935652-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/f"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/isbd"/>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>full</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-27T10:44:59</bf:changeDate>
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-13</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c premver $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $i vk39 2018-12-13 $e vk39 2019-01-09 sent to Music Division</lclocal:d955>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionLanguage rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/rda"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/pcc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
+	<bf:descriptionLanguage>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a consortiumLC</lclocal:d985>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a musliszt</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Item>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/20779915-051-13">
-    <bf:heldBy rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+    <bf:heldBy>
+      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label>United States, Library of Congress</rdfs:label>
+      </madsrdf:CorporateName>
+    </bf:heldBy>
     <bf:shelfMark>
       <bf:ShelfMarkLcc>
 	<rdfs:label>86/20,226 (Mus) item 121</rdfs:label>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
     <bf:note>
@@ -435,7 +556,11 @@
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20779915-051-13</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:generationProcess>
@@ -444,18 +569,50 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-28T01:41:40.935652-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/f"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/isbd"/>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>full</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-27T10:44:59</bf:changeDate>
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-12-13</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c premver $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $i vk39 2018-12-13 $e vk39 2019-01-09 sent to Music Division</lclocal:d955>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionLanguage rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/rda"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/pcc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
+	<bf:descriptionLanguage>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a consortiumLC</lclocal:d985>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a musliszt</lclocal:d985>
       </bf:AdminMetadata>

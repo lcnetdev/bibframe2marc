@@ -7,6 +7,9 @@ declare -A exemplars=(
 ["6520336"]="text-contributors-instancecontributor"
 ["22818936"]="text-contributors-relationship"
 ["20178796"]="musicaudio-mono-relationships"
+["10941364"]="text-serial-issues-008-subjects"
+["20952712"]="text-monograph-issues-008-subjects"
+["9078040"]="text=serial-issues-008"
 
 )
 

@@ -1,6 +1,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/19279034">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print" xmlns:streams="info:lc/streams#"/>
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
@@ -12,7 +12,7 @@
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2014</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/nyu">
-	    <rdfs:label>New York (State)</rdfs:label>
+	    <rdfs:label xml:lang="en">New York (State)</rdfs:label>
 	  </bf:Place>
 	</bf:place>
       </bf:ProvisionActivity>
@@ -73,7 +73,7 @@
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
 	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/current">
+	  <bf:Status>
 	    <rdfs:label>current</rdfs:label>
 	  </bf:Status>
 	</bf:status>
@@ -95,7 +95,7 @@
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
 	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/current">
+	  <bf:Status>
 	    <rdfs:label>current</rdfs:label>
 	  </bf:Status>
 	</bf:status>
@@ -147,11 +147,7 @@
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/19279034">
-	<bflc:aap>8th International Symposium on Measurement Techniques for Multiphase Flows Guangzhou, P.R. China, 13-15 Dezember 2013 ; [ISMTMF'2013]</bflc:aap>
-      </bf:Work>
-    </bf:instanceOf>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/19279034"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -161,28 +157,28 @@
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	  <bf:Status>
 	    <rdfs:label>corrected or revised</rdfs:label>
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/5" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	    <rdfs:label>preliminary</rdfs:label>
-	  </bflc:EncodingLevel>
+	  </madsrdf:Authority>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label>aacr</rdfs:label>
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>19279034</rdf:value>
 	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<bf:code>DLC</bf:code>
-	      </bf:Agent>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -192,25 +188,37 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $b rm08 2016-09-19 z-processor</lclocal:d955>
 	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:assigner>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
-	    <bf:code>pcc</bf:code>
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/19279034">
-    <bflc:aap>8th International Symposium on Measurement Techniques for Multiphase Flows Guangzhou, P.R. China, 13-15 Dezember 2013 ; [ISMTMF'2013]</bflc:aap>
-    <bflc:aap-normalized>8thinternationalsymposiumonmeasurementtechniquesformultiphaseflowsguangzhouprchina1315dezember2013;[ismtmf'2013]</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/txt"/>
-    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-    <bf:illustrativeContent rdf:resource="http://id.loc.gov/vocabulary/millus/ill"/>
+    <bflc:aap>Li, Yang 8th International Symposium on Measurement Techniques for Multiphase Flows Guangzhou, P.R. China, 13-15 Dezember 2013 ; [ISMTMF'2013]</bflc:aap>
+    <bflc:aap-normalized>liyang8thinternationalsymposiumonmeasurementtechniquesformultiphaseflowsguangzhouprchina1315dezember2013;[ismtmf'2013]</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text" xmlns:streams="info:lc/streams#"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+      </bf:Content>
+    </bf:content>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	<rdfs:label xml:lang="en">English</rdfs:label>
+      </bf:Language>
+    </bf:language>
+    <bf:illustrativeContent>
+      <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/millus/ill" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label>Illustrations</rdfs:label>
+      </madsrdf:Authority>
+    </bf:illustrativeContent>
     <rdfs:label>8th International Symposium on Measurement Techniques for Multiphase Flows Guangzhou, P.R. China, 13-15 Dezember 2013 ; [ISMTMF'2013]</rdfs:label>
     <bf:title>
       <bf:Title>
@@ -220,50 +228,92 @@
     </bf:title>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n78073530"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n78073530">
+	    <rdfs:label>Li, Yang</rdfs:label>
+	    <bflc:marcKey>1001 $aLi, Yang</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+	    <rdfs:label>Contributor</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>Zheng, Yingna</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+	    <rdfs:label>Contributor</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n88154380"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n88154380">
+	    <rdfs:label>Zhongguo ji liang ce shi xue hui</rdfs:label>
+	    <bflc:marcKey>1102 $aZhongguo ji liang ce shi xue hui</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+	    <rdfs:label>Contributor</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Meeting"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Meeting" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>International Symposium on Measurement Techniques for Multiphase Flows Guangzhou</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+	    <rdfs:label>Contributor</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Meeting"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Meeting" xmlns:streams="info:lc/streams#"/>
 	    <rdfs:label>ISMTMF'2013 8 2013.12.13-15 Guangzhou</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+	    <rdfs:label>Contributor</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:hasSeries rdf:resource="http://id.loc.gov/resources/hubs/451a4d67-03fb-1b75-1237-61ee6b120b25"/>
+    <bf:hasSeries>
+      <bf:Work>
+	<bflc:aap>AIP conference proceedings</bflc:aap>
+	<bflc:aap-normalized>aipconferenceproceedings</bflc:aap-normalized>
+	<rdfs:label>AIP conference proceedings. American Institute of Physics</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>AIP conference proceedings</bf:mainTitle>
+	    <bf:partName>American Institute of Physics</bf:partName>
+	  </bf:Title>
+	</bf:title>
+      </bf:Work>
+    </bf:hasSeries>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/19279034"/>
     <bf:adminMetadata>
@@ -274,13 +324,30 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T20:20:22-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/5"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/aacr"/>
+	<bf:status>
+	  <bf:Status>
+	    <rdfs:label>corrected or revised</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/5" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>preliminary</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>19279034</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-09-19T13:00:42</bf:changeDate>
@@ -288,8 +355,16 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c origres $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $b rm08 2016-09-19 z-processor</lclocal:d955>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/pcc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>

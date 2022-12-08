@@ -12,7 +12,7 @@
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2020</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/riu">
-	    <rdfs:label>Rhode Island</rdfs:label>
+	    <rdfs:label xml:lang="en">Rhode Island</rdfs:label>
 	  </bf:Place>
 	</bf:place>
       </bf:ProvisionActivity>
@@ -33,7 +33,7 @@
 	<rdf:value>9781470463458</rdf:value>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/cancinv">
-	    <rdfs:label>invalid</rdfs:label>
+	    <rdfs:label>canceled or invalid</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bf:qualifier>pdf</bf:qualifier>
@@ -70,17 +70,11 @@
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdamedia"/>
-	</bf:source>
       </bf:Media>
     </bf:media>
     <bf:carrier>
       <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
 	<rdfs:label>volume</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdacarrier"/>
-	</bf:source>
       </bf:Carrier>
     </bf:carrier>
     <bf:seriesStatement>Memoirs of the American Mathematical Society, 0065-9266 ; number 1307</bf:seriesStatement>
@@ -95,23 +89,8 @@
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/22076502">
-	<bflc:aap>Thomas, Adam R., 1988- The irreducible subgroups of exceptional algebraic groups</bflc:aap>
-      </bf:Work>
-    </bf:instanceOf>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/22076502-050-13">
-	<bf:shelfMark>
-	  <bf:ShelfMarkLcc>
-	    <rdfs:label>QA179.T55 2020</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMarkLcc>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/22076502"/>
+    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/22076502-050-13"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -126,22 +105,22 @@
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	    <rdfs:label>full</rdfs:label>
-	  </bflc:EncodingLevel>
+	  </madsrdf:Authority>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
-	    <bf:code>isbd</bf:code>
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>22076502</rdf:value>
 	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<bf:code>DLC</bf:code>
-	      </bf:Agent>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -156,23 +135,23 @@
 	  </bf:Agent>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
-	    <rdfs:label>English</rdfs:label>
-	  </bf:Language>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <bf:code>rda</bf:code>
+	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
-	    <bf:code>pcc</bf:code>
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a LBSORCIP $d 2021-06-07</lclocal:d985>
@@ -183,12 +162,28 @@
     <bflc:aap>Thomas, Adam R., 1988- The irreducible subgroups of exceptional algebraic groups</bflc:aap>
     <bflc:aap-normalized>thomasadamr1988theirreduciblesubgroupsofexceptionalalgebraicgroups</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/txt"/>
-    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-    <bf:supplementaryContent rdf:resource="http://id.loc.gov/vocabulary/msupplcont/bibliography"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+      </bf:Content>
+    </bf:content>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	<rdfs:label xml:lang="en">English</rdfs:label>
+      </bf:Language>
+    </bf:language>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/bibliography">
+	<rdfs:label>bibliography</rdfs:label>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
     <bf:classification>
       <bf:ClassificationLcc>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
 	<bf:classificationPortion>QA179</bf:classificationPortion>
 	<bf:itemPortion>.T55 2020</bf:itemPortion>
       </bf:ClassificationLcc>
@@ -202,7 +197,11 @@
 	  </bf:Source>
 	</bf:source>
 	<bf:edition>full</bf:edition>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:ClassificationDdc>
     </bf:classification>
     <bf:classification>
@@ -238,8 +237,17 @@
     <bf:contribution>
       <bf:Contribution>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/no2021068822"/>
-	<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/aut"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/no2021068822">
+	    <rdfs:label>Thomas, Adam R., 1988-</rdfs:label>
+	    <bflc:marcKey>1001 $aThomas, Adam R.,$d1988-</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
+	    <rdfs:label>Author</rdfs:label>
+	  </bf:Role>
+	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <bf:title>
@@ -247,7 +255,11 @@
 	<bf:mainTitle>The irreducible subgroups of exceptional algebraic groups</bf:mainTitle>
       </bf:Title>
     </bf:title>
-    <bf:content rdf:resource="http://id.loc.gov/vocabulary/contentTypes/txt"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+      </bf:Content>
+    </bf:content>
     <bf:tableOfContents>
       <bf:TableOfContents>
 	<rdfs:label>Strategy for the proofs of theorems 5.1-9.1 -- Irreducible subgroups of G2 -- Irreducible subgroups of F4 -- Irreducible subgroups of G = E6 -- Irreducible subgroups of G = E7 -- Irreducible subgroups of G = E8 -- Corollaries -- Tables for theorem 1 -- Composition factors for G-irreducible subgroups -- Composition factors for the action of Levi subgroups.</rdfs:label>
@@ -258,18 +270,46 @@
 	<rdfs:label>"This monograph is a contribution to the study of the subgroup structure of exceptional algebraic groups over algebraically closed fields of arbitrary characteristic. Following Serre, a closed subgroup of a semisimple algebraic group G is called irreducible if it lies in no proper parabolic subgroup of G. In this paper we complete the classification of irreducible connected subgroups of exceptional algebraic groups, providing an explicit set of representatives for the conjugacy classes of such subgroups. Many consequences of this classification are also given. These include results concerning the representations of such subgroups on various G-modules: for example, the conjugacy classes of irreducible connected subgroups are determined by their composition factors on the adjoint module of G, with one exception. A result of Liebeck and Testerman shows that each irreducible connected subgroup X of G has only finitely many overgroups and hence the overgroups of X form a lattice. We provide tables that give representatives of each conjugacy class of connected overgroups within this lattice structure. We use this to prove results concerning the subgroup structure of G: for example, when the characteristic is 2, there exists a maximal connected subgroup of G containing a conjugate of every irreducible subgroup A1 of G"-- Provided by publisher.</rdfs:label>
       </bf:Summary>
     </bf:summary>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh85077171"/>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh85112944"/>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh85042674"/>
-    <bf:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh87001592"/>
+    <bf:subject>
+      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85077171" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label xml:lang="en">Linear algebraic groups</rdfs:label>
+	<bflc:marcKey>150  $aLinear algebraic groups</bflc:marcKey>
+      </madsrdf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85112944" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label xml:lang="en">Representations of groups</rdfs:label>
+	<bflc:marcKey>150 0$aRepresentations of groups</bflc:marcKey>
+      </madsrdf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85042674" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label xml:lang="en">Embeddings (Mathematics)</rdfs:label>
+	<bflc:marcKey>150 0$aEmbeddings (Mathematics)</bflc:marcKey>
+      </madsrdf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh87001592" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label xml:lang="en">Maximal subgroups</rdfs:label>
+	<bflc:marcKey>150 0$aMaximal subgroups</bflc:marcKey>
+      </madsrdf:Topic>
+    </bf:subject>
     <bf:subject>
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
 	<rdfs:label>Group theory and generalizations -- Linear algebraic groups and related topics -- Representation theory for linear algebraic groups.</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Group theory and generalizations -- Linear algebraic groups and related topics -- Representation theory for linear algebraic groups.</madsrdf:authoritativeLabel>
 	<bflc:aap-normalized>grouptheoryandgeneralizationslinearalgebraicgroupsandrelatedtopicsrepresentationtheoryforlinearalgebraicgroups</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/msc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"/>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/msc"/>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/msc">
+	    <rdfs:label>Mathematical subject classification</rdfs:label>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/msc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>Mathematical subject classification</rdfs:label>
+	  </madsrdf:Authority>
+	</bf:source>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
@@ -278,8 +318,16 @@
 	<rdfs:label>Group theory and generalizations -- Linear algebraic groups and related topics -- Linear algebraic groups over arbitrary fields.</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Group theory and generalizations -- Linear algebraic groups and related topics -- Linear algebraic groups over arbitrary fields.</madsrdf:authoritativeLabel>
 	<bflc:aap-normalized>grouptheoryandgeneralizationslinearalgebraicgroupsandrelatedtopicslinearalgebraicgroupsoverarbitraryfields</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/msc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"/>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/msc"/>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/msc">
+	    <rdfs:label>Mathematical subject classification</rdfs:label>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/msc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>Mathematical subject classification</rdfs:label>
+	  </madsrdf:Authority>
+	</bf:source>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
@@ -288,11 +336,29 @@
 	<rdfs:label>Group theory and generalizations -- Linear algebraic groups and related topics -- Exceptional groups.</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Group theory and generalizations -- Linear algebraic groups and related topics -- Exceptional groups.</madsrdf:authoritativeLabel>
 	<bflc:aap-normalized>grouptheoryandgeneralizationslinearalgebraicgroupsandrelatedtopicsexceptionalgroups</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/msc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#"/>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/msc"/>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/msc">
+	    <rdfs:label>Mathematical subject classification</rdfs:label>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/msc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>Mathematical subject classification</rdfs:label>
+	  </madsrdf:Authority>
+	</bf:source>
       </bf:Topic>
     </bf:subject>
-    <bf:hasSeries rdf:resource="http://id.loc.gov/resources/hubs/d41d8cd9-8f00-b204-e980-0998ecf8427e"/>
+    <bf:hasSeries>
+      <bf:Work>
+	<bflc:aap/>
+	<bflc:aap-normalized/>
+	<bf:identifiedBy>
+	  <bf:Issn>
+	    <rdf:value>0065-9266</rdf:value>
+	  </bf:Issn>
+	</bf:identifiedBy>
+      </bf:Work>
+    </bf:hasSeries>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/22076502"/>
     <bf:adminMetadata>
@@ -303,13 +369,29 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-11T01:49:24.693853-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/f"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/isbd"/>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>full</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>22076502</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-10T11:49:10</bf:changeDate>
@@ -322,20 +404,44 @@
 	    <bf:code>LBSOR/DLC</bf:code>
 	  </bf:Agent>
 	</bf:assigner>
-	<bf:descriptionLanguage rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/rda"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/pcc"/>
+	<bf:descriptionLanguage>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a LBSORCIP $d 2021-06-07</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/22076502-050-13">
-    <bf:heldBy rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+    <bf:heldBy>
+      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<rdfs:label>United States, Library of Congress</rdfs:label>
+      </madsrdf:CorporateName>
+    </bf:heldBy>
     <bf:shelfMark>
       <bf:ShelfMarkLcc>
 	<rdfs:label>QA179.T55 2020</rdfs:label>
-	<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	<bf:assigner>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
@@ -345,7 +451,11 @@
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>22076502-050-13</rdf:value>
-	    <bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+	    <bf:assigner>
+	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </madsrdf:CorporateName>
+	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
 	<bf:generationProcess>
@@ -354,9 +464,21 @@
 	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-11T01:49:24.693853-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
-	<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/c"/>
-	<bflc:encodingLevel rdf:resource="http://id.loc.gov/vocabulary/menclvl/f"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/isbd"/>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/menclvl/f" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>full</rdfs:label>
+	  </madsrdf:Authority>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-10T11:49:10</bf:changeDate>
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-06-07</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d 1 $e ecip $f 20 $g y-gencatlg</lclocal:d906>
@@ -367,10 +489,26 @@
 	    <bf:code>LBSOR/DLC</bf:code>
 	  </bf:Agent>
 	</bf:assigner>
-	<bf:descriptionLanguage rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-	<bf:descriptionModifier rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	<bf:descriptionConventions rdf:resource="http://id.loc.gov/vocabulary/descriptionConventions/rda"/>
-	<bf:descriptionAuthentication rdf:resource="http://id.loc.gov/vocabulary/marcauthen/pcc"/>
+	<bf:descriptionLanguage>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  </madsrdf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionModifier>
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </madsrdf:CorporateName>
+	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a LBSORCIP $d 2021-06-07</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
