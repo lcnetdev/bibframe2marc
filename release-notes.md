@@ -1,5 +1,15 @@
 # bibframe2marc release notes
 
+## v2.2.1
+
+Patch release to address numerous bug issues. This still conforms with 2.2.0 specs, which can be found in the [spec](spec/) directory. Changes of note:
+
+* Fix duplicating 7XXs.
+* Set correct indicator values for 240, 730, and 830.
+* Better handling of legacy 440.
+
+See the [NEWS](NEWS) file for full details of changes.
+
 ## v2.2.0
 
 Conversion updates based on specifications v2.2. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
