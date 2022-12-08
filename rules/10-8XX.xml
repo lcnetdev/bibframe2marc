@@ -61,22 +61,15 @@
             </case>
           </switch>
         </ind1>
-      <!--
-        <ind1>
-        <switch>
-          <case test="$vSeriesLookupTag = '830'">
-            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2" />
-          </case>
-          <case test="default">
-            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
-          </case>
-        </switch>
-      </ind1>
-      -->
       <ind2 default=" ">
         <switch>
           <case test="$vSeriesLookupTag = '830'">
-            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+            <switch>
+              <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != '' and $vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != ' '">
+                <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+              </case>
+              <case test="default">0</case>
+            </switch>
           </case>
         </switch>
       </ind2>
@@ -170,13 +163,15 @@
           </case>
         </switch>
       </ind1>
-      <ind2>
+      <ind2 default=" ">
         <switch>
           <case test="$vSeriesMarcKeyTag = '830'">
-            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2" />
-          </case>
-          <case test="default">
-            <transform><xsl:value-of select="' '" /></transform>
+            <switch>
+              <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != '' and $vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != ' '">
+                <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+              </case>
+              <case test="default">0</case>
+            </switch>
           </case>
         </switch>
       </ind2>

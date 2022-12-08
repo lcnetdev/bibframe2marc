@@ -303,7 +303,19 @@
         </var>
         
         <ind1 default=" ">
-          <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+          <switch>
+            <case test="$vAddRelationLookupTag = '730'">
+              <switch>
+                <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != '' and $vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != ' '">
+                  <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+                </case>
+                <case test="default">0</case>
+              </switch>
+            </case>
+            <case test="default">
+              <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+            </case>
+          </switch>
         </ind1>
         <ind2 default=" ">
           <switch>
@@ -449,7 +461,19 @@
       </var>
       
       <ind1 default=" ">
-        <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+        <switch>
+          <case test="$vAddRelationMarcKeyTag = '730'">
+            <switch>
+              <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != '' and $vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != ' '">
+                <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+              </case>
+              <case test="default">0</case>
+            </switch>
+          </case>
+          <case test="default">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+          </case>
+        </switch>
       </ind1>
       <ind2 default=" ">
         <switch>
@@ -894,10 +918,10 @@
   </df>
 
   <df tag="730" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:relatedTo/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs'))] |
-                    //bf:Item/bf:relatedTo/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs'))] |
-                    bf:Work/bf:hasPart/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs'))] |
-                    //bf:Item/bf:hasPart/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs'))]">
+    <context xpath="bf:Work/bf:relatedTo/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs')) and not(bflc:marcKey)] |
+                    //bf:Item/bf:relatedTo/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs')) and not(bflc:marcKey)] |
+                    bf:Work/bf:hasPart/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs')) and not(bflc:marcKey)] |
+                    //bf:Item/bf:hasPart/bf:Hub[not(bf:contribution) and not(contains(@rdf:about, 'hubs')) and not(bflc:marcKey)]">
      
       <var name="vTitleResourcePreNS">
         <switch>
