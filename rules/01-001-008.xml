@@ -501,9 +501,11 @@
                   </xsl:choose>
                 </xsl:variable>
                 <xsl:variable name="date2">
+                            <xsl:message>Format is</xsl:message>
+        <xsl:message><xsl:value-of select="$v008Format" /></xsl:message>
                   <xsl:choose>
                     <xsl:when test="$cDateExists = 1">
-                      <xsl:value-of select="bf:Instance/bf:copyrightDate[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf']" />
+                      <xsl:value-of select="translate(bf:Instance/bf:copyrightDate[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'], '©', '')" />
                     </xsl:when>
                     <xsl:when test="contains($theDate, '/..')">9999</xsl:when>
                     <xsl:when test="contains($theDate, '/')">
@@ -635,6 +637,8 @@
                 <xsl:variable name="vIllusPadded">
                   <xsl:call-template name="tPadRight">
                     <xsl:with-param name="pInput" select="$vIllus"/>
+                    <!-- useful for testing. -->
+                    <!-- <xsl:with-param name="pPadChar" select="'f'"/> -->
                     <xsl:with-param name="pStringLength">4</xsl:with-param>
                   </xsl:call-template>
                 </xsl:variable>
@@ -1095,6 +1099,8 @@
                 <xsl:variable name="vNoCPadded">
                   <xsl:call-template name="tPadRight">
                     <xsl:with-param name="pInput" select="$vNoC"/>
+                    <!-- useful for testing. -->
+                    <!-- <xsl:with-param name="pPadChar" select="'f'"/> -->
                     <xsl:with-param name="pStringLength"><xsl:value-of select="$vNoCLength"/></xsl:with-param>
                   </xsl:call-template>
                 </xsl:variable>
