@@ -863,9 +863,19 @@
       <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
+      <var name="v382data">
+          <switch>
+              <case test="starts-with(bflc:readMarc382, '$')">
+                  <transform><xsl:value-of select="concat('382  ', bflc:readMarc382)" /></transform>
+              </case>
+              <case test="default">
+                  <transform><xsl:value-of select="bflc:readMarc382" /></transform>
+              </case>
+          </switch>
+      </var>
       <transform>
         <xsl:call-template name="tReadMarc382">
-          <xsl:with-param name="pString" select="substring(bflc:readMarc382, 6)"/>
+          <xsl:with-param name="pString" select="substring($v382data, 6)"/>
         </xsl:call-template>
       </transform>
     </context>
