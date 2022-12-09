@@ -9,7 +9,7 @@ declare -A exemplars=(
 ["20178796"]="musicaudio-mono-relationships"
 ["10941364"]="text-serial-issues-008-subjects"
 ["20952712"]="text-monograph-issues-008-subjects"
-["9078040"]="text=serial-issues-008"
+["9078040"]="text-serial-issues-008"
 
 )
 
