@@ -501,8 +501,6 @@
                   </xsl:choose>
                 </xsl:variable>
                 <xsl:variable name="date2">
-                            <xsl:message>Format is</xsl:message>
-        <xsl:message><xsl:value-of select="$v008Format" /></xsl:message>
                   <xsl:choose>
                     <xsl:when test="$cDateExists = 1">
                       <xsl:value-of select="translate(bf:Instance/bf:copyrightDate[@rdf:datatype = 'http://id.loc.gov/datatypes/edtf'], '©', '')" />
@@ -580,6 +578,11 @@
 
         <!-- 18-21 -->
         <position default="    ">
+            <!-- Useful for debugging. -->
+            <transform>
+                <xsl:message>Format is</xsl:message>
+                <xsl:message><xsl:value-of select="$v008Format" /></xsl:message>
+            </transform>
           <switch>
             <case test="$v008Format='BK'">
               <transform>
@@ -1100,7 +1103,7 @@
                   <xsl:call-template name="tPadRight">
                     <xsl:with-param name="pInput" select="$vNoC"/>
                     <!-- useful for testing. -->
-                    <!-- <xsl:with-param name="pPadChar" select="'f'"/> -->
+                    <!-- <xsl:with-param name="pPadChar" select="'x'"/> -->
                     <xsl:with-param name="pStringLength"><xsl:value-of select="$vNoCLength"/></xsl:with-param>
                   </xsl:call-template>
                 </xsl:variable>
@@ -1390,6 +1393,7 @@
                           </xsl:choose>
                         </xsl:if>
                       </xsl:for-each>
+                      <xsl:if test="not($vAdminMetadata/bf:note/*[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/metaentry'])">|</xsl:if>
                     </xsl:when>
                     <xsl:when test="$v008Format='VM'">
                       <xsl:choose>
