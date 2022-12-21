@@ -395,7 +395,7 @@
   </select>
 
   <df tag="246" lang-xpath="bf:mainTitle">
-    <context xpath="//bf:title/*[(
+    <context xpath="bf:*[local-name()='Instance' or local-name()='Work']/bf:title/bf:*[(
                       local-name()='VariantTitle' or
                       local-name()='ParallelTitle' or
                       local-name()='TranscribedTitle' or
@@ -404,7 +404,8 @@
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
                     ) and
                     not(bf:variantType = 'translated') and
-                    not(bf:variantType = 'former')]">
+                    not(bf:variantType = 'former') and
+                    bf:mainTitle]">
       <ind1 default="1"/>
       <ind2 default=" ">
         <switch>
