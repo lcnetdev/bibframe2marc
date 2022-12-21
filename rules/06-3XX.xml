@@ -41,7 +41,7 @@
 
   <!-- 310/321 -->
   <df tag="$vFreqTag">
-    <context xpath="bf:Instance/bf:frequency/bf:Frequency">
+    <context xpath="bf:Instance/bf:frequency/bf:Frequency[rdfs:label or bf:date]">
       <var name="vFreqTag">
         <switch>
           <case test="translate(bf:note/bf:Note/rdfs:label,$upper,$lower)='former frequency'">321</case>
