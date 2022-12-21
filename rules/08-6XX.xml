@@ -68,7 +68,14 @@
         </switch>
       </var>
       <ind1 default=" ">
-        <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+        <switch>
+          <case test="$vSubjectTag = '630'">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2" />
+          </case>
+          <case test="default">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+          </case>
+        </switch>
       </ind1>
       <ind2 default="4">
         <switch>
