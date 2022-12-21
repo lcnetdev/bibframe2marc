@@ -289,8 +289,10 @@
                 <case test="$vRelResource//marc:datafield[@tag='110']">710</case>
                 <case test="$vRelResource//marc:datafield[@tag='111']">711</case>
                 <case test="$vRelResource//marc:datafield[@tag='130']">730</case>
+                <case test="default">758</case>
               </switch>
             </case>
+            <case test="default">758</case>
           </switch>
         </var>
         <var name="vValidSubfields">
@@ -1345,7 +1347,7 @@
           </switch>
         </select>
       </sf>
-      <sf code="i">
+      <sf code="4">
         <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/*[madsrdf:code or bf:code]">
           <switch>
             <case test="madsrdf:code">
@@ -1355,7 +1357,7 @@
           </switch>
         </select>
       </sf>
-      <sf code="i">
+      <sf code="4">
         <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/*/@rdf:about|bflc:relationship/bflc:Relationship/bflc:relation/@rdf:resource"/>
       </sf>
       <sf code="k" chopPunct="true">
