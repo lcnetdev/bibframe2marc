@@ -259,7 +259,7 @@
   <!-- $6 occurence number for 245 is always 01 -->
   <!-- this is kind of inelegant; would be better to have this be a mode of the df element -->
   <df tag="245" repeatable="false">
-    <context xpath="bf:Instance/bf:title/bf:Title[not(rdf:type)]">
+    <context xpath="(bf:Instance/bf:title/bf:Title[not(rdf:type)]|bf:Work/bf:title/bf:Title[not(rdf:type)])[1]">
       <ind1 default="0">
         <switch>
           <case test="/rdf:RDF/bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">1</case>
