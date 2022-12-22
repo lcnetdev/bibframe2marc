@@ -259,7 +259,7 @@
   <!-- $6 occurence number for 245 is always 01 -->
   <!-- this is kind of inelegant; would be better to have this be a mode of the df element -->
   <df tag="245" repeatable="false">
-    <context xpath="(bf:Instance/bf:title/bf:Title[not(rdf:type)]|bf:Work/bf:title/bf:Title[not(rdf:type)])[1]">
+    <context xpath="bf:Instance/bf:title/bf:Title[not(rdf:type)]|bf:Work[not(../bf:Instance/bf:title/bf:Title[not(rdf:type)])]/bf:title/bf:Title[not(rdf:type)]">
       <ind1 default="0">
         <switch>
           <case test="/rdf:RDF/bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">1</case>
@@ -337,7 +337,7 @@
       </sf>
     </context>
   </df>
-  <select xpath="(bf:Instance/bf:title/bf:Title[not(rdf:type)]|bf:Work/bf:title/bf:Title[not(rdf:type)])[1]">
+  <select xpath="bf:Instance/bf:title/bf:Title[not(rdf:type)]|bf:Work[not(../bf:Instance/bf:title/bf:Title[not(rdf:type)])]/bf:title/bf:Title[not(rdf:type)]">
     <var name="v880Script">
       <lookup map="df880script" targetField="code">
         <lookupField name="lang" xpath="translate(substring-after(bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang,'-'),$upper,$lower)"/>
