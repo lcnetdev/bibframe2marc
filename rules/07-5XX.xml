@@ -40,7 +40,7 @@
   </select>
 
   <!-- notes -->
-  <select xpath="bf:Instance/bf:note/bf:Note|bf:Work/bf:note/bf:Note|//bf:Item/bf:note/bf:Note">
+  <select xpath="bf:Instance/bf:note/bf:Note[rdfs:*[. != ''] or rdf:value[. != ''] or bf:*]|bf:Work/bf:note/bf:Note[rdfs:*[. != ''] or rdf:value[. != ''] or bf:*]|//bf:Item/bf:note/bf:Note[rdfs:*[. != ''] or rdf:value[. != ''] or bf:*]">
     <switch>
       <case test="local-name(../..)='Instance' and
                   (rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/computer' or translate(bf:noteType,$upper,$lower)='computer file characteristics')">
@@ -461,7 +461,7 @@
   </df>
 
   <df tag="504" lang-xpath="rdfs:label">
-    <context xpath="bf:Work/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label and not(@rdf:about)]|bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label and not(@rdf:about)]">
+    <context xpath="bf:Work/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]|bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
@@ -664,7 +664,7 @@
   </df>
 
   <df tag="541" lang-xpath="rdfs:label">
-    <context xpath="//bf:Item/bf:immediateAcquisition/bf:ImmediateAcquisition">
+    <context xpath="//bf:Item/bf:immediateAcquisition/bf:ImmediateAcquisition[rdfs:label[. != '']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
