@@ -310,20 +310,20 @@
               <!-- name subfields -->
               <select xpath="
                   *[
-                    (
+                    
                       contains('Hub,Work,Person,Family', local-name()) or
-                      contains('PersonalName,FamilyName', substring-after(rdf:type/@rdf:resource, '#')) or 
+                      rdf:type[contains('PersonalName,FamilyName', @rdf:resource)] or 
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub'] or
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or 
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family'] 
-                    )
+                    
                   ] |
                   */madsrdf:componentList/*[
                     position()=1 and 
                     (
                       contains('Hub,Work,Person,Family', local-name()) or
-                      contains('PersonalName,FamilyName', substring-after(rdf:type/@rdf:resource, '#')) or 
+                      rdf:type[contains('PersonalName,FamilyName', @rdf:resource)] or 
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub'] or
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or 
@@ -528,7 +528,7 @@
                 *[
                 (
                 contains('Hub,Work,CorporateName,Organization,Jurisdiction', local-name()) or
-                contains('CorporateName', substring-after(rdf:type/@rdf:resource, '#')) or 
+                rdf:type[contains('CorporateName', @rdf:resource)] or 
                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub'] or
                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or
                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or 
@@ -694,7 +694,7 @@
                                 position()=1 and 
                                 (
                                   contains('Hub,Work,ConferenceName,Meeting', local-name()) or
-                                  contains('ConferenceName', substring-after(rdf:type/@rdf:resource, '#')) or 
+                                  rdf:type[contains('ConferenceName', @rdf:resource)] or 
                                   rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub'] or
                                   rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or
                                   rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting'] 
@@ -734,7 +734,7 @@
                 *[
                 (
                 contains('Hub,Work,ConferenceName,Meeting', local-name()) or
-                contains('ConferenceName', substring-after(rdf:type/@rdf:resource, '#')) or 
+                rdf:type[contains('ConferenceName', @rdf:resource)] or
                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub'] or
                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or
                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting'] 
@@ -744,7 +744,7 @@
                 position()=1 and 
                 (
                 contains('Hub,Work,ConferenceName,Meeting', local-name()) or
-                contains('ConferenceName', substring-after(rdf:type/@rdf:resource, '#')) or 
+                rdf:type[contains('ConferenceName', @rdf:resource)] or
                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub'] or
                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work'] or
                 rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']
@@ -989,7 +989,16 @@
                   <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
                 </sf>
                 
-                <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
+                <sf code="a" chopPunct="true" repeatable="false">
+                  <switch>
+                    <case test="bf:title/bf:Title/bf:mainTitle">
+                      <select xpath="bf:title/bf:Title/bf:mainTitle"/>
+                    </case>
+                    <case test="madsrdf:authoritativeLabel">
+                      <select xpath="madsrdf:authoritativeLabel"/>
+                    </case>
+                  </switch>
+               </sf>
                 <sf code="d"><select xpath="bf:legalDate"/></sf>
                 <sf code="f" repeatable="false"><select xpath="bf:originDate"/></sf>
                 <sf code="m" chopPunct="true"><select xpath="bf:musicMedium/bf:MusicMedium/rdfs:label"/></sf>
