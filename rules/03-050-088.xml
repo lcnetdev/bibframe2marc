@@ -45,26 +45,18 @@
   </df>
 
   <!-- 051 -->
-  <switch>
-    <case test="count(//bf:Item[(bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or bf:heldBy[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc']) and (bf:shelfMark/*[local-name()='ShelfMarkLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ShelfMarkLcc']/rdfs:label)]) &gt; 1">
-      <select xpath="//bf:Item[(bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or bf:heldBy[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc']) and bf:shelfMark/*[local-name()='ShelfMarkLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ShelfMarkLcc']]">
-        <switch>
-          <case test="position() &gt; 1">
+  <select xpath="//bf:Item[(bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or bf:heldBy[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc']) and bf:shelfMark/*[local-name()='ShelfMarkLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ShelfMarkLcc']]">
             <df tag="051">
               <ind1 default=" "/>
               <ind2 default=" "/>
               <sf code="a" repeatable="false">
-                <select xpath="bf:shelfMark/*[local-name()='ShelfMarkLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ShelfMarkLcc']/rdfs:label"/>
+                <select xpath="bf:shelfMark/*[local-name()='ShelfMarkLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ShelfMarkLcc']/rdfs:label[. != '']"/>
               </sf>
               <sf code="c" repeatable="false">
                 <select xpath="bf:shelfMark/*[local-name()='ShelfMarkLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ShelfMarkLcc']/bf:note/bf:Note/rdfs:label"/>
               </sf>
             </df>
-          </case>
-        </switch>
       </select>
-    </case>
-  </switch>
 
   <df tag="052">
     <context
