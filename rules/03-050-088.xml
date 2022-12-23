@@ -292,6 +292,11 @@
                 <xsl:value-of select="rdfs:Resource/rdfs:label"/>
               </transform>
             </case>
+            <case test="bf:Source/rdfs:label">
+              <transform>
+                <xsl:value-of select="bf:Source/rdfs:label"/>
+              </transform>
+            </case>
             <case test="default">
               <transform>
                 <xsl:call-template name="tChopPunct">
