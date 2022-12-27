@@ -18,8 +18,37 @@
         )]">
       <ind1 default=" "/>
       <ind2 default=" "/>
+      <var name="vLccnValue" xpath="rdf:value" />
+      <var name="vLccn">
+        <transform>
+          <xsl:choose>
+            <xsl:when test="string-length($vLccnValue) = 10">
+              <xsl:call-template name="tPadLeft">
+                <xsl:with-param name="pInput" select="$vLccnValue"/>
+                <!-- useful for testing. -->
+                <xsl:with-param name="pPadChar" select="' '"/>
+                <xsl:with-param name="pStringLength">12</xsl:with-param>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="string-length($vLccnValue) &lt; 10">
+              <xsl:variable name="vLccnPart1">
+                <xsl:call-template name="tPadLeft">
+                  <xsl:with-param name="pInput" select="$vLccnValue"/>
+                  <!-- useful for testing. -->
+                  <xsl:with-param name="pPadChar" select="' '"/>
+                  <xsl:with-param name="pStringLength">11</xsl:with-param>
+                </xsl:call-template>  
+              </xsl:variable>
+              <xsl:value-of select="concat($vLccnPart1, ' ')" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$vLccnValue" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </transform>
+      </var>
       <sf code="a" repeatable="false">
-        <select xpath="rdf:value"/>
+        <select xpath="$vLccn"/>
       </sf>
       <sf code="z">
         <select xpath="ancestor::bf:Instance/bf:identifiedBy/*[
