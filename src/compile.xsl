@@ -1192,6 +1192,9 @@
             </xslt:otherwise>
           </xslt:choose>
         </xsl:attribute>
+        <xslt:if test="@tag = '010'">
+          <xsl:attribute name="xml:space">preserve</xsl:attribute>
+        </xslt:if>
         <xslt:if test="@lang-xpath">
           <xsl:if test="$vXmlLang != ''">
             <xsl:attribute name="xml:lang"><xsl:value-of select="$vXmlLang"/></xsl:attribute>
