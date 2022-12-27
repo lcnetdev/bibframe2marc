@@ -1375,7 +1375,14 @@
         </case>
       </switch>
       <sf code="t" chopPunct="true" repeatable="false">
-        <select xpath="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle"/>
+        <switch>
+          <case test="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle">
+            <select xpath="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle"/>            
+          </case>
+          <case test="bf:title/bf:Title/bf:mainTitle">
+            <select xpath="bf:title/bf:Title/bf:mainTitle"/>
+          </case>
+        </switch>
       </sf>
       <sf code="x" chopPunct="true" repeatable="false">
         <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
