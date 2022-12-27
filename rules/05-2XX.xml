@@ -655,16 +655,16 @@
                  <select xpath="bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]" />
                </case>
                <case test="bf:place/*[
-                      (local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
+                      (local-name()='Place' or local-name()='Geographic' or local-name()='Authority' or local-name()='Resource') and
                       rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
                      ]">
-                 <select xpath="bf:place/bf:*/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+                 <select xpath="bf:place/*/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
                </case>
                <case test="bf:place/*[
                       (local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
                       madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
                      ]">
-                 <select xpath="bf:place/bf:*/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+                 <select xpath="bf:place/*/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
                </case>
              </switch>
           </sf>
