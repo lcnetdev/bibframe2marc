@@ -19,7 +19,13 @@
                       $vAdminMetadata/bf:status/bf:Status[@rdf:about]">
             <select xpath="$vAdminMetadata/bf:status/@rdf:resource |
                            $vAdminMetadata/bf:status/bf:Status/@rdf:about">
-              <transform><xsl:value-of select="substring(.,string-length(.),1)"/></transform>
+              <transform>
+                <xsl:variable name="vStatusCode">
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="."/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:value-of select="substring($vStatusCode, 1,1)"/></transform>
             </select>
           </case>
           <case test="string-length($vAdminMetadata/bf:status/bf:Status/bf:code) = 1">
