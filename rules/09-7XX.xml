@@ -196,7 +196,8 @@
       </switch>
       
       <sf code="e">
-        <select xpath="ancestor::node()/bf:role/bf:Role/rdfs:label|ancestor::node()/bf:role/bf:Role/madsrdf:authoritativeLabel" />
+        <var name="vRelationLabel" xpath="ancestor::node()/bf:role/bf:Role/rdfs:label|ancestor::node()/bf:role/bf:Role/madsrdf:authoritativeLabel" />
+        <transform><xsl:value-of select="translate($vRelationLabel, $upper, $lower)" /></transform>
       </sf>
       <select xpath="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ancestor::node()/bf:role/@rdf:resource">
         <var name="vRelationURI">
