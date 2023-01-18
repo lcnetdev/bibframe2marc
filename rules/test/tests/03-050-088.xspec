@@ -21,11 +21,17 @@
   <x:scenario label="MARC 051">
     <x:context href="../data/050-088/050-088.xml"/>
     <x:expect label="generate 051 from additional DLC Items with shelfMarks"
-              test="count(//marc:datafield[@tag='051']) = 1"/>
-    <x:expect label="$a from rdfs:label"
-              test="//marc:datafield[@tag='051']/marc:subfield[@code='a'] = 'Microfilm 3741 HV'"/>
-    <x:expect label="$c from note"
-              test="//marc:datafield[@tag='051']/marc:subfield[@code='c'] = 'Microfilm'"/>
+              test="count(//marc:datafield[@tag='051']) = 3"/>
+    <x:expect label="$a from shelfmark rdfs:label"
+              test="//marc:datafield[@tag='051'][2]/marc:subfield[@code='a'] = 'Microfilm 3741 HV'"/>
+    <x:expect label="$c from shelfmark note"
+              test="//marc:datafield[@tag='051'][2]/marc:subfield[@code='c'] = 'Microfilm'"/>
+    <x:expect label="$a from classificataionLCC resource"
+              test="//marc:datafield[@tag='051'][3]/marc:subfield[@code='a'] = 'CPortion'"/>
+    <x:expect label="$b from classificataionLCC resource"
+              test="//marc:datafield[@tag='051'][3]/marc:subfield[@code='b'] = 'Iportion'"/>
+    <x:expect label="$c from classificataionLCC resource"
+              test="//marc:datafield[@tag='051'][3]/marc:subfield[@code='c'] = 'CNote'"/>
   </x:scenario>
 
   <x:scenario label="MARC 052">

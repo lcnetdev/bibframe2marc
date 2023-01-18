@@ -67,6 +67,16 @@
             </df>
       </select>
 
+  <df tag="051">
+    <context xpath="//bf:Item/bf:classification/*[bf:classificationPortion/text() and (local-name()='ClassificationLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationLcc') and not(bf:assigner[@rdf:resource='http://id.loc.gov/authorities/names/no2004037399' or */rdf:about='http://id.loc.gov/authorities/names/no2004037399' or */rdfs:label='Library and Archives Canada'])]">
+      <ind1 default=" " />
+      <ind2 default=" " />
+      <sf code="a"><select xpath="bf:classificationPortion"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
+      <sf code="c" repeatable="false"><select xpath="bf:note/bf:Note/rdfs:label"/></sf>
+    </context>
+  </df>
+
   <df tag="052">
     <context
         xpath="bf:Work/bf:geographicCoverage[contains(@rdf:resource,'id.loc.gov/authorities/classification/G') or
