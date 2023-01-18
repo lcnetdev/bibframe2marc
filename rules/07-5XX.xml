@@ -393,7 +393,8 @@
       <case test="(local-name(../..)='Work' and 
         (
           translate(bf:noteType,$upper,$lower)='language' or 
-          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/lang'
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/lang' or 
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/award'
         ))"/>
 
       <!-- these notes are picked up in the rules for data field 300, do not process here -->
@@ -721,6 +722,19 @@
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="."/>
+      </sf>
+    </context>
+  </df>
+
+  <df tag="586" lang-xpath="rdfs:label">
+    <context xpath="bf:Work/bf:note/bf:Note[rdf:type/@rdf:resource = 'http://id.loc.gov/vocabulary/mnotetype/award']">
+      <ind1 default="8"/>
+      <ind2 default=" "/>
+      <sf code="3" chopPunct="true" repeatable="false">
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
+      <sf code="a" chopPunct="true" repeatable="false">
+        <select xpath="rdfs:label"/>
       </sf>
     </context>
   </df>
