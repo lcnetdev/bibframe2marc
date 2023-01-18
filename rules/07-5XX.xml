@@ -707,12 +707,47 @@
   </df>
 
   <df tag="561" lang-xpath=".">
-    <context xpath="//bf:Item/bf:custodialHistory">
+    <context xpath="bf:Instance/bf:custodialHistory|//bf:Item/bf:custodialHistory">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="."/>
       </sf>
+      <switch>
+        <case test="local-name(parent::node()) = 'Item'">
+          <sf code="5" chopPunct="true" repeatable="false">
+            <transform><xsl:value-of select="$pConversionAgency" /></transform>
+          </sf>
+        </case>
+        <!--
+        <case test="bflc:applicableInstitution">
+          <var name="vAppOrg">
+            <switch>
+              <case test="bflc:applicableInstitution/@rdf:resource">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="bflc:applicableInstitution/@rdf:resource"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="bflc:applicableInstitution/*/@rdf:about">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="bflc:applicableInstitution/*/@rdf:about"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="bflc:applicableInstitution/*/*[local-name()='code']">
+                <transform><xsl:value-of select="bflc:applicableInstitution/*/*[local-name()='code']" /></transform>
+              </case>
+            </switch>
+          </var>
+          <sf code="5" chopPunct="true" repeatable="false">
+            <transform><xsl:value-of select="$vAppOrg" /></transform>
+          </sf>
+        </case>
+        -->
+      </switch>
     </context>
   </df>
 

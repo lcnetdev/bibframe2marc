@@ -404,13 +404,21 @@
 
   <x:scenario label="MARC 561">
     <x:context href="../data/5XX/561.xml"/>
-    <x:expect label="generate 561" test="count(//marc:datafield[@tag='561']) = 1"/>
+    <x:expect label="generate 561" test="count(//marc:datafield[@tag='561']) = 2"/>
     <x:expect label="ind1 default to blank"
               test="//marc:datafield[@tag='561'][1]/@ind1 = ' '"/>
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='561'][1]/@ind2 = ' '"/>
     <x:expect label="$a from custodialHistory"
-              test="//marc:datafield[@tag='561'][1]/marc:subfield[@code='a'] = 'From the collection of L. McGarry, 1948-1957.'"/>
+              test="//marc:datafield[@tag='561'][1]/marc:subfield[@code='a'] = 'From the collection of Some Dude, 1948-1957.'"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='561'][2]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='561'][2]/@ind2 = ' '"/>
+    <x:expect label="$a from custodialHistory"
+              test="//marc:datafield[@tag='561'][2]/marc:subfield[@code='a'] = 'From the collection of L. McGarry, 1948-1957.'"/>
+    <x:expect label="$5 from Item custodialHistory"
+              test="//marc:datafield[@tag='561'][2]/marc:subfield[@code='5'] = 'DLC'"/>
   </x:scenario>
 
   <x:scenario label="MARC 563">
