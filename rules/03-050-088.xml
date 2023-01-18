@@ -12,6 +12,15 @@
     <context xpath="bf:Work/bf:classification/*[bf:classificationPortion/text() and (local-name()='ClassificationLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationLcc') and not(bf:assigner[@rdf:resource='http://id.loc.gov/authorities/names/no2004037399' or */rdf:about='http://id.loc.gov/authorities/names/no2004037399' or */rdfs:label='Library and Archives Canada'])]">
       <ind1 default=" ">
         <switch>
+          <case test="
+              bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/uba'] or 
+              bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/uba']
+            ">0</case>
+          <case test="
+            bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/nuba'] or 
+            bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/nuba']
+            ">1</case>
+          <!-- below is older pattern; supported for now (17 jan 2023) -->
           <case test="//bf:Item/bf:heldBy/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc' or *[local-name()='label']='United States, Library of Congress' or *[local-name()='code']='DLC'] or
                       //bf:Item/bf:heldBy/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc'">0</case>
         </switch>
@@ -97,8 +106,36 @@
 
   <df tag="055">
     <context xpath="bf:Work/bf:classification/*[(local-name()='ClassificationLcc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationLcc') and bf:assigner[@rdf:resource='http://id.loc.gov/authorities/names/no2004037399' or */@rdf:about='http://id.loc.gov/authorities/names/no2004037399' or */rdfs:label='Library and Archives Canada']]">
-      <ind1 default=" "/>
-      <ind2 default="0"/>
+      <ind1 default=" ">
+        <switch>
+          <case test="
+            (
+              bf:assigner/*[@rdf:about='http://id.loc.gov/authorities/names/no2004037399'] or 
+              bf:assigner[@rdf:resource='http://id.loc.gov/authorities/names/no2004037399']
+            ) and (
+              bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/uba'] or 
+              bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/uba']
+            )
+            ">0</case>
+          <case test="
+            (
+              bf:assigner/*[@rdf:about='http://id.loc.gov/authorities/names/no2004037399'] or 
+              bf:assigner[@rdf:resource='http://id.loc.gov/authorities/names/no2004037399']
+            ) and (
+              bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/nuba'] or 
+              bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/nuba']
+            )
+            ">1</case>
+        </switch>
+      </ind1>
+      <ind2 default="0">
+        <switch>
+          <case test="
+            bf:assigner/*[@rdf:about='http://id.loc.gov/authorities/names/no2004037399'] or 
+            bf:assigner[@rdf:resource='http://id.loc.gov/authorities/names/no2004037399']
+            ">0</case>
+        </switch>
+      </ind2>
       <sf code="a" repeatable="false"><select xpath="bf:classificationPortion"/></sf>
       <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
       <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org'))]"/></sf>
@@ -122,7 +159,28 @@
 
   <df tag="060">
     <context xpath="bf:Work/bf:classification/*[local-name()='ClassificationNlm' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationNlm']">
-      <ind1 default=" "/>
+      <ind1 default=" ">
+        <switch>
+          <case test="
+            (
+              bf:assigner/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dnlm'] or 
+              bf:assigner[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnlm']
+            ) and (
+              bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/uba'] or 
+              bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/uba']
+            )
+            ">0</case>
+          <case test="
+            (
+              bf:assigner/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dnlm'] or 
+              bf:assigner[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnlm']
+            ) and (
+              bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/nuba'] or 
+              bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/nuba']
+            )
+            ">1</case>
+        </switch>
+      </ind1>
       <ind2 default="4">
         <switch>
           <case test="bf:assigner[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnlm' or */@rdf:about='http://id.loc.gov/vocabulary/organizations/dnlm']">0</case>
@@ -152,7 +210,28 @@
   <df tag="070">
     <context xpath="bf:Work/bf:classification/bf:Classification[bf:assigner/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnal' or
                     bf:assigner/*/@rdf:about='http://id.loc.gov/vocabulary/organizations/dnal']">
-      <ind1 default=" "/>
+      <ind1 default=" ">
+        <switch>
+          <case test="
+            (
+              bf:assigner/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dnal'] or 
+              bf:assigner[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnal']
+            ) and (
+              bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/uba'] or 
+              bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/uba']
+            )
+            ">0</case>
+          <case test="
+            (
+              bf:assigner/*[@rdf:about='http://id.loc.gov/vocabulary/organizations/dnal'] or 
+              bf:assigner[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnal']
+            ) and (
+              bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/nuba'] or 
+              bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/nuba']
+            )
+            ">1</case>
+        </switch>
+      </ind1>
       <ind2 default=" "/>
       <sf code="a"><select xpath="bf:classificationPortion"/></sf>
       <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
