@@ -423,13 +423,21 @@
 
   <x:scenario label="MARC 563">
     <x:context href="../data/5XX/563.xml"/>
-    <x:expect label="generate 563" test="count(//marc:datafield[@tag='563']) = 1"/>
+    <x:expect label="generate 563" test="count(//marc:datafield[@tag='563']) = 3"/>
     <x:expect label="ind1 default to blank"
-              test="//marc:datafield[@tag='563'][1]/@ind1 = ' '"/>
+      test="//marc:datafield[@tag='563'][1]/@ind1 = ' '"/>
     <x:expect label="ind2 default to blank"
-              test="//marc:datafield[@tag='563'][1]/@ind2 = ' '"/>
+      test="//marc:datafield[@tag='563'][1]/@ind2 = ' '"/>
     <x:expect label="$a from label"
-              test="//marc:datafield[@tag='563'][1]/marc:subfield[@code='a'] = 'Gold-tooled morocco binding by Benjamin West, ca. 1840.'"/>
+      test="//marc:datafield[@tag='563'][1]/marc:subfield[@code='a'] = 'Crazy binding all around.'"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='563'][3]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+              test="//marc:datafield[@tag='563'][3]/@ind2 = ' '"/>
+    <x:expect label="$a from label"
+              test="//marc:datafield[@tag='563'][3]/marc:subfield[@code='a'] = 'Gold-tooled morocco binding by Benjamin West, ca. 1840.'"/>
+    <x:expect label="$5 from Item"
+              test="//marc:datafield[@tag='563'][3]/marc:subfield[@code='5'] = 'DLC'"/>
   </x:scenario>
 
   <x:scenario label="MARC 581">

@@ -276,19 +276,6 @@
         </df>
       </case>
 
-      <case test="local-name(../..)='Item' and (translate(bf:noteType,$upper,$lower)='binding' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/binding')">
-        <df tag="563" lang-xpath="rdfs:label">
-          <ind1 default=" "/>
-          <ind2 default=" "/>
-          <sf code="a" chopPunct="true" repeatable="false">
-            <select xpath="rdfs:label"/>
-          </sf>
-          <sf code="5">
-            <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
-          </sf>
-        </df>
-      </case>
-
       <case test="local-name(../..)='Instance' and (translate(bf:noteType,$upper,$lower)='related material' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/related')">
         <df tag="581" lang-xpath="rdfs:label">
           <ind1 default="8"/>
@@ -400,8 +387,8 @@
       <!-- these notes are picked up in the rules for data field 300, do not process here -->
       <case test="(local-name(../..)='Instance' or local-name(../..)='Item') and 
                   (
-                    (translate(bf:noteType,$upper,$lower)='physical details' or translate(bf:noteType,$upper,$lower)='accompanying material') or 
-                    (rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/physical' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/accmat')
+                    (translate(bf:noteType,$upper,$lower)='physical details' or translate(bf:noteType,$upper,$lower)='accompanying material' or translate(bf:noteType,$upper,$lower)='binding') or 
+                    (rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/physical' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/accmat' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/binding')
                   )"/>
 
       <case test="default">
@@ -749,6 +736,51 @@
         -->
       </switch>
     </context>
+  </df>
+  
+  <df tag="563" lang-xpath="rdfs:label">
+    <context xpath="
+    //bf:Item/bf:note/*[bf:noteType='binding' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/binding'] |
+    bf:Instance/bf:note/*[bf:noteType='binding' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/binding'] ">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" chopPunct="true" repeatable="false">
+        <select xpath="rdfs:label"/>
+      </sf>
+      <switch>
+        <case test="local-name(parent::node()/..) = 'Item'">
+          <sf code="5" chopPunct="true" repeatable="false">
+            <transform><xsl:value-of select="$pConversionAgency" /></transform>
+          </sf>
+        </case>
+        <case test="bflc:applicableInstitution">
+          <var name="vAppOrg">
+            <switch>
+              <case test="bflc:applicableInstitution/@rdf:resource">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="bflc:applicableInstitution/@rdf:resource"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="bflc:applicableInstitution/*/@rdf:about">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="bflc:applicableInstitution/*/@rdf:about"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="bflc:applicableInstitution/*/*[local-name()='code']">
+                <transform><xsl:value-of select="bflc:applicableInstitution/*/*[local-name()='code']" /></transform>
+              </case>
+            </switch>
+          </var>
+          <sf code="5" chopPunct="true" repeatable="false">
+            <transform><xsl:value-of select="$vAppOrg" /></transform>
+          </sf>
+        </case>
+      </switch>
+  </context>
   </df>
 
   <df tag="586" lang-xpath=".">
