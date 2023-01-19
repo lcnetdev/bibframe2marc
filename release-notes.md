@@ -1,5 +1,22 @@
 # bibframe2marc release notes
 
+
+## v2.3.0
+
+Many, many bug fixes and conversion updates based on specifications v2.3. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
+
+* Use "\[not\] used by agency" statuses for 050, 055, 060, 070 to set indicator value properly.
+* Accommodate use of main note pattern for Awards.
+* Output 051 based on new classification pattern.
+* Handle 561, 563, and 583 at Item or Instance level.
+* Do not create empty 264 when bf:copyrightDate property has no value.
+* Only output 310/321 if Frequency has data value.
+* Fix bug with 630 non-filing characters.
+* Fix bug where 7XX $i should be $4; set default relationship to 758 when indeterminable.
+* Only output 5XX fields when there is content.
+
+See the [NEWS](NEWS) file for full details of changes.
+
 ## v2.2.1
 
 Patch release to address numerous bug issues. This still conforms with 2.2.0 specs, which can be found in the [spec](spec/) directory. Changes of note:

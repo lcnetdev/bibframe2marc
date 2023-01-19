@@ -1,3 +1,30 @@
+--- 2.3.0 2022/01/18
+
+This release reflects specification changes related to marc2bibframe v2.3.0 and many bug fixes.
+
+Changes include:
+
+* Remove copyright symbol from EDTF date so it can be used in 008.
+* If metaentry note missing, output pipe in 008.
+* Handle marc382 variation and make backwards compatible.
+* Handle additonal patterns for source info and set 6XX indicator values correctly.
+* Fix bug in XPath resulting in multiple, duplicate 7XXs.
+* Only look for title properties on Work or Instance and ensure they have a bf:mainTitle.
+* If Instance title exists, use that for 245, else Work title.
+* Do not create empty 264 when bf:copyrightDate property has no value.
+* Only output 310/321 if Frequency has data value.
+* Fix bug with 630 non-filing characters.
+* Fix bug where 7XX $i should be $4; set default relationship to 758 when indeterminable.
+* Only output 5XX fields when there is content.
+* Make sure related 8XX resource has a title before generaring field.
+* Use spaces, not pipes, for remainder of 008 dates.
+* Format LCCN properly.
+* Force relators terms to lowercase.
+* Use "[not] used by agency" statuses for 050, 055, 060, 070 to set indicator value properly.
+* Accommodate use of main note pattern for Awards.
+* Output 051 based on new classification pattern.
+* Handle 561, 563, and 583 at Item or Instance level.
+
 --- 2.2.1 2022/12/08
 
 This is a patch release to address a variety of bugs.
