@@ -48,7 +48,7 @@
         </transform>
       </var>
       <sf code="a" repeatable="false">
-        <select xpath="$vLccn"/>
+        <transform><xsl:value-of select="$vLccn" /></transform>
       </sf>
       <sf code="z">
         <select xpath="ancestor::bf:Instance/bf:identifiedBy/*[
