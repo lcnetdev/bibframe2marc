@@ -195,29 +195,35 @@
         </case>
       </switch>
       
-      <sf code="e">
-        <var name="vRelationLabel" xpath="ancestor::node()/bf:role/bf:Role/rdfs:label|ancestor::node()/bf:role/bf:Role/madsrdf:authoritativeLabel" />
-        <transform><xsl:value-of select="translate($vRelationLabel, $upper, $lower)" /></transform>
-      </sf>
-      <select xpath="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ancestor::node()/bf:role/@rdf:resource">
-        <var name="vRelationURI">
-          <switch>
-            <case test="contains(.,'id.loc.gov/')"><transform><xsl:value-of select="."/></transform></case>
-          </switch>
-        </var>
-        <var name="vRelationLabel">
-          <switch>
-            <case test="$vRelationURI != ''">
-              <transform>
-                <xsl:call-template name="tGetLabel">
-                  <xsl:with-param name="pUri" select="$vRelationURI"/>
-                </xsl:call-template>
-              </transform>
-            </case>
-          </switch>
-        </var>
-        <sf code="e" xpath="translate($vRelationLabel, $upper, $lower)" />
-      </select>
+      <switch>
+          <case test="ancestor::node()/bf:role/bf:Role[rdfs:label or madsrdf:authoritativeLabel]">
+            <sf code="e">
+                <var name="vRelationLabel" xpath="ancestor::node()/bf:role/bf:Role/rdfs:label|ancestor::node()/bf:role/bf:Role/madsrdf:authoritativeLabel" />
+                <transform><xsl:value-of select="translate($vRelationLabel, $upper, $lower)" /></transform>
+            </sf>  
+          </case>
+          <case test="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about or ancestor::node()/bf:role/@rdf:resource">
+            <select xpath="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ancestor::node()/bf:role/@rdf:resource">
+                <var name="vRelationURI">
+                  <switch>
+                    <case test="contains(.,'id.loc.gov/')"><transform><xsl:value-of select="."/></transform></case>
+                  </switch>
+                </var>
+                <var name="vRelationLabel">
+                  <switch>
+                    <case test="$vRelationURI != ''">
+                      <transform>
+                        <xsl:call-template name="tGetLabel">
+                          <xsl:with-param name="pUri" select="$vRelationURI"/>
+                        </xsl:call-template>
+                      </transform>
+                    </case>
+                  </switch>
+                </var>
+                <sf code="e" xpath="translate($vRelationLabel, $upper, $lower)" />
+              </select>              
+          </case>
+      </switch>
       
       <switch>
         <case test="ancestor::node()/bf:role/bf:Role/@rdf:about or ancestor::node()/bf:role/@rdf:resource">
