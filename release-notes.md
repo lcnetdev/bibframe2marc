@@ -3,7 +3,7 @@
 
 ## v2.3.0
 
-Many, many bug fixes and conversion updates based on specifications v2.3. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
+Many, many bug fixes and conversion updates based on specifications v2.3. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details about spec changes. Specifications are included in the distribution in the spec directory. Changes of note:
 
 * Use "\[not\] used by agency" statuses for 050, 055, 060, 070 to set indicator value properly.
 * Accommodate use of main note pattern for Awards.
