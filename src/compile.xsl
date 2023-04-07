@@ -853,6 +853,7 @@
                 <xsl:when test="count(rdf:RDF/bf:Work) = 0"/>
                 <xsl:when test="count(rdf:RDF/bf:Work) = 1">
                   <xsl:choose>
+                    <xsl:when test="rdf:RDF/bf:Instance/bf:instanceOf/bf:*[@rdf:about=/rdf:RDF/bf:Work/@rdf:about]"/>
                     <xsl:when test="rdf:RDF/bf:Instance/bf:instanceOf[@rdf:resource=/rdf:RDF/bf:Work/@rdf:about]"/>
                     <xsl:when test="rdf:RDF/bf:Work/bf:hasInstance[@rdf:resource=/rdf:RDF/bf:Instance/@rdf:about]"/>
                     <xsl:otherwise>
