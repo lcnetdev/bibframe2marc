@@ -848,7 +848,7 @@
       <xsl:choose>
         <xsl:when test="rdf:RDF">
           <xsl:choose>
-            <xsl:when test="count(rdf:RDF/bf:Instance) = 1">
+            <xsl:when test="count(rdf:RDF/bf:Instance[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance')]) = 1">
               <xsl:choose>
                 <xsl:when test="count(rdf:RDF/bf:Work) = 0"/>
                 <xsl:when test="count(rdf:RDF/bf:Work) = 1">
@@ -879,7 +879,8 @@
     </xsl:template>
 
     <xsl:template match="rdf:RDF">
-      <xsl:variable name="vAdminMetadata" select="bf:Instance/bf:adminMetadata/bf:AdminMetadata | bf:Work/bf:adminMetadata/bf:AdminMetadata[not(/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata)]"/>
+      <xsl:variable name="vPrincipalInstance" select="bf:Instance[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance')]"/>
+      <xsl:variable name="vAdminMetadata" select="$vPrincipalInstance/bf:adminMetadata/bf:AdminMetadata[1] | bf:Work/bf:adminMetadata/bf:AdminMetadata[not(/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata)]"/>
 
       <xsl:variable name="vRecordId">
         <xsl:choose>
@@ -968,6 +969,7 @@
     <xslt:variable name="vTagName">
       <xslt:value-of select="translate(@tag,'$','')"/>
     </xslt:variable>
+    
     <xslt:choose>
       <xslt:when test="bf2marc:context">
         <xslt:choose>
@@ -1126,6 +1128,12 @@
             <xsl:param name="vAdminMetadata"/>
             <xslt:apply-templates select="bf2marc:var" mode="fieldTemplate"/>
             <xslt:choose>
+              <!-- Only when the 007 rule meets these conditions... -->
+              <xslt:when test="local-name(parent::*)='cf' and $vTagName='007' and parent::*/@repeatable!=''">
+                <xslt:apply-templates select="parent::*" mode="fieldTemplate">
+                  <xslt:with-param name="repeatable"><xslt:value-of select="parent::*/@repeatable"/></xslt:with-param>
+                </xslt:apply-templates>
+              </xslt:when>
               <xslt:when test="local-name(parent::*) = 'cf' or parent::*/@repeatable = 'false'">
                 <xsl:choose>
                   <xsl:when test="position() = 1">
@@ -1164,6 +1172,7 @@
     </xslt:variable>
     <xslt:variable name="vRepeatable">
       <xslt:choose>
+        <xslt:when test="local-name()='cf' and @repeatable!=''"><xslt:message>vRepeatable is <xslt:value-of select="@tag"/></xslt:message><xslt:value-of select="@repeatable"/></xslt:when>
         <xslt:when test="local-name()='cf'">false</xslt:when>
         <xslt:otherwise><xslt:value-of select="@repeatable"/></xslt:otherwise>
       </xslt:choose>

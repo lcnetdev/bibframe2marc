@@ -724,8 +724,7 @@
   </switch>
 
   <df tag="040" repeatable="false">
-    <context xpath="bf:Instance/bf:adminMetadata/bf:AdminMetadata/bf:assigner |
-                    bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:assigner">
+    <context xpath="bf:Instance[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance')]/bf:adminMetadata/bf:AdminMetadata/bf:assigner">
       <var name="vLanguageUri">
         <switch>
           <case test="../bf:descriptionLanguage/@rdf:resource"><transform><xsl:value-of select="../bf:descriptionLanguage/@rdf:resource"/></transform></case>
