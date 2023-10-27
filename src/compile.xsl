@@ -1172,7 +1172,7 @@
     </xslt:variable>
     <xslt:variable name="vRepeatable">
       <xslt:choose>
-        <xslt:when test="local-name()='cf' and @repeatable!=''"><xslt:message>vRepeatable is <xslt:value-of select="@tag"/></xslt:message><xslt:value-of select="@repeatable"/></xslt:when>
+        <xslt:when test="local-name()='cf' and @repeatable!=''"><xslt:value-of select="@repeatable"/></xslt:when>
         <xslt:when test="local-name()='cf'">false</xslt:when>
         <xslt:otherwise><xslt:value-of select="@repeatable"/></xslt:otherwise>
       </xslt:choose>
