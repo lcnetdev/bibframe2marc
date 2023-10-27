@@ -13,7 +13,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="a" chopPunct="true"><select xpath="rdfs:label"/></sf>
       <sf code="b" chopPunct="true" repeatable="false">
@@ -28,12 +34,12 @@
 
   <!-- 306 -->
   <switch>
-    <case test="bf:Instance/bf:duration[@rdf:datatype='http://www.w3.org/2001/XMLSchema#duration']">
+    <case test="bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance'])]/bf:duration[@rdf:datatype='http://www.w3.org/2001/XMLSchema#duration']">
       <df tag="306">
         <ind1 default=" "/>
         <ind2 default=" "/>
         <sf code="a" chopPunct="true">
-          <select xpath="bf:Instance/bf:duration[@rdf:datatype='http://www.w3.org/2001/XMLSchema#duration']"/>
+          <select xpath="bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance'])]/bf:duration[@rdf:datatype='http://www.w3.org/2001/XMLSchema#duration']"/>
         </sf>
       </df>
     </case>
@@ -41,7 +47,7 @@
 
   <!-- 310/321 -->
   <df tag="$vFreqTag">
-    <context xpath="bf:Instance/bf:frequency/bf:Frequency[rdfs:label or bf:date]">
+    <context xpath="bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance'])]/bf:frequency/bf:Frequency[rdfs:label or bf:date]">
       <var name="vFreqTag">
         <switch>
           <case test="translate(bf:note/bf:Note/rdfs:label,$upper,$lower)='former frequency'">321</case>
@@ -83,7 +89,7 @@
   </df>
   
   <df tag="334" lang-xpath="rdfs:label" repeatable="true">
-    <context xpath="bf:Instance/bf:issuance">
+    <context xpath="bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance'])]/bf:issuance">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true">
@@ -154,8 +160,14 @@
                                                  rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Authority']]">
       <ind1 default=" "/>
       <ind2 default=" "/>
-      <sf code="3" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      <sf code="3" chopPunct="true" repeatable="false">
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="a" chopPunct="true">
         <switch>
@@ -216,7 +228,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="a" chopPunct="true">
         <switch>
@@ -277,7 +295,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="a" chopPunct="true">
         <switch>
@@ -346,6 +370,15 @@
                     bf:Work/bf:illustrativeContent/bf:Illustration">
       <ind1 default=" "/>
       <ind2 default=" "/>
+      <sf code="3" chopPunct="true" repeatable="false">
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
+      </sf>
       <switch>
         <case test="local-name()='BaseMaterial'">
           <sf code="a" chopPunct="true"><select xpath="rdfs:label"/></sf>
@@ -432,7 +465,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <switch>
         <case test="local-name()='RecordingMethod'">
@@ -498,7 +537,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <switch>
         <case test="local-name()='PresentationFormat'">
@@ -539,7 +584,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="c" chopPunct="true"><select xpath="rdf:value"/></sf>
       <sf code="d" chopPunct="true"><select xpath="rdfs:label"/></sf>
@@ -575,7 +626,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <switch>
         <case test="local-name()='VideoFormat'">
@@ -621,7 +678,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <switch>
         <case test="local-name()='FileType'">
@@ -674,7 +737,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="a" chopPunct="true"><select xpath="../bf:MusicFormat/rdfs:label"/></sf>
       <sf code="c" chopPunct="true"><select xpath="../bf:MusicNotation/rdfs:label"/></sf>
@@ -709,7 +778,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="c" chopPunct="true" repeatable="false"><select xpath="bf:hierarchicalLevel"/></sf>
       <sf code="a" chopPunct="true"><select xpath="bf:collectionOrganization"/></sf>
@@ -739,7 +814,13 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
       </sf>
       <sf code="a"><select xpath="rdfs:label"/></sf>
       <sf code="b">
@@ -929,9 +1010,15 @@
         <df tag="385" lang-xpath="bf:IntendedAudience/rdfs:label">
           <ind1 default = " "/>
           <ind2 default = " "/>
-          <sf code="3" chopPunct="true" repeatable="false">
-            <select xpath="bf:IntendedAudience/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
-          </sf>
+      <sf code="3" chopPunct="true" repeatable="false">
+        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
+        <switch>
+          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
+              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
+          </case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+        </switch>
+      </sf>
           <sf code="m" chopPunct="true" repeatable="false">
             <select xpath="bf:IntendedAudience/bflc:demographicGroup/bflc:DemographicGroup[not(@rdf:about)]/rdfs:label"/>
           </sf>
