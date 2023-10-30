@@ -244,17 +244,18 @@
   </cf>
 
   <!-- Motion picture 007 -->
-  <cf tag="007">
-    <context xpath="/rdf:RDF[(*[local-name()='MovingImage'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage') and
-                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/g' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/g')]">
+  <cf tag="007" repeatable="true">
+    <context xpath="/rdf:RDF[(
+                      *[local-name()='MovingImage'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage'
+                      )]/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/g' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/g']">
       <fixed-field>
         <!-- 00-02 -->
         <position default="m| ">
           <switch>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mc']"><text>mc </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mf']"><text>mf </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mo' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mo']"><text>mo </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mr']"><text>mr </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mc']"><text>mc </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mf']"><text>mf </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mo' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mo']"><text>mo </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mr']"><text>mr </text></case>
           </switch>
         </position>
         <!-- 03-22 -->
