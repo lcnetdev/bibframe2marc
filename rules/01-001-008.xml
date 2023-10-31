@@ -190,22 +190,24 @@
   </cf>
 
   <!-- Microform 007 -->
-  <cf tag="007">
-    <context xpath="/rdf:RDF[(*[local-name()='Text'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Text') and
-                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h')]">
+  <cf tag="007" repeatable="true">
+    <context xpath="/rdf:RDF[(
+        *[local-name()='Text'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Text'
+        )]/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h']">
+        
       <fixed-field>
         <!-- 00-02 -->
         <position default="h| ">
           <switch>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ha' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ha']"><text>ha </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hb' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hb']"><text>hb </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hc']"><text>hc </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hd']"><text>hd </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/he' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/he']"><text>he </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hf']"><text>hf </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hg' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hg']"><text>hg </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hh' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hh']"><text>hh </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hj' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hj']"><text>hj </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ha' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ha']"><text>ha </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hb' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hb']"><text>hb </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hc']"><text>hc </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hd']"><text>hd </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/he' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/he']"><text>he </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hf']"><text>hf </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hg' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hg']"><text>hg </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hh' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hh']"><text>hh </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/hj' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/hj']"><text>hj </text></case>
           </switch>
         </position>
         <!-- 03-12 -->
