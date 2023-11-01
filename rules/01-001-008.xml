@@ -98,28 +98,30 @@
   </switch>
 
   <!-- Map 007 -->
-  <cf tag="007">
-    <context xpath="/rdf:RDF[(*[local-name()='Cartography'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography') and
-                    (bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026058' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026058' or
-                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026061' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026061' or
-                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026387' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026387' or
-                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026113' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026113' or
-                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027245' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027245' or
-                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026530' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026530' or
-                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026295' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026295' or
-                    bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2018026045' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2018026045')]">
+  <cf tag="007" repeatable="true">
+    <context xpath="/rdf:RDF[(
+      *[local-name()='Cartography'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography'
+      )]/bf:Instance[
+        bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026058' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026058' or
+        bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026061' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026061' or
+        bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026387' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026387' or
+        bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026113' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026113' or
+        bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027245' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027245' or
+        bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026530' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026530' or
+        bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026295' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026295' or
+        bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2018026045' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2018026045']">
       <fixed-field>
         <!-- 00-02 -->
         <position default="a| ">
           <switch>
-            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026058' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026058'"><text>ad </text></case>
-            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026061' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026061'"><text>ag </text></case>
-            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026387' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026387'"><text>aj </text></case>
-            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026113' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026113'"><text>ak </text></case>
-            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027245' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027245'"><text>aq </text></case>
-            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026530' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026530'"><text>ar </text></case>
-            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026295' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026295'"><text>as </text></case>
-            <case test="bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2018026045' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2018026045'"><text>ay </text></case>
+            <case test="bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026058' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026058'"><text>ad </text></case>
+            <case test="bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026061' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026061'"><text>ag </text></case>
+            <case test="bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026387' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026387'"><text>aj </text></case>
+            <case test="bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026113' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026113'"><text>ak </text></case>
+            <case test="bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2017027245' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2017027245'"><text>aq </text></case>
+            <case test="bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026530' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026530'"><text>ar </text></case>
+            <case test="bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026295' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026295'"><text>as </text></case>
+            <case test="bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2018026045' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2018026045'"><text>ay </text></case>
           </switch>
         </position>
         <!-- 03-07 -->
@@ -154,14 +156,21 @@
   </cf>
 
   <!-- Globe 007 -->
-  <cf tag="007">
-    <context xpath="/rdf:RDF[(*[local-name()='Cartography'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography') and
-                    (bf:Work/bf:content/@rdf:resource='http://id.loc.gov/vocabulary/contentTypes/crf' or bf:Work/bf:content/*/@rdf:about='http://id.loc.gov/vocabulary/contentTypes/crf') and
-                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/n' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/n') and
-                    (bf:Instance/bf:carrier/@rdf:resource='http://id.loc.gov/vocabulary/carriers/nr' or bf:Instance/bf:carrier/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/n')]">
+  <cf tag="007" repeatable="true">
+    <context xpath="/rdf:RDF[
+                    (*[local-name()='Cartography'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography') and
+                    (bf:Work/bf:content/@rdf:resource='http://id.loc.gov/vocabulary/contentTypes/crf' or bf:Work/bf:content/*/@rdf:about='http://id.loc.gov/vocabulary/contentTypes/crf')]/
+                    bf:Instance[
+                      (bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/n' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/n') and
+                      (bf:carrier/@rdf:resource='http://id.loc.gov/vocabulary/carriers/nr' or bf:carrier/*/@rdf:about='http://id.loc.gov/vocabulary/carriers/nr')
+                    ]">
       <fixed-field>
         <!-- 00-05 -->
-        <position default="d| |||"/>
+        <position default="d| |||">
+          <switch>
+            <case test="bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026117' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026117'"><text>da |||</text></case>
+          </switch>
+        </position>
       </fixed-field>
     </context>
   </cf>
