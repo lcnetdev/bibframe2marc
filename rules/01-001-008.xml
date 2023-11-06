@@ -156,12 +156,13 @@
 
   <!-- Globe 007 -->
   <cf tag="007" repeatable="true">
-    <context xpath="/rdf:RDF[
-                    (*[local-name()='Cartography'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography') and
-                    (bf:Work/bf:content/@rdf:resource='http://id.loc.gov/vocabulary/contentTypes/crf' or bf:Work/bf:content/*/@rdf:about='http://id.loc.gov/vocabulary/contentTypes/crf')]/
-                    bf:Instance[
+    <context xpath="/rdf:RDF/bf:Instance[
                       (bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/n' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/n') and
-                      (bf:carrier/@rdf:resource='http://id.loc.gov/vocabulary/carriers/nr' or bf:carrier/*/@rdf:about='http://id.loc.gov/vocabulary/carriers/nr')
+                      (bf:carrier/@rdf:resource='http://id.loc.gov/vocabulary/carriers/nr' or bf:carrier/*/@rdf:about='http://id.loc.gov/vocabulary/carriers/nr') and 
+                      (
+                        (bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026300' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026300') or 
+                        (bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026117' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026117')
+                      )
                     ]">
       <fixed-field>
         <!-- 00-05 -->
@@ -199,9 +200,7 @@
 
   <!-- Microform 007 -->
   <cf tag="007" repeatable="true">
-    <context xpath="/rdf:RDF[(
-        *[local-name()='Text'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Text'
-        )]/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h']">
+    <context xpath="/rdf:RDF/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h']">
         
       <fixed-field>
         <!-- 00-02 -->
@@ -226,8 +225,30 @@
 
   <!-- Nonprojected graphic 007 -->
   <cf tag="007" repeatable="true">
-    <context xpath="/rdf:RDF[(*[local-name()='StillImage'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage')]/
-                    bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/n' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/n']">
+    <context xpath="/rdf:RDF/bf:Instance[
+                    (bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/n' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/n') and
+                    (
+                      (
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2017027227'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2017027231'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2017027246'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/vocabulary/graphicMaterials/tgm007730'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2019026026'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/vocabulary/graphicMaterials/tgm007718'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2017027251'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2017027255'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2014026152'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/vocabulary/graphicMaterials/tgm009250'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2016026011'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2014026151'] or 
+                        bf:genreForm//@rdf:*[.='http://id.loc.gov/authorities/genreForms/gf2017027249']
+                      )
+                      or
+                      (
+                      ../*[local-name()='StillImage'] or ../bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage'
+                      )
+                    )
+                    ]">
       <fixed-field>
         <!-- 00-02 -->
         <position default="k| ">
@@ -276,10 +297,7 @@
 
   <!-- Sound recording 007 -->
   <cf tag="007" repeatable="true">
-    <context xpath="/rdf:RDF[(
-                        *[local-name()='MusicAudio'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/MusicAudio' or 
-                        *[local-name()='NonMusicAudio'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/NonMusicAudio'
-                     )]/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/s' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/s']">
+    <context xpath="/rdf:RDF/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/s' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/s']">
       <fixed-field>
         <!-- 00-02 -->
         <position default="s| ">
