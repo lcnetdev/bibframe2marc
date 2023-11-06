@@ -99,9 +99,7 @@
 
   <!-- Map 007 -->
   <cf tag="007" repeatable="true">
-    <context xpath="/rdf:RDF[(
-      *[local-name()='Cartography'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartography'
-      )]/bf:Instance[
+    <context xpath="/rdf:RDF/bf:Instance[
         bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026058' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026058' or
         bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026061' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026061' or
         bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026387' or bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026387' or
@@ -152,20 +150,34 @@
   </cf>
 
   <!-- Projected graphic 007 -->
-  <cf tag="007">
-    <context xpath="/rdf:RDF[(*[local-name()='StillImage'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage') and
-                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/g' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/g') and
-                    not(bf:Work/bf:genreForm/@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026406' or bf:Work/bf:genreForm/*/@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026406')]">
+  <cf tag="007" repeatable="true">
+    <context xpath="/rdf:RDF/bf:Instance[
+                    (bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/g' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/g') and
+                    (
+                      (
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/gc'] or
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/gd'] or
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/gf'] or
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/mo'] or
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/gs'] or
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/gt']
+                      )
+                      or
+                      (
+                      ../*[local-name()='StillImage'] or ../bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage'
+                      ) 
+                    )
+                    ]">
       <fixed-field>
         <!-- 00-02 -->
         <position default="g| ">
           <switch>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gc']"><text>gc </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gd']"><text>gd </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gf']"><text>gf </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mo' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mo']"><text>go </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gs' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gs']"><text>gs </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gt' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gt']"><text>gt </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gc']"><text>gc </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gd']"><text>gd </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gf']"><text>gf </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mo' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mo']"><text>mo </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gs' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gs']"><text>gs </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/gt' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/gt']"><text>gt </text></case>
           </switch>
         </position>
         <!-- 03-08 -->
@@ -177,7 +189,6 @@
   <!-- Microform 007 -->
   <cf tag="007" repeatable="true">
     <context xpath="/rdf:RDF/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/h' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/h']">
-        
       <fixed-field>
         <!-- 00-02 -->
         <position default="h| ">
@@ -252,17 +263,29 @@
 
   <!-- Motion picture 007 -->
   <cf tag="007" repeatable="true">
-    <context xpath="/rdf:RDF[(
-                      *[local-name()='MovingImage'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage'
-                      )]/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/g' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/g']">
+    <context xpath="/rdf:RDF/bf:Instance[
+                    (bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/g' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/g') and
+                    (
+                      (
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/mc'] or
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/mf'] or
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/mr'] or
+                        bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/mz']
+                      )
+                      or
+                      (
+                      ../*[local-name()='MovingImage'] or ../bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage'
+                      ) 
+                    )
+                    ]">
       <fixed-field>
         <!-- 00-02 -->
         <position default="m| ">
           <switch>
             <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mc']"><text>mc </text></case>
             <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mf']"><text>mf </text></case>
-            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mo' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mo']"><text>mo </text></case>
             <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mr']"><text>mr </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/mz' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/mz']"><text>mz </text></case>
           </switch>
         </position>
         <!-- 03-22 -->
@@ -296,17 +319,16 @@
   </cf>
 
   <!-- Video recording 007 -->
-  <cf tag="007">
-    <context xpath="/rdf:RDF[(*[local-name()='MovingImage'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/MovingImage') and
-                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/v' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/v')]">
+  <cf tag="007" repeatable="true">
+    <context xpath="/rdf:RDF/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/v' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/v']">
       <fixed-field>
         <!-- 00-02 -->
         <position default="v| ">
           <switch>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vc']"><text>vc </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vd']"><text>vd </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vf']"><text>vf </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vr']"><text>vr </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vc' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vc']"><text>vc </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vd']"><text>vd </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vf']"><text>vf </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/vr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/vr']"><text>vr </text></case>
           </switch>
         </position>
         <!-- 03-08 -->
@@ -316,7 +338,7 @@
   </cf>
   
   <!-- Electronic resource 007 - moved this to end so they are always last. -->
-  <cf tag="007">
+  <cf tag="007" repeatable="true">
     <context xpath="/rdf:RDF/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/c' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/c']">
       <fixed-field>
         <!-- 00-02 -->
