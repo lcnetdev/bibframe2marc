@@ -132,21 +132,20 @@
 
   <!-- Electronic resource 007 -->
   <cf tag="007">
-    <context xpath="/rdf:RDF[(*[local-name()='Multimedia'] or bf:Work/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Multimedia') and
-                    (bf:Instance/bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/c' or bf:Instance/bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/c')]">
+    <context xpath="/rdf:RDF/bf:Instance[bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/c' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/c']">
       <fixed-field>
         <!-- 00-02 -->
         <position default="c| ">
           <switch>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ca' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ca']"><text>ca </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cb' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cb']"><text>cb </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cd']"><text>co </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ce' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ce']"><text>cj </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cf']"><text>cf </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ch' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ch']"><text>ch </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ck' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ck']"><text>ck </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cr']"><text>cr </text></case>
-            <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cz' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cz']"><text>cz </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ca' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ca']"><text>ca </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cb' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cb']"><text>cb </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cd' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cd']"><text>co </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ce' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ce']"><text>cj </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cf' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cf']"><text>cf </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ch' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ch']"><text>ch </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/ck' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/ck']"><text>ck </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cr' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cr']"><text>cr </text></case>
+            <case test="bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cz' or */@rdf:about='http://id.loc.gov/vocabulary/carriers/cz']"><text>cz </text></case>
           </switch>
         </position>
         <!-- 03-13 -->
