@@ -398,6 +398,14 @@
         </case>
         
         
+        <!-- Text 007 -->
+        <case test="(not(bf:media/@rdf:resource) and not(bf:media/*/@rdf:about)) or 
+          (bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/n' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/n')
+          ">
+          <text>t|</text>
+        </case>
+
+        
         <!-- Electronic resource 007 - moved this to end so they are always last. -->
         <case test="bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/c' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/c'">
           <context xpath="bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/c' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/c'">
