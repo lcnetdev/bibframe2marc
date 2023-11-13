@@ -790,6 +790,32 @@
   </select>
 
   <df tag="856">
+    <context xpath="bf:Instance[
+                      (bf:media/@rdf:resource='http://id.loc.gov/vocabulary/mediaTypes/c' or bf:media/*/@rdf:about='http://id.loc.gov/vocabulary/mediaTypes/c') and 
+                      bf:electronicLocator
+                      ]">
+      <var name="v856Uri"><transform><xsl:value-of select="bf:electronicLocator/@rdf:resource"/></transform></var>
+      <ind1 default=" ">
+        <switch>
+          <case test="starts-with($v856Uri,'mailto')">0</case>
+          <case test="starts-with($v856Uri,'ftp')">1</case>
+          <case test="starts-with($v856Uri,'telnet') or starts-with($v856Uri,'ssh')">2</case>
+          <case test="starts-with($v856Uri,'http')">4</case>
+        </switch>
+      </ind1>
+      <ind2 default=" ">
+        <switch>
+          <case test="local-name()='SupplementaryContent'">2</case>
+        </switch>
+      </ind2>
+      <sf code="u"><transform><xsl:value-of select="$v856Uri"/></transform></sf>
+      <sf code="z" chopPunct="true">
+        <select xpath="bf:note/bf:Note/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+  
+  <df tag="856">
     <context xpath="bf:Work/bf:tableOfContents/bf:TableOfContents[not(rdfs:label) and rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']] |
                     bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']] |
                     //bf:Item/bf:electronicLocator/*[rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']]">
