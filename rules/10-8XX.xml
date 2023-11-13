@@ -808,6 +808,11 @@
           <case test="local-name()='SupplementaryContent'">2</case>
         </switch>
       </ind2>
+      <switch>
+        <case test="not(contains(bf:title/bf:Title/bf:mainTitle, 'resource]'))">
+          <sf code="3"><select xpath="bf:title/bf:Title/bf:mainTitle" /></sf>
+        </case>
+      </switch>
       <sf code="u"><transform><xsl:value-of select="$v856Uri"/></transform></sf>
       <sf code="z" chopPunct="true">
         <select xpath="bf:note/bf:Note/rdfs:label"/>
