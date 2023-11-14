@@ -820,6 +820,7 @@
     </context>
   </df>
   
+  <!-- Old pattern.  Keeping for the sake of backwards compatibility. -->
   <df tag="856">
     <context xpath="bf:Work/bf:tableOfContents/bf:TableOfContents[not(rdfs:label) and rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']] |
                     bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']] |
@@ -838,6 +839,36 @@
           <case test="local-name()='SupplementaryContent'">2</case>
         </switch>
       </ind2>
+      <sf code="u"><transform><xsl:value-of select="$v856Uri"/></transform></sf>
+      <sf code="z" chopPunct="true">
+        <select xpath="bf:note/bf:Note/rdfs:label"/>
+      </sf>
+    </context>
+  </df>
+  
+  <df tag="856">
+    <context xpath="bf:Work/bf:tableOfContents[@rdf:resource] |
+                    bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[bf:electronicLocator/@rdf:resource] |
+                    //bf:Item/bf:electronicLocator[@rdf:resource]">
+      <var name="v856Uri"><transform><xsl:value-of select="@rdf:resource|bf:electronicLocator/@rdf:resource"/></transform></var>
+      <ind1 default=" ">
+        <switch>
+          <case test="starts-with($v856Uri,'mailto')">0</case>
+          <case test="starts-with($v856Uri,'ftp')">1</case>
+          <case test="starts-with($v856Uri,'telnet') or starts-with($v856Uri,'ssh')">2</case>
+          <case test="starts-with($v856Uri,'http')">4</case>
+        </switch>
+      </ind1>
+      <ind2 default=" ">
+        <switch>
+          <case test="local-name()='SupplementaryContent'">2</case>
+        </switch>
+      </ind2>
+      <sf code="3">
+        <switch>
+          <case test="local-name()='tableOfContents'">Table of contents</case>
+        </switch>
+      </sf>
       <sf code="u"><transform><xsl:value-of select="$v856Uri"/></transform></sf>
       <sf code="z" chopPunct="true">
         <select xpath="bf:note/bf:Note/rdfs:label"/>
