@@ -813,15 +813,11 @@
     <context xpath="bf:Work/bf:supplementaryContent/bf:SupplementaryContent[@rdf:about]">
       <ind1 default=" "/>
       <ind2 default=" "/>
+      <!--
       <sf code="3" chopPunct="true" repeatable="false">
-        <!-- <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/> -->
-        <switch>
-          <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
-              <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
-          </case>
-          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
-        </switch>
+        <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
+      -->
       <sf code="a"><select xpath="rdfs:label"/></sf>
       <sf code="b">
         <transform>
@@ -830,10 +826,11 @@
           </xsl:call-template>
         </transform>
       </sf>
+      <!--
       <sf code="0">
         <switch>
-          <case test="@rdf:about">
-            <select xpath="@rdf:about"/>
+          <case test="bf:electronicLocator/@rdf:resource">
+            <select xpath="bf:electronicLocator/@rdf:resource"/>
           </case>
           <case test="bf:identifiedBy/bf:Identifier">
             <select xpath="bf:identifiedBy/bf:Identifier">
@@ -865,6 +862,7 @@
       <sf code="2" chopPunct="true" repeatable="false">
         <select xpath="bf:source/bf:Source/bf:code"/>
       </sf>
+      -->
     </context>
   </df>
 
