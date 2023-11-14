@@ -406,7 +406,9 @@
   </df>
 
   <df tag="504" lang-xpath="rdfs:label">
-    <context xpath="bf:Work/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]|bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]">
+    <context xpath="bf:Work/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]  |
+                    bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]
+      ">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
@@ -419,7 +421,7 @@
       <ind1 default="0"/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
-      <sf code="u"><select xpath="rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/></sf>
+      <sf code="u"><select xpath="bf:electronicLocator/@rdf:resource"/></sf>
     </context>
   </df>
 
