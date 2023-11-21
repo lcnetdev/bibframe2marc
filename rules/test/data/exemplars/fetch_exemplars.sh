@@ -40,7 +40,8 @@ declare -A exemplars=(
 
 for key in "${!exemplars[@]}"; do
     if [[ $URLBASE == *"bibs"* ]]; then
-        curl $URLBASE/$key.bibframe_raw.rdf > ${exemplars[$key]}.rdf
+        curl $URLBASE/$key.bibframe_raw.rdf > raw.${exemplars[$key]}.rdf
+        curl $URLBASE/$key.decomposed.rdf > ${exemplars[$key]}.rdf
     else
         curl $URLBASE/$key.cbd.rdf > id.${exemplars[$key]}.rdf
     fi
