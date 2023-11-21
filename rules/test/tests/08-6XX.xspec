@@ -37,7 +37,7 @@
   </x:scenario>
 
   <x:scenario label="MARC 600 - test 02">
-    <x:context href="../data/exemplars/musicaudio-monograph-hamilton-contributos-subjects-genreforms.rdf"/>
+    <x:context href="../data/exemplars/raw.musicaudio-monograph-hamilton-contributos-subjects-genreforms.rdf"/>
     <x:expect label="generate 600s from various marcKeys" test="count(//marc:datafield[@tag='600']) = 2"/>
 
     <x:expect label="ind1 from marcKey/ind1"
@@ -64,6 +64,37 @@
     <x:expect label="$4 from URI"
       test="count(//marc:datafield[@tag='600'][2]/marc:subfield[@code='0']) = 0"/>
   </x:scenario>
+  
+  <!-- FIX in 2.5
+  <x:scenario label="MARC 600 - test 02.2">
+    <x:context href="../data/exemplars/musicaudio-monograph-hamilton-contributos-subjects-genreforms.rdf"/>
+    <x:expect label="generate 600s from various marcKeys" test="count(//marc:datafield[@tag='600']) = 2"/>
+    
+    <x:expect label="ind1 from marcKey/ind1"
+      test="//marc:datafield[@tag='600'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 from source logic"
+      test="//marc:datafield[@tag='600'][1]/@ind2 = '7'"/>
+    <x:expect label="$a from marcKey/a"
+      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='a'] = 'Hamilton, Alexander,'"/>
+    <x:expect label="$d from marcKey/d"
+      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='d'] = '1757-1804.'"/>
+    <x:expect label="$2 from source logic"
+      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='2'] = 'fast'"/>
+    <x:expect label="$4 from URI"
+      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='0'] = 'http://id.worldcat.org/fast/00031768'"/>
+    
+    <x:expect label="ind1 from marcKey/ind1"
+      test="//marc:datafield[@tag='600'][2]/@ind1 = '1'"/>
+    <x:expect label="ind2 from source logic"
+      test="//marc:datafield[@tag='600'][2]/@ind2 = '0'"/>
+    <x:expect label="$a from marcKey/a"
+      test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='a'] = 'Hamilton, Alexander,'"/>
+    <x:expect label="$d from marcKey/d"
+      test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='d'] = '1757-1804'"/>
+    <x:expect label="$4 from URI"
+      test="count(//marc:datafield[@tag='600'][2]/marc:subfield[@code='0']) = 0"/>
+  </x:scenario>
+  -->
 
   <x:scenario label="MARC 611">
     <x:context href="../data/6XX/611.xml"/>

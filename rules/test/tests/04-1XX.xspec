@@ -20,10 +20,19 @@
   </x:scenario>
 
   <x:scenario label="MARC 100 - 03">
-    <x:context href="../data/exemplars/notatedmusic-monograph-genreforms.rdf"/>
+    <x:context href="../data/exemplars/raw.notatedmusic-monograph-genreforms.rdf"/>
     <x:expect label="generate 100 from marcKey" test="count(//marc:datafield[@tag='100']) = 1"/>
     <x:expect label="$d exists from marcKey and matches"
       test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='d'] = '1811-1886,'"/>
+    <x:expect label="$e exists from marcKey and matches"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='e'] = 'composer'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 100 - 03.2">
+    <x:context href="../data/exemplars/notatedmusic-monograph-genreforms.rdf"/>
+    <x:expect label="generate 100 from marcKey" test="count(//marc:datafield[@tag='100']) = 1"/>
+    <x:expect label="$d exists from marcKey and matches"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='d'] = '1811-1886'"/>
     <x:expect label="$e exists from marcKey and matches"
       test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='e'] = 'composer'"/>
   </x:scenario>

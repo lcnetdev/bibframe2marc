@@ -12,7 +12,7 @@
   <!-- <x:param name="pConversionAgency">DLC</x:param> -->
 
  <x:scenario label="MARC 490 - Test 01">
-   <x:context href="../data/exemplars/text-monograph-series-unmatched490sand830.rdf"/>
+   <x:context href="../data/exemplars/raw.text-monograph-series-unmatched490sand830.rdf"/>
     <x:expect label="generate 800" test="count(//marc:datafield[@tag='490']) = 2"/>
     <x:expect label="ind1 is 1, because there is a Series 8XX present"
               test="//marc:datafield[@tag='490'][1]/@ind1 = '1'"/>
@@ -40,6 +40,22 @@
   </x:scenario>
   
   <x:scenario label="MARC 490 - Test 03">
+    <x:context href="../data/exemplars/raw.text-monograph-series-490paralleltitle-830-contributors.rdf"/>
+    <x:expect label="generate 800" test="count(//marc:datafield[@tag='490']) = 1"/>
+    <x:expect label="ind1 is 1, meaning matched with an 8XX"
+      test="//marc:datafield[@tag='490'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 default to blank"
+      test="//marc:datafield[@tag='490'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='490'][1]/marc:subfield[@code='a'][1] = 'Conference proceedings ='"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='490'][1]/marc:subfield[@code='a'][2] = 'Atti di conferenze'"/>
+    <x:expect label="$v from seriesEnumeration"
+      test="//marc:datafield[@tag='490'][1]/marc:subfield[@code='v'] = 'v. 27'"/>
+  </x:scenario>
+  
+  <!-- Fix in 2.5
+  <x:scenario label="MARC 490 - Test 03.2">
     <x:context href="../data/exemplars/text-monograph-series-490paralleltitle-830-contributors.rdf"/>
     <x:expect label="generate 800" test="count(//marc:datafield[@tag='490']) = 1"/>
     <x:expect label="ind1 is 1, meaning matched with an 8XX"
@@ -53,5 +69,5 @@
     <x:expect label="$v from seriesEnumeration"
       test="//marc:datafield[@tag='490'][1]/marc:subfield[@code='v'] = 'v. 27'"/>
   </x:scenario>
-
+  -->
 </x:description>

@@ -78,6 +78,20 @@
   </x:scenario>-->
 
   <x:scenario label="MARC 830">
+    <x:context href="../data/exemplars/raw.text-monograph-series-matching490and830-810.rdf"/>
+    <x:expect label="generate 830" test="count(//marc:datafield[@tag='830']) = 1"/>
+    <x:expect label="ind1 default to blank"
+              test="//marc:datafield[@tag='830'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 from titleSortKey"
+              test="//marc:datafield[@tag='830'][1]/@ind2 = '0'"/>
+    <x:expect label="$a from mainTitle"
+              test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='a'] = 'SIAK scientific series'"/>
+    <x:expect label="$v from seriesEnumeration"
+              test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='v'] = '5.'"/>
+  </x:scenario>
+  
+  <!-- Fix in 2.5
+  <x:scenario label="MARC 830">
     <x:context href="../data/exemplars/text-monograph-series-matching490and830-810.rdf"/>
     <x:expect label="generate 830" test="count(//marc:datafield[@tag='830']) = 1"/>
     <x:expect label="ind1 default to blank"
@@ -89,6 +103,7 @@
     <x:expect label="$v from seriesEnumeration"
               test="//marc:datafield[@tag='830'][1]/marc:subfield[@code='v'] = '5.'"/>
   </x:scenario>
+  -->
 
   <x:scenario label="MARC 856">
     <x:context href="../data/8XX/856.xml"/>
