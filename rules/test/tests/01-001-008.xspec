@@ -42,7 +42,7 @@
   </x:scenario>
 
   <x:scenario label="MARC 007">
-    <x:scenario label="007 - Map">
+    <x:scenario label="007 - Map - 1">
       <x:context href="../data/001-008/007-map.xml"/>
       <x:expect label="Map 007 generated when Work type is bf:Cartography and bf:Work/bf:genreForm has map URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'a'"/>
@@ -50,6 +50,17 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'j'"/>
       <x:expect label="007/02-07 default"
                 test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' |||||'"/>
+    </x:scenario>
+    <x:scenario label="007 - Map - 2">
+      <x:context href="../data/exemplars/cartographic-three007s.rdf"/>
+      <x:expect label="Three 007s generated when Instance has expectant genreForm"
+        test="count(marc:record/marc:controlfield[@tag='007'])=3"/>
+      <x:expect label="... first 007s is ar"
+        test="substring(marc:record/marc:controlfield[@tag='007'][1],1,2) = 'ar'"/>
+      <x:expect label="... second 007s is ay"
+        test="substring(marc:record/marc:controlfield[@tag='007'][2],1,2) = 'ay'"/>
+      <x:expect label="... third 007s is aj"
+        test="substring(marc:record/marc:controlfield[@tag='007'][3],1,2) = 'aj'"/>
     </x:scenario>
     <x:scenario label="007 - Electronic resource">
       <x:context href="../data/001-008/007-electronic.xml"/>
@@ -76,7 +87,7 @@
       <x:expect label="007/02-08 default"
                 test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' ||||||'"/>
     </x:scenario>
-    <x:scenario label="007 - Microform">
+    <x:scenario label="007 - Microform - 1">
       <x:context href="../data/001-008/007-microform.xml"/>
       <x:expect label="Microform 007 generated when Work type is bf:Text and bf:Instance/bf:media has microform URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'h'"/>
@@ -85,7 +96,16 @@
       <x:expect label="007/02-12 default"
                 test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' ||||||||||'"/>
     </x:scenario>
-    <x:scenario label="007 - Nonprojected graphic">
+    <x:scenario label="007 - Microform - 2">
+      <x:context href="../data/exemplars/text-serial-microform-007s-relationships.rdf"/>
+      <x:expect label="Two 007s generated when bf:Instance/bf:media has microform URI and possible matching carrier."
+        test="count(marc:record/marc:controlfield[@tag='007'])=2"/>
+      <x:expect label="... first 007 is hd"
+        test="substring(marc:record/marc:controlfield[@tag='007'][1],1,2) = 'hd'"/>
+      <x:expect label="... second 007 is hd"
+        test="substring(marc:record/marc:controlfield[@tag='007'][2],1,2) = 'hd'"/>
+    </x:scenario>
+    <x:scenario label="007 - Nonprojected graphic - 1">
       <x:context href="../data/001-008/007-nonproj-graphic.xml"/>
       <x:expect label="Nonprojected graphic 007 generated when Work type is bf:StillImage and Instance/media is unmediated"
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'k'"/>
@@ -94,7 +114,16 @@
       <x:expect label="007/02-05 default"
                 test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' |||'"/>
     </x:scenario>
-    <x:scenario label="007 - Motion picture">
+    <x:scenario label="007 - Nonprojected graphic - 2">
+      <x:context href="../data/exemplars/stillimage-collection-pnp-008i.rdf"/>
+      <x:expect label="Nonprojected graphic - two 007s generated when Instance/media is unmediated and Instance has relevant genreForm."
+        test="count(marc:record/marc:controlfield[@tag='007'])=2"/>
+      <x:expect label="... first 007 is kh"
+        test="substring(marc:record/marc:controlfield[@tag='007'][1],1,2) = 'kh'"/>
+      <x:expect label="... second 007 is kd"
+        test="substring(marc:record/marc:controlfield[@tag='007'][2],1,2) = 'kd'"/>
+    </x:scenario>
+    <x:scenario label="007 - Motion picture - 1">
       <x:context href="../data/001-008/007-motion-picture.xml"/>
       <x:expect label="Motion picture 007 generated when Work type is bf:MovingImage and bf:Instance/bf:media has projected graphic URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 'm'"/>
@@ -103,7 +132,16 @@
       <x:expect label="007/02-22 default"
                 test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' ||||||||||||||||||||'"/>
     </x:scenario>
-    <x:scenario label="007 - Sound recording">
+    <x:scenario label="007 - Motion picture - 2">
+      <x:context href="../data/exemplars/movingimage-wizard-of-oz.rdf"/>
+      <x:expect label="Motion picture - eight 007s generated when Instance/media is moving image for 6 instances and video for 2."
+        test="count(marc:record/marc:controlfield[@tag='007'])=8"/>
+      <x:expect label="... first 007 is vd"
+        test="substring(marc:record/marc:controlfield[@tag='007'][1],1,2) = 'vd'"/>
+      <x:expect label="... second 007 is mr"
+        test="substring(marc:record/marc:controlfield[@tag='007'][4],1,2) = 'mr'"/>
+    </x:scenario>
+    <x:scenario label="007 - Sound recording - 1">
       <x:context href="../data/001-008/007-sound.xml"/>
       <x:expect label="Sound recording 007 generated when Work type is bf:MusicAudio, bf:Instance/bf:media has sound recording URI"
                 test="substring(marc:record/marc:controlfield[@tag='007'],1,1) = 's'"/>
@@ -111,6 +149,26 @@
                 test="substring(marc:record/marc:controlfield[@tag='007'],2,1) = 'd'"/>
       <x:expect label="007/02-13 default"
                 test="substring(marc:record/marc:controlfield[@tag='007'],3) = ' |||||||||||'"/>
+    </x:scenario>
+    <x:scenario label="007 - Sound recording - 2">
+      <x:context href="../data/exemplars/musicaudio-monograph-hamilton-contributos-subjects-genreforms.rdf"/>
+      <x:expect label="Sound recording - two 007s generated when Instance/media is sound and from electronic instance."
+        test="count(marc:record/marc:controlfield[@tag='007'])=2"/>
+      <x:expect label="... first 007 is sd"
+        test="substring(marc:record/marc:controlfield[@tag='007'][1],1,2) = 'sd'"/>
+      <x:expect label="... second 007 is cr"
+        test="substring(marc:record/marc:controlfield[@tag='007'][2],1,2) = 'cr'"/>
+    </x:scenario>
+    <x:scenario label="007 - Sound recording - 3">
+      <x:context href="../data/exemplars/nonmusicaudio-one300tomultiple-two007s.rdf"/>
+      <x:expect label="Sound recording - three 007s generated when Instance/media is sound, one from video, and one text."
+        test="count(marc:record/marc:controlfield[@tag='007'])=3"/>
+      <x:expect label="... first 007 is sd"
+        test="substring(marc:record/marc:controlfield[@tag='007'][1],1,2) = 'sd'"/>
+      <x:expect label="... second 007 is vd"
+        test="substring(marc:record/marc:controlfield[@tag='007'][2],1,2) = 'vd'"/>
+      <x:expect label="... third 007 is t|"
+        test="substring(marc:record/marc:controlfield[@tag='007'][3],1,2) = 't|'"/>
     </x:scenario>
     <x:scenario label="007 - Video recording">
       <x:context href="../data/001-008/007-video.xml"/>

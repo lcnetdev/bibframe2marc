@@ -5,12 +5,29 @@
                stylesheet="../../../bibframe2marc.xsl"
                xslt-version="1.0">
 
-  <x:scenario label="MARC 300">
+  <x:scenario label="MARC 300 - 1">
     <x:context href="../data/3XX/300.xml"/>
     <x:expect label="generate 300"
               test="count(//marc:datafield[@tag='300']) = 1"/>
     <x:expect label="$e from Instance accompanying note"
               test="//marc:datafield[@tag='300']/marc:subfield[@code='e'] = 'answer book'"/>
+  </x:scenario>
+  
+  
+  <x:scenario label="MARC 300 - 2">
+    <x:context href="../data/exemplars/nonmusicaudio-one300tomultiple-two007s.rdf"/>
+    <x:expect label="generate 3 300s"
+      test="count(//marc:datafield[@tag='300']) = 3"/>
+    <x:expect label="$3 from Instance title"
+      test="//marc:datafield[@tag='300'][3]/marc:subfield[@code='3'] = 'lesson guide'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 300 - 3">
+    <x:context href="../data/exemplars/movingimage-wizard-of-oz.rdf"/>
+    <x:expect label="generate 8 300s"
+      test="count(//marc:datafield[@tag='300']) = 8"/>
+    <x:expect label="$3 from Instance title"
+      test="//marc:datafield[@tag='300'][7]/marc:subfield[@code='3'] = '10 reels of 10 on 6 (r1-10, 10b) (ca. 9140 ft.)'"/>
   </x:scenario>
 
   <x:scenario label="MARC 306">
