@@ -1,5 +1,12 @@
 # bibframe2marc release notes
 
+## v2.4.0
+
+Placeholder
+
+* Placeholder
+
+See the [NEWS](NEWS) file for full details of changes.
 
 ## v2.3.0
 
