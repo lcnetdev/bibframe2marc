@@ -111,7 +111,6 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20779915"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/20779915-050-12"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/20779915-051-13"/>
     <bf:adminMetadata>
@@ -141,9 +140,9 @@
 	  <bf:Local>
 	    <rdf:value>20779915</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -152,9 +151,9 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c premver $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $i vk39 2018-12-13 $e vk39 2019-01-09 sent to Music Division</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -162,9 +161,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
@@ -180,6 +179,7 @@
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a musliszt</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20779915"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/20779915">
     <bflc:aap>Liszt, Franz, 1811-1886 Grande fantaisie de bravoure sur La clochette de Paganini</bflc:aap>
@@ -209,9 +209,9 @@
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:classificationPortion>ML31</bf:classificationPortion>
 	<bf:itemPortion>.H43e no. 43</bf:itemPortion>
@@ -222,6 +222,7 @@
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79079048">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Liszt, Franz, 1811-1886</rdfs:label>
 	    <bflc:marcKey>1001 $aLiszt, Franz,$d1811-1886</bflc:marcKey>
 	  </bf:Agent>
@@ -255,10 +256,10 @@
       </bf:Notation>
     </bf:notation>
     <bf:subject>
-      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85105702" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85105702">
 	<rdfs:label xml:lang="en">Potpourris (Piano)</rdfs:label>
 	<bflc:marcKey>150 0$aPotpourris (Piano)</bflc:marcKey>
-      </madsrdf:Topic>
+      </bf:Topic>
     </bf:subject>
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014027077">
@@ -417,8 +418,26 @@
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/20779915-856-35"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/20779915"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/20779915-856-35">
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>Grande fantaisie de bravoure sur La clochette de Paganini</bf:mainTitle>
+	    <bf:subtitle>pour le piano-forte : oeuvre 2</bf:subtitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Instance>
+    </bf:hasInstance>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/20779915">
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>Grande fantaisie de bravoure sur La clochette de Paganini</bf:mainTitle>
+	    <bf:subtitle>pour le piano-forte : oeuvre 2</bf:subtitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -446,9 +465,9 @@
 	  <bf:Local>
 	    <rdf:value>20779915</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -457,9 +476,9 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c premver $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $i vk39 2018-12-13 $e vk39 2019-01-09 sent to Music Division</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -467,9 +486,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
@@ -496,9 +515,9 @@
       <bf:ShelfMarkLcc>
 	<rdfs:label>ML31.H43e no. 43</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
@@ -510,9 +529,9 @@
 	  <bf:Local>
 	    <rdf:value>20779915-050-12</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -542,9 +561,9 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c premver $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $i vk39 2018-12-13 $e vk39 2019-01-09 sent to Music Division</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -552,9 +571,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
@@ -581,9 +600,9 @@
       <bf:ShelfMarkLcc>
 	<rdfs:label>86/20,226 (Mus) item 121</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
@@ -600,9 +619,9 @@
 	  <bf:Local>
 	    <rdf:value>20779915-051-13</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -632,9 +651,9 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c premver $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $i vk39 2018-12-13 $e vk39 2019-01-09 sent to Music Division</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -642,9 +661,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">

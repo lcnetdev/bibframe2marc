@@ -129,7 +129,6 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/14437118"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/14437118-050-11"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
@@ -158,9 +157,9 @@
 	  <bf:Local>
 	    <rdf:value>14437118</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -168,14 +167,14 @@
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
@@ -185,6 +184,7 @@
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/guide</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/14437118"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/14437118">
     <bflc:aap>Office of Charles and Ray Eames Eames Collection (Library of Congress)</bflc:aap>
@@ -233,9 +233,9 @@
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:classificationPortion>Guide Record</bf:classificationPortion>
       </bf:ClassificationLcc>
@@ -245,6 +245,7 @@
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n82090147">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>Office of Charles and Ray Eames</rdfs:label>
 	    <bflc:marcKey>1102 $aOffice of Charles and Ray Eames</bflc:marcKey>
 	  </bf:Agent>
@@ -297,16 +298,16 @@
       </bf:Note>
     </bf:note>
     <bf:subject>
-      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85037197" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85037197">
 	<rdfs:label xml:lang="en">Design</rdfs:label>
 	<bflc:marcKey>150  $aDesign</bflc:marcKey>
-      </madsrdf:Topic>
+      </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh94004340" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh94004340">
 	<rdfs:label xml:lang="en">Eames furniture</rdfs:label>
 	<bflc:marcKey>150 0$aEames furniture</bflc:marcKey>
-      </madsrdf:Topic>
+      </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic>
@@ -339,10 +340,10 @@
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85052563" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85052563">
 	<rdfs:label xml:lang="en">Furniture design</rdfs:label>
 	<bflc:marcKey>150 0$aFurniture design</bflc:marcKey>
-      </madsrdf:Topic>
+      </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic>
@@ -458,6 +459,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79128113">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Eames, Charles</rdfs:label>
 	    <bflc:marcKey>10010$aEames, Charles</bflc:marcKey>
 	  </bf:Agent>
@@ -473,6 +475,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n80050441">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Eames, Ray</rdfs:label>
 	    <bflc:marcKey>1001 $aEames, Ray</bflc:marcKey>
 	  </bf:Agent>
@@ -492,6 +495,7 @@
 	  <bflc:PrimaryContribution>
 	    <bf:agent>
 	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79128113">
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Eames, Charles</rdfs:label>
 		<bflc:marcKey>10010$aEames, Charles</bflc:marcKey>
 	      </bf:Agent>
@@ -513,7 +517,11 @@
 	    <bf:identifiedBy>
 	      <bf:Lccn>
 		<rdf:value>mm 94083006</rdf:value>
-		<bf:assigner rdf:resource="http://id.loc.gov/vocabulary/organizations/dlc"/>
+		<bf:assigner>
+		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		    <rdfs:label>United States, Library of Congress</rdfs:label>
+		  </bf:Organization>
+		</bf:assigner>
 	      </bf:Lccn>
 	    </bf:identifiedBy>
 	  </bf:Instance>
@@ -521,7 +529,15 @@
       </bf:Work>
     </bf:partOf>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/14437118"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/14437118">
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>Eames Collection (Library of Congress)</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -549,9 +565,9 @@
 	  <bf:Local>
 	    <rdf:value>14437118</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -559,14 +575,14 @@
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
@@ -587,9 +603,9 @@
       <bf:ShelfMarkLcc>
 	<rdfs:label>Guide Record</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
@@ -642,9 +658,9 @@
 	  <bf:Local>
 	    <rdf:value>14437118</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -652,14 +668,14 @@
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">

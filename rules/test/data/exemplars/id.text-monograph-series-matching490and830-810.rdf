@@ -76,7 +76,6 @@
     <bf:seriesStatement>SIAK scientific series 5</bf:seriesStatement>
     <bf:seriesStatement>Sicherheitsakademie &lt;Wien&gt; SIAK scientific series 5.</bf:seriesStatement>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/16998093"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -105,9 +104,9 @@
 	  <bf:Local>
 	    <rdf:value>16998093</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -117,12 +116,13 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a ff70 2011-10-13 $a ff00 2011-10-28 to GS/SBCG</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/16998093"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/16998093">
     <bflc:aap>Jakubowicz, Linda Corruption</bflc:aap>
@@ -203,6 +203,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/no2012003139">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Jakubowicz, Linda</rdfs:label>
 	    <bflc:marcKey>1001 $aJakubowicz, Linda</bflc:marcKey>
 	  </bf:Agent>
@@ -223,6 +224,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n00010534">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Fiedler, Franz</rdfs:label>
 	    <bflc:marcKey>1001 $aFiedler, Franz</bflc:marcKey>
 	  </bf:Agent>
@@ -274,7 +276,18 @@
       </bf:Work>
     </bf:hasSeries>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/16998093"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/16998093">
+	<rdfs:label>Corruption</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Corruption</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Corruption</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Vienna; Federal Ministry of the Interior; 2010.</bf:provisionActivityStatement>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -303,9 +316,9 @@
 	  <bf:Local>
 	    <rdf:value>16998093</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -315,9 +328,9 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a ff70 2011-10-13 $a ff00 2011-10-28 to GS/SBCG</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:AdminMetadata>
     </bf:adminMetadata>

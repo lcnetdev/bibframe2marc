@@ -63,7 +63,6 @@
     </bf:supplementaryContent>
     <bf:provisionActivityStatement>New York : Crown, an imprint of the Crown Publishing Group, [2018]</bf:provisionActivityStatement>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20898769"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/20898769-050-17"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
@@ -98,9 +97,9 @@
 	  <bf:Local>
 	    <rdf:value>20898769</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -109,9 +108,9 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default (ex.)</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $b rf21 2019-03-21 z-processor $i rf21 2019-03-21 HAND CARRY to SL $e rf07 2019-03-21 to Hand Carry $a hh12 2019-05-06 2 copies On Order for Loan $t rm11 2019-05-06 copy 2 to CALM $a hh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/nhp" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/nhp">
 	    <rdfs:label>New Hampshire State Library, Processing Center</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -119,9 +118,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
@@ -134,6 +133,7 @@
 	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-30T16:22:58Z</bf:changeDate>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20898769"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/20898769">
     <bflc:aap>Obama, Michelle, 1964- Becoming</bflc:aap>
@@ -143,6 +143,7 @@
       <bflc:PrimaryContribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n2008054754">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Obama, Michelle, 1964-</rdfs:label>
 	    <bflc:marcKey>1001 $aObama, Michelle,$d1964-</bflc:marcKey>
 	  </bf:Agent>
@@ -254,8 +255,12 @@
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>BIOGRAPHY &amp; AUTOBIOGRAPHY</madsrdf:authoritativeLabel>
 	  </madsrdf:Topic>
-	  <madsrdf:Topic>http://id.loc.gov/authorities/subjects/collection_Subdivisions<madsrdf:authoritativeLabel>Cultural, Ethnic &amp; Regional</madsrdf:authoritativeLabel></madsrdf:Topic>
-	  <madsrdf:Topic>http://id.loc.gov/authorities/subjects/collection_Subdivisions<madsrdf:authoritativeLabel>African American &amp; Black</madsrdf:authoritativeLabel></madsrdf:Topic>
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>Cultural, Ethnic &amp; Regional</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>African American &amp; Black</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
 	</madsrdf:componentList>
 	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
@@ -347,7 +352,9 @@
 	    <rdfs:label>Illinois</rdfs:label>
 	    <bflc:marcKey>181  $zIllinois</bflc:marcKey>
 	  </madsrdf:Geographic>
-	  <madsrdf:Geographic>http://id.loc.gov/authorities/subjects/collection_Subdivisions<madsrdf:authoritativeLabel>Chicago</madsrdf:authoritativeLabel></madsrdf:Geographic>
+	  <madsrdf:Geographic>
+	    <madsrdf:authoritativeLabel>Chicago</madsrdf:authoritativeLabel>
+	  </madsrdf:Geographic>
 	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001237">
 	    <rdfs:label xml:lang="en">Biography</rdfs:label>
 	    <bflc:marcKey>185  $vBiography</bflc:marcKey>
@@ -398,9 +405,9 @@
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:classificationPortion>E909.O24</bf:classificationPortion>
 	<bf:itemPortion>O23 2018</bf:itemPortion>
@@ -588,9 +595,9 @@
 	  <bf:Local>
 	    <rdf:value>20898769</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -599,9 +606,9 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default (ex.)</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $b rf21 2019-03-21 z-processor $i rf21 2019-03-21 HAND CARRY to SL $e rf07 2019-03-21 to Hand Carry $a hh12 2019-05-06 2 copies On Order for Loan $t rm11 2019-05-06 copy 2 to CALM $a hh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/nhp" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/nhp">
 	    <rdfs:label>New Hampshire State Library, Processing Center</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -609,9 +616,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
@@ -635,9 +642,9 @@
       <bf:ShelfMarkLcc>
 	<rdfs:label>E909.O24 O23 2018</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
@@ -649,9 +656,9 @@
 	  <bf:Local>
 	    <rdf:value>20898769-050-17</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -687,9 +694,9 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default (ex.)</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $b rf21 2019-03-21 z-processor $i rf21 2019-03-21 HAND CARRY to SL $e rf07 2019-03-21 to Hand Carry $a hh12 2019-05-06 2 copies On Order for Loan $t rm11 2019-05-06 copy 2 to CALM $a hh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/nhp" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/nhp">
 	    <rdfs:label>New Hampshire State Library, Processing Center</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -697,9 +704,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">

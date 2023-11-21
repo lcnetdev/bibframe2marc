@@ -76,9 +76,9 @@
       <bf:Local>
 	<rdf:value>ocn608089562</rdf:value>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
 	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:Local>
     </bf:identifiedBy>
@@ -164,7 +164,6 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/21009588"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/21009588-050-15"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
@@ -194,9 +193,9 @@
 	  <bf:Local>
 	    <rdf:value>21009588</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -206,9 +205,9 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr36 2019-06-07 z-client $i qr36 2019-06-07 $t qr36 Copy 2 2019-06-11</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/cus" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/cus">
 	    <rdfs:label>University of California, San Diego, Main Library</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -216,9 +215,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
@@ -227,6 +226,7 @@
 	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/21009588"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/21009588">
     <bflc:aap>20th century country. Volume two, Country classics from a jack to a king</bflc:aap>
@@ -278,7 +278,9 @@
 	    <rdfs:label xml:lang="en">Country music</rdfs:label>
 	    <bflc:marcKey>150  $aCountry music</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:Temporal>http://id.loc.gov/authorities/subjects/collection_Subdivisions<madsrdf:authoritativeLabel>1991-2000</madsrdf:authoritativeLabel></madsrdf:Temporal>
+	  <madsrdf:Temporal>
+	    <madsrdf:authoritativeLabel>1991-2000</madsrdf:authoritativeLabel>
+	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>countrymusic19912000</bflc:aap-normalized>
       </bf:Topic>
@@ -299,7 +301,9 @@
 	    <rdfs:label xml:lang="en">Country music</rdfs:label>
 	    <bflc:marcKey>150  $aCountry music</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:Temporal>http://id.loc.gov/authorities/subjects/collection_Subdivisions<madsrdf:authoritativeLabel>1981-1990</madsrdf:authoritativeLabel></madsrdf:Temporal>
+	  <madsrdf:Temporal>
+	    <madsrdf:authoritativeLabel>1981-1990</madsrdf:authoritativeLabel>
+	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>countrymusic19811990</bflc:aap-normalized>
       </bf:Topic>
@@ -331,7 +335,42 @@
       </bf:Temporal>
     </bf:subject>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/21009588"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/21009588">
+	<rdfs:label>20th century country. Volume two, Country classics from a jack to a king.</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#">20th century country. Volume two, Country classics from a jack to a king.</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">20th century country</bf:mainTitle>
+	    <bf:partNumber xmlns:streams="info:lc/streams#">Volume two</bf:partNumber>
+	    <bf:partName xmlns:streams="info:lc/streams#">Country classics from a jack to a king</bf:partName>
+	  </bf:Title>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Twentieth century country. Volume two. Country classics from a jack to a king</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Twentieth century country</bf:mainTitle>
+	    <bf:partNumber xmlns:streams="info:lc/streams#">Volume two</bf:partNumber>
+	    <bf:partName xmlns:streams="info:lc/streams#">Country classics from a jack to a king</bf:partName>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Country classics from a jack to a king</rdfs:label>
+	    <bf:variantType xmlns:streams="info:lc/streams#">portion</bf:variantType>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Country classics from a jack to a king</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <rdfs:label xmlns:streams="info:lc/streams#">From a jack to a king</rdfs:label>
+	    <bf:variantType xmlns:streams="info:lc/streams#">portion</bf:variantType>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">From a jack to a king</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Minneapolis, MN : Dominion : Manufactured and distributed in the U.S. by K-tel International, [1998?], ℗1997.</bf:provisionActivityStatement>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -360,9 +399,9 @@
 	  <bf:Local>
 	    <rdf:value>21009588</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -372,9 +411,9 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr36 2019-06-07 z-client $i qr36 2019-06-07 $t qr36 Copy 2 2019-06-11</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/cus" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/cus">
 	    <rdfs:label>University of California, San Diego, Main Library</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -382,9 +421,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
@@ -404,9 +443,9 @@
       <bf:ShelfMark>
 	<rdfs:label>SDD 21485</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMark>
     </bf:shelfMark>
@@ -440,9 +479,9 @@
 	  <bf:Local>
 	    <rdf:value>21009588</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -452,9 +491,9 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr36 2019-06-07 z-client $i qr36 2019-06-07 $t qr36 Copy 2 2019-06-11</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/cus" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/cus">
 	    <rdfs:label>University of California, San Diego, Main Library</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -462,9 +501,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">

@@ -37,9 +37,9 @@
       <bf:Local>
 	<rdf:value>on1056975250</rdf:value>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
 	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:Local>
     </bf:identifiedBy>
@@ -47,9 +47,9 @@
       <bf:Local>
 	<rdf:value>1056975250</rdf:value>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
 	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:Local>
     </bf:identifiedBy>
@@ -128,7 +128,6 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/21340497"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/21340497-050-17"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
@@ -158,9 +157,9 @@
 	  <bf:Local>
 	    <rdf:value>21340497</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -186,9 +185,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
@@ -202,6 +201,7 @@
 	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/21340497"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/21340497">
     <bflc:aap>Kirsch, Dieter, Lautentabulatur im Stift St. Paul im Lavanttal = The lute manuscript in the monastery of St. Paul im Lavanttal</bflc:aap>
@@ -255,9 +255,9 @@
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:classificationPortion>M140</bf:classificationPortion>
 	<bf:itemPortion>.L45 2018</bf:itemPortion>
@@ -311,10 +311,10 @@
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
     <bf:subject>
-      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85078980" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85078980">
 	<rdfs:label xml:lang="en">Lute music</rdfs:label>
 	<bflc:marcKey>150  $aLute music</bflc:marcKey>
-      </madsrdf:Topic>
+      </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic>
@@ -332,7 +332,9 @@
 	    <rdfs:label xml:lang="en">Music</rdfs:label>
 	    <bflc:marcKey>150  $aMusic</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm>http://id.loc.gov/authorities/subjects/collection_Subdivisions<madsrdf:authoritativeLabel>Manuscripts</madsrdf:authoritativeLabel></madsrdf:GenreForm>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Manuscripts</madsrdf:authoritativeLabel>
+	  </madsrdf:GenreForm>
 	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001284">
 	    <rdfs:label xml:lang="en">Facsimiles</rdfs:label>
 	    <bflc:marcKey>185  $vFacsimiles</bflc:marcKey>
@@ -476,9 +478,9 @@
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
-	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n86145209">
-	    <rdfs:label>Kirsch, Dieter</rdfs:label>
-	    <bflc:marcKey>1001 $aKirsch, Dieter</bflc:marcKey>
+	  <bf:Agent>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+	    <rdfs:label>Kirsch, Dieter,</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -492,6 +494,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/nr2001031703">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Robinson, John H. (John Henry), 1945-</rdfs:label>
 	    <bflc:marcKey>1001 $aRobinson, John H.$q(John Henry),$d1945-</bflc:marcKey>
 	  </bf:Agent>
@@ -527,7 +530,25 @@
       </bflc:relation>
       <bf:relatedTo>http://id.loc.gov/resources/REPLACE/21340497#Agent710-46</bf:relatedTo>
     </bflc:Relationship>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/21340497"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/21340497">
+	<rdfs:label>Die Lautentabulatur im Stift St. Paul im Lavanttal = The lute manuscript in the monastery of St. Paul im Lavanttal</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Die Lautentabulatur im Stift St. Paul im Lavanttal = The lute manuscript in the monastery of St. Paul im Lavanttal</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Die Lautentabulatur im Stift St. Paul im Lavanttal</bf:mainTitle>
+	    <bf:subtitle xmlns:streams="info:lc/streams#">The lute manuscript in the monastery of St. Paul im Lavanttal</bf:subtitle>
+	  </bf:Title>
+	</bf:title>
+	<bf:title>
+	  <bf:ParallelTitle>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Lute manuscript in the monastery of St. Paul im Lavanttal</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Lute manuscript in the monastery of St. Paul im Lavanttal</bf:mainTitle>
+	  </bf:ParallelTitle>
+	</bf:title>
+	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Klagenfurt am Wörthersee : Verlag des Geschichtsvereines für Kärnten, 2018.</bf:provisionActivityStatement>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -556,9 +577,9 @@
 	  <bf:Local>
 	    <rdf:value>21340497</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -584,9 +605,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
@@ -611,9 +632,9 @@
       <bf:ShelfMarkLcc>
 	<rdfs:label>M140.L45 2018</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
@@ -647,9 +668,9 @@
 	  <bf:Local>
 	    <rdf:value>21340497</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -675,9 +696,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">

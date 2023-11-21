@@ -77,7 +77,6 @@
     <bf:seriesStatement>Conference proceedings</bf:seriesStatement>
     <bf:seriesStatement>Atti di conferenze ; v. 27</bf:seriesStatement>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/4384447"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/4384447-050-12"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
@@ -107,9 +106,9 @@
 	  <bf:Local>
 	    <rdf:value>4384447</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -118,17 +117,18 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d 2 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a rb09 4-04-91; rc16; ep67 11-21-91; ea17/14 to scd 12-23-91; fg08 12-30-91; fl42 01-31-92</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/4384447"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/4384447">
     <bflc:aap>Colacino, M. 2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bflc:aap>
@@ -163,9 +163,9 @@
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:classificationPortion>QC869.4.A6</bf:classificationPortion>
 	<bf:itemPortion>A153 1989</bf:itemPortion>
@@ -181,9 +181,9 @@
 	</bf:source>
 	<bf:edition>full</bf:edition>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ClassificationDdc>
     </bf:classification>
@@ -214,7 +214,9 @@
 	    <rdfs:label xml:lang="en">Research</rdfs:label>
 	    <bflc:marcKey>180  $xResearch</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:Geographic>http://id.loc.gov/authorities/subjects/collection_Subdivisions<madsrdf:authoritativeLabel>Antarctica</madsrdf:authoritativeLabel></madsrdf:Geographic>
+	  <madsrdf:Geographic>
+	    <madsrdf:authoritativeLabel>Antarctica</madsrdf:authoritativeLabel>
+	  </madsrdf:Geographic>
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh99001964">
 	    <rdfs:label xml:lang="en">Congresses</rdfs:label>
 	    <bflc:marcKey>180  $xCongresses</bflc:marcKey>
@@ -299,6 +301,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n82061096">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Colacino, M.</rdfs:label>
 	    <bflc:marcKey>10010$aColacino, M.</bflc:marcKey>
 	  </bf:Agent>
@@ -314,6 +317,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n91112268">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Giovanelli, G. (Giorgio)</rdfs:label>
 	    <bflc:marcKey>10010$aGiovanelli, G.$q(Giorgio)</bflc:marcKey>
 	  </bf:Agent>
@@ -329,6 +333,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n91112272">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Stefanutti, L. (Leopoldo)</rdfs:label>
 	    <bflc:marcKey>10010$aStefanutti, L.$q(Leopoldo)</bflc:marcKey>
 	  </bf:Agent>
@@ -379,7 +384,18 @@
       </bf:Work>
     </bf:relatedTo>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/4384447"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/4384447">
+	<rdfs:label>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#">2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Bologna, Italy : Italian Physical Society, 1990.</bf:provisionActivityStatement>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -408,9 +424,9 @@
 	  <bf:Local>
 	    <rdf:value>4384447</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -419,14 +435,14 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d 2 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a rb09 4-04-91; rc16; ep67 11-21-91; ea17/14 to scd 12-23-91; fg08 12-30-91; fl42 01-31-92</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
@@ -441,9 +457,9 @@
       <bf:ShelfMarkLcc>
 	<rdfs:label>QC869.4.A6 A153 1989</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
@@ -477,9 +493,9 @@
 	  <bf:Local>
 	    <rdf:value>4384447</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -488,14 +504,14 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d 2 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a rb09 4-04-91; rc16; ep67 11-21-91; ea17/14 to scd 12-23-91; fg08 12-30-91; fl42 01-31-92</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>

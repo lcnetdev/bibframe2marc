@@ -42,9 +42,9 @@
       <bf:Local>
 	<rdf:value>VAUP91-B3968</rdf:value>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/cstrlin" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/cstrlin">
 	    <rdfs:label>Research Libraries Information Network</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:Local>
     </bf:identifiedBy>
@@ -106,7 +106,6 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/16362995"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/16362995-050-12"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/16362995-051-13"/>
     <bf:adminMetadata>
@@ -137,9 +136,9 @@
 	  <bf:Local>
 	    <rdf:value>16362995</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -148,17 +147,18 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 3 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $e vl34 2012-03-02 microfilm added</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/viu" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/viu">
 	    <rdfs:label>University of Virginia</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/16362995"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/16362995">
     <bflc:aap>Hannam, Mrs. Farmer : a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin</bflc:aap>
@@ -192,9 +192,9 @@
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:classificationPortion>ML48</bf:classificationPortion>
 	<bf:itemPortion>[S9866]</bf:itemPortion>
@@ -337,9 +337,9 @@
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
-	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n82208047">
-	    <rdfs:label>Shield, William, 1748-1829</rdfs:label>
-	    <bflc:marcKey>1001 $aShield, William,$d1748-1829</bflc:marcKey>
+	  <bf:Agent>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+	    <rdfs:label>Shield, William, 1748-1829,</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -357,9 +357,9 @@
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
-	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n80123409">
-	    <rdfs:label>O'Keeffe, John, 1747-1833</rdfs:label>
-	    <bflc:marcKey>1001 $aO'Keeffe, John,$d1747-1833</bflc:marcKey>
+	  <bf:Agent>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+	    <rdfs:label>O'Keeffe, John, 1747-1833,</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -373,6 +373,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n88050197">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Mitchell, Mr.</rdfs:label>
 	    <bflc:marcKey>1001 $aMitchell,$cMr.</bflc:marcKey>
 	  </bf:Agent>
@@ -403,6 +404,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n88175780">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>King, Mr.</rdfs:label>
 	    <bflc:marcKey>1001 $aKing,$cMr.</bflc:marcKey>
 	  </bf:Agent>
@@ -493,6 +495,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/no89013846">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Smith, Mr.</rdfs:label>
 	    <bflc:marcKey>1001 $aSmith,$cMr.</bflc:marcKey>
 	  </bf:Agent>
@@ -508,6 +511,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n86143801">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Marshall, Mrs.</rdfs:label>
 	    <bflc:marcKey>1001 $aMarshall,$cMrs.</bflc:marcKey>
 	  </bf:Agent>
@@ -550,8 +554,30 @@
       </bf:Contribution>
     </bf:contribution>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/16362995-856-37"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/16362995"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/16362995-856-37">
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#">The Farmer : a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin /</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">The Farmer</bf:mainTitle>
+	    <bf:subtitle xmlns:streams="info:lc/streams#">a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin</bf:subtitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Instance>
+    </bf:hasInstance>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/16362995">
+	<rdfs:label>The Farmer : a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#">The Farmer : a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">The Farmer</bf:mainTitle>
+	    <bf:subtitle xmlns:streams="info:lc/streams#">a comic opera in two acts : as it is performed at the Theatres Royal in London and Dublin</bf:subtitle>
+	  </bf:Title>
+	</bf:title>
+	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Dublin : Printed by T. McDonnell, no. 50, Essex Street, 1792.</bf:provisionActivityStatement>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -580,9 +606,9 @@
 	  <bf:Local>
 	    <rdf:value>16362995</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -591,14 +617,14 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 3 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $e vl34 2012-03-02 microfilm added</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/viu" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/viu">
 	    <rdfs:label>University of Virginia</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
@@ -613,9 +639,9 @@
       <bf:ShelfMarkLcc>
 	<rdfs:label>ML48 [S9866]</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
@@ -649,9 +675,9 @@
 	  <bf:Local>
 	    <rdf:value>16362995</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -660,14 +686,14 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 3 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $e vl34 2012-03-02 microfilm added</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/viu" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/viu">
 	    <rdfs:label>University of Virginia</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
@@ -682,9 +708,9 @@
       <bf:ShelfMark>
 	<rdfs:label>Microfilm Music 1854, reel 201.</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMark>
     </bf:shelfMark>
@@ -723,9 +749,9 @@
 	  <bf:Local>
 	    <rdf:value>16362995</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -734,14 +760,14 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 3 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $e vl34 2012-03-02 microfilm added</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/viu" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/viu">
 	    <rdfs:label>University of Virginia</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>

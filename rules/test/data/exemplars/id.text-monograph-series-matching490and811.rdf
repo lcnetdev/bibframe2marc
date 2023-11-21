@@ -82,7 +82,6 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/2971034"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/2971034-050-12"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
@@ -112,9 +111,9 @@
 	  <bf:Local>
 	    <rdf:value>2971034</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -122,17 +121,18 @@
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1993-06-21</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/2971034"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/2971034">
     <bflc:aap>Ikonné, Chidi, 1940- African literature and African historical experiences</bflc:aap>
@@ -172,9 +172,9 @@
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:classificationPortion>PL8010</bf:classificationPortion>
 	<bf:itemPortion>.A354 1991</bf:itemPortion>
@@ -276,6 +276,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n80090984">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Ikonné, Chidi, 1940-</rdfs:label>
 	    <bflc:marcKey>1001 $aIkonné, Chidi,$d1940-</bflc:marcKey>
 	  </bf:Agent>
@@ -291,6 +292,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n88207781">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Oko, E.</rdfs:label>
 	    <bflc:marcKey>10010$aOko, E.</bflc:marcKey>
 	  </bf:Agent>
@@ -306,6 +308,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n93058760">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Onwudinjo, Peter</rdfs:label>
 	    <bflc:marcKey>1001 $aOnwudinjo, Peter</bflc:marcKey>
 	  </bf:Agent>
@@ -341,6 +344,7 @@
 	  <bf:Contribution>
 	    <bf:agent>
 	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n87840228">
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Meeting"/>
 		<rdfs:label>University of Calabar International Conference on African Literature and the English Language</rdfs:label>
 		<bflc:marcKey>1112 $aUniversity of Calabar International Conference on African Literature and the English Language</bflc:marcKey>
 	      </bf:Agent>
@@ -360,7 +364,18 @@
       </bf:Work>
     </bf:hasSeries>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/2971034"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/2971034">
+	<rdfs:label>African literature and African historical experiences</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#">African literature and African historical experiences</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">African literature and African historical experiences</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Ibadan : Heinemann Educational Books Nigeria PLC, 1991.</bf:provisionActivityStatement>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -389,9 +404,9 @@
 	  <bf:Local>
 	    <rdf:value>2971034</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -399,14 +414,14 @@
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1993-06-21</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
@@ -421,9 +436,9 @@
       <bf:ShelfMarkLcc>
 	<rdfs:label>PL8010.A354 1991</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMarkLcc>
     </bf:shelfMark>
@@ -457,9 +472,9 @@
 	  <bf:Local>
 	    <rdf:value>2971034</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -467,14 +482,14 @@
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1993-06-21</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>

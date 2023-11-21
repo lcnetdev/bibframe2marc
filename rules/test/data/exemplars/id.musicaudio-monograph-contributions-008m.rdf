@@ -388,7 +388,6 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/12280298"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/12280298-050-38"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
@@ -418,9 +417,9 @@
 	  <bf:Local>
 	    <rdf:value>12280298</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -430,14 +429,14 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a vk17 01-17-01; to MBRS 01-17-01; vl22 05-18-01 (v. 1); to MBRS 05-21-01</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
@@ -446,6 +445,7 @@
 	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/12280298"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/12280298">
     <bflc:aap>Rodgers, Richard, 1902-1979. Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein</bflc:aap>
@@ -477,6 +477,7 @@
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution" xmlns:streams="info:lc/streams#"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n50048058">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Rodgers, Richard, 1902-1979</rdfs:label>
 	    <bflc:marcKey>1001 $aRodgers, Richard,$d1902-1979</bflc:marcKey>
 	  </bf:Agent>
@@ -489,13 +490,13 @@
       </bf:Contribution>
     </bf:contribution>
     <bf:expressionOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/e16e3ffc-e11d-c840-e02b-5539193f6bd1">
+      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/a074316d-6aff-94b0-9000-d132401353a1">
 	<rdfs:label>Rodgers, Richard, 1902-1979 Oklahoma. Selections</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
 	    <bf:agent>
-	      <bf:Agent>
+	      <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n50048058">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Rodgers, Richard, 1902-1979</rdfs:label>
 	      </bf:Agent>
@@ -510,7 +511,7 @@
 	    <bf:mainTitle>Oklahoma. Selections</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bflc:marcKey>1001 $aRodgers, Richard,$d1902-1979.$tOklahoma.$kSelections</bflc:marcKey>
+	<bflc:marcKey>1001 $aRodgers, Richard,$d1902-1979.$0http://id.loc.gov/authorities/names/n50048058$tOklahoma.$kSelections</bflc:marcKey>
       </bf:Work>
     </bf:expressionOf>
     <rdfs:label>Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</rdfs:label>
@@ -553,6 +554,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n50020012">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Hammerstein, Oscar, II, 1895-1960</rdfs:label>
 	    <bflc:marcKey>1001 $aHammerstein, Oscar,$cII,$d1895-1960</bflc:marcKey>
 	  </bf:Agent>
@@ -568,6 +570,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n81098962">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Drake, Alfred, 1914-1992</rdfs:label>
 	    <bflc:marcKey>10010$aDrake, Alfred,$d1914-1992</bflc:marcKey>
 	  </bf:Agent>
@@ -583,6 +586,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n81097883">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Roberts, Joan, 1917-2012</rdfs:label>
 	    <bflc:marcKey>1001 $aRoberts, Joan,$d1917-2012</bflc:marcKey>
 	  </bf:Agent>
@@ -598,6 +602,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n87896315">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Da Silva, Howard, 1909-1986</rdfs:label>
 	    <bflc:marcKey>1001 $aDa Silva, Howard,$d1909-1986</bflc:marcKey>
 	  </bf:Agent>
@@ -613,6 +618,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n85376577">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Holm, Celeste, 1917-2012</rdfs:label>
 	    <bflc:marcKey>1001 $aHolm, Celeste,$d1917-2012</bflc:marcKey>
 	  </bf:Agent>
@@ -628,6 +634,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/no92015355">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Dixon, Lee, -1953</rdfs:label>
 	    <bflc:marcKey>1001 $aDixon, Lee,$d-1953</bflc:marcKey>
 	  </bf:Agent>
@@ -643,6 +650,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n82089153">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Buloff, Joseph</rdfs:label>
 	    <bflc:marcKey>1001 $aBuloff, Joseph</bflc:marcKey>
 	  </bf:Agent>
@@ -658,6 +666,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79087470">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Garde, Betty</rdfs:label>
 	    <bflc:marcKey>1001 $aGarde, Betty</bflc:marcKey>
 	  </bf:Agent>
@@ -673,6 +682,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n2001063729">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Riggs, Ralph</rdfs:label>
 	    <bflc:marcKey>1001 $aRiggs, Ralph</bflc:marcKey>
 	  </bf:Agent>
@@ -688,6 +698,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n88100606">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Blackton, Jay, 1909-1994</rdfs:label>
 	    <bflc:marcKey>1001 $aBlackton, Jay,$d1909-1994</bflc:marcKey>
 	  </bf:Agent>
@@ -712,7 +723,26 @@
       </bf:Work>
     </bf:hasSeries>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/12280298"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/12280298">
+	<rdfs:label>Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Selections from the Theatre Guild musical play Oklahoma!</bf:mainTitle>
+	    <bf:subtitle xmlns:streams="info:lc/streams#">music by Richard Rodgers ; lyrics by Oscar Hammerstein</bf:subtitle>
+	  </bf:Title>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Oklahoma!</rdfs:label>
+	    <bf:variantType xmlns:streams="info:lc/streams#">portion</bf:variantType>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Oklahoma!</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">New York : Decca, [1943-1945]</bf:provisionActivityStatement>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -741,9 +771,9 @@
 	  <bf:Local>
 	    <rdf:value>12280298</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -753,14 +783,14 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a vk17 01-17-01; to MBRS 01-17-01; vl22 05-18-01 (v. 1); to MBRS 05-21-01</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
@@ -780,9 +810,9 @@
       <bf:ShelfMark>
 	<rdfs:label>RBA 03761-03762, etc.</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMark>
     </bf:shelfMark>
@@ -816,9 +846,9 @@
 	  <bf:Local>
 	    <rdf:value>12280298</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -828,14 +858,14 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a vk17 01-17-01; to MBRS 01-17-01; vl22 05-18-01 (v. 1); to MBRS 05-21-01</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">

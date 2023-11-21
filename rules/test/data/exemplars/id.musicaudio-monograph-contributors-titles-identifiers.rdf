@@ -85,9 +85,9 @@
       <bf:Local>
 	<rdf:value>ocn311097395</rdf:value>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
 	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:Local>
     </bf:identifiedBy>
@@ -162,7 +162,6 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/18344194"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/18344194-050-16"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
@@ -192,9 +191,9 @@
 	  <bf:Local>
 	    <rdf:value>18344194</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -204,14 +203,14 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr27 2014-10-22 z-client $i qr27 2014-10-22</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/fbo" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/fbo">
 	    <rdfs:label>Boca Raton Public Library</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
@@ -220,6 +219,7 @@
 	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/18344194"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/18344194">
     <bflc:aap>Paganini, Nicolò, 1782-1840. Paganini's 24 caprices</bflc:aap>
@@ -265,6 +265,7 @@
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution" xmlns:streams="info:lc/streams#"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79105881">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Paganini, Nicolò, 1782-1840</rdfs:label>
 	    <bflc:marcKey>1001 $aPaganini, Nicolò,$d1782-1840</bflc:marcKey>
 	  </bf:Agent>
@@ -351,6 +352,7 @@
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n2005078391">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Slapin, Scott, 1974-</rdfs:label>
 	    <bflc:marcKey>1001 $aSlapin, Scott,$d1974-</bflc:marcKey>
 	  </bf:Agent>
@@ -363,7 +365,36 @@
       </bf:Contribution>
     </bf:contribution>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/18344194"/>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/18344194">
+	<rdfs:label>Paganini's 24 caprices</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Paganini's 24 caprices</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Paganini's 24 caprices</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Paganini's twenty-four caprices</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Paganini's twenty-four caprices</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <rdfs:label xmlns:streams="info:lc/streams#">Twenty-four caprices</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Twenty-four caprices</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <rdfs:label xmlns:streams="info:lc/streams#">24 caprices</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">24 caprices</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Ventura, CA : Eroica Classical Recordings, p2008.</bf:provisionActivityStatement>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -392,9 +423,9 @@
 	  <bf:Local>
 	    <rdf:value>18344194</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -404,14 +435,14 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr27 2014-10-22 z-client $i qr27 2014-10-22</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/fbo" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/fbo">
 	    <rdfs:label>Boca Raton Public Library</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
@@ -431,9 +462,9 @@
       <bf:ShelfMark>
 	<rdfs:label>SDC 42748</rdfs:label>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
       </bf:ShelfMark>
     </bf:shelfMark>
@@ -467,9 +498,9 @@
 	  <bf:Local>
 	    <rdf:value>18344194</rdf:value>
 	    <bf:assigner>
-	      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </madsrdf:CorporateName>
+	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
@@ -479,14 +510,14 @@
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr27 2014-10-22 z-client $i qr27 2014-10-22</lclocal:d955>
 	<bf:assigner>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/fbo" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/fbo">
 	    <rdfs:label>Boca Raton Public Library</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionModifier>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </madsrdf:CorporateName>
+	  </bf:Organization>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
