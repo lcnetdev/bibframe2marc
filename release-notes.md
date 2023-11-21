@@ -2,9 +2,10 @@
 
 ## v2.4.0
 
-Placeholder
+Conversion updates based on specifications v2.4. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
 
-* Placeholder
+* Resources that are split into multiple Instances during the marc2bibframe conversion are reassembled into a single MARC record with paired 007/300 fields. Reconstruction is outlined in the new “Process 4” instruction.
+* Value from bflc:nonSortNum field is inserted into first or second indicator of MARC field.
 
 See the [NEWS](NEWS) file for full details of changes.
 
