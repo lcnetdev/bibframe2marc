@@ -13,6 +13,8 @@
     <context xpath="
       bf:Work/bf:subject[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
       bf:Work/bf:subject/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
+      bf:Work/bf:subject[contains(@rdf:resource, 'd-nb.info/gnd/') and not(contains(@rdf:resource, '#'))] |
+      bf:Work/bf:subject/*[contains(@rdf:about, 'd-nb.info/gnd/') and not(contains(@rdf:about, '#'))] |
       bf:Work/bf:subject/*[bflc:marcKey or marc:record] |
       bf:Work/bf:genreForm[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
       bf:Work/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
@@ -30,6 +32,8 @@
         <switch>
           <case test="contains(@rdf:resource,'id.') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
           <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+          <case test="contains(@rdf:resource,'d-nb.info/gnd/') and not(contains(@rdf:resource, '#'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'d-nb.info/gnd/') and not(contains(@rdf:about, '#'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
       <var name="vRelResourcePreNS">
@@ -85,7 +89,8 @@
           <case test="contains($relURI, '/nalt/')">3</case>
           <case test="contains($relURI, '/names/') or contains($relURI, '/genreForms/') or 
                       contains($relURI, '/demographicTerms/') or contains($relURI, '/graphicMaterials/') or 
-                      contains($relURI, '/fast/')">7</case>
+                      contains($relURI, '/fast/') or
+                      contains($relURI, 'd-nb.info/gnd/')">7</case>
 
           <case test="madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/subjects'] or 
                       bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects']">0</case>
@@ -128,6 +133,7 @@
           <case test="contains($relURI, '/demogrpahicTerms/')">lcdgt</case>
           <case test="contains($relURI, '/graphicMaterials/')">lctgm</case>
           <case test="contains($relURI, '/fast/')">fast</case>
+          <case test="contains($relURI, 'd-nb.info/gnd/')">gnd</case>
         </switch>
       </sf>
       <switch>
@@ -148,7 +154,8 @@
                       not(*/@rdf:about) or 
                       contains(*/@rdf:about, 'example') or 
                       contains(*/@rdf:about, 'REPLACE') or 
-                      contains(*/@rdf:about, '/fast/')
+                      contains(*/@rdf:about, '/fast/') or 
+                      ( contains(*/@rdf:about, 'd-nb.info/') and contains(*/@rdf:about, '#') )
                     ) and
                     not(*/bflc:marcKey) and 
                     (*/rdfs:label or */madsrdf:authoritativeLabel or */madsrdf:componentList)
@@ -160,6 +167,15 @@
         <xsl:call-template name="tScriptCode">
           <xsl:with-param name="pXmlLang" select="*/rdfs:label/@xml:lang"/>
         </xsl:call-template>
+      </transform>
+    </var>
+    <var name="vDollar0Uri">
+      <transform>
+        <xsl:value-of select="*/@rdf:about[
+            not(contains(.,'example.org')) and 
+            not(contains(.,'REPLACE')) and 
+            ( contains(*/@rdf:about, 'd-nb.info/') and not(contains(*/@rdf:about, '#')) )
+            ]"></xsl:value-of>
       </transform>
     </var>
     <switch>
@@ -1182,7 +1198,13 @@
                       <case test="default"><select xpath="*/rdfs:label[1]"/></case>
                     </switch>
                   </sf>
-                  <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
+                  <sf code="0">
+                    <switch>
+                      <case test="$vDollar0Uri != ''">
+                        <transform><xsl:value-of select="$vDollar0Uri"/></transform>
+                      </case>
+                    </switch>
+                  </sf>
                   <sf code="0">
                     <select xpath="*/bf:identifiedBy/bf:Identifier">
                       <transform>
