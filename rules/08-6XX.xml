@@ -11,14 +11,20 @@
   <!-- subjects referenced by URIs and genreForms referenced by URIs -->
   <df tag="$vSubjectTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="
+      bf:Work/bf:subject/*[bflc:marcKey or marc:record] |
+      bf:Work/bf:genreForm/*[bflc:marcKey or marc:record] |
       bf:Work/bf:subject[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
       bf:Work/bf:subject/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
       bf:Work/bf:subject[contains(@rdf:resource, 'd-nb.info/gnd/') and not(contains(@rdf:resource, '#'))] |
       bf:Work/bf:subject/*[contains(@rdf:about, 'd-nb.info/gnd/') and not(contains(@rdf:about, '#'))] |
-      bf:Work/bf:subject/*[bflc:marcKey or marc:record] |
+      bf:Work/bf:subject[contains(@rdf:resource, 'id.worldcat.org/fast/')] |
+      bf:Work/bf:subject/*[contains(@rdf:about, 'id.worldcat.org/fast/')] |
       bf:Work/bf:genreForm[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
       bf:Work/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
-      bf:Work/bf:genreForm/*[bflc:marcKey or marc:record] |
+      bf:Work/bf:genreForm[contains(@rdf:resource, 'd-nb.info/gnd/') and not(contains(@rdf:resource, '#'))] |
+      bf:Work/bf:genreForm/*[contains(@rdf:about, 'd-nb.info/gnd/') and not(contains(@rdf:about, '#'))] |
+      bf:Work/bf:genreForm[contains(@rdf:resource, 'id.worldcat.org/fast/')] |
+      bf:Work/bf:genreForm/*[contains(@rdf:about, 'id.worldcat.org/fast/')] |
       //bf:Item/bf:genreForm[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
       //bf:Item/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
       //bf:Item/bf:genreForm/*[bflc:marcKey or marc:record] 
@@ -34,6 +40,8 @@
           <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
           <case test="contains(@rdf:resource,'d-nb.info/gnd/') and not(contains(@rdf:resource, '#'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
           <case test="contains(@rdf:about,'d-nb.info/gnd/') and not(contains(@rdf:about, '#'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+          <case test="contains(@rdf:resource,'id.worldcat.org/fast/')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.worldcat.org/fast/')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
       <var name="vRelResourcePreNS">
@@ -154,7 +162,6 @@
                       not(*/@rdf:about) or 
                       contains(*/@rdf:about, 'example') or 
                       contains(*/@rdf:about, 'REPLACE') or 
-                      contains(*/@rdf:about, '/fast/') or 
                       ( contains(*/@rdf:about, 'd-nb.info/') and contains(*/@rdf:about, '#') )
                     ) and
                     not(*/bflc:marcKey) and 

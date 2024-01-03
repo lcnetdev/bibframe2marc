@@ -625,6 +625,7 @@
                               contains($pUri,'id.loc.gov/authorities/') or 
                               contains($pUri,'id.loc.gov/rwo/agents') or 
                               contains($pUri,'id.loc.gov/resources/hubs') or 
+                              contains($pUri,'id.worldcat.org/fast/') or 
                               contains($pUri,'d-nb.info/gnd/')
                             )
                             and not('.marcxml.xml' = substring($pUri, string-length($pUri) - 11))">
@@ -675,6 +676,12 @@
                       <xsl:message>Desire to look up <xsl:value-of select="$pUri"/> but using xsltproc. No lookup occurred.</xsl:message>
                       <xsl:value-of select="$pUri"/></xsl:otherwise>
                   </xsl:choose>
+                </xsl:when>
+                <xsl:when test="contains($pUri, 'id.worldcat.org/fast/')">
+                  <xsl:variable name="vPath">
+                    <xsl:value-of select="substring-after($pUri,'://id.worldcat.org')"/>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('https://id.worldcat.org',$vPath,'.mrc.xml')"/>
                 </xsl:when>
                 <xsl:when test="contains($pUri, 'd-nb.info/gnd/')">
                   <xsl:variable name="vPath">
