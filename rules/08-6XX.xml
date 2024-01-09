@@ -57,6 +57,7 @@
         <switch>
           <case test="$vRelResource//marc:record">
             <switch>
+              <case test="(self::bf:genreForm or ancestor::bf:genreForm) and contains($relURI, 'd-nb.info/gnd/')">655</case>
               <case test="$vRelResource//marc:datafield[@tag='100']">600</case>
               <case test="$vRelResource//marc:datafield[@tag='110']">610</case>
               <case test="$vRelResource//marc:datafield[@tag='111']">611</case>
