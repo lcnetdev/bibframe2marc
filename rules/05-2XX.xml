@@ -59,8 +59,8 @@
     It is predicated on a Hub being referenced.
   -->
   <df tag="240" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:expressionOf[contains(@rdf:resource, 'hubs')][../bf:contribution/bflc:PrimaryContribution or ../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']] |
-      bf:Work/bf:expressionOf/bf:*[contains(@rdf:about, 'hubs') or bflc:marcKey or marc:record][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]
+    <context xpath="bf:Work/bf:expressionOf[contains(@rdf:resource, 'hubs')][../bf:contribution/*[local-name()='PrimaryContribution'] or ../bf:contribution/*/rdf:type[contains(@rdf:resource, '/PrimaryContribution')]] |
+                    bf:Work/bf:expressionOf/bf:*[contains(@rdf:about, 'hubs') or bflc:marcKey or marc:record][../../bf:contribution/*[local-name()='PrimaryContribution'] or ../../bf:contribution/*/rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]
       ">
       
       <var name="relURI">
@@ -129,7 +129,7 @@
         not(contains(@rdf:resource, 'hubs')) and not(contains(@rdf:about, 'hubs')) and 
         not(contains(@rdf:resource, 'REPLACE')) and not(contains(@rdf:about, 'REPLACE')) and 
         not(bflc:marcKey or marc:record) and 
-        (local-name() = 'Hub' or local-name() = 'Work') and bf:title][../../bf:contribution/bflc:PrimaryContribution or ../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">
+        (local-name() = 'Hub' or local-name() = 'Work') and bf:title][../../bf:contribution/*[local-name()='PrimaryContribution'] or ../../bf:contribution/*/rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]">
       <ind1 default="1"/>
       <ind2 default="0">
         <switch>
@@ -262,7 +262,7 @@
     <context xpath="bf:Instance[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance')]/bf:title/bf:Title[not(rdf:type)]|bf:Work[not(../bf:Instance/bf:title/bf:Title[not(rdf:type)])]/bf:title/bf:Title[not(rdf:type)]">
       <ind1 default="0">
         <switch>
-          <case test="/rdf:RDF/bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">1</case>
+          <case test="/rdf:RDF/bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]">1</case>
         </switch>
       </ind1>
       <ind2 default="0">
@@ -348,7 +348,7 @@
         <df tag="880">
           <ind1 default="0">
             <switch>
-              <case test="/rdf:RDF/bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]">1</case>
+              <case test="/rdf:RDF/bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]">1</case>
             </switch>
           </ind1>
           <ind2 default="0">

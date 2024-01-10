@@ -845,7 +845,7 @@
             <case test="$v008Format='MP'">
               <transform>
                 <xsl:variable name="vRelief">
-                  <xsl:for-each select="bf:Work/bf:cartographicAttributes/bf:Cartographic/bflc:relief">
+                  <xsl:for-each select="bf:Work/bf:cartographicAttributes/bf:Cartographic/bf:relief|bf:Work/bf:cartographicAttributes/bf:Cartographic/bflc:relief">
                     <xsl:choose>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/mrelief/cont' or */@rdf:about='http://id.loc.gov/vocabulary/mrelief/cont'">a</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/vocabulary/mrelief/shad' or */@rdf:about='http://id.loc.gov/vocabulary/mrelief/shad'">b</xsl:when>

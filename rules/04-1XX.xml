@@ -9,9 +9,9 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <df tag="$vMainEntryTag" repeatable="false" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent[@rdf:resource]|
-                    bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent/bf:* |
-                    bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']]/bf:agent/madsrdf:*">
+    <context xpath="bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]/bf:agent[@rdf:resource]|
+      bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]/bf:agent/bf:* |
+      bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]/bf:agent/madsrdf:*">
       <var name="agentURI">
         <switch>
           <case test="contains(@rdf:resource,'id.loc.gov/authorities/names')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
@@ -285,7 +285,7 @@
   </df>
 
   <df tag="130" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:expressionOf/bf:*[(local-name() = 'Hub' or local-name() = 'Work') and bf:title and not(../../bf:contribution/bflc:PrimaryContribution) and not(../../bf:contribution/*/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]">
+    <context xpath="bf:Work/bf:expressionOf/bf:*[(local-name() = 'Hub' or local-name() = 'Work') and bf:title and not(../../bf:contribution/*:PrimaryContribution) and not(../../bf:contribution/*/rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]">
       <var name="vTitleResourcePreNS">
         <transform>
           <xsl:call-template name="tGetRelResource">

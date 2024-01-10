@@ -18,15 +18,15 @@
   -->
   <df tag="$vAddedEntryNameLookupTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="
-      bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/')] |
-      bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/bf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
-      bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/madsrdf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
-      bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/')] |
-      bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/bf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
-      bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/madsrdf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
-      //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/')] |
-      //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/bf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
-      //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/madsrdf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)]
+      bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/')] |
+      bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/bf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
+      bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/madsrdf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
+      bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/')] |
+      bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/bf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
+      bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/madsrdf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
+      //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent[contains(@rdf:resource, 'id.loc.gov/authorities/') or contains(@rdf:resource, 'id.loc.gov/rwo/')] |
+      //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/bf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)] |
+      //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/madsrdf:*[(contains(@rdf:about, 'id.loc.gov/authorities/') or contains(@rdf:about, 'id.loc.gov/rwo/')) and not(bflc:marcKey)]
       ">
       
       <var name="relURI">
@@ -139,9 +139,9 @@
   <!-- This is for when there is a marcKey present. -->
   <df tag="$vAddedEntryNameMarcKeyTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="
-      bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[bflc:marcKey or marc:record] |
-      bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[bflc:marcKey or marc:record] |
-      //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[bflc:marcKey or marc:record]
+      bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/*[bflc:marcKey or marc:record] |
+      bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/*[bflc:marcKey or marc:record] |
+      //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/*[bflc:marcKey or marc:record]
       ">
       
       <var name="relURI">
@@ -574,11 +574,11 @@
     No URIs for Hubs or Agents.
   -->
   <df tag="$vAddEntryTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
+    <context xpath="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
                     bf:Work/bf:relatedTo/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/* |
                     bf:Work/bf:hasPart/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/* |
-                    bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
-                    //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution'])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
+                    bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
+                    //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
                     //bf:Item/bf:relatedTo/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/* |
                     //bf:Item/bf:hasPart/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/*">
       <var name="vNameAuthPreNS">
@@ -1287,7 +1287,7 @@
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="a" chopPunct="true" repeatable="false">
-        <select xpath="bf:contribution/*[local-name()='PrimaryContribution' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/PrimaryContribution']/bf:agent/*/rdfs:label"/>
+        <select xpath="bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]/bf:agent/*/rdfs:label"/>
       </sf>
       <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:hasInstance/bf:Instance/bf:editionStatement"/>
