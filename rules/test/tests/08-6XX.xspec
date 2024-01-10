@@ -152,12 +152,11 @@
 
   <x:scenario label="MARC 650">
     <x:context href="../data/6XX/650.xml"/>
-    <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 4"/>
+    <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 3"/>
     <x:expect label="$0 for entire complex subject at end of subdivision"
               test="//marc:datafield[@tag='650'][1]/marc:subfield[3] = 'http://id.loc.gov/authorities/subjects/sh2008102225'"/>
     <x:expect label="$0 for simple subjects after $a"
               test="//marc:datafield[@tag='650'][3]/marc:subfield[preceding-sibling::* = 'Comparative literature'] = 'http://id.loc.gov/authorities/subjects/sh85077534'"/>
-    <x:expect label="parse subdivisions" test="//marc:datafield[@tag='650'][4]/marc:subfield[@code='x']='Security measures'"/>
   </x:scenario>
 
   <x:scenario label="MARC 651">
@@ -207,6 +206,12 @@
               test="//marc:datafield[@tag='655'][3]/marc:subfield[@code='2'] = 'fast'"/>
     <x:expect label="or from URI"
               test="//marc:datafield[@tag='655'][1]/marc:subfield[@code='2'] = 'lcgft'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 655 - 2">
+    <x:context href="../data/6XX/650.xml"/>
+    <x:expect label="generate 655" test="count(//marc:datafield[@tag='655']) = 1"/>
+    <x:expect label="parse subdivisions" test="//marc:datafield[@tag='655'][1]/marc:subfield[@code='x']='Security measures'"/>
   </x:scenario>
 
   <x:scenario label="MARC 656">
