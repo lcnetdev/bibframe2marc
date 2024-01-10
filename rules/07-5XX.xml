@@ -118,7 +118,7 @@
             <select xpath="bf:identifiedBy/*[local-name()='StockNumber' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/StockNumber']/rdf:value"/>
           </sf>
           <sf code="u">
-            <select xpath="rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+            <select xpath="bf:electronicLocator/@rdf:resource|rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
           </sf>
         </df>
       </case>
@@ -241,7 +241,7 @@
             <select xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]"/>
           </sf>
           <sf code="u">
-            <select xpath="rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+            <select xpath="bf:electronicLocator/@rdf:resource|rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
           </sf>
         </df>
       </case>
@@ -271,7 +271,7 @@
             <select xpath="rdfs:label[not(@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI')]"/>
           </sf>
           <sf code="u">
-            <select xpath="rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+            <select xpath="bf:electronicLocator/@rdf:resource|rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
           </sf>
         </df>
       </case>
@@ -421,7 +421,7 @@
       <ind1 default="0"/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
-      <sf code="u"><select xpath="bf:electronicLocator/@rdf:resource"/></sf>
+      <sf code="u"><select xpath="bf:electronicLocator/@rdf:resource|rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/></sf>
     </context>
   </df>
 
@@ -442,7 +442,7 @@
             <select xpath="bf:note/bf:Note/rdfs:label"/>
           </sf>
           <sf code="u">
-            <select xpath="rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+            <select xpath="bf:electronicLocator/@rdf:resource|rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
           </sf>
           <sf code="2" chopPunct="true" repeatable="false">
             <select xpath="bf:source/bf:Source/bf:code"/>
@@ -557,7 +557,7 @@
         <select xpath="rdfs:label"/>
       </sf>
       <sf code="u">
-        <select xpath="rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+        <select xpath="bf:electronicLocator/@rdf:resource|rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
       </sf>
     </context>
   </df>
@@ -602,7 +602,7 @@
         <select xpath="rdfs:label"/>
       </sf>
       <sf code="u">
-        <select xpath="rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+        <select xpath="bf:electronicLocator/@rdf:resource|rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
       </sf>
       <sf code="5">
         <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
@@ -773,7 +773,7 @@
         <select xpath="bf:status/*/rdfs:label"/>
       </sf>
       <sf code="u">
-        <select xpath="rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
+        <select xpath="bf:electronicLocator/@rdf:resource|rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/>
       </sf>
       <sf code="z" chopPunct="true">
         <select xpath="bf:note/bf:Note/rdfs:label"/>
