@@ -774,28 +774,42 @@
   </select>
 
   <df tag="264" repeatable="false">
-    <context xpath="bf:Instance/bf:copyrightDate[. != '']">
+    <context xpath="bf:Instance[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance')]/bf:copyrightDate[. != '']">
       <ind1 default=" "/>
       <ind2 default="4"/>
       <var name="cDate">
         <switch>
-          <case test="not(contains(., '©')) and ../rdf:type[
-              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Print' or 
-              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Archival' or 
-              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Manuscript' or  
-              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Tactile' or 
-              @rdf:resource = 'http://id.loc.gov/ontologies/bibframe/Electronic'
-              ]">
+          <case test="contains(., '©') or contains(., '℗')">
             <select xpath=".">
               <transform>
-                <xsl:value-of select="concat('©', text())"/>
+                <xsl:value-of select="."/>
+              </transform>
+            </select>
+          </case>
+          <case test="../bf:media//@rdf:*[.='http://id.loc.gov/vocabulary/mediaTypes/s'] and
+                      (
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/se'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/st'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sw'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sq'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sb'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sd'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sz'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/ss'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sg'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/si'] or 
+                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/cr']
+                      )">
+            <select xpath=".">
+              <transform>
+                <xsl:value-of select="concat('℗', text())"/>
               </transform>
             </select>
           </case>
           <case test="default">
             <select xpath=".">
               <transform>
-                <xsl:value-of select="text()"/>
+                <xsl:value-of select="concat('©', text())"/>
               </transform>
             </select>
           </case>
