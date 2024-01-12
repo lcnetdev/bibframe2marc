@@ -827,6 +827,13 @@
           </xsl:call-template>
         </transform>
       </sf>
+      <sf code="0">
+        <switch>
+          <case test="@rdf:about">
+            <select xpath="@rdf:about"/>
+          </case>
+        </switch>
+      </sf>
       <!--
       <sf code="0">
         <switch>
