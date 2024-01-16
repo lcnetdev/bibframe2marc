@@ -18,7 +18,7 @@
           <case test="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle">
               <select xpath="ancestor::bf:Instance[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance']/bf:title/bf:Title/bf:mainTitle" />
           </case>
-          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label[. != 'all']"><select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/></case>
+          <case test="bflc:appliesTo/bflc:AppliesTo/rdfs:label[. != 'all']"><select xpath="bflc:appliesTo[1]/bflc:AppliesTo/rdfs:label"/></case>
         </switch>
       </sf>
       <sf code="a" chopPunct="true"><select xpath="rdfs:label"/></sf>
