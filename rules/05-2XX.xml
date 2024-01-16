@@ -624,6 +624,38 @@
                       (bflc:simplePlace or bflc:simpleAgent or bflc:simpleDate) or 
                       (bf:place/bf:*[not(@rdf:about)]/rdfs:label or bf:agent/bf:*[not(@rdf:about)]/rdfs:label or bf:date[not(@rdf:datatype)])
                     )]">
+    <var name="serlORintg">
+      <switch>
+        <case test="ancestor::bf:Instance/bf:issuance//@rdf:*[. = 'http://id.loc.gov/vocabulary/issuance/serl']">1</case>
+        <case test="ancestor::bf:Instance/bf:issuance//@rdf:*[. = 'http://id.loc.gov/vocabulary/issuance/intg']">2</case>
+        <case test="default">0</case>
+      </switch>
+    </var>
+    <var name="v264type">
+      <switch>
+        <case test="local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication']">1</case>
+        <case test="local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production']">0</case>
+        <case test="local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution']">2</case>
+        <case test="local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture']">3</case>
+        <case test="default">1</case>
+      </switch>
+    </var>
+    <var name="v264typeCount">
+      <switch>
+        <case test="$v264type='1'">
+          <select xpath="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication'])])" />
+        </case>
+        <case test="$v264type='0'">
+          <select xpath="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production'])])" />
+        </case>
+        <case test="$v264type='2'">
+          <select xpath="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution'])])" />
+        </case>
+        <case test="$v264type='3'">
+          <select xpath="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture'])])" />
+        </case>
+      </switch>
+    </var>
     <var name="v880Script">
       <switch>
         <case test="bflc:simplePlace/@xml:lang and not(contains(translate(bflc:simplePlace/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
@@ -646,8 +678,13 @@
         <df tag="264">
           <ind1 default=" ">
             <switch>
-              <case test="bf:status/bf:Status/@rdf:about = 'http://id.loc.gov/vocabulary/mstatus/current'">3</case>
-              <case test="bf:status/@rdf:resource = 'http://id.loc.gov/vocabulary/mstatus/current'">3</case>
+              <case test="$serlORintg='1' and $v264typeCount='1'"><text> </text></case>
+              <case test="$serlORintg='1' and $v264typeCount!='1' and bf:status/bf:Status//@rdf:*[. = 'http://id.loc.gov/vocabulary/mstatus/current']">3</case>
+              <case test="$serlORintg='1' and $v264typeCount!='1' and bf:status/bf:Status//@rdf:*[. = 'http://id.loc.gov/vocabulary/mstatus/ceased']">3</case>
+              <case test="$serlORintg='1' and bf:status/bf:Status//@rdf:*[. = 'http://id.loc.gov/vocabulary/mstatus/earliest']"><text> </text></case>
+              <case test="$serlORintg='1' and $v264typeCount!='1' and not(bf:status/bf:Status)">2</case>
+              <case test="$serlORintg='2' and $v264typeCount='1' and bf:status/bf:Status//@rdf:*[. = 'http://id.loc.gov/vocabulary/mstatus/current']">3</case>
+              <case test="$serlORintg='2' and $v264typeCount='1' and bf:status/bf:Status//@rdf:*[. = 'http://id.loc.gov/vocabulary/mstatus/ceased']">3</case>
             </switch>
           </ind1>
           <ind2 default="1">
@@ -788,17 +825,17 @@
           </case>
           <case test="../bf:media//@rdf:*[.='http://id.loc.gov/vocabulary/mediaTypes/s'] and
                       (
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/se'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/st'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sw'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sq'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sb'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sd'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sz'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/ss'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sg'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/si'] or 
-                        ../bf:carriers//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/cr']
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/se'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/st'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sw'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sq'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sb'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sd'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sz'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/ss'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/sg'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/si'] or 
+                        ../bf:carrier//@rdf:*[.='http://id.loc.gov/vocabulary/carriers/cr']
                       )">
             <select xpath=".">
               <transform>
