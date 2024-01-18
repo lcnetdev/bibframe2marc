@@ -203,23 +203,14 @@
 
   <df tag="022">
     <context xpath="bf:Work/bf:identifiedBy/*[(local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']) and rdf:value/text()] | 
-      bf:Work/bf:identifiedBy/*[(local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']) and rdf:value/text()] | 
-      bf:Instance/bf:identifiedBy/*[(local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']) and rdf:value/text()] | 
-      bf:Instance/bf:identifiedBy/*[(local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']) and rdf:value/text()]">
+      bf:Instance/bf:identifiedBy/*[(local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']) and rdf:value/text()]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
         <case test="bf:status/bf:Status/rdfs:label[text()='canceled'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
-          <switch>
-            <case test="local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']">
-              <sf code="z"><select xpath="rdf:value"/></sf>
-            </case>
-            <case test="local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']">
-              <sf code="m"><select xpath="rdf:value"/></sf>
-            </case>
-          </switch>
+          <sf code="z"><select xpath="rdf:value"/></sf>
         </case>
         <case test="bf:status/bf:Status/rdfs:label[text()='incorrect'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/incorrect' or
@@ -227,14 +218,32 @@
           <sf code="y"><select xpath="rdf:value"/></sf>
         </case>
         <case test="default">
-          <switch>
-            <case test="local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']">
-              <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
-            </case>
-            <case test="local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']">
-              <sf code="l" repeatable="false"><select xpath="rdf:value"/></sf>
-            </case>
-          </switch>
+          <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+        </case>
+      </switch>
+      <sf code="0"><select xpath="@rdf:about"/></sf>
+      <sf code="2" chopPunct="true" repeatable="false"><select xpath="bf:assigner/bf:Agent/bf:code"/></sf>
+    </context>
+  </df>
+  
+  <df tag="023">
+    <context xpath="bf:Work/bf:identifiedBy/*[(local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']) and rdf:value/text()] | 
+      bf:Instance/bf:identifiedBy/*[(local-name()='IssnL' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/IssnL']) and rdf:value/text()]">
+      <ind1 default="0"/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/bf:Status/rdfs:label[text()='canceled'] or
+          bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
+          bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
+          <sf code="z"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="bf:status/bf:Status/rdfs:label[text()='incorrect'] or
+          bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/incorrect' or
+          bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/incorrect'">
+          <sf code="y"><select xpath="rdf:value"/></sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
         </case>
       </switch>
       <sf code="0"><select xpath="@rdf:about"/></sf>
