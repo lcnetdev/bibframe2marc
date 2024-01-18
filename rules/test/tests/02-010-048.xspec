@@ -32,9 +32,16 @@
 
   <x:scenario label="MARC 022">
     <x:context href="../data/010-048/010-048.xml"/>
-    <x:expect label="generate 022" test="count(//marc:datafield[@tag='022']) = 3"/>
+    <x:expect label="generate 022" test="count(//marc:datafield[@tag='022']) = 1"/>
+    <x:expect label="...with exepectd subfield $a"
+      test="//marc:datafield[@tag='022'][1]/marc:subfield[@code='a'] = '0376-4583'"/>
+  </x:scenario>
+
+  <x:scenario label="MARC 023">
+    <x:context href="../data/010-048/010-048.xml"/>
+    <x:expect label="generate 023" test="count(//marc:datafield[@tag='023']) = 2"/>
     <x:expect label="...with subfield $0 from URI"
-              test="//marc:datafield[@tag='022'][1]/marc:subfield[@code='0'] = 'https://example.com/issnl/1234-1231'"/>
+      test="//marc:datafield[@tag='023'][1]/marc:subfield[@code='0'] = 'https://example.com/issnl/1234-1231'"/>
   </x:scenario>
 
   <x:scenario label="MARC 024">
