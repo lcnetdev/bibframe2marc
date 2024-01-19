@@ -1,13 +1,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/21851594" xmlns:bf="http://id.loc.gov/ontologies/bibframe/">
-    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Handel, George Frideric, 1685-1759 Sosarme, re di Media</bflc:aap>
-    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">handelgeorgefrideric16851759sosarmeredimedia</bflc:aap-normalized>
+    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Sosarme, re di Media</bflc:aap>
+    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">sosarmeredimedia</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic"/>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/ntm">
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">notated music</rdfs:label>
-      </bf:Content>
-    </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ita">
@@ -24,12 +19,6 @@
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">historical information</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
-    <bf:genreForm>
-      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026976">
-	<rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Operas</rdfs:label>
-	<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">155  $aOperas</bflc:marcKey>
-      </bf:GenreForm>
-    </bf:genreForm>
     <bf:musicFormat>
       <bf:MusicFormat rdf:about="http://id.loc.gov/vocabulary/mmusicformat/vocalscore">
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">vocal score</rdfs:label>
@@ -126,7 +115,7 @@
     </bf:subject>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79129204">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
@@ -174,33 +163,29 @@
       </bf:Notation>
     </bf:notation>
     <bf:subject>
-      <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Operas--Vocal scores with piano</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Operas--Vocal scores with piano</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Library of
-            Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85094962">
+	<rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Operas--Vocal scores with piano</rdfs:label>
 	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85094914">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Operas</rdfs:label>
-	    <bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">150  $aOperas</bflc:marcKey>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Operas</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Operas</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99002055">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Vocal scores with piano</rdfs:label>
-	    <bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">185  $vVocal scores with piano</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Vocal scores with piano</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GenreFormElement>
+		<madsrdf:elementValue xml:lang="en">Vocal scores with piano</madsrdf:elementValue>
+	      </madsrdf:GenreFormElement>
+	    </madsrdf:elementList>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
-	<bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">operasvocalscoreswithpiano</bflc:aap-normalized>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Library of
-            Congress Subject Headings</rdfs:label>
-	  </bf:Source>
-	</bf:source>
+	<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">150 0$aOperas$vVocal scores with piano</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
@@ -324,7 +309,7 @@
       </bf:Contribution>
     </bf:contribution>
     <bf:relatedTo>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/025107cb-fdeb-41ed-eadc-45e840da4c76">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/025107cb-fdeb-41ed-eadc-45e840da4c76">
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Rossi, Giacomo, active 1710-1731 Sosarme, re di Media</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
@@ -345,10 +330,10 @@
 	    <bf:mainTitle>Sosarme, re di Media</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-      </bf:Work>
+      </bf:Hub>
     </bf:relatedTo>
     <bf:relatedTo>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/4cd256d8-2d32-7a3b-34ca-43eefab4b6ba">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/4cd256d8-2d32-7a3b-34ca-43eefab4b6ba">
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Salvi, Antonio, 1664-1724 Dionisio, rè di Portogallo</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
@@ -369,10 +354,10 @@
 	    <bf:mainTitle>Dionisio, rè di Portogallo</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-      </bf:Work>
+      </bf:Hub>
     </bf:relatedTo>
     <bf:relatedTo>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/273105fb-bc86-4fbd-dc46-8125d0a1f20d">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/273105fb-bc86-4fbd-dc46-8125d0a1f20d">
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Handel, George Frideric, 1685-1759 Sosarme. Vocal score</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
@@ -394,10 +379,10 @@
 	  </bf:Title>
 	</bf:title>
 	<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">1001 $aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.</bflc:marcKey>
-      </bf:Work>
+      </bf:Hub>
     </bf:relatedTo>
     <bf:relatedTo>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/eee9cd03-0faa-6868-95cc-e2cb4d369848">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/eee9cd03-0faa-6868-95cc-e2cb4d369848">
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Handel, George Frideric, 1685-1759 Sosarme. Vocal score. German</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
@@ -419,7 +404,7 @@
 	  </bf:Title>
 	</bf:title>
 	<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">1001 $aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.$lGerman.</bflc:marcKey>
-      </bf:Work>
+      </bf:Hub>
     </bf:relatedTo>
     <bf:hasPart>
       <bf:Work>
@@ -442,7 +427,7 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Work rdf:about="http://id.loc.gov/resources/hubs/025107cb-fdeb-41ed-eadc-45e840da4c76">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/025107cb-fdeb-41ed-eadc-45e840da4c76">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Rossi, Giacomo, active 1710-1731 Sosarme, re di Media</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
@@ -463,7 +448,7 @@
 		<bf:mainTitle>Sosarme, re di Media</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	  </bf:Work>
+	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -475,7 +460,7 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Work rdf:about="http://id.loc.gov/resources/hubs/4cd256d8-2d32-7a3b-34ca-43eefab4b6ba">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/4cd256d8-2d32-7a3b-34ca-43eefab4b6ba">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Salvi, Antonio, 1664-1724 Dionisio, rè di Portogallo</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
@@ -496,7 +481,7 @@
 		<bf:mainTitle>Dionisio, rè di Portogallo</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	  </bf:Work>
+	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -508,7 +493,7 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Work rdf:about="http://id.loc.gov/resources/hubs/273105fb-bc86-4fbd-dc46-8125d0a1f20d">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/273105fb-bc86-4fbd-dc46-8125d0a1f20d">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Handel, George Frideric, 1685-1759 Sosarme. Vocal score</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
@@ -530,7 +515,7 @@
 	      </bf:Title>
 	    </bf:title>
 	    <bflc:marcKey>1001 $aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.</bflc:marcKey>
-	  </bf:Work>
+	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -542,7 +527,7 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Work rdf:about="http://id.loc.gov/resources/hubs/eee9cd03-0faa-6868-95cc-e2cb4d369848">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/eee9cd03-0faa-6868-95cc-e2cb4d369848">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Handel, George Frideric, 1685-1759 Sosarme. Vocal score. German</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
@@ -564,7 +549,7 @@
 	      </bf:Title>
 	    </bf:title>
 	    <bflc:marcKey>1001 $aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.$lGerman.</bflc:marcKey>
-	  </bf:Work>
+	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -582,8 +567,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:44.387607-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:58.540122-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -861,8 +846,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:44.387607-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:58.540122-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>

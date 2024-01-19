@@ -1,13 +1,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/18602501" xmlns:bf="http://id.loc.gov/ontologies/bibframe/">
-    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Rowling, J. K. Harry Potter and the Order of the Phoenix</bflc:aap>
-    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">rowlingjkharrypotterandtheorderofthephoenix</bflc:aap-normalized>
+    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Harry Potter and the Order of the Phoenix</bflc:aap>
+    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">harrypotterandtheorderofthephoenix</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">text</rdfs:label>
-      </bf:Content>
-    </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
@@ -83,7 +78,7 @@
     </bf:classification>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n97108433">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
@@ -173,33 +168,29 @@
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Friendship--Juvenile fiction</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Friendship--Juvenile fiction</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Library of
-            Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2008103472">
+	<rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Friendship--Juvenile fiction</rdfs:label>
 	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85051992">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Friendship</rdfs:label>
-	    <bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">150 0$aFriendship</bflc:marcKey>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Friendship</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Friendship</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Juvenile fiction</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GenreFormElement>
+		<madsrdf:elementValue xml:lang="en">Juvenile fiction</madsrdf:elementValue>
+	      </madsrdf:GenreFormElement>
+	    </madsrdf:elementList>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
-	<bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">friendshipjuvenilefiction</bflc:aap-normalized>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Library of
-            Congress Subject Headings</rdfs:label>
-	  </bf:Source>
-	</bf:source>
+	<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">150  $aFriendship$vJuvenile fiction</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
@@ -373,33 +364,29 @@
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Conduct of life--Juvenile fiction</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Conduct of life--Juvenile fiction</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Library of
-            Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2008100297">
+	<rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Conduct of life--Juvenile fiction</rdfs:label>
 	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85030802">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Conduct of life</rdfs:label>
-	    <bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">150  $aConduct of life</bflc:marcKey>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Conduct of life</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Conduct of life</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Juvenile fiction</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GenreFormElement>
+		<madsrdf:elementValue xml:lang="en">Juvenile fiction</madsrdf:elementValue>
+	      </madsrdf:GenreFormElement>
+	    </madsrdf:elementList>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
-	<bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">conductoflifejuvenilefiction</bflc:aap-normalized>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Library of
-            Congress Subject Headings</rdfs:label>
-	  </bf:Source>
-	</bf:source>
+	<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">150  $aConduct of life$vJuvenile fiction</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
@@ -884,9 +871,10 @@
 	</bf:source>
       </bf:Place>
     </bf:subject>
-    <bf:genreForm>
-      <bf:GenreForm>
+    <bf:subject>
+      <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Children's stories--2003</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Children's stories--2003</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
@@ -902,15 +890,15 @@
 	    <madsrdf:authoritativeLabel>2003</madsrdf:authoritativeLabel>
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
+	<bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">children'sstories2003</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
 	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Library of
             Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Children's stories--2003</rdfs:label>
-      </bf:GenreForm>
-    </bf:genreForm>
+      </bf:Topic>
+    </bf:subject>
     <bf:genreForm>
       <bf:GenreForm>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
@@ -1026,7 +1014,7 @@
 	<bflc:relation rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
 	<bf:seriesEnumeration>5.</bf:seriesEnumeration>
 	<bf:relatedTo>
-	  <bf:Work rdf:about="http://id.loc.gov/resources/hubs/99a924cc-8e6b-9d62-03ab-3ea81843d600">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/99a924cc-8e6b-9d62-03ab-3ea81843d600">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Rowling, J. K. Harry Potter series</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
@@ -1048,7 +1036,7 @@
 	      </bf:Title>
 	    </bf:title>
 	    <bflc:marcKey>1001 $aRowling, J. K.$tHarry Potter series</bflc:marcKey>
-	  </bf:Work>
+	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -1057,14 +1045,14 @@
 	<bflc:relation rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
 	<bf:seriesEnumeration>bk. 5.</bf:seriesEnumeration>
 	<bf:relatedTo>
-	  <bf:Work rdf:about="http://id.loc.gov/resources/hubs/1ff61e91-349d-3f66-23a8-1ccd3d881fa1">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/1ff61e91-349d-3f66-23a8-1ccd3d881fa1">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Harry Potter</rdfs:label>
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Harry Potter</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	  </bf:Work>
+	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -1084,8 +1072,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:35.274713-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:46.281715-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -1347,8 +1335,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:35.274713-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:46.281715-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -1433,7 +1421,83 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances" xmlns:dcterms="http://purl.org/dc/terms/"/>
-    <bf:instanceOf rdf:resource="http://example.org/18602501"/>
+    <bf:instanceOf>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/18602501">
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Rowling, J. K. Harry Potter and the Order of the Phoenix</rdfs:label>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution" xmlns:streams="info:lc/streams#"/>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Rowling, J. K.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Cockcroft, Jason.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ill"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Bloomsbury (Firm)</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/pbl"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Clays Ltd.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prt"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Palimpsest Book Production Ltd.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/tyg"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Harry Potter and the Order of the Phoenix</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Harry Potter and the Order of the Phoenix</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Work>
+    </bf:instanceOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:identifiedBy>
@@ -1448,8 +1512,8 @@
 	</bf:identifiedBy>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:35.274713-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:46.281715-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -1524,7 +1588,83 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances" xmlns:dcterms="http://purl.org/dc/terms/"/>
-    <bf:instanceOf rdf:resource="http://example.org/18602501"/>
+    <bf:instanceOf>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/18602501">
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Rowling, J. K. Harry Potter and the Order of the Phoenix</rdfs:label>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution" xmlns:streams="info:lc/streams#"/>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Rowling, J. K.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Cockcroft, Jason.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ill"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Bloomsbury (Firm)</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/pbl"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Clays Ltd.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prt"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Palimpsest Book Production Ltd.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/tyg"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Harry Potter and the Order of the Phoenix</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Harry Potter and the Order of the Phoenix</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Work>
+    </bf:instanceOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:identifiedBy>
@@ -1539,8 +1679,8 @@
 	</bf:identifiedBy>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:35.274713-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:46.281715-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -1609,7 +1749,83 @@
       </bf:Media>
     </bf:media>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances" xmlns:dcterms="http://purl.org/dc/terms/"/>
-    <bf:instanceOf rdf:resource="http://example.org/18602501"/>
+    <bf:instanceOf>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/18602501">
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Rowling, J. K. Harry Potter and the Order of the Phoenix</rdfs:label>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution" xmlns:streams="info:lc/streams#"/>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Rowling, J. K.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Cockcroft, Jason.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ill"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Bloomsbury (Firm)</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/pbl"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Clays Ltd.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prt"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Palimpsest Book Production Ltd.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/tyg"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Harry Potter and the Order of the Phoenix</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Harry Potter and the Order of the Phoenix</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Work>
+    </bf:instanceOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:identifiedBy>
@@ -1624,8 +1840,8 @@
 	</bf:identifiedBy>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:35.274713-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:46.281715-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>

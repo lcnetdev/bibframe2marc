@@ -134,7 +134,7 @@
 	<bflc:relation rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
 	<bf:seriesEnumeration>5.</bf:seriesEnumeration>
 	<bf:relatedTo>
-	  <bf:Work rdf:about="http://id.loc.gov/resources/hubs/26d96881-bb7a-8b53-a96d-12a50c040da7">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/26d96881-bb7a-8b53-a96d-12a50c040da7">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Sicherheitsakademie &lt;Wien&gt; SIAK scientific series</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
@@ -156,7 +156,7 @@
 	      </bf:Title>
 	    </bf:title>
 	    <bflc:marcKey>1102 $aSicherheitsakademie &lt;Wien&gt;$tSIAK scientific series</bflc:marcKey>
-	  </bf:Work>
+	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -165,7 +165,7 @@
 	<bflc:relation rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
 	<bf:seriesEnumeration>5.</bf:seriesEnumeration>
 	<bf:relatedTo>
-	  <bf:Work rdf:about="http://id.loc.gov/resources/hubs/e81a779d-be3d-76ce-79c1-a1797447405e">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/e81a779d-be3d-76ce-79c1-a1797447405e">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">.SIAK scientific series</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
@@ -185,7 +185,7 @@
 		<bf:mainTitle>.SIAK scientific series</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	  </bf:Work>
+	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -205,8 +205,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:42.567614-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:56.49054-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -268,11 +268,6 @@
       </bf:ProvisionActivity>
     </bf:provisionActivity>
     <bflc:publicationStatement xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Vienna: Federal Ministry of the Interior; 2010</bflc:publicationStatement>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">volume</rdfs:label>
-      </bf:Carrier>
-    </bf:carrier>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2011409962</rdf:value>
@@ -357,8 +352,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:42.567614-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:56.49054-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -423,7 +418,48 @@
     </bf:title>
     <bf:electronicLocator rdf:resource="http://swbplus.bsz-bw.de/bsz330724339inh.htm"/>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances" xmlns:dcterms="http://purl.org/dc/terms/"/>
-    <bf:instanceOf rdf:resource="http://example.org/16998093"/>
+    <bf:instanceOf>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/16998093">
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Jakubowicz, Linda Corruption</rdfs:label>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Jakubowicz, Linda</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Hrsg.</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/edt"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
+		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Fiedler, Franz.</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:title>
+	  <bf:Title>
+	    <rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Corruption</rdfs:label>
+	    <bf:mainTitle xmlns:streams="info:lc/streams#">Corruption</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Work>
+    </bf:instanceOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:identifiedBy>
@@ -438,8 +474,8 @@
 	</bf:identifiedBy>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:42.567614-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:56.49054-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>

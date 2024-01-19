@@ -3,11 +3,6 @@
     <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Il giornale dell'arte</bflc:aap>
     <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">ilgiornaledell'arte</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">text</rdfs:label>
-      </bf:Content>
-    </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Serial"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ita">
@@ -110,33 +105,29 @@
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Art--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Art--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Library of
-            Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2007101354">
+	<rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Art--Periodicals</rdfs:label>
 	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85007461">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Art</rdfs:label>
-	    <bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">150  $aArt</bflc:marcKey>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Art</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Art</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001647">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Periodicals</rdfs:label>
-	    <bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">185  $vPeriodicals</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Periodicals</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GenreFormElement>
+		<madsrdf:elementValue xml:lang="en">Periodicals</madsrdf:elementValue>
+	      </madsrdf:GenreFormElement>
+	    </madsrdf:elementList>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
-	<bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">artperiodicals</bflc:aap-normalized>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Library of
-            Congress Subject Headings</rdfs:label>
-	  </bf:Source>
-	</bf:source>
+	<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">150  $aArt$vPeriodicals</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
     <bf:subject rdf:resource="http://id.worldcat.org/fast/00815177"/>
@@ -150,7 +141,7 @@
       </bf:GenreForm>
     </bf:genreForm>
     <bf:expressionOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/6867c055-34d3-5989-387f-0c891ec1d999">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/6867c055-34d3-5989-387f-0c891ec1d999">
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Giornale dell'arte (Turin, Italy)</rdfs:label>
 	<bf:title>
 	  <bf:Title>
@@ -158,7 +149,7 @@
 	  </bf:Title>
 	</bf:title>
 	<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">130  $aGiornale dell'arte (Turin, Italy)</bflc:marcKey>
-      </bf:Work>
+      </bf:Hub>
     </bf:expressionOf>
     <bf:otherEdition>
       <bf:Work>
@@ -181,84 +172,55 @@
       </bf:Work>
     </bf:otherEdition>
     <bf:otherEdition>
-      <bf:Work>
-	<bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Giornale dell'arte (Turin, Italy). English (1990). Art newspaper</bflc:aap>
-	<bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">giornaledell'arte(turinitaly)english(1990)artnewspaper</bflc:aap-normalized>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/11496151">
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">The art newspaper</rdfs:label>
+	<bf:title>
+	  <bf:AbbreviatedTitle>
+	    <bf:mainTitle>Art newspaper</bf:mainTitle>
+	    <bf:qualifier>(Int. ed.)</bf:qualifier>
+	    <bf:assigner>
+	      <bf:Agent>
+		<bf:code>issnkey</bf:code>
+	      </bf:Agent>
+	    </bf:assigner>
+	  </bf:AbbreviatedTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:KeyTitle>
+	    <bf:mainTitle>Art newspaper</bf:mainTitle>
+	    <bf:qualifier>(International ed.)</bf:qualifier>
+	  </bf:KeyTitle>
+	</bf:title>
 	<bf:title>
 	  <bf:Title>
-	    <bf:mainTitle>Giornale dell'arte (Turin, Italy). English (1990). Art newspaper</bf:mainTitle>
+	    <bf:mainTitle>The art newspaper</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance>
-	    <bf:title>
-	      <bf:Title>
-		<bf:mainTitle>Giornale dell'arte (Turin, Italy). English (1990). Art newspaper</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>sf 98094490</rdf:value>
-		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
-		</bf:assigner>
-	      </bf:Lccn>
-	    </bf:identifiedBy>
-	    <bf:identifiedBy>
-	      <bf:Identifier>
-		<rdf:value>39966061</rdf:value>
-		<bf:assigner>
-		  <bf:Agent>
-		    <bf:code>OCoLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Identifier>
-	    </bf:identifiedBy>
-	  </bf:Instance>
-	</bf:hasInstance>
       </bf:Work>
     </bf:otherEdition>
     <bf:otherPhysicalFormat>
-      <bf:Work>
-	<bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Il giornale dell'arte</bflc:aap>
-	<bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">ilgiornaledell'arte</bflc:aap-normalized>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/11347516">
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Il giornale dell'arte</rdfs:label>
+	<bf:title>
+	  <bf:AbbreviatedTitle>
+	    <bf:mainTitle>G. arte</bf:mainTitle>
+	    <bf:assigner>
+	      <bf:Agent>
+		<bf:code>issnkey</bf:code>
+	      </bf:Agent>
+	    </bf:assigner>
+	  </bf:AbbreviatedTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:KeyTitle>
+	    <bf:mainTitle>Giornale dell'arte</bf:mainTitle>
+	  </bf:KeyTitle>
+	</bf:title>
 	<bf:title>
 	  <bf:Title>
 	    <bf:mainTitle>Il giornale dell'arte</bf:mainTitle>
-	    <bf:qualifier>Original</bf:qualifier>
 	  </bf:Title>
 	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance>
-	    <bf:title>
-	      <bf:Title>
-		<bf:mainTitle>Il giornale dell'arte</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>   88652526</rdf:value>
-		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
-		</bf:assigner>
-	      </bf:Lccn>
-	    </bf:identifiedBy>
-	    <bf:identifiedBy>
-	      <bf:Identifier>
-		<rdf:value>9739371</rdf:value>
-		<bf:assigner>
-		  <bf:Agent>
-		    <bf:code>OCoLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Identifier>
-	    </bf:identifiedBy>
-	  </bf:Instance>
-	</bf:hasInstance>
       </bf:Work>
     </bf:otherPhysicalFormat>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works" xmlns:dcterms="http://purl.org/dc/terms/"/>
@@ -269,14 +231,15 @@
 	    <bf:mainTitle>Il giornale dell'arte</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
+	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common" xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Torino: Allemandi; 1983-</bflc:publicationStatement>
       </bf:Instance>
     </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T13:59:32.963619-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:42.715487-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -404,7 +367,6 @@
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">irregular</rdfs:label>
       </bf:Frequency>
     </bf:frequency>
-    <bf:carrier rdf:resource="http://id.loc.gov/vocabulary/mediaTypes/hd"/>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>   00204805 </rdf:value>
@@ -449,6 +411,11 @@
       <bf:Note>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">illustrations</rdfs:label>
+	<bflc:appliesTo xmlns:bflc="http://id.loc.gov/ontologies/bflc/">
+	  <bflc:AppliesTo>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">all</rdfs:label>
+	  </bflc:AppliesTo>
+	</bflc:appliesTo>
       </bf:Note>
     </bf:note>
     <bf:dimensions>42 cm</bf:dimensions>
@@ -519,8 +486,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T13:59:32.963619-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:42.715487-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -636,7 +603,31 @@
       </bf:Title>
     </bf:title>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances" xmlns:dcterms="http://purl.org/dc/terms/"/>
-    <bf:instanceOf rdf:resource="http://example.org/11891684"/>
+    <bf:instanceOf>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/11891684">
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Il giornale dell'arte</rdfs:label>
+	<bf:title>
+	  <bf:AbbreviatedTitle>
+	    <bf:mainTitle>G. arte</bf:mainTitle>
+	    <bf:assigner>
+	      <bf:Agent>
+		<bf:code>issnkey</bf:code>
+	      </bf:Agent>
+	    </bf:assigner>
+	  </bf:AbbreviatedTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:KeyTitle>
+	    <bf:mainTitle>Giornale dell'arte</bf:mainTitle>
+	  </bf:KeyTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>Il giornale dell'arte</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Work>
+    </bf:instanceOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:identifiedBy>
@@ -651,8 +642,8 @@
 	</bf:identifiedBy>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T13:59:32.963619-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:42.715487-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>

@@ -1,13 +1,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/19537131" xmlns:bf="http://id.loc.gov/ontologies/bibframe/">
-    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Miranda, Lin-Manuel, 1980- Hamilton</bflc:aap>
-    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">mirandalinmanuel1980hamilton</bflc:aap-normalized>
+    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Hamilton</bflc:aap>
+    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">hamilton</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/MusicAudio"/>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/prm">
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performed music</rdfs:label>
-      </bf:Content>
-    </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
@@ -118,7 +113,7 @@
     </bf:classification>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/no2008101876">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
@@ -231,20 +226,7 @@
 	</bf:source>
       </bf:Topic>
     </bf:subject>
-    <bf:subject>
-      <bf:Agent>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#PersonalName"/>
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Hamilton, Alexander, 1757-1804</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Hamilton, Alexander, 1757-1804</madsrdf:authoritativeLabel>
-	<bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">hamiltonalexander17571804</bflc:aap-normalized>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/fast">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Faceted application of subject terminology</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-      </bf:Agent>
-    </bf:subject>
+    <bf:subject rdf:resource="http://id.worldcat.org/fast/00031768"/>
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85089018">
 	<rdfs:label xml:lang="en" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Musicals</rdfs:label>
@@ -642,7 +624,7 @@
       </bf:Contribution>
     </bf:contribution>
     <bf:relatedTo>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/5d2cc237-3a32-78b3-8783-c489c4016c63">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/5d2cc237-3a32-78b3-8783-c489c4016c63">
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Chernow, Ron Alexander Hamilton</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
@@ -664,7 +646,7 @@
 	  </bf:Title>
 	</bf:title>
 	<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">1001 $aChernow, Ron.$0http://id.loc.gov/authorities/names/n88268242$tAlexander Hamilton.</bflc:marcKey>
-      </bf:Work>
+      </bf:Hub>
     </bf:relatedTo>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works" xmlns:dcterms="http://purl.org/dc/terms/"/>
     <bflc:relationship xmlns:bflc="http://id.loc.gov/ontologies/bflc/">
@@ -675,7 +657,7 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Work rdf:about="http://id.loc.gov/resources/hubs/5d2cc237-3a32-78b3-8783-c489c4016c63">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/5d2cc237-3a32-78b3-8783-c489c4016c63">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Chernow, Ron Alexander Hamilton</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
@@ -697,7 +679,7 @@
 	      </bf:Title>
 	    </bf:title>
 	    <bflc:marcKey>1001 $aChernow, Ron.$0http://id.loc.gov/authorities/names/n88268242$tAlexander Hamilton.</bflc:marcKey>
-	  </bf:Work>
+	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
@@ -716,8 +698,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:23.553474-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:29.090052-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -820,11 +802,6 @@
     </bf:provisionActivity>
     <bflc:publicationStatement xmlns:bflc="http://id.loc.gov/ontologies/bflc/">New York, NY: Atlantic Recording Corporation; [2015]</bflc:publicationStatement>
     <bf:copyrightDate rdf:datatype="http://id.loc.gov/datatypes/edtf">2015</bf:copyrightDate>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">volume</rdfs:label>
-      </bf:Carrier>
-    </bf:carrier>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2017618270</rdf:value>
@@ -1206,8 +1183,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:23.553474-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:29.090052-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -1292,7 +1269,227 @@
     </bf:title>
     <bf:electronicLocator rdf:resource="http://midwesttapes.com/images/movies/000/000/000/011/415/000000000011415110.jpg"/>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances" xmlns:dcterms="http://purl.org/dc/terms/"/>
-    <bf:instanceOf rdf:resource="http://example.org/19537131"/>
+    <bf:instanceOf>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/19537131">
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Miranda, Lin-Manuel, 1980- Hamilton</rdfs:label>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Miranda, Lin-Manuel, 1980-</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">composer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">librettist</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">lyricist</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Diggs, Daveed</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Goldsberry, Renée Elise, 1971-</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Groff, Jonathan</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Jackson, Christopher (Vocalist)</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Jones, Jasmine Cephas</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Muñoz, Javier (Actor)</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Odom, Leslie, Jr., 1981-</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Onaodowan, Okieriete</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Ramos, Anthony</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Soo, Phillipa</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">performer</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Lacamoire, Alex</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">conductor</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Kail, Thomas, 1978-</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">director</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>Hamilton</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+      </bf:Work>
+    </bf:instanceOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:identifiedBy>
@@ -1307,8 +1504,8 @@
 	</bf:identifiedBy>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:23.553474-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:29.090052-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>

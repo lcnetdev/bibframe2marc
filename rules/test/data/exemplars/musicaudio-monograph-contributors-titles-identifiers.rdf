@@ -1,7 +1,7 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/18344194" xmlns:bf="http://id.loc.gov/ontologies/bibframe/">
-    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Paganini, Nicolò, 1782-1840 Paganini's 24 caprices</bflc:aap>
-    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">paganininicolò17821840paganini's24caprices</bflc:aap-normalized>
+    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Paganini's 24 caprices</bflc:aap>
+    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">paganini's24caprices</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/MusicAudio"/>
     <bf:content>
       <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/prm">
@@ -56,7 +56,7 @@
     </bf:classification>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79105881">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
@@ -133,7 +133,7 @@
       </bf:Contribution>
     </bf:contribution>
     <bf:expressionOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/3d21ae7f-526c-2810-0bac-412a9275b15b">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/3d21ae7f-526c-2810-0bac-412a9275b15b">
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Paganini, Nicolò, 1782-1840 Caprices, violin, M.S. 25; arranged</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
@@ -175,45 +175,25 @@
 	    <bf:mainTitle>Caprices, violin, M.S. 25; arr</bf:mainTitle>
 	  </bf:VariantTitle>
 	</bf:title>
-      </bf:Work>
+      </bf:Hub>
     </bf:expressionOf>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works" xmlns:dcterms="http://purl.org/dc/terms/"/>
     <bf:hasInstance>
       <bf:Instance rdf:about="http://id.loc.gov/resources/instances/18344194">
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Paganini's 24 caprices</rdfs:label>
 	<bf:title>
 	  <bf:Title>
-	    <rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Paganini's 24 caprices</rdfs:label>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">Paganini's 24 caprices</bf:mainTitle>
+	    <bf:mainTitle>Paganini's 24 caprices</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:title>
-	  <bf:VariantTitle>
-	    <rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Paganini's twenty-four caprices</rdfs:label>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">Paganini's twenty-four caprices</bf:mainTitle>
-	  </bf:VariantTitle>
-	</bf:title>
-	<bf:title>
-	  <bf:VariantTitle>
-	    <rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Twenty-four caprices</rdfs:label>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">Twenty-four caprices</bf:mainTitle>
-	  </bf:VariantTitle>
-	</bf:title>
-	<bf:title>
-	  <bf:VariantTitle>
-	    <rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">24 caprices</rdfs:label>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">24 caprices</bf:mainTitle>
-	  </bf:VariantTitle>
-	</bf:title>
-	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Ventura, CA : Eroica Classical Recordings, p2008.</bf:provisionActivityStatement>
+	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common" xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Ventura, CA: Eroica Classical Recordings; p2008</bflc:publicationStatement>
       </bf:Instance>
     </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:31.181754-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:39.153157-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -325,11 +305,6 @@
       </bf:ProvisionActivity>
     </bf:provisionActivity>
     <bflc:publicationStatement xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Ventura, CA: Eroica Classical Recordings; p2008</bflc:publicationStatement>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">volume</rdfs:label>
-      </bf:Carrier>
-    </bf:carrier>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2014624918</rdf:value>
@@ -396,14 +371,14 @@
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances" xmlns:dcterms="http://purl.org/dc/terms/"/>
     <bf:instanceOf>
       <bf:Work rdf:about="http://id.loc.gov/resources/works/18344194">
-	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Paganini, Nicolò, 1782-1840. Paganini's 24 caprices</rdfs:label>
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Paganini, Nicolò, 1782-1840 Paganini's 24 caprices</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution" xmlns:streams="info:lc/streams#"/>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
 	    <bf:agent>
 	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
-		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Paganini, Nicolò, 1782-1840.</rdfs:label>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Paganini, Nicolò, 1782-1840</rdfs:label>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -415,8 +390,8 @@
 	  <bf:Contribution>
 	    <bf:agent>
 	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person" xmlns:streams="info:lc/streams#"/>
-		<rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Slapin, Scott, 1974-</rdfs:label>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Slapin, Scott, 1974-</rdfs:label>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -426,9 +401,23 @@
 	</bf:contribution>
 	<bf:title>
 	  <bf:Title>
-	    <rdfs:label xmlns:streams="info:lc/streams#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Paganini's 24 caprices</rdfs:label>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">Paganini's 24 caprices</bf:mainTitle>
+	    <bf:mainTitle>Paganini's 24 caprices</bf:mainTitle>
 	  </bf:Title>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Paganini's twenty-four caprices</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Twenty-four caprices</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>24 caprices</bf:mainTitle>
+	  </bf:VariantTitle>
 	</bf:title>
       </bf:Work>
     </bf:instanceOf>
@@ -436,8 +425,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:31.181754-05:00</bf:generationDate>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:39.153157-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>

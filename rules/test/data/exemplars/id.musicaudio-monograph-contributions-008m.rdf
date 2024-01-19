@@ -1,4 +1,5 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <!--[{"level": "WARNING", "message": "LCC missing item portion."}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/12280298">
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
@@ -54,8 +55,12 @@
 	    <rdfs:label xml:lang="en">New York (State)</rdfs:label>
 	  </bf:Place>
 	</bf:place>
+	<bflc:simplePlace>New York</bflc:simplePlace>
+	<bflc:simpleAgent>Decca</bflc:simpleAgent>
+	<bflc:simpleDate>[1943-1945]</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
+    <bflc:publicationStatement>New York: Decca; [1943-1945]</bflc:publicationStatement>
     <bf:carrier>
       <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
 	<rdfs:label>volume</rdfs:label>
@@ -326,38 +331,12 @@
 	</bf:assigner>
       </bf:MatrixNumber>
     </bf:identifiedBy>
-    <rdfs:label>Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</rdfs:label>
     <bf:title>
       <bf:Title>
-	<rdfs:label>Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</rdfs:label>
 	<bf:mainTitle>Selections from the Theatre Guild musical play Oklahoma!</bf:mainTitle>
 	<bf:subtitle>music by Richard Rodgers ; lyrics by Oscar Hammerstein</bf:subtitle>
       </bf:Title>
     </bf:title>
-    <bf:title>
-      <bf:VariantTitle>
-	<rdfs:label>Oklahoma!</rdfs:label>
-	<bf:variantType>portion</bf:variantType>
-	<bf:mainTitle>Oklahoma!</bf:mainTitle>
-      </bf:VariantTitle>
-    </bf:title>
-    <bf:provisionActivity>
-      <bf:ProvisionActivity>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
-	<bf:place>
-	  <bf:Place>
-	    <rdfs:label>New York</rdfs:label>
-	  </bf:Place>
-	</bf:place>
-	<bf:agent>
-	  <bf:Agent>
-	    <rdfs:label>Decca</rdfs:label>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:date>1943-1945</bf:date>
-      </bf:ProvisionActivity>
-    </bf:provisionActivity>
-    <bf:provisionActivityStatement>New York : Decca, [1943-1945]</bf:provisionActivityStatement>
     <bf:extent>
       <bf:Extent>
 	<rdfs:label>8 sound discs</rdfs:label>
@@ -365,12 +344,11 @@
     </bf:extent>
     <bf:note>
       <bf:Note>
-	<rdf:type rdfs:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
 	<rdfs:label>analog, 78 rpm</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:dimensions>10 in.</bf:dimensions>
-    <bf:seriesStatement>Personality series</bf:seriesStatement>
     <bf:note>
       <bf:Note>
 	<rdfs:label>Decca: A-359 (23282--23287), 383 (23389--23390).</rdfs:label>
@@ -388,19 +366,17 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/12280298-050-38"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T19:49:26-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T23:56:32.333709-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
@@ -448,14 +424,15 @@
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/12280298"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/12280298">
-    <bflc:aap>Rodgers, Richard, 1902-1979. Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein</bflc:aap>
-    <bflc:aap-normalized>rodgersrichard19021979selectionsfromthetheatreguildmusicalplayoklahoma!musicbyrichardrodgers;lyricsbyoscarhammerstein</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Audio" xmlns:streams="info:lc/streams#"/>
+    <bflc:aap>Rodgers, Richard, 1902-1979 Selections from the Theatre Guild musical play Oklahoma!</bflc:aap>
+    <bflc:aap-normalized>rodgersrichard19021979selectionsfromthetheatreguildmusicalplayoklahoma!</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/MusicAudio"/>
     <bf:content>
       <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/prm">
 	<rdfs:label>performed music</rdfs:label>
       </bf:Content>
     </bf:content>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	<rdfs:label xml:lang="en">English</rdfs:label>
@@ -472,9 +449,24 @@
 	<bflc:marcKey>155  $aRevues</bflc:marcKey>
       </bf:GenreForm>
     </bf:genreForm>
+    <bf:classification>
+      <bf:ClassificationLcc>
+	<bf:classificationPortion>RBA 03761-03762, etc.</bf:classificationPortion>
+	<bf:assigner>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:assigner>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/uba">
+	    <rdfs:label>used by assigner</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+      </bf:ClassificationLcc>
+    </bf:classification>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution" xmlns:streams="info:lc/streams#"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n50048058">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
@@ -489,37 +481,16 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:expressionOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/a074316d-6aff-94b0-9000-d132401353a1">
-	<rdfs:label>Rodgers, Richard, 1902-1979 Oklahoma. Selections</rdfs:label>
-	<bf:contribution>
-	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n50048058">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Rodgers, Richard, 1902-1979</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Oklahoma. Selections</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:marcKey>1001 $aRodgers, Richard,$d1902-1979.$0http://id.loc.gov/authorities/names/n50048058$tOklahoma.$kSelections</bflc:marcKey>
-      </bf:Work>
-    </bf:expressionOf>
-    <rdfs:label>Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</rdfs:label>
     <bf:title>
       <bf:Title>
-	<rdfs:label>Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</rdfs:label>
-	<bf:mainTitle>Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</bf:mainTitle>
+	<bf:mainTitle>Selections from the Theatre Guild musical play Oklahoma!</bf:mainTitle>
       </bf:Title>
+    </bf:title>
+    <bf:title>
+      <bf:VariantTitle>
+	<bf:variantType>portion</bf:variantType>
+	<bf:mainTitle>Oklahoma!</bf:mainTitle>
+      </bf:VariantTitle>
     </bf:title>
     <bf:tableOfContents>
       <bf:TableOfContents>
@@ -528,9 +499,9 @@
     </bf:tableOfContents>
     <bf:subject>
       <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject" xmlns:streams="info:lc/streams#"/>
-	<rdfs:label>Musicals--Excerpts.</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Musicals--Excerpts.</madsrdf:authoritativeLabel>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Musicals--Excerpts</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Musicals--Excerpts</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
 	    <rdfs:label xml:lang="en">Library of
@@ -548,6 +519,12 @@
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>musicalsexcerpts</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of
+            Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
       </bf:Topic>
     </bf:subject>
     <bf:contribution>
@@ -710,51 +687,94 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:hasSeries>
-      <bf:Work>
-	<bflc:aap>Decca personality series</bflc:aap>
-	<bflc:aap-normalized>deccapersonalityseries</bflc:aap-normalized>
-	<rdfs:label>Decca personality series.</rdfs:label>
+    <bf:expressionOf>
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/fe3cf2de-d9f4-81f7-0fb2-5d61a04a9e83">
+	<rdfs:label>Rodgers, Richard, 1902-1979 Oklahoma! Selections</rdfs:label>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label>Rodgers, Richard, 1902-1979</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
 	<bf:title>
 	  <bf:Title>
-	    <bf:mainTitle>Decca personality series</bf:mainTitle>
+	    <bf:mainTitle>Oklahoma! Selections</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-      </bf:Work>
-    </bf:hasSeries>
+	<bflc:marcKey>1001 $aRodgers, Richard,$d1902-1979.$tOklahoma!$kSelections;</bflc:marcKey>
+      </bf:Hub>
+    </bf:expressionOf>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bflc:relationship>
+      <bflc:Relationship>
+	<bflc:relation rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:relatedTo>
+	  <bf:Series>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
+	    <bf:status>
+	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
+		<rdfs:label>transcribed</rdfs:label>
+	      </bf:Status>
+	    </bf:status>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Personality series</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	  </bf:Series>
+	</bf:relatedTo>
+      </bflc:Relationship>
+    </bflc:relationship>
+    <bflc:relationship>
+      <bflc:Relationship>
+	<bflc:relation rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:relatedTo>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/ccd1f747-78e4-f0a5-1805-a689e84e75d0">
+	    <rdfs:label>Decca personality series</rdfs:label>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Decca personality series</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:title>
+	      <bf:VariantTitle>
+		<bf:mainTitle>Personality series (Decca Records (Firm))</bf:mainTitle>
+	      </bf:VariantTitle>
+	    </bf:title>
+	  </bf:Hub>
+	</bf:relatedTo>
+      </bflc:Relationship>
+    </bflc:relationship>
     <bf:hasInstance>
       <bf:Instance rdf:about="http://id.loc.gov/resources/instances/12280298">
-	<rdfs:label>Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</rdfs:label>
 	<bf:title>
 	  <bf:Title>
-	    <rdfs:label xmlns:streams="info:lc/streams#">Selections from the Theatre Guild musical play Oklahoma! music by Richard Rodgers ; lyrics by Oscar Hammerstein.</rdfs:label>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">Selections from the Theatre Guild musical play Oklahoma!</bf:mainTitle>
-	    <bf:subtitle xmlns:streams="info:lc/streams#">music by Richard Rodgers ; lyrics by Oscar Hammerstein</bf:subtitle>
+	    <bf:mainTitle>Selections from the Theatre Guild musical play Oklahoma!</bf:mainTitle>
+	    <bf:subtitle>music by Richard Rodgers ; lyrics by Oscar Hammerstein</bf:subtitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:title>
-	  <bf:VariantTitle>
-	    <rdfs:label xmlns:streams="info:lc/streams#">Oklahoma!</rdfs:label>
-	    <bf:variantType xmlns:streams="info:lc/streams#">portion</bf:variantType>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">Oklahoma!</bf:mainTitle>
-	  </bf:VariantTitle>
-	</bf:title>
-	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">New York : Decca, [1943-1945]</bf:provisionActivityStatement>
+	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common">New York: Decca; [1943-1945]</bflc:publicationStatement>
       </bf:Instance>
     </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T19:49:26-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T23:56:32.333709-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
@@ -800,79 +820,4 @@
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
-  <bf:Item rdf:about="http://id.loc.gov/resources/items/12280298-050-38">
-    <bf:heldBy>
-      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>United States, Library of Congress</rdfs:label>
-      </madsrdf:CorporateName>
-    </bf:heldBy>
-    <bf:shelfMark>
-      <bf:ShelfMark>
-	<rdfs:label>RBA 03761-03762, etc.</rdfs:label>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:ShelfMark>
-    </bf:shelfMark>
-    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
-    <bf:itemOf rdf:resource="http://id.loc.gov/resources/instances/12280298"/>
-    <bf:adminMetadata>
-      <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T19:49:26-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
-	  </bf:Status>
-	</bf:status>
-	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/4">
-	    <rdfs:label>core</rdfs:label>
-	  </bflc:EncodingLevel>
-	</bflc:encodingLevel>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:identifiedBy>
-	  <bf:Local>
-	    <rdf:value>12280298</rdf:value>
-	    <bf:assigner>
-	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </bf:Organization>
-	    </bf:assigner>
-	  </bf:Local>
-	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2013-05-24T12:50:28</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2001-01-17</bf:creationDate>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d 4 $e ncip $f 20 $g y-genmusic</lclocal:d906>
-	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a vk17 01-17-01; to MBRS 01-17-01; vl22 05-18-01 (v. 1); to MBRS 05-21-01</lclocal:d955>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<bf:descriptionAuthentication>
-	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
-	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
-	  </bf:DescriptionAuthentication>
-	</bf:descriptionAuthentication>
-      </bf:AdminMetadata>
-    </bf:adminMetadata>
-  </bf:Item>
 </rdf:RDF>

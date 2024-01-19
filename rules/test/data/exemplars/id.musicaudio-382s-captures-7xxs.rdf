@@ -1,64 +1,87 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <!--[{"level": "WARNING", "message": "LCC missing item portion."}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/12060035">
-    <bf:title>
-      <bf:Title>
-	<bf:mainTitle>Concerto for piano &amp; orchestra no. 2 in C minor, op. 18</bf:mainTitle>
-	<bf:subtitle>Concerto for piano &amp; orchestra no. 3 in D minor, op. 30</bf:subtitle>
-      </bf:Title>
-    </bf:title>
-    <bf:responsibilityStatement>Sergei Rachmaninoff</bf:responsibilityStatement>
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+	<rdfs:label>single unit</rdfs:label>
+      </bf:Issuance>
+    </bf:issuance>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/sd">
+	<rdfs:label>audio disc</rdfs:label>
+      </bf:Carrier>
+    </bf:carrier>
+    <bf:soundCharacteristic>
+      <bf:PlayingSpeed rdf:about="http://id.loc.gov/vocabulary/mplayspeed/f">
+	<rdfs:label>1.4 m/s</rdfs:label>
+      </bf:PlayingSpeed>
+    </bf:soundCharacteristic>
+    <bf:baseMaterial>
+      <bf:BaseMaterial rdf:about="http://id.loc.gov/vocabulary/mmaterial/pla">
+	<rdfs:label>plastic</rdfs:label>
+      </bf:BaseMaterial>
+    </bf:baseMaterial>
+    <bf:baseMaterial>
+      <bf:BaseMaterial rdf:about="http://id.loc.gov/vocabulary/mmaterial/mtl">
+	<rdfs:label>metal</rdfs:label>
+      </bf:BaseMaterial>
+    </bf:baseMaterial>
+    <bf:soundCharacteristic>
+      <bflc:CaptureStorage rdf:about="http://id.loc.gov/vocabulary/mcapturestorage/dist">
+	<rdfs:label>Electrical capture, Digital storage</rdfs:label>
+      </bflc:CaptureStorage>
+    </bf:soundCharacteristic>
     <bf:provisionActivity>
-      <bf:Distribution>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
+	<bflc:simplePlace>New York, NY</bflc:simplePlace>
+	<bflc:simpleAgent>Sony Classical</bflc:simpleAgent>
+	<bflc:simpleDate>[1992]</bflc:simpleDate>
+      </bf:ProvisionActivity>
+    </bf:provisionActivity>
+    <bflc:publicationStatement>New York, NY: Sony Classical; [1992]</bflc:publicationStatement>
+    <bf:copyrightDate>℗1992</bf:copyrightDate>
+    <bf:provisionActivity>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Distribution"/>
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1992</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/nyu">
 	    <rdfs:label xml:lang="en">New York (State)</rdfs:label>
 	  </bf:Place>
 	</bf:place>
-      </bf:Distribution>
+      </bf:ProvisionActivity>
     </bf:provisionActivity>
     <bf:provisionActivity>
-      <bf:Publication>
-	<bf:place>
-	  <bf:Place>
-	    <rdfs:label>New York, NY</rdfs:label>
-	  </bf:Place>
-	</bf:place>
-	<bf:agent>
-	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
-	    <rdfs:label>Sony Classical</rdfs:label>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:date>[1992]</bf:date>
-      </bf:Publication>
-    </bf:provisionActivity>
-    <bf:provisionActivity>
-      <bf:Production>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Production"/>
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1990</bf:date>
-      </bf:Production>
+      </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bf:copyrightDate>℗1992</bf:copyrightDate>
-    <bf:issuance>
-      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
-	<rdfs:label>single unit</rdfs:label>
-      </bf:Issuance>
-    </bf:issuance>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+	<rdfs:label>volume</rdfs:label>
+      </bf:Carrier>
+    </bf:carrier>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>   99582445 </rdf:value>
       </bf:Lccn>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
-	<rdf:value>ocm25994797</rdf:value>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:Local>
+      <bf:Upc>
+	<rdf:value>074644718324</rdf:value>
+      </bf:Upc>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Upc>
+	<rdf:value>7464471832</rdf:value>
+      </bf:Upc>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Ean>
+	<rdf:value>5099704718323</rdf:value>
+      </bf:Ean>
     </bf:identifiedBy>
     <bf:identifiedBy>
       <bf:AudioIssueNumber>
@@ -71,119 +94,76 @@
       </bf:AudioIssueNumber>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Ean>
-	<rdf:value>5099704718323</rdf:value>
-      </bf:Ean>
+      <bf:Local>
+	<rdf:value>ocm25994797</rdf:value>
+	<bf:assigner>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
+	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
+	  </bf:Organization>
+	</bf:assigner>
+      </bf:Local>
     </bf:identifiedBy>
-    <bf:identifiedBy>
-      <bf:Upc>
-	<rdf:value>7464471832</rdf:value>
-      </bf:Upc>
-    </bf:identifiedBy>
-    <bf:identifiedBy>
-      <bf:Upc>
-	<rdf:value>074644718324</rdf:value>
-      </bf:Upc>
-    </bf:identifiedBy>
+    <bf:responsibilityStatement>Sergei Rachmaninoff</bf:responsibilityStatement>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Concerto for piano &amp; orchestra no. 2 in C minor, op. 18</bf:mainTitle>
+	<bf:subtitle>Concerto for piano &amp; orchestra no. 3 in D minor, op. 30</bf:subtitle>
+      </bf:Title>
+    </bf:title>
+    <bf:extent>
+      <bf:Extent>
+	<rdfs:label>1 audio disc (77 min., 12 sec.)</rdfs:label>
+      </bf:Extent>
+    </bf:extent>
     <bf:note>
       <bf:Note>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
 	<rdfs:label>digital</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:note>
-      <bf:Note>
-	<rdfs:label>Program notes by Detlef Gojowy, and biographical notes in German, with English, French and Italian translations (20 pages : portraits) inserted in container.</rdfs:label>
-      </bf:Note>
-    </bf:note>
-    <bf:note>
-      <bf:Note>
-	<rdfs:label>Title from disc label.</rdfs:label>
-      </bf:Note>
-    </bf:note>
-    <bf:credits>Yefim Bronfman, piano ; The Philharmonia ; Esa-Pekka Salonen, conductor.</bf:credits>
+    <bf:dimensions>4 3/4 in.</bf:dimensions>
+    <bf:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">011712</bf:duration>
     <bf:media>
-      <bf:Media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/s">
 	<rdfs:label>audio</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdamedia">
-	    <rdfs:label>Term and code list for RDA media types</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-	<bflc:appliesTo>
-	  <bflc:AppliesTo>
-	    <rdfs:label>audio disc</rdfs:label>
-	  </bflc:AppliesTo>
-	</bflc:appliesTo>
       </bf:Media>
     </bf:media>
     <bf:media>
-      <bf:Media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdamedia">
-	    <rdfs:label>Term and code list for RDA media types</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-	<bflc:appliesTo>
-	  <bflc:AppliesTo>
-	    <rdfs:label>program notes</rdfs:label>
-	  </bflc:AppliesTo>
-	</bflc:appliesTo>
       </bf:Media>
     </bf:media>
     <bf:carrier>
-      <bf:Carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/sd">
 	<rdfs:label>audio disc</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdacarrier">
-	    <rdfs:label>Term and code list for RDA carrier types</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-	<bflc:appliesTo>
-	  <bflc:AppliesTo>
-	    <rdfs:label>audio disc</rdfs:label>
-	  </bflc:AppliesTo>
-	</bflc:appliesTo>
       </bf:Carrier>
     </bf:carrier>
     <bf:carrier>
-      <bf:Carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
 	<rdfs:label>volume</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdacarrier">
-	    <rdfs:label>Term and code list for RDA carrier types</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-	<bflc:appliesTo>
-	  <bflc:AppliesTo>
-	    <rdfs:label>program notes</rdfs:label>
-	  </bflc:AppliesTo>
-	</bflc:appliesTo>
       </bf:Carrier>
     </bf:carrier>
-    <bf:extent>
-      <bf:Extent>
-	<rdfs:label>1 audio disc (77 min., 12 sec.)</rdfs:label>
-      </bf:Extent>
-    </bf:extent>
     <bf:dimensions>4 3/4 in.</bf:dimensions>
-    <bf:dimensions>4 3/4 in.</bf:dimensions>
-    <bf:baseMaterial>
-      <bf:BaseMaterial rdf:about="http://id.loc.gov/vocabulary/mmaterial/pla">
-	<rdfs:label>plastic</rdfs:label>
-      </bf:BaseMaterial>
-    </bf:baseMaterial>
-    <bf:baseMaterial>
-      <bf:BaseMaterial rdf:about="http://id.loc.gov/vocabulary/mmaterial/mtl">
-	<rdfs:label>metal</rdfs:label>
-      </bf:BaseMaterial>
-    </bf:baseMaterial>
     <bf:soundCharacteristic>
-      <bf:PlayingSpeed rdf:about="http://id.loc.gov/vocabulary/mplayspeed/f">
-	<rdfs:label>1.4 m/s</rdfs:label>
-      </bf:PlayingSpeed>
+      <bf:RecordingMethod rdf:about="http://id.loc.gov/vocabulary/mrectype/digital">
+	<rdfs:label>digital</rdfs:label>
+      </bf:RecordingMethod>
     </bf:soundCharacteristic>
+    <bf:soundCharacteristic>
+      <bf:RecordingMedium rdf:about="http://id.loc.gov/vocabulary/mrecmedium/opt">
+	<rdfs:label>optical</rdfs:label>
+      </bf:RecordingMedium>
+    </bf:soundCharacteristic>
+    <bf:soundCharacteristic>
+      <bf:PlaybackChannels rdf:about="http://id.loc.gov/vocabulary/mplayback/ste">
+	<rdfs:label>stereo</rdfs:label>
+      </bf:PlaybackChannels>
+    </bf:soundCharacteristic>
+    <bf:digitalCharacteristic>
+      <bf:FileType rdf:about="http://id.loc.gov/vocabulary/mfiletype/audio">
+	<rdfs:label>audio file</rdfs:label>
+      </bf:FileType>
+    </bf:digitalCharacteristic>
     <bf:soundCharacteristic>
       <bf:PlayingSpeed>
 	<rdfs:label>1.4 m/s</rdfs:label>
@@ -194,31 +174,6 @@
 	</bflc:appliesTo>
       </bf:PlayingSpeed>
     </bf:soundCharacteristic>
-    <bf:soundCharacteristic>
-      <bf:PlaybackChannels rdf:about="http://id.loc.gov/vocabulary/mplayback/ste">
-	<rdfs:label>stereo</rdfs:label>
-      </bf:PlaybackChannels>
-    </bf:soundCharacteristic>
-    <bf:soundCharacteristic>
-      <bf:RecordingMedium rdf:about="http://id.loc.gov/vocabulary/mrecmedium/opt">
-	<rdfs:label>optical</rdfs:label>
-      </bf:RecordingMedium>
-    </bf:soundCharacteristic>
-    <bf:soundCharacteristic>
-      <bf:RecordingMethod rdf:about="http://id.loc.gov/vocabulary/mrectype/digital">
-	<rdfs:label>digital</rdfs:label>
-      </bf:RecordingMethod>
-    </bf:soundCharacteristic>
-    <bf:soundCharacteristic>
-      <bflc:CaptureStorage rdf:about="http://id.loc.gov/vocabulary/mcapturestorage/dist">
-	<rdfs:label>Electrical capture, Digital storage</rdfs:label>
-      </bflc:CaptureStorage>
-    </bf:soundCharacteristic>
-    <bf:digitalCharacteristic>
-      <bf:FileType rdf:about="http://id.loc.gov/vocabulary/mfiletype/audio">
-	<rdfs:label>audio file</rdfs:label>
-      </bf:FileType>
-    </bf:digitalCharacteristic>
     <bf:digitalCharacteristic>
       <bf:EncodingFormat>
 	<rdfs:label>CD audio</rdfs:label>
@@ -229,15 +184,24 @@
 	</bflc:appliesTo>
       </bf:EncodingFormat>
     </bf:digitalCharacteristic>
-    <bf:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">011712</bf:duration>
+    <bf:note>
+      <bf:Note>
+	<rdfs:label>Title from disc label.</rdfs:label>
+      </bf:Note>
+    </bf:note>
+    <bf:credits>Yefim Bronfman, piano ; The Philharmonia ; Esa-Pekka Salonen, conductor.</bf:credits>
+    <bf:note>
+      <bf:Note>
+	<rdfs:label>Program notes by Detlef Gojowy, and biographical notes in German, with English, French and Italian translations (20 pages : portraits) inserted in container.</rdfs:label>
+      </bf:Note>
+    </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/12060035-050-21"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-12-04T01:30:17.5722-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T22:08:50.907428-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -253,11 +217,6 @@
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
 	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -290,13 +249,17 @@
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
 	  </bf:Organization>
 	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <rdfs:label>LC Copy Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<bflc:catalogerId>jalb</bflc:catalogerId>
-	<bflc:procInfo>update instance</bflc:procInfo>
+	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $c OCLC $e Claimed Recordings</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/12060035"/>
@@ -304,193 +267,129 @@
   <bf:Work rdf:about="http://id.loc.gov/resources/works/12060035">
     <bflc:aap>Rachmaninoff, Sergei, 1873-1943 Concerto for piano &amp; orchestra no. 2 in C minor, op. 18</bflc:aap>
     <bflc:aap-normalized>rachmaninoffsergei18731943concertoforpiano&amp;orchestrano2incminorop18</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Audio"/>
-    <bf:contribution>
-      <bflc:PrimaryContribution>
-	<bf:agent>
-	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n50054908">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
-	    <bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943</bflc:marcKey>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:role>
-	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/cmp">
-	    <rdfs:label>Composer</rdfs:label>
-	  </bf:Role>
-	</bf:role>
-      </bflc:PrimaryContribution>
-    </bf:contribution>
-    <bf:title>
-      <bf:Title>
-	<bf:mainTitle>Concerto for piano &amp; orchestra no. 2 in C minor, op. 18</bf:mainTitle>
-      </bf:Title>
-    </bf:title>
-    <bf:title>
-      <bf:VariantTitle>
-	<bf:mainTitle>Piano concertos nos. 2 and 3</bf:mainTitle>
-      </bf:VariantTitle>
-    </bf:title>
-    <bf:title>
-      <bf:VariantTitle>
-	<bf:note>
-	  <bf:Note>
-	    <rdfs:label>Title on container</rdfs:label>
-	  </bf:Note>
-	</bf:note>
-	<bf:mainTitle>Piano concertos nos. 2 + 3</bf:mainTitle>
-      </bf:VariantTitle>
-    </bf:title>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/MusicAudio"/>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/prm">
+	<rdfs:label>performed music</rdfs:label>
+      </bf:Content>
+    </bf:content>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/zxx">
+	<rdfs:label xml:lang="en">No linguistic content</rdfs:label>
+      </bf:Language>
+    </bf:language>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/performerhistory">
+	<rdfs:label>history of performer or ensemble</rdfs:label>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/historicalinfo">
+	<rdfs:label>historical information</rdfs:label>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026725">
 	<rdfs:label xml:lang="en">Concertos</rdfs:label>
 	<bflc:marcKey>155  $aConcertos</bflc:marcKey>
       </bf:GenreForm>
     </bf:genreForm>
-    <bf:genreForm>
-      <madsrdf:Topic xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<madsrdf:authoritativeLabel>Concertos.</madsrdf:authoritativeLabel>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/fast">
-	    <bf:code>fast</bf:code>
-	  </bf:Source>
-	</bf:source>
-	<bf:identifiedBy>
-	  <bf:Identifier>
-	    <rdf:value>fst01726450</rdf:value>
-	    <bf:source>
-	      <bf:Source>
-		<bf:code>OCoLC</bf:code>
-	      </bf:Source>
-	    </bf:source>
-	  </bf:Identifier>
-	</bf:identifiedBy>
-	<rdfs:label>Concertos.</rdfs:label>
-      </madsrdf:Topic>
-    </bf:genreForm>
-    <bf:genreForm>
-      <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026725" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label xml:lang="en">Concertos</rdfs:label>
-	<bflc:marcKey>155  $aConcertos</bflc:marcKey>
-      </madsrdf:GenreForm>
-    </bf:genreForm>
-    <bf:musicMedium>
-      <bf:MusicMedium>
-	<bflc:readMarc382>$bpiano$n1$aorchestra$e1$r1$t1$2lcmpt</bflc:readMarc382>
-      </bf:MusicMedium>
-    </bf:musicMedium>
-    <bf:contribution>
-      <bf:Contribution>
-	<bf:agent>
-	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n86145864">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <rdfs:label>Bronfman, Yefim</rdfs:label>
-	    <bflc:marcKey>1001 $aBronfman, Yefim</bflc:marcKey>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:role>
-	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
-	    <rdfs:label>Performer</rdfs:label>
-	  </bf:Role>
-	</bf:role>
-      </bf:Contribution>
-    </bf:contribution>
-    <bf:contribution>
-      <bf:Contribution>
-	<bf:agent>
-	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n82011030">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
-	    <rdfs:label>Philharmonia Orchestra (London, England)</rdfs:label>
-	    <bflc:marcKey>1102 $aPhilharmonia Orchestra (London, England)</bflc:marcKey>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:role>
-	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/itr">
-	    <rdfs:label>Instrumentalist</rdfs:label>
-	  </bf:Role>
-	</bf:role>
-      </bf:Contribution>
-    </bf:contribution>
-    <bf:contribution>
-      <bf:Contribution>
-	<bf:agent>
-	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n85237381">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <rdfs:label>Salonen, Esa-Pekka, 1958-</rdfs:label>
-	    <bflc:marcKey>1001 $aSalonen, Esa-Pekka,$d1958-</bflc:marcKey>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:role>
-	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/cnd">
-	    <rdfs:label>Conductor</rdfs:label>
-	  </bf:Role>
-	</bf:role>
-      </bf:Contribution>
-    </bf:contribution>
-    <bf:subject>
-      <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85030211" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label xml:lang="en">Concertos (Piano)</rdfs:label>
-	<bflc:marcKey>150 0$aConcertos (Piano)</bflc:marcKey>
-      </madsrdf:Topic>
-    </bf:subject>
-    <bf:subject>
-      <madsrdf:Topic xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>Concertos (Piano)</rdfs:label>
-	<madsrdf:authoritativeLabel>Concertos (Piano)</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/fast">
-	    <rdfs:label>Faceted application of subject terminology</rdfs:label>
-	  </madsrdf:Authority>
-	</madsrdf:isMemberOfMADSScheme>
-	<bflc:aap-normalized>concertos(piano)</bflc:aap-normalized>
-	<bf:source>
-	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/fast">
-	    <rdfs:label>Faceted application of subject terminology</rdfs:label>
-	  </madsrdf:Authority>
-	</bf:source>
-      </madsrdf:Topic>
-    </bf:subject>
-    <bf:tableOfContents>
-      <bf:TableOfContents>
-	<rdfs:label>Concerto for piano &amp; orchestra no. 2 in C minor, op. 18 (33:55) -- Concerto for piano &amp; orchestra no. 3 in D minor, op. 30 (43:01).</rdfs:label>
-      </bf:TableOfContents>
-    </bf:tableOfContents>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/prm">
-	<rdfs:label>performed music</rdfs:label>
-      </bf:Content>
-    </bf:content>
-    <bf:content>
-      <bf:Content>
-	<rdfs:label>text</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rdacontent">
-	    <rdfs:label>Term and code list for RDA content types</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-	<bflc:appliesTo>
-	  <bflc:AppliesTo>
-	    <rdfs:label>program notes</rdfs:label>
-	  </bflc:AppliesTo>
-	</bflc:appliesTo>
-      </bf:Content>
-    </bf:content>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/prm">
-	<rdfs:label>performed music</rdfs:label>
-      </bf:Content>
-    </bf:content>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/zxx">
-	<rdfs:label xml:lang="en">No linguistic content</rdfs:label>
-      </bf:Language>
-    </bf:language>
+    <bf:capture>
+      <bf:Capture>
+	<bf:note>
+	  <bf:Note>
+	    <rdfs:label>capture</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1990-10-05/1990-10-08</bf:date>
+	<bf:place>
+	  <bf:Place rdf:about="http://id.loc.gov/authorities/classification/G5754.L7">
+	    <rdfs:label>London</rdfs:label>
+	    <madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <madsrdf:Collection>
+		<rdfs:label>Geography. Anthropology. Recreation</rdfs:label>
+	      </madsrdf:Collection>
+	      <madsrdf:Topic>
+		<rdfs:label>Maps</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>By region or country</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>Eastern Hemisphere. Eurasia, Africa, etc.</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>Europe</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>Western Europe</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>British Isles. Great Britain</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>England</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>Cities and towns, etc., A-Z</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<madsrdf:authoritativeLabel>London</madsrdf:authoritativeLabel>
+	      </madsrdf:Topic>
+	    </madsrdf:componentList>
+	  </bf:Place>
+	</bf:place>
+      </bf:Capture>
+    </bf:capture>
+    <bf:capture>
+      <bf:Capture>
+	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1990-10-05/1990-10-08</bf:date>
+	<bf:place>
+	  <bf:Place rdf:about="http://id.loc.gov/authorities/classification/G5754.L7">
+	    <rdfs:label>London</rdfs:label>
+	    <madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <madsrdf:Collection>
+		<rdfs:label>Geography. Anthropology. Recreation</rdfs:label>
+	      </madsrdf:Collection>
+	      <madsrdf:Topic>
+		<rdfs:label>Maps</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>By region or country</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>Eastern Hemisphere. Eurasia, Africa, etc.</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>Europe</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>Western Europe</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>British Isles. Great Britain</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>England</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<rdfs:label>Cities and towns, etc., A-Z</rdfs:label>
+	      </madsrdf:Topic>
+	      <madsrdf:Topic>
+		<madsrdf:authoritativeLabel>London</madsrdf:authoritativeLabel>
+	      </madsrdf:Topic>
+	    </madsrdf:componentList>
+	  </bf:Place>
+	</bf:place>
+      </bf:Capture>
+    </bf:capture>
     <bf:language>
       <bf:Language>
-	<bf:part>original accompanying materials</bf:part>
+	<bf:part>accompanying material</bf:part>
 	<rdf:value>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ger" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">German</rdfs:label>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
 	  </madsrdf:Language>
 	</rdf:value>
       </bf:Language>
@@ -499,8 +398,8 @@
       <bf:Language>
 	<bf:part>accompanying material</bf:part>
 	<rdf:value>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ita" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">Italian</rdfs:label>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ger" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">German</rdfs:label>
 	  </madsrdf:Language>
 	</rdf:value>
       </bf:Language>
@@ -519,127 +418,22 @@
       <bf:Language>
 	<bf:part>accompanying material</bf:part>
 	<rdf:value>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ger" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">German</rdfs:label>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ita" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">Italian</rdfs:label>
 	  </madsrdf:Language>
 	</rdf:value>
       </bf:Language>
     </bf:language>
     <bf:language>
       <bf:Language>
-	<bf:part>accompanying material</bf:part>
+	<bf:part>original accompanying materials</bf:part>
 	<rdf:value>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">English</rdfs:label>
+	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ger" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	    <rdfs:label xml:lang="en">German</rdfs:label>
 	  </madsrdf:Language>
 	</rdf:value>
       </bf:Language>
     </bf:language>
-    <bf:capture>
-      <bf:Capture>
-	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1990-10-05/1990-10-08</bf:date>
-	<bf:place>
-	  <bf:Place rdf:about="http://id.loc.gov/authorities/classification/G5754.L7">
-	    <rdfs:label>London</rdfs:label>
-	    <madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	      <madsrdf:Collection>
-		<rdfs:label>Geography. Anthropology. Recreation</rdfs:label>
-	      </madsrdf:Collection>
-	      <madsrdf:Topic>
-		<rdfs:label>Maps</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>By region or country</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>Eastern Hemisphere. Eurasia, Africa, etc.</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>Europe</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>Western Europe</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>British Isles. Great Britain</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>England</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>Cities and towns, etc., A-Z</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<madsrdf:authoritativeLabel>London</madsrdf:authoritativeLabel>
-	      </madsrdf:Topic>
-	    </madsrdf:componentList>
-	  </bf:Place>
-	</bf:place>
-      </bf:Capture>
-    </bf:capture>
-    <bf:capture>
-      <bf:Capture>
-	<rdfs:label>Recorded at</rdfs:label>
-	<bf:date>1990 October 5-8</bf:date>
-	<bf:place>
-	  <bf:Place>
-	    <rdfs:label>Abbey Road Studios, Studio 1, London, England</rdfs:label>
-	  </bf:Place>
-	</bf:place>
-      </bf:Capture>
-    </bf:capture>
-    <bf:capture>
-      <bf:Capture>
-	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1990-10-05/1990-10-08</bf:date>
-	<bf:place>
-	  <bf:Place rdf:about="http://id.loc.gov/authorities/classification/G5754.L7">
-	    <rdfs:label>London</rdfs:label>
-	    <madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	      <madsrdf:Collection>
-		<rdfs:label>Geography. Anthropology. Recreation</rdfs:label>
-	      </madsrdf:Collection>
-	      <madsrdf:Topic>
-		<rdfs:label>Maps</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>By region or country</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>Eastern Hemisphere. Eurasia, Africa, etc.</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>Europe</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>Western Europe</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>British Isles. Great Britain</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>England</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<rdfs:label>Cities and towns, etc., A-Z</rdfs:label>
-	      </madsrdf:Topic>
-	      <madsrdf:Topic>
-		<madsrdf:authoritativeLabel>London</madsrdf:authoritativeLabel>
-	      </madsrdf:Topic>
-	    </madsrdf:componentList>
-	  </bf:Place>
-	</bf:place>
-      </bf:Capture>
-    </bf:capture>
-    <bf:supplementaryContent>
-      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/performerhistory">
-	<rdfs:label>history of performer or ensemble</rdfs:label>
-      </bf:SupplementaryContent>
-    </bf:supplementaryContent>
-    <bf:supplementaryContent>
-      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/historicalinfo">
-	<rdfs:label>historical information</rdfs:label>
-      </bf:SupplementaryContent>
-    </bf:supplementaryContent>
     <bf:instrument>
       <bf:MusicInstrument>
 	<bf:instrumentalType>keyboard</bf:instrumentalType>
@@ -665,12 +459,17 @@
     </bf:ensemble>
     <bf:classification>
       <bf:ClassificationLcc>
+	<bf:classificationPortion>SDD 49503</bf:classificationPortion>
 	<bf:assigner>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
 	  </bf:Organization>
 	</bf:assigner>
-	<bf:classificationPortion>SDD 49503</bf:classificationPortion>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/uba">
+	    <rdfs:label>used by assigner</rdfs:label>
+	  </bf:Status>
+	</bf:status>
       </bf:ClassificationLcc>
     </bf:classification>
     <bf:classification>
@@ -680,24 +479,178 @@
 	<bf:edition>full</bf:edition>
       </bf:ClassificationDdc>
     </bf:classification>
+    <bf:contribution>
+      <bf:Contribution>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n50054908">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
+	    <bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/cmp">
+	    <rdfs:label>Composer</rdfs:label>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Concerto for piano &amp; orchestra no. 2 in C minor, op. 18</bf:mainTitle>
+      </bf:Title>
+    </bf:title>
+    <bf:title>
+      <bf:VariantTitle>
+	<bf:note>
+	  <bf:Note>
+	    <rdfs:label>Title on container</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:mainTitle>Piano concertos nos. 2 + 3</bf:mainTitle>
+      </bf:VariantTitle>
+    </bf:title>
+    <bf:title>
+      <bf:VariantTitle>
+	<bf:mainTitle>Piano concertos nos. 2 and 3</bf:mainTitle>
+      </bf:VariantTitle>
+    </bf:title>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/prm">
+	<rdfs:label>performed music</rdfs:label>
+      </bf:Content>
+    </bf:content>
+    <bf:content>
+      <bf:Content>
+	<rdfs:label>text</rdfs:label>
+	<bflc:appliesTo>
+	  <bflc:AppliesTo>
+	    <rdfs:label>program notes</rdfs:label>
+	  </bflc:AppliesTo>
+	</bflc:appliesTo>
+      </bf:Content>
+    </bf:content>
+    <bf:musicMedium>
+      <bf:MusicMedium>
+	<bflc:readMarc382>38201$bpiano$n1$aorchestra$e1$r1$t1$2lcmpt</bflc:readMarc382>
+      </bf:MusicMedium>
+    </bf:musicMedium>
+    <bf:capture>
+      <bf:Capture>
+	<rdfs:label>Recorded at</rdfs:label>
+	<bf:date>1990 October 5-8</bf:date>
+	<bf:place>
+	  <bf:Place>
+	    <rdfs:label>Abbey Road Studios, Studio 1, London, England</rdfs:label>
+	  </bf:Place>
+	</bf:place>
+      </bf:Capture>
+    </bf:capture>
+    <bf:tableOfContents>
+      <bf:TableOfContents>
+	<rdfs:label>Concerto for piano &amp; orchestra no. 2 in C minor, op. 18 (33:55) -- Concerto for piano &amp; orchestra no. 3 in D minor, op. 30 (43:01).</rdfs:label>
+      </bf:TableOfContents>
+    </bf:tableOfContents>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85030211">
+	<rdfs:label xml:lang="en">Concertos (Piano)</rdfs:label>
+	<bflc:marcKey>150 0$aConcertos (Piano)</bflc:marcKey>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject rdf:resource="http://id.worldcat.org/fast/00873657"/>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026725">
+	<rdfs:label xml:lang="en">Concertos</rdfs:label>
+	<bflc:marcKey>155  $aConcertos</bflc:marcKey>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Concertos</madsrdf:authoritativeLabel>
+	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
+	<rdfs:label>Concertos</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:contribution>
+      <bf:Contribution>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n86145864">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Bronfman, Yefim</rdfs:label>
+	    <bflc:marcKey>1001 $aBronfman, Yefim</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
+	    <rdfs:label>Performer</rdfs:label>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <bf:contribution>
+      <bf:Contribution>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n85237381">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Salonen, Esa-Pekka, 1958-</rdfs:label>
+	    <bflc:marcKey>1001 $aSalonen, Esa-Pekka,$d1958-</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/cnd">
+	    <rdfs:label>Conductor</rdfs:label>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <bf:contribution>
+      <bf:Contribution>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n82011030">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>Philharmonia Orchestra (London, England)</rdfs:label>
+	    <bflc:marcKey>1102 $aPhilharmonia Orchestra (London, England)</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/itr">
+	    <rdfs:label>Instrumentalist</rdfs:label>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
     <bf:expressionOf>
-      <bf:Hub>
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/a48d7366-16d9-7364-360a-5ba824f3c7a0">
+	<rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra. Selections</rdfs:label>
+	<bf:contribution>
+	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	    <bf:agent>
+	      <bf:Agent>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+	    </bf:role>
+	  </bf:Contribution>
+	</bf:contribution>
 	<bf:title>
 	  <bf:Title>
 	    <bf:mainTitle>Concertos, piano, orchestra. Selections</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:musicMedium>
-	  <bf:MusicMedium>
-	    <rdfs:label>piano, orchestra</rdfs:label>
-	  </bf:MusicMedium>
-	</bf:musicMedium>
       </bf:Hub>
     </bf:expressionOf>
     <bf:relatedTo>
-      <bf:Hub>
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/1df97d6c-49bc-ebda-f3cc-e405b8769dad">
+	<rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra, no. 2, op. 18, C minor</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
 	    <bf:agent>
 	      <bf:Agent>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
@@ -705,55 +658,52 @@
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
-	      <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/relators/ctb" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-		<rdfs:label>Contributor</rdfs:label>
-	      </madsrdf:Authority>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
 	    </bf:role>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
 	  <bf:Title>
-	    <bf:mainTitle>Concertos, piano, orchestra, no. 2, op. 18, C minor.</bf:mainTitle>
+	    <bf:mainTitle>Concertos, piano, orchestra, no. 2, op. 18, C minor</bf:mainTitle>
 	    <bf:partNumber>no. 2, op. 18</bf:partNumber>
 	  </bf:Title>
 	</bf:title>
-	<bf:musicMedium>
-	  <bf:MusicMedium>
-	    <rdfs:label>piano, orchestra</rdfs:label>
-	  </bf:MusicMedium>
-	</bf:musicMedium>
-	<bf:musicKey>C minor</bf:musicKey>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Concerto, piano, no. 2, op. 18, C minor</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Moiseiwitsch plays Rachmaninov</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
       </bf:Hub>
     </bf:relatedTo>
     <bf:relatedTo>
-      <bf:Hub>
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/1d44a16d-bcd3-6cba-1ad7-52efad6531e7">
+	<rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra, no. 3, op. 30, D minor</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
 	    <bf:agent>
-	      <bf:Agent>
+	      <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n50054908">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
-	      <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/relators/ctb" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-		<rdfs:label>Contributor</rdfs:label>
-	      </madsrdf:Authority>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
 	    </bf:role>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
 	  <bf:Title>
-	    <bf:mainTitle>Concertos, piano, orchestra, no. 3, op. 30, D minor.</bf:mainTitle>
+	    <bf:mainTitle>Concertos, piano, orchestra, no. 3, op. 30, D minor</bf:mainTitle>
 	    <bf:partNumber>no. 3, op. 30</bf:partNumber>
 	  </bf:Title>
 	</bf:title>
-	<bf:musicMedium>
-	  <bf:MusicMedium>
-	    <rdfs:label>piano, orchestra</rdfs:label>
-	  </bf:MusicMedium>
-	</bf:musicMedium>
-	<bf:musicKey>D minor</bf:musicKey>
+	<bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943.$0http://id.loc.gov/authorities/names/n50054908$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor</bflc:marcKey>
       </bf:Hub>
     </bf:relatedTo>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
@@ -765,22 +715,38 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Hub>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/1df97d6c-49bc-ebda-f3cc-e405b8769dad">
+	    <rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra, no. 2, op. 18, C minor</rdfs:label>
 	    <bf:contribution>
-	      <bf:Contribution/>
+	      <bf:Contribution>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+		<bf:agent>
+		  <bf:Agent>
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+		</bf:role>
+	      </bf:Contribution>
 	    </bf:contribution>
 	    <bf:title>
 	      <bf:Title>
-		<bf:mainTitle>Concertos, piano, orchestra, no. 2, op. 18, C minor.</bf:mainTitle>
+		<bf:mainTitle>Concertos, piano, orchestra, no. 2, op. 18, C minor</bf:mainTitle>
 		<bf:partNumber>no. 2, op. 18</bf:partNumber>
 	      </bf:Title>
 	    </bf:title>
-	    <bf:musicMedium>
-	      <bf:MusicMedium>
-		<rdfs:label>piano, orchestra</rdfs:label>
-	      </bf:MusicMedium>
-	    </bf:musicMedium>
-	    <bf:musicKey>C minor</bf:musicKey>
+	    <bf:title>
+	      <bf:VariantTitle>
+		<bf:mainTitle>Concerto, piano, no. 2, op. 18, C minor</bf:mainTitle>
+	      </bf:VariantTitle>
+	    </bf:title>
+	    <bf:title>
+	      <bf:VariantTitle>
+		<bf:mainTitle>Moiseiwitsch plays Rachmaninov</bf:mainTitle>
+	      </bf:VariantTitle>
+	    </bf:title>
 	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
@@ -793,32 +759,50 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Hub>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/1d44a16d-bcd3-6cba-1ad7-52efad6531e7">
+	    <rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra, no. 3, op. 30, D minor</rdfs:label>
 	    <bf:contribution>
-	      <bf:Contribution/>
+	      <bf:Contribution>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n50054908">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+		</bf:role>
+	      </bf:Contribution>
 	    </bf:contribution>
 	    <bf:title>
 	      <bf:Title>
-		<bf:mainTitle>Concertos, piano, orchestra, no. 3, op. 30, D minor.</bf:mainTitle>
+		<bf:mainTitle>Concertos, piano, orchestra, no. 3, op. 30, D minor</bf:mainTitle>
 		<bf:partNumber>no. 3, op. 30</bf:partNumber>
 	      </bf:Title>
 	    </bf:title>
-	    <bf:musicMedium>
-	      <bf:MusicMedium>
-		<rdfs:label>piano, orchestra</rdfs:label>
-	      </bf:MusicMedium>
-	    </bf:musicMedium>
-	    <bf:musicKey>D minor</bf:musicKey>
+	    <bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943.$0http://id.loc.gov/authorities/names/n50054908$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor</bflc:marcKey>
 	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
+    <bf:hasInstance>
+      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/12060035">
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>Concerto for piano &amp; orchestra no. 2 in C minor, op. 18</bf:mainTitle>
+	    <bf:subtitle>Concerto for piano &amp; orchestra no. 3 in D minor, op. 30</bf:subtitle>
+	  </bf:Title>
+	</bf:title>
+	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common">New York, NY: Sony Classical; [1992]</bflc:publicationStatement>
+      </bf:Instance>
+    </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-12-04T01:30:17.5722-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T22:08:50.907428-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -834,11 +818,6 @@
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
 	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -871,100 +850,18 @@
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
 	  </bf:Organization>
 	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <rdfs:label>LC Copy Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<bflc:catalogerId>jalb</bflc:catalogerId>
-	<bflc:procInfo>update instance</bflc:procInfo>
+	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $c OCLC $e Claimed Recordings</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
-  <bf:Item rdf:about="http://id.loc.gov/resources/items/12060035-050-21">
-    <bf:heldBy>
-      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>United States, Library of Congress</rdfs:label>
-      </madsrdf:CorporateName>
-    </bf:heldBy>
-    <bf:shelfMark>
-      <bf:ShelfMarkLcc>
-	<rdfs:label>SDD 49503</rdfs:label>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:ShelfMarkLcc>
-    </bf:shelfMark>
-    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
-    <bf:itemOf rdf:resource="http://id.loc.gov/resources/instances/12060035"/>
-    <bf:adminMetadata>
-      <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-12-04T01:30:17.5722-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
-	    <rdfs:label>changed</rdfs:label>
-	  </bf:Status>
-	</bf:status>
-	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
-	    <rdfs:label>full</rdfs:label>
-	  </bflc:EncodingLevel>
-	</bflc:encodingLevel>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
-	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdfs:label>Resource description and access</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:identifiedBy>
-	  <bf:Local>
-	    <rdf:value>12060035</rdf:value>
-	    <bf:assigner>
-	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </bf:Organization>
-	    </bf:assigner>
-	  </bf:Local>
-	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-12-03T09:01:11</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1992-06-11</bf:creationDate>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-soundrec</lclocal:d906>
-	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a qr06 2021-12-03 z-client $i qr06 2021-12-03</lclocal:d955>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/sdl">
-	    <rdfs:label>Hearst Free Library</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
-	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<bf:descriptionAuthentication>
-	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
-	    <rdfs:label>LC Copy Cataloging</rdfs:label>
-	  </bf:DescriptionAuthentication>
-	</bf:descriptionAuthentication>
-	<bflc:catalogerId>jalb</bflc:catalogerId>
-	<bflc:procInfo>update instance</bflc:procInfo>
-      </bf:AdminMetadata>
-    </bf:adminMetadata>
-  </bf:Item>
 </rdf:RDF>

@@ -4,8 +4,8 @@
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-21T11:02:28.575241-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:36.129842-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -56,11 +56,6 @@
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/StillImage"/>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/sti">
-	<rdfs:label>still image</rdfs:label>
-      </bf:Content>
-    </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
@@ -235,7 +230,7 @@
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <bf:Place rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Place651-31">
+      <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Place651-31">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>United States--History--Civil War, 1861-1865--Military personnel--Union</rdfs:label>
 	<madsrdf:authoritativeLabel>United States--History--Civil War, 1861-1865--Military personnel--Union</madsrdf:authoritativeLabel>
@@ -256,10 +251,10 @@
 	    <madsrdf:authoritativeLabel>Union</madsrdf:authoritativeLabel>
 	  </madsrdf:Topic>
 	</madsrdf:componentList>
-      </bf:Place>
+      </bf:Topic>
     </bf:subject>
-    <bf:genreForm>
-      <bf:GenreForm rdf:about="http://id.loc.gov/resources/REPLACE/22724623#GenreForm655-32">
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/22724623#GenreForm655-32">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Portrait photographs--1860-1870</rdfs:label>
 	<madsrdf:authoritativeLabel>Portrait photographs--1860-1870</madsrdf:authoritativeLabel>
@@ -276,10 +271,10 @@
 	    <bf:code>gmgpc</bf:code>
 	  </bf:Source>
 	</bf:source>
-      </bf:GenreForm>
-    </bf:genreForm>
-    <bf:genreForm>
-      <bf:GenreForm rdf:about="http://id.loc.gov/resources/REPLACE/22724623#GenreForm655-33">
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/22724623#GenreForm655-33">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Albumen prints--1860-1870</rdfs:label>
 	<madsrdf:authoritativeLabel>Albumen prints--1860-1870</madsrdf:authoritativeLabel>
@@ -296,10 +291,10 @@
 	    <bf:code>gmgpc</bf:code>
 	  </bf:Source>
 	</bf:source>
-      </bf:GenreForm>
-    </bf:genreForm>
-    <bf:genreForm>
-      <bf:GenreForm rdf:about="http://id.loc.gov/resources/REPLACE/22724623#GenreForm655-34">
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/22724623#GenreForm655-34">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Cartes de visite--1860-1870</rdfs:label>
 	<madsrdf:authoritativeLabel>Cartes de visite--1860-1870</madsrdf:authoritativeLabel>
@@ -316,8 +311,8 @@
 	    <bf:code>gmgpc</bf:code>
 	  </bf:Source>
 	</bf:source>
-      </bf:GenreForm>
-    </bf:genreForm>
+      </bf:Topic>
+    </bf:subject>
     <bf:partOf>
       <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Work773-35">
 	<bf:title>
@@ -397,6 +392,11 @@
       <bf:Note>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
 	<rdfs:label>albumen print on card mount</rdfs:label>
+	<bflc:appliesTo>
+	  <bflc:AppliesTo>
+	    <rdfs:label>all</rdfs:label>
+	  </bflc:AppliesTo>
+	</bflc:appliesTo>
       </bf:Note>
     </bf:note>
     <bf:dimensions>mount 100 x 63 mm (carte de visite format)</bf:dimensions>
@@ -474,6 +474,6 @@
       </bf:Title>
     </bf:title>
     <bf:electronicLocator rdf:resource="https://hdl.loc.gov/loc.pnp/ppmsca.83078"/>
-    <bf:instanceOf rdf:resource="http://example.org/22724623#Work"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/22724623#Work"/>
   </bf:Instance>
 </rdf:RDF>

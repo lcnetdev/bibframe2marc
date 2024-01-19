@@ -1,6 +1,5 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11393548">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print"/>
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/serl">
 	<rdfs:label>serial</rdfs:label>
@@ -10,18 +9,22 @@
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1990/1991</bf:date>
-	<bf:note>
-	  <bf:Note>
-	    <rdfs:label>Ceased publication</rdfs:label>
-	  </bf:Note>
-	</bf:note>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/ceased">
+	    <rdfs:label>ceased</rdfs:label>
+	  </bf:Status>
+	</bf:status>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/nyu">
 	    <rdfs:label xml:lang="en">New York (State)</rdfs:label>
 	  </bf:Place>
 	</bf:place>
+	<bflc:simplePlace>New York, NY</bflc:simplePlace>
+	<bflc:simpleAgent>National American Sports Communications</bflc:simpleAgent>
+	<bflc:simpleDate>[1990]-</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
+    <bflc:publicationStatement>New York, NY: National American Sports Communications; [1990]-</bflc:publicationStatement>
     <bf:frequency>
       <bf:Frequency rdf:about="http://id.loc.gov/vocabulary/frequencies/dyl">
 	<rdfs:label>daily</rdfs:label>
@@ -81,11 +84,7 @@
     </bf:identifiedBy>
     <bf:acquisitionSource>
       <bf:AcquisitionSource>
-	<bf:source>
-	  <bf:Source>
-	    <rdfs:label>National American Sports Communications, 15 W. 52 St., New York, NY 10019</rdfs:label>
-	  </bf:Source>
-	</bf:source>
+	<rdfs:label>National American Sports Communications, 15 W. 52 St., New York, NY 10019</rdfs:label>
       </bf:AcquisitionSource>
     </bf:acquisitionSource>
     <bf:title>
@@ -94,22 +93,6 @@
       </bf:Title>
     </bf:title>
     <bf:editionStatement>[New York ed.].</bf:editionStatement>
-    <bf:provisionActivity>
-      <bf:ProvisionActivity>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
-	<bf:place>
-	  <bf:Place>
-	    <rdfs:label>New York, NY</rdfs:label>
-	  </bf:Place>
-	</bf:place>
-	<bf:agent>
-	  <bf:Agent>
-	    <rdfs:label>National American Sports Communications</rdfs:label>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:date>[1990]-</bf:date>
-      </bf:ProvisionActivity>
-    </bf:provisionActivity>
     <bf:extent>
       <bf:Extent>
 	<rdfs:label>v.</rdfs:label>
@@ -125,6 +108,11 @@
     <bf:frequency>
       <bf:Frequency>
 	<rdfs:label>Daily (Friday and Saturday combined)</rdfs:label>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/current">
+	    <rdfs:label>current</rdfs:label>
+	  </bf:Status>
+	</bf:status>
       </bf:Frequency>
     </bf:frequency>
     <bf:note>
@@ -146,13 +134,12 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/11393548-050-15"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.8.0-SNAPSHOT-MTA</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-06-13T12:16:01.04849-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-20T15:57:05.322514-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -180,7 +167,7 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2013-03-05T08:00:34</bf:changeDate>
+	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-17T14:02:26</bf:changeDate>
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-08-07</bf:creationDate>
 	<bf:note>
 	  <bf:Note>
@@ -190,7 +177,7 @@
 	</bf:note>
 	<bf:assigner>
 	  <bf:Agent>
-	    <bf:code>NSDP</bf:code>
+	    <bf:code>NSD</bf:code>
 	  </bf:Agent>
 	</bf:assigner>
 	<bf:descriptionLanguage>
@@ -199,9 +186,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </bf:Organization>
+	  <bf:Agent>
+	    <bf:code>OCLCL</bf:code>
+	  </bf:Agent>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/nsdp">
@@ -227,6 +214,7 @@
 	<rdfs:label>text</rdfs:label>
       </bf:Content>
     </bf:content>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Serial"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	<rdfs:label xml:lang="en">English</rdfs:label>
@@ -269,13 +257,18 @@
     </bf:geographicCoverage>
     <bf:classification>
       <bf:ClassificationLcc>
+	<bf:classificationPortion>GV583</bf:classificationPortion>
+	<bf:itemPortion>.N33</bf:itemPortion>
 	<bf:assigner>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
 	  </bf:Organization>
 	</bf:assigner>
-	<bf:classificationPortion>GV583</bf:classificationPortion>
-	<bf:itemPortion>.N33</bf:itemPortion>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/uba">
+	    <rdfs:label>used by assigner</rdfs:label>
+	  </bf:Status>
+	</bf:status>
       </bf:ClassificationLcc>
     </bf:classification>
     <bf:classification>
@@ -324,8 +317,8 @@
     <bf:subject>
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label>Sports--United States--Periodicals.</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Sports--United States--Periodicals.</madsrdf:authoritativeLabel>
+	<rdfs:label>Sports--United States--Periodicals</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Sports--United States--Periodicals</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
 	    <rdfs:label xml:lang="en">Library of
@@ -355,8 +348,26 @@
 	</bf:source>
       </bf:Topic>
     </bf:subject>
+    <bf:subject rdf:resource="http://id.worldcat.org/fast/01130432"/>
+    <bf:subject>
+      <bf:Place rdf:about="http://id.worldcat.org/fast/01204155">
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Geographic"/>
+	<rdfs:label>United States</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">United States</madsrdf:authoritativeLabel>
+	<bflc:aap-normalized>unitedstates</bflc:aap-normalized>
+	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/fast"/>
+      </bf:Place>
+    </bf:subject>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Periodicals</madsrdf:authoritativeLabel>
+	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
+	<rdfs:label>Periodicals</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
     <bf:expressionOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/hubs/5e69ce89-6822-1417-dd79-4dc48972fc95">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/5e69ce89-6822-1417-dd79-4dc48972fc95">
 	<rdfs:label>National sports daily (New York ed.)</rdfs:label>
 	<bf:title>
 	  <bf:Title>
@@ -364,7 +375,7 @@
 	  </bf:Title>
 	</bf:title>
 	<bflc:marcKey>130  $aNational sports daily (New York ed.)</bflc:marcKey>
-      </bf:Work>
+      </bf:Hub>
     </bf:expressionOf>
     <bf:otherEdition>
       <bf:Work>
@@ -386,9 +397,9 @@
 	      <bf:Lccn>
 		<rdf:value>sn 90005618</rdf:value>
 		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 		    <rdfs:label>United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
+		  </madsrdf:CorporateName>
 		</bf:assigner>
 	      </bf:Lccn>
 	    </bf:identifiedBy>
@@ -416,9 +427,9 @@
 	      <bf:Lccn>
 		<rdf:value>sn 90005617</rdf:value>
 		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 		    <rdfs:label>United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
+		  </madsrdf:CorporateName>
 		</bf:assigner>
 	      </bf:Lccn>
 	    </bf:identifiedBy>
@@ -446,9 +457,9 @@
 	      <bf:Lccn>
 		<rdf:value>sn 90005616</rdf:value>
 		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 		    <rdfs:label>United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
+		  </madsrdf:CorporateName>
 		</bf:assigner>
 	      </bf:Lccn>
 	    </bf:identifiedBy>
@@ -476,9 +487,9 @@
 	      <bf:Lccn>
 		<rdf:value>sn 90005615</rdf:value>
 		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 		    <rdfs:label>United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
+		  </madsrdf:CorporateName>
 		</bf:assigner>
 	      </bf:Lccn>
 	    </bf:identifiedBy>
@@ -487,45 +498,30 @@
       </bf:Work>
     </bf:otherEdition>
     <bf:otherPhysicalFormat>
-      <bf:Work>
-	<bflc:aap>The National sports daily</bflc:aap>
-	<bflc:aap-normalized>thenationalsportsdaily</bflc:aap-normalized>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/11480306">
+	<rdfs:label>The National sports daily</rdfs:label>
+	<bf:title>
+	  <bf:AbbreviatedTitle>
+	    <bf:mainTitle>Natl. sports daily</bf:mainTitle>
+	    <bf:qualifier>(N.Y. ed.)</bf:qualifier>
+	    <bf:assigner>
+	      <bf:Agent>
+		<bf:code>issnkey</bf:code>
+	      </bf:Agent>
+	    </bf:assigner>
+	  </bf:AbbreviatedTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:KeyTitle>
+	    <bf:mainTitle>The National sports daily</bf:mainTitle>
+	    <bf:qualifier>(New York ed.)</bf:qualifier>
+	  </bf:KeyTitle>
+	</bf:title>
 	<bf:title>
 	  <bf:Title>
 	    <bf:mainTitle>The National sports daily</bf:mainTitle>
-	    <bf:qualifier>Microfilm</bf:qualifier>
 	  </bf:Title>
 	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance>
-	    <bf:title>
-	      <bf:Title>
-		<bf:mainTitle>The National sports daily</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	    <bf:provisionActivityStatement>Library of Congress Preservation Microfilming Program</bf:provisionActivityStatement>
-	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>sf 97095059</rdf:value>
-		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <rdfs:label>United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
-		</bf:assigner>
-	      </bf:Lccn>
-	    </bf:identifiedBy>
-	    <bf:identifiedBy>
-	      <bf:Identifier>
-		<rdf:value>36722427</rdf:value>
-		<bf:assigner>
-		  <bf:Agent>
-		    <bf:code>OCoLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Identifier>
-	    </bf:identifiedBy>
-	  </bf:Instance>
-	</bf:hasInstance>
       </bf:Work>
     </bf:otherPhysicalFormat>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
@@ -536,14 +532,15 @@
 	    <bf:mainTitle>The National sports daily</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
+	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common">New York, NY: National American Sports Communications; [1990]-</bflc:publicationStatement>
       </bf:Instance>
     </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.8.0-SNAPSHOT-MTA</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-06-13T12:16:01.04849-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-20T15:57:05.322514-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -571,7 +568,7 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2013-03-05T08:00:34</bf:changeDate>
+	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-17T14:02:26</bf:changeDate>
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-08-07</bf:creationDate>
 	<bf:note>
 	  <bf:Note>
@@ -581,7 +578,7 @@
 	</bf:note>
 	<bf:assigner>
 	  <bf:Agent>
-	    <bf:code>NSDP</bf:code>
+	    <bf:code>NSD</bf:code>
 	  </bf:Agent>
 	</bf:assigner>
 	<bf:descriptionLanguage>
@@ -590,9 +587,9 @@
 	  </madsrdf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </bf:Organization>
+	  <bf:Agent>
+	    <bf:code>OCLCL</bf:code>
+	  </bf:Agent>
 	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/nsdp">
@@ -608,92 +605,4 @@
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
-  <bf:Item rdf:about="http://id.loc.gov/resources/items/11393548-050-15">
-    <bf:heldBy>
-      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>United States, Library of Congress</rdfs:label>
-      </madsrdf:CorporateName>
-    </bf:heldBy>
-    <bf:shelfMark>
-      <bf:ShelfMarkLcc>
-	<rdfs:label>GV583.N33</rdfs:label>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:ShelfMarkLcc>
-    </bf:shelfMark>
-    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
-    <bf:itemOf rdf:resource="http://id.loc.gov/resources/instances/11393548"/>
-    <bf:adminMetadata>
-      <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.8.0-SNAPSHOT-MTA</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-06-13T12:16:01.04849-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
-	    <rdfs:label>changed</rdfs:label>
-	  </bf:Status>
-	</bf:status>
-	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
-	    <rdfs:label>full</rdfs:label>
-	  </bflc:EncodingLevel>
-	</bflc:encodingLevel>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:identifiedBy>
-	  <bf:Local>
-	    <rdf:value>11393548</rdf:value>
-	    <bf:assigner>
-	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </bf:Organization>
-	    </bf:assigner>
-	  </bf:Local>
-	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2013-03-05T08:00:34</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-08-07</bf:creationDate>
-	<bf:note>
-	  <bf:Note>
-	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/metaentry"/>
-	    <rdfs:label>0 - successive</rdfs:label>
-	  </bf:Note>
-	</bf:note>
-	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>NSDP</bf:code>
-	  </bf:Agent>
-	</bf:assigner>
-	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
-	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<bf:descriptionAuthentication>
-	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/nsdp">
-	    <rdfs:label>U.S. ISSN Center</rdfs:label>
-	  </bf:DescriptionAuthentication>
-	</bf:descriptionAuthentication>
-	<bf:descriptionAuthentication>
-	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
-	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
-	  </bf:DescriptionAuthentication>
-	</bf:descriptionAuthentication>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c serials $d 2 $e ncip $f 19 $g n-oclcserc</lclocal:d906>
-      </bf:AdminMetadata>
-    </bf:adminMetadata>
-  </bf:Item>
 </rdf:RDF>
