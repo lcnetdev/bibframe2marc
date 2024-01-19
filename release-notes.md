@@ -1,5 +1,17 @@
 # bibframe2marc release notes
 
+## v2.5.0
+
+Conversion updates based on specifications v2.5. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
+
+* Numerous bug fixes.
+* Added support for properties and classes moved from BFLC namespace to main BF namespace.
+* Added support for 023 and 647.
+* Support proper 264 ind1 value for serials and integrating resources. 
+* Added support to dynamically lookup FAST and DNB headings.
+
+See the [NEWS](NEWS) file for full details of changes.
+
 ## v2.4.0
 
 Conversion updates based on specifications v2.4. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
