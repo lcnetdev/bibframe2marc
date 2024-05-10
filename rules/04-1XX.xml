@@ -161,12 +161,14 @@
             not(contains(.,'example.org')) and 
             not(contains(.,'REPLACE')) and 
             not(contains(., '/agents/')) and
+            not(contains(., '/isni/')) and
             not(contains(., '/gnd/'))
             ]">
             <select xpath="@rdf:about[
               not(contains(.,'example.org')) and 
               not(contains(.,'REPLACE')) and 
               not(contains(., '/agents/')) and
+              not(contains(., '/isni/')) and
               not(contains(., '/gnd/'))
               ]"/>
           </case>
@@ -193,10 +195,10 @@
             <transform><xsl:value-of select="$agentURI"/></transform>
           </case>
           <case test="@rdf:about[
-            contains(., '/agents/') or contains(., '/gnd/') 
+            contains(., '/agents/') or contains(., '/gnd/') or contains(., '/isni/') 
             ]">
             <select xpath="@rdf:about[
-              contains(., '/agents/') or contains(., '/gnd/') 
+              contains(., '/agents/') or contains(., '/gnd/') or contains(., '/isni/')
               ]" />
           </case>
         </switch>
