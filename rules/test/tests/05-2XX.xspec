@@ -246,7 +246,7 @@
   
   <x:scenario label="MARC 264 - 05">
     <x:context href="../data/exemplars/text-serial-SUBJECTS-relationships-008c.rdf"/>
-    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 3"/>
+    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 4"/>
     <x:expect label="check for that first 264 is current"
       test="//marc:datafield[@tag='264' and @ind2='1'][1]/@ind1 = ' '"/>
     <x:expect label="check for that third 264 is current"
