@@ -1,7 +1,7 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/14437118" xmlns:bf="http://id.loc.gov/ontologies/bibframe/">
-    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Eames Collection (Library of Congress)</bflc:aap>
-    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">eamescollection(libraryofcongress)</bflc:aap-normalized>
+    <bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Office of Charles and Ray Eames Eames Collection (Library of Congress)</bflc:aap>
+    <bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">officeofcharlesandrayeameseamescollection(libraryofcongress)</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/StillImage"/>
     <bf:content>
       <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/sti">
@@ -307,44 +307,25 @@
       </bf:Contribution>
     </bf:contribution>
     <bf:partOf>
-      <bf:Work>
-	<bflc:aap xmlns:bflc="http://id.loc.gov/ontologies/bflc/">Charles Eames and Ray Eames papers</bflc:aap>
-	<bflc:aap-normalized xmlns:bflc="http://id.loc.gov/ontologies/bflc/">charleseamesandrayeamespapers</bflc:aap-normalized>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/5811493">
+	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Eames, Charles Charles Eames and Ray Eames papers</rdfs:label>
 	<bf:contribution>
-	  <bf:PrimaryContribution>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79128113">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Eames, Charles</rdfs:label>
-		<bflc:marcKey xmlns:bflc="http://id.loc.gov/ontologies/bflc/">10010$aEames, Charles</bflc:marcKey>
-	      </bf:Agent>
-	    </bf:agent>
-	  </bf:PrimaryContribution>
+	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79128113"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
 	  <bf:Title>
 	    <bf:mainTitle>Charles Eames and Ray Eames papers</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance>
-	    <bf:title>
-	      <bf:Title>
-		<bf:mainTitle>Charles Eames and Ray Eames papers</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>mm 94083006</rdf:value>
-		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
-		</bf:assigner>
-	      </bf:Lccn>
-	    </bf:identifiedBy>
-	  </bf:Instance>
-	</bf:hasInstance>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Work of Charles and Ray Eames (Library of Congress)</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
       </bf:Work>
     </bf:partOf>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works" xmlns:dcterms="http://purl.org/dc/terms/"/>
@@ -355,22 +336,60 @@
 	    <bf:mainTitle>Eames Collection (Library of Congress)</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common" xmlns:bflc="http://id.loc.gov/ontologies/bflc/">1885-1988, bulk 1940-1978</bflc:publicationStatement>
+	<bflc:publicationStatement xmlns:bflc="http://id.loc.gov/ontologies/bflc/">1885-1988, bulk 1940-1978</bflc:publicationStatement>
       </bf:Instance>
     </bf:hasInstance>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:37.880582-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T09:00:01.090086-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel xmlns:bflc="http://id.loc.gov/ontologies/bflc/">
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">full</rdfs:label>
@@ -391,18 +410,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Graphic materials</rdfs:label>
@@ -537,46 +544,21 @@
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Office of Charles and Ray Eames Eames Collection (Library of Congress)</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Office of Charles and Ray Eames</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n82090147"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Eames, Charles</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">collector</rdfs:label>
-	      </bf:Role>
-	    </bf:role>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79128113"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/col"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Eames, Ray</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">collector</rdfs:label>
-	      </bf:Role>
-	    </bf:role>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n80050441"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/col"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -601,56 +583,23 @@
     </bf:hasItem>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:37.880582-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">changed</rdfs:label>
-	  </bf:Status>
-	</bf:status>
-	<bflc:encodingLevel xmlns:bflc="http://id.loc.gov/ontologies/bflc/">
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">full</rdfs:label>
-	  </bflc:EncodingLevel>
-	</bflc:encodingLevel>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Anglo-American cataloguing rules</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>14437118</rdf:value>
-	    <bf:assigner>
-	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	      </bf:Organization>
-	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Graphic materials</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/guide</lclocal:d985>
+	  </bf:Agent>
+	</bf:agent>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
@@ -698,46 +647,21 @@
 	<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Office of Charles and Ray Eames Eames Collection (Library of Congress)</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Office of Charles and Ray Eames</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n82090147"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Eames, Charles</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">collector</rdfs:label>
-	      </bf:Role>
-	    </bf:role>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79128113"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/col"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Eames, Ray</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role>
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">collector</rdfs:label>
-	      </bf:Role>
-	    </bf:role>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n80050441"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/col"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -762,53 +686,20 @@
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>14437118-02</rdf:value>
-	    <bf:assigner>
-	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	      </bf:Organization>
-	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:37.880582-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">changed</rdfs:label>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">new</rdfs:label>
 	  </bf:Status>
 	</bf:status>
-	<bflc:encodingLevel xmlns:bflc="http://id.loc.gov/ontologies/bflc/">
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">full</rdfs:label>
-	  </bflc:EncodingLevel>
-	</bflc:encodingLevel>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Anglo-American cataloguing rules</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Graphic materials</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/guide</lclocal:d985>
+	  </bf:Agent>
+	</bf:agent>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
@@ -846,61 +737,28 @@
 	    <bf:mainTitle>Eames Collection (Library of Congress)</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common" xmlns:bflc="http://id.loc.gov/ontologies/bflc/">1885-1988, bulk 1940-1978</bflc:publicationStatement>
+	<bflc:publicationStatement xmlns:bflc="http://id.loc.gov/ontologies/bflc/">1885-1988, bulk 1940-1978</bflc:publicationStatement>
       </bf:Instance>
     </bf:itemOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:37.880582-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">changed</rdfs:label>
-	  </bf:Status>
-	</bf:status>
-	<bflc:encodingLevel xmlns:bflc="http://id.loc.gov/ontologies/bflc/">
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">full</rdfs:label>
-	  </bflc:EncodingLevel>
-	</bflc:encodingLevel>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Anglo-American cataloguing rules</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>14437118</rdf:value>
-	    <bf:assigner>
-	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	      </bf:Organization>
-	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
-	    <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Graphic materials</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/guide</lclocal:d985>
+	  </bf:Agent>
+	</bf:agent>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Item>

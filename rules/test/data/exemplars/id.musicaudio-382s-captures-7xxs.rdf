@@ -27,9 +27,9 @@
       </bf:BaseMaterial>
     </bf:baseMaterial>
     <bf:soundCharacteristic>
-      <bflc:CaptureStorage rdf:about="http://id.loc.gov/vocabulary/mcapturestorage/dist">
+      <bf:CaptureStorage rdf:about="http://id.loc.gov/vocabulary/mcapturestorage/dist">
 	<rdfs:label>Electrical capture, Digital storage</rdfs:label>
-      </bflc:CaptureStorage>
+      </bf:CaptureStorage>
     </bf:soundCharacteristic>
     <bf:provisionActivity>
       <bf:ProvisionActivity>
@@ -58,11 +58,6 @@
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1990</bf:date>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label>volume</rdfs:label>
-      </bf:Carrier>
-    </bf:carrier>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>   99582445 </rdf:value>
@@ -196,12 +191,13 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/12060035"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T22:08:50.907428-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-24T12:21:41.179888-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -240,9 +236,9 @@
 	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
@@ -262,17 +258,11 @@
 	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $c OCLC $e Claimed Recordings</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/12060035"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/12060035">
     <bflc:aap>Rachmaninoff, Sergei, 1873-1943 Concerto for piano &amp; orchestra no. 2 in C minor, op. 18</bflc:aap>
     <bflc:aap-normalized>rachmaninoffsergei18731943concertoforpiano&amp;orchestrano2incminorop18</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/MusicAudio"/>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/prm">
-	<rdfs:label>performed music</rdfs:label>
-      </bf:Content>
-    </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/zxx">
@@ -289,12 +279,6 @@
 	<rdfs:label>historical information</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
-    <bf:genreForm>
-      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026725">
-	<rdfs:label xml:lang="en">Concertos</rdfs:label>
-	<bflc:marcKey>155  $aConcertos</bflc:marcKey>
-      </bf:GenreForm>
-    </bf:genreForm>
     <bf:capture>
       <bf:Capture>
 	<bf:note>
@@ -481,7 +465,7 @@
     </bf:classification>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n50054908">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
@@ -558,7 +542,12 @@
 	<bflc:marcKey>150 0$aConcertos (Piano)</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
-    <bf:subject rdf:resource="http://id.worldcat.org/fast/00873657"/>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/873657">
+	<bflc:marcKey>150  $aConcertos (Piano)</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Concertos (Piano)</madsrdf:authoritativeLabel>
+      </bf:Topic>
+    </bf:subject>
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026725">
 	<rdfs:label xml:lang="en">Concertos</rdfs:label>
@@ -621,45 +610,15 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:expressionOf>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/a48d7366-16d9-7364-360a-5ba824f3c7a0">
-	<rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra. Selections</rdfs:label>
-	<bf:contribution>
-	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Concertos, piano, orchestra. Selections</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-      </bf:Hub>
-    </bf:expressionOf>
+    <bf:expressionOf rdf:resource="http://id.loc.gov/resources/hubs/9a3ae2c8-3b71-5917-ed18-f166fafa3670"/>
     <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/1df97d6c-49bc-ebda-f3cc-e405b8769dad">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/73581852-f763-7743-2208-0cc33c92063f">
 	<rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra, no. 2, op. 18, C minor</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n50054908"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -678,23 +637,17 @@
 	    <bf:mainTitle>Moiseiwitsch plays Rachmaninov</bf:mainTitle>
 	  </bf:VariantTitle>
 	</bf:title>
+	<bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 2, op. 18,$rC minor</bflc:marcKey>
       </bf:Hub>
     </bf:relatedTo>
     <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/1d44a16d-bcd3-6cba-1ad7-52efad6531e7">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/4c979fed-8103-ac75-b4cc-a7f03a5f9d65">
 	<rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra, no. 3, op. 30, D minor</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n50054908">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n50054908"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -703,7 +656,7 @@
 	    <bf:partNumber>no. 3, op. 30</bf:partNumber>
 	  </bf:Title>
 	</bf:title>
-	<bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943.$0http://id.loc.gov/authorities/names/n50054908$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor</bflc:marcKey>
+	<bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor</bflc:marcKey>
       </bf:Hub>
     </bf:relatedTo>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
@@ -715,20 +668,13 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/1df97d6c-49bc-ebda-f3cc-e405b8769dad">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/73581852-f763-7743-2208-0cc33c92063f">
 	    <rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra, no. 2, op. 18, C minor</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-		<bf:agent>
-		  <bf:Agent>
-		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		    <rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
-		  </bf:Agent>
-		</bf:agent>
-		<bf:role>
-		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-		</bf:role>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+		<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n50054908"/>
+		<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	      </bf:Contribution>
 	    </bf:contribution>
 	    <bf:title>
@@ -747,6 +693,7 @@
 		<bf:mainTitle>Moiseiwitsch plays Rachmaninov</bf:mainTitle>
 	      </bf:VariantTitle>
 	    </bf:title>
+	    <bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 2, op. 18,$rC minor</bflc:marcKey>
 	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
@@ -759,20 +706,13 @@
 	  </bflc:Relation>
 	</bflc:relation>
 	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/1d44a16d-bcd3-6cba-1ad7-52efad6531e7">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/4c979fed-8103-ac75-b4cc-a7f03a5f9d65">
 	    <rdfs:label>Rachmaninoff, Sergei, 1873-1943 Concertos, piano, orchestra, no. 3, op. 30, D minor</rdfs:label>
 	    <bf:contribution>
 	      <bf:Contribution>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-		<bf:agent>
-		  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n50054908">
-		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		    <rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
-		  </bf:Agent>
-		</bf:agent>
-		<bf:role>
-		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-		</bf:role>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+		<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n50054908"/>
+		<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	      </bf:Contribution>
 	    </bf:contribution>
 	    <bf:title>
@@ -781,28 +721,18 @@
 		<bf:partNumber>no. 3, op. 30</bf:partNumber>
 	      </bf:Title>
 	    </bf:title>
-	    <bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943.$0http://id.loc.gov/authorities/names/n50054908$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor</bflc:marcKey>
+	    <bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor</bflc:marcKey>
 	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
-    <bf:hasInstance>
-      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/12060035">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Concerto for piano &amp; orchestra no. 2 in C minor, op. 18</bf:mainTitle>
-	    <bf:subtitle>Concerto for piano &amp; orchestra no. 3 in D minor, op. 30</bf:subtitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common">New York, NY: Sony Classical; [1992]</bflc:publicationStatement>
-      </bf:Instance>
-    </bf:hasInstance>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/12060035"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T22:08:50.907428-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-24T12:21:41.179888-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -841,9 +771,9 @@
 	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">

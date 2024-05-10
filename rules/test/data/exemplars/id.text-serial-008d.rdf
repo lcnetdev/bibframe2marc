@@ -41,11 +41,6 @@
 	<rdfs:label>Newspaper format</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label>volume</rdfs:label>
-      </bf:Carrier>
-    </bf:carrier>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>   91662053 </rdf:value>
@@ -90,6 +85,7 @@
     <bf:title>
       <bf:Title>
 	<bf:mainTitle>The National sports daily</bf:mainTitle>
+	<bflc:nonSortNum>4</bflc:nonSortNum>
       </bf:Title>
     </bf:title>
     <bf:editionStatement>[New York ed.].</bf:editionStatement>
@@ -134,12 +130,13 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/11393548"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-20T15:57:05.322514-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-18T20:49:59.21306-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -181,9 +178,9 @@
 	  </bf:Agent>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
 	  <bf:Agent>
@@ -203,7 +200,6 @@
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c serials $d 2 $e ncip $f 19 $g n-oclcserc</lclocal:d906>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/11393548"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/11393548">
     <bflc:aap>The National sports daily</bflc:aap>
@@ -226,9 +222,9 @@
       </bflc:SerialPubType>
     </bflc:serialPubType>
     <bf:notation>
-      <bf:Notation rdf:about="http://id.loc.gov/vocabulary/mscript/a">
+      <bf:Script rdf:about="http://id.loc.gov/vocabulary/mscript/a">
 	<rdfs:label>Latin</rdfs:label>
-      </bf:Notation>
+      </bf:Script>
     </bf:notation>
     <bf:identifiedBy>
       <bf:Issn>
@@ -302,11 +298,13 @@
       <bf:KeyTitle>
 	<bf:mainTitle>The National sports daily</bf:mainTitle>
 	<bf:qualifier>(New York ed.)</bf:qualifier>
+	<bflc:nonSortNum>4</bflc:nonSortNum>
       </bf:KeyTitle>
     </bf:title>
     <bf:title>
       <bf:Title>
 	<bf:mainTitle>The National sports daily</bf:mainTitle>
+	<bflc:nonSortNum>4</bflc:nonSortNum>
       </bf:Title>
     </bf:title>
     <bf:note>
@@ -348,14 +346,16 @@
 	</bf:source>
       </bf:Topic>
     </bf:subject>
-    <bf:subject rdf:resource="http://id.worldcat.org/fast/01130432"/>
     <bf:subject>
-      <bf:Place rdf:about="http://id.worldcat.org/fast/01204155">
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Geographic"/>
-	<rdfs:label>United States</rdfs:label>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1130432">
+	<bflc:marcKey>150  $aSports</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Sports</madsrdf:authoritativeLabel>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Place rdf:about="http://id.worldcat.org/fast/1204155">
+	<bflc:marcKey>151  $aUnited States</bflc:marcKey>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">United States</madsrdf:authoritativeLabel>
-	<bflc:aap-normalized>unitedstates</bflc:aap-normalized>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/fast"/>
       </bf:Place>
     </bf:subject>
     <bf:genreForm>
@@ -367,7 +367,7 @@
       </bf:GenreForm>
     </bf:genreForm>
     <bf:expressionOf>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/5e69ce89-6822-1417-dd79-4dc48972fc95">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/3c569d3f-d697-bcf0-cab3-66f694cd414f">
 	<rdfs:label>National sports daily (New York ed.)</rdfs:label>
 	<bf:title>
 	  <bf:Title>
@@ -515,32 +515,25 @@
 	  <bf:KeyTitle>
 	    <bf:mainTitle>The National sports daily</bf:mainTitle>
 	    <bf:qualifier>(New York ed.)</bf:qualifier>
+	    <bflc:nonSortNum>4</bflc:nonSortNum>
 	  </bf:KeyTitle>
 	</bf:title>
 	<bf:title>
 	  <bf:Title>
 	    <bf:mainTitle>The National sports daily</bf:mainTitle>
+	    <bflc:nonSortNum>4</bflc:nonSortNum>
 	  </bf:Title>
 	</bf:title>
       </bf:Work>
     </bf:otherPhysicalFormat>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance>
-      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11393548">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>The National sports daily</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common">New York, NY: National American Sports Communications; [1990]-</bflc:publicationStatement>
-      </bf:Instance>
-    </bf:hasInstance>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/11393548"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-20T15:57:05.322514-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-18T20:49:59.21306-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -582,9 +575,9 @@
 	  </bf:Agent>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
 	  <bf:Agent>
