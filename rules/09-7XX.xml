@@ -150,6 +150,7 @@
           <case test="contains(@rdf:about,'isni.org/isni/')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
           <case test="contains(@rdf:about,'viaf.org/viaf/')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
           <case test="contains(@rdf:about,'id.oclc.org/worldcat/entity/')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+          <case test="contains(@rdf:about,'d-nb.info/gnd/')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
         </switch>
       </var>
       <var name="vRelResourcePreNS">
@@ -241,14 +242,14 @@
         </case>
       </switch>
       
-      
       <switch>
         <case test="not(contains($relURI,'example.org')) and 
                     not(contains($relURI,'REPLACE')) and 
                     not(contains($relURI,'rwo')) and 
                     not(contains($relURI,'id.oclc.org/worldcat/entity/')) and 
                     not(contains($relURI,'isni.org/isni/')) and 
-                    not(contains($relURI,'viaf.org/viaf/'))">
+                    not(contains($relURI,'viaf.org/viaf/')) and 
+                    not(contains($relURI,'d-nb.info/gnd/'))">
           <sf code="0">
             <transform><xsl:value-of select="$relURI" /></transform>
           </sf>
@@ -257,7 +258,8 @@
       <switch>
         <case test="contains($relURI,'id.oclc.org/worldcat/entity/') or 
                     contains($relURI,'isni.org/isni/') or 
-                    contains($relURI,'viaf.org/viaf/')">
+                    contains($relURI,'viaf.org/viaf/') or 
+                    contains($relURI,'d-nb.info/gnd/')">
           <sf code="1">
             <transform><xsl:value-of select="$relURI" /></transform>
           </sf>
