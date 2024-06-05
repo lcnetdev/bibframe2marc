@@ -156,6 +156,24 @@
         </switch>
       </sf>
       <switch>
+        <case test="($vSubjectTag = '600' or $vSubjectTag = '610' or $vSubjectTag = '611') and 
+                    not($vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains('t',@code)])">
+          <switch>
+            <case test="$relURI != '' and contains($relURI, 'authorities/names')">
+              <sf code="1">
+                <transform>
+                  <xsl:value-of select="concat(substring-before($relURI,'authorities/names/'), 'rwo/agents/', substring-after($relURI,'authorities/names/'))"/>
+                </transform>
+              </sf>
+            </case>
+            <case test="$relURI != '' and 
+                        ( contains($relURI, 'd-nb.info/gnd/') or contains($relURI, 'isni.org/isni/') )">
+              <sf code="1">
+                <transform><xsl:value-of select="$relURI" /></transform>
+              </sf>
+            </case>
+          </switch>
+        </case>
         <case test="$relURI != ''">
           <sf code="0">
             <transform><xsl:value-of select="$relURI" /></transform>
