@@ -31,6 +31,35 @@
   </cf>
 
   <switch>
+    <case test="$pGenerationDatestamp != ''">
+        <cf tag="005">
+            <transform><xsl:value-of select="$pGenerationDatestamp"/></transform>
+        </cf>
+    </case>
+    <case test="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']]">
+      <switch>
+        <case test="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']][fn:last()]/bf:date[@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime']">
+          <cf tag="005">
+            <var name="vDT"><transform><xsl:value-of select="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']][fn:last()]/bf:date[@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime']"/></transform></var>
+            <transform>
+              <xsl:value-of select="concat(translate(substring($vDT, 1, 19), '-T:', ''),'.0')"/>
+            </transform>
+          </cf>
+        </case>
+      </switch>
+    </case>
+    <case test="$vAdminMetadata[bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/c']]">
+      <switch>
+        <case test="$vAdminMetadata[bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/c']][fn:last()]/bf:date[@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime']">
+          <cf tag="005">
+            <var name="vDT"><transform><xsl:value-of select="$vAdminMetadata[bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/c']][fn:last()]/bf:date[@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime']"/></transform></var>
+            <transform>
+              <xsl:value-of select="concat(translate(substring($vDT, 1, 19), '-T:', ''),'.0')"/>
+            </transform>
+          </cf>
+        </case>
+      </switch>
+    </case>
     <case test="$vAdminMetadata/bf:changeDate">
       <switch>
         <case test="$vAdminMetadata/bf:changeDate/@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime'">
@@ -493,6 +522,20 @@
         <!-- 00-05 -->
         <position default="700101">
           <switch>
+            <case test="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/n']]">
+              <select xpath="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/n']]/bf:date">
+                <switch>
+                  <case test="@rdf:datatype='http://www.w3.org/2001/XMLSchema#dateTime' or @rdf:datatype='http://www.w3.org/2001/XMLSchema#date' or @rdf:datatype='http://id.loc.gov/datatypes/edtf'">
+                    <transform><xsl:value-of select="translate(substring(.,3,8),'-','')"/></transform>
+                  </case>
+                  <case test="default">
+                    <transform>
+                      <xsl:message>Record <xsl:value-of select="$vRecordId"/>: Unprocessed bf:creationDate. Invalid datatype.</xsl:message>
+                    </transform>
+                  </case>
+                </switch>
+              </select>
+            </case>
             <case test="$vAdminMetadata/bf:creationDate">
               <select xpath="$vAdminMetadata/bf:creationDate">
                 <switch>

@@ -854,7 +854,11 @@
           <sf code="4">
             <select xpath="../../bf:role/bf:Role/@rdf:about|../../bf:role/@rdf:resource"/>
           </sf>
-          <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
+          <sf code="0"><select xpath="@rdf:about[not(contains(.,'example.org')) and 
+                                        not(contains(.,'REPLACE')) and 
+                                        not(contains(., 'id.oclc.org/worldcat/entity/')) and
+                                        not(contains(., 'isni.org/isni/')) and
+                                        (contains(., 'viaf.org/') and contains(., '#'))]"/></sf>
           <sf code="0">
             <select xpath="bf:identifiedBy/bf:Identifier">
               <transform>
@@ -870,6 +874,10 @@
               </transform>
             </select>
           </sf>
+          <sf code="1"><select xpath="@rdf:about[
+                            contains(., 'id.oclc.org/worldcat/entity/') or 
+                            contains(., 'isni.org/isni/') or
+                            (contains(., 'viaf.org/') and not(contains(., '#')))]"/></sf>
 
           <!-- title subfields -->
           <switch>
