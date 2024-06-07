@@ -105,8 +105,7 @@
   </df>
 
   <df tag="016">
-    <context xpath="bf:Instance/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[bf:source/bf:Source] |
-                    bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[bf:source/bf:Source]">
+    <context xpath="bf:Instance/bf:identifiedBy/bf:Local[bf:source/bf:Source]">
       <var name="vSourceUri">
         <switch>
           <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
