@@ -400,7 +400,12 @@
   </df>
 
   <df tag="084">
-    <context xpath="bf:Work/bf:classification/bf:Classification[not(rdf:type or bf:assigner/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnal' or bf:assigner/*/@rdf:about='http://id.loc.gov/vocabulary/organizations/dnal')]">
+    <context xpath="bf:Work/bf:classification/bf:Classification[not(
+                                                                      rdf:type or 
+                                                                      bf:assigner//@rdf:*[contains(., 'dnal')] or 
+                                                                      bf:source//@rdf:*[contains(., 'sudocs')] or 
+                                                                      bf:source//@rdf:*[contains(., 'cacodoc')]
+                                                                )]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a"><select xpath="bf:classificationPortion"/></sf>
@@ -496,7 +501,7 @@
   </df>
 
   <df tag="086">
-    <context xpath="bf:Instance/bf:classification/bf:Classification[bf:source]">
+    <context xpath="bf:Work/bf:classification/bf:Classification[bf:source//@rdf:*[contains(., 'sudocs') or contains(., 'cacodoc')]]">
       <ind1 default=" ">
         <switch>
           <case test="bf:source/@rdf:resource='http://id.loc.gov/vocabulary/classSchemes/sudocs' or bf:source/*/@rdf:about='http://id.loc.gov/vocabulary/classSchemes/sudocs'">0</case>
