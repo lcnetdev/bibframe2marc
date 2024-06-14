@@ -621,7 +621,7 @@
   </df>
 
   <df tag="035">
-    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Local' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[(local-name()='Local' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local']) and bf:assigner]">
       <var name="vAssignerUri">
         <switch>
           <case test="bf:assigner/@rdf:resource"><transform><xsl:value-of select="bf:assigner/@rdf:resource"/></transform></case>

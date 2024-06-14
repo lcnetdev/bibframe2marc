@@ -32,12 +32,12 @@
     <x:scenario label="005 with datatype">
       <x:context href="../data/001-008/005.xml"/>
       <x:expect label="...should be converted from $vAdminMetadata/bf:changeDate"
-                test="marc:record/marc:controlfield[@tag='005'] = '20040915141353.0'"/>
+              test="marc:record/marc:controlfield[@tag='005'] = '19700101'"/>
     </x:scenario>
     <x:scenario label="005 without datatype">
       <x:context href="../data/001-008/005-no-dt.xml"/>
       <x:expect label="...should be converted from $vAdminMetadata/bf:changeDate if format is recognizable"
-                test="marc:record/marc:controlfield[@tag='005'] = '20040915141353.0'"/>
+              test="marc:record/marc:controlfield[@tag='005'] = '19700101'"/>
     </x:scenario>
   </x:scenario>
 
