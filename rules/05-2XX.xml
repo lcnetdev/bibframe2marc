@@ -635,16 +635,16 @@
     <var name="v264typeCount">
       <switch>
         <case test="$v264type='1'">
-          <select xpath="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication'])])" />
+          <transform><xsl:value-of select="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Publication' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Publication'])])"/></transform>
         </case>
         <case test="$v264type='0'">
-          <select xpath="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production'])])" />
+          <transform><xsl:value-of select="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Production' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Production'])])"/></transform>
         </case>
         <case test="$v264type='2'">
-          <select xpath="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution'])])" />
+          <transform><xsl:value-of select="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Distribution' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Distribution'])])"/></transform>
         </case>
         <case test="$v264type='3'">
-          <select xpath="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture'])])" />
+          <transform><xsl:value-of select="count(ancestor::bf:Instance/bf:provisionActivity/*[(local-name()='Manufacture' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manufacture'])])"/></transform>
         </case>
       </switch>
     </var>
