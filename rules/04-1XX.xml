@@ -290,7 +290,12 @@
   </df>
 
   <df tag="130" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:expressionOf/bf:*[(local-name() = 'Hub' or local-name() = 'Work') and bf:title and not(../../bf:contribution/*:PrimaryContribution) and not(../../bf:contribution/*/rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]">
+    <context xpath="bf:Work/bf:expressionOf/bf:*[(local-name() = 'Hub' or local-name() = 'Work') and 
+                                                  bf:title and 
+                                                  not(../../bf:contribution/bf:PrimaryContribution) and 
+                                                  not(../../bf:contribution/bflc:PrimaryContribution) and 
+                                                  not(../../bf:contribution/*/rdf:type[contains(@rdf:resource, '/PrimaryContribution')])
+                                            ]">
       <var name="vTitleResourcePreNS">
         <transform>
           <xsl:call-template name="tGetRelResource">
