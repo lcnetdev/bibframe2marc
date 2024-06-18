@@ -81,7 +81,7 @@
     <x:expect label="$o generated from lookup/o"
       test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='o'] = 'arranged'"/>
     <x:expect label="$1 generated from URI"
-      test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='1'] = 'http://id.loc.gov/resources/hubs/3d21ae7f-526c-2810-0bac-412a9275b15b'"/>
+      test="marc:record/marc:datafield[@tag='240']/marc:subfield[@code='1'] = 'http://id.loc.gov/resources/hubs/f08cf282-35fb-c697-61b4-b43d82932e41'"/>
   </x:scenario>
   <x:scenario label="MARC 242">
     <x:context href="../data/2XX/242.xml"/>
@@ -159,6 +159,7 @@
               test="//marc:datafield[@tag='880']/marc:subfield[@code='a'] = '第三版'"/>
   </x:scenario>
 
+  <!--
   <x:scenario label="MARC 254">
     <x:context href="../data/2XX/254.xml"/>
     <x:expect label="generate 254" test="count(//marc:datafield[@tag='254']) = 1"/>
@@ -169,6 +170,7 @@
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='254']/marc:subfield[@code='a'] = 'Partitur'"/>
   </x:scenario>
+  -->
 
   <x:scenario label="MARC 255">
     <x:context href="../data/2XX/255.xml"/>
@@ -246,7 +248,7 @@
   
   <x:scenario label="MARC 264 - 05">
     <x:context href="../data/exemplars/text-serial-SUBJECTS-relationships-008c.rdf"/>
-    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 3"/>
+    <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 4"/>
     <x:expect label="check for that first 264 is current"
       test="//marc:datafield[@tag='264' and @ind2='1'][1]/@ind1 = ' '"/>
     <x:expect label="check for that third 264 is current"

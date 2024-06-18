@@ -1,45 +1,92 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <!--[{"level": "WARNING", "message": "No LCCN"},
-{"level": "WARNING", "message": "Empty Supplementary Content"},
-{"level": "WARNING", "message": "No Instance Title! How can this be possible? This is a serious - SERIOUS!! - violation of holy RDA!"}]-->
+  <!--[{"level": "WARNING", "message": "Empty Supplementary Content"}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/20898769">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print"/>
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+	<rdfs:label>single unit</rdfs:label>
+      </bf:Issuance>
+    </bf:issuance>
     <bf:provisionActivity>
-      <bf:Publication>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2018</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/nyu">
 	    <rdfs:label xml:lang="en">New York (State)</rdfs:label>
 	  </bf:Place>
 	</bf:place>
-      </bf:Publication>
+	<bflc:simplePlace>New York</bflc:simplePlace>
+	<bflc:simpleAgent>Crown, an imprint of the Crown Publishing Group</bflc:simpleAgent>
+	<bflc:simpleDate>[2018]</bflc:simpleDate>
+      </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bf:provisionActivity>
-      <bf:Publication>
-	<bf:place>
-	  <bf:Place>
-	    <rdfs:label>New York</rdfs:label>
-	  </bf:Place>
-	</bf:place>
-	<bf:agent>
-	  <bf:Agent>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Agent"/>
-	    <rdfs:label>Crown, an imprint of the Crown Publishing Group</rdfs:label>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:date>2018</bf:date>
-      </bf:Publication>
-    </bf:provisionActivity>
-    <bf:issuance>
-      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
-	<rdfs:label>single unit</rdfs:label>
-      </bf:Issuance>
-    </bf:issuance>
+    <bflc:publicationStatement>New York: Crown, an imprint of the Crown Publishing Group; [2018]</bflc:publicationStatement>
+    <bf:copyrightDate rdf:datatype="http://id.loc.gov/datatypes/edtf">2018</bf:copyrightDate>
+    <bf:identifiedBy>
+      <bf:Lccn>
+	<rdf:value>  2018469658</rdf:value>
+      </bf:Lccn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>1524763136</rdf:value>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9781524763138</rdf:value>
+	<bf:qualifier>hardcover</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9781524763152</rdf:value>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/cancinv">
+	    <rdfs:label>canceled or invalid</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:qualifier>electronic bk</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Local>
+	<rdf:value>on1030413521</rdf:value>
+	<bf:assigner>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
+	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
+	  </bf:Organization>
+	</bf:assigner>
+      </bf:Local>
+    </bf:identifiedBy>
+    <bf:acquisitionSource>
+      <bf:AcquisitionSource>
+	<rdfs:label>Random House Inc, Attn Order Entry 400 Hahn Rd, Westminster, MD, USA, 21157</rdfs:label>
+	<bf:note>
+	  <bf:Note>
+	    <rdfs:label>SAN 201-3975</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+      </bf:AcquisitionSource>
+    </bf:acquisitionSource>
+    <bf:responsibilityStatement>Michelle Obama</bf:responsibilityStatement>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Becoming</bf:mainTitle>
+      </bf:Title>
+    </bf:title>
+    <bf:editionStatement>First edition</bf:editionStatement>
     <bf:extent>
       <bf:Extent>
 	<rdfs:label>xiii, 426 pages, 16 unnumbered pages of plates</rdfs:label>
       </bf:Extent>
     </bf:extent>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
+	<rdfs:label>illustrations (chiefly color), portraits</rdfs:label>
+      </bf:Note>
+    </bf:note>
     <bf:dimensions>25 cm</bf:dimensions>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
@@ -51,42 +98,24 @@
 	<rdfs:label>volume</rdfs:label>
       </bf:Carrier>
     </bf:carrier>
-    <bf:note>
-      <bf:Note>
-	<rdfs:label>illustrations (chiefly color), portraits</rdfs:label>
-      </bf:Note>
-    </bf:note>
     <bf:supplementaryContent>
       <bf:SupplementaryContent>
-	<rdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.becomingmichelleobama.com</rdf:value>
+	<bf:electronicLocator rdf:resource="http://www.becomingmichelleobama.com"/>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
-    <bf:provisionActivityStatement>New York : Crown, an imprint of the Crown Publishing Group, [2018]</bf:provisionActivityStatement>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/20898769-050-17">
-	<bf:shelfMark>
-	  <bf:ShelfMarkLcc>
-	    <rdfs:label>E909.O24 O23 2018</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMarkLcc>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20898769"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-19T12:17:22.207302-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-19T10:28:51.75267-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
@@ -99,11 +128,6 @@
 	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdfs:label>Resource description and access</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>20898769</rdf:value>
@@ -114,6 +138,7 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
+	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-07-14T08:03:27</bf:changeDate>
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-03-21</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 1 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default (ex.)</lclocal:d925>
@@ -124,101 +149,53 @@
 	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
 	  </bf:Organization>
 	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <rdfs:label>LC Copy Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<bflc:catalogerId>dsta</bflc:catalogerId>
-	<bflc:procInfo>update instance</bflc:procInfo>
-	<bflc:profile>lc:RT:bf2:MonographNR:Instance</bflc:profile>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-30T16:22:58Z</bf:changeDate>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20898769"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/20898769">
     <bflc:aap>Obama, Michelle, 1964- Becoming</bflc:aap>
     <bflc:aap-normalized>obamamichelle1964becoming</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
-    <bf:contribution>
-      <bflc:PrimaryContribution>
-	<bf:agent>
-	  <bf:Agent rdf:about="http://id.loc.gov/authorities/names/n2008054754">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <rdfs:label>Obama, Michelle, 1964-</rdfs:label>
-	    <bflc:marcKey>1001 $aObama, Michelle,$d1964-</bflc:marcKey>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:role>
-	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
-	    <rdfs:label>Author</rdfs:label>
-	  </bf:Role>
-	</bf:role>
-      </bflc:PrimaryContribution>
-    </bf:contribution>
-    <bf:title>
-      <bf:Title>
-	<bf:mainTitle>Becoming</bf:mainTitle>
-      </bf:Title>
-    </bf:title>
-    <bf:genreForm>
-      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026047">
-	<rdfs:label xml:lang="en">Autobiographies</rdfs:label>
-	<bflc:marcKey>155  $aAutobiographies</bflc:marcKey>
-      </bf:GenreForm>
-    </bf:genreForm>
-    <bf:genreForm>
-      <madsrdf:Topic xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<madsrdf:authoritativeLabel>Biography.</madsrdf:authoritativeLabel>
-	<rdfs:label>Biography.</rdfs:label>
-      </madsrdf:Topic>
-    </bf:genreForm>
-    <bf:genreForm>
-      <madsrdf:Topic xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<madsrdf:authoritativeLabel>Biographies.</madsrdf:authoritativeLabel>
-	<rdfs:label>Biographies.</rdfs:label>
-      </madsrdf:Topic>
-    </bf:genreForm>
-    <bf:genreForm>
-      <madsrdf:Topic xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<madsrdf:authoritativeLabel>Nonfiction.</madsrdf:authoritativeLabel>
-	<rdfs:label>Nonfiction.</rdfs:label>
-      </madsrdf:Topic>
-    </bf:genreForm>
-    <bf:genreForm>
-      <madsrdf:Topic xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<madsrdf:authoritativeLabel>Autobiographies.</madsrdf:authoritativeLabel>
-	<rdfs:label>Autobiographies.</rdfs:label>
-      </madsrdf:Topic>
-    </bf:genreForm>
-    <bf:genreForm>
-      <madsrdf:Topic xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<madsrdf:authoritativeLabel>Nonfiction.</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
-	<bf:source>
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</bf:source>
-	<rdfs:label>Nonfiction.</rdfs:label>
-      </madsrdf:Topic>
-    </bf:genreForm>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	<rdfs:label xml:lang="en">English</rdfs:label>
+      </bf:Language>
+    </bf:language>
+    <bf:illustrativeContent>
+      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
+	<rdfs:label>Illustrations</rdfs:label>
+      </bf:Illustration>
+    </bf:illustrativeContent>
+    <bf:illustrativeContent>
+      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/por">
+	<rdfs:label>Portraits</rdfs:label>
+      </bf:Illustration>
+    </bf:illustrativeContent>
+    <bf:illustrativeContent>
+      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/plt">
+	<rdfs:label>Plates</rdfs:label>
+      </bf:Illustration>
+    </bf:illustrativeContent>
     <bf:geographicCoverage>
       <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/n-us">
 	<rdfs:label xml:lang="en">United States</rdfs:label>
@@ -229,6 +206,176 @@
 	<rdfs:label xml:lang="en">Illinois</rdfs:label>
       </bf:GeographicCoverage>
     </bf:geographicCoverage>
+    <bf:classification>
+      <bf:ClassificationLcc>
+	<bf:classificationPortion>E909.O24</bf:classificationPortion>
+	<bf:itemPortion>O23 2018</bf:itemPortion>
+	<bf:assigner>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:assigner>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/uba">
+	    <rdfs:label>used by assigner</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+      </bf:ClassificationLcc>
+    </bf:classification>
+    <bf:classification>
+      <bf:ClassificationDdc>
+	<bf:classificationPortion>973.932092</bf:classificationPortion>
+	<bf:classificationPortion>B</bf:classificationPortion>
+	<bf:source>
+	  <bf:Source>
+	    <bf:code>23</bf:code>
+	  </bf:Source>
+	</bf:source>
+	<bf:edition>full</bf:edition>
+      </bf:ClassificationDdc>
+    </bf:classification>
+    <bf:classification>
+      <bf:Classification>
+	<bf:classificationPortion>15.85</bf:classificationPortion>
+	<bf:source>
+	  <bf:Source>
+	    <bf:code>bcl</bf:code>
+	  </bf:Source>
+	</bf:source>
+      </bf:Classification>
+    </bf:classification>
+    <bf:contribution>
+      <bf:Contribution>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n2008054754">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Obama, Michelle, 1964-</rdfs:label>
+	    <bflc:marcKey>1001 $aObama, Michelle,$d1964-</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
+	    <rdfs:label>Author</rdfs:label>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Becoming</bf:mainTitle>
+      </bf:Title>
+    </bf:title>
+    <bf:title>
+      <bf:VariantTitle>
+	<bf:mainTitle>Becoming Michelle Obama</bf:mainTitle>
+      </bf:VariantTitle>
+    </bf:title>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+      </bf:Content>
+    </bf:content>
+    <bflc:creatorCharacteristic>
+      <bflc:CreatorCharacteristic>
+	<rdfs:label>Women</rdfs:label>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
+	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bflc:CreatorCharacteristic>
+    </bflc:creatorCharacteristic>
+    <bflc:creatorCharacteristic>
+      <bflc:CreatorCharacteristic>
+	<rdfs:label>African Americans</rdfs:label>
+	<bflc:demographicGroup>
+	  <bflc:DemographicGroup rdf:about="http://id.loc.gov/authorities/demographicTerms/eth">
+	    <rdfs:label xml:lang="en">Ethnic/cultural [eth]</rdfs:label>
+	  </bflc:DemographicGroup>
+	</bflc:demographicGroup>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
+	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bflc:CreatorCharacteristic>
+    </bflc:creatorCharacteristic>
+    <bflc:creatorCharacteristic>
+      <bflc:CreatorCharacteristic>
+	<rdfs:label>Presidents' spouses</rdfs:label>
+	<bflc:demographicGroup>
+	  <bflc:DemographicGroup rdf:about="http://id.loc.gov/authorities/demographicTerms/soc">
+	    <rdfs:label xml:lang="en">Social [soc]</rdfs:label>
+	  </bflc:DemographicGroup>
+	</bflc:demographicGroup>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcsh">
+	    <rdfs:label>Library of Congress subject headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bflc:CreatorCharacteristic>
+    </bflc:creatorCharacteristic>
+    <bflc:creatorCharacteristic>
+      <bflc:CreatorCharacteristic>
+	<rdfs:label>Legislators' spouses</rdfs:label>
+	<bflc:demographicGroup>
+	  <bflc:DemographicGroup rdf:about="http://id.loc.gov/authorities/demographicTerms/soc">
+	    <rdfs:label xml:lang="en">Social [soc]</rdfs:label>
+	  </bflc:DemographicGroup>
+	</bflc:demographicGroup>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcsh">
+	    <rdfs:label>Library of Congress subject headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bflc:CreatorCharacteristic>
+    </bflc:creatorCharacteristic>
+    <bflc:creatorCharacteristic>
+      <bflc:CreatorCharacteristic>
+	<rdfs:label>Lawyers</rdfs:label>
+	<bflc:demographicGroup>
+	  <bflc:DemographicGroup rdf:about="http://id.loc.gov/authorities/demographicTerms/occ">
+	    <rdfs:label xml:lang="en">Occupation/field of activity [occ]</rdfs:label>
+	  </bflc:DemographicGroup>
+	</bflc:demographicGroup>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
+	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bflc:CreatorCharacteristic>
+    </bflc:creatorCharacteristic>
+    <bflc:creatorCharacteristic>
+      <bflc:CreatorCharacteristic>
+	<rdfs:label>Washingtonians (District of Columbia)</rdfs:label>
+	<bflc:demographicGroup>
+	  <bflc:DemographicGroup rdf:about="http://id.loc.gov/authorities/demographicTerms/nat">
+	    <rdfs:label xml:lang="en">National/regional [nat]</rdfs:label>
+	  </bflc:DemographicGroup>
+	</bflc:demographicGroup>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
+	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bflc:CreatorCharacteristic>
+    </bflc:creatorCharacteristic>
+    <bflc:creatorCharacteristic>
+      <bflc:CreatorCharacteristic>
+	<rdfs:label>Americans</rdfs:label>
+	<bflc:demographicGroup>
+	  <bflc:DemographicGroup rdf:about="http://id.loc.gov/authorities/demographicTerms/nat">
+	    <rdfs:label xml:lang="en">National/regional [nat]</rdfs:label>
+	  </bflc:DemographicGroup>
+	</bflc:demographicGroup>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
+	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bflc:CreatorCharacteristic>
+    </bflc:creatorCharacteristic>
     <bf:tableOfContents>
       <bf:TableOfContents>
 	<rdfs:label>Becoming me -- Becoming us -- Becoming more -- Epilogue.</rdfs:label>
@@ -240,121 +387,58 @@
       </bf:Summary>
     </bf:summary>
     <bf:subject>
-      <madsrdf:PersonalName xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+      <bf:Person rdf:about="http://id.loc.gov/rwo/agents/n2008054754">
 	<rdfs:label>Obama, Michelle, 1964-</rdfs:label>
-	<madsrdf:authoritativeLabel>Obama, Michelle, 1964</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
-	<bflc:aap-normalized>obamamichelle1964</bflc:aap-normalized>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-      </madsrdf:PersonalName>
+	<bflc:marcKey>1001 $aObama, Michelle,$d1964-</bflc:marcKey>
+      </bf:Person>
     </bf:subject>
     <bf:subject>
-      <madsrdf:ComplexSubject xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>BIOGRAPHY &amp; AUTOBIOGRAPHY--Cultural, Ethnic &amp; Regional--African American &amp; Black.</rdfs:label>
-	<madsrdf:authoritativeLabel>BIOGRAPHY &amp; AUTOBIOGRAPHY--Cultural, Ethnic &amp; Regional--African American &amp; Black.</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection">
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2008109323">
+	<rdfs:label xml:lang="en">Presidents' spouses--United States--Biography</rdfs:label>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:Topic>
-	    <madsrdf:authoritativeLabel>BIOGRAPHY &amp; AUTOBIOGRAPHY</madsrdf:authoritativeLabel>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Presidents' spouses</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Presidents' spouses</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Topic>
-	  <madsrdf:Topic>
-	    <madsrdf:authoritativeLabel>Cultural, Ethnic &amp; Regional</madsrdf:authoritativeLabel>
-	  </madsrdf:Topic>
-	  <madsrdf:Topic>
-	    <madsrdf:authoritativeLabel>African American &amp; Black</madsrdf:authoritativeLabel>
-	  </madsrdf:Topic>
-	</madsrdf:componentList>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
-	    <rdfs:label>BISAC subject headings</rdfs:label>
-	  </madsrdf:Authority>
-	</madsrdf:isMemberOfMADSScheme>
-	<bflc:aap-normalized>biography&amp;autobiographyculturalethnic&amp;regionalafricanamerican&amp;black</bflc:aap-normalized>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
-	    <rdfs:label>BISAC subject headings</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-      </madsrdf:ComplexSubject>
-    </bf:subject>
-    <bf:subject>
-      <madsrdf:PersonalName xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>Obama, Michelle, 1964-</rdfs:label>
-	<madsrdf:authoritativeLabel>Obama, Michelle, 1964</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/childrensSubjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Children's Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
-	<bflc:aap-normalized>obamamichelle1964</bflc:aap-normalized>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/authorities/childrensSubjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Children's Subject Headings</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-      </madsrdf:PersonalName>
-    </bf:subject>
-    <bf:subject>
-      <madsrdf:ComplexSubject xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>Legislators' spouses--United States--Biography.</rdfs:label>
-	<madsrdf:authoritativeLabel>Legislators' spouses--United States--Biography.</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection">
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85075854">
-	    <rdfs:label xml:lang="en">Legislators' spouses</rdfs:label>
-	    <bflc:marcKey>150 0$aLegislators' spouses</bflc:marcKey>
-	  </madsrdf:Topic>
-	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n78095330-781">
-	    <rdfs:label>United States</rdfs:label>
-	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">United States</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">United States</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Geographic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001237">
-	    <rdfs:label xml:lang="en">Biography</rdfs:label>
-	    <bflc:marcKey>185  $vBiography</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Biography</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GenreFormElement>
+		<madsrdf:elementValue xml:lang="en">Biography</madsrdf:elementValue>
+	      </madsrdf:GenreFormElement>
+	    </madsrdf:elementList>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
-	<bflc:aap-normalized>legislators'spousesunitedstatesbiography</bflc:aap-normalized>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-      </madsrdf:ComplexSubject>
+	<bflc:marcKey>150  $aPresidents' spouses$zUnited States$vBiography</bflc:marcKey>
+      </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <madsrdf:ComplexSubject xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>African American women lawyers--Illinois--Chicago--Biography.</rdfs:label>
-	<madsrdf:authoritativeLabel>African American women lawyers--Illinois--Chicago--Biography.</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>African American women lawyers--Illinois--Chicago--Biography</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">African American women lawyers--Illinois--Chicago--Biography</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
 	    <rdfs:label xml:lang="en">Library of
             Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection">
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh97007958">
 	    <rdfs:label xml:lang="en">African American women lawyers</rdfs:label>
 	    <bflc:marcKey>150  $aAfrican American women lawyers</bflc:marcKey>
@@ -378,213 +462,404 @@
             Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
-      </madsrdf:ComplexSubject>
+      </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <madsrdf:ComplexSubject xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>Presidents' spouses--United States--Biography.</rdfs:label>
-	<madsrdf:authoritativeLabel>Presidents' spouses--United States--Biography.</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2009129518">
+	<rdfs:label xml:lang="en">Legislators' spouses--United States--Biography</rdfs:label>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Legislators' spouses</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Legislators' spouses</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">United States</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">United States</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Geographic>
+	  <madsrdf:GenreForm>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Biography</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GenreFormElement>
+		<madsrdf:elementValue xml:lang="en">Biography</madsrdf:elementValue>
+	      </madsrdf:GenreFormElement>
+	    </madsrdf:elementList>
+	  </madsrdf:GenreForm>
+	</madsrdf:componentList>
+	<bflc:marcKey>150  $aLegislators' spouses$zUnited States$vBiography</bflc:marcKey>
+      </bf:Topic>
+    </bf:subject>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Nonfiction</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
 	    <rdfs:label xml:lang="en">Library of
             Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection">
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85106498">
-	    <rdfs:label xml:lang="en">Presidents' spouses</rdfs:label>
-	    <bflc:marcKey>150  $aPresidents' spouses</bflc:marcKey>
-	  </madsrdf:Topic>
-	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n78095330-781">
-	    <rdfs:label>United States</rdfs:label>
-	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
-	  </madsrdf:Geographic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001237">
-	    <rdfs:label xml:lang="en">Biography</rdfs:label>
-	    <bflc:marcKey>185  $vBiography</bflc:marcKey>
-	  </madsrdf:GenreForm>
-	</madsrdf:componentList>
-	<bflc:aap-normalized>presidents'spousesunitedstatesbiography</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
 	    <rdfs:label xml:lang="en">Library of
             Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
-      </madsrdf:ComplexSubject>
+	<rdfs:label>Nonfiction</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:subject>
+      <bf:Person rdf:about="http://id.loc.gov/rwo/agents/n2008054754">
+	<rdfs:label>Obama, Michelle, 1964-</rdfs:label>
+	<bflc:marcKey>1001 $aObama, Michelle,$d1964-</bflc:marcKey>
+      </bf:Person>
     </bf:subject>
-    <bf:classification>
-      <bf:ClassificationLcc>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:classificationPortion>E909.O24</bf:classificationPortion>
-	<bf:itemPortion>O23 2018</bf:itemPortion>
-      </bf:ClassificationLcc>
-    </bf:classification>
-    <bf:classification>
-      <bf:Classification>
-	<bf:classificationPortion>15.85</bf:classificationPortion>
-	<bf:source>
-	  <bf:Source>
-	    <bf:code>bcl</bf:code>
-	  </bf:Source>
-	</bf:source>
-      </bf:Classification>
-    </bf:classification>
-    <bf:classification>
-      <bf:ClassificationDdc>
-	<bf:classificationPortion>973.932092</bf:classificationPortion>
-	<bf:classificationPortion>B</bf:classificationPortion>
-	<bf:source>
-	  <bf:Source>
-	    <bf:code>23</bf:code>
-	  </bf:Source>
-	</bf:source>
-	<bf:edition>full</bf:edition>
-      </bf:ClassificationDdc>
-    </bf:classification>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
-	<rdfs:label>text</rdfs:label>
-      </bf:Content>
-    </bf:content>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
-	<rdfs:label xml:lang="en">English</rdfs:label>
-      </bf:Language>
-    </bf:language>
-    <bf:illustrativeContent>
-      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
-	<rdfs:label>Illustrations</rdfs:label>
-      </bf:Illustration>
-    </bf:illustrativeContent>
-    <bf:illustrativeContent>
-      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/plt">
-	<rdfs:label>Plates</rdfs:label>
-      </bf:Illustration>
-    </bf:illustrativeContent>
-    <bf:illustrativeContent>
-      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/por">
-	<rdfs:label>Portraits</rdfs:label>
-      </bf:Illustration>
-    </bf:illustrativeContent>
-    <rdfs:label>Becoming</rdfs:label>
-    <bflc:creatorCharacteristic>
-      <bflc:CreatorCharacteristic>
-	<rdfs:label>Women</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
-	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-      </bflc:CreatorCharacteristic>
-    </bflc:creatorCharacteristic>
-    <bflc:creatorCharacteristic>
-      <bflc:CreatorCharacteristic>
-	<rdfs:label>African Americans</rdfs:label>
-	<bflc:demographicGroup>
-	  <madsrdf:MADSCollection rdf:about="http://id.loc.gov/authorities/demographicTerms/eth" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">Ethnic/cultural [eth]</rdfs:label>
-	  </madsrdf:MADSCollection>
-	</bflc:demographicGroup>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
-	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-      </bflc:CreatorCharacteristic>
-    </bflc:creatorCharacteristic>
-    <bflc:creatorCharacteristic>
-      <bflc:CreatorCharacteristic>
-	<rdfs:label>Presidents' spouses</rdfs:label>
-	<bflc:demographicGroup>
-	  <madsrdf:MADSCollection rdf:about="http://id.loc.gov/authorities/demographicTerms/soc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">Social [soc]</rdfs:label>
-	  </madsrdf:MADSCollection>
-	</bflc:demographicGroup>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcsh">
-	    <rdfs:label>Library of Congress subject headings</rdfs:label>
-	  </bf:Source>
-	</bf:source>
-      </bflc:CreatorCharacteristic>
-    </bflc:creatorCharacteristic>
-    <bflc:creatorCharacteristic>
-      <bflc:CreatorCharacteristic>
+    <bf:subject>
+      <bf:Person rdf:about="http://id.loc.gov/rwo/agents/n2008054754">
+	<rdfs:label>Obama, Michelle, 1964-</rdfs:label>
+	<bflc:marcKey>1001 $aObama, Michelle,$d1964-</bflc:marcKey>
+      </bf:Person>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
 	<rdfs:label>Legislators' spouses</rdfs:label>
-	<bflc:demographicGroup>
-	  <madsrdf:MADSCollection rdf:about="http://id.loc.gov/authorities/demographicTerms/soc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">Social [soc]</rdfs:label>
-	  </madsrdf:MADSCollection>
-	</bflc:demographicGroup>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Legislators' spouses</madsrdf:authoritativeLabel>
+	<bflc:aap-normalized>legislators'spouses</bflc:aap-normalized>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>African American women lawyers--Illinois--Chicago--Biography</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">African American women lawyers--Illinois--Chicago--Biography</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>African American women lawyers</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n79053746-781">
+	    <rdfs:label>Illinois</rdfs:label>
+	    <bflc:marcKey>181  $zIllinois</bflc:marcKey>
+	  </madsrdf:Geographic>
+	  <madsrdf:Geographic>
+	    <madsrdf:authoritativeLabel>Chicago</madsrdf:authoritativeLabel>
+	  </madsrdf:Geographic>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Biography</madsrdf:authoritativeLabel>
+	  </madsrdf:GenreForm>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>africanamericanwomenlawyersillinoischicagobiography</bflc:aap-normalized>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdfs:label>Presidents' spouses</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Presidents' spouses</madsrdf:authoritativeLabel>
+	<bflc:aap-normalized>presidents'spouses</bflc:aap-normalized>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Presidents' spouses--United States--Biography</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Presidents' spouses--United States--Biography</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>Presidents' spouses</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n78095330-781">
+	    <rdfs:label>United States</rdfs:label>
+	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
+	  </madsrdf:Geographic>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Biography</madsrdf:authoritativeLabel>
+	  </madsrdf:GenreForm>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>presidents'spousesunitedstatesbiography</bflc:aap-normalized>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Legislators' spouses--United States--Biography</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Legislators' spouses--United States--Biography</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>Legislators' spouses</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n78095330-781">
+	    <rdfs:label>United States</rdfs:label>
+	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
+	  </madsrdf:Geographic>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Biography</madsrdf:authoritativeLabel>
+	  </madsrdf:GenreForm>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>legislators'spousesunitedstatesbiography</bflc:aap-normalized>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdfs:label>African American women lawyers</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">African American women lawyers</madsrdf:authoritativeLabel>
+	<bflc:aap-normalized>africanamericanwomenlawyers</bflc:aap-normalized>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Illinois--Chicago</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Illinois--Chicago</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n79053746">
+	    <rdfs:label>Illinois</rdfs:label>
+	    <bflc:marcKey>151  $aIllinois</bflc:marcKey>
+	  </madsrdf:Geographic>
+	  <madsrdf:Geographic>
+	    <madsrdf:authoritativeLabel>Chicago</madsrdf:authoritativeLabel>
+	  </madsrdf:Geographic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>illinoischicago</bflc:aap-normalized>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Place>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Geographic"/>
+	<rdfs:label>United States</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">United States</madsrdf:authoritativeLabel>
+	<bflc:aap-normalized>unitedstates</bflc:aap-normalized>
+      </bf:Place>
+    </bf:subject>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Autobiographies</madsrdf:authoritativeLabel>
+	<rdfs:label>Autobiographies</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Nonfiction</madsrdf:authoritativeLabel>
+	<rdfs:label>Nonfiction</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Biographies</madsrdf:authoritativeLabel>
+	<rdfs:label>Biographies</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Biography</madsrdf:authoritativeLabel>
+	<rdfs:label>Biography</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>BIOGRAPHY &amp; AUTOBIOGRAPHY--Cultural, Ethnic &amp; Regional--African American &amp; Black</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">BIOGRAPHY &amp; AUTOBIOGRAPHY--Cultural, Ethnic &amp; Regional--African American &amp; Black</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>BIOGRAPHY &amp; AUTOBIOGRAPHY</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>Cultural, Ethnic &amp; Regional</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>African American &amp; Black</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>biography&amp;autobiographyculturalethnic&amp;regionalafricanamerican&amp;black</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
 	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcsh">
-	    <rdfs:label>Library of Congress subject headings</rdfs:label>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
-      </bflc:CreatorCharacteristic>
-    </bflc:creatorCharacteristic>
-    <bflc:creatorCharacteristic>
-      <bflc:CreatorCharacteristic>
-	<rdfs:label>Lawyers</rdfs:label>
-	<bflc:demographicGroup>
-	  <madsrdf:MADSCollection rdf:about="http://id.loc.gov/authorities/demographicTerms/occ" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">Occupation/field of activity [occ]</rdfs:label>
-	  </madsrdf:MADSCollection>
-	</bflc:demographicGroup>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>BIOGRAPHY &amp; AUTOBIOGRAPHY--Personal Memoirs</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">BIOGRAPHY &amp; AUTOBIOGRAPHY--Personal Memoirs</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>BIOGRAPHY &amp; AUTOBIOGRAPHY</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>Personal Memoirs</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>biography&amp;autobiographypersonalmemoirs</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
 	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
-	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
-      </bflc:CreatorCharacteristic>
-    </bflc:creatorCharacteristic>
-    <bflc:creatorCharacteristic>
-      <bflc:CreatorCharacteristic>
-	<rdfs:label>Washingtonians (District of Columbia)</rdfs:label>
-	<bflc:demographicGroup>
-	  <madsrdf:MADSCollection rdf:about="http://id.loc.gov/authorities/demographicTerms/nat" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">National/regional [nat]</rdfs:label>
-	  </madsrdf:MADSCollection>
-	</bflc:demographicGroup>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>BIOGRAPHY &amp; AUTOBIOGRAPHY--Women</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">BIOGRAPHY &amp; AUTOBIOGRAPHY--Women</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>BIOGRAPHY &amp; AUTOBIOGRAPHY</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>Women</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>biography&amp;autobiographywomen</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
 	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
-	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
-      </bflc:CreatorCharacteristic>
-    </bflc:creatorCharacteristic>
-    <bflc:creatorCharacteristic>
-      <bflc:CreatorCharacteristic>
-	<rdfs:label>Americans</rdfs:label>
-	<bflc:demographicGroup>
-	  <madsrdf:MADSCollection rdf:about="http://id.loc.gov/authorities/demographicTerms/nat" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">National/regional [nat]</rdfs:label>
-	  </madsrdf:MADSCollection>
-	</bflc:demographicGroup>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Person rdf:about="http://id.worldcat.org/fast/1915904">
+	<bflc:marcKey>1001 $aObama, Michelle,$d1964-</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Obama, Michelle, 1964-</madsrdf:authoritativeLabel>
+      </bf:Person>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/799505">
+	<bflc:marcKey>150  $aAfrican American women lawyers</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">African American women lawyers</madsrdf:authoritativeLabel>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/995904">
+	<bflc:marcKey>150  $aLegislators' spouses</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Legislators' spouses</madsrdf:authoritativeLabel>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1075830">
+	<bflc:marcKey>150  $aPresidents' spouses</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Presidents' spouses</madsrdf:authoritativeLabel>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1204048">
+	<bflc:marcKey>151  $aIllinois$zChicago</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Illinois--Chicago</madsrdf:authoritativeLabel>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Place rdf:about="http://id.worldcat.org/fast/1204155">
+	<bflc:marcKey>151  $aUnited States</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">United States</madsrdf:authoritativeLabel>
+      </bf:Place>
+    </bf:subject>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Autobiographies</madsrdf:authoritativeLabel>
+	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
+	<rdfs:label>Autobiographies</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Biographies</madsrdf:authoritativeLabel>
+	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
+	<rdfs:label>Biographies</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Biography</madsrdf:authoritativeLabel>
+	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
+	<rdfs:label>Biography</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026047">
+	<rdfs:label xml:lang="en">Autobiographies</rdfs:label>
+	<bflc:marcKey>155  $aAutobiographies</bflc:marcKey>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Presidents' spouses--United States--Biography</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Presidents' spouses--United States--Biography</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic>
+	    <madsrdf:authoritativeLabel>Presidents' spouses</madsrdf:authoritativeLabel>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n78095330-781">
+	    <rdfs:label>United States</rdfs:label>
+	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
+	  </madsrdf:Geographic>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Biography</madsrdf:authoritativeLabel>
+	  </madsrdf:GenreForm>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>presidents'spousesunitedstatesbiography</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/sears">
+	    <rdfs:label>Sears list of subject headings</rdfs:label>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
 	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lcdgt">
-	    <rdfs:label>Library of Congress demographic group term and code list</rdfs:label>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/sears">
+	    <rdfs:label>Sears list of subject headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
-      </bflc:CreatorCharacteristic>
-    </bflc:creatorCharacteristic>
+      </bf:Topic>
+    </bf:subject>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/20898769"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-19T12:17:22.207302-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-19T10:28:51.75267-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
@@ -595,11 +870,6 @@
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
 	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -612,6 +882,7 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
+	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-07-14T08:03:27</bf:changeDate>
 	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-03-21</bf:creationDate>
 	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 1 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
 	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default (ex.)</lclocal:d925>
@@ -622,117 +893,26 @@
 	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
 	  </bf:Organization>
 	</bf:descriptionModifier>
-	<bf:descriptionAuthentication>
-	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
-	    <rdfs:label>LC Copy Cataloging</rdfs:label>
-	  </bf:DescriptionAuthentication>
-	</bf:descriptionAuthentication>
-	<bflc:catalogerId>dsta</bflc:catalogerId>
-	<bflc:procInfo>update instance</bflc:procInfo>
-	<bflc:profile>lc:RT:bf2:MonographNR:Work</bflc:profile>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-30T16:22:58Z</bf:changeDate>
-      </bf:AdminMetadata>
-    </bf:adminMetadata>
-  </bf:Work>
-  <bf:Item rdf:about="http://id.loc.gov/resources/items/20898769-050-17">
-    <bf:heldBy>
-      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>United States, Library of Congress</rdfs:label>
-      </madsrdf:CorporateName>
-    </bf:heldBy>
-    <bf:shelfMark>
-      <bf:ShelfMarkLcc>
-	<rdfs:label>E909.O24 O23 2018</rdfs:label>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:ShelfMarkLcc>
-    </bf:shelfMark>
-    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
-    <bf:itemOf>
-      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/20898769">
-	<bf:provisionActivityStatement>New York : Crown, an imprint of the Crown Publishing Group, [2018]</bf:provisionActivityStatement>
-      </bf:Instance>
-    </bf:itemOf>
-    <bf:adminMetadata>
-      <bf:AdminMetadata>
-	<bf:identifiedBy>
-	  <bf:Local>
-	    <rdf:value>20898769-050-17</rdf:value>
-	    <bf:assigner>
-	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </bf:Organization>
-	    </bf:assigner>
-	  </bf:Local>
-	</bf:identifiedBy>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-19T12:17:22.207302-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
-	  </bf:Status>
-	</bf:status>
-	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
-	    <rdfs:label>full</rdfs:label>
-	  </bflc:EncodingLevel>
-	</bflc:encodingLevel>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
-	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
 	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-03-21</bf:creationDate>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 1 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
-	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default (ex.)</lclocal:d925>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $b rf21 2019-03-21 z-processor $i rf21 2019-03-21 HAND CARRY to SL $e rf07 2019-03-21 to Hand Carry $a hh12 2019-05-06 2 copies On Order for Loan $t rm11 2019-05-06 copy 2 to CALM $a hh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</lclocal:d955>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/nhp">
-	    <rdfs:label>New Hampshire State Library, Processing Center</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
-	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <rdfs:label>LC Copy Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<bflc:catalogerId>dsta</bflc:catalogerId>
-	<bflc:procInfo>update instance</bflc:procInfo>
-	<bflc:profile>lc:RT:bf2:MonographNR:Item-1</bflc:profile>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-30T16:22:58Z</bf:changeDate>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-  </bf:Item>
+  </bf:Work>
 </rdf:RDF>

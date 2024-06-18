@@ -1,6 +1,5 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/4384447">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print" xmlns:streams="info:lc/streams#"/>
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
@@ -15,13 +14,12 @@
 	    <rdfs:label xml:lang="en">Italy</rdfs:label>
 	  </bf:Place>
 	</bf:place>
+	<bflc:simplePlace>Bologna, Italy</bflc:simplePlace>
+	<bflc:simpleAgent>Italian Physical Society</bflc:simpleAgent>
+	<bflc:simpleDate>1990</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label>volume</rdfs:label>
-      </bf:Carrier>
-    </bf:carrier>
+    <bflc:publicationStatement>Bologna, Italy: Italian Physical Society; 1990</bflc:publicationStatement>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
@@ -37,31 +35,12 @@
 	<rdf:value>8877940344</rdf:value>
       </bf:Isbn>
     </bf:identifiedBy>
-    <rdfs:label>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
     <bf:responsibilityStatement>edited by M. Colacino, G. Giovanelli, and L. Stefanutti = 2⁰ workshop ricerche italiane sullʹatmosfera antartica, Porano, 19-20 Ottobre, 1989</bf:responsibilityStatement>
     <bf:title>
       <bf:Title>
-	<rdfs:label>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
 	<bf:mainTitle>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bf:mainTitle>
       </bf:Title>
     </bf:title>
-    <bf:provisionActivity>
-      <bf:ProvisionActivity>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
-	<bf:place>
-	  <bf:Place>
-	    <rdfs:label>Bologna, Italy</rdfs:label>
-	  </bf:Place>
-	</bf:place>
-	<bf:agent>
-	  <bf:Agent>
-	    <rdfs:label>Italian Physical Society</rdfs:label>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:date>1990</bf:date>
-      </bf:ProvisionActivity>
-    </bf:provisionActivity>
-    <bf:provisionActivityStatement>Bologna, Italy : Italian Physical Society, 1990.</bf:provisionActivityStatement>
     <bf:extent>
       <bf:Extent>
 	<rdfs:label>xii, 345 p.</rdfs:label>
@@ -69,38 +48,24 @@
     </bf:extent>
     <bf:note>
       <bf:Note>
-	<rdf:type rdfs:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
 	<rdfs:label>ill.</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:dimensions>25 cm.</bf:dimensions>
-    <bf:seriesStatement>Conference proceedings</bf:seriesStatement>
-    <bf:seriesStatement>Atti di conferenze ; v. 27</bf:seriesStatement>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/4384447-050-12">
-	<bf:shelfMark xmlns:streams="info:lc/streams#">
-	  <bf:ShelfMarkLcc>
-	    <rdfs:label>QC869.4.A6 A153 1989</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMarkLcc>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/4384447"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T22:09:11-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-02T17:42:19.680928-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
@@ -139,17 +104,17 @@
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/4384447"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/4384447">
-    <bflc:aap>Colacino, M. 2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bflc:aap>
-    <bflc:aap-normalized>colacinom2ndworkshopitalianresearchonantarcticatmosphereporano1920october1989</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text" xmlns:streams="info:lc/streams#"/>
+    <bflc:aap>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bflc:aap>
+    <bflc:aap-normalized>2ndworkshopitalianresearchonantarcticatmosphereporano1920october1989</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
     <bf:content>
       <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
 	<rdfs:label>text</rdfs:label>
       </bf:Content>
     </bf:content>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	<rdfs:label xml:lang="en">English</rdfs:label>
@@ -173,13 +138,18 @@
     </bf:geographicCoverage>
     <bf:classification>
       <bf:ClassificationLcc>
+	<bf:classificationPortion>QC869.4.A6</bf:classificationPortion>
+	<bf:itemPortion>A153 1989</bf:itemPortion>
 	<bf:assigner>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
 	  </bf:Organization>
 	</bf:assigner>
-	<bf:classificationPortion>QC869.4.A6</bf:classificationPortion>
-	<bf:itemPortion>A153 1989</bf:itemPortion>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/uba">
+	    <rdfs:label>used by assigner</rdfs:label>
+	  </bf:Status>
+	</bf:status>
       </bf:ClassificationLcc>
     </bf:classification>
     <bf:classification>
@@ -198,18 +168,16 @@
 	</bf:assigner>
       </bf:ClassificationDdc>
     </bf:classification>
-    <rdfs:label>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
     <bf:title>
       <bf:Title>
-	<rdfs:label>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
 	<bf:mainTitle>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bf:mainTitle>
       </bf:Title>
     </bf:title>
     <bf:subject>
       <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject" xmlns:streams="info:lc/streams#"/>
-	<rdfs:label>Atmospheric physics--Research--Antarctica--Congresses.</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Atmospheric physics--Research--Antarctica--Congresses.</madsrdf:authoritativeLabel>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Atmospheric physics--Research--Antarctica--Congresses</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Atmospheric physics--Research--Antarctica--Congresses</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
 	    <rdfs:label xml:lang="en">Library of
@@ -225,8 +193,9 @@
 	    <rdfs:label xml:lang="en">Research</rdfs:label>
 	    <bflc:marcKey>180  $xResearch</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:Geographic>
-	    <madsrdf:authoritativeLabel>Antarctica</madsrdf:authoritativeLabel>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/authorities/subjects/sh85005490-781">
+	    <rdfs:label xml:lang="en">Antarctica</rdfs:label>
+	    <bflc:marcKey>181  $zAntarctica</bflc:marcKey>
 	  </madsrdf:Geographic>
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh99001964">
 	    <rdfs:label xml:lang="en">Congresses</rdfs:label>
@@ -234,13 +203,19 @@
 	  </madsrdf:Topic>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>atmosphericphysicsresearchantarcticacongresses</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of
+            Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject" xmlns:streams="info:lc/streams#"/>
-	<rdfs:label>Troposphere--Congresses.</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Troposphere--Congresses.</madsrdf:authoritativeLabel>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Troposphere--Congresses</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Troposphere--Congresses</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
 	    <rdfs:label xml:lang="en">Library of
@@ -258,6 +233,12 @@
 	  </madsrdf:Topic>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>tropospherecongresses</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of
+            Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
@@ -360,27 +341,15 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:hasSeries>
-      <bf:Work>
-	<bflc:aap>Conference proceedings (Società italiana di fisica)</bflc:aap>
-	<bflc:aap-normalized>conferenceproceedings(societàitalianadifisica)</bflc:aap-normalized>
-	<rdfs:label>Conference proceedings (Società italiana di fisica)</rdfs:label>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Conference proceedings (Società italiana di fisica)</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-      </bf:Work>
-    </bf:hasSeries>
     <bf:relatedTo>
       <bf:Work>
 	<bflc:aap>2⁰ workshop, ricerche italiane sullʹatmosfera antartica, Porano, 19-20 Ottobre, 1989</bflc:aap>
 	<bflc:aap-normalized>2⁰workshopricercheitalianesullʹatmosferaantarticaporano1920ottobre1989</bflc:aap-normalized>
-	<rdfs:label>2⁰ workshop, ricerche italiane sullʹatmosfera antartica, Porano, 19-20 Ottobre, 1989.</rdfs:label>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	<bf:title>
 	  <bf:Title>
-	    <rdfs:label>2⁰ workshop, ricerche italiane sullʹatmosfera antartica, Porano, 19-20 Ottobre, 1989.</rdfs:label>
 	    <bf:mainTitle>2⁰ workshop, ricerche italiane sullʹatmosfera antartica, Porano, 19-20 Ottobre, 1989</bf:mainTitle>
+	    <bflc:nonSortNum>0</bflc:nonSortNum>
 	  </bf:Title>
 	</bf:title>
       </bf:Work>
@@ -389,40 +358,98 @@
       <bf:Work>
 	<bflc:aap>Second workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bflc:aap>
 	<bflc:aap-normalized>secondworkshopitalianresearchonantarcticatmosphereporano1920october1989</bflc:aap-normalized>
-	<rdfs:label>Second workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989.</rdfs:label>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	<bf:title>
 	  <bf:Title>
-	    <rdfs:label>Second workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989.</rdfs:label>
 	    <bf:mainTitle>Second workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bf:mainTitle>
+	    <bflc:nonSortNum>0</bflc:nonSortNum>
 	  </bf:Title>
 	</bf:title>
       </bf:Work>
     </bf:relatedTo>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance>
-      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/4384447">
-	<rdfs:label>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
-	<bf:title>
-	  <bf:Title>
-	    <rdfs:label xmlns:streams="info:lc/streams#">2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Bologna, Italy : Italian Physical Society, 1990.</bf:provisionActivityStatement>
-      </bf:Instance>
-    </bf:hasInstance>
+    <bflc:relationship>
+      <bflc:Relationship>
+	<bflc:relation rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:seriesEnumeration>v. 27</bf:seriesEnumeration>
+	<bf:relatedTo>
+	  <bf:Series>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
+	    <bf:status>
+	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
+		<rdfs:label>transcribed</rdfs:label>
+	      </bf:Status>
+	    </bf:status>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Conference proceedings</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:title>
+	      <bf:ParallelTitle>
+		<bf:mainTitle>Atti di conferenze</bf:mainTitle>
+	      </bf:ParallelTitle>
+	    </bf:title>
+	  </bf:Series>
+	</bf:relatedTo>
+      </bflc:Relationship>
+    </bflc:relationship>
+    <bflc:relationship>
+      <bflc:Relationship>
+	<bflc:relation rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:seriesEnumeration>v. 27.</bf:seriesEnumeration>
+	<bf:relatedTo>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/a5a0574a-3b63-b597-5a08-202a496411f5">
+	    <rdfs:label>Conference proceedings (Società italiana di fisica)</rdfs:label>
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79145388"/>
+		<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79145388"/>
+		<bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Conference proceedings (Società italiana di fisica)</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:title>
+	      <bf:VariantTitle>
+		<bf:mainTitle>Atti di conferenze (Società italiana di fisica)</bf:mainTitle>
+	      </bf:VariantTitle>
+	    </bf:title>
+	    <bf:title>
+	      <bf:VariantTitle>
+		<bf:mainTitle>Conference proceedings</bf:mainTitle>
+	      </bf:VariantTitle>
+	    </bf:title>
+	    <bf:title>
+	      <bf:VariantTitle>
+		<bf:mainTitle>Atti di conferenze</bf:mainTitle>
+	      </bf:VariantTitle>
+	    </bf:title>
+	    <bflc:marcKey>1300 $aConference proceedings (Società italiana di fisica)</bflc:marcKey>
+	  </bf:Hub>
+	</bf:relatedTo>
+      </bflc:Relationship>
+    </bflc:relationship>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/4384447"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T22:09:11-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-02T17:42:19.680928-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
@@ -462,84 +489,4 @@
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
-  <bf:Item rdf:about="http://id.loc.gov/resources/items/4384447-050-12">
-    <bf:heldBy>
-      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>United States, Library of Congress</rdfs:label>
-      </madsrdf:CorporateName>
-    </bf:heldBy>
-    <bf:shelfMark>
-      <bf:ShelfMarkLcc>
-	<rdfs:label>QC869.4.A6 A153 1989</rdfs:label>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:ShelfMarkLcc>
-    </bf:shelfMark>
-    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
-    <bf:itemOf>
-      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/4384447">
-	<rdfs:label>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
-	<bf:title>
-	  <bf:Title>
-	    <rdfs:label xmlns:streams="info:lc/streams#">2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</rdfs:label>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">Bologna, Italy : Italian Physical Society, 1990.</bf:provisionActivityStatement>
-      </bf:Instance>
-    </bf:itemOf>
-    <bf:adminMetadata>
-      <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-04T22:09:11-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
-	  </bf:Status>
-	</bf:status>
-	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
-	    <rdfs:label>full</rdfs:label>
-	  </bflc:EncodingLevel>
-	</bflc:encodingLevel>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
-	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:identifiedBy>
-	  <bf:Local>
-	    <rdf:value>4384447</rdf:value>
-	    <bf:assigner>
-	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </bf:Organization>
-	    </bf:assigner>
-	  </bf:Local>
-	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1995-03-22T11:07:35</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1991-04-04</bf:creationDate>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d 2 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a rb09 4-04-91; rc16; ep67 11-21-91; ea17/14 to scd 12-23-91; fg08 12-30-91; fl42 01-31-92</lclocal:d955>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-      </bf:AdminMetadata>
-    </bf:adminMetadata>
-  </bf:Item>
 </rdf:RDF>

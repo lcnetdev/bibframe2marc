@@ -105,8 +105,7 @@
   </df>
 
   <df tag="016">
-    <context xpath="bf:Instance/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[bf:source/bf:Source] |
-                    bf:Work/bf:adminMetadata/bf:AdminMetadata/bf:identifiedBy/bf:Local[bf:source/bf:Source]">
+    <context xpath="bf:Instance/bf:identifiedBy/bf:Local[bf:source/bf:Source]">
       <var name="vSourceUri">
         <switch>
           <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
@@ -194,7 +193,7 @@
         </case>
         <case test="default">
           <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
-          <sf code="c" chopPunct="true" repeatable="false"><select xpath="ancestor::bf:Instance/bf:acquisitionTerms"/></sf>
+          <sf code="c" chopPunct="true" repeatable="false"><select xpath="bf:acquisitionTerms"/></sf>
         </case>
       </switch>
       <sf chopPunct="true" code="q"><select xpath="bf:qualifier"/></sf>
@@ -288,6 +287,7 @@
         </case>
         <case test="default">
           <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
+          <sf code="c" chopPunct="true" repeatable="false"><select xpath="bf:acquisitionTerms"/></sf>
         </case>
       </switch>
       <sf code="q" chopPunct="true"><select xpath="bf:qualifier"/></sf>
@@ -621,7 +621,7 @@
   </df>
 
   <df tag="035">
-    <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='Local' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local']]">
+    <context xpath="bf:Instance/bf:identifiedBy/*[(local-name()='Local' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Local']) and bf:assigner]">
       <var name="vAssignerUri">
         <switch>
           <case test="bf:assigner/@rdf:resource"><transform><xsl:value-of select="bf:assigner/@rdf:resource"/></transform></case>

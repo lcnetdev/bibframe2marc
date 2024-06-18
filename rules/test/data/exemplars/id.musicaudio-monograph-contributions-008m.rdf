@@ -27,9 +27,9 @@
       </bf:PlaybackChannels>
     </bf:soundCharacteristic>
     <bf:soundCharacteristic>
-      <bf:SoundCharacteristic rdf:about="http://id.loc.gov/vocabulary/mgroove/coarse">
+      <bf:GrooveCharacteristic rdf:about="http://id.loc.gov/vocabulary/mgroove/coarse">
 	<rdfs:label>Coarse groove</rdfs:label>
-      </bf:SoundCharacteristic>
+      </bf:GrooveCharacteristic>
     </bf:soundCharacteristic>
     <bf:baseMaterial>
       <bf:BaseMaterial rdf:about="http://id.loc.gov/vocabulary/mmaterial/she">
@@ -37,14 +37,14 @@
       </bf:BaseMaterial>
     </bf:baseMaterial>
     <bf:soundCharacteristic>
-      <bf:SoundCharacteristic rdf:about="http://id.loc.gov/vocabulary/mgroove/lateral">
+      <bf:GrooveCharacteristic rdf:about="http://id.loc.gov/vocabulary/mgroove/lateral">
 	<rdfs:label>Lateral or combined cutting</rdfs:label>
-      </bf:SoundCharacteristic>
+      </bf:GrooveCharacteristic>
     </bf:soundCharacteristic>
     <bf:soundCharacteristic>
-      <bflc:CaptureStorage rdf:about="http://id.loc.gov/vocabulary/mcapturestorage/aes">
+      <bf:CaptureStorage rdf:about="http://id.loc.gov/vocabulary/mcapturestorage/aes">
 	<rdfs:label>Electrical capture, Analog electrical storage</rdfs:label>
-      </bflc:CaptureStorage>
+      </bf:CaptureStorage>
     </bf:soundCharacteristic>
     <bf:provisionActivity>
       <bf:ProvisionActivity>
@@ -61,11 +61,6 @@
       </bf:ProvisionActivity>
     </bf:provisionActivity>
     <bflc:publicationStatement>New York: Decca; [1943-1945]</bflc:publicationStatement>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label>volume</rdfs:label>
-      </bf:Carrier>
-    </bf:carrier>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2001539900</rdf:value>
@@ -366,12 +361,13 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/12280298"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T23:56:32.333709-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-24T11:00:21.259259-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -421,7 +417,6 @@
 	</bf:descriptionAuthentication>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/12280298"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/12280298">
     <bflc:aap>Rodgers, Richard, 1902-1979 Selections from the Theatre Guild musical play Oklahoma!</bflc:aap>
@@ -466,7 +461,7 @@
     </bf:classification>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n50048058">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
@@ -688,20 +683,13 @@
       </bf:Contribution>
     </bf:contribution>
     <bf:expressionOf>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/fe3cf2de-d9f4-81f7-0fb2-5d61a04a9e83">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/d5b24baa-5667-74b5-a178-edcafdefbbf1">
 	<rdfs:label>Rodgers, Richard, 1902-1979 Oklahoma! Selections</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Rodgers, Richard, 1902-1979</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n50048058"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -709,7 +697,27 @@
 	    <bf:mainTitle>Oklahoma! Selections</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bflc:marcKey>1001 $aRodgers, Richard,$d1902-1979.$tOklahoma!$kSelections;</bflc:marcKey>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Very best of Richard Rodgers</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Selections from the Theatre Guild musical play Oklahoma!</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Nelson Eddy in Oklahoma</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Music from Rodgers and Hammerstein's Oklahoma! Music from Rodgers and Hammerstein's Carousel</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
+	<bflc:marcKey>1001 $aRodgers, Richard,$d1902-1979.$tOklahoma!$kSelections</bflc:marcKey>
       </bf:Hub>
     </bf:expressionOf>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
@@ -737,7 +745,7 @@
       <bflc:Relationship>
 	<bflc:relation rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
 	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/ccd1f747-78e4-f0a5-1805-a689e84e75d0">
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/c74bdeab-7d1c-c2f1-f777-1f05663e2973">
 	    <rdfs:label>Decca personality series</rdfs:label>
 	    <bf:title>
 	      <bf:Title>
@@ -749,27 +757,18 @@
 		<bf:mainTitle>Personality series (Decca Records (Firm))</bf:mainTitle>
 	      </bf:VariantTitle>
 	    </bf:title>
+	    <bflc:marcKey>1300 $aDecca personality series</bflc:marcKey>
 	  </bf:Hub>
 	</bf:relatedTo>
       </bflc:Relationship>
     </bflc:relationship>
-    <bf:hasInstance>
-      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/12280298">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Selections from the Theatre Guild musical play Oklahoma!</bf:mainTitle>
-	    <bf:subtitle>music by Richard Rodgers ; lyrics by Oscar Hammerstein</bf:subtitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common">New York: Decca; [1943-1945]</bflc:publicationStatement>
-      </bf:Instance>
-    </bf:hasInstance>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/12280298"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T23:56:32.333709-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-24T11:00:21.259259-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>

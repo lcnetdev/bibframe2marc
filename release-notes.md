@@ -1,5 +1,15 @@
 # bibframe2marc release notes
 
+## v2.6.0
+
+Conversion updates based on specifications v2.6. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
+
+* Updated creation of $1 URIs in authorized access points
+* Updated creation of MARC 001, 003, 005, 008, 040, 042, and 884 fields from new Admin Metadata resources
+* Updated creation of MARC 384 (Notated Music Characteristics) field
+
+See the [NEWS](NEWS) file for full details of changes.
+
 ## v2.5.0
 
 Conversion updates based on specifications v2.5. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:

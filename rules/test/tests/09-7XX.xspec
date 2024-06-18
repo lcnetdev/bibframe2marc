@@ -23,8 +23,11 @@
               test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='4'][1] = 'edt'"/>
     <x:expect label="$4 URI from role"
               test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='4'][2] = 'http://id.loc.gov/vocabulary/relators/edt'"/>
+    <!--
+      Need to revisit the entire logic for this field, but it is a given that this should not be happening.
     <x:expect label="$0 from URI of agent"
               test="//marc:datafield[@tag='700'][2]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/n78020571'"/>
+    -->
     <x:expect label="$t from title of related Work"
               test="//marc:datafield[@tag='700'][2]/marc:subfield[@code='t'] = 'These foolish things'"/>
     <x:expect label="$i from relationship"
@@ -79,8 +82,8 @@
               test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='a'] = 'Codex Book Fair and Symposium.'"/>
     <x:expect label="$c from GeographicElement"
               test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='c'] = 'Minneapolis, MN'"/>
-    <x:expect label="$0 from URI of agent"
-              test="//marc:datafield[@tag='711'][1]/marc:subfield[@code='0'] = 'http://example.com/authorities/names/no2009024971'"/>
+    <x:expect label="$0 of unrecognized URI not output"
+              test="count(//marc:datafield[@tag='711'][1]/marc:subfield[@code='0']) = '0'"/>
   </x:scenario>
 
   <x:scenario label="Added entry from name authority">

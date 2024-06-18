@@ -2,17 +2,49 @@
   <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/20898769#Work">
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:25.82197-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-03-21</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>NHP</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-07-14T08:03:27</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <bf:code>DLC</bf:code>
+	  </bf:Agent>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T08:59:47.884999-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -33,24 +65,12 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-07-14T08:03:27</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-03-21</bf:creationDate>
 	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 1 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
 	<lclocal:d925>=925  0  $a acquire $b 2 shelf copies $x policy default (ex.)</lclocal:d925>
 	<lclocal:d955>=955     $b rf21 2019-03-21 z-processor $i rf21 2019-03-21 HAND CARRY to SL $e rf07 2019-03-21 to Hand Carry $a hh12 2019-05-06 2 copies On Order for Loan $t rm11 2019-05-06 copy 2 to CALM $a hh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</lclocal:d955>
-	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>NHP</bf:code>
-	  </bf:Agent>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
 	    <bf:code>rda</bf:code>
@@ -561,16 +581,7 @@
 	<madsrdf:authoritativeLabel>Obama, Michelle, 1964</madsrdf:authoritativeLabel>
 	<bflc:marcKey>60017$aObama, Michelle,$d1964-$2fast$0(OCoLC)fst01915904</bflc:marcKey>
 	<rdfs:label>Obama, Michelle, 1964-</rdfs:label>
-	<bf:identifiedBy>
-	  <bf:Identifier>
-	    <rdf:value>fst01915904</rdf:value>
-	    <bf:source>
-	      <bf:Source>
-		<bf:code>OCoLC</bf:code>
-	      </bf:Source>
-	    </bf:source>
-	  </bf:Identifier>
-	</bf:identifiedBy>
+	<madsrdf:isIdentifiedByAuthority rdf:resource="http://id.worldcat.org/fast/01915904"/>
 	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/fast"/>
       </bf:Agent>
     </bf:subject>
@@ -615,11 +626,12 @@
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <bf:Place rdf:about="http://id.worldcat.org/fast/01204155">
+      <bf:Place rdf:about="http://id.loc.gov/resources/REPLACE/20898769#Place651-66">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Geographic"/>
 	<rdfs:label>United States</rdfs:label>
 	<madsrdf:authoritativeLabel>United States</madsrdf:authoritativeLabel>
 	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/fast"/>
+	<madsrdf:isIdentifiedByAuthority rdf:resource="http://id.worldcat.org/fast/01204155"/>
       </bf:Place>
     </bf:subject>
     <bf:genreForm>

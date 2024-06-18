@@ -55,11 +55,6 @@
 	</bf:place>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label>volume</rdfs:label>
-      </bf:Carrier>
-    </bf:carrier>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2006678412</rdf:value>
@@ -95,7 +90,7 @@
     <bf:usageAndAccessPolicy>
       <bf:UsePolicy>
 	<rdfs:label>Publication may be restricted. For general information see "Eames Office ...,"</rdfs:label>
-	<rdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.loc.gov/rr/print/res/069_eame.html.</rdf:value>
+	<bf:electronicLocator rdf:resource="http://www.loc.gov/rr/print/res/069_eame.html."/>
       </bf:UsePolicy>
     </bf:usageAndAccessPolicy>
     <bf:note>
@@ -114,7 +109,7 @@
       <bf:Note>
 	<rdfs:label>Collection profile is available online,</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/index"/>
-	<rdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://hdl.loc.gov/loc.pnp/coll.231.eame</rdf:value>
+	<bf:electronicLocator rdf:resource="https://hdl.loc.gov/loc.pnp/coll.231.eame"/>
       </bf:Note>
     </bf:note>
     <bf:note>
@@ -124,15 +119,14 @@
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/14437118"/>
-    </bf:hasItem>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/14437118"/>
+    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/14437118"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T19:21:43.465789-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-16T10:52:22.851432-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -177,11 +171,8 @@
 	    <rdfs:label>Graphic materials</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/guide</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/14437118"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/14437118">
     <bflc:aap>Office of Charles and Ray Eames Eames Collection (Library of Congress)</bflc:aap>
@@ -225,7 +216,7 @@
     </bf:classification>
     <bf:contribution>
       <bf:Contribution>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n82090147">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
@@ -354,9 +345,10 @@
 	<bflc:marcKey>150  $aMotion pictures$xProduction and direction</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
-    <bf:genreForm>
-      <bf:GenreForm>
+    <bf:subject>
+      <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Design drawings--1940-1980</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Design drawings--1940-1980</madsrdf:authoritativeLabel>
 	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:GenreForm>
@@ -366,17 +358,23 @@
 	    <madsrdf:authoritativeLabel>1940-1980</madsrdf:authoritativeLabel>
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
-	<bf:source>
-	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<bflc:aap-normalized>designdrawings19401980</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
+	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
+	  </bf:Source>
 	</bf:source>
-	<rdfs:label>Design drawings--1940-1980</rdfs:label>
-      </bf:GenreForm>
-    </bf:genreForm>
-    <bf:genreForm>
-      <bf:GenreForm>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Portrait photographs--1940-1980</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Portrait photographs--1940-1980</madsrdf:authoritativeLabel>
 	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:GenreForm>
@@ -386,17 +384,23 @@
 	    <madsrdf:authoritativeLabel>1940-1980</madsrdf:authoritativeLabel>
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
-	<bf:source>
-	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<bflc:aap-normalized>portraitphotographs19401980</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
+	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
+	  </bf:Source>
 	</bf:source>
-	<rdfs:label>Portrait photographs--1940-1980</rdfs:label>
-      </bf:GenreForm>
-    </bf:genreForm>
-    <bf:genreForm>
-      <bf:GenreForm>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Photographs--1940-1980</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Photographs--1940-1980</madsrdf:authoritativeLabel>
 	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:GenreForm>
@@ -406,17 +410,23 @@
 	    <madsrdf:authoritativeLabel>1940-1980</madsrdf:authoritativeLabel>
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
-	<bf:source>
-	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<bflc:aap-normalized>photographs19401980</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
+	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
+	  </bf:Source>
 	</bf:source>
-	<rdfs:label>Photographs--1940-1980</rdfs:label>
-      </bf:GenreForm>
-    </bf:genreForm>
-    <bf:genreForm>
-      <bf:GenreForm>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Drawings--1940-1980</rdfs:label>
 	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Drawings--1940-1980</madsrdf:authoritativeLabel>
 	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
 	  <madsrdf:GenreForm>
@@ -426,14 +436,19 @@
 	    <madsrdf:authoritativeLabel>1940-1980</madsrdf:authoritativeLabel>
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
-	<bf:source>
-	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<bflc:aap-normalized>drawings19401980</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
+	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
+	  </bf:Source>
 	</bf:source>
-	<rdfs:label>Drawings--1940-1980</rdfs:label>
-      </bf:GenreForm>
-    </bf:genreForm>
+      </bf:Topic>
+    </bf:subject>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
@@ -467,63 +482,35 @@
       </bf:Contribution>
     </bf:contribution>
     <bf:partOf>
-      <bf:Work>
-	<bflc:aap>Eames, Charles Charles Eames and Ray Eames papers</bflc:aap>
-	<bflc:aap-normalized>eamescharlescharleseamesandrayeamespapers</bflc:aap-normalized>
+      <bf:Work rdf:about="http://id.loc.gov/resources/works/5811493">
+	<rdfs:label>Eames, Charles Charles Eames and Ray Eames papers</rdfs:label>
 	<bf:contribution>
-	  <bflc:PrimaryContribution>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79128113">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Eames, Charles</rdfs:label>
-		<bflc:marcKey>10010$aEames, Charles</bflc:marcKey>
-	      </bf:Agent>
-	    </bf:agent>
-	  </bflc:PrimaryContribution>
+	  <bf:Contribution>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79128113"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
 	  <bf:Title>
 	    <bf:mainTitle>Charles Eames and Ray Eames papers</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance>
-	    <bf:title>
-	      <bf:Title>
-		<bf:mainTitle>Charles Eames and Ray Eames papers</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>mm 94083006</rdf:value>
-		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <rdfs:label>United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
-		</bf:assigner>
-	      </bf:Lccn>
-	    </bf:identifiedBy>
-	  </bf:Instance>
-	</bf:hasInstance>
+	<bf:title>
+	  <bf:VariantTitle>
+	    <bf:mainTitle>Work of Charles and Ray Eames (Library of Congress)</bf:mainTitle>
+	  </bf:VariantTitle>
+	</bf:title>
       </bf:Work>
     </bf:partOf>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance>
-      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/14437118">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Eames Collection (Library of Congress)</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common">1885-1988, bulk 1940-1978</bflc:publicationStatement>
-      </bf:Instance>
-    </bf:hasInstance>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/14437118"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T19:21:43.465789-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-16T10:52:22.851432-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -568,11 +555,102 @@
 	    <rdfs:label>Graphic materials</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/guide</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
+  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/14437118-02">
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/SecondaryInstance"/>
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+	<rdfs:label>single unit</rdfs:label>
+      </bf:Issuance>
+    </bf:issuance>
+    <bf:media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+	<rdfs:label>unmediated</rdfs:label>
+      </bf:Media>
+    </bf:media>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2017027231">
+	<rdfs:label xml:lang="en">Drawings</rdfs:label>
+	<bflc:marcKey>155  $aDrawings</bflc:marcKey>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nb">
+	<rdfs:label>sheet</rdfs:label>
+      </bf:Carrier>
+    </bf:carrier>
+    <bf:colorContent>
+      <bf:ColorContent rdf:about="http://id.loc.gov/vocabulary/mcolor/blw">
+	<rdfs:label>black and white</rdfs:label>
+      </bf:ColorContent>
+    </bf:colorContent>
+    <bf:baseMaterial>
+      <bf:BaseMaterial rdf:about="http://id.loc.gov/vocabulary/mmaterial/pap">
+	<rdfs:label>paper</rdfs:label>
+      </bf:BaseMaterial>
+    </bf:baseMaterial>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>[Drawing]</bf:mainTitle>
+      </bf:Title>
+    </bf:title>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/14437118"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>14437118-02</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bf:generationProcess>
+	  <bf:GenerationProcess>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-16T10:52:22.851432-04:00</bf:generationDate>
+	  </bf:GenerationProcess>
+	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+	    <rdfs:label>full</rdfs:label>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
+	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:changeDate>
+	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
+	<bf:assigner>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:assigner>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
+	    <rdfs:label>Graphic materials</rdfs:label>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Instance>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/14437118">
     <bf:heldBy>
       <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
@@ -607,15 +685,15 @@
 	    <bf:mainTitle>Eames Collection (Library of Congress)</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bflc:publicationStatement xmlns:exsl="http://exslt.org/common">1885-1988, bulk 1940-1978</bflc:publicationStatement>
+	<bflc:publicationStatement>1885-1988, bulk 1940-1978</bflc:publicationStatement>
       </bf:Instance>
     </bf:itemOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.4.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-05T19:21:43.465789-05:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-16T10:52:22.851432-04:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
@@ -660,8 +738,6 @@
 	    <rdfs:label>Graphic materials</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/guide</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Item>

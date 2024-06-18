@@ -2,17 +2,49 @@
   <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/19537131#Work">
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-19T13:50:28.562609-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-03-03</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>BTCTA</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-03-06T13:55:13</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <bf:code>DLC</bf:code>
+	  </bf:Agent>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T08:59:50.968467-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -33,21 +65,9 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-03-06T13:55:13</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-03-03</bf:creationDate>
-	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>BTCTA</bf:code>
-	  </bf:Agent>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <bf:code>DLC</bf:code>
-	  </bf:Agent>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
 	    <bf:code>rda</bf:code>
@@ -111,6 +131,14 @@
 	</bf:source>
 	<bf:edition>full</bf:edition>
       </bf:ClassificationDdc>
+    </bf:classification>
+    <bf:classification>
+      <bf:Classification>
+	<rdfs:label>-</rdfs:label>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/classSchemes/sudocs"/>
+	</bf:source>
+      </bf:Classification>
     </bf:classification>
     <bf:contribution>
       <bf:Contribution>
@@ -230,16 +258,7 @@
 	<madsrdf:authoritativeLabel>Hamilton, Alexander, 1757-1804</madsrdf:authoritativeLabel>
 	<bflc:marcKey>60017$aHamilton, Alexander,$d1757-1804.$2fast$0(OCoLC)fst00031768</bflc:marcKey>
 	<rdfs:label>Hamilton, Alexander, 1757-1804</rdfs:label>
-	<bf:identifiedBy>
-	  <bf:Identifier>
-	    <rdf:value>fst00031768</rdf:value>
-	    <bf:source>
-	      <bf:Source>
-		<bf:code>OCoLC</bf:code>
-	      </bf:Source>
-	    </bf:source>
-	  </bf:Identifier>
-	</bf:identifiedBy>
+	<madsrdf:isIdentifiedByAuthority rdf:resource="http://id.worldcat.org/fast/00031768"/>
 	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/fast"/>
       </bf:Agent>
     </bf:subject>
@@ -321,11 +340,12 @@
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <bf:Place rdf:about="http://id.worldcat.org/fast/01204155">
+      <bf:Place rdf:about="http://id.loc.gov/resources/REPLACE/19537131#Place651-51">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Geographic"/>
 	<rdfs:label>United States</rdfs:label>
 	<madsrdf:authoritativeLabel>United States</madsrdf:authoritativeLabel>
 	<bf:source rdf:resource="http://id.loc.gov/vocabulary/subjectSchemes/fast"/>
+	<madsrdf:isIdentifiedByAuthority rdf:resource="http://id.worldcat.org/fast/01204155"/>
       </bf:Place>
     </bf:subject>
     <bf:subject>
@@ -761,14 +781,6 @@
 	</bf:assigner>
       </bf:Local>
     </bf:identifiedBy>
-    <bf:classification>
-      <bf:Classification>
-	<rdfs:label>-</rdfs:label>
-	<bf:source>
-	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/classSchemes/sudocs"/>
-	</bf:source>
-      </bf:Classification>
-    </bf:classification>
     <bf:responsibilityStatement>[book, music and lyrics] by Lin-Manuel Miranda</bf:responsibilityStatement>
     <bf:title>
       <bf:Title>

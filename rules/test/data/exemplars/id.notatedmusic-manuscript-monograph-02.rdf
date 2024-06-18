@@ -2,7 +2,6 @@
   <!--[{"level": "WARNING", "message": "Possible provision activity anomaly: Missing aspects for a proper 008 date."},
 {"level": "WARNING", "message": "No LCCN"}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/20525980">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Manuscript" xmlns:streams="info:lc/streams#"/>
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
@@ -16,31 +15,15 @@
 	    <rdfs:label xml:lang="en">United States</rdfs:label>
 	  </bf:Place>
 	</bf:place>
+	<bflc:simplePlace>s.l.</bflc:simplePlace>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label>volume</rdfs:label>
-      </bf:Carrier>
-    </bf:carrier>
-    <rdfs:label>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p.</rdfs:label>
+    <bflc:publicationStatement>s.l.</bflc:publicationStatement>
     <bf:title>
       <bf:Title>
-	<rdfs:label>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p.</rdfs:label>
-	<bf:mainTitle>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p</bf:mainTitle>
+	<bf:mainTitle>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p.</bf:mainTitle>
       </bf:Title>
     </bf:title>
-    <bf:provisionActivity>
-      <bf:ProvisionActivity>
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
-	<bf:place>
-	  <bf:Place>
-	    <rdfs:label>s.l.</rdfs:label>
-	  </bf:Place>
-	</bf:place>
-      </bf:ProvisionActivity>
-    </bf:provisionActivity>
-    <bf:provisionActivityStatement>s.l.</bf:provisionActivityStatement>
     <bf:extent>
       <bf:Extent>
 	<rdfs:label>pages</rdfs:label>
@@ -48,18 +31,18 @@
     </bf:extent>
     <bf:dimensions>cm.</bf:dimensions>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20525980"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-09T09:39:12-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-17T19:02:27.723288-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
@@ -93,9 +76,9 @@
 	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
@@ -108,56 +91,43 @@
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<bf:status>
-	  <bf:Status>
-	    <rdf:type rdf:resource="https://id.loc.gov/vocabulary/mstatus/supp"/>
-	    <rdfs:label>opac suppressed</rdfs:label>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/s">
+	    <rdfs:label>suppressed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a NDMSO-BF $d 20210408 $e opacsuppress</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/20525980"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/20525980">
     <bflc:aap>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p</bflc:aap>
     <bflc:aap-normalized>georgegershwinthemesfrom"anamericaninparis"holographmusicmanuscript1p</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic" xmlns:streams="info:lc/streams#"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Manuscript"/>
     <bf:content>
       <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/ntm">
 	<rdfs:label>notated music</rdfs:label>
       </bf:Content>
     </bf:content>
-    <rdfs:label>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p.</rdfs:label>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:title>
       <bf:Title>
-	<rdfs:label>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p.</rdfs:label>
 	<bf:mainTitle>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p.</bf:mainTitle>
       </bf:Title>
     </bf:title>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bf:hasInstance>
-      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/20525980">
-	<rdfs:label>George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p.</rdfs:label>
-	<bf:title>
-	  <bf:Title>
-	    <rdfs:label xmlns:streams="info:lc/streams#">George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p.</rdfs:label>
-	    <bf:mainTitle xmlns:streams="info:lc/streams#">George Gershwin Themes from "An American in Paris," holograph music manuscript. 1. p</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:provisionActivityStatement xmlns:streams="info:lc/streams#">s.l.</bf:provisionActivityStatement>
-      </bf:Instance>
-    </bf:hasInstance>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/20525980"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
 	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0-SNAPSHOT</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-09T09:39:12-04:00</bf:generationDate>
+	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
+	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-17T19:02:27.723288-05:00</bf:generationDate>
 	  </bf:GenerationProcess>
 	</bf:generationProcess>
 	<bf:status>
-	  <bf:Status>
-	    <rdfs:label>corrected or revised</rdfs:label>
-	    <bf:code>c</bf:code>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
 	<bflc:encodingLevel>
@@ -191,9 +161,9 @@
 	  </bf:Organization>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
@@ -206,11 +176,11 @@
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<bf:status>
-	  <bf:Status>
-	    <rdf:type rdf:resource="https://id.loc.gov/vocabulary/mstatus/supp"/>
-	    <rdfs:label>opac suppressed</rdfs:label>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/s">
+	    <rdfs:label>suppressed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a NDMSO-BF $d 20210408 $e opacsuppress</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>

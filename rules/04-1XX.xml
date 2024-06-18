@@ -152,55 +152,6 @@
           </switch>
         </case>
       </switch>
-      <sf code="0">
-        <switch>
-          <case test="$agentURI != '' and contains($agentURI, '/authorities/')">
-            <transform><xsl:value-of select="$agentURI"/></transform>
-          </case>
-          <case test="@rdf:about[
-            not(contains(.,'example.org')) and 
-            not(contains(.,'REPLACE')) and 
-            not(contains(., '/agents/')) and
-            not(contains(., '/gnd/'))
-            ]">
-            <select xpath="@rdf:about[
-              not(contains(.,'example.org')) and 
-              not(contains(.,'REPLACE')) and 
-              not(contains(., '/agents/')) and
-              not(contains(., '/gnd/'))
-              ]"/>
-          </case>
-        </switch>
-      </sf>
-      <sf code="0">
-        <select xpath="bf:identifiedBy/bf:Identifier">
-          <transform>
-            <xsl:variable name="vIdType">
-              <xsl:call-template name="tChopPunct">
-                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-              </xsl:call-template>
-            </xsl:variable>
-            <xsl:choose>
-              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-            </xsl:choose>
-          </transform>
-        </select>
-      </sf>
-      <sf code="1">
-        <switch>
-          <case test="$agentURI != '' and (contains($agentURI, '/agents/') or contains($agentURI, '/gnd/'))">
-            <transform><xsl:value-of select="$agentURI"/></transform>
-          </case>
-          <case test="@rdf:about[
-            contains(., '/agents/') or contains(., '/gnd/') 
-            ]">
-            <select xpath="@rdf:about[
-              contains(., '/agents/') or contains(., '/gnd/') 
-              ]" />
-          </case>
-        </switch>
-      </sf>
       <switch>
         <case test="$vMainEntryTag='100' or $vMainEntryTag='110'">
           <sf code="e" chopPunct="true">
@@ -281,11 +232,70 @@
           </sf>
         </case>
       </switch>
+      <sf code="0">
+        <switch>
+          <case test="$agentURI != '' and contains($agentURI, '/authorities/')">
+            <transform><xsl:value-of select="$agentURI"/></transform>
+          </case>
+          <case test="$agentURI != '' and contains($agentURI, 'id.loc.gov/rwo/agents/')">
+            <transform><xsl:value-of select="concat(substring-before($agentURI,'rwo/agents'), 'authorities/names/', substring-after($agentURI,'rwo/agents/'))"/></transform>
+          </case>
+          <case test="@rdf:about[
+            not(contains(.,'example.org')) and 
+            not(contains(.,'REPLACE')) and 
+            not(contains(., '/agents/')) and
+            not(contains(., '/isni/')) and
+            not(contains(., '/gnd/'))
+            ]">
+            <select xpath="@rdf:about[
+              not(contains(.,'example.org')) and 
+              not(contains(.,'REPLACE')) and 
+              not(contains(., '/agents/')) and
+              not(contains(., '/isni/')) and
+              not(contains(., '/gnd/'))
+              ]"/>
+          </case>
+        </switch>
+      </sf>
+      <sf code="0">
+        <select xpath="bf:identifiedBy/bf:Identifier">
+          <transform>
+            <xsl:variable name="vIdType">
+              <xsl:call-template name="tChopPunct">
+                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+            </xsl:choose>
+          </transform>
+        </select>
+      </sf>
+      <sf code="1">
+        <switch>
+          <case test="$agentURI != '' and (contains($agentURI, '/agents/') or contains($agentURI, '/gnd/'))">
+            <transform><xsl:value-of select="$agentURI"/></transform>
+          </case>
+          <case test="@rdf:about[
+            contains(., '/agents/') or contains(., '/gnd/') or contains(., '/isni/') 
+            ]">
+            <select xpath="@rdf:about[
+              contains(., '/agents/') or contains(., '/gnd/') or contains(., '/isni/')
+              ]" />
+          </case>
+        </switch>
+      </sf>
     </context>
   </df>
 
   <df tag="130" repeatable="false" lang-xpath="bf:mainTitle" lang-prefer="transliterated">
-    <context xpath="bf:Work/bf:expressionOf/bf:*[(local-name() = 'Hub' or local-name() = 'Work') and bf:title and not(../../bf:contribution/*:PrimaryContribution) and not(../../bf:contribution/*/rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]">
+    <context xpath="bf:Work/bf:expressionOf/bf:*[(local-name() = 'Hub' or local-name() = 'Work') and 
+                                                  bf:title and 
+                                                  not(../../bf:contribution/bf:PrimaryContribution) and 
+                                                  not(../../bf:contribution/bflc:PrimaryContribution) and 
+                                                  not(../../bf:contribution/*/rdf:type[contains(@rdf:resource, '/PrimaryContribution')])
+                                            ]">
       <var name="vTitleResourcePreNS">
         <transform>
           <xsl:call-template name="tGetRelResource">

@@ -15,6 +15,14 @@
       <!-- 05 -->
       <position default="n">
         <switch>
+          <case test="$vAdminMetadata/bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/d'] or
+                      $vAdminMetadata/bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/d']">
+            <transform><xsl:value-of select="'d'"/></transform>
+          </case>
+          <case test="$vAdminMetadata/bf:status[@rdf:resource='http://id.loc.gov/vocabulary/mstatus/c'] or
+                      $vAdminMetadata/bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']">
+            <transform><xsl:value-of select="'c'"/></transform>
+          </case>
           <case test="$vAdminMetadata/bf:status[@rdf:resource] or
                       $vAdminMetadata/bf:status/bf:Status[@rdf:about]">
             <select xpath="$vAdminMetadata/bf:status/@rdf:resource |

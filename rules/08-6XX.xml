@@ -46,8 +46,8 @@
               <xsl:value-of select="concat(substring-before(@rdf:about,'rwo/agents'), 'authorities/names/', substring-after(@rdf:about,'rwo/agents/'))"/>
             </transform>
           </case>
-          <case test="contains(@rdf:resource,'id.') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
-          <case test="contains(@rdf:about,'id.') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+          <case test="contains(@rdf:resource,'id.loc') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.loc') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
           <case test="contains(@rdf:resource,'d-nb.info/gnd/') and not(contains(@rdf:resource, '#'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
           <case test="contains(@rdf:about,'d-nb.info/gnd/') and not(contains(@rdf:about, '#'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
           <case test="contains(@rdf:resource,'id.worldcat.org/fast/')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
@@ -156,6 +156,68 @@
         </switch>
       </sf>
       <switch>
+        <case test="($vSubjectTag = '600' or $vSubjectTag = '610' or $vSubjectTag = '611') and 
+                    not($vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains('tvxyz',@code)])">
+          <switch>
+            <case test="$relURI != '' and contains($relURI, 'authorities/names')">
+              <sf code="1">
+                <transform>
+                  <xsl:value-of select="concat(substring-before($relURI,'authorities/names/'), 'rwo/agents/', substring-after($relURI,'authorities/names/'))"/>
+                </transform>
+              </sf>
+            </case>
+            <case test="$relURI != '' and 
+                        ( contains($relURI, 'd-nb.info/gnd/') or contains($relURI, 'isni.org/isni/') )">
+              <sf code="1">
+                <transform><xsl:value-of select="$relURI" /></transform>
+              </sf>
+            </case>
+            <case test="$relURI != '' and 
+              ( contains($relURI, 'id.worldcat.org/fast') )">
+              <sf code="0">
+                <transform><xsl:value-of select="$relURI" /></transform>
+              </sf>
+            </case>
+          </switch>
+        </case>
+        <case test="($vSubjectTag = '600' or $vSubjectTag = '610' or $vSubjectTag = '611') and 
+                    not($vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains('vxyz',@code)]) and 
+                    $vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains('t',@code)]">
+          <switch>
+            <case test="$relURI != '' and contains($relURI, 'resources/hubs')">
+              <sf code="1">
+                <transform><xsl:value-of select="$relURI" /></transform>
+              </sf>
+            </case>
+          </switch>
+        </case>
+        <case test="$vSubjectTag = '630' and contains($relURI, 'resources/hubs')">
+          <sf code="1">
+            <transform><xsl:value-of select="$relURI" /></transform>
+          </sf>
+        </case>
+        <case test="$vSubjectTag = '630' and contains($relURI, 'resources/hubs')">
+          <sf code="1">
+            <transform><xsl:value-of select="$relURI" /></transform>
+          </sf>
+        </case>
+        <case test="($vSubjectTag = '651' or $vSubjectTag = '662') and 
+                    not($vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains('vxyz',@code)])">
+          <switch>
+            <case test="$relURI != '' and contains($relURI, 'authorities/names')">
+              <sf code="1">
+                <transform>
+                  <xsl:value-of select="concat(substring-before($relURI,'authorities/names/'), 'rwo/agents/', substring-after($relURI,'authorities/names/'))"/>
+                </transform>
+              </sf>
+            </case>
+            <case test="$relURI != ''">
+              <sf code="1">
+                <transform><xsl:value-of select="$relURI" /></transform>
+              </sf>
+            </case>
+          </switch>
+        </case>
         <case test="$relURI != ''">
           <sf code="0">
             <transform><xsl:value-of select="$relURI" /></transform>
@@ -173,7 +235,8 @@
                       not(*/@rdf:about) or 
                       contains(*/@rdf:about, 'example') or 
                       contains(*/@rdf:about, 'REPLACE') or 
-                      ( contains(*/@rdf:about, 'd-nb.info/') and contains(*/@rdf:about, '#') )
+                      ( contains(*/@rdf:about, 'd-nb.info/') and contains(*/@rdf:about, '#') ) or 
+                      contains(*/@rdf:about, 'homosaurus.org/v')
                     ) and
                     not(*/bflc:marcKey) and 
                     (*/rdfs:label or */madsrdf:authoritativeLabel or */madsrdf:componentList)

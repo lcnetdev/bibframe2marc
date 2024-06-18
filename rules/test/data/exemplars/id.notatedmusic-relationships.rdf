@@ -138,18 +138,8 @@
       </bf:MusicFormat>
     </bf:musicFormat>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
-    <bf:hasItem>
-      <bf:Item rdf:about="http://id.loc.gov/resources/items/21851594-050-19">
-	<bf:shelfMark>
-	  <bf:ShelfMarkLcc>
-	    <rdfs:label>M</rdfs:label>
-	    <bf:assigner>
-	      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc"/>
-	    </bf:assigner>
-	  </bf:ShelfMarkLcc>
-	</bf:shelfMark>
-      </bf:Item>
-    </bf:hasItem>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/21851594"/>
+    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/21851594-050-19"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
 	<bf:generationProcess>
@@ -200,9 +190,9 @@
 	  </bf:Agent>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
@@ -218,7 +208,6 @@
 	<bflc:procInfo>update instance</bflc:procInfo>
       </bf:AdminMetadata>
     </bf:adminMetadata>
-    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/21851594"/>
   </bf:Instance>
   <bf:Work rdf:about="http://id.loc.gov/resources/works/21851594">
     <bflc:aap>Handel, George Frideric, 1685-1759 Sosarme, re di Media</bflc:aap>
@@ -523,9 +512,9 @@
       </bf:Language>
     </bf:language>
     <bf:notation>
-      <bf:Notation rdf:about="http://id.loc.gov/vocabulary/mmusnotation/staff">
+      <bf:MusicNotation rdf:about="http://id.loc.gov/vocabulary/mmusnotation/staff">
 	<rdfs:label>staff notation</rdfs:label>
-      </bf:Notation>
+      </bf:MusicNotation>
     </bf:notation>
     <bf:supplementaryContent>
       <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/techmusic">
@@ -549,15 +538,16 @@
 	<bf:contribution>
 	  <bf:Contribution>
 	    <bf:agent>
-	      <bf:Agent>
+	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n82093739">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Rossi, Giacomo, active 1710-1731</rdfs:label>
+		<bflc:marcKey>1001 $aRossi, Giacomo,$dactive 1710-1731</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
-	      <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/relators/ctb" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 		<rdfs:label>Contributor</rdfs:label>
-	      </madsrdf:Authority>
+	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
 	</bf:contribution>
@@ -565,20 +555,13 @@
       </bf:Hub>
     </bf:relatedTo>
     <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/4cd256d8-2d32-7a3b-34ca-43eefab4b6ba">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/afda6b32-851b-2ffb-3d53-a91df0362531">
 	<rdfs:label>Salvi, Antonio, 1664-1724 Dionisio, rè di Portogallo</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Salvi, Antonio, 1664-1724</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n82136854"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -586,23 +569,17 @@
 	    <bf:mainTitle>Dionisio, rè di Portogallo</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
+	<bflc:marcKey>1001 $aSalvi, Antonio,$d1664-1724.$tDionisio, rè di Portogallo</bflc:marcKey>
       </bf:Hub>
     </bf:relatedTo>
     <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/273105fb-bc86-4fbd-dc46-8125d0a1f20d">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/e3191810-ffa2-1037-1e92-cdc4eecef223">
 	<rdfs:label>Handel, George Frideric, 1685-1759 Sosarme. Vocal score</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Handel, George Frideric, 1685-1759</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79129204"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -614,20 +591,13 @@
       </bf:Hub>
     </bf:relatedTo>
     <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/eee9cd03-0faa-6868-95cc-e2cb4d369848">
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/a24ddc26-7010-1626-32f2-42c300a8015c">
 	<rdfs:label>Handel, George Frideric, 1685-1759 Sosarme. Vocal score. German</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Handel, George Frideric, 1685-1759</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79129204"/>
+	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -658,31 +628,7 @@
 	    <rdfs:label>Container of</rdfs:label>
 	  </bflc:Relation>
 	</bflc:relation>
-	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/273105fb-bc86-4fbd-dc46-8125d0a1f20d">
-	    <rdfs:label>Handel, George Frideric, 1685-1759 Sosarme. Vocal score</rdfs:label>
-	    <bf:contribution>
-	      <bf:Contribution>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-		<bf:agent>
-		  <bf:Agent>
-		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		    <rdfs:label>Handel, George Frideric, 1685-1759</rdfs:label>
-		  </bf:Agent>
-		</bf:agent>
-		<bf:role>
-		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-		</bf:role>
-	      </bf:Contribution>
-	    </bf:contribution>
-	    <bf:title>
-	      <bf:Title>
-		<bf:mainTitle>Sosarme. Vocal score.</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	    <bflc:marcKey>1001 $aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.</bflc:marcKey>
-	  </bf:Hub>
-	</bf:relatedTo>
+	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/hubs/273105fb-bc86-4fbd-dc46-8125d0a1f20d"/>
       </bflc:Relationship>
     </bflc:relationship>
     <bflc:relationship>
@@ -692,31 +638,7 @@
 	    <rdfs:label>Container of</rdfs:label>
 	  </bflc:Relation>
 	</bflc:relation>
-	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/eee9cd03-0faa-6868-95cc-e2cb4d369848">
-	    <rdfs:label>Handel, George Frideric, 1685-1759 Sosarme. Vocal score. German</rdfs:label>
-	    <bf:contribution>
-	      <bf:Contribution>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-		<bf:agent>
-		  <bf:Agent>
-		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		    <rdfs:label>Handel, George Frideric, 1685-1759</rdfs:label>
-		  </bf:Agent>
-		</bf:agent>
-		<bf:role>
-		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-		</bf:role>
-	      </bf:Contribution>
-	    </bf:contribution>
-	    <bf:title>
-	      <bf:Title>
-		<bf:mainTitle>Sosarme. Vocal score. German.</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	    <bflc:marcKey>1001 $aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.$lGerman.</bflc:marcKey>
-	  </bf:Hub>
-	</bf:relatedTo>
+	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/hubs/eee9cd03-0faa-6868-95cc-e2cb4d369848"/>
       </bflc:Relationship>
     </bflc:relationship>
     <bflc:relationship>
@@ -726,30 +648,7 @@
 	    <rdfs:label>Opera adaptation of</rdfs:label>
 	  </bflc:Relation>
 	</bflc:relation>
-	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/4cd256d8-2d32-7a3b-34ca-43eefab4b6ba">
-	    <rdfs:label>Salvi, Antonio, 1664-1724 Dionisio, rè di Portogallo</rdfs:label>
-	    <bf:contribution>
-	      <bf:Contribution>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-		<bf:agent>
-		  <bf:Agent>
-		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		    <rdfs:label>Salvi, Antonio, 1664-1724</rdfs:label>
-		  </bf:Agent>
-		</bf:agent>
-		<bf:role>
-		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-		</bf:role>
-	      </bf:Contribution>
-	    </bf:contribution>
-	    <bf:title>
-	      <bf:Title>
-		<bf:mainTitle>Dionisio, rè di Portogallo</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	  </bf:Hub>
-	</bf:relatedTo>
+	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/hubs/4cd256d8-2d32-7a3b-34ca-43eefab4b6ba"/>
       </bflc:Relationship>
     </bflc:relationship>
     <bflc:relationship>
@@ -759,30 +658,7 @@
 	    <rdfs:label>Libretto</rdfs:label>
 	  </bflc:Relation>
 	</bflc:relation>
-	<bf:relatedTo>
-	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/025107cb-fdeb-41ed-eadc-45e840da4c76">
-	    <rdfs:label>Rossi, Giacomo, active 1710-1731 Sosarme, re di Media</rdfs:label>
-	    <bf:contribution>
-	      <bf:Contribution>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/PrimaryContribution"/>
-		<bf:agent>
-		  <bf:Agent>
-		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		    <rdfs:label>Rossi, Giacomo, active 1710-1731</rdfs:label>
-		  </bf:Agent>
-		</bf:agent>
-		<bf:role>
-		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-		</bf:role>
-	      </bf:Contribution>
-	    </bf:contribution>
-	    <bf:title>
-	      <bf:Title>
-		<bf:mainTitle>Sosarme, re di Media</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	  </bf:Hub>
-	</bf:relatedTo>
+	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/hubs/025107cb-fdeb-41ed-eadc-45e840da4c76"/>
       </bflc:Relationship>
     </bflc:relationship>
     <bf:adminMetadata>
@@ -835,9 +711,9 @@
 	  </bf:Agent>
 	</bf:assigner>
 	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
+	  </bf:Language>
 	</bf:descriptionLanguage>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
@@ -854,100 +730,4 @@
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
-  <bf:Item rdf:about="http://id.loc.gov/resources/items/21851594-050-19">
-    <bf:heldBy>
-      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	<rdfs:label>United States, Library of Congress</rdfs:label>
-      </madsrdf:CorporateName>
-    </bf:heldBy>
-    <bf:shelfMark>
-      <bf:ShelfMarkLcc>
-	<rdfs:label>M</rdfs:label>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:ShelfMarkLcc>
-    </bf:shelfMark>
-    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/items"/>
-    <bf:itemOf>
-      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/21851594">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Sosarme, re di Media</bf:mainTitle>
-	    <bf:subtitle>opera in tre atti : HWV 30 ; Fernando, re di Castiglia : (fragment)</bf:subtitle>
-	  </bf:Title>
-	</bf:title>
-      </bf:Instance>
-    </bf:itemOf>
-    <bf:adminMetadata>
-      <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-04-19T11:17:06.274821-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
-	    <rdfs:label>changed</rdfs:label>
-	  </bf:Status>
-	</bf:status>
-	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
-	    <rdfs:label>full</rdfs:label>
-	  </bflc:EncodingLevel>
-	</bflc:encodingLevel>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
-	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdfs:label>Resource description and access</rdfs:label>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:identifiedBy>
-	  <bf:Local>
-	    <rdf:value>21851594</rdf:value>
-	    <bf:assigner>
-	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		<rdfs:label>United States, Library of Congress</rdfs:label>
-	      </bf:Organization>
-	    </bf:assigner>
-	  </bf:Local>
-	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-04-19T11:13:35</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-12-22</bf:creationDate>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b ibc $c copycat $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
-	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a vk39 2022-04-19 z-client $i vk39 2022-04-19</lclocal:d955>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $b fd11 2020-12-22 to MBAS</lclocal:d955>
-	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>OHX</bf:code>
-	  </bf:Agent>
-	</bf:assigner>
-	<bf:descriptionLanguage>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
-	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<bf:descriptionAuthentication>
-	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
-	    <rdfs:label>LC Copy Cataloging</rdfs:label>
-	  </bf:DescriptionAuthentication>
-	</bf:descriptionAuthentication>
-	<bflc:catalogerId>chold</bflc:catalogerId>
-	<bflc:procInfo>update instance</bflc:procInfo>
-      </bf:AdminMetadata>
-    </bf:adminMetadata>
-  </bf:Item>
 </rdf:RDF>
