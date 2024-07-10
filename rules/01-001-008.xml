@@ -711,7 +711,7 @@
                     </xsl:choose>
                   </xsl:when>
                   <xsl:when test="string-length($date1) = 4">
-                    <xsl:value-of select="translate(concat('s', $date1, '||||'), 'X', 'u')" />
+                    <xsl:value-of select="translate(concat('s', $date1, '    '), 'X', 'u')" />
                   </xsl:when>
                 </xsl:choose>
               </transform>
