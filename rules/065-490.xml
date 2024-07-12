@@ -10,9 +10,12 @@
 
   <!-- Series added entries -->
   <select xpath="
-    bf:Work/bflc:relationship/bflc:Relationship/bf:relatedTo/bf:Series[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
-    bf:Work/bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
-        //bf:Item/bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']]">
+        bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
+        //bf:Item/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
+        
+        bf:Work/bf:hasSeries/bf:Series[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
+        bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
+        //bf:Item/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']]">
     <var name="vScriptSubtag">
       <transform>
         <xsl:call-template name="tScriptCode">
@@ -25,6 +28,8 @@
             <df tag="490">
               <ind1 default="0">
                 <switch>
+                  <case test="../../../../bf:relation/bf:Relation[bf:relationship/bf:Relationship/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:associatedResource/bf:Hub[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
+                  <case test="../../../../bf:relation/bf:Relation[bf:relationship/bf:Relationship/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:associatedResource/bf:Series[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
                   <case test="../../../../bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:Hub[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
                   <case test="../../../../bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:Series[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
                 </switch>
