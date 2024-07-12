@@ -12,11 +12,14 @@
   <if test="$xslProcessor != 'libxslt'">
     <df tag="$vSeriesLookupTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
       <context xpath="
-      bf:Work/bf:hasSeries[contains(@rdf:resource, 'hubs')] |
-      bf:Work/bf:hasSeries/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)] |
+        bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource[contains(@rdf:resource, 'hubs')] |
+        bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)] |
+
+        bf:Work/bf:hasSeries[contains(@rdf:resource, 'hubs')] |
+        bf:Work/bf:hasSeries/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)] |
       
-      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
-      bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)]
+        bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
+        bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)]
       ">
       
       <var name="relURI">
@@ -102,6 +105,8 @@
   <if test="$xslProcessor = 'libxslt'">
     <switch>
       <case test="
+        bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource[contains(@rdf:resource, 'hubs')] |
+        bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)] |
         bf:Work/bf:hasSeries[contains(@rdf:resource, 'hubs')] |
         bf:Work/bf:hasSeries/bf:*[contains(@rdf:about, 'hubs') and not(bflc:marcKey)] |
         bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo[contains(@rdf:resource, 'hubs')] |
@@ -117,6 +122,7 @@
   <!-- When a marcKey is present. -->
   <df tag="$vSeriesMarcKeyTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[bflc:marcKey] |
       bf:Work/bf:hasSeries/bf:*[bflc:marcKey] |
       bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[bflc:marcKey]
       ">
@@ -206,6 +212,8 @@
   </df>
 
   <select xpath="
+    bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[not(contains(@rdf:about, 'hubs')) and not(bflc:marcKey) and bf:title and not(contains(bf:status/@rdf:resource, 'mstatus/t')) and not(contains(bf:status/bf:Status/@rdf:about, '/mstatus/t'))] |
+    //bf:Item/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[not(contains(@rdf:about, 'hubs')) and not(bflc:marcKey) and bf:title and not(contains(bf:status/@rdf:resource, 'mstatus/t')) and not(contains(bf:status/bf:Status/@rdf:about, '/mstatus/t'))] |
     bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[not(contains(@rdf:about, 'hubs')) and not(bflc:marcKey) and bf:title and not(contains(bf:status/@rdf:resource, 'mstatus/t')) and not(contains(bf:status/bf:Status/@rdf:about, '/mstatus/t'))] |
     //bf:Item/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[not(contains(@rdf:about, 'hubs')) and not(bflc:marcKey) and bf:title and not(contains(bf:status/@rdf:resource, 'mstatus/t')) and not(contains(bf:status/bf:Status/@rdf:about, '/mstatus/t'))]">
     <var name="vScriptSubtag">
