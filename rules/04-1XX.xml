@@ -38,6 +38,7 @@
               <case test="$vNameAuth//marc:datafield[@tag='100']">100</case>
               <case test="$vNameAuth//marc:datafield[@tag='110']">110</case>
               <case test="$vNameAuth//marc:datafield[@tag='111']">111</case>
+              <case test="$vNameAuth//marc:datafield[@tag='151']">110</case>
             </switch>
           </case>
           <case test="local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or
@@ -75,6 +76,7 @@
           <case test="$vMainEntryTag='110'">
             <switch>
               <case test="local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">1</case>
+              <case test="$vNameAuth//marc:datafield[@tag='151']">1</case>
             </switch>
           </case>
         </switch>
