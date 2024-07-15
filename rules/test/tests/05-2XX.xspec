@@ -220,7 +220,7 @@
     <x:context href="../data/exemplars/text-monograph-880s-008s.rdf"/>
     <x:expect label="generate 264" test="count(//marc:datafield[@tag='264']) = 1"/>
     <x:expect label="generate 880 from 264 label with xml:lang"
-      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and contains(., '264-')]]/marc:subfield[@code = 'a'] = '上海'"/>
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and contains(., '264-')]]/marc:subfield[@code = 'a'] = '上海 :'"/>
   </x:scenario>
 
   <x:scenario label="MARC 264 - 02">

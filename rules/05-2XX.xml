@@ -696,9 +696,18 @@
           </sf>
           <switch>
             <case test="bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
-              <sf code="a" chopPunct="false">
-                <select xpath="bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]" />
-               </sf>
+              <transform>
+                <xsl:for-each select="bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                  <marc:subfield code='a'>
+                    <xsl:value-of select="." />
+                    <xsl:if test="following-sibling::bflc:simplePlace[not(@xml:lang)]"><xsl:text> ;</xsl:text></xsl:if>
+                    <xsl:if test="position() = last()">
+                      <xsl:if test="../bflc:simpleAgent[not(@xml:lang)]"><xsl:text> :</xsl:text></xsl:if>
+                      <xsl:if test="not(../bflc:simpleAgent[not(@xml:lang)]) and ../bflc:simpleDate[not(@xml:lang)]"><xsl:text> ,</xsl:text></xsl:if>
+                    </xsl:if>
+                  </marc:subfield>
+                </xsl:for-each>
+              </transform>
             </case>
             <case test="bf:place/*[
                       (local-name()='Place' or local-name()='Geographic' or local-name()='Authority' or local-name()='Resource') and
@@ -719,9 +728,22 @@
            </switch>
            <switch>
             <case test="bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+              <!--
               <sf code="b" chopPunct="false">
                 <select xpath="bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
               </sf>
+              -->
+              <transform>
+                <xsl:for-each select="bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                  <marc:subfield code='b'>
+                    <xsl:value-of select="." />
+                    <xsl:if test="following-sibling::bflc:simpleAgent[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                    <xsl:if test="position() = last()">
+                      <xsl:if test="../bflc:simpleDate[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                    </xsl:if>
+                  </marc:subfield>
+                </xsl:for-each>
+              </transform>
             </case>
             <case test="bf:agent/bf:Agent/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
               <sf code="b" chopPunct="false">
@@ -731,9 +753,22 @@
           </switch>
           <switch>
             <case test="bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+              <!--
               <sf code="c" chopPunct="false">
                 <select xpath="bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
               </sf>
+              -->
+              <transform>
+                <xsl:for-each select="bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                  <marc:subfield code='c'>
+                    <xsl:value-of select="." />
+                    <xsl:if test="following-sibling::bflc:simpleDate[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                    <xsl:if test="position() = last()">
+                      <xsl:if test="not(ends-with(., '.'))"><xsl:text>.</xsl:text></xsl:if>
+                    </xsl:if>
+                  </marc:subfield>
+                </xsl:for-each>
+              </transform>
             </case>
             <case test="bf:date[not(@rdf:datatype) and not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
               <sf code="c" chopPunct="false">
@@ -761,9 +796,23 @@
               <sf code="6"><transform><xsl:value-of select="concat('264-',$v880Occurence,'/',$v880Script)"/></transform></sf>
               <switch>
                 <case test="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                  <transform>
+                    <xsl:for-each select="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                      <marc:subfield code='a'>
+                        <xsl:value-of select="." />
+                        <xsl:if test="following-sibling::bflc:simplePlace[@xml:lang]"><xsl:text> ;</xsl:text></xsl:if>
+                        <xsl:if test="position() = last()">
+                          <xsl:if test="../bflc:simpleAgent[@xml:lang]"><xsl:text> :</xsl:text></xsl:if>
+                          <xsl:if test="not(../bflc:simpleAgent[@xml:lang]) and ../bflc:simpleDate[@xml:lang]"><xsl:text> ,</xsl:text></xsl:if>
+                        </xsl:if>
+                      </marc:subfield>
+                    </xsl:for-each>
+                  </transform>
+                  <!--
                   <sf code="a" chopPunct="false">
                     <select xpath="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]" />
                   </sf>
+                  -->
                 </case>
                 <case test="bf:place/*[
                              (local-name()='Place' or local-name()='Geographic' or local-name()='Authority') and
@@ -784,25 +833,51 @@
               </switch>
               <switch>
                 <case test="bflc:simpleAgent[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                  <!--
                   <sf code="b" chopPunct="false">
                     <select xpath="bflc:simpleAgent[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
                   </sf>
+                  -->
+                  <transform>
+                    <xsl:for-each select="bflc:simpleAgent[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                      <marc:subfield code='b'>
+                        <xsl:value-of select="." />
+                        <xsl:if test="following-sibling::bflc:simpleAgent[@xml:lang]"><xsl:text>,</xsl:text></xsl:if>
+                        <xsl:if test="position() = last()">
+                          <xsl:if test="../bflc:simpleDate[@xml:lang]"><xsl:text>,</xsl:text></xsl:if>
+                        </xsl:if>
+                      </marc:subfield>
+                    </xsl:for-each>
+                  </transform>
                 </case>
-                <case test="bf:agent/bf:Agent/rdfs:label[@xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <case test="bf:agent/bf:Agent/rdfs:label[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
                   <sf code="b" chopPunct="false">
-                    <select xpath="bf:agent/bf:Agent/rdfs:label[@xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                    <select xpath="bf:agent/bf:Agent/rdfs:label[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
                   </sf>
                 </case>
               </switch>
               <switch>
                 <case test="bflc:simpleDate[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                  <!--
                   <sf code="c" chopPunct="false">
                     <select xpath="bflc:simpleDate[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
                   </sf>
+                  -->
+                  <transform>
+                    <xsl:for-each select="bflc:simpleDate[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                      <marc:subfield code='c'>
+                        <xsl:value-of select="." />
+                        <xsl:if test="following-sibling::bflc:simpleDate[@xml:lang]"><xsl:text>,</xsl:text></xsl:if>
+                        <xsl:if test="position() = last()">
+                          <xsl:if test="not(ends-with(., '.'))"><xsl:text>.</xsl:text></xsl:if>
+                        </xsl:if>
+                      </marc:subfield>
+                    </xsl:for-each>
+                  </transform>
                 </case>
-                <case test="bf:date[not(@rdf:datatype) and @xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <case test="bf:date[not(@rdf:datatype) and @xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
                   <sf code="c" chopPunct="false">
-                    <select xpath="bf:date[not(@rdf:datatype) and @xml:lang or not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                    <select xpath="bf:date[not(@rdf:datatype) and @xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
                   </sf>
                 </case>
               </switch>
