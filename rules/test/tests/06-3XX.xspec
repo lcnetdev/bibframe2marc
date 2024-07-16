@@ -53,15 +53,20 @@
 
   <x:scenario label="MARC 321">
     <x:context href="../data/3XX/321.xml"/>
-    <x:expect label="generate 321" test="count(//marc:datafield[@tag='321']) = 1"/>
+    <x:expect label="generate 321" test="count(//marc:datafield[@tag='321']) = 2"/>
     <x:expect label="$a from label"
-              test="//marc:datafield[@tag='321']/marc:subfield[@code='a'] = 'weekly'"/>
+              test="//marc:datafield[@tag='321'][1]/marc:subfield[@code='a'] = 'weekly'"/>
     <x:expect label="$b from date"
-              test="//marc:datafield[@tag='321']/marc:subfield[@code='b'] = '1970-1985'"/>
+              test="//marc:datafield[@tag='321'][1]/marc:subfield[@code='b'] = '1970-1985'"/>
     <x:expect label="$2 from source"
-              test="//marc:datafield[@tag='321']/marc:subfield[@code='2'] = 'freq'"/>
+              test="//marc:datafield[@tag='321'][1]/marc:subfield[@code='2'] = 'freq'"/>
     <x:expect label="$0 from URI"
-              test="//marc:datafield[@tag='321']/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/frequencies/dyl'"/>
+              test="//marc:datafield[@tag='321'][1]/marc:subfield[@code='0'] = 'http://id.loc.gov/vocabulary/frequencies/dyl'"/>
+    
+    <x:expect label="$a from label"
+      test="//marc:datafield[@tag='321'][2]/marc:subfield[@code='a'] = 'Weekly (except for one issue in Jan., Feb., Mar., July and Aug.)'"/>
+    <x:expect label="$b from date"
+      test="//marc:datafield[@tag='321'][2]/marc:subfield[@code='b'] = '&lt;Dec. 2009-&gt;'"/>
   </x:scenario>
   
   <x:scenario label="MARC 334">

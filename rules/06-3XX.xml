@@ -50,6 +50,7 @@
     <context xpath="bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:frequency/bf:Frequency[rdfs:label or bf:date]">
       <var name="vFreqTag">
         <switch>
+          <case test="bf:status//@rdf:*[1] = 'http://id.loc.gov/vocabulary/mstatus/former'">321</case>
           <case test="translate(bf:note/bf:Note/rdfs:label,$upper,$lower)='former frequency'">321</case>
           <case test="default">310</case>
         </switch>
