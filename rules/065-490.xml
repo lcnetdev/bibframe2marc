@@ -23,8 +23,20 @@
         </xsl:call-template>
       </transform>
     </var>
+    <var name="v880Script">
+      <switch>
+        <case test="bf:title/bf:Title/bf:mainTitle/@xml:lang and not(contains(translate(bf:title/bf:Title/bf:mainTitle/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
+          <lookup map="df880script" targetField="code">
+            <lookupField name="lang" xpath="translate(substring-after(bf:title/bf:Title/bf:mainTitle/@xml:lang,'-'),$upper,$lower)"/>
+          </lookup>
+        </case>
+      </switch>
+    </var>
+    <var name="v880Occurence">
+      <transform><xsl:value-of select="20+position()"/></transform>
+    </var>
     <switch>
-      <case test="$vScriptSubtag='' or translate($vScriptSubtag,$upper,$lower)=translate($pCatScript,$upper,$lower)">
+      <case test="bf:title/bf:Title/bf:mainTitle[not(@xml:lang)]">
             <df tag="490">
               <ind1 default="0">
                 <switch>
@@ -35,17 +47,22 @@
                 </switch>
               </ind1>
               <ind2 default=" "/>
+              <switch>
+                <case test="$v880Script != ''">
+                  <sf code="6"><transform><xsl:value-of select="concat('880-',$v880Occurence)"/></transform></sf>
+                </case>
+              </switch>
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
               <var name="vMainTitle">
                 <switch>
-                  <case test="bf:title/bf:Title/bf:mainTitle"><select xpath="bf:title/bf:Title/bf:mainTitle"/></case>
+                  <case test="bf:title/bf:Title/bf:mainTitle[not(@xml:lang)]"><select xpath="bf:title/bf:Title/bf:mainTitle[not(@xml:lang)]"/></case>
                 </switch>
               </var>
               <var name="vParallelTitle">
                 <switch>
-                  <case test="bf:title/bf:ParallelTitle/bf:mainTitle"><select xpath="bf:title/bf:ParallelTitle/bf:mainTitle"/></case>
+                  <case test="bf:title/bf:ParallelTitle/bf:mainTitle[not(@xml:lang)]"><select xpath="bf:title/bf:ParallelTitle/bf:mainTitle[not(@xml:lang)]"/></case>
                 </switch>
               </var>
               
@@ -63,9 +80,14 @@
                 </switch>
                 <switch>
                   <case test="$vParallelTitle != ''">
-                    <sf code="a" chopPunct="false" repeatable="true">
-                        <transform><xsl:value-of select="$vParallelTitle"/></transform>
-                    </sf>
+                    <transform>
+                      <xsl:for-each select="bf:title/bf:ParallelTitle/bf:mainTitle[not(@xml:lang)]">
+                        <marc:subfield code='a'>
+                          <xsl:value-of select="." />
+                          <xsl:if test="position() != last()"><xsl:text> =</xsl:text></xsl:if>
+                        </marc:subfield>
+                      </xsl:for-each>
+                    </transform>
                   </case>
                 </switch>
 
@@ -82,6 +104,73 @@
                 <select xpath="../../bf:seriesEnumeration"/>
               </sf>
             </df>
+      </case>
+    </switch>
+    <switch>
+      <case test="$v880Script!=''">
+        <df tag="880">
+          <ind1 default="0">
+            <switch>
+              <case test="../../../../bf:relation/bf:Relation[bf:relationship/bf:Relationship/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:associatedResource/bf:Hub[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
+              <case test="../../../../bf:relation/bf:Relation[bf:relationship/bf:Relationship/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:associatedResource/bf:Series[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
+              <case test="../../../../bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:Hub[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
+              <case test="../../../../bflc:relationship/bflc:Relationship[bflc:relation/bflc:Relation/@rdf:about='http://id.loc.gov/ontologies/bibframe/hasSeries']/bf:relatedTo/bf:Series[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled')]">1</case>
+            </switch>
+          </ind1>
+          <ind2 default=" "/>
+          <sf code="6"><transform><xsl:value-of select="concat('490-',$v880Occurence,'/',$v880Script)"/></transform></sf>
+          <sf code="3" chopPunct="true" repeatable="false">
+            <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+          </sf>
+          <var name="vMainTitle">
+            <switch>
+              <case test="bf:title/bf:Title/bf:mainTitle[@xml:lang]"><select xpath="bf:title/bf:Title/bf:mainTitle[@xml:lang]"/></case>
+            </switch>
+          </var>
+          <var name="vParallelTitle">
+            <switch>
+              <case test="bf:title/bf:ParallelTitle/bf:mainTitle[@xml:lang]"><select xpath="bf:title/bf:ParallelTitle/bf:mainTitle[@xml:lang]"/></case>
+            </switch>
+          </var>
+          
+          <switch>
+            <case test="$vMainTitle != '' and $vParallelTitle != ''">
+              <sf code="a" chopPunct="false" repeatable="true">
+                <transform><xsl:value-of select="concat($vMainTitle, ' =')"/></transform>
+              </sf>
+            </case>
+            <case test="$vMainTitle != ''">
+              <sf code="a" chopPunct="false" repeatable="true">
+                <transform><xsl:value-of select="$vMainTitle"/></transform>
+              </sf>
+            </case>
+          </switch>
+          <switch>
+            <case test="$vParallelTitle != ''">
+              <transform>
+                <xsl:for-each select="bf:title/bf:ParallelTitle/bf:mainTitle[@xml:lang]">
+                  <marc:subfield code='a'>
+                    <xsl:value-of select="." />
+                    <xsl:if test="position() != last()"><xsl:text> =</xsl:text></xsl:if>
+                  </marc:subfield>
+                </xsl:for-each>
+              </transform>
+            </case>
+          </switch>
+          
+          <sf code="x" repeatable="true">
+            <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
+          </sf>
+          <sf code="y" repeatable="true">
+            <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/incorrect' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/incorrect')]/rdf:value"/>
+          </sf>
+          <sf code="z" repeatable="true">
+            <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/caninv' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/caninv')]/rdf:value"/>
+          </sf>
+          <sf code="v" repeatable="true">
+            <select xpath="../../bf:seriesEnumeration"/>
+          </sf>
+        </df>
       </case>
     </switch>
   </select>
