@@ -1351,8 +1351,47 @@
       <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
+      <sf code="i" chopPunct="true">
+        <select xpath="ancestor::bf:Relation/bf:relationship[not(contains(@rdf:resource, 'ontologies/bibframe')) and not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))]/bf:Relationship[rdfs:label or madsrdf:authoritativeLabel]">
+          <switch>
+            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+            <case test="default"><select xpath="rdfs:label"/></case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="4">
+        <select xpath="ancestor::bf:Relation/bf:relationship[not(contains(@rdf:resource, 'ontologies/bibframe')) and not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))]/bf:Relationship[madsrdf:code or bf:code]">
+          <switch>
+            <case test="madsrdf:code">
+              <select xpath="madsrdf:code"/>
+            </case>
+            <case test="default"><select xpath="bf:code"/></case>
+          </switch>
+        </select>
+      </sf>
+      <sf code="4">
+        <select xpath="ancestor::bf:Relation/bf:relationship[not(contains(@rdf:resource, 'ontologies/bibframe')) and not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))]//@rdf:*[1]"/>
+      </sf>
       <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]/bf:agent/*/rdfs:label"/>
+      </sf>
+      <switch>
+        <case test="bf:title/bf:Title/bf:mainTitle != bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle">
+          <sf code="s" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
+        </case>
+      </switch>
+      <sf code="t" chopPunct="true" repeatable="false">
+        <switch>
+          <case test="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle">
+            <select xpath="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle"/>            
+          </case>
+          <case test="bf:title/bf:Title/bf:mainTitle">
+            <select xpath="bf:title/bf:Title/bf:mainTitle"/>
+          </case>
+        </switch>
+      </sf>
+      <sf code="g" chopPunct="true">
+        <select xpath="bf:hasInstance/bf:Instance/bf:part"/>
       </sf>
       <sf code="b" chopPunct="true" repeatable="false">
         <select xpath="bf:hasInstance/bf:Instance/bf:editionStatement"/>
@@ -1361,7 +1400,7 @@
         <select xpath="bf:title/bf:Title/bf:qualifier"/>
       </sf>
       <sf code="d" chopPunct="true" repeatable="false">
-        <select xpath="bf:hasInstance/bf:Instance/bf:provisionActivityStatement"/>
+        <select xpath="bf:hasInstance/bf:Instance/bf:publicationStatement|bf:hasInstance/bf:Instance/bflc:publicationStatement|bf:hasInstance/bf:Instance/bf:provisionActivityStatement"/>
       </sf>
       <switch>
         <case test="$vLanguageUri != '' or bf:language/*[local-name()='code']">
@@ -1405,45 +1444,6 @@
           </sf>
         </case>
       </switch>
-      <sf code="i" chopPunct="true">
-        <select xpath="ancestor::bf:Relation/bf:relationship[not(contains(@rdf:resource, 'ontologies/bibframe')) and not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))]/bf:Relationship[rdfs:label or madsrdf:authoritativeLabel]">
-          <switch>
-            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-            <case test="default"><select xpath="rdfs:label"/></case>
-          </switch>
-        </select>
-      </sf>
-      <sf code="4">
-        <select xpath="ancestor::bf:Relation/bf:relationship[not(contains(@rdf:resource, 'ontologies/bibframe')) and not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))]/bf:Relationship[madsrdf:code or bf:code]">
-          <switch>
-            <case test="madsrdf:code">
-              <select xpath="madsrdf:code"/>
-            </case>
-            <case test="default"><select xpath="bf:code"/></case>
-          </switch>
-        </select>
-      </sf>
-      <sf code="4">
-        <select xpath="ancestor::bf:Relation/bf:relationship[not(contains(@rdf:resource, 'ontologies/bibframe')) and not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))]//@rdf:*[1]"/>
-      </sf>
-      <switch>
-        <case test="bf:title/bf:Title/bf:mainTitle != bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle">
-          <sf code="s" chopPunct="true" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle"/></sf>
-        </case>
-      </switch>
-      <sf code="t" chopPunct="true" repeatable="false">
-        <switch>
-          <case test="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle">
-            <select xpath="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle"/>            
-          </case>
-          <case test="bf:title/bf:Title/bf:mainTitle">
-            <select xpath="bf:title/bf:Title/bf:mainTitle"/>
-          </case>
-        </switch>
-      </sf>
-      <sf code="g" chopPunct="true">
-        <select xpath="bf:hasInstance/bf:Instance/bf:part"/>
-      </sf>
       <sf code="h" chopPunct="true" repeatable="false">
         <select xpath="bf:hasInstance/bf:Instance/bf:extent/bf:Extent/rdfs:label"/>
       </sf>
