@@ -565,7 +565,11 @@
   <!-- rules for 521 coded with 385 -->
 
   <df tag="522" lang-xpath="rdfs:label">
-    <context xpath="bf:Work/bf:geographicCoverage/*[not(bf:source/@rdf:resource='http://id.loc.gov/authorities/classification/G' or bf:source/bf:Source/@rdf:about='http://id.loc.gov/authorities/classification/G') and rdfs:label]">
+    <context xpath="bf:Work/bf:geographicCoverage/*[
+              not(
+                bf:source/@rdf:resource='http://id.loc.gov/authorities/classification/G' or 
+                bf:source/bf:Source/@rdf:about='http://id.loc.gov/authorities/classification/G'
+              ) and not(@rdf:about) and rdfs:label]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false">
