@@ -203,10 +203,11 @@
       
       <switch>
           <case test="ancestor::node()/bf:role/bf:Role[rdfs:label or madsrdf:authoritativeLabel]">
-            <sf code="e">
-                <var name="vRelationLabel" xpath="ancestor::node()/bf:role/bf:Role/rdfs:label|ancestor::node()/bf:role/bf:Role/madsrdf:authoritativeLabel" />
-                <transform><xsl:value-of select="translate($vRelationLabel, $upper, $lower)" /></transform>
-            </sf>  
+            <select xpath="ancestor::node()/bf:role/bf:Role/rdfs:label|ancestor::node()/bf:role/bf:Role/madsrdf:authoritativeLabel">
+              <sf code="e">
+                <transform><xsl:value-of select="translate(., $upper, $lower)" /></transform>
+              </sf>
+            </select>
           </case>
           <case test="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about or ancestor::node()/bf:role/@rdf:resource">
             <select xpath="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ancestor::node()/bf:role/@rdf:resource">
