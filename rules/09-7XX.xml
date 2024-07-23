@@ -524,8 +524,8 @@
         </switch>
       </ind2>
       
-      <select xpath="../bf:relationship/bf:Relationship[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ../bf:relationship/@rdf:resource |
-                     ../bflc:relation/bflc:Relation[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ../bflc:relation/@rdf:resource">
+      <select xpath="ancestor::bf:Relation/bf:relationship/bf:Relationship[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ../bf:relationship/@rdf:resource |
+                     ancestor::bflc:Relationship/bflc:relation/bflc:Relation[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ../bflc:relation/@rdf:resource">
         <var name="vRelationURI">
           <switch>
             <case test="contains(.,'id.loc.gov/entities')"><transform><xsl:value-of select="."/></transform></case>
@@ -550,8 +550,8 @@
         </sf>
       </select>
       <sf code="i">
-        <select xpath="../bf:relationship/bf:Relationship/rdfs:label|../bf:relationship/bf:Relationship/madsrdf:authoritativeLabel |
-                       ../bflc:relation/bflc:Relation/rdfs:label|../bflc:relation/bflc:Relation/madsrdf:authoritativeLabel" />
+        <select xpath="ancestor::bf:Relation/bf:relationship/bf:Relationship/rdfs:label|../bf:relationship/bf:Relationship/madsrdf:authoritativeLabel |
+                       ancestor::bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label|../bflc:relation/bflc:Relation/madsrdf:authoritativeLabel" />
       </sf>
       <switch>
         <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]">
@@ -742,8 +742,16 @@
           <sf code="e" chopPunct="true">
             <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
               <switch>
-                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                <case test="default"><select xpath="rdfs:label"/></case>
+                <case test="madsrdf:authoritativeLabel">
+                  <select xpath="madsrdf:authoritativeLabel">
+                    <transform><xsl:value-of select="translate(., $upper, $lower)"></xsl:value-of></transform>
+                  </select>
+                </case>
+                <case test="default">
+                  <select xpath="rdfs:label">
+                    <transform><xsl:value-of select="translate(., $upper, $lower)"></xsl:value-of></transform>
+                  </select>
+                </case>
               </switch>
             </select>
           </sf>
@@ -855,8 +863,16 @@
               <sf code="e" chopPunct="true">
                 <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
                   <switch>
-                    <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
-                    <case test="default"><select xpath="rdfs:label"/></case>
+                    <case test="madsrdf:authoritativeLabel">
+                      <select xpath="madsrdf:authoritativeLabel">
+                        <transform><xsl:value-of select="translate(., $upper, $lower)"></xsl:value-of></transform>
+                      </select>
+                    </case>
+                    <case test="default">
+                      <select xpath="rdfs:label">
+                        <transform><xsl:value-of select="translate(., $upper, $lower)"></xsl:value-of></transform>
+                      </select>
+                    </case>
                   </switch>
                 </select>
               </sf>
