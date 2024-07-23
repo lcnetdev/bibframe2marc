@@ -286,6 +286,7 @@
         </case>
       </switch>
       <sf code="a" chopPunct="true" repeatable="false">
+        <!-- The main title -->
         <switch>
           <case test="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
             <select xpath="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
@@ -294,8 +295,139 @@
             <select xpath="bf:mainTitle[@xml:lang]" />
           </case>
         </switch>
+        
+        <switch>
+          
+          <!--  If there is a partNumber, do a period. -->
+          <case test="
+                bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] and
+                not(
+                  substring(
+                    bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))], 
+                    string-length(bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]),
+                  1) = '.'
+                )
+              ">
+            <transform><xsl:text>.</xsl:text></transform>
+          </case>
+          
+          <!--  If there is a partName, do a period. -->
+          <case test="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform><xsl:text>.</xsl:text></transform>
+          </case>
+          
+          <!--  If there is a subtitle and no partnumber or partname, put a colon in. -->
+          <case test="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform><xsl:text> :</xsl:text></transform>
+          </case>
+          <case test="count(bf:subtitle)=1 and bf:subtitle[@xml:lang]">
+            <transform><xsl:text> :</xsl:text></transform>
+          </case>
+          
+          <!--  If there is no partnumber or partname or subtitle, but there's a responStatement, put a slash in. -->
+          <case test="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform><xsl:text> /</xsl:text></transform>
+          </case>
+          <case test="count(ancestor::bf:Instance/bf:responsibilityStatement)=1 and ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
+            <transform><xsl:text> /</xsl:text></transform>
+          </case>
+        </switch>
       </sf>
+      
+      <sf code="n" chopPunct="true">
+        <var name="nExists">
+          <switch>
+            <case test="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+              <transform><xsl:value-of select="'1'" /></transform>
+            </case>
+            <case test="count(bf:partNumber)=1 and bf:partNumber[@xml:lang]">
+              <transform><xsl:value-of select="'1'" /></transform>
+            </case>
+          </switch>
+        </var>
+        <switch>
+          <case test="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <select xpath="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+          </case>
+          <case test="count(bf:partNumber)=1 and bf:partNumber[@xml:lang]">
+            <select xpath="bf:partNumber[@xml:lang]" />
+          </case>
+        </switch>
+
+        <switch>
+          <!--  If there is a partName, do a period. -->
+          <case test="$nExists='1' and bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform><xsl:text>,</xsl:text></transform>
+          </case>
+          
+          <!--  If there is a subtitle and no partnumber or partname, put a colon in. -->
+          <case test="$nExists='1' and bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform><xsl:text> :</xsl:text></transform>
+          </case>
+          <case test="$nExists='1' and count(bf:subtitle)=1 and bf:subtitle[@xml:lang]">
+            <transform><xsl:text> :</xsl:text></transform>
+          </case>
+          
+          <!--  If there is no partnumber or partname or subtitle, but there's a responStatement, put a slash in. -->
+          <case test="$nExists='1' and ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform><xsl:text> /</xsl:text></transform>
+          </case>
+          <case test="$nExists='1' and count(ancestor::bf:Instance/bf:responsibilityStatement)=1 and ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
+            <transform><xsl:text> /</xsl:text></transform>
+          </case>
+        </switch>
+      </sf>
+      
+      <sf code="p" chopPunct="true">
+        <var name="pExists">
+          <switch>
+            <case test="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+              <transform><xsl:value-of select="'1'" /></transform>
+            </case>
+            <case test="count(bf:partName)=1 and bf:partName[@xml:lang]">
+              <transform><xsl:value-of select="'1'" /></transform>
+            </case>
+          </switch>
+        </var>
+        <switch>
+          <case test="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <select xpath="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+          </case>
+          <case test="count(bf:partName)=1 and bf:partName[@xml:lang]">
+            <select xpath="bf:partName[@xml:lang]" />
+          </case>
+        </switch>
+        
+        <switch>
+          <!--  If there is a subtitle and no partnumber or partname, put a colon in. -->
+          <case test="$pExists='1' and bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform><xsl:text> :</xsl:text></transform>
+          </case>
+          <case test="$pExists='1' and count(bf:subtitle)=1 and bf:subtitle[@xml:lang]">
+            <transform><xsl:text> :</xsl:text></transform>
+          </case>
+          
+          <!--  If there is no partnumber or partname or subtitle, but there's a responStatement, put a slash in. -->
+          <case test="$pExists='1' and ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform><xsl:text> /</xsl:text></transform>
+          </case>
+          <case test="$pExists='1' and count(ancestor::bf:Instance/bf:responsibilityStatement)=1 and ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
+            <transform><xsl:text> /</xsl:text></transform>
+          </case>
+        </switch>
+      </sf>
+
       <sf code="b" chopPunct="true" repeatable="false">
+        <var name="bExists">
+          <switch>
+            <case test="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+              <transform><xsl:value-of select="'1'" /></transform>
+            </case>
+            <case test="count(bf:subtitle)=1 and bf:subtitle[@xml:lang]">
+              <transform><xsl:value-of select="'1'" /></transform>
+            </case>
+          </switch>
+        </var>
         <switch>
           <case test="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
             <select xpath="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
@@ -304,7 +436,18 @@
             <select xpath="bf:subtitle[@xml:lang]" />
           </case>
         </switch>
+        
+        <switch>
+          <!--  If there is no partnumber or partname or subtitle, but there's a responStatement, put a slash in. -->
+          <case test="$bExists='1' and ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <transform><xsl:text> /</xsl:text></transform>
+          </case>
+          <case test="$bExists='1' and count(ancestor::bf:Instance/bf:responsibilityStatement)=1 and ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
+            <transform><xsl:text> /</xsl:text></transform>
+          </case>
+        </switch>
       </sf>
+      
       <sf code="c" chopPunct="false" repeatable="false">
         <switch>
           <case test="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
@@ -315,26 +458,8 @@
           </case>
         </switch>
       </sf>
-      <sf code="n" chopPunct="true">
-        <switch>
-          <case test="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
-            <select xpath="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
-          </case>
-          <case test="count(bf:partNumber)=1 and bf:partNumber[@xml:lang]">
-            <select xpath="bf:partNumber[@xml:lang]" />
-          </case>
-        </switch>
-      </sf>
-      <sf code="p" chopPunct="true">
-        <switch>
-          <case test="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
-            <select xpath="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
-          </case>
-          <case test="count(bf:partName)=1 and bf:partName[@xml:lang]">
-            <select xpath="bf:partName[@xml:lang]" />
-          </case>
-        </switch>
-      </sf>
+
+
     </context>
   </df>
   <select xpath="bf:Instance[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance')]/bf:title/bf:Title[not(rdf:type)]|bf:Work[not(../bf:Instance/bf:title/bf:Title[not(rdf:type)])]/bf:title/bf:Title[not(rdf:type)]">
@@ -375,20 +500,133 @@
             </switch>
           </sf>
           <sf code="a" chopPunct="true" repeatable="false">
-            <select xpath="bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+            <switch>
+              <case test="bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <select xpath="bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+              </case>
+            </switch>
+            
+            <switch>
+              
+              <!--  If there is a partNumber, do a period. -->
+              <case test="
+                  bf:partNumber[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))] and
+                  not(
+                    substring(
+                      bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))], 
+                      string-length(bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]),
+                      1) = '.'
+                  )
+                ">
+                <transform><xsl:text>.</xsl:text></transform>
+              </case>
+              
+              <!--  If there is a partName, do a period. -->
+              <case test="bf:partName[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform><xsl:text>.</xsl:text></transform>
+              </case>
+
+              <!--  If there is a subtitle and no partnumber or partname, put a colon in. -->
+              <case test="bf:subtitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform><xsl:text> :</xsl:text></transform>
+              </case>
+              
+              <!--  If there is no partnumber or partname or subtitle, but there's a responStatement, put a slash in. -->
+              <case test="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform><xsl:text> /</xsl:text></transform>
+              </case>
+            </switch>
           </sf>
-          <sf code="b" chopPunct="true" repeatable="false">
-            <select xpath="bf:subtitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
-          </sf>
-          <sf code="c" chopPunct="false" repeatable="false">
-            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
-          </sf>
+
           <sf code="n" chopPunct="true">
-            <select xpath="bf:partNumber[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+            <var name="nExists">
+              <switch>
+                <case test="bf:partNumber[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                  <transform><xsl:value-of select="'1'" /></transform>
+                </case>
+              </switch>
+            </var>
+            <switch>
+              <case test="bf:partNumber[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <select xpath="bf:partNumber[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>    
+              </case>
+            </switch>
+            
+            <switch>
+              <!--  If there is a partName, do a period. -->
+              <case test="$nExists='1' and bf:partName[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform><xsl:text>.</xsl:text></transform>
+              </case>
+              
+              <!--  If there is a subtitle and no partnumber or partname, put a colon in. -->
+              <case test="$nExists='1' and bf:subtitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform><xsl:text> :</xsl:text></transform>
+              </case>
+              
+              <!--  If there is no partnumber or partname or subtitle, but there's a responStatement, put a slash in. -->
+              <case test="$nExists='1' and ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform><xsl:text> /</xsl:text></transform>
+              </case>
+            </switch>
           </sf>
+          
           <sf code="p" chopPunct="true">
-            <select xpath="bf:partName[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+            <var name="pExists">
+              <switch>
+                <case test="bf:partName[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                  <transform><xsl:value-of select="'1'" /></transform>
+                </case>
+              </switch>
+            </var>
+            <switch>
+              <case test="bf:partName[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <select xpath="bf:partName[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+              </case>
+            </switch>
+            
+            <switch>
+              <!--  If there is a subtitle and no partnumber or partname, put a colon in. -->
+              <case test="$pExists='1' and bf:subtitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform><xsl:text> :</xsl:text></transform>
+              </case>
+              
+              <!--  If there is no partnumber or partname or subtitle, but there's a responStatement, put a slash in. -->
+              <case test="$pExists='1' and ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform><xsl:text> /</xsl:text></transform>
+              </case>
+            </switch>
           </sf>
+
+          <sf code="b" chopPunct="true" repeatable="false">
+            <var name="bExists">
+              <switch>
+                <case test="bf:subtitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                  <transform><xsl:value-of select="'1'" /></transform>
+                </case>
+              </switch>
+            </var>
+            <switch>
+              <case test="bf:subtitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <select xpath="bf:subtitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+              </case>
+            </switch>
+            
+            <switch>
+              <!--  If there is no partnumber or partname or subtitle, but there's a responStatement, put a slash in. -->
+              <case test="$bExists='1' and ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <transform><xsl:text> /</xsl:text></transform>
+              </case>
+            </switch>
+          </sf>
+          
+          <sf code="c" chopPunct="false" repeatable="false">
+            <switch>
+              <case test="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
+                <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+              </case>
+            </switch>
+          </sf>
+
         </df>
       </case>
     </switch>
