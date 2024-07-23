@@ -352,6 +352,9 @@
         </ind1>
         <ind2 default=" ">
           <switch>
+            <case test="ancestor::bf:Relation/bf:relationship//@rdf:*[.='http://id.loc.gov/vocabulary/relationship/part']">2</case>
+            <case test="ancestor::bf:Relation/bf:relationship//@rdf:*[.='http://id.loc.gov/ontologies/bibframe/hasPart']">2</case>
+            <case test="ancestor::bflc:Relationship/bflc:relation//@rdf:*[.='http://id.loc.gov/ontologies/bibframe/hasPart']">2</case>
             <case test="self::bf:hasPart or ancestor::bf:hasPart">2</case>
           </switch>
         </ind2>
@@ -382,8 +385,8 @@
           </sf>
         </select>
         <sf code="i">
-          <select xpath="../bf:relationship/bf:Relationship/rdfs:label|../bf:relationship/bf:Relationship/madsrdf:authoritativeLabel |
-                         ../bflc:relation/bflc:Relation/rdfs:label|../bflc:relation/bflc:Relation/madsrdf:authoritativeLabel" />
+          <select xpath="../../bf:relationship/bf:Relationship/rdfs:label|../../bf:relationship/bf:Relationship/madsrdf:authoritativeLabel |
+                         ../../bflc:relation/bflc:Relation/rdfs:label|../../bflc:relation/bflc:Relation/madsrdf:authoritativeLabel" />
         </sf>
         <switch>
           <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]">
@@ -520,6 +523,9 @@
       </ind1>
       <ind2 default=" ">
         <switch>
+          <case test="ancestor::bf:Relation/bf:relationship//@rdf:*[.='http://id.loc.gov/vocabulary/relationship/part']">2</case>
+          <case test="ancestor::bf:Relation/bf:relationship//@rdf:*[.='http://id.loc.gov/ontologies/bibframe/hasPart']">2</case>
+          <case test="ancestor::bflc:Relationship/bflc:relation//@rdf:*[.='http://id.loc.gov/ontologies/bibframe/hasPart']">2</case>
           <case test="self::bf:hasPart or ancestor::bf:hasPart">2</case>
         </switch>
       </ind2>
@@ -1282,6 +1288,32 @@
   <df tag="$vLinkTagFromWork2" lang-xpath="rdfs:label">
     <context xpath="
       bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'subseries') or contains(bf:Relationship/@rdf:about, 'subseries')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'translationof') or contains(bf:Relationship/@rdf:about, 'translationof')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'translatedas') or contains(bf:Relationship/@rdf:about, 'translatedas')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'supplementto') or contains(bf:Relationship/@rdf:about, 'supplementto')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'supplement') or contains(bf:Relationship/@rdf:about, 'supplement')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'partof') or contains(bf:Relationship/@rdf:about, 'partof')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'part') or contains(bf:Relationship/@rdf:about, 'part')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'otherEdition') or contains(bf:Relationship/@rdf:about, 'otherEdition')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'otherPhysicalFormat') or contains(bf:Relationship/@rdf:about, 'otherPhysicalFormat')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'issuedWith') or contains(bf:Relationship/@rdf:about, 'issuedWith')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'continuesInPart') or contains(bf:Relationship/@rdf:about, 'continuesInPart')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'continues') or contains(bf:Relationship/@rdf:about, 'continues')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'precededby') or contains(bf:Relationship/@rdf:about, 'precededby')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'mergerof') or contains(bf:Relationship/@rdf:about, 'mergerof')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'absorbedby') or contains(bf:Relationship/@rdf:about, 'absorbedby')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'absorptionof') or contains(bf:Relationship/@rdf:about, 'absorptionof')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'separatedby') or contains(bf:Relationship/@rdf:about, 'separatedby')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'continuedby') or contains(bf:Relationship/@rdf:about, 'continuedby')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'continuedInPartBy') or contains(bf:Relationship/@rdf:about, 'continuedInPartBy')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'succeededby') or contains(bf:Relationship/@rdf:about, 'succeededby')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'splitinto') or contains(bf:Relationship/@rdf:about, 'splitinto')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'mergedtoform') or contains(bf:Relationship/@rdf:about, 'mergedtoform')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'dataSource') or contains(bf:Relationship/@rdf:about, 'dataSource')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'relatedwork') or contains(bf:Relationship/@rdf:about, 'relatedwork')]]/bf:associatedResource/bf:*[bf:hasInstance] |
+      
+      bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[bf:hasInstance] |
       bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSubseries') or contains(bf:Relationship/@rdf:about, 'hasSubseries')]]/bf:associatedResource/bf:*[bf:hasInstance] |
       bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'translationOf') or contains(bf:Relationship/@rdf:about, 'translationOf')]]/bf:associatedResource/bf:*[bf:hasInstance] |
       bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'translation') or contains(bf:Relationship/@rdf:about, 'translation')]]/bf:associatedResource/bf:*[bf:hasInstance] |
@@ -1309,6 +1341,31 @@
       ">
       <var name="vLinkTagFromWork2">
         <switch>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]">760</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'subseries') or contains(bf:Relationship/@rdf:about, 'subseries')]">762</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'translationof') or contains(bf:Relationship/@rdf:about, 'translationOf')]">765</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'translatedas') or contains(bf:Relationship/@rdf:about, 'translatedas')]">767</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'supplementTo') or contains(bf:Relationship/@rdf:about, 'supplementto')]">772</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'supplement') or contains(bf:Relationship/@rdf:about, 'supplement')]">770</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'partof') or contains(bf:Relationship/@rdf:about, 'partof')]">773</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'part') or contains(bf:Relationship/@rdf:about, 'part')]">774</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'otherEdition') or contains(bf:Relationship/@rdf:about, 'otherEdition')]">775</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'otherPhysicalFormat') or contains(bf:Relationship/@rdf:about, 'otherPhysicalFormat')]">776</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'issuedWith') or contains(bf:Relationship/@rdf:about, 'issuedWith')]">777</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuesInPart') or contains(bf:Relationship/@rdf:about, 'continuesInPart')]">780</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continues') or contains(bf:Relationship/@rdf:about, 'continues')]">780</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'precededby') or contains(bf:Relationship/@rdf:about, 'precededby')]">780</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'succeededby') or contains(bf:Relationship/@rdf:about, 'succeededby')]">785</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'mergerof') or contains(bf:Relationship/@rdf:about, 'mergeriof')]">780</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'absorbedby') or contains(bf:Relationship/@rdf:about, 'absorbedby')]">785</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'absorptionof') or contains(bf:Relationship/@rdf:about, 'absorptionof')]">780</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'separatedfrom') or contains(bf:Relationship/@rdf:about, 'separatedfrom')]">780</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuedby') or contains(bf:Relationship/@rdf:about, 'continuedby')]">785</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuedInPartBy') or contains(bf:Relationship/@rdf:about, 'continuedInPartBy')]">785</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'splitinto') or contains(bf:Relationship/@rdf:about, 'splitinto')]">785</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'mergedtoform') or contains(bf:Relationship/@rdf:about, 'mergedtoform')]">785</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'dataSource') or contains(bf:Relationship/@rdf:about, 'dataSource')]">786</case>
+          
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]">760</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'hasSubseries') or contains(bf:Relationship/@rdf:about, 'hasSubseries')]">762</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'translationOf') or contains(bf:Relationship/@rdf:about, 'translationOf')]">765</case>
@@ -1350,7 +1407,20 @@
       </var>
       <ind1 default="0"/>
       <ind2 default=" ">
-        <switch>       
+        <switch>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuesInPart') or contains(bf:Relationship/@rdf:about, 'continuesInPart')]">1</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continues') or contains(bf:Relationship/@rdf:about, 'continues')]">0</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'precededby') or contains(bf:Relationship/@rdf:about, 'precededby')]">2</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'succeededby') or contains(bf:Relationship/@rdf:about, 'succeededby')]">2</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'mergerof') or contains(bf:Relationship/@rdf:about, 'mergerof')]">4</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'absorbedby') or contains(bf:Relationship/@rdf:about, 'absorbedby')]">4</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'absorptionof') or contains(bf:Relationship/@rdf:about, 'absorptionof')]">5</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'separatedfrom') or contains(bf:Relationship/@rdf:about, 'separatedfrom')]">7</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuedby') or contains(bf:Relationship/@rdf:about, 'continuedby')]">0</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuedInPartBy') or contains(bf:Relationship/@rdf:about, 'continuedInPartBy')]">1</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'splitinto') or contains(bf:Relationship/@rdf:about, 'splitinto')]">5</case>
+          <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'mergedtoform') or contains(bf:Relationship/@rdf:about, 'mergedtoform')]">7</case>
+          
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuesInPart') or contains(bf:Relationship/@rdf:about, 'continuesInPart')]">1</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continues') or contains(bf:Relationship/@rdf:about, 'continues')]">0</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'precededBy') or contains(bf:Relationship/@rdf:about, 'precededBy')]">2</case>
@@ -1369,7 +1439,12 @@
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
       <sf code="i" chopPunct="true">
-        <select xpath="ancestor::bf:Relation/bf:relationship[not(contains(@rdf:resource, 'ontologies/bibframe')) and not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))]/bf:Relationship[rdfs:label or madsrdf:authoritativeLabel]">
+        <select xpath="ancestor::bf:Relation/bf:relationship[
+                            not(contains(@rdf:resource, 'ontologies/bibframe')) and 
+                            not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe')) and 
+                            not(contains(@rdf:resource, 'vocabulary/relationship')) and 
+                            not(contains(@rdf:resource, 'vocabulary/relationship')) 
+                         ]/bf:Relationship[rdfs:label or madsrdf:authoritativeLabel]">
           <switch>
             <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
             <case test="default"><select xpath="rdfs:label"/></case>
@@ -1377,7 +1452,12 @@
         </select>
       </sf>
       <sf code="4">
-        <select xpath="ancestor::bf:Relation/bf:relationship[not(contains(@rdf:resource, 'ontologies/bibframe')) and not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))]/bf:Relationship[madsrdf:code or bf:code]">
+        <select xpath="ancestor::bf:Relation/bf:relationship[
+                            not(contains(@rdf:resource, 'ontologies/bibframe')) and 
+                            not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe')) and 
+                            not(contains(@rdf:resource, 'vocabulary/relationship')) and
+                            not(contains(@rdf:resource, 'vocabulary/relationship'))
+                         ]/bf:Relationship[madsrdf:code or bf:code]">
           <switch>
             <case test="madsrdf:code">
               <select xpath="madsrdf:code"/>
