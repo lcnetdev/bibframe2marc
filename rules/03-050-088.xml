@@ -216,6 +216,19 @@
       </sf>
     </context>
   </df>
+  
+  <df tag="066">
+    <context xpath="//@xml:lang[generate-id() = generate-id(key('langs',.)[1])]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <var name="v880Script">
+        <lookup map="df880script" targetField="code">
+          <lookupField name="lang" xpath="translate(substring-after(.,'-'),$upper,$lower)"/>
+        </lookup>
+      </var>
+      <sf code="a"><transform><xsl:value-of select="$v880Script" /></transform></sf>
+    </context>
+  </df>
 
   <df tag="070">
     <context xpath="bf:Work/bf:classification/bf:Classification[bf:assigner/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnal' or

@@ -33,6 +33,8 @@
       <xsl:param name="pRecordId" select="'default'"/>
       <xsl:param name="pCatScript" select="'Latn'"/>
 
+      <xsl:key name="langs" match="//@xml:lang[contains(., '-')]" use="." />
+      
       <!-- parameters for 884 generation -->
       <xsl:param name="pGenerationDatestamp">
         <xsl:choose>
@@ -286,6 +288,14 @@
             </xsl:call-template>
           </xsl:otherwise>
         </xsl:choose>
+      </xsl:template>
+      
+      <xsl:template name="tStringJoin">
+        <xsl:param name="pSeq" />
+        <xsl:param name="pJoinChar" select="', '" />
+        <xsl:for-each select="$pSeq">
+          <xsl:value-of select="." /><xsl:if test="position() != last()"><xsl:value-of select="$pJoinChar" /></xsl:if>
+        </xsl:for-each>
       </xsl:template>
 
       <!-- EDTF functions -->

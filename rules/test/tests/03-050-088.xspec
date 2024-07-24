@@ -69,6 +69,14 @@
     <x:expect label="$0 from URI" test="//marc:datafield[@tag='060']/marc:subfield[@code='0'][1] = 'http://nlm.nih.gov/callnumbers/Z675_M4'"/>
     <x:expect label="$0 from rdf:value of Identifier" test="//marc:datafield[@tag='060']/marc:subfield[@code='0'][2] = '(NLM)Z675.M4'"/>
   </x:scenario>
+  
+  <x:scenario label="MARC 066">
+    <x:context href="../data/exemplars/text-monograph-880s-in-245-264-490-700-also-066.rdf"/>
+    <x:expect label="generate 066 from xml:langs" test="count(//marc:datafield[@tag='066']) = 1"/>
+    <x:expect label="ind1 is blank" test="//marc:datafield[@tag='066']/@ind1 = ' '"/>
+    <x:expect label="ind2 is blank" test="//marc:datafield[@tag='066']/@ind2 = ' '"/>
+    <x:expect label="$a is (N" test="//marc:datafield[@tag='066']/marc:subfield[@code='a'] = '(N'"/>
+  </x:scenario>
 
   <x:scenario label="MARC 070">
     <x:context href="../data/050-088/050-088.xml"/>
