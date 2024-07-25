@@ -1285,6 +1285,24 @@
       <sf code="1"><select xpath="bf:associatedResource/@rdf:resource|bf:relatedTo/@rdf:resource"/></sf>
     </context>
   </df>
+  
+  <!-- default 884 for all records -->
+  <df tag="758">
+    <context xpath="
+      bf:Work/@rdf:about |
+      bf:Instance[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance')][1]/@rdf:about">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="4">
+        <switch>
+          <case test="ancestor::bf:Work">
+            <transform><xsl:text>http://id.loc.gov/ontologies/bibframe/instanceOf</xsl:text></transform>
+          </case>
+        </switch>
+      </sf>
+      <sf code="1"><select xpath="."/></sf>
+    </context>
+  </df>
 
   <!-- Linking entries -->
   <!-- Linking entries -->
