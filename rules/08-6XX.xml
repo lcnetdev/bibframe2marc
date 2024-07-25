@@ -8,26 +8,16 @@
        xmlns:marc="http://www.loc.gov/MARC21/slim"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <!-- subjects referenced by URIs and genreForms referenced by URIs -->
+  <!-- subjects referenced by URIs -->
   <df tag="$vSubjectTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="
       bf:Work/bf:subject/*[bflc:marcKey or marc:record] |
-      bf:Work/bf:genreForm/*[bflc:marcKey or marc:record] |
       bf:Work/bf:subject[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
       bf:Work/bf:subject/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
       bf:Work/bf:subject[contains(@rdf:resource, 'd-nb.info/gnd/') and not(contains(@rdf:resource, '#'))] |
       bf:Work/bf:subject/*[contains(@rdf:about, 'd-nb.info/gnd/') and not(contains(@rdf:about, '#'))] |
       bf:Work/bf:subject[contains(@rdf:resource, 'id.worldcat.org/fast/')] |
-      bf:Work/bf:subject/*[contains(@rdf:about, 'id.worldcat.org/fast/')] |
-      bf:Work/bf:genreForm[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
-      bf:Work/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
-      bf:Work/bf:genreForm[contains(@rdf:resource, 'd-nb.info/gnd/') and not(contains(@rdf:resource, '#'))] |
-      bf:Work/bf:genreForm/*[contains(@rdf:about, 'd-nb.info/gnd/') and not(contains(@rdf:about, '#'))] |
-      bf:Work/bf:genreForm[contains(@rdf:resource, 'id.worldcat.org/fast/')] |
-      bf:Work/bf:genreForm/*[contains(@rdf:about, 'id.worldcat.org/fast/')] |
-      //bf:Item/bf:genreForm[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
-      //bf:Item/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
-      //bf:Item/bf:genreForm/*[bflc:marcKey or marc:record] 
+      bf:Work/bf:subject/*[contains(@rdf:about, 'id.worldcat.org/fast/')]
       ">
       <!--
       <transform>
@@ -67,14 +57,12 @@
         <switch>
           <case test="$vRelResource//marc:record">
             <switch>
-              <case test="(self::bf:genreForm or ancestor::bf:genreForm) and contains($relURI, 'd-nb.info/gnd/')">655</case>
               <case test="$vRelResource//marc:datafield[@tag='100']">600</case>
               <case test="$vRelResource//marc:datafield[@tag='110']">610</case>
               <case test="$vRelResource//marc:datafield[@tag='111']">611</case>
               <case test="$vRelResource//marc:datafield[@tag='130']">630</case>
               <case test="$vRelResource//marc:datafield[@tag='150']">650</case>
               <case test="$vRelResource//marc:datafield[@tag='151']">651</case>
-              <case test="$vRelResource//marc:datafield[@tag='155']">655</case>
             </switch>
           </case>
         </switch>
@@ -87,7 +75,6 @@
           <case test="$vSubjectTag='630'">adfghklmnoprs</case>
           <case test="$vSubjectTag='650'">a</case>
           <case test="$vSubjectTag='651'">a</case>
-          <case test="$vSubjectTag='655'">a</case>
         </switch>
       </var>
       <ind1 default=" ">
@@ -1949,6 +1936,126 @@
     </switch>
   </select>
 
+  <!-- genreForms referenced by URIs -->
+  <df tag="$vGenreTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
+    <context xpath="
+      bf:Work/bf:genreForm/*[bflc:marcKey or marc:record] |
+      bf:Work/bf:genreForm[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
+      bf:Work/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
+      bf:Work/bf:genreForm[contains(@rdf:resource, 'd-nb.info/gnd/') and not(contains(@rdf:resource, '#'))] |
+      bf:Work/bf:genreForm/*[contains(@rdf:about, 'd-nb.info/gnd/') and not(contains(@rdf:about, '#'))] |
+      bf:Work/bf:genreForm[contains(@rdf:resource, 'id.worldcat.org/fast/')] |
+      bf:Work/bf:genreForm/*[contains(@rdf:about, 'id.worldcat.org/fast/')] |
+      //bf:Item/bf:genreForm[contains(@rdf:resource, 'id.loc.gov') and not(contains(@rdf:resource, '/vocabulary/')) and not(contains(@rdf:resource, 'REPLACE'))] |
+      //bf:Item/bf:genreForm/*[contains(@rdf:about, 'id.loc.gov') and not(contains(@rdf:about, '/vocabulary/')) and not(contains(@rdf:about, 'REPLACE'))] |
+      //bf:Item/bf:genreForm/*[bflc:marcKey or marc:record] 
+      ">
+      <!--
+      <transform>
+        <xsl:message><xsl:value-of select="name(.)"/></xsl:message>
+      </transform>
+      -->
+      <var name="relURI">
+        <switch>
+          <case test="contains(@rdf:resource,'id.loc') and not(contains(@rdf:resource, 'REPLACE'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.loc') and not(contains(@rdf:about, 'REPLACE'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+          <case test="contains(@rdf:resource,'d-nb.info/gnd/') and not(contains(@rdf:resource, '#'))"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'d-nb.info/gnd/') and not(contains(@rdf:about, '#'))"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+          <case test="contains(@rdf:resource,'id.worldcat.org/fast/')"><transform><xsl:value-of select="@rdf:resource"/></transform></case>
+          <case test="contains(@rdf:about,'id.worldcat.org/fast/')"><transform><xsl:value-of select="@rdf:about"/></transform></case>
+        </switch>
+      </var>
+      <var name="vRelResourcePreNS">
+        <transform>
+          <xsl:call-template name="tGetRelResource">
+            <xsl:with-param name="pRelUri" select="$relURI"/>
+            <xsl:with-param name="pContext" select="."/>
+          </xsl:call-template>
+        </transform>
+      </var>
+      <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
+      <var name="vGenreTag">
+        <switch>
+          <case test="$vRelResource//marc:record">
+            <switch>
+              <case test="(self::bf:genreForm or ancestor::bf:genreForm) and contains($relURI, 'd-nb.info/gnd/')">655</case>
+              <case test="$vRelResource//marc:datafield[@tag='155']">655</case>
+            </switch>
+          </case>
+        </switch>
+      </var>
+      <var name="vValidSubfields">
+        <switch>
+          <case test="$vGenreTag='655'">a</case>
+        </switch>
+      </var>
+      <ind1 default=" ">
+        <switch>
+          <case test="$vGenreTag = '630'">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2" />
+          </case>
+          <case test="default">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+          </case>
+        </switch>
+      </ind1>
+      <ind2 default="4">
+        <switch>
+          <case test="contains($relURI, '/subjects/') or contains($relURI, '/names/')">0</case>
+          <case test="contains($relURI, '/childrensSubjects/')">1</case>
+          <case test="contains($relURI, '/mesh/')">2</case>
+          <case test="contains($relURI, '/nalt/')">3</case>
+          <case test="contains($relURI, '/names/') or contains($relURI, '/genreForms/') or 
+            contains($relURI, '/demographicTerms/') or contains($relURI, '/graphicMaterials/') or 
+            contains($relURI, '/fast/') or
+            contains($relURI, 'd-nb.info/gnd/')">7</case>
+          
+          <case test="madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/subjects'] or 
+            bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects']">0</case>
+          <case test="madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects'] or 
+            bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects']">1</case>
+          <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh']">2</case>
+          <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal']">3</case>
+          <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash']">5</case>
+          <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm']">6</case>
+        </switch>
+      </ind2>
+      <transform>
+        <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains($vValidSubfields,@code)]">
+          <marc:subfield>
+            <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+            <xsl:value-of select="."/>
+          </marc:subfield>
+        </xsl:for-each>
+      </transform>
+      <transform>
+        <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains('vxyz',@code)]">
+          <marc:subfield>
+            <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+            <xsl:value-of select="."/>
+          </marc:subfield>
+        </xsl:for-each>
+      </transform>
+      <sf code="2">
+        <switch>
+          <!-- <case test="contains($relURI, '/names/')">naf</case> -->
+          <case test="contains($relURI, '/genreForms/')">lcgft</case>
+          <case test="contains($relURI, '/demogrpahicTerms/')">lcdgt</case>
+          <case test="contains($relURI, '/graphicMaterials/')">lctgm</case>
+          <case test="contains($relURI, '/fast/')">fast</case>
+          <case test="contains($relURI, 'd-nb.info/gnd/')">gnd</case>
+        </switch>
+      </sf>
+      <switch>
+        <case test="$relURI != ''">
+          <sf code="0">
+            <transform><xsl:value-of select="$relURI" /></transform>
+          </sf>
+        </case>
+      </switch>
+    </context>
+  </df>
+  
   <!-- genreForms -->
   <df tag="655" lang-xpath="*/rdfs:label" lang-prefer="tranliterated">
     <context xpath="bf:Work/bf:genreForm[
