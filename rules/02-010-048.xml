@@ -676,6 +676,31 @@
       </switch>
     </context>
   </df>
+  
+  <df tag="035">
+    <context xpath="bf:Instance/bf:identifiedBy/*[(local-name()='OclcNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/OclcNumber']) and rdf:value]">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <switch>
+        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+          bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
+          bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
+          <sf code="z">
+            <transform>
+              <xsl:value-of select="concat('(OCoLC)',rdf:value)"/>
+            </transform>
+          </sf>
+        </case>
+        <case test="default">
+          <sf code="a" repeatable="false">
+            <transform>
+              <xsl:value-of select="concat('(OCoLC)',rdf:value)"/>
+            </transform>
+          </sf>
+        </case>
+      </switch>
+    </context>
+  </df>
 
   <df tag="036" repeatable="false">
     <context xpath="bf:Instance/bf:identifiedBy/*[local-name()='StudyNumber' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StudyNumber']]">
