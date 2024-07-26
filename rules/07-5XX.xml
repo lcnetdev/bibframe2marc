@@ -340,6 +340,12 @@
           rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/lang' or 
           rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/award'
         ))"/>
+      
+      <!-- these notes are picked up in the rules for data field 041, do not process here -->
+      <case test="(
+          local-name(../..)='Work' and 
+          contains(rdf:type/@rdf:resource, 'http://id.loc.gov/vocabulary/resourceComponents')
+        )"/>
 
       <!-- these notes are picked up in the rules for data field 300, do not process here -->
       <case test="(local-name(../..)='Instance' or local-name(../..)='Item') and 
