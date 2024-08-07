@@ -904,7 +904,7 @@
 
     <xsl:template match="rdf:RDF">
       <xsl:variable name="vPrincipalInstance" select="bf:Instance[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance')]"/>
-      <xsl:variable name="vAdminMetadata" select="$vPrincipalInstance/bf:adminMetadata/bf:AdminMetadata[1] | bf:Work/bf:adminMetadata/bf:AdminMetadata[not(/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata)]"/>
+      <xsl:variable name="vAdminMetadata" select="$vPrincipalInstance/bf:adminMetadata/bf:AdminMetadata | bf:Work/bf:adminMetadata/bf:AdminMetadata[not(/rdf:RDF/bf:Instance/bf:adminMetadata/bf:AdminMetadata)]"/>
 
       <xsl:variable name="vRecordId">
         <xsl:choose>
