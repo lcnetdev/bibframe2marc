@@ -913,18 +913,23 @@
   -->
   
   <switch>
-    <case test="$vAdminMetadata/bf:assigner">
+    <case test="$vAdminMetadata[bf:descriptionConventions]">
       <df tag="040" repeatable="false">
         <var name="vLanguageUri">
           <switch>
-            <case test="$vAdminMetadata/bf:descriptionLanguage/@rdf:resource"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/@rdf:resource"/></transform></case>
-            <case test="$vAdminMetadata/bf:descriptionLanguage/*/@rdf:about"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/*/@rdf:about"/></transform></case>
+            <case test="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/@rdf:resource"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/@rdf:resource"/></transform></case>
+            <case test="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/*/@rdf:about"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/*/@rdf:about"/></transform></case>
           </switch>
         </var>
         <ind1 default=" "/>
         <ind2 default=" "/>
         <var name="vAuri">
           <switch>
+            <case test="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/n']]/bf:agent//@rdf:*">
+              <transform>
+                <xsl:value-of select="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/n']]/bf:agent//@rdf:*[1]"/>
+              </transform>
+            </case>
             <case test="$vAdminMetadata/bf:assigner/@rdf:resource">
               <transform>
                 <xsl:value-of select="$vAdminMetadata/bf:assigner/@rdf:resource"/>
@@ -939,6 +944,11 @@
         </var>
         <var name="vAcode">
           <switch>
+            <case test="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/n']]/bf:agent//bf:code">
+              <transform>
+                <xsl:value-of select="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/n']]/bf:agent//bf:code"/>
+              </transform>
+            </case>
             <case test="$vAdminMetadata/bf:assigner/*/*[local-name()='code']">
               <transform>
                 <xsl:value-of select="$vAdminMetadata/bf:assigner/*/*[local-name()='code']"/>
@@ -971,14 +981,14 @@
               </transform>
             </sf>
           </case>
-          <case test="$vAdminMetadata/bf:descriptionLanguage/*/*[local-name()='code']">
+          <case test="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/*/*[local-name()='code']">
             <sf code="b">
-              <transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/*/*[local-name()='code']"/></transform>
+              <transform><xsl:value-of select="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/*/*[local-name()='code']"/></transform>
             </sf>
           </case>
         </switch>
         <sf code="e">
-          <select xpath="$vAdminMetadata/bf:descriptionConventions[not(contains(@rdf:resource,'isbd')) and
+          <select xpath="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionConventions[not(contains(@rdf:resource,'isbd')) and
                           not(contains(*/@rdf:about,'isbd')) and
                           not(*/rdf:value='isbd') and
                           not(*/*[local-name()='code']='isbd') and
@@ -1022,45 +1032,60 @@
           </case>
         </switch>
         <switch>
-          <case test="count($vAdminMetadata/bf:descriptionModifier) &gt; 0">
-            <var name="vLastAgentUri">
-              <switch>
-                <case test="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/@rdf:resource">
-                  <transform>
-                    <xsl:value-of select="../bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/@rdf:resource"/>
-                  </transform>
-                </case>
-                <case test="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/*/@rdf:about">
-                  <transform>
-                    <xsl:value-of select="../bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/*/@rdf:about"/>
-                  </transform>
-                </case>
-              </switch>
-            </var>
-            <var name="vModifierCode">
-              <switch>
-                <case test="$vLastAgentUri != '' and contains($vLastAgentUri,'id.loc.gov')">
-                  <transform>
-                    <xsl:call-template name="tUriCode">
-                      <xsl:with-param name="pUri" select="$vLastAgentUri"/>
-                    </xsl:call-template>
-                  </transform>
-                </case>
-                <case test="default">
-                  <transform>
-                    <xsl:value-of select="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/*/*[local-name()='code']"/>
-                  </transform>
-                </case>
-              </switch>
-            </var>
-            <switch>
-              <case test="$vModifierCode = 'dlc'">
-                <sf code="d"><transform><xsl:value-of select="translate($vModifierCode,$lower,$upper)"/></transform></sf>
-              </case>
-              <case test="$vModifierCode != ''">
-                <sf code="d"><transform><xsl:value-of select="$vModifierCode"/></transform></sf>
-              </case>
-            </switch>
+          <case test="count($vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']]) &gt; 0">
+            <transform>
+              <xsl:variable name="modifierCodePreNS">
+                <codes>
+                  <xsl:if test="$vAdminMetadata/bflc:marcKey[starts-with(., '040')]">
+                    <xsl:variable name="df040sfsPreNS">
+                      <subfields>
+                      <xsl:call-template name="tParseMarcKey">
+                        <xsl:with-param name="pString" select="substring($vAdminMetadata/bflc:marcKey[starts-with(., '040')], 6)" />
+                      </xsl:call-template>
+                    </subfields>
+                    </xsl:variable>
+                    <xsl:variable name="df040sfs" select="exsl:node-set($df040sfsPreNS)" />
+                    <xsl:for-each select="$df040sfs//marc:subfield[@code='d']">
+                      <modifierCode><xsl:value-of select="." /></modifierCode>
+                    </xsl:for-each>
+                  </xsl:if>
+                  <xsl:for-each select="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']]">
+                    <xsl:sort select="bf:date" data-type="text" order="ascending" />
+                    <xsl:variable name="mCode">
+                      <xsl:choose>
+                        <xsl:when test="bf:descriptionModifier//bf:code">
+                          <xsl:value-of select="bf:descriptionModifier//bf:code" />
+                        </xsl:when>
+                        <xsl:when test="bf:agent//bf:code">
+                          <xsl:value-of select="bf:agent//bf:code" />
+                        </xsl:when>
+                        <xsl:when test="bf:descriptionModifier//@rdf:*[1]">
+                          <xsl:call-template name="tUriCode">
+                            <xsl:with-param name="pUri" select="bf:descriptionModifier//@rdf:*[1]"/>
+                          </xsl:call-template>
+                        </xsl:when>
+                        <xsl:when test="bf:agent//@rdf:*[1]">
+                          <xsl:call-template name="tUriCode">
+                            <xsl:with-param name="pUri" select="bf:agent//@rdf:*[1]"/>
+                          </xsl:call-template>
+                        </xsl:when>
+                      </xsl:choose>
+                  </xsl:variable>
+                  <modifierCode>
+                    <xsl:choose>
+                      <xsl:when test="$mCode = 'dlc'">DLC</xsl:when>
+                      <xsl:when test="$mCode = 'dlcmrc'">DLCMRC</xsl:when>
+                      <xsl:otherwise><xsl:value-of select="$mCode" /></xsl:otherwise>
+                    </xsl:choose>
+                  </modifierCode>
+                </xsl:for-each>
+                </codes>
+              </xsl:variable>
+              <xsl:variable name="modifierCodes" select="exsl:node-set($modifierCodePreNS)" />
+              <xsl:for-each select="$modifierCodes//*:modifierCode[not(.=preceding::*[1])]">
+                <marc:subfield code="d"><xsl:value-of select="." /></marc:subfield>
+              </xsl:for-each>
+            </transform>
           </case>
         </switch>
       </df>
