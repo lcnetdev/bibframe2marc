@@ -79,8 +79,11 @@
       </var>
       <ind1 default=" ">
         <switch>
-          <case test="$vSubjectTag = '630'">
+          <case test="$vSubjectTag = '630' and $vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2 != '' and $vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2 != ' '">
             <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2" />
+          </case>
+          <case test="$vSubjectTag = '630' and ($vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2 = '' or $vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind2 = ' ')">
+            <transform><xsl:value-of select="'0'" /></transform>
           </case>
           <case test="default">
             <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
@@ -1095,7 +1098,7 @@
                 </switch>
                 <sf code="r" chopPunct="true"><select xpath="bf:musicKey"/></sf>
                 <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
-                <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
+                <!-- <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf> -->
                 <sf code="e" chopPunct="true">
                   <select xpath="bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
                 </sf>
