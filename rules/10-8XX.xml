@@ -905,7 +905,7 @@
     </switch>
     <switch>
       <case test="$pGenerationUri">
-        <sf code="u"><transform><xsl:value-of select="$pGenerationUri"/></transform></sf>
+        <sf code="u"><transform><xsl:value-of select="concat($pGenerationUri, '/releases/tag/', substring-after($vCurrentVersion, 'DLC bibframe2marc '))" /></transform></sf>
       </case>
     </switch>
   </df>
