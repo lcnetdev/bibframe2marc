@@ -186,7 +186,9 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+        <case test="bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/rdfs:label[text()='canceled or invalid'] or
+                    bf:status/bf:Status/rdfs:label[text()='invalid'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
@@ -206,7 +208,9 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label[text()='canceled'] or
+        <case test="bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/rdfs:label[text()='canceled or invalid'] or
+                    bf:status/bf:Status/rdfs:label[text()='canceled'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
@@ -231,7 +235,9 @@
       <ind1 default="0"/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label[text()='canceled'] or
+        <case test="bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+          bf:status/bf:Status/rdfs:label[text()='canceled or invalid'] or
+          bf:status/bf:Status/rdfs:label[text()='canceled'] or
           bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
           bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
@@ -280,7 +286,9 @@
       </ind1>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+        <case test="bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/rdfs:label[text()='canceled or invalid'] or
+                    bf:status/bf:Status/rdfs:label[text()='invalid'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
@@ -361,7 +369,9 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+        <case test="bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/rdfs:label[text()='canceled or invalid'] or
+                    bf:status/bf:Status/rdfs:label[text()='invalid'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
@@ -404,7 +414,9 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+        <case test="bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/rdfs:label[text()='canceled or invalid'] or
+                    bf:status/bf:Status/rdfs:label[text()='invalid'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z"><select xpath="rdf:value"/></sf>
@@ -657,7 +669,9 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+        <case test="bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+                    bf:status/bf:Status/rdfs:label[text()='canceled or invalid'] or
+                    bf:status/bf:Status/rdfs:label[text()='invalid'] or
                     bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
                     bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z">
@@ -682,7 +696,9 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <switch>
-        <case test="bf:status/bf:Status/rdfs:label[text()='invalid'] or
+        <case test="bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv' or
+          bf:status/bf:Status/rdfs:label[text()='canceled or invalid'] or
+          bf:status/bf:Status/rdfs:label[text()='invalid'] or
           bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/invalid' or
           bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/invalid'">
           <sf code="z">
@@ -1067,6 +1083,22 @@
                         <xsl:when test="bf:agent//@rdf:*[1]">
                           <xsl:call-template name="tUriCode">
                             <xsl:with-param name="pUri" select="bf:agent//@rdf:*[1]"/>
+                          </xsl:call-template>
+                        </xsl:when>
+                        <xsl:when test="preceding::bf:AdminMetadata//bf:descriptionModifier//bf:code">
+                          <xsl:value-of select="preceding::bf:AdminMetadata//bf:descriptionModifier//bf:code" />
+                        </xsl:when>
+                        <xsl:when test="preceding::bf:AdminMetadata//bf:agent//bf:code">
+                          <xsl:value-of select="preceding::bf:AdminMetadata//bf:agent//bf:code" />
+                        </xsl:when>
+                        <xsl:when test="preceding::bf:AdminMetadata//bf:descriptionModifier//@rdf:*[1]">
+                          <xsl:call-template name="tUriCode">
+                            <xsl:with-param name="pUri" select="preceding::bf:AdminMetadata//bf:descriptionModifier//@rdf:*[1]"/>
+                          </xsl:call-template>
+                        </xsl:when>
+                        <xsl:when test="preceding::bf:AdminMetadata//bf:agent//@rdf:*[1]">
+                          <xsl:call-template name="tUriCode">
+                            <xsl:with-param name="pUri" select="preceding::bf:AdminMetadata//bf:agent//@rdf:*[1]"/>
                           </xsl:call-template>
                         </xsl:when>
                       </xsl:choose>
