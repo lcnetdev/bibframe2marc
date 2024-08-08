@@ -184,7 +184,13 @@
       </var>
       
       <ind1 default=" ">
-        <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+        <switch>
+          <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != ''">
+            <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+          </case>
+          <case test="$vAddedEntryNameMarcKeyTag='710'">2</case>
+          <case test="default"><transform><xsl:value-of select="' '" /></transform></case>
+        </switch>
       </ind1>
       <ind2 default=" "/>
       
