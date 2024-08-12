@@ -1051,18 +1051,18 @@
           <case test="count($vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']]) &gt; 0">
             <transform>
               <xsl:variable name="modifierCodePreNS">
-                <codes>
+                <marc:codes>
                   <xsl:if test="$vAdminMetadata/bflc:marcKey[starts-with(., '040')]">
                     <xsl:variable name="df040sfsPreNS">
                       <subfields>
-                      <xsl:call-template name="tParseMarcKey">
-                        <xsl:with-param name="pString" select="substring($vAdminMetadata/bflc:marcKey[starts-with(., '040')], 6)" />
-                      </xsl:call-template>
-                    </subfields>
+                        <xsl:call-template name="tParseMarcKey">
+                          <xsl:with-param name="pString" select="substring($vAdminMetadata/bflc:marcKey[starts-with(., '040')], 6)" />
+                        </xsl:call-template>
+                      </subfields>
                     </xsl:variable>
                     <xsl:variable name="df040sfs" select="exsl:node-set($df040sfsPreNS)" />
                     <xsl:for-each select="$df040sfs//marc:subfield[@code='d']">
-                      <modifierCode><xsl:value-of select="." /></modifierCode>
+                      <marc:modifierCode><xsl:value-of select="." /></marc:modifierCode>
                     </xsl:for-each>
                   </xsl:if>
                   <xsl:for-each select="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']]">
@@ -1103,18 +1103,18 @@
                         </xsl:when>
                       </xsl:choose>
                   </xsl:variable>
-                  <modifierCode>
+                  <marc:modifierCode>
                     <xsl:choose>
                       <xsl:when test="$mCode = 'dlc'">DLC</xsl:when>
                       <xsl:when test="$mCode = 'dlcmrc'">DLCMRC</xsl:when>
                       <xsl:otherwise><xsl:value-of select="$mCode" /></xsl:otherwise>
                     </xsl:choose>
-                  </modifierCode>
+                  </marc:modifierCode>
                 </xsl:for-each>
-                </codes>
+                </marc:codes>
               </xsl:variable>
               <xsl:variable name="modifierCodes" select="exsl:node-set($modifierCodePreNS)" />
-              <xsl:for-each select="$modifierCodes//modifierCode[not(.=preceding::*[1])]">
+              <xsl:for-each select="$modifierCodes//marc:modifierCode[not(.=preceding::*[1])]">
                 <marc:subfield code="d"><xsl:value-of select="." /></marc:subfield>
               </xsl:for-each>
             </transform>
