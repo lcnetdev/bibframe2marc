@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T09:00:24.593499-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:18:20.399723-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -77,6 +77,7 @@
 	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<bflc:marcKey>040  $aOHX$beng$erda$cOHX$dOCLCO$dZYU$dOCLCF$dGUA$dLGG$dTJC$dOCLCO$dORC$dOCLCO$dRES$dEMU$dMYG$dBRL$dYDX$dNYP$dOCLCO$dOCL$dOCLCO$dOCLCQ$dDLC</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <bf:code>lccopycat</bf:code>
@@ -88,9 +89,7 @@
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ita"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ita"/>
     <bf:supplementaryContent>
       <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/techmusic">
 	<rdfs:label>technical information on music</rdfs:label>
@@ -101,50 +100,36 @@
 	<rdfs:label>historical information</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
-    <bf:musicFormat>
-      <bf:MusicFormat rdf:about="http://id.loc.gov/vocabulary/mmusicformat/vocalscore">
-	<rdfs:label>vocal score</rdfs:label>
-      </bf:MusicFormat>
-    </bf:musicFormat>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Includes translation</rdfs:label>
+	<rdfs:label>Includes translation or is translation</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:language>
-      <bf:Language>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/ita"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>original</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/ita"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>original accompanying materials</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
-      </bf:Language>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/otx"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ita"/>
+      </bf:Note>
+    </bf:note>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
+      </bf:Work>
+    </bf:accompaniedBy>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+      </bf:Work>
+    </bf:accompaniedBy>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
+      </bf:Note>
+    </bf:note>
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:classificationPortion>M1503.H135</bf:classificationPortion>
@@ -169,8 +154,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent100-21">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>1001 $aHandel, George Frideric,$d1685-1759,$ecomposer.</bflc:marcKey>
 	    <rdfs:label>Handel, George Frideric, 1685-1759</rdfs:label>
+	    <bflc:marcKey>1001 $aHandel, George Frideric,$d1685-1759,$ecomposer.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -358,8 +343,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-53">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aBrenner, Peter,$d1930-$etranslator.</bflc:marcKey>
 	    <rdfs:label>Brenner, Peter, 1930-</rdfs:label>
+	    <bflc:marcKey>7001 $aBrenner, Peter,$d1930-$etranslator.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -374,8 +359,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-54">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aKöhs, Andreas,$earranger of music.</bflc:marcKey>
 	    <rdfs:label>Köhs, Andreas</rdfs:label>
+	    <bflc:marcKey>7001 $aKöhs, Andreas,$earranger of music.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -385,160 +370,165 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Hub700-55">
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-55">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>7001 $iLibretto (work):$aRossi, Giacomo,$dactive 1710-1731.$tSosarme, re di Media.</bflc:marcKey>
-		<rdfs:label>Rossi, Giacomo, active 1710-1731</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Sosarme, re di Media</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:marcKey>7001 $iLibretto (work):$aRossi, Giacomo,$dactive 1710-1731.$tSosarme, re di Media.</bflc:marcKey>
-      </bf:Hub>
-    </bf:relatedTo>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:relationship>
+	  <bf:Relationship>
 	    <rdfs:label>Libretto (work)</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/REPLACE/21851594#Hub700-55"/>
-      </bflc:Relationship>
-    </bflc:relationship>
-    <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Hub700-56">
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-56">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>7001 $iOpera adaptation of (work):$aSalvi, Antonio,$d1664-1724.$tDionisio, rè di Portogallo.</bflc:marcKey>
-		<rdfs:label>Salvi, Antonio, 1664-1724</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Dionisio, rè di Portogallo</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:marcKey>7001 $iOpera adaptation of (work):$aSalvi, Antonio,$d1664-1724.$tDionisio, rè di Portogallo.</bflc:marcKey>
-      </bf:Hub>
-    </bf:relatedTo>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Hub700-55">
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-55">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Rossi, Giacomo, active 1710-1731</rdfs:label>
+		    <bflc:marcKey>7001 $iLibretto (work):$aRossi, Giacomo,$dactive 1710-1731.$tSosarme, re di Media.</bflc:marcKey>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Sosarme, re di Media</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bflc:marcKey>7001 $iLibretto (work):$aRossi, Giacomo,$dactive 1710-1731.$tSosarme, re di Media.</bflc:marcKey>
+	  </bf:Hub>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:relationship>
+	  <bf:Relationship>
 	    <rdfs:label>Opera adaptation of (work)</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/REPLACE/21851594#Hub700-56"/>
-      </bflc:Relationship>
-    </bflc:relationship>
-    <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Hub700-57">
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-57">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>70012$iContainer of (expression):$aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.</bflc:marcKey>
-		<rdfs:label>Handel, George Frideric, 1685-1759</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Sosarme. Vocal score.</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:version>Vocal score</bf:version>
-	<bflc:marcKey>70012$iContainer of (expression):$aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.</bflc:marcKey>
-      </bf:Hub>
-    </bf:relatedTo>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Hub700-56">
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-56">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Salvi, Antonio, 1664-1724</rdfs:label>
+		    <bflc:marcKey>7001 $iOpera adaptation of (work):$aSalvi, Antonio,$d1664-1724.$tDionisio, rè di Portogallo.</bflc:marcKey>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Dionisio, rè di Portogallo</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bflc:marcKey>7001 $iOpera adaptation of (work):$aSalvi, Antonio,$d1664-1724.$tDionisio, rè di Portogallo.</bflc:marcKey>
+	  </bf:Hub>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:relationship>
+	  <bf:Relationship>
 	    <rdfs:label>Container of (expression)</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/REPLACE/21851594#Hub700-57"/>
-      </bflc:Relationship>
-    </bflc:relationship>
-    <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Hub700-58">
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-58">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>70012$iContainer of (expression):$aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.$lGerman.</bflc:marcKey>
-		<rdfs:label>Handel, George Frideric, 1685-1759</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Sosarme. Vocal score. German.</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:language>
-	  <bf:Language>
-	    <rdfs:label>German</rdfs:label>
-	  </bf:Language>
-	</bf:language>
-	<bf:version>Vocal score</bf:version>
-	<bflc:marcKey>70012$iContainer of (expression):$aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.$lGerman.</bflc:marcKey>
-      </bf:Hub>
-    </bf:relatedTo>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Hub700-57">
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-57">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Handel, George Frideric, 1685-1759</rdfs:label>
+		    <bflc:marcKey>70012$iContainer of (expression):$aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.</bflc:marcKey>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Sosarme. Vocal score.</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:version>Vocal score</bf:version>
+	    <bflc:marcKey>70012$iContainer of (expression):$aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.</bflc:marcKey>
+	  </bf:Hub>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:relationship>
+	  <bf:Relationship>
 	    <rdfs:label>Container of (expression)</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/REPLACE/21851594#Hub700-58"/>
-      </bflc:Relationship>
-    </bflc:relationship>
-    <bf:hasPart>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Work740-59">
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
-	<bf:title>
-	  <bf:Title>
-	    <bflc:nonSortNum>0</bflc:nonSortNum>
-	    <bf:mainTitle>Fernando, re di Castiglia</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-      </bf:Work>
-    </bf:hasPart>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Hub700-58">
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Agent700-58">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Handel, George Frideric, 1685-1759</rdfs:label>
+		    <bflc:marcKey>70012$iContainer of (expression):$aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.$lGerman.</bflc:marcKey>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Sosarme. Vocal score. German.</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:language>
+	      <bf:Language>
+		<rdfs:label>German</rdfs:label>
+	      </bf:Language>
+	    </bf:language>
+	    <bf:version>Vocal score</bf:version>
+	    <bflc:marcKey>70012$iContainer of (expression):$aHandel, George Frideric,$d1685-1759.$tSosarme.$sVocal score.$lGerman.</bflc:marcKey>
+	  </bf:Hub>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/part"/>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Work740-59">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
+	    <bf:title>
+	      <bf:Title>
+		<bflc:nonSortNum>0</bflc:nonSortNum>
+		<bf:mainTitle>Fernando, re di Castiglia</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/REPLACE/21851594#Instance"/>
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/21851594#Instance">
@@ -553,7 +543,7 @@
 	<bflc:simpleDate>[2020]</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">Kassel: Bärenreiter; [2020]</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Kassel: Bärenreiter, [2020]</bf:publicationStatement>
     <bf:copyrightDate rdf:datatype="http://id.loc.gov/datatypes/edtf">2020</bf:copyrightDate>
     <bf:identifiedBy>
       <bf:Lccn>
@@ -593,33 +583,24 @@
       </bf:MusicPlate>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>on1197943499</rdf:value>
-	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc"/>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>1197943499</rdf:value>
-	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc"/>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>1223057722</rdf:value>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/cancinv">
 	    <rdfs:label>invalid</rdfs:label>
 	  </bf:Status>
 	</bf:status>
-	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc"/>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:responsibilityStatement>Händel ; Libretto von Giacomo Rossi (?) nach Antonio Salvi = libretto by Giacomo Rossi (?) after Antonio Salvi ; Deutsche Übersetzung von Peter Brenner = German translation by Peter Brenner.</bf:responsibilityStatement>
     <bf:title>
@@ -652,29 +633,19 @@
 	</bf:source>
       </bf:Carrier>
     </bf:carrier>
-    <bf:musicFormat>
-      <bf:MusicFormat rdf:about="http://id.loc.gov/vocabulary/mmusicformat/vocalscore">
-	<rdfs:label>vocal score</rdfs:label>
-	<bf:source>
-	  <bf:Source>
-	    <bf:code>rdafnm</bf:code>
-	  </bf:Source>
-	</bf:source>
-      </bf:MusicFormat>
-    </bf:musicFormat>
     <bf:note>
       <bf:Note>
-	<rdfs:label>For 7 soloists (SAAAATB) with orchestra, accompaniment arranged for piano.</rdfs:label>
+	<rdfs:label>For 7 soloists (SAAAATB) with orchestra, accompaniment arranged for piano</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>"Bärenreiter Urtext"--Cover.</rdfs:label>
+	<rdfs:label>"Bärenreiter Urtext"--Cover</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Translation statement from errata slip inserted.</rdfs:label>
+	<rdfs:label>Translation statement from errata slip inserted</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
@@ -684,12 +655,12 @@
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Preface and synopsis in German with English translation.</rdfs:label>
+	<rdfs:label>Preface and synopsis in German with English translation</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Appendices include Fernando, re di Castiglia (fragment) and early versions of 3 arias.</rdfs:label>
+	<rdfs:label>Appendices include Fernando, re di Castiglia (fragment) and early versions of 3 arias</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/21851594#Work"/>

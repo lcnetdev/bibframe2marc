@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T09:00:09.303356-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:17:58.06863-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -76,6 +76,7 @@
 	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<bflc:marcKey>040  $aSDL$beng$erda$cSDL$dIEP$dTKN$dOCLCQ$dOCLCG$dJBO$dUMC$dUOK$dOCLCQ$dUAU$dOCLCO$dOCLCF$dP4I$dOCLCQ$dOCLCA$dCEF$dPEX$dJDP$dOCLCQ$dOCLCO$dOCL$dOCLCA$dXFF$dOCLCO$dORU$dOCLCA$dSTF$dFDA$dCSAIL$dDLC</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <bf:code>lccopycat</bf:code>
@@ -86,9 +87,7 @@
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/MusicAudio"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/zxx"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/zxx"/>
     <bf:supplementaryContent>
       <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/performerhistory">
 	<rdfs:label>biography of performer or history of ensemble</rdfs:label>
@@ -116,36 +115,36 @@
 	<bf:place rdf:resource="http://id.loc.gov/authorities/classification/G5754.L7"/>
       </bf:Capture>
     </bf:capture>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/fre"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/ita"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>original accompanying materials</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
-      </bf:Language>
-    </bf:language>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+      </bf:Work>
+    </bf:accompaniedBy>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
+      </bf:Work>
+    </bf:accompaniedBy>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/fre"/>
+      </bf:Work>
+    </bf:accompaniedBy>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ita"/>
+      </bf:Work>
+    </bf:accompaniedBy>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
+      </bf:Note>
+    </bf:note>
     <bf:instrument>
       <bf:MusicInstrument>
 	<bf:instrumentalType>keyboard</bf:instrumentalType>
@@ -185,8 +184,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Agent100-23">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943,$ecomposer.</bflc:marcKey>
 	    <rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
+	    <bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943,$ecomposer.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -204,8 +203,8 @@
 	    <bf:agent>
 	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Hub240-24-Agent">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943,$ecomposer.</bflc:marcKey>
 		<rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
+		<bflc:marcKey>1001 $aRachmaninoff, Sergei,$d1873-1943,$ecomposer.</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -262,7 +261,7 @@
       </bf:Content>
     </bf:content>
     <bf:content>
-      <bf:Content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
 	<rdfs:label>text</rdfs:label>
 	<bflc:appliesTo>
 	  <bflc:AppliesTo>
@@ -334,8 +333,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Agent700-55">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aBronfman, Yefim.$4prf</bflc:marcKey>
 	    <rdfs:label>Bronfman, Yefim</rdfs:label>
+	    <bflc:marcKey>7001 $aBronfman, Yefim.$4prf</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -348,8 +347,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Agent700-56">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aSalonen, Esa-Pekka,$d1958-$econductor.</bflc:marcKey>
 	    <rdfs:label>Salonen, Esa-Pekka, 1958-</rdfs:label>
+	    <bflc:marcKey>7001 $aSalonen, Esa-Pekka,$d1958-$econductor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -359,95 +358,95 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Hub700-57">
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Agent700-57">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>70012$iContainer of (work):$aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 2, op. 18,$rC minor.</bflc:marcKey>
-		<rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Concertos, piano, orchestra, no. 2, op. 18, C minor.</bf:mainTitle>
-	    <bf:partNumber>no. 2, op. 18</bf:partNumber>
-	  </bf:Title>
-	</bf:title>
-	<bf:musicMedium>
-	  <bf:MusicMedium>
-	    <rdfs:label>piano, orchestra</rdfs:label>
-	  </bf:MusicMedium>
-	</bf:musicMedium>
-	<bf:musicKey>C minor</bf:musicKey>
-	<bflc:marcKey>70012$iContainer of (work):$aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 2, op. 18,$rC minor.</bflc:marcKey>
-      </bf:Hub>
-    </bf:relatedTo>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:relationship>
+	  <bf:Relationship>
 	    <rdfs:label>Container of (work)</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/REPLACE/12060035#Hub700-57"/>
-      </bflc:Relationship>
-    </bflc:relationship>
-    <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Hub700-58">
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Agent700-58">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>70012$iContainer of (work):$aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor.</bflc:marcKey>
-		<rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Concertos, piano, orchestra, no. 3, op. 30, D minor.</bf:mainTitle>
-	    <bf:partNumber>no. 3, op. 30</bf:partNumber>
-	  </bf:Title>
-	</bf:title>
-	<bf:musicMedium>
-	  <bf:MusicMedium>
-	    <rdfs:label>piano, orchestra</rdfs:label>
-	  </bf:MusicMedium>
-	</bf:musicMedium>
-	<bf:musicKey>D minor</bf:musicKey>
-	<bflc:marcKey>70012$iContainer of (work):$aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor.</bflc:marcKey>
-      </bf:Hub>
-    </bf:relatedTo>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Hub700-57">
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Agent700-57">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
+		    <bflc:marcKey>70012$iContainer of (work):$aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 2, op. 18,$rC minor.</bflc:marcKey>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Concertos, piano, orchestra, no. 2, op. 18, C minor.</bf:mainTitle>
+		<bf:partNumber>no. 2, op. 18</bf:partNumber>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:musicMedium>
+	      <bf:MusicMedium>
+		<rdfs:label>piano, orchestra</rdfs:label>
+	      </bf:MusicMedium>
+	    </bf:musicMedium>
+	    <bf:musicKey>C minor</bf:musicKey>
+	    <bflc:marcKey>70012$iContainer of (work):$aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 2, op. 18,$rC minor.</bflc:marcKey>
+	  </bf:Hub>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:relationship>
+	  <bf:Relationship>
 	    <rdfs:label>Container of (work)</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/REPLACE/12060035#Hub700-58"/>
-      </bflc:Relationship>
-    </bflc:relationship>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Hub700-58">
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Agent700-58">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Rachmaninoff, Sergei, 1873-1943</rdfs:label>
+		    <bflc:marcKey>70012$iContainer of (work):$aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor.</bflc:marcKey>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Concertos, piano, orchestra, no. 3, op. 30, D minor.</bf:mainTitle>
+		<bf:partNumber>no. 3, op. 30</bf:partNumber>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:musicMedium>
+	      <bf:MusicMedium>
+		<rdfs:label>piano, orchestra</rdfs:label>
+	      </bf:MusicMedium>
+	    </bf:musicMedium>
+	    <bf:musicKey>D minor</bf:musicKey>
+	    <bflc:marcKey>70012$iContainer of (work):$aRachmaninoff, Sergei,$d1873-1943.$tConcertos,$mpiano, orchestra,$nno. 3, op. 30,$rD minor.</bflc:marcKey>
+	  </bf:Hub>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:contribution>
       <bf:Contribution>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/12060035#Agent710-59">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
-	    <bflc:marcKey>7102 $aPhilharmonia Orchestra (London, England),$einstrumentalist.</bflc:marcKey>
 	    <rdfs:label>Philharmonia Orchestra (London, England)</rdfs:label>
+	    <bflc:marcKey>7102 $aPhilharmonia Orchestra (London, England),$einstrumentalist.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -494,7 +493,7 @@
 	<bflc:simpleDate>[1992]</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">New York, NY: Sony Classical; [1992]</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">New York, NY: Sony Classical, [1992]</bf:publicationStatement>
     <bf:copyrightDate xmlns:exsl="http://exslt.org/common">℗1992</bf:copyrightDate>
     <bf:provisionActivity xmlns:exsl="http://exslt.org/common">
       <bf:ProvisionActivity>
@@ -540,12 +539,9 @@
       </bf:AudioIssueNumber>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>ocm25994797</rdf:value>
-	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc"/>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:responsibilityStatement>Sergei Rachmaninoff</bf:responsibilityStatement>
     <bf:title>
@@ -565,7 +561,7 @@
 	<rdfs:label>digital</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:dimensions>4 3/4 in.</bf:dimensions>
+    <bf:dimensions>4 3/4 in</bf:dimensions>
     <bf:duration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">011712</bf:duration>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/s">
@@ -607,7 +603,7 @@
 	</bflc:appliesTo>
       </bf:Carrier>
     </bf:carrier>
-    <bf:dimensions>4 3/4 in.</bf:dimensions>
+    <bf:dimensions>4 3/4 in</bf:dimensions>
     <bf:soundCharacteristic>
       <bf:RecordingMethod rdf:about="http://id.loc.gov/vocabulary/mrectype/digital">
 	<rdfs:label>digital</rdfs:label>
@@ -679,7 +675,7 @@
       </bf:PlayingSpeed>
     </bf:soundCharacteristic>
     <bf:digitalCharacteristic>
-      <bf:EncodingFormat>
+      <bf:EncodingFormat rdf:about="http://id.loc.gov/vocabulary/mencformat/cda">
 	<rdfs:label>CD audio</rdfs:label>
 	<bflc:appliesTo>
 	  <bflc:AppliesTo>
@@ -690,13 +686,13 @@
     </bf:digitalCharacteristic>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Title from disc label.</rdfs:label>
+	<rdfs:label>Title from disc label</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:credits>Yefim Bronfman, piano ; The Philharmonia ; Esa-Pekka Salonen, conductor.</bf:credits>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Program notes by Detlef Gojowy, and biographical notes in German, with English, French and Italian translations (20 pages : portraits) inserted in container.</rdfs:label>
+	<rdfs:label>Program notes by Detlef Gojowy, and biographical notes in German, with English, French and Italian translations (20 pages : portraits) inserted in container</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/12060035#Work"/>

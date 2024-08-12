@@ -1,5 +1,6 @@
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <!--[{"level": "WARNING", "message": "LCC missing item portion."}]-->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <!--[{"level": "WARNING", "message": "Possible provision activity anomaly: only ProvisionActivity, Publication, Distribution, Manufacture, Modification used."},
+{"level": "WARNING", "message": "LCC missing item portion."}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/14437118">
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
@@ -38,7 +39,7 @@
 	<bflc:simpleDate>bulk 1940-1978</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement>1885-1988, bulk 1940-1978</bflc:publicationStatement>
+    <bf:publicationStatement>1885-1988, bulk 1940-1978</bf:publicationStatement>
     <bf:provisionActivity>
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Production"/>
@@ -70,7 +71,7 @@
 	<rdfs:label>ca. 750,000 items (chiefly photographs)</rdfs:label>
       </bf:Extent>
     </bf:extent>
-    <bf:dimensions>various sizes.</bf:dimensions>
+    <bf:dimensions>various sizes</bf:dimensions>
     <bf:note>
       <bf:Note>
 	<rdfs:label>The body of material known as The Work of Charles and Ray Eames documents, through more than one million items in a variety of media, the major impact that Charles and Ray Eames had on American design, particularly in the realms of graphic, textile, furniture, architectural, and exhibit design. The material dates primarily from about 1940 to 1978. The Prints and Photographs Division holds the largest portion of the material--more than 750,000 items, about one-third of which has been organized and cataloged. The Library's Manuscript Division holds related textual material, and the Motion Picture, Broadcasting, and Recorded Sound Division holds the Eameses' film materials.</rdfs:label>
@@ -83,7 +84,7 @@
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Collection title devised by Library staff.</rdfs:label>
+	<rdfs:label>Collection title devised by Library staff</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:preferredCitation>Cite as the Work of Charles and Ray Eames, Library of Congress, Prints &amp; Photographs Division.</bf:preferredCitation>
@@ -95,7 +96,7 @@
     </bf:usageAndAccessPolicy>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Extensive correspondence, and other manuscript materials are in the Papers of Charles and Ray Eames in the Manuscript Division, Library of Congress.</rdfs:label>
+	<rdfs:label>Extensive correspondence, and other manuscript materials are in the Papers of Charles and Ray Eames in the Manuscript Division, Library of Congress</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/related"/>
       </bf:Note>
     </bf:note>
@@ -107,14 +108,14 @@
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Collection profile is available online,</rdfs:label>
+	<rdfs:label>Collection profile is available online</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/index"/>
 	<bf:electronicLocator rdf:resource="https://hdl.loc.gov/loc.pnp/coll.231.eame"/>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Published in: Albrecht, Donald, et al. The Work of Charles and Ray Eames: A Legacy of Invention. New York: Harry N. Abrams in association with the Library of Congress and the Vitra Design Museum, 1997.</rdfs:label>
+	<rdfs:label>Published in: Albrecht, Donald, et al. The Work of Charles and Ray Eames: A Legacy of Invention. New York: Harry N. Abrams in association with the Library of Congress and the Vitra Design Museum, 1997</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/related"/>
       </bf:Note>
     </bf:note>
@@ -123,17 +124,55 @@
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/14437118"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-16T10:52:22.851432-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-06T22:36:09.982848-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -154,23 +193,13 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
 	    <rdfs:label>Graphic materials</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
+	<lclocal:d985>=985     $a pp/guide</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
@@ -258,17 +287,17 @@
     </bf:collectionArrangement>
     <bf:summary>
       <bf:Summary>
-	<rdfs:label>The Prints and Photographs Division's portion of the collection is both an archive of design ideas and a record of the Eameses' work. Charles and Ray Eames photographed their own designs extensively, and also used photography to study natural forms and everyday objects. The collection documents exhibitions, publications, and films for organizations such as IBM, Herman Miller, the U.S. government, Boeing, and Polaroid. It also reflects the Eameses' interest in making scientific and mathematical concepts and history more accessible to a general audience. The photographs include many images depicting the Eameses, their family, friends, and colleagues, including Billy Wilder and Eero Saarinen.</rdfs:label>
+	<rdfs:label>The Prints and Photographs Division's portion of the collection is both an archive of design ideas and a record of the Eameses' work. Charles and Ray Eames photographed their own designs extensively, and also used photography to study natural forms and everyday objects. The collection documents exhibitions, publications, and films for organizations such as IBM, Herman Miller, the U.S. government, Boeing, and Polaroid. It also reflects the Eameses' interest in making scientific and mathematical concepts and history more accessible to a general audience. The photographs include many images depicting the Eameses, their family, friends, and colleagues, including Billy Wilder and Eero Saarinen</rdfs:label>
       </bf:Summary>
     </bf:summary>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Forms part of the Work of Charles and Ray Eames.</rdfs:label>
+	<rdfs:label>Forms part of the Work of Charles and Ray Eames</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Forms part of the collection known as the Work of Charles and Ray Eames (Library of Congress).</rdfs:label>
+	<rdfs:label>Forms part of the collection known as the Work of Charles and Ray Eames (Library of Congress)</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:subject>
@@ -287,14 +316,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Exhibitions--Design</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Exhibitions--Design</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Exhibitions--Design</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85046354">
 	    <rdfs:label xml:lang="en">Exhibitions</rdfs:label>
 	    <bflc:marcKey>150  $aExhibitions</bflc:marcKey>
@@ -307,8 +335,7 @@
 	<bflc:aap-normalized>exhibitionsdesign</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -322,7 +349,7 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85088104">
 	<rdfs:label xml:lang="en">Motion pictures--Production and direction</rdfs:label>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
 	    <madsrdf:authoritativeLabel xml:lang="en">Motion pictures</madsrdf:authoritativeLabel>
@@ -349,8 +376,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Design drawings--1940-1980</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Design drawings--1940-1980</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Design drawings--1940-1980</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:GenreForm>
 	    <madsrdf:authoritativeLabel>Design drawings</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
@@ -359,7 +386,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>designdrawings19401980</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -375,8 +402,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Portrait photographs--1940-1980</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Portrait photographs--1940-1980</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Portrait photographs--1940-1980</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:GenreForm>
 	    <madsrdf:authoritativeLabel>Portrait photographs</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
@@ -385,7 +412,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>portraitphotographs19401980</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -401,8 +428,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Photographs--1940-1980</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Photographs--1940-1980</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Photographs--1940-1980</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:GenreForm>
 	    <madsrdf:authoritativeLabel>Photographs</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
@@ -411,7 +438,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>photographs19401980</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -427,8 +454,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Drawings--1940-1980</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Drawings--1940-1980</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Drawings--1940-1980</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:GenreForm>
 	    <madsrdf:authoritativeLabel>Drawings</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
@@ -437,7 +464,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>drawings19401980</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -481,43 +508,118 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:partOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/5811493">
-	<rdfs:label>Eames, Charles Charles Eames and Ray Eames papers</rdfs:label>
-	<bf:contribution>
-	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
-	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n79128113"/>
-	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Charles Eames and Ray Eames papers</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:title>
-	  <bf:VariantTitle>
-	    <bf:mainTitle>Work of Charles and Ray Eames (Library of Congress)</bf:mainTitle>
-	  </bf:VariantTitle>
-	</bf:title>
-      </bf:Work>
-    </bf:partOf>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/partof">
+	    <rdfs:label>part of</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/works/5811493">
+	    <bf:contribution>
+	      <bf:Contribution>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79128113">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Eames, Charles</rdfs:label>
+		    <bflc:marcKey>10010$aEames, Charles</bflc:marcKey>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+		    <rdfs:label>Contributor</rdfs:label>
+		  </bf:Role>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Charles Eames and Ray Eames papers</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/5811493">
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>mm 94083006 </rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Identifier>
+		    <rdf:value>MSS83006</rdf:value>
+		    <bf:source>
+		      <bf:Source>
+			<bf:code>lcmd</bf:code>
+		      </bf:Source>
+		    </bf:source>
+		  </bf:Identifier>
+		</bf:identifiedBy>
+		<bf:media>
+		  <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+		    <rdfs:label>unmediated</rdfs:label>
+		  </bf:Media>
+		</bf:media>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/14437118"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-16T10:52:22.851432-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-06T22:36:09.982848-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -538,23 +640,13 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
 	    <rdfs:label>Graphic materials</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
+	<lclocal:d985>=985     $a pp/guide</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
@@ -600,6 +692,54 @@
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/14437118"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-06T22:36:09.982848-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>14437118-02</rdf:value>
@@ -610,17 +750,7 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-16T10:52:22.851432-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
-	    <rdfs:label>changed</rdfs:label>
-	  </bf:Status>
-	</bf:status>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -631,35 +761,25 @@
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
 	    <rdfs:label>Graphic materials</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
+	<lclocal:d985>=985     $a pp/guide</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/14437118">
     <bf:heldBy>
-      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	<rdfs:label>United States, Library of Congress</rdfs:label>
-      </madsrdf:CorporateName>
+      </bf:Organization>
     </bf:heldBy>
     <bf:immediateAcquisition>
       <bf:ImmediateAcquisition>
-	<rdfs:label>Bequest from Ray Eames, 1989 (DLC/PP- 1989:150).</rdfs:label>
+	<rdfs:label>Bequest from Ray Eames, 1989 (DLC/PP- 1989:150)</rdfs:label>
 	<bflc:appliesTo>
 	  <bflc:AppliesTo>
 	    <rdfs:label>Bulk of collection</rdfs:label>
@@ -669,7 +789,7 @@
     </bf:immediateAcquisition>
     <bf:immediateAcquisition>
       <bf:ImmediateAcquisition>
-	<rdfs:label>Gift from Charles and Ray Eames estate, 2004 (DLC/PP- 2004:034).</rdfs:label>
+	<rdfs:label>Gift from Charles and Ray Eames estate, 2004 (DLC/PP- 2004:034)</rdfs:label>
 	<bflc:appliesTo>
 	  <bflc:AppliesTo>
 	    <rdfs:label>About 1,000 drawings</rdfs:label>
@@ -685,22 +805,60 @@
 	    <bf:mainTitle>Eames Collection (Library of Congress)</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bflc:publicationStatement>1885-1988, bulk 1940-1978</bflc:publicationStatement>
+	<bf:publicationStatement>1885-1988, bulk 1940-1978</bf:publicationStatement>
       </bf:Instance>
     </bf:itemOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-03-16T10:52:22.851432-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-06T22:36:09.982848-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -721,23 +879,13 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-03-14T12:36:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2006-07-03</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/gihc">
 	    <rdfs:label>Graphic materials</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
+	<lclocal:d985>=985     $a pp/guide</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Item>

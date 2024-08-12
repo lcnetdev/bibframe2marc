@@ -1,5 +1,7 @@
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <!--[{"level": "WARNING", "message": "Possible provision activity anomaly: Missing aspects for a proper 008 date."}]-->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <!--[{"level": "WARNING", "message": "MARC issue. Possible provision activity anomaly: Missing aspects for a proper 008 date."},
+{"level": "WARNING", "message": "RDA alert. Missing Media."},
+{"level": "WARNING", "message": "RDA alert. Missing Carrier."}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/10496140">
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
@@ -18,7 +20,7 @@
 	<bflc:simpleDate>[n.d.]</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement>[n.p.]: [n.d.]</bflc:publicationStatement>
+    <bf:publicationStatement>[n.p.]: [n.d.]</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2012570811</rdf:value>
@@ -38,17 +40,55 @@
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/10496140"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-18T07:39:20.182018-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1984-11-13</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-09-14T13:58:14</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-09T13:02:25.013488-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>10496140</rdf:value>
@@ -59,21 +99,10 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-09-14T13:58:14</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1984-11-13</bf:creationDate>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b cbc $c premunv $d u $e ncip $f 19 $g y-gencatlg</lclocal:d906>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a vl41 2012-07-30 type code change $i vl26 2012-09-14 telework</lclocal:d955>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $e ML96</lclocal:d985>
+	<lclocal:d906>=906     $a 0 $b cbc $c premunv $d u $e ncip $f 19 $g y-gencatlg</lclocal:d906>
+	<lclocal:d955>=955     $a vl41 2012-07-30 type code change $i vl26 2012-09-14 telework</lclocal:d955>
+	<bflc:marcKey>040  $aDLC$cCarP$dDLC</bflc:marcKey>
+	<lclocal:d985>=985     $e ML96</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
@@ -137,25 +166,24 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:title>
-      <bf:Title>
-	<bf:mainTitle>Manuscript of The boat is chafing at our long delay, op. 16, I. Daughter of Egypt, veil thine eyes, op. 16, II. (Two songs)</bf:mainTitle>
-      </bf:Title>
-    </bf:title>
-    <bf:subject>
-      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85125211">
-	<rdfs:label xml:lang="en">Songs with piano</rdfs:label>
-	<bflc:marcKey>150  $aSongs with piano</bflc:marcKey>
-      </bf:Topic>
-    </bf:subject>
     <bf:expressionOf>
       <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/e23815a5-0c6c-17a8-50f2-f032b05f194e">
 	<rdfs:label>Freer, Eleanor Everest Songs, op. 16. Boat is chafing at our long delay</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
-	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/nr89002828"/>
-	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
+	    <bf:agent>
+	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/nr89002828">
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		<rdfs:label>Freer, Eleanor Everest</rdfs:label>
+		<bflc:marcKey>1001 $aFreer, Eleanor Everest</bflc:marcKey>
+	      </bf:Agent>
+	    </bf:agent>
+	    <bf:role>
+	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+		<rdfs:label>Contributor</rdfs:label>
+	      </bf:Role>
+	    </bf:role>
 	  </bf:Contribution>
 	</bf:contribution>
 	<bf:title>
@@ -173,46 +201,114 @@
 	<bflc:marcKey>1001 $aFreer, Eleanor Everest.$tSongs,$nop. 16.$pBoat is chafing at our long delay</bflc:marcKey>
       </bf:Hub>
     </bf:expressionOf>
-    <bf:hasPart>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/33bd18d0-eab3-30b5-b9ae-90d9222125f5">
-	<rdfs:label>Freer, Eleanor Everest Songs, op. 16. Daughter of Egypt, veil thine eyes</rdfs:label>
-	<bf:contribution>
-	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
-	    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/nr89002828"/>
-	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/ctb"/>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Songs, op. 16. Daughter of Egypt, veil thine eyes</bf:mainTitle>
-	    <bf:partNumber>op. 16.</bf:partNumber>
-	    <bf:partName>Daughter of Egypt, veil thine eyes</bf:partName>
-	  </bf:Title>
-	</bf:title>
-	<bf:title>
-	  <bf:VariantTitle>
-	    <bf:mainTitle>Daughter of Egypt, veil thine eyes</bf:mainTitle>
-	  </bf:VariantTitle>
-	</bf:title>
-	<bflc:marcKey>1001 $aFreer, Eleanor Everest.$tSongs,$nop. 16.$pDaughter of Egypt, veil thine eyes</bflc:marcKey>
-      </bf:Hub>
-    </bf:hasPart>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Manuscript of The boat is chafing at our long delay, op. 16, I. Daughter of Egypt, veil thine eyes, op. 16, II. (Two songs)</bf:mainTitle>
+      </bf:Title>
+    </bf:title>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85125211">
+	<rdfs:label xml:lang="en">Songs with piano</rdfs:label>
+	<bflc:marcKey>150  $aSongs with piano</bflc:marcKey>
+      </bf:Topic>
+    </bf:subject>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/part">
+	    <rdfs:label>part</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/33bd18d0-eab3-30b5-b9ae-90d9222125f5">
+	    <rdfs:label>Freer, Eleanor Everest Songs, op. 16. Daughter of Egypt, veil thine eyes</rdfs:label>
+	    <bf:contribution>
+	      <bf:Contribution>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/nr89002828">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Freer, Eleanor Everest</rdfs:label>
+		    <bflc:marcKey>1001 $aFreer, Eleanor Everest</bflc:marcKey>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
+		    <rdfs:label>Contributor</rdfs:label>
+		  </bf:Role>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Songs, op. 16. Daughter of Egypt, veil thine eyes</bf:mainTitle>
+		<bf:partNumber>op. 16.</bf:partNumber>
+		<bf:partName>Daughter of Egypt, veil thine eyes</bf:partName>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:title>
+	      <bf:VariantTitle>
+		<bf:mainTitle>Daughter of Egypt, veil thine eyes</bf:mainTitle>
+	      </bf:VariantTitle>
+	    </bf:title>
+	    <bflc:marcKey>1001 $aFreer, Eleanor Everest.$tSongs,$nop. 16.$pDaughter of Egypt, veil thine eyes</bflc:marcKey>
+	  </bf:Hub>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/10496140"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-18T07:39:20.182018-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1984-11-13</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-09-14T13:58:14</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-09T13:02:25.013488-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>10496140</rdf:value>
@@ -223,21 +319,10 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-09-14T13:58:14</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1984-11-13</bf:creationDate>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 0 $b cbc $c premunv $d u $e ncip $f 19 $g y-gencatlg</lclocal:d906>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a vl41 2012-07-30 type code change $i vl26 2012-09-14 telework</lclocal:d955>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $e ML96</lclocal:d985>
+	<lclocal:d906>=906     $a 0 $b cbc $c premunv $d u $e ncip $f 19 $g y-gencatlg</lclocal:d906>
+	<lclocal:d955>=955     $a vl41 2012-07-30 type code change $i vl26 2012-09-14 telework</lclocal:d955>
+	<bflc:marcKey>040  $aDLC$cCarP$dDLC</bflc:marcKey>
+	<lclocal:d985>=985     $e ML96</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>

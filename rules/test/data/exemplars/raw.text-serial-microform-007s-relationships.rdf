@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T09:00:06.365002-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:17:55.445851-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -74,6 +74,7 @@
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
 	</bf:descriptionLanguage>
+	<bflc:marcKey>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <bf:code>pcc</bf:code>
@@ -86,9 +87,7 @@
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Serial"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ita"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ita"/>
     <bflc:serialPubType>
       <bflc:SerialPubType rdf:about="http://id.loc.gov/vocabulary/mserialpubtype/periodical">
 	<rdfs:label>periodical</rdfs:label>
@@ -218,114 +217,129 @@
 	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
       </bf:GenreForm>
     </bf:genreForm>
-    <bf:otherEdition>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Work775-33">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Giornale dell'arte (Turin, Italy). English. Journal of art</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:identifiedBy>
-	  <bf:Issn>
-	    <rdf:value>1044-9140</rdf:value>
-	  </bf:Issn>
-	</bf:identifiedBy>
-	<bf:hasInstance>
-	  <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Instance775-33">
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/otheredition"/>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Work775-33">
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Giornale dell'arte (Turin, Italy). English. Journal of art</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/11891684#Work775-33"/>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:otherEdition>
-    <bf:otherEdition>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Work775-34">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Giornale dell'arte (Turin, Italy). English (1990). Art newspaper</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:identifiedBy>
-	  <bf:Issn>
-	    <rdf:value>0960-6556</rdf:value>
-	  </bf:Issn>
-	</bf:identifiedBy>
-	<bf:hasInstance>
-	  <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Instance775-34">
+	    <bf:identifiedBy>
+	      <bf:Issn>
+		<rdf:value>1044-9140</rdf:value>
+	      </bf:Issn>
+	    </bf:identifiedBy>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Instance775-33">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Giornale dell'arte (Turin, Italy). English. Journal of art</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/11891684#Work775-33"/>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/otheredition"/>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Work775-34">
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Giornale dell'arte (Turin, Italy). English (1990). Art newspaper</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
 	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>sf 98094490</rdf:value>
-		<bf:assigner>
-		  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <bf:code>DLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Lccn>
+	      <bf:Issn>
+		<rdf:value>0960-6556</rdf:value>
+	      </bf:Issn>
 	    </bf:identifiedBy>
-	    <bf:identifiedBy>
-	      <bf:Identifier>
-		<rdf:value>39966061</rdf:value>
-		<bf:assigner>
-		  <bf:Agent>
-		    <bf:code>OCoLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Identifier>
-	    </bf:identifiedBy>
-	    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/11891684#Work775-34"/>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:otherEdition>
-    <bf:otherPhysicalFormat>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Work776-35">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Il giornale dell'arte</bf:mainTitle>
-	    <bf:qualifier>Original</bf:qualifier>
-	  </bf:Title>
-	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Instance776-35">
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Instance775-34">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Giornale dell'arte (Turin, Italy). English (1990). Art newspaper</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>sf 98094490</rdf:value>
+		    <bf:assigner>
+		      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+			<bf:code>DLC</bf:code>
+		      </bf:Agent>
+		    </bf:assigner>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Identifier>
+		    <rdf:value>39966061</rdf:value>
+		    <bf:assigner>
+		      <bf:Agent>
+			<bf:code>OCoLC</bf:code>
+		      </bf:Agent>
+		    </bf:assigner>
+		  </bf:Identifier>
+		</bf:identifiedBy>
+		<bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/11891684#Work775-34"/>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/otherphysicalformat"/>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Work776-35">
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Il giornale dell'arte</bf:mainTitle>
+		<bf:qualifier>Original</bf:qualifier>
 	      </bf:Title>
 	    </bf:title>
-	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>   88652526</rdf:value>
-		<bf:assigner>
-		  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <bf:code>DLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Lccn>
-	    </bf:identifiedBy>
-	    <bf:identifiedBy>
-	      <bf:Identifier>
-		<rdf:value>9739371</rdf:value>
-		<bf:assigner>
-		  <bf:Agent>
-		    <bf:code>OCoLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Identifier>
-	    </bf:identifiedBy>
-	    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/11891684#Work776-35"/>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:otherPhysicalFormat>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Instance776-35">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Il giornale dell'arte</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>   88652526</rdf:value>
+		    <bf:assigner>
+		      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+			<bf:code>DLC</bf:code>
+		      </bf:Agent>
+		    </bf:assigner>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Identifier>
+		    <rdf:value>9739371</rdf:value>
+		    <bf:assigner>
+		      <bf:Agent>
+			<bf:code>OCoLC</bf:code>
+		      </bf:Agent>
+		    </bf:assigner>
+		  </bf:Identifier>
+		</bf:identifiedBy>
+		<bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/11891684#Work776-35"/>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/REPLACE/11891684#Instance"/>
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/11891684#Instance">
@@ -375,7 +389,7 @@
 	<bflc:simpleDate>1983-</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">Torino: Allemandi; 1983-</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Torino: Allemandi, 1983-</bf:publicationStatement>
     <bf:frequency>
       <bf:Frequency rdf:about="http://id.loc.gov/vocabulary/frequencies/mon">
 	<rdfs:label>monthly</rdfs:label>
@@ -402,12 +416,9 @@
       </bf:Lccn>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>ocm43286094 </rdf:value>
-	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc"/>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:acquisitionSource>
       <bf:AcquisitionSource>
@@ -466,12 +477,12 @@
     <bf:firstIssue>Anno 1, n. 1 (magg. 1983)</bf:firstIssue>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Title from caption.</rdfs:label>
+	<rdfs:label>Title from caption</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Microfilm. Washington, D.C. : Library of Congress Preservation Microfilming Program : Available from Library of Congress Photoduplication Service, microfilm reels; 35 mm.</rdfs:label>
+	<rdfs:label>Microfilm. Washington, D.C. : Library of Congress Preservation Microfilming Program : Available from Library of Congress Photoduplication Service, microfilm reels; 35 mm</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/repro"/>
 	<bflc:appliesTo>
 	  <bflc:AppliesTo>

@@ -1,5 +1,6 @@
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <!--[{"level": "WARNING", "message": "LCC missing item portion."}]-->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <!--[{"level": "WARNING", "message": "ProvisionActivity only has bflc:simplePlace, bflc:simpleDate, bflc:simpleAgent, bf:date, bf:place, bf:agent, bf:note, rdf:type. "},
+{"level": "WARNING", "message": "LCC missing item portion."}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11891684">
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/serl">
@@ -55,7 +56,7 @@
 	<bflc:simpleDate>1983-</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement>Torino: Allemandi; 1983-</bflc:publicationStatement>
+    <bf:publicationStatement>Torino: Allemandi, 1983-</bf:publicationStatement>
     <bf:frequency>
       <bf:Frequency rdf:about="http://id.loc.gov/vocabulary/frequencies/mon">
 	<rdfs:label>monthly</rdfs:label>
@@ -82,14 +83,9 @@
       </bf:Lccn>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>ocm43286094 </rdf:value>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:acquisitionSource>
       <bf:AcquisitionSource>
@@ -142,12 +138,12 @@
     <bf:firstIssue>Anno 1, n. 1 (magg. 1983)</bf:firstIssue>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Title from caption.</rdfs:label>
+	<rdfs:label>Title from caption</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Microfilm. Washington, D.C. : Library of Congress Preservation Microfilming Program : Available from Library of Congress Photoduplication Service, microfilm reels; 35 mm.</rdfs:label>
+	<rdfs:label>Microfilm. Washington, D.C. : Library of Congress Preservation Microfilming Program : Available from Library of Congress Photoduplication Service, microfilm reels; 35 mm</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/repro"/>
 	<bflc:appliesTo>
 	  <bflc:AppliesTo>
@@ -160,17 +156,55 @@
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/11891684"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-23T18:03:29.070323-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-14</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-09T13:30:10</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Agent>
+	    <bf:code>OCLCA</bf:code>
+	  </bf:Agent>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-10T02:09:20.929483-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/1">
 	    <rdfs:label>full not examined</rdfs:label>
@@ -191,37 +225,26 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-09T13:30:10</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-14</bf:creationDate>
 	<bf:note>
 	  <bf:Note>
 	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/metaentry"/>
 	    <rdfs:label>0 - successive</rdfs:label>
 	  </bf:Note>
 	</bf:note>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Agent>
-	    <bf:code>OCLCA</bf:code>
-	  </bf:Agent>
-	</bf:descriptionModifier>
+	<bflc:marcKey>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c serials $d 4 $e ncip $f 20 $g n-oclcserc</lclocal:d906>
-	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a Acquire $b 1 shelf copy $x Policy default</lclocal:d925>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a db18 01-28-00</lclocal:d955>
+	<lclocal:d906>=906     $a 7 $b cbc $c serials $d 4 $e ncip $f 20 $g n-oclcserc</lclocal:d906>
+	<lclocal:d925>=925  0  $a Acquire $b 1 shelf copy $x Policy default</lclocal:d925>
+	<lclocal:d955>=955     $a db18 01-28-00</lclocal:d955>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
@@ -265,6 +288,17 @@
 	</bf:status>
       </bf:ClassificationLcc>
     </bf:classification>
+    <bf:expressionOf>
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/6f4f34af-02d6-ec35-60c6-b48c3fae7459">
+	<rdfs:label>Giornale dell'arte (Turin, Italy)</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>Giornale dell'arte (Turin, Italy)</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+	<bflc:marcKey>130  $aGiornale dell'arte (Turin, Italy)</bflc:marcKey>
+      </bf:Hub>
+    </bf:expressionOf>
     <bf:title>
       <bf:AbbreviatedTitle>
 	<bf:mainTitle>G. arte</bf:mainTitle>
@@ -305,14 +339,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Art, Italian--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Art, Italian--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Art, Italian--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85007718">
 	    <rdfs:label xml:lang="en">Art, Italian</rdfs:label>
 	    <bflc:marcKey>150  $aArt, Italian</bflc:marcKey>
@@ -325,8 +358,7 @@
 	<bflc:aap-normalized>artitalianperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -334,7 +366,7 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2007101354">
 	<rdfs:label xml:lang="en">Art--Periodicals</rdfs:label>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
 	    <madsrdf:authoritativeLabel xml:lang="en">Art</madsrdf:authoritativeLabel>
@@ -360,123 +392,197 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/815177">
 	<bflc:marcKey>150  $aArt</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Art</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Art</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/816430">
 	<bflc:marcKey>150  $aArt, Italian</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Art, Italian</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Art, Italian</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:genreForm>
-      <bf:GenreForm>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Periodicals</madsrdf:authoritativeLabel>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
-	<rdfs:label>Periodicals</rdfs:label>
-      </bf:GenreForm>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1411641">
+	<bflc:marcKey>155  $aPeriodicals</bflc:marcKey>
+	<madsrdf:authoritativeLabel>Periodicals</madsrdf:authoritativeLabel>
+      </bf:Topic>
     </bf:genreForm>
-    <bf:expressionOf>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/6f4f34af-02d6-ec35-60c6-b48c3fae7459">
-	<rdfs:label>Giornale dell'arte (Turin, Italy)</rdfs:label>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Giornale dell'arte (Turin, Italy)</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:marcKey>130  $aGiornale dell'arte (Turin, Italy)</bflc:marcKey>
-      </bf:Hub>
-    </bf:expressionOf>
-    <bf:otherEdition>
-      <bf:Work>
-	<bflc:aap>Giornale dell'arte (Turin, Italy). English. Journal of art</bflc:aap>
-	<bflc:aap-normalized>giornaledell'arte(turinitaly)englishjournalofart</bflc:aap-normalized>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Giornale dell'arte (Turin, Italy). English. Journal of art</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otheredition">
+	    <rdfs:label>other edition</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work>
+	    <bflc:aap>Giornale dell'arte (Turin, Italy). English. Journal of art</bflc:aap>
+	    <bflc:aap-normalized>giornaledell'arte(turinitaly)englishjournalofart</bflc:aap-normalized>
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Giornale dell'arte (Turin, Italy). English. Journal of art</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:otherEdition>
-    <bf:otherEdition>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/11496151">
-	<rdfs:label>The art newspaper</rdfs:label>
-	<bf:title>
-	  <bf:AbbreviatedTitle>
-	    <bf:mainTitle>Art newspaper</bf:mainTitle>
-	    <bf:qualifier>(Int. ed.)</bf:qualifier>
-	    <bf:assigner>
-	      <bf:Agent>
-		<bf:code>issnkey</bf:code>
-	      </bf:Agent>
-	    </bf:assigner>
-	  </bf:AbbreviatedTitle>
-	</bf:title>
-	<bf:title>
-	  <bf:KeyTitle>
-	    <bf:mainTitle>Art newspaper</bf:mainTitle>
-	    <bf:qualifier>(International ed.)</bf:qualifier>
-	  </bf:KeyTitle>
-	</bf:title>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>The art newspaper</bf:mainTitle>
-	    <bflc:nonSortNum>4</bflc:nonSortNum>
-	  </bf:Title>
-	</bf:title>
-      </bf:Work>
-    </bf:otherEdition>
-    <bf:otherPhysicalFormat>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/11347516">
-	<rdfs:label>Il giornale dell'arte</rdfs:label>
-	<bf:title>
-	  <bf:AbbreviatedTitle>
-	    <bf:mainTitle>G. arte</bf:mainTitle>
-	    <bf:assigner>
-	      <bf:Agent>
-		<bf:code>issnkey</bf:code>
-	      </bf:Agent>
-	    </bf:assigner>
-	  </bf:AbbreviatedTitle>
-	</bf:title>
-	<bf:title>
-	  <bf:KeyTitle>
-	    <bf:mainTitle>Giornale dell'arte</bf:mainTitle>
-	  </bf:KeyTitle>
-	</bf:title>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Il giornale dell'arte</bf:mainTitle>
-	    <bflc:nonSortNum>3</bflc:nonSortNum>
-	  </bf:Title>
-	</bf:title>
-      </bf:Work>
-    </bf:otherPhysicalFormat>
-    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+	    <bf:identifiedBy>
+	      <bf:Issn>
+		<rdf:value>1044-9140</rdf:value>
+	      </bf:Issn>
+	    </bf:identifiedBy>
+	    <bf:hasInstance>
+	      <bf:Instance>
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Giornale dell'arte (Turin, Italy). English. Journal of art</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otheredition">
+	    <rdfs:label>other edition</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/works/11496151">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>The art newspaper</bf:mainTitle>
+		<bflc:nonSortNum>4</bflc:nonSortNum>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11496151">
+		<bf:publicationStatement>London: Umberto Allemandi &amp; Co, ©1990-</bf:publicationStatement>
+		<bf:editionStatement>International ed.</bf:editionStatement>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>sf 98094490 </rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:OclcNumber>
+		    <rdf:value>ocm39966061 </rdf:value>
+		  </bf:OclcNumber>
+		</bf:identifiedBy>
+		<bf:media>
+		  <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/h">
+		    <rdfs:label>microform</rdfs:label>
+		  </bf:Media>
+		</bf:media>
+		<bf:carrier>
+		  <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/hd">
+		    <rdfs:label>microfilm reel</rdfs:label>
+		  </bf:Carrier>
+		</bf:carrier>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otherphysicalformat">
+	    <rdfs:label>other physical format</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/works/11347516">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Il giornale dell'arte</bf:mainTitle>
+		<bflc:nonSortNum>3</bflc:nonSortNum>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11347516">
+		<bf:publicationStatement>Torino: Allemandi, 1983-</bf:publicationStatement>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>   88652526 </rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:OclcNumber>
+		    <rdf:value>ocm09739371 </rdf:value>
+		  </bf:OclcNumber>
+		</bf:identifiedBy>
+		<bf:media>
+		  <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+		    <rdfs:label>unmediated</rdfs:label>
+		  </bf:Media>
+		</bf:media>
+		<bf:carrier>
+		  <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+		    <rdfs:label>volume</rdfs:label>
+		  </bf:Carrier>
+		</bf:carrier>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/11891684"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-23T18:03:29.070323-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-14</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-09T13:30:10</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Agent>
+	    <bf:code>OCLCA</bf:code>
+	  </bf:Agent>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-10T02:09:20.929483-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/1">
 	    <rdfs:label>full not examined</rdfs:label>
@@ -497,37 +603,26 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-09T13:30:10</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-14</bf:creationDate>
 	<bf:note>
 	  <bf:Note>
 	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/metaentry"/>
 	    <rdfs:label>0 - successive</rdfs:label>
 	  </bf:Note>
 	</bf:note>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Agent>
-	    <bf:code>OCLCA</bf:code>
-	  </bf:Agent>
-	</bf:descriptionModifier>
+	<bflc:marcKey>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c serials $d 4 $e ncip $f 20 $g n-oclcserc</lclocal:d906>
-	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a Acquire $b 1 shelf copy $x Policy default</lclocal:d925>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a db18 01-28-00</lclocal:d955>
+	<lclocal:d906>=906     $a 7 $b cbc $c serials $d 4 $e ncip $f 20 $g n-oclcserc</lclocal:d906>
+	<lclocal:d925>=925  0  $a Acquire $b 1 shelf copy $x Policy default</lclocal:d925>
+	<lclocal:d955>=955     $a db18 01-28-00</lclocal:d955>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
@@ -588,6 +683,54 @@
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/11891684"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-14</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-09T13:30:10</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Agent>
+	    <bf:code>OCLCA</bf:code>
+	  </bf:Agent>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-10T02:09:20.929483-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>11891684-02</rdf:value>
@@ -598,17 +741,7 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-23T18:03:29.070323-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
-	    <rdfs:label>changed</rdfs:label>
-	  </bf:Status>
-	</bf:status>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/1">
 	    <rdfs:label>full not examined</rdfs:label>
@@ -619,37 +752,26 @@
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-09T13:30:10</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-14</bf:creationDate>
 	<bf:note>
 	  <bf:Note>
 	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/metaentry"/>
 	    <rdfs:label>0 - successive</rdfs:label>
 	  </bf:Note>
 	</bf:note>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Agent>
-	    <bf:code>OCLCA</bf:code>
-	  </bf:Agent>
-	</bf:descriptionModifier>
+	<bflc:marcKey>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c serials $d 4 $e ncip $f 20 $g n-oclcserc</lclocal:d906>
-	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a Acquire $b 1 shelf copy $x Policy default</lclocal:d925>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a db18 01-28-00</lclocal:d955>
+	<lclocal:d906>=906     $a 7 $b cbc $c serials $d 4 $e ncip $f 20 $g n-oclcserc</lclocal:d906>
+	<lclocal:d925>=925  0  $a Acquire $b 1 shelf copy $x Policy default</lclocal:d925>
+	<lclocal:d955>=955     $a db18 01-28-00</lclocal:d955>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>

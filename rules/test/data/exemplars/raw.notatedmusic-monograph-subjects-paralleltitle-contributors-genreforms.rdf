@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T08:59:49.639561-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:17:33.554053-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -76,6 +76,7 @@
 	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<bflc:marcKey>040  $aOHX$beng$erda$cOHX$dPUL$dOCLCO$dOCLCQ$dOCLCO$dOCLCF$dRES$dZCU$dOCLCO$dNYP$dOCL$dOCLCA$dDLC</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <bf:code>lccopycat</bf:code>
@@ -85,9 +86,7 @@
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/zxx"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/zxx"/>
     <bf:supplementaryContent>
       <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/bibliography">
 	<rdfs:label>bibliography</rdfs:label>
@@ -103,23 +102,18 @@
 	<rdfs:label>historical information</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
-    <bf:musicFormat>
-      <bf:MusicFormat rdf:about="http://id.loc.gov/vocabulary/mmusicformat/score">
-	<rdfs:label>score</rdfs:label>
-      </bf:MusicFormat>
-    </bf:musicFormat>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-      </bf:Language>
-    </bf:language>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/ger"/>
+      </bf:Work>
+    </bf:accompaniedBy>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+      </bf:Work>
+    </bf:accompaniedBy>
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:classificationPortion>M140</bf:classificationPortion>
@@ -295,8 +289,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21340497#Agent700-44">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aKirsch, Dieter,$eeditor.</bflc:marcKey>
 	    <rdfs:label>Kirsch, Dieter</rdfs:label>
+	    <bflc:marcKey>7001 $aKirsch, Dieter,$eeditor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -311,8 +305,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21340497#Agent700-45">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aRobinson, John H.$q(John Henry),$d1945-$eeditor.</bflc:marcKey>
 	    <rdfs:label>Robinson, John H. (John Henry), 1945-</rdfs:label>
+	    <bflc:marcKey>7001 $aRobinson, John H.$q(John Henry),$d1945-$eeditor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -327,8 +321,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21340497#Agent710-46">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>Benediktinerstift St. Paul (Sankt Paul im Lavanttal, Austria). Bibliothek. Manuscript. A-SPL KK 35.</rdfs:label>
 	    <bflc:marcKey>7102 $iFacsimile of (manifestation):$aBenediktinerstift St. Paul (Sankt Paul im Lavanttal, Austria).$bBibliothek.$kManuscript.$nA-SPL KK 35.</bflc:marcKey>
-	    <rdfs:label>Benediktinerstift St. Paul (Sankt Paul im Lavanttal, Austria). Bibliothek. A-SPL KK 35.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -336,16 +330,6 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation>
-	    <rdfs:label>Facsimile of (manifestation)</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo>http://id.loc.gov/resources/REPLACE/21340497#Agent710-46</bf:relatedTo>
-      </bflc:Relationship>
-    </bflc:relationship>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/REPLACE/21340497#Instance"/>
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/21340497#Instance">
@@ -360,7 +344,7 @@
 	<bflc:simpleDate>2018</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">Klagenfurt am Wörthersee: Verlag des Geschichtsvereines für Kärnten; 2018</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Klagenfurt am Wörthersee: Verlag des Geschichtsvereines für Kärnten, 2018</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2019565076</rdf:value>
@@ -389,20 +373,14 @@
       </bf:Isbn>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>on1056975250</rdf:value>
-	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc"/>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>1056975250</rdf:value>
-	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc"/>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:responsibilityStatement>Dieter Kirsch, John H. Robinson [Herausgeber]</bf:responsibilityStatement>
     <bf:title>
@@ -440,16 +418,6 @@
 	</bf:source>
       </bf:Carrier>
     </bf:carrier>
-    <bf:musicFormat>
-      <bf:MusicFormat rdf:about="http://id.loc.gov/vocabulary/mmusicformat/score">
-	<rdfs:label>score</rdfs:label>
-	<bf:source>
-	  <bf:Source>
-	    <bf:code>rdafnm</bf:code>
-	  </bf:Source>
-	</bf:source>
-      </bf:MusicFormat>
-    </bf:musicFormat>
     <bf:note>
       <bf:Note>
 	<rdfs:label>Facsimile and modern edition of a lute tablature compiled in southwest Germany in the early 17th century, preserved in the Kunstkabinett der Stiftsbibliothek St. Paul im Lavanttal (shelf mark: A-SPL KK 35).</rdfs:label>
@@ -457,17 +425,17 @@
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Foreword, introduction, critical commentary, and editor biographies in German and English.</rdfs:label>
+	<rdfs:label>Foreword, introduction, critical commentary, and editor biographies in German and English</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:supplementaryContent>
       <bf:SupplementaryContent>
-	<rdfs:label>Bibliography of lute manuscripts, prints, and modern editions: pages xxxvi-xliv.</rdfs:label>
+	<rdfs:label>Bibliography of lute manuscripts, prints, and modern editions: pages xxxvi-xliv</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Contains facsimile prints and modern tablature notation.</rdfs:label>
+	<rdfs:label>Contains facsimile prints and modern tablature notation</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/21340497#Work"/>

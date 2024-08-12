@@ -23,6 +23,11 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-05T09:33:56</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <bf:code>DLC</bf:code>
+	  </bf:Agent>
+	</bf:agent>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -33,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T08:59:58.96005-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:17:47.018329-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -68,6 +73,7 @@
 	    <bf:code>dcrmg</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<bflc:marcKey>040  $aDLC$beng$edcrmg$cDLC</bflc:marcKey>
 	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
 	<lclocal:d955>=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
 	<lclocal:d985>=985     $a pp/lilj</lclocal:d985>
@@ -77,9 +83,7 @@
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/StillImage"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/vocabulary/marcgt/gra">
 	<rdfs:label>graphic</rdfs:label>
@@ -113,7 +117,7 @@
     </bf:summary>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Forms part of: Liljenquist Family Collection of Civil War Photographs (Library of Congress).</rdfs:label>
+	<rdfs:label>Forms part of: Liljenquist Family Collection of Civil War Photographs (Library of Congress)</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:subject>
@@ -122,8 +126,8 @@
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#PersonalName"/>
 	<madsrdf:authoritativeLabel>Wren, James, 1825</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/authorities/subjects"/>
-	<bflc:marcKey>60010$aWren, James,$d1825-</bflc:marcKey>
 	<rdfs:label>Wren, James, 1825-</rdfs:label>
+	<bflc:marcKey>60010$aWren, James,$d1825-</bflc:marcKey>
 	<bf:source rdf:resource="http://id.loc.gov/authorities/subjects"/>
       </bf:Agent>
     </bf:subject>
@@ -136,8 +140,8 @@
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Jurisdiction"/>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#CorporateName"/>
 	    <madsrdf:authoritativeLabel>United States. Army. Pennsylvania Infantry Regiment, 48th (1861-1865)</madsrdf:authoritativeLabel>
-	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 48th (1861-1865)$xPeople.</bflc:marcKey>
 	    <rdfs:label>United States. Army. Pennsylvania Infantry Regiment, 48th (1861-1865)</rdfs:label>
+	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 48th (1861-1865)$xPeople.</bflc:marcKey>
 	  </bf:Agent>
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>People</madsrdf:authoritativeLabel>
@@ -154,8 +158,8 @@
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Jurisdiction"/>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#CorporateName"/>
 	    <madsrdf:authoritativeLabel>United States. Army. Pennsylvania Infantry Regiment, 25th (1861)</madsrdf:authoritativeLabel>
-	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 25th (1861)$xPeople.</bflc:marcKey>
 	    <rdfs:label>United States. Army. Pennsylvania Infantry Regiment, 25th (1861)</rdfs:label>
+	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 25th (1861)$xPeople.</bflc:marcKey>
 	  </bf:Agent>
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>People</madsrdf:authoritativeLabel>
@@ -333,35 +337,40 @@
 	</bf:source>
       </bf:Topic>
     </bf:subject>
-    <bf:partOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Work773-35">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Liljenquist Family collection (Library of Congress)</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Instance773-35">
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/partof"/>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Work773-35">
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Liljenquist Family collection (Library of Congress)</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>   2010650519</rdf:value>
-		<bf:assigner>
-		  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <bf:code>DLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Lccn>
-	    </bf:identifiedBy>
-	    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/22724623#Work773-35"/>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:partOf>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Instance773-35">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Liljenquist Family collection (Library of Congress)</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>   2010650519</rdf:value>
+		    <bf:assigner>
+		      <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+			<bf:code>DLC</bf:code>
+		      </bf:Agent>
+		    </bf:assigner>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/22724623#Work773-35"/>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/REPLACE/22724623#Instance"/>
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Instance">
@@ -381,7 +390,7 @@
 	<bflc:simpleDate>[between 1861 and 1863]</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">[Place not identified]: [Publisher not identified]; [between 1861 and 1863]</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">[Place not identified]: [Publisher not identified], [between 1861 and 1863]</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2022631487</rdf:value>
@@ -438,7 +447,7 @@
     </bf:carrier>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Title devised by Library staff.</rdfs:label>
+	<rdfs:label>Title devised by Library staff</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:usageAndAccessPolicy>
@@ -451,7 +460,7 @@
 	<rdfs:label>No known restrictions on publication.</rdfs:label>
       </bf:UsePolicy>
     </bf:usageAndAccessPolicy>
-    <bf:custodialHistory>Purchased from: Paul Brzozowski, Fairfield, Connecticut, April 2022.</bf:custodialHistory>
+    <bf:custodialHistory>Purchased from: Paul Brzozowski, Fairfield, Connecticut, April 2022</bf:custodialHistory>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/22724623#Work"/>
     <bf:hasItem>
       <bf:Item rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Item">

@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T09:00:02.131273-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:17:51.242245-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -68,6 +68,7 @@
 	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-soundrec</lclocal:d906>
 	<lclocal:d925>=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955>=955     $a qr27 2014-10-22 z-client $i qr27 2014-10-22</lclocal:d955>
+	<bflc:marcKey>040  $aFBO$cFBO$dOCLCA$dOCLCF$dDLC</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <bf:code>lccopycat</bf:code>
@@ -82,9 +83,7 @@
       </bf:Content>
     </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/zxx"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/zxx"/>
     <bf:supplementaryContent>
       <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/creatorbio">
 	<rdfs:label>biography of composer or author</rdfs:label>
@@ -100,12 +99,12 @@
 	<rdfs:label>historical information</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
-      </bf:Language>
-    </bf:language>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+      </bf:Work>
+    </bf:accompaniedBy>
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:classificationPortion>SDC 42748</bf:classificationPortion>
@@ -119,8 +118,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/18344194#Agent100-17">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>1001 $aPaganini, Nicolò,$d1782-1840.</bflc:marcKey>
 	    <rdfs:label>Paganini, Nicolò, 1782-1840</rdfs:label>
+	    <bflc:marcKey>1001 $aPaganini, Nicolò,$d1782-1840.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -137,8 +136,8 @@
 	    <bf:agent>
 	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/18344194#Hub240-18-Agent">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>1001 $aPaganini, Nicolò,$d1782-1840.</bflc:marcKey>
 		<rdfs:label>Paganini, Nicolò, 1782-1840</rdfs:label>
+		<bflc:marcKey>1001 $aPaganini, Nicolò,$d1782-1840.</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -199,8 +198,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/18344194#Agent700-31">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aSlapin, Scott,$d1974-$4prf</bflc:marcKey>
 	    <rdfs:label>Slapin, Scott, 1974-</rdfs:label>
+	    <bflc:marcKey>7001 $aSlapin, Scott,$d1974-$4prf</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -262,7 +261,7 @@
 	<bflc:simpleDate>p2008</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">Ventura, CA: Eroica Classical Recordings; p2008</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Ventura, CA: Eroica Classical Recordings, p2008</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2014624918</rdf:value>
@@ -284,12 +283,9 @@
       </bf:AudioIssueNumber>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>ocn311097395</rdf:value>
-	<bf:assigner>
-	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc"/>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:title>
       <bf:Title>
@@ -307,21 +303,21 @@
 	<rdfs:label>digital</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:dimensions>4 3/4 in.</bf:dimensions>
+    <bf:dimensions>4 3/4 in</bf:dimensions>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Originally for violin.</rdfs:label>
+	<rdfs:label>Originally for violin</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:credits>Scott Slapin, viola.</bf:credits>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Compact disc.</rdfs:label>
+	<rdfs:label>Compact disc</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Program notes by John Peskey and Scott Slapin inserted in container.</rdfs:label>
+	<rdfs:label>Program notes by John Peskey and Scott Slapin inserted in container</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/18344194#Work"/>

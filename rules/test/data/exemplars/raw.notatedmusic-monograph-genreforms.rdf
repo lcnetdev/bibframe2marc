@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T09:00:18.548513-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:18:11.614981-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -73,6 +73,7 @@
 	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<bflc:marcKey>040  $aDLC$beng$erda$cCarP$dDLC</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <bf:code>pcc</bf:code>
@@ -86,9 +87,7 @@
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/zxx"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/zxx"/>
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2018026018">
 	<rdfs:label>Fantasias (Music)</rdfs:label>
@@ -113,8 +112,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/20779915#Agent100-12">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>1001 $aLiszt, Franz,$d1811-1886,$ecomposer.</bflc:marcKey>
 	    <rdfs:label>Liszt, Franz, 1811-1886</rdfs:label>
+	    <bflc:marcKey>1001 $aLiszt, Franz,$d1811-1886,$ecomposer.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -132,8 +131,8 @@
 	    <bf:agent>
 	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/20779915#Hub240-13-Agent">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>1001 $aLiszt, Franz,$d1811-1886,$ecomposer.</bflc:marcKey>
 		<rdfs:label>Liszt, Franz, 1811-1886</rdfs:label>
+		<bflc:marcKey>1001 $aLiszt, Franz,$d1811-1886,$ecomposer.</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -235,48 +234,48 @@
 	</bf:source>
       </bf:GenreForm>
     </bf:genreForm>
-    <bf:relatedTo>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/20779915#Hub700-32">
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/20779915#Agent700-32">
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<bflc:marcKey>7001 $iBased on (work):$aPaganini, Nicolò,$d1782-1840.$tConcertos,$mviolin, orchestra,$nno. 2, op. 7,$rB minor.$pRondò.</bflc:marcKey>
-		<rdfs:label>Paganini, Nicolò, 1782-1840</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role>
-	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
-	    </bf:role>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Concertos, violin, orchestra, no. 2, op. 7, B minor. Rondò.</bf:mainTitle>
-	    <bf:partNumber>no. 2, op. 7</bf:partNumber>
-	    <bf:partName>Rondò</bf:partName>
-	  </bf:Title>
-	</bf:title>
-	<bf:musicMedium>
-	  <bf:MusicMedium>
-	    <rdfs:label>violin, orchestra</rdfs:label>
-	  </bf:MusicMedium>
-	</bf:musicMedium>
-	<bf:musicKey>B minor</bf:musicKey>
-	<bflc:marcKey>7001 $iBased on (work):$aPaganini, Nicolò,$d1782-1840.$tConcertos,$mviolin, orchestra,$nno. 2, op. 7,$rB minor.$pRondò.</bflc:marcKey>
-      </bf:Hub>
-    </bf:relatedTo>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:relationship>
+	  <bf:Relationship>
 	    <rdfs:label>Based on (work)</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo rdf:resource="http://id.loc.gov/resources/REPLACE/20779915#Hub700-32"/>
-      </bflc:Relationship>
-    </bflc:relationship>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/20779915#Hub700-32">
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/20779915#Agent700-32">
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Paganini, Nicolò, 1782-1840</rdfs:label>
+		    <bflc:marcKey>7001 $iBased on (work):$aPaganini, Nicolò,$d1782-1840.$tConcertos,$mviolin, orchestra,$nno. 2, op. 7,$rB minor.$pRondò.</bflc:marcKey>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb"/>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Concertos, violin, orchestra, no. 2, op. 7, B minor. Rondò.</bf:mainTitle>
+		<bf:partNumber>no. 2, op. 7</bf:partNumber>
+		<bf:partName>Rondò</bf:partName>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:musicMedium>
+	      <bf:MusicMedium>
+		<rdfs:label>violin, orchestra</rdfs:label>
+	      </bf:MusicMedium>
+	    </bf:musicMedium>
+	    <bf:musicKey>B minor</bf:musicKey>
+	    <bflc:marcKey>7001 $iBased on (work):$aPaganini, Nicolò,$d1782-1840.$tConcertos,$mviolin, orchestra,$nno. 2, op. 7,$rB minor.$pRondò.</bflc:marcKey>
+	  </bf:Hub>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/REPLACE/20779915#Instance"/>
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/20779915#Instance">
@@ -291,7 +290,7 @@
 	<bflc:simpleDate>[1839]</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">Vienne: Pietro Mechetti qm Carlo; [1839]</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Vienne: Pietro Mechetti qm Carlo, [1839]</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2018570877</rdf:value>
@@ -363,22 +362,22 @@
     </bf:carrier>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Printed from engraved plates.</rdfs:label>
+	<rdfs:label>Printed from engraved plates</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Publication date from Grove.</rdfs:label>
+	<rdfs:label>Publication date from Grove</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>First Austrian edition.</rdfs:label>
+	<rdfs:label>First Austrian edition</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>The material described in this catalog record is located in the Heineman Foundation Collection, Music Division, Library of Congress.</rdfs:label>
+	<rdfs:label>The material described in this catalog record is located in the Heineman Foundation Collection, Music Division, Library of Congress</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/20779915#Work"/>

@@ -1,4 +1,4 @@
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/22724623">
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
@@ -24,7 +24,7 @@
 	<bflc:simpleDate>[between 1861 and 1863]</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement>[Place not identified]: [Publisher not identified]; [between 1861 and 1863]</bflc:publicationStatement>
+    <bf:publicationStatement>[Place not identified]: [Publisher not identified], [between 1861 and 1863]</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2022631487</rdf:value>
@@ -75,7 +75,7 @@
     </bf:carrier>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Title devised by Library staff.</rdfs:label>
+	<rdfs:label>Title devised by Library staff</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:usageAndAccessPolicy>
@@ -88,23 +88,56 @@
 	<rdfs:label>No known restrictions on publication.</rdfs:label>
       </bf:UsePolicy>
     </bf:usageAndAccessPolicy>
-    <bf:custodialHistory>Purchased from: Paul Brzozowski, Fairfield, Connecticut, April 2022.</bf:custodialHistory>
+    <bf:custodialHistory>Purchased from: Paul Brzozowski, Fairfield, Connecticut, April 2022</bf:custodialHistory>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/22724623"/>
     <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/22724623"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-18T04:12:56.342263-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-28</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-05T09:33:56</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-03T06:44:02.302066-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/7">
 	    <rdfs:label>minimal</rdfs:label>
@@ -125,13 +158,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-05T09:33:56</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-28</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -142,11 +168,11 @@
 	    <rdfs:label>Descriptive cataloging of rare materials (Graphics)</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/lilj</lclocal:d985>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/civwar</lclocal:d985>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/diof</lclocal:d985>
+	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
+	<lclocal:d955>=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
+	<lclocal:d985>=985     $a pp/lilj</lclocal:d985>
+	<lclocal:d985>=985     $a pp/civwar</lclocal:d985>
+	<lclocal:d985>=985     $a pp/diof</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
@@ -198,7 +224,7 @@
     </bf:summary>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Forms part of: Liljenquist Family Collection of Civil War Photographs (Library of Congress).</rdfs:label>
+	<rdfs:label>Forms part of: Liljenquist Family Collection of Civil War Photographs (Library of Congress)</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:subject>
@@ -210,15 +236,12 @@
     <bf:subject>
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">United States. Army. Pennsylvania Infantry Regiment, 48th (1861-1865)--People.</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Agent610-25">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Jurisdiction"/>
-	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#CorporateName"/>
-	    <madsrdf:authoritativeLabel>United States. Army. Pennsylvania Infantry Regiment, 48th (1861-1865)</madsrdf:authoritativeLabel>
-	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 48th (1861-1865)$xPeople.</bflc:marcKey>
+	<madsrdf:authoritativeLabel>United States. Army. Pennsylvania Infantry Regiment, 48th (1861-1865)--People.</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/rwo/agents/n2006004758">
 	    <rdfs:label>United States. Army. Pennsylvania Infantry Regiment, 48th (1861-1865)</rdfs:label>
-	  </bf:Agent>
+	    <bflc:marcKey>1101 $aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 48th (1861-1865)</bflc:marcKey>
+	  </madsrdf:CorporateName>
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>People</madsrdf:authoritativeLabel>
 	  </madsrdf:Topic>
@@ -229,15 +252,12 @@
     <bf:subject>
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">United States. Army. Pennsylvania Infantry Regiment, 25th (1861)--People.</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Agent610-26">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Jurisdiction"/>
-	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#CorporateName"/>
-	    <madsrdf:authoritativeLabel>United States. Army. Pennsylvania Infantry Regiment, 25th (1861)</madsrdf:authoritativeLabel>
-	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 25th (1861)$xPeople.</bflc:marcKey>
+	<madsrdf:authoritativeLabel>United States. Army. Pennsylvania Infantry Regiment, 25th (1861)--People.</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/rwo/agents/n2002072742">
 	    <rdfs:label>United States. Army. Pennsylvania Infantry Regiment, 25th (1861)</rdfs:label>
-	  </bf:Agent>
+	    <bflc:marcKey>1101 $aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 25th (1861)</bflc:marcKey>
+	  </madsrdf:CorporateName>
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>People</madsrdf:authoritativeLabel>
 	  </madsrdf:Topic>
@@ -249,8 +269,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Soldiers--Union--1860-1870</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Soldiers--Union--1860-1870</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Soldiers--Union--1860-1870</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/vocabulary/graphicMaterials/tgm009848">
 	    <rdfs:label xml:lang="en">Soldiers</rdfs:label>
 	  </madsrdf:Topic>
@@ -262,7 +282,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>soldiersunion18601870</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lctgm">
 	    <rdfs:label>Thesaurus for graphic materials: TGM I, Subject terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -278,8 +298,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Horses--1860-1870</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Horses--1860-1870</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Horses--1860-1870</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/vocabulary/graphicMaterials/tgm005128">
 	    <rdfs:label xml:lang="en">Horses</rdfs:label>
 	  </madsrdf:Topic>
@@ -288,7 +308,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>horses18601870</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lctgm">
 	    <rdfs:label>Thesaurus for graphic materials: TGM I, Subject terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -304,8 +324,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Daggers &amp; swords--1860-1870</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Daggers &amp; swords--1860-1870</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Daggers &amp; swords--1860-1870</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/vocabulary/graphicMaterials/tgm002851">
 	    <rdfs:label xml:lang="en">Daggers &amp; swords</rdfs:label>
 	  </madsrdf:Topic>
@@ -314,7 +334,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>daggers&amp;swords18601870</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lctgm">
 	    <rdfs:label>Thesaurus for graphic materials: TGM I, Subject terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -330,8 +350,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Military uniforms--Union--1860-1870</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Military uniforms--Union--1860-1870</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Military uniforms--Union--1860-1870</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/vocabulary/graphicMaterials/tgm006582">
 	    <rdfs:label xml:lang="en">Military uniforms</rdfs:label>
 	  </madsrdf:Topic>
@@ -343,7 +363,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>militaryuniformsunion18601870</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/lctgm">
 	    <rdfs:label>Thesaurus for graphic materials: TGM I, Subject terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -359,8 +379,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>United States--History--Civil War, 1861-1865--Military personnel--Union</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">United States--History--Civil War, 1861-1865--Military personnel--Union</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>United States--History--Civil War, 1861-1865--Military personnel--Union</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n78095330">
 	    <rdfs:label>United States</rdfs:label>
 	    <bflc:marcKey>151  $aUnited States</bflc:marcKey>
@@ -385,8 +405,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Portrait photographs--1860-1870</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Portrait photographs--1860-1870</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Portrait photographs--1860-1870</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:GenreForm>
 	    <madsrdf:authoritativeLabel>Portrait photographs</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
@@ -395,7 +415,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>portraitphotographs18601870</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -411,8 +431,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Albumen prints--1860-1870</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Albumen prints--1860-1870</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Albumen prints--1860-1870</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:GenreForm>
 	    <madsrdf:authoritativeLabel>Albumen prints</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
@@ -421,7 +441,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>albumenprints18601870</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -437,8 +457,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Cartes de visite--1860-1870</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Cartes de visite--1860-1870</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Cartes de visite--1860-1870</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:GenreForm>
 	    <madsrdf:authoritativeLabel>Cartes de visite</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
@@ -447,7 +467,7 @@
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>cartesdevisite18601870</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gmgpc">
 	    <rdfs:label>Thesaurus for graphic materials: TGM II, Genre and physical characteristic terms</rdfs:label>
 	  </madsrdf:Authority>
@@ -459,86 +479,153 @@
 	</bf:source>
       </bf:Topic>
     </bf:subject>
-    <bf:partOf>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/16341713">
-	<rdfs:label>Liljenquist, Thomas Richard, 1952- [Liljenquist Family Collection (Library of Congress)]</rdfs:label>
-	<bf:contribution>
-	  <bf:Contribution>
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Liljenquist, Thomas Richard, 1952-</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/col"/>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Liljenquist, Jason George, 1991-</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/col"/>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Liljenquist, Brandon Paul, 1993-</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/col"/>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:contribution>
-	  <bf:Contribution>
-	    <bf:agent>
-	      <bf:Agent>
-		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-		<rdfs:label>Liljenquist, Christian Blaine, 1997-</rdfs:label>
-	      </bf:Agent>
-	    </bf:agent>
-	    <bf:role rdf:resource="http://id.loc.gov/vocabulary/relators/col"/>
-	  </bf:Contribution>
-	</bf:contribution>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>[Liljenquist Family Collection (Library of Congress)]</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:title>
-	  <bf:VariantTitle>
-	    <bf:mainTitle>Liljenquist Family Collection of Civil War Photographs (Library of Congress)</bf:mainTitle>
-	  </bf:VariantTitle>
-	</bf:title>
-	<bf:title>
-	  <bf:VariantTitle>
-	    <bf:mainTitle>Liljenquist Family Collection of Civil War Ambrotypes and Tintypes (Library of Congress)</bf:mainTitle>
-	  </bf:VariantTitle>
-	</bf:title>
-      </bf:Work>
-    </bf:partOf>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/partof">
+	    <rdfs:label>part of</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/works/16341713">
+	    <bf:contribution>
+	      <bf:Contribution>
+		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+		<bf:agent>
+		  <bf:Agent>
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Liljenquist, Thomas Richard, 1952-</rdfs:label>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/col">
+		    <rdfs:label>Collector</rdfs:label>
+		  </bf:Role>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent>
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Liljenquist, Jason George, 1991-</rdfs:label>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/col">
+		    <rdfs:label>Collector</rdfs:label>
+		  </bf:Role>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent>
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Liljenquist, Brandon Paul, 1993-</rdfs:label>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/col">
+		    <rdfs:label>Collector</rdfs:label>
+		  </bf:Role>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:contribution>
+	      <bf:Contribution>
+		<bf:agent>
+		  <bf:Agent>
+		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+		    <rdfs:label>Liljenquist, Christian Blaine, 1997-</rdfs:label>
+		  </bf:Agent>
+		</bf:agent>
+		<bf:role>
+		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/col">
+		    <rdfs:label>Collector</rdfs:label>
+		  </bf:Role>
+		</bf:role>
+	      </bf:Contribution>
+	    </bf:contribution>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>[Liljenquist Family Collection (Library of Congress)]</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/16341713">
+		<bf:publicationStatement>[between ca. 1850 and ca. 1950, bulk between 1861 and 1865]</bf:publicationStatement>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>  2010650519</rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:media>
+		  <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+		    <rdfs:label>unmediated</rdfs:label>
+		  </bf:Media>
+		</bf:media>
+		<bf:carrier>
+		  <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nb">
+		    <rdfs:label>sheet</rdfs:label>
+		  </bf:Carrier>
+		</bf:carrier>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/22724623"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-18T04:12:56.342263-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-28</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-05T09:33:56</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-03T06:44:02.302066-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/7">
 	    <rdfs:label>minimal</rdfs:label>
@@ -559,13 +646,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-05T09:33:56</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-28</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -576,11 +656,11 @@
 	    <rdfs:label>Descriptive cataloging of rare materials (Graphics)</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/lilj</lclocal:d985>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/civwar</lclocal:d985>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/diof</lclocal:d985>
+	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
+	<lclocal:d955>=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
+	<lclocal:d985>=985     $a pp/lilj</lclocal:d985>
+	<lclocal:d985>=985     $a pp/civwar</lclocal:d985>
+	<lclocal:d985>=985     $a pp/diof</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
@@ -611,6 +691,49 @@
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/22724623"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-28</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-05T09:33:56</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-03T06:44:02.302066-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:identifiedBy>
 	  <bf:Local>
 	    <rdf:value>22724623-85X-1</rdf:value>
@@ -621,17 +744,7 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-18T04:12:56.342263-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
-	<bf:status>
-	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
-	    <rdfs:label>changed</rdfs:label>
-	  </bf:Status>
-	</bf:status>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/7">
 	    <rdfs:label>minimal</rdfs:label>
@@ -642,13 +755,6 @@
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-05T09:33:56</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-28</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -659,25 +765,25 @@
 	    <rdfs:label>Descriptive cataloging of rare materials (Graphics)</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/lilj</lclocal:d985>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/civwar</lclocal:d985>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/diof</lclocal:d985>
+	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
+	<lclocal:d955>=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
+	<lclocal:d985>=985     $a pp/lilj</lclocal:d985>
+	<lclocal:d985>=985     $a pp/civwar</lclocal:d985>
+	<lclocal:d985>=985     $a pp/diof</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
   <bf:Item rdf:about="http://id.loc.gov/resources/items/22724623">
     <bf:heldBy>
-      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	<rdfs:label>United States, Library of Congress</rdfs:label>
-      </madsrdf:CorporateName>
+      </bf:Organization>
     </bf:heldBy>
     <bf:note>
       <bf:Note>
 	<rdfs:label>Notation on recto: "Major Wren, 48th Pa. Vols."</rdfs:label>
 	<bflc:applicableInstitution>
-	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
 	  </madsrdf:CorporateName>
 	</bflc:applicableInstitution>
@@ -696,22 +802,55 @@
 	    <bf:mainTitle>[Major James Wren of Co. B, 25th Pennsylvania Infantry Regiment and Co. B, 48th Pennsylvania Infantry Regiment in uniform with sword and sitting on horse]</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bflc:publicationStatement>[Place not identified]: [Publisher not identified]; [between 1861 and 1863]</bflc:publicationStatement>
+	<bf:publicationStatement>[Place not identified]: [Publisher not identified], [between 1861 and 1863]</bf:publicationStatement>
       </bf:Instance>
     </bf:itemOf>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-18T04:12:56.342263-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-28</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-05T09:33:56</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-03T06:44:02.302066-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/7">
 	    <rdfs:label>minimal</rdfs:label>
@@ -732,13 +871,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-05T09:33:56</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-07-28</bf:creationDate>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -749,11 +881,11 @@
 	    <rdfs:label>Descriptive cataloging of rare materials (Graphics)</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/lilj</lclocal:d985>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/civwar</lclocal:d985>
-	<lclocal:d985 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=985     $a pp/diof</lclocal:d985>
+	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
+	<lclocal:d955>=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
+	<lclocal:d985>=985     $a pp/lilj</lclocal:d985>
+	<lclocal:d985>=985     $a pp/civwar</lclocal:d985>
+	<lclocal:d985>=985     $a pp/diof</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Item>

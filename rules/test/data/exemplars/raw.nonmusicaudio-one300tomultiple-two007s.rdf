@@ -23,6 +23,11 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-05-02T15:29:46</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <bf:code>DLC</bf:code>
+	  </bf:Agent>
+	</bf:agent>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -33,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T08:59:56.557529-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:17:44.056539-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -68,6 +73,7 @@
 	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<bflc:marcKey>040  $aDLC$beng$erda$cDLC</bflc:marcKey>
 	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 4 $e ncip $f 20 $g y-soundrec</lclocal:d906>
 	<lclocal:d925>=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955>=955     $a qr39 2021-03-09 $i qr39 2021-03-09 $t copy 2 qr40 2022-05-02</lclocal:d955>
@@ -75,9 +81,7 @@
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NonMusicAudio"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
     <bf:supplementaryContent>
       <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/instructmaterial">
 	<rdfs:label>instructional materials</rdfs:label>
@@ -101,8 +105,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21933307#Agent100-13">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>1001 $aRussell, Rod,$d1946-$eauthor,$espeaker,$eperformer.</bflc:marcKey>
 	    <rdfs:label>Russell, Rod, 1946-</rdfs:label>
+	    <bflc:marcKey>1001 $aRussell, Rod,$d1946-$eauthor,$espeaker,$eperformer.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -173,7 +177,7 @@
     </bf:tableOfContents>
     <bf:tableOfContents>
       <bf:TableOfContents>
-	<rdfs:label>Lesson guides: Lesson 9 -- Lesson 10 -- Lesson 11 -- Lesson 12 -- Lesson 13 -- Lesson 14 -- Lesson 15 -- Lesson 16.</rdfs:label>
+	<rdfs:label>Lesson guides: Lesson 9 -- Lesson 10 -- Lesson 11 -- Lesson 12 -- Lesson 13 -- Lesson 14 -- Lesson 15 -- Lesson 16</rdfs:label>
       </bf:TableOfContents>
     </bf:tableOfContents>
     <bf:notation>
@@ -327,7 +331,7 @@
 	<bflc:simpleDate>[2006]</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">Kelowna, B.C.: Russell Publishing; [2006]</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Kelowna, B.C.: Russell Publishing, [2006]</bf:publicationStatement>
     <bf:copyrightDate rdf:datatype="http://id.loc.gov/datatypes/edtf">2006</bf:copyrightDate>
     <bf:identifiedBy>
       <bf:Lccn>
@@ -388,7 +392,7 @@
 	</bflc:appliesTo>
       </bf:Note>
     </bf:note>
-    <bf:dimensions>4 3/4 in.</bf:dimensions>
+    <bf:dimensions>4 3/4 in</bf:dimensions>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/s">
 	<rdfs:label>audio</rdfs:label>
@@ -461,7 +465,7 @@
       </bf:FileType>
     </bf:digitalCharacteristic>
     <bf:digitalCharacteristic>
-      <bf:EncodingFormat>
+      <bf:EncodingFormat rdf:about="http://id.loc.gov/vocabulary/mencformat/cda">
 	<rdfs:label>CD audio</rdfs:label>
 	<bflc:appliesTo>
 	  <bflc:AppliesTo>
@@ -472,12 +476,12 @@
     </bf:digitalCharacteristic>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Title from container.</rdfs:label>
+	<rdfs:label>Title from container</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>In container (31 cm).</rdfs:label>
+	<rdfs:label>In container (31 cm)</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:credits>Rod Russell, speaker, piano.</bf:credits>
@@ -517,7 +521,7 @@
 	<rdfs:label>sound, color</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:dimensions>4 3/4 in.</bf:dimensions>
+    <bf:dimensions>4 3/4 in</bf:dimensions>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/v">
 	<rdfs:label>video</rdfs:label>

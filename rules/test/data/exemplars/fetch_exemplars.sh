@@ -16,12 +16,14 @@ declare -A exemplars=(
 ["21009588"]="musicaudio-monograph-varianttitles-subjects-008p"
 ["11457859"]="text-serial-SUBJECTS-relationships-008c"
 ["11393548"]="text-serial-008d"
+["11138862"]="text-serial-frequencies-relationships-subjects-businessweek"
 ["14437118"]="stillimage-collection-pnp-008i"
 ["12280298"]="musicaudio-monograph-contributions-008m"
 ["22724623"]="stillimage-monograph-subjects-pnp-008q"
 ["20621601"]="text-monograph-classifications-008t"
 ["1972268"]="text-monograph-classification-manufacture-008s"
 ["22014581"]="text-monograph-880s-008s"
+["23126927"]="text-monograph-880s-in-245-264-490-700-also-066"
 
 ["16362995"]="text-monograph-uncontrolledsubjects-uncontrollednames"
 

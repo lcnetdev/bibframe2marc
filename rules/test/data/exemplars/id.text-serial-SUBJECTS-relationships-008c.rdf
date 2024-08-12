@@ -1,4 +1,5 @@
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <!--[{"level": "WARNING", "message": "ProvisionActivity only has bflc:simplePlace, bflc:simpleDate, bflc:simpleAgent, bf:date, bf:place, bf:agent, bf:note, rdf:type. "}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11457859">
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/serl">
@@ -18,7 +19,7 @@
 	<bflc:simpleDate>[1992]-</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement>New York, NY: Out Publishing, Inc; [1992]-</bflc:publicationStatement>
+    <bf:publicationStatement>New York, NY: Out Publishing, Inc, [1992]-</bf:publicationStatement>
     <bf:provisionActivity>
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
@@ -31,7 +32,7 @@
 	<bflc:simpleAgent>Here Publishing, Inc</bflc:simpleAgent>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement>Los Angeles, CA: Here Publishing, Inc</bflc:publicationStatement>
+    <bf:publicationStatement>Los Angeles, CA: Here Publishing, Inc</bf:publicationStatement>
     <bf:provisionActivity>
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
@@ -49,7 +50,7 @@
 	<bflc:simpleAgent>Pride Publishing Inc</bflc:simpleAgent>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement>Los Angeles, CA: Pride Publishing Inc</bflc:publicationStatement>
+    <bf:publicationStatement>Los Angeles, CA: Pride Publishing Inc</bf:publicationStatement>
     <bf:provisionActivity>
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
@@ -73,7 +74,7 @@
 	<bflc:simpleAgent>equalpride</bflc:simpleAgent>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement>Los Angeles, CA: equalpride</bflc:publicationStatement>
+    <bf:publicationStatement>Los Angeles, CA: equalpride</bf:publicationStatement>
     <bf:frequency>
       <bf:Frequency rdf:about="http://id.loc.gov/vocabulary/frequencies/bmn">
 	<rdfs:label>bimonthly</rdfs:label>
@@ -111,14 +112,9 @@
       </bf:PostalRegistration>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>ocm25743067 </rdf:value>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:title>
       <bf:Title>
@@ -232,19 +228,19 @@
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Issues &lt;no. 69 (Aug. 1999)-&gt; called also: &lt;v. 8, no. 2-&gt;</rdfs:label>
+	<rdfs:label>Issues &lt;no. 69 (Aug. 1999)-no. 191 (Feb. 2010)&gt; called also: &lt;v. 8, no. 2-v. 18, no. 5&gt;</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/issuance"/>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Has numbering irregularities.</rdfs:label>
+	<rdfs:label>Has numbering irregularities</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/issuance"/>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Starting with issue for March/April 2024, Out and the Advocate are issued in the same volume back-to back and on inverted pages.</rdfs:label>
+	<rdfs:label>Beginning with March/April 2024, Out and the Advocate are published in the same issue back-to back and on inverted pages (i.e., in tête-bêche format).</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/issuance"/>
       </bf:Note>
     </bf:note>
@@ -256,7 +252,7 @@
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Latest issue consulted: Volume 32, number 5 (March/April 2024) (surrogate).</rdfs:label>
+	<rdfs:label>Latest issue consulted: Volume 32, number 5 (March/April 2024) (surrogate)</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/descsource"/>
       </bf:Note>
     </bf:note>
@@ -264,17 +260,54 @@
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/11457859"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-04-04T01:32:46.358788-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1992-04-30</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>NSD</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-23T06:56:47</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Agent>
+	    <bf:code>ZYU</bf:code>
+	  </bf:Agent>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-08T20:05:12.545907-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -295,34 +328,23 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-04-03T06:56:58</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1992-04-30</bf:creationDate>
 	<bf:note>
 	  <bf:Note>
 	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/metaentry"/>
 	    <rdfs:label>0 - successive</rdfs:label>
 	  </bf:Note>
 	</bf:note>
-	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>NSD</bf:code>
-	  </bf:Agent>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Agent>
-	    <bf:code>UPM</bf:code>
-	  </bf:Agent>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
 	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<bflc:marcKey>040  $aNSD$beng$erda$cNSD$dNST$dCLU$dNSD$dIUL$dDLC$dEYM$dDLC$dHUL$dSYS$dIUL$dNYP$dGK8$dDLC$dIUL$dOCLCQ$dORU$dIUL$dDLC$dHUL$dCOD$dOCLCF$dCUV$dOCLCO$dOCL$dOCLCO$dGRR$dOCLCO$dCDS$dIUL$dCBA$dOCLCO$dHTM$dOCLCO$dGZN$dZQP$dX#4$dIUL$dPSM$dWAU$dEZL$dOCLCO$dCUV$dOCLCA$dIUL$dCNEDM$dOCLCL$dNDD$dOCLCQ$dUPM$dWIM$dVP@$dZYU</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/nsdp">
 	    <rdfs:label>U.S. ISSN Center</rdfs:label>
@@ -333,8 +355,8 @@
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c serials $d u $e ncip $f 19 $g n-oclcserc</lclocal:d906>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a th14 2008-03-04 HR update</lclocal:d955>
+	<lclocal:d906>=906     $a 7 $b cbc $c serials $d u $e ncip $f 19 $g n-oclcserc</lclocal:d906>
+	<lclocal:d955>=955     $a th14 2008-03-04 HR update</lclocal:d955>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
@@ -415,6 +437,17 @@
 	</bf:assigner>
       </bf:ClassificationDdc>
     </bf:classification>
+    <bf:expressionOf>
+      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/e773f006-849b-7a14-2284-73ef1f9036ad">
+	<rdfs:label>Out (New York, N.Y.)</rdfs:label>
+	<bf:title>
+	  <bf:Title>
+	    <bf:mainTitle>Out (New York, N.Y.)</bf:mainTitle>
+	  </bf:Title>
+	</bf:title>
+	<bflc:marcKey>130  $aOut (New York, N.Y.)</bflc:marcKey>
+      </bf:Hub>
+    </bf:expressionOf>
     <bf:title>
       <bf:AbbreviatedTitle>
 	<bf:mainTitle>Out</bf:mainTitle>
@@ -449,21 +482,25 @@
     </bf:content>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Beginning with no. 191 (February 2010) = v. 18, no. 5  issued with: Advocate (Los Angeles, Calif.). Beginning with issue for March/April 2024, absorbed: Advocate (Los Angeles, Calif.).</rdfs:label>
+	<rdfs:label>Issued with: Advocate (Los Angeles, Calif.), beginning with issue no. 191 (February 2010).</rdfs:label>
+      </bf:Note>
+    </bf:note>
+    <bf:note>
+      <bf:Note>
+	<rdfs:label>Absorbed: Advocate (Los Angeles, Calif.) with the March/April 2024 issue.</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:subject>
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Gay men--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay men--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Gay men--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85061798">
 	    <rdfs:label xml:lang="en">Gay men</rdfs:label>
 	    <bflc:marcKey>150  $aGay men</bflc:marcKey>
@@ -480,8 +517,7 @@
 	<bflc:aap-normalized>gaymenunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -490,14 +526,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Lesbians--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Lesbians--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Lesbians--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85076160">
 	    <rdfs:label xml:lang="en">Lesbians</rdfs:label>
 	    <bflc:marcKey>150  $aLesbians</bflc:marcKey>
@@ -514,8 +549,7 @@
 	<bflc:aap-normalized>lesbiansunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -524,14 +558,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Sexual minorities--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Sexual minorities--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Sexual minorities--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2004003385">
 	    <rdfs:label xml:lang="en">Sexual minorities</rdfs:label>
 	    <bflc:marcKey>150  $aSexual minorities</bflc:marcKey>
@@ -548,8 +581,7 @@
 	<bflc:aap-normalized>sexualminoritiesunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -558,14 +590,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Gay community--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay community--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Gay community--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh91003435">
 	    <rdfs:label xml:lang="en">Gay community</rdfs:label>
 	    <bflc:marcKey>150  $aGay community</bflc:marcKey>
@@ -582,8 +613,7 @@
 	<bflc:aap-normalized>gaycommunityunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -592,14 +622,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Homosexuality--Social aspects--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Homosexuality--Social aspects--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Homosexuality--Social aspects--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85061780">
 	    <rdfs:label xml:lang="en">Homosexuality</rdfs:label>
 	    <bflc:marcKey>150  $aHomosexuality</bflc:marcKey>
@@ -620,8 +649,7 @@
 	<bflc:aap-normalized>homosexualitysocialaspectsunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -630,14 +658,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Gay culture--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay culture--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Gay culture--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2004003369">
 	    <rdfs:label xml:lang="en">Gay culture</rdfs:label>
 	    <bflc:marcKey>150  $aGay culture</bflc:marcKey>
@@ -654,8 +681,7 @@
 	<bflc:aap-normalized>gaycultureunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -663,7 +689,7 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2008109061">
 	<rdfs:label xml:lang="en">Performing arts--Periodicals</rdfs:label>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
 	    <madsrdf:authoritativeLabel xml:lang="en">Performing arts</madsrdf:authoritativeLabel>
@@ -689,7 +715,7 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2008103595">
 	<rdfs:label xml:lang="en">Fashion--Periodicals</rdfs:label>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
 	    <madsrdf:authoritativeLabel xml:lang="en">Fashion</madsrdf:authoritativeLabel>
@@ -716,14 +742,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Gay people--Social conditions--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay people--Social conditions--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Gay people--Social conditions--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85061795">
 	    <rdfs:label xml:lang="en">Gay people</rdfs:label>
 	    <bflc:marcKey>150  $aGay people</bflc:marcKey>
@@ -740,8 +765,7 @@
 	<bflc:aap-normalized>gaypeoplesocialconditionsperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -750,14 +774,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Homosexuality--Social aspects--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Homosexuality--Social aspects--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Homosexuality--Social aspects--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85061780">
 	    <rdfs:label xml:lang="en">Homosexuality</rdfs:label>
 	    <bflc:marcKey>150  $aHomosexuality</bflc:marcKey>
@@ -774,8 +797,7 @@
 	<bflc:aap-normalized>homosexualitysocialaspectsperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -784,14 +806,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Homophobia--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Homophobia--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Homophobia--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh88006552">
 	    <rdfs:label xml:lang="en">Homophobia</rdfs:label>
 	    <bflc:marcKey>150  $aHomophobia</bflc:marcKey>
@@ -808,8 +829,7 @@
 	<bflc:aap-normalized>homophobiaunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -818,14 +838,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Gay liberation movement--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay liberation movement--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Gay liberation movement--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85053580">
 	    <rdfs:label xml:lang="en">Gay liberation movement</rdfs:label>
 	    <bflc:marcKey>150  $aGay liberation movement</bflc:marcKey>
@@ -842,8 +861,7 @@
 	<bflc:aap-normalized>gayliberationmovementunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -852,14 +870,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Gay activists--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay activists--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Gay activists--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh93002979">
 	    <rdfs:label xml:lang="en">Gay activists</rdfs:label>
 	    <bflc:marcKey>150  $aGay activists</bflc:marcKey>
@@ -876,8 +893,7 @@
 	<bflc:aap-normalized>gayactivistsunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -886,14 +902,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Gay rights--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay rights--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Gay rights--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh94009215">
 	    <rdfs:label xml:lang="en">Gay rights</rdfs:label>
 	    <bflc:marcKey>150  $aGay rights</bflc:marcKey>
@@ -910,8 +925,7 @@
 	<bflc:aap-normalized>gayrightsunitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -920,14 +934,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>AIDS (Disease)--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">AIDS (Disease)--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>AIDS (Disease)--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85002541">
 	    <rdfs:label xml:lang="en">AIDS (Disease)</rdfs:label>
 	    <bflc:marcKey>150  $aAIDS (Disease)</bflc:marcKey>
@@ -944,8 +957,7 @@
 	<bflc:aap-normalized>aids(disease)unitedstatesperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -954,14 +966,13 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Gay people--Travel--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay people--Travel--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Gay people--Travel--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85061795">
 	    <rdfs:label xml:lang="en">Gay people</rdfs:label>
 	    <bflc:marcKey>150  $aGay people</bflc:marcKey>
@@ -978,8 +989,7 @@
 	<bflc:aap-normalized>gaypeopletravelperiodicals</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of
-            Congress Subject Headings</rdfs:label>
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -988,8 +998,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Homosexuels masculins--États-Unis--Périodiques</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Homosexuels masculins--États-Unis--Périodiques</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Homosexuels masculins--États-Unis--Périodiques</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>Homosexuels masculins</madsrdf:authoritativeLabel>
 	  </madsrdf:Topic>
@@ -1012,8 +1022,8 @@
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Lesbiennes--États-Unis--Périodiques</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Lesbiennes--États-Unis--Périodiques</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>Lesbiennes--États-Unis--Périodiques</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>Lesbiennes</madsrdf:authoritativeLabel>
 	  </madsrdf:Topic>
@@ -1035,105 +1045,105 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/793808">
 	<bflc:marcKey>150  $aAIDS (Disease)</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">AIDS (Disease)</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>AIDS (Disease)</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/921600">
 	<bflc:marcKey>150  $aFashion</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Fashion</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Fashion</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/939048">
 	<bflc:marcKey>150  $aGay activists</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay activists</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Gay activists</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/1432142">
 	<bflc:marcKey>150  $aGay community</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay community</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Gay community</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/1201219">
 	<bflc:marcKey>150  $aGay culture</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay culture</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Gay culture</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/939104">
 	<bflc:marcKey>150  $aGay liberation movement</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay liberation movement</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Gay liberation movement</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/939117">
 	<bflc:marcKey>150  $aGay men</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay men</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Gay men</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/939213">
 	<bflc:marcKey>150  $aGay rights</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gay rights</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Gay rights</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/939300">
 	<bflc:marcKey>150  $aGays$xSocial conditions</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gays--Social conditions</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Gays--Social conditions</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/939305">
 	<bflc:marcKey>150  $aGays$xTravel</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Gays--Travel</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Gays--Travel</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/959727">
 	<bflc:marcKey>150  $aHomophobia</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Homophobia</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Homophobia</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/959809">
 	<bflc:marcKey>150  $aHomosexuality$xSocial aspects</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Homosexuality--Social aspects</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Homosexuality--Social aspects</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/996540">
 	<bflc:marcKey>150  $aLesbians</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Lesbians</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Lesbians</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/1057887">
 	<bflc:marcKey>150  $aPerforming arts</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Performing arts</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Performing arts</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/1202158">
 	<bflc:marcKey>150  $aSexual minorities</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Sexual minorities</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Sexual minorities</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <bf:Place rdf:about="http://id.worldcat.org/fast/1204155">
+      <bf:Place rdf:about="http://id.loc.gov/rwo/agents/n78095330">
+	<rdfs:label>United States</rdfs:label>
 	<bflc:marcKey>151  $aUnited States</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">United States</madsrdf:authoritativeLabel>
       </bf:Place>
     </bf:subject>
     <bf:subject>
       <bf:Topic>
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>LGBTQ people--United States--Periodicals</rdfs:label>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">LGBTQ people--United States--Periodicals</madsrdf:authoritativeLabel>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:authoritativeLabel>LGBTQ people--United States--Periodicals</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>LGBTQ people</madsrdf:authoritativeLabel>
 	  </madsrdf:Topic>
@@ -1146,7 +1156,7 @@
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>lgbtqpeopleunitedstatesperiodicals</bflc:aap-normalized>
-	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/homoit">
 	    <rdfs:label>Homosaurus: an international LGBTQ linked data vocabulary</rdfs:label>
 	  </madsrdf:Authority>
@@ -1160,16 +1170,14 @@
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="https://homosaurus.org/v3/homoit0000915">
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">LGBTQ+ people</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>LGBTQ+ people</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:genreForm>
-      <bf:GenreForm>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Periodicals</madsrdf:authoritativeLabel>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
-	<rdfs:label>Periodicals</rdfs:label>
-      </bf:GenreForm>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1411641">
+	<bflc:marcKey>155  $aPeriodicals</bflc:marcKey>
+	<madsrdf:authoritativeLabel>Periodicals</madsrdf:authoritativeLabel>
+      </bf:Topic>
     </bf:genreForm>
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026139">
@@ -1177,223 +1185,407 @@
 	<bflc:marcKey>155  $aPeriodicals</bflc:marcKey>
       </bf:GenreForm>
     </bf:genreForm>
-    <bf:expressionOf>
-      <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/e773f006-849b-7a14-2284-73ef1f9036ad">
-	<rdfs:label>Out (New York, N.Y.)</rdfs:label>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Out (New York, N.Y.)</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:marcKey>130  $aOut (New York, N.Y.)</bflc:marcKey>
-      </bf:Hub>
-    </bf:expressionOf>
-    <bf:supplement>
-      <bf:Work>
-	<bflc:aap>Out traveler</bflc:aap>
-	<bflc:aap-normalized>outtraveler</bflc:aap-normalized>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Out traveler</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel>periodicals</madsrdf:authoritativeLabel>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/aat">
+	    <bf:code>aat</bf:code>
+	  </bf:Source>
+	</bf:source>
+	<bf:identifiedBy>
+	  <bf:Identifier>
+	    <rdf:value>aatgf300026657</rdf:value>
+	    <bf:source>
+	      <bf:Source>
+		<bf:code>CStmoGRI</bf:code>
+	      </bf:Source>
+	    </bf:source>
+	  </bf:Identifier>
+	</bf:identifiedBy>
+	<rdfs:label>periodicals</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel>Périodiques</madsrdf:authoritativeLabel>
+	<bf:source>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/rvmgf">
+	    <rdfs:label>Thésaurus des descripteurs de genre/forme de l'Université Laval</rdfs:label>
+	  </madsrdf:Authority>
+	</bf:source>
+	<bf:identifiedBy>
+	  <bf:Identifier>
+	    <rdf:value>RVMGF-000001105</rdf:value>
+	    <bf:source>
+	      <bf:Source>
+		<bf:code>CaQQLa</bf:code>
+	      </bf:Source>
+	    </bf:source>
+	  </bf:Identifier>
+	</bf:identifiedBy>
+	<rdfs:label>Périodiques</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otherphysicalformat">
+	    <rdfs:label>other physical format</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/entities/relationships/onlineversion">
+	    <rdfs:label>Online version</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work>
+	    <bflc:aap>Out (New York, N.Y.)</bflc:aap>
+	    <bflc:aap-normalized>out(newyorkny)</bflc:aap-normalized>
 	    <bf:title>
 	      <bf:Title>
-		<bf:mainTitle>Out traveler</bf:mainTitle>
+		<bf:mainTitle>Out (New York, N.Y.)</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>  2003248957</rdf:value>
-		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <rdfs:label>United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
-		</bf:assigner>
-	      </bf:Lccn>
-	    </bf:identifiedBy>
-	    <bf:identifiedBy>
-	      <bf:Identifier>
-		<rdf:value>53129295</rdf:value>
-		<bf:assigner>
-		  <bf:Agent>
-		    <bf:code>OCoLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Identifier>
-	    </bf:identifiedBy>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:supplement>
-    <bf:otherPhysicalFormat>
-      <bf:Work>
-	<bflc:aap>Out (New York, N.Y.)</bflc:aap>
-	<bflc:aap-normalized>out(newyorkny)</bflc:aap-normalized>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Out (New York, N.Y.)</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:relationship>
-	  <bflc:Relationship>
-	    <bflc:relation>
-	      <bflc:Relation>
-		<rdfs:label>Online version</rdfs:label>
-	      </bflc:Relation>
-	    </bflc:relation>
-	    <bf:relatedTo>
-	      <bf:Work rdf:about="http://id.loc.gov/resources/works/11457859">
-		<rdfs:label>Out</rdfs:label>
-		<bf:title>
-		  <bf:AbbreviatedTitle>
-		    <bf:mainTitle>Out</bf:mainTitle>
-		    <bf:qualifier>(N.Y. N.Y.)</bf:qualifier>
-		    <bf:assigner>
-		      <bf:Agent>
-			<bf:code>issnkey</bf:code>
-		      </bf:Agent>
-		    </bf:assigner>
-		  </bf:AbbreviatedTitle>
-		</bf:title>
-		<bf:title>
-		  <bf:KeyTitle>
-		    <bf:mainTitle>Out</bf:mainTitle>
-		    <bf:qualifier>(New York, N.Y.)</bf:qualifier>
-		  </bf:KeyTitle>
-		</bf:title>
+	    <bf:hasInstance>
+	      <bf:Instance>
 		<bf:title>
 		  <bf:Title>
-		    <bf:mainTitle>Out</bf:mainTitle>
+		    <bf:mainTitle>Out (New York, N.Y.)</bf:mainTitle>
 		  </bf:Title>
 		</bf:title>
-		<bf:title>
-		  <bf:VariantTitle>
-		    <bf:mainTitle>Advocate</bf:mainTitle>
-		  </bf:VariantTitle>
-		</bf:title>
-	      </bf:Work>
-	    </bf:relatedTo>
-	  </bflc:Relationship>
-	</bflc:relationship>
-	<bf:hasInstance>
-	  <bf:Instance>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>  2021245248</rdf:value>
+		    <bf:assigner>
+		      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+			<rdfs:label>United States, Library of Congress</rdfs:label>
+		      </madsrdf:CorporateName>
+		    </bf:assigner>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Identifier>
+		    <rdf:value>698135814</rdf:value>
+		    <bf:assigner>
+		      <bf:Agent>
+			<bf:code>OCoLC</bf:code>
+		      </bf:Agent>
+		    </bf:assigner>
+		  </bf:Identifier>
+		</bf:identifiedBy>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otherphysicalformat">
+	    <rdfs:label>other physical format</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/entities/relationships/microfilmversion">
+	    <rdfs:label>Microfilm version</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work>
+	    <bflc:aap>Out (New York, N.Y.)</bflc:aap>
+	    <bflc:aap-normalized>out(newyorkny)</bflc:aap-normalized>
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Out (New York, N.Y.)</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
 	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>  2021245248</rdf:value>
-		<bf:assigner>
-		  <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
-		    <rdfs:label>United States, Library of Congress</rdfs:label>
-		  </madsrdf:CorporateName>
-		</bf:assigner>
-	      </bf:Lccn>
+	      <bf:Issn>
+		<rdf:value>1062-7928</rdf:value>
+	      </bf:Issn>
 	    </bf:identifiedBy>
-	    <bf:identifiedBy>
-	      <bf:Identifier>
-		<rdf:value>698135814</rdf:value>
-		<bf:assigner>
-		  <bf:Agent>
-		    <bf:code>OCoLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Identifier>
-	    </bf:identifiedBy>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:otherPhysicalFormat>
-    <bf:issuedWith>
-      <bf:Work>
-	<bflc:aap>Advocate (Los Angeles, Calif.)</bflc:aap>
-	<bflc:aap-normalized>advocate(losangelescalif)</bflc:aap-normalized>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Advocate (Los Angeles, Calif.)</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:hasInstance>
-	  <bf:Instance>
+	    <bf:hasInstance>
+	      <bf:Instance>
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Out (New York, N.Y.)</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Identifier>
+		    <rdf:value>43146466</rdf:value>
+		    <bf:assigner>
+		      <bf:Agent>
+			<bf:code>OCoLC</bf:code>
+		      </bf:Agent>
+		    </bf:assigner>
+		  </bf:Identifier>
+		</bf:identifiedBy>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/supplement">
+	    <rdfs:label>supplement</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/works/13422489">
 	    <bf:title>
 	      <bf:Title>
-		<bf:mainTitle>Advocate (Los Angeles, Calif.)</bf:mainTitle>
+		<bf:mainTitle>The out traveler</bf:mainTitle>
+		<bflc:nonSortNum>4</bflc:nonSortNum>
 	      </bf:Title>
 	    </bf:title>
-	    <bf:part>Feb. 2010-</bf:part>
-	    <bf:identifiedBy>
-	      <bf:Lccn>
-		<rdf:value>   72624007</rdf:value>
-		<bf:assigner>
-		  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-		    <rdfs:label>United States, Library of Congress</rdfs:label>
-		  </bf:Organization>
-		</bf:assigner>
-	      </bf:Lccn>
-	    </bf:identifiedBy>
-	    <bf:identifiedBy>
-	      <bf:Identifier>
-		<rdf:value>2256995</rdf:value>
-		<bf:assigner>
-		  <bf:Agent>
-		    <bf:code>OCoLC</bf:code>
-		  </bf:Agent>
-		</bf:assigner>
-	      </bf:Identifier>
-	    </bf:identifiedBy>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:issuedWith>
-    <bf:absorbed>
-      <bf:Work rdf:about="http://id.loc.gov/resources/works/11165447">
-	<rdfs:label>The Advocate</rdfs:label>
-	<bf:title>
-	  <bf:AbbreviatedTitle>
-	    <bf:mainTitle>Advocate</bf:mainTitle>
-	    <bf:qualifier>(Los Angel. Calif.)</bf:qualifier>
-	    <bf:assigner>
-	      <bf:Agent>
-		<bf:code>issnkey</bf:code>
-	      </bf:Agent>
-	    </bf:assigner>
-	  </bf:AbbreviatedTitle>
-	</bf:title>
-	<bf:title>
-	  <bf:KeyTitle>
-	    <bf:mainTitle>The Advocate</bf:mainTitle>
-	    <bf:qualifier>(Los Angeles, Calif.)</bf:qualifier>
-	    <bflc:nonSortNum>4</bflc:nonSortNum>
-	  </bf:KeyTitle>
-	</bf:title>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>The Advocate</bf:mainTitle>
-	    <bflc:nonSortNum>4</bflc:nonSortNum>
-	  </bf:Title>
-	</bf:title>
-      </bf:Work>
-    </bf:absorbed>
-    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/13422489">
+		<bf:publicationStatement>Los Angeles, Calif: LPI Media, c2003-</bf:publicationStatement>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>  2003248957</rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:OclcNumber>
+		    <rdf:value>ocm53129295 </rdf:value>
+		  </bf:OclcNumber>
+		</bf:identifiedBy>
+		<bf:media>
+		  <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+		    <rdfs:label>unmediated</rdfs:label>
+		  </bf:Media>
+		</bf:media>
+		<bf:carrier>
+		  <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+		    <rdfs:label>volume</rdfs:label>
+		  </bf:Carrier>
+		</bf:carrier>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/issuedwith">
+	    <rdfs:label>issued with</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/works/11165447">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>The advocate</bf:mainTitle>
+		<bflc:nonSortNum>4</bflc:nonSortNum>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11165447">
+		<bf:publicationStatement>Los Angeles, California: Advocate Publications, [1970]-[2024]</bf:publicationStatement>
+		<bf:publicationStatement>[Los Angeles, Calif.].: Liberation Publications</bf:publicationStatement>
+		<bf:publicationStatement>Los Angeles, Calif: Here Pub</bf:publicationStatement>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>   72624007 </rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Nbn>
+		    <rdf:value>010641343</rdf:value>
+		    <bf:source>
+		      <bf:Source rdf:about="http://id.loc.gov/vocabulary/nationalbibschemes/dnb">
+			<rdfs:label>Deutsche Nationalbibliografie</rdfs:label>
+		      </bf:Source>
+		    </bf:source>
+		  </bf:Nbn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Local>
+		    <rdf:value>010641343</rdf:value>
+		    <bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/de-101"/>
+		  </bf:Local>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Local>
+		    <rdf:value>92753-3</rdf:value>
+		    <bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/de-600"/>
+		  </bf:Local>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:PostalRegistration>
+		    <rdf:value>319380</rdf:value>
+		    <bf:assigner>
+		      <bf:Organization rdf:about="http://id.loc.gov/rwo/agents/n89658260">
+			<rdfs:label>United States Power Squadrons</rdfs:label>
+			<bflc:marcKey>11020$aUnited States Power Squadrons</bflc:marcKey>
+		      </bf:Organization>
+		    </bf:assigner>
+		  </bf:PostalRegistration>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:OclcNumber>
+		    <rdf:value>ocm02256995 </rdf:value>
+		  </bf:OclcNumber>
+		</bf:identifiedBy>
+		<bf:media>
+		  <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+		    <rdfs:label>unmediated</rdfs:label>
+		  </bf:Media>
+		</bf:media>
+		<bf:carrier>
+		  <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+		    <rdfs:label>volume</rdfs:label>
+		  </bf:Carrier>
+		</bf:carrier>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/absorptionof">
+	    <rdfs:label>absorption of</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/works/11165447">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>The advocate</bf:mainTitle>
+		<bflc:nonSortNum>4</bflc:nonSortNum>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11165447">
+		<bf:publicationStatement>Los Angeles, California: Advocate Publications, [1970]-[2024]</bf:publicationStatement>
+		<bf:publicationStatement>[Los Angeles, Calif.].: Liberation Publications</bf:publicationStatement>
+		<bf:publicationStatement>Los Angeles, Calif: Here Pub</bf:publicationStatement>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>   72624007 </rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Nbn>
+		    <rdf:value>010641343</rdf:value>
+		    <bf:source>
+		      <bf:Source rdf:about="http://id.loc.gov/vocabulary/nationalbibschemes/dnb">
+			<rdfs:label>Deutsche Nationalbibliografie</rdfs:label>
+		      </bf:Source>
+		    </bf:source>
+		  </bf:Nbn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Local>
+		    <rdf:value>010641343</rdf:value>
+		    <bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/de-101"/>
+		  </bf:Local>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Local>
+		    <rdf:value>92753-3</rdf:value>
+		    <bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/de-600"/>
+		  </bf:Local>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:PostalRegistration>
+		    <rdf:value>319380</rdf:value>
+		    <bf:assigner>
+		      <bf:Organization rdf:about="http://id.loc.gov/rwo/agents/n89658260">
+			<rdfs:label>United States Power Squadrons</rdfs:label>
+			<bflc:marcKey>11020$aUnited States Power Squadrons</bflc:marcKey>
+		      </bf:Organization>
+		    </bf:assigner>
+		  </bf:PostalRegistration>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:OclcNumber>
+		    <rdf:value>ocm02256995 </rdf:value>
+		  </bf:OclcNumber>
+		</bf:identifiedBy>
+		<bf:media>
+		  <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+		    <rdfs:label>unmediated</rdfs:label>
+		  </bf:Media>
+		</bf:media>
+		<bf:carrier>
+		  <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+		    <rdfs:label>volume</rdfs:label>
+		  </bf:Carrier>
+		</bf:carrier>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/11457859"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-04-04T01:32:46.358788-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1992-04-30</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>NSD</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-23T06:56:47</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Agent>
+	    <bf:code>ZYU</bf:code>
+	  </bf:Agent>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-08T20:05:12.545907-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -1414,34 +1606,23 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-04-03T06:56:58</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1992-04-30</bf:creationDate>
 	<bf:note>
 	  <bf:Note>
 	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/metaentry"/>
 	    <rdfs:label>0 - successive</rdfs:label>
 	  </bf:Note>
 	</bf:note>
-	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>NSD</bf:code>
-	  </bf:Agent>
-	</bf:assigner>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Agent>
-	    <bf:code>UPM</bf:code>
-	  </bf:Agent>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
 	    <rdfs:label>Resource description and access</rdfs:label>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<bflc:marcKey>040  $aNSD$beng$erda$cNSD$dNST$dCLU$dNSD$dIUL$dDLC$dEYM$dDLC$dHUL$dSYS$dIUL$dNYP$dGK8$dDLC$dIUL$dOCLCQ$dORU$dIUL$dDLC$dHUL$dCOD$dOCLCF$dCUV$dOCLCO$dOCL$dOCLCO$dGRR$dOCLCO$dCDS$dIUL$dCBA$dOCLCO$dHTM$dOCLCO$dGZN$dZQP$dX#4$dIUL$dPSM$dWAU$dEZL$dOCLCO$dCUV$dOCLCA$dIUL$dCNEDM$dOCLCL$dNDD$dOCLCQ$dUPM$dWIM$dVP@$dZYU</bflc:marcKey>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/nsdp">
 	    <rdfs:label>U.S. ISSN Center</rdfs:label>
@@ -1452,8 +1633,8 @@
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c serials $d u $e ncip $f 19 $g n-oclcserc</lclocal:d906>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a th14 2008-03-04 HR update</lclocal:d955>
+	<lclocal:d906>=906     $a 7 $b cbc $c serials $d u $e ncip $f 19 $g n-oclcserc</lclocal:d906>
+	<lclocal:d955>=955     $a th14 2008-03-04 HR update</lclocal:d955>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>

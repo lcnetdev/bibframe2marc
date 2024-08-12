@@ -23,6 +23,11 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-09-25T10:32:17</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <bf:code>DLC</bf:code>
+	  </bf:Agent>
+	</bf:agent>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -33,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T09:00:26.324405-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:18:22.276389-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -75,15 +80,13 @@
 	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
+	<bflc:marcKey>040  $aDLC$beng$epn$erda$cDLC</bflc:marcKey>
 	<lclocal:d985>=985     $a springerpcn</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Multimedia"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
     <bf:subject>
       <bf:Topic>
 	<bf:code>PBT</bf:code>
@@ -139,8 +142,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Agent100-21">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>1001 $aAndersen, Lars Nørvang.$eauthor.</bflc:marcKey>
 	    <rdfs:label>Andersen, Lars Nørvang</rdfs:label>
+	    <bflc:marcKey>1001 $aAndersen, Lars Nørvang.$eauthor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -163,14 +166,14 @@
 	</bf:source>
       </bf:Content>
     </bf:content>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
 	    <rdfs:label>Has Series</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
 	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Hub490-31">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
@@ -189,18 +192,18 @@
 	      </bf:Issn>
 	    </bf:identifiedBy>
 	  </bf:Series>
-	</bf:relatedTo>
+	</bf:associatedResource>
 	<bf:seriesEnumeration>2149</bf:seriesEnumeration>
-      </bflc:Relationship>
-    </bflc:relationship>
+      </bf:Relation>
+    </bf:relation>
     <bf:tableOfContents>
       <bf:TableOfContents>
-	<rdfs:label>Makoto Maejima: Classes of infinitely divisible distributions and examples -- Lars Nørvang Andersen, Søren Asmussen, Peter W. Glynn and Mats Pihlsgard: Lévy processes with two-sided reflection -- Persistence probabilities and exponents -- Frank Aurzada and Thomas Simon: Persistence probabilities and exponents.</rdfs:label>
+	<rdfs:label>Makoto Maejima: Classes of infinitely divisible distributions and examples -- Lars Nørvang Andersen, Søren Asmussen, Peter W. Glynn and Mats Pihlsgard: Lévy processes with two-sided reflection -- Persistence probabilities and exponents -- Frank Aurzada and Thomas Simon: Persistence probabilities and exponents</rdfs:label>
       </bf:TableOfContents>
     </bf:tableOfContents>
     <bf:summary>
       <bf:Summary>
-	<rdfs:label>This three-chapter volume concerns the distributions of certain functionals of Lévy processes. The first chapter, by Makoto Maejima, surveys representations of the main sub-classes of infinitesimal distributions in terms of mappings of certain Lévy processes via stochastic integration. The second chapter, by Lars Nørvang Andersen, Søren Asmussen, Peter W. Glynn and Mats Pihlsgård, concerns Lévy processes reflected at two barriers, where reflection is formulated à la Skorokhod. These processes can be used to model systems with a finite capacity, which is crucial in many real life situations, a most important quantity being the overflow or the loss occurring at the upper barrier. If a process is killed when crossing the boundary, a natural question concerns its lifetime. Deep formulas from fluctuation theory are the key to many classical results, which are reviewed in the third chapter by Frank Aurzada and Thomas Simon. The main part, however, discusses recent advances and developments in the setting where the process is given either by the partial sum of a random walk or the integral of a Lévy process..</rdfs:label>
+	<rdfs:label>This three-chapter volume concerns the distributions of certain functionals of Lévy processes. The first chapter, by Makoto Maejima, surveys representations of the main sub-classes of infinitesimal distributions in terms of mappings of certain Lévy processes via stochastic integration. The second chapter, by Lars Nørvang Andersen, Søren Asmussen, Peter W. Glynn and Mats Pihlsgård, concerns Lévy processes reflected at two barriers, where reflection is formulated à la Skorokhod. These processes can be used to model systems with a finite capacity, which is crucial in many real life situations, a most important quantity being the overflow or the loss occurring at the upper barrier. If a process is killed when crossing the boundary, a natural question concerns its lifetime. Deep formulas from fluctuation theory are the key to many classical results, which are reviewed in the third chapter by Frank Aurzada and Thomas Simon. The main part, however, discusses recent advances and developments in the setting where the process is given either by the partial sum of a random walk or the integral of a Lévy process</rdfs:label>
       </bf:Summary>
     </bf:summary>
     <bf:subject>
@@ -224,8 +227,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Agent700-36">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aAsmussen, Søren.$eauthor.</bflc:marcKey>
 	    <rdfs:label>Asmussen, Søren</rdfs:label>
+	    <bflc:marcKey>7001 $aAsmussen, Søren.$eauthor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -240,8 +243,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Agent700-37">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aAurzada, Frank.$eauthor.</bflc:marcKey>
 	    <rdfs:label>Aurzada, Frank</rdfs:label>
+	    <bflc:marcKey>7001 $aAurzada, Frank.$eauthor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -256,8 +259,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Agent700-38">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aGlynn, Peter W.$eauthor.</bflc:marcKey>
 	    <rdfs:label>Glynn, Peter W.</rdfs:label>
+	    <bflc:marcKey>7001 $aGlynn, Peter W.$eauthor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -272,8 +275,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Agent700-39">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aMaejima, Makoto.$eauthor.</bflc:marcKey>
 	    <rdfs:label>Maejima, Makoto</rdfs:label>
+	    <bflc:marcKey>7001 $aMaejima, Makoto.$eauthor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -288,8 +291,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Agent700-40">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aPihlsgård, Mats.$eauthor.</bflc:marcKey>
 	    <rdfs:label>Pihlsgård, Mats</rdfs:label>
+	    <bflc:marcKey>7001 $aPihlsgård, Mats.$eauthor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -304,8 +307,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Agent700-41">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aSimon, Thomas.$eauthor.</bflc:marcKey>
 	    <rdfs:label>Simon, Thomas</rdfs:label>
+	    <bflc:marcKey>7001 $aSimon, Thomas.$eauthor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -315,82 +318,82 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:otherPhysicalFormat>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Work776-42">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Lévy Matters V : Functionals of Lévy Processes</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:relationship>
-	  <bflc:Relationship>
-	    <bflc:relation>
-	      <bflc:Relation>
-		<rdfs:label>Printed edition</rdfs:label>
-	      </bflc:Relation>
-	    </bflc:relation>
-	    <bf:relatedTo rdf:resource="http://id.loc.gov/resources/REPLACE/21665525#Work"/>
-	  </bflc:Relationship>
-	</bflc:relationship>
-	<bf:hasInstance>
-	  <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Instance776-42">
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/otherphysicalformat"/>
+	<bf:relationship>
+	  <bf:Relationship>
+	    <rdfs:label>Printed edition</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Work776-42">
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Lévy Matters V : Functionals of Lévy Processes</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	    <bf:identifiedBy>
-	      <bf:Isbn>
-		<rdf:value>9783319231372</rdf:value>
-	      </bf:Isbn>
-	    </bf:identifiedBy>
-	    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/21665525#Work776-42"/>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:otherPhysicalFormat>
-    <bf:otherPhysicalFormat>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Work776-43">
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Lévy Matters V : Functionals of Lévy Processes</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bflc:relationship>
-	  <bflc:Relationship>
-	    <bflc:relation>
-	      <bflc:Relation>
-		<rdfs:label>Printed edition</rdfs:label>
-	      </bflc:Relation>
-	    </bflc:relation>
-	    <bf:relatedTo rdf:resource="http://id.loc.gov/resources/REPLACE/21665525#Work"/>
-	  </bflc:Relationship>
-	</bflc:relationship>
-	<bf:hasInstance>
-	  <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Instance776-43">
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Instance776-42">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Lévy Matters V : Functionals of Lévy Processes</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Isbn>
+		    <rdf:value>9783319231372</rdf:value>
+		  </bf:Isbn>
+		</bf:identifiedBy>
+		<bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/21665525#Work776-42"/>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/otherphysicalformat"/>
+	<bf:relationship>
+	  <bf:Relationship>
+	    <rdfs:label>Printed edition</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Work776-43">
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Lévy Matters V : Functionals of Lévy Processes</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
-	    <bf:identifiedBy>
-	      <bf:Isbn>
-		<rdf:value>9783319231396</rdf:value>
-	      </bf:Isbn>
-	    </bf:identifiedBy>
-	    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/21665525#Work776-43"/>
-	  </bf:Instance>
-	</bf:hasInstance>
-      </bf:Work>
-    </bf:otherPhysicalFormat>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Instance776-43">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Lévy Matters V : Functionals of Lévy Processes</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Isbn>
+		    <rdf:value>9783319231396</rdf:value>
+		  </bf:Isbn>
+		</bf:identifiedBy>
+		<bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/21665525#Work776-43"/>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
 	    <rdfs:label>Has Series</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
 	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Hub830-44">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
 	    <bf:title>
@@ -405,10 +408,10 @@
 	      </bf:Issn>
 	    </bf:identifiedBy>
 	  </bf:Hub>
-	</bf:relatedTo>
+	</bf:associatedResource>
 	<bf:seriesEnumeration>2149</bf:seriesEnumeration>
-      </bflc:Relationship>
-    </bflc:relationship>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/REPLACE/21665525#Instance"/>
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/21665525#Instance">
@@ -424,7 +427,7 @@
 	<bflc:simpleDate>2015</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">Cham: Springer International Publishing, Imprint: Springer; 2015</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Cham: Springer International Publishing, Imprint: Springer, 2015</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Local>
 	<rdf:value>978-3-319-23138-9</rdf:value>
@@ -488,7 +491,7 @@
       </bf:FileType>
     </bf:digitalCharacteristic>
     <bf:digitalCharacteristic>
-      <bf:EncodingFormat>
+      <bf:EncodingFormat rdf:about="http://id.loc.gov/vocabulary/mencformat/pdf">
 	<rdfs:label>PDF</rdfs:label>
 	<bf:source>
 	  <bf:Source>
@@ -499,7 +502,7 @@
     </bf:digitalCharacteristic>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Description based on publisher-supplied MARC data.</rdfs:label>
+	<rdfs:label>Description based on publisher-supplied MARC data</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/descsource"/>
       </bf:Note>
     </bf:note>

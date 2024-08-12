@@ -1,4 +1,5 @@
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <!--[{"level": "WARNING", "message": "All Identifiers only have value,  status , assigner, note, or qualifier and are not empty."}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/21340497">
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
@@ -19,11 +20,17 @@
 	<bflc:simpleDate>2018</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement>Klagenfurt am Wörthersee: Verlag des Geschichtsvereines für Kärnten; 2018</bflc:publicationStatement>
+    <bf:publicationStatement>Klagenfurt am Wörthersee: Verlag des Geschichtsvereines für Kärnten, 2018</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2019565076</rdf:value>
       </bf:Lccn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Local>
+	<rdf:value>1156616581</rdf:value>
+	<bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/de-101"/>
+      </bf:Local>
     </bf:identifiedBy>
     <bf:identifiedBy>
       <bf:Isbn>
@@ -38,24 +45,14 @@
       </bf:Isbn>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>on1056975250</rdf:value>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>1056975250</rdf:value>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:responsibilityStatement>Dieter Kirsch, John H. Robinson [Herausgeber]</bf:responsibilityStatement>
     <bf:title>
@@ -87,11 +84,6 @@
 	<rdfs:label>volume</rdfs:label>
       </bf:Carrier>
     </bf:carrier>
-    <bf:musicFormat>
-      <bf:MusicFormat rdf:about="http://id.loc.gov/vocabulary/mmusicformat/score">
-	<rdfs:label>score</rdfs:label>
-      </bf:MusicFormat>
-    </bf:musicFormat>
     <bf:note>
       <bf:Note>
 	<rdfs:label>Facsimile and modern edition of a lute tablature compiled in southwest Germany in the early 17th century, preserved in the Kunstkabinett der Stiftsbibliothek St. Paul im Lavanttal (shelf mark: A-SPL KK 35).</rdfs:label>
@@ -99,34 +91,71 @@
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Foreword, introduction, critical commentary, and editor biographies in German and English.</rdfs:label>
+	<rdfs:label>Foreword, introduction, critical commentary, and editor biographies in German and English</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:supplementaryContent>
       <bf:SupplementaryContent>
-	<rdfs:label>Bibliography of lute manuscripts, prints, and modern editions: pages xxxvi-xliv.</rdfs:label>
+	<rdfs:label>Bibliography of lute manuscripts, prints, and modern editions: pages xxxvi-xliv</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Contains facsimile prints and modern tablature notation.</rdfs:label>
+	<rdfs:label>Contains facsimile prints and modern tablature notation</rdfs:label>
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/21340497"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-24T02:59:35.066839-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-18</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>OHX</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-18T16:31:17</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-02T21:05:42.96863-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -147,32 +176,14 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-18T16:31:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-18</bf:creationDate>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
-	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a vk39 2019-12-18 z-client $i vk39 2019-12-18 $e vk39 2019-12-18 c.1 to BCCD</lclocal:d955>
-	<bf:identifiedBy>
-	  <bf:Local>
-	    <rdf:value>1156616581</rdf:value>
-	    <bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/de-101"/>
-	  </bf:Local>
-	</bf:identifiedBy>
-	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>OHX</bf:code>
-	  </bf:Agent>
-	</bf:assigner>
+	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<lclocal:d955>=955     $a vk39 2019-12-18 z-client $i vk39 2019-12-18 $e vk39 2019-12-18 c.1 to BCCD</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
 	    <rdfs:label>Resource description and access</rdfs:label>
@@ -211,31 +222,26 @@
 	<rdfs:label>historical information</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
-    <bf:musicFormat>
-      <bf:MusicFormat rdf:about="http://id.loc.gov/vocabulary/mmusicformat/score">
-	<rdfs:label>score</rdfs:label>
-      </bf:MusicFormat>
-    </bf:musicFormat>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ger" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ger">
 	    <rdfs:label xml:lang="en">German</rdfs:label>
-	  </madsrdf:Language>
-	</rdf:value>
-      </bf:Language>
-    </bf:language>
-    <bf:language>
-      <bf:Language>
-	<bf:part>accompanying material</bf:part>
-	<rdf:value>
-	  <madsrdf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  </bf:Language>
+	</bf:language>
+      </bf:Work>
+    </bf:accompaniedBy>
+    <bf:accompaniedBy>
+      <bf:Work>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/resourceComponents/amt"/>
+	<bf:language>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
-	  </madsrdf:Language>
-	</rdf:value>
-      </bf:Language>
-    </bf:language>
+	  </bf:Language>
+	</bf:language>
+      </bf:Work>
+    </bf:accompaniedBy>
     <bf:classification>
       <bf:ClassificationLcc>
 	<bf:classificationPortion>M140</bf:classificationPortion>
@@ -302,7 +308,7 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2008107384">
 	<rdfs:label xml:lang="en">Music--Manuscripts--Facsimiles</rdfs:label>
-	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
 	    <madsrdf:authoritativeLabel xml:lang="en">Music</madsrdf:authoritativeLabel>
@@ -337,30 +343,26 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/1003966">
 	<bflc:marcKey>150  $aLute music</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Lute music</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Lute music</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.worldcat.org/fast/1030269">
 	<bflc:marcKey>150  $aMusic</bflc:marcKey>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Music</madsrdf:authoritativeLabel>
+	<madsrdf:authoritativeLabel>Music</madsrdf:authoritativeLabel>
       </bf:Topic>
     </bf:subject>
     <bf:genreForm>
-      <bf:GenreForm>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Scores</madsrdf:authoritativeLabel>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
-	<rdfs:label>Scores</rdfs:label>
-      </bf:GenreForm>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1692898">
+	<bflc:marcKey>155  $aScores</bflc:marcKey>
+	<madsrdf:authoritativeLabel>Scores</madsrdf:authoritativeLabel>
+      </bf:Topic>
     </bf:genreForm>
     <bf:genreForm>
-      <bf:GenreForm>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Art music</madsrdf:authoritativeLabel>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
-	<rdfs:label>Art music</rdfs:label>
-      </bf:GenreForm>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1920007">
+	<bflc:marcKey>155  $aArt music</bflc:marcKey>
+	<madsrdf:authoritativeLabel>Art music</madsrdf:authoritativeLabel>
+      </bf:Topic>
     </bf:genreForm>
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026639">
@@ -381,20 +383,15 @@
       </bf:GenreForm>
     </bf:genreForm>
     <bf:genreForm>
-      <bf:GenreForm>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Facsimiles</madsrdf:authoritativeLabel>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
-	<rdfs:label>Facsimiles</rdfs:label>
-      </bf:GenreForm>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1411642">
+	<bflc:marcKey>155  $aFacsimiles</bflc:marcKey>
+	<madsrdf:authoritativeLabel>Facsimiles</madsrdf:authoritativeLabel>
+      </bf:Topic>
     </bf:genreForm>
     <bf:genreForm>
-      <bf:GenreForm>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
-	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Manuscripts</madsrdf:authoritativeLabel>
-	<bf:source rdf:resource="http://id.loc.gov/vocabulary/genreFormSchemes/fast"/>
-	<rdfs:label>Manuscripts</rdfs:label>
-      </bf:GenreForm>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1424060">
+	<bflc:marcKey>155  $aManuscripts</bflc:marcKey>
+      </bf:Topic>
     </bf:genreForm>
     <bf:contribution>
       <bf:Contribution>
@@ -433,7 +430,7 @@
 	<bf:agent>
 	  <bf:Agent>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
-	    <rdfs:label>Benediktinerstift St. Paul (Sankt Paul im Lavanttal, Austria). Bibliothek. A-SPL KK 35.</rdfs:label>
+	    <rdfs:label>Benediktinerstift St. Paul (Sankt Paul im Lavanttal, Austria). Bibliothek. Manuscript. A-SPL KK 35.</rdfs:label>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -444,29 +441,57 @@
       </bf:Contribution>
     </bf:contribution>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation rdf:about="http://id.loc.gov/entities/relationships/facsimileof">
-	    <rdfs:label>Facsimile of</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-      </bflc:Relationship>
-    </bflc:relationship>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/21340497"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v2.5.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-02-24T02:59:35.066839-05:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-18</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>OHX</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-18T16:31:17</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-02T21:05:42.96863-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -487,32 +512,14 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-18T16:31:17</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-18</bf:creationDate>
-	<lclocal:d906 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
-	<lclocal:d925 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
-	<lclocal:d955 xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">=955     $a vk39 2019-12-18 z-client $i vk39 2019-12-18 $e vk39 2019-12-18 c.1 to BCCD</lclocal:d955>
-	<bf:identifiedBy>
-	  <bf:Local>
-	    <rdf:value>1156616581</rdf:value>
-	    <bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/de-101"/>
-	  </bf:Local>
-	</bf:identifiedBy>
-	<bf:assigner>
-	  <bf:Agent>
-	    <bf:code>OHX</bf:code>
-	  </bf:Agent>
-	</bf:assigner>
+	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<lclocal:d955>=955     $a vk39 2019-12-18 z-client $i vk39 2019-12-18 $e vk39 2019-12-18 c.1 to BCCD</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	  </bf:Organization>
-	</bf:descriptionModifier>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
 	    <rdfs:label>Resource description and access</rdfs:label>

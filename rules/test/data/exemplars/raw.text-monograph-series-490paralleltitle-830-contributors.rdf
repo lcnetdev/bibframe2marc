@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T09:00:05.066427-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:17:54.05996-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -67,6 +67,7 @@
 	</bf:identifiedBy>
 	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 2 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
 	<lclocal:d955>=955     $a rb09 4-04-91; rc16; ep67 11-21-91; ea17/14 to scd 12-23-91; fg08 12-30-91; fl42 01-31-92</lclocal:d955>
+	<bflc:marcKey>040  $aDLC$cDLC$dDLC</bflc:marcKey>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
@@ -76,9 +77,7 @@
       </bf:Content>
     </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
     <bf:illustrativeContent>
       <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
 	<rdfs:label>illustrations</rdfs:label>
@@ -117,14 +116,14 @@
 	<bf:mainTitle>2nd workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bf:mainTitle>
       </bf:Title>
     </bf:title>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
 	    <rdfs:label>Has Series</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
 	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Hub490-18">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
@@ -143,10 +142,10 @@
 	      </bf:ParallelTitle>
 	    </bf:title>
 	  </bf:Series>
-	</bf:relatedTo>
+	</bf:associatedResource>
 	<bf:seriesEnumeration>v. 27</bf:seriesEnumeration>
-      </bflc:Relationship>
-    </bflc:relationship>
+      </bf:Relation>
+    </bf:relation>
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Topic650-18">
 	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
@@ -226,8 +225,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Agent700-22">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aColacino, M.</bflc:marcKey>
 	    <rdfs:label>Colacino, M.</rdfs:label>
+	    <bflc:marcKey>7001 $aColacino, M.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -240,8 +239,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Agent700-23">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aGiovanelli, G.$q(Giorgio)</bflc:marcKey>
 	    <rdfs:label>Giovanelli, G. (Giorgio)</rdfs:label>
+	    <bflc:marcKey>7001 $aGiovanelli, G.$q(Giorgio)</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -254,8 +253,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Agent700-24">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aStefanutti, L.$q(Leopoldo)</bflc:marcKey>
 	    <rdfs:label>Stefanutti, L. (Leopoldo)</rdfs:label>
+	    <bflc:marcKey>7001 $aStefanutti, L.$q(Leopoldo)</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -263,36 +262,46 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:relatedTo>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Work740-25">
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
-	<bf:title>
-	  <bf:Title>
-	    <bflc:nonSortNum>0</bflc:nonSortNum>
-	    <bf:mainTitle>2⁰ workshop, ricerche italiane sullʹatmosfera antartica, Porano, 19-20 Ottobre, 1989</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-      </bf:Work>
-    </bf:relatedTo>
-    <bf:relatedTo>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Work740-26">
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
-	<bf:title>
-	  <bf:Title>
-	    <bflc:nonSortNum>0</bflc:nonSortNum>
-	    <bf:mainTitle>Second workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-      </bf:Work>
-    </bf:relatedTo>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Work740-25">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
+	    <bf:title>
+	      <bf:Title>
+		<bflc:nonSortNum>0</bflc:nonSortNum>
+		<bf:mainTitle>2⁰ workshop, ricerche italiane sullʹatmosfera antartica, Porano, 19-20 Ottobre, 1989</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Work740-26">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
+	    <bf:title>
+	      <bf:Title>
+		<bflc:nonSortNum>0</bflc:nonSortNum>
+		<bf:mainTitle>Second workshop, Italian research on Antarctic atmosphere, Porano, 19-20 October, 1989</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
 	    <rdfs:label>Has Series</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
 	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Hub830-27">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
 	    <bf:title>
@@ -302,10 +311,10 @@
 	    </bf:title>
 	    <bflc:marcKey>830 0$aConference proceedings (Società italiana di fisica) ;$vv. 27.</bflc:marcKey>
 	  </bf:Hub>
-	</bf:relatedTo>
+	</bf:associatedResource>
 	<bf:seriesEnumeration>v. 27.</bf:seriesEnumeration>
-      </bflc:Relationship>
-    </bflc:relationship>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/REPLACE/4384447#Instance"/>
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/4384447#Instance">
@@ -320,7 +329,7 @@
 	<bflc:simpleDate>1990</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">Bologna, Italy: Italian Physical Society; 1990</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Bologna, Italy: Italian Physical Society, 1990</bf:publicationStatement>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
@@ -353,7 +362,7 @@
 	<rdfs:label>ill.</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:dimensions>25 cm.</bf:dimensions>
+    <bf:dimensions>25 cm</bf:dimensions>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/4384447#Work"/>
   </bf:Instance>
 </rdf:RDF>

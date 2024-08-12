@@ -23,6 +23,11 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-10-28T08:41:08</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <bf:code>DLC</bf:code>
+	  </bf:Agent>
+	</bf:agent>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -33,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T09:00:22.09734-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:18:17.286822-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -60,6 +65,7 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
+	<bflc:marcKey>040  $aDLC$cDLC</bflc:marcKey>
 	<lclocal:d906>=906     $a 0 $b ibc $c origres $d 3 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
 	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
 	<lclocal:d955>=955     $a ff70 2011-10-13 $a ff00 2011-10-28 to GS/SBCG</lclocal:d955>
@@ -72,22 +78,20 @@
       </bf:Content>
     </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
     <bf:title>
       <bf:Title>
 	<bf:mainTitle>Corruption</bf:mainTitle>
       </bf:Title>
     </bf:title>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
 	    <rdfs:label>Has Series</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
 	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Hub490-14">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
@@ -101,10 +105,10 @@
 	      </bf:Title>
 	    </bf:title>
 	  </bf:Series>
-	</bf:relatedTo>
+	</bf:associatedResource>
 	<bf:seriesEnumeration>5</bf:seriesEnumeration>
-      </bflc:Relationship>
-    </bflc:relationship>
+      </bf:Relation>
+    </bf:relation>
     <bf:note>
       <bf:Note>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/lang"/>
@@ -154,15 +158,10 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Agent700-20">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aJakubowicz, Linda$eHrsg.$4edt</bflc:marcKey>
 	    <rdfs:label>Jakubowicz, Linda</rdfs:label>
+	    <bflc:marcKey>7001 $aJakubowicz, Linda$eHrsg.$4edt</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:role>
-	  <bf:Role>
-	    <rdfs:label>Hrsg</rdfs:label>
-	  </bf:Role>
-	</bf:role>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/edt"/>
 	</bf:role>
@@ -173,8 +172,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Agent700-21">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	    <bflc:marcKey>7001 $aFiedler, Franz.$4aut</bflc:marcKey>
 	    <rdfs:label>Fiedler, Franz</rdfs:label>
+	    <bflc:marcKey>7001 $aFiedler, Franz.$4aut</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -182,14 +181,14 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
 	    <rdfs:label>Has Series</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
 	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Hub810-22">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
 	    <bf:contribution>
@@ -197,8 +196,8 @@
 		<bf:agent>
 		  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Agent810-22">
 		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
-		    <bflc:marcKey>8102 $aSicherheitsakademie &lt;Wien&gt;$tSIAK scientific series$v5.</bflc:marcKey>
 		    <rdfs:label>Sicherheitsakademie &lt;Wien&gt;</rdfs:label>
+		    <bflc:marcKey>8102 $aSicherheitsakademie &lt;Wien&gt;$tSIAK scientific series$v5.</bflc:marcKey>
 		  </bf:Agent>
 		</bf:agent>
 		<bf:role>
@@ -213,18 +212,18 @@
 	    </bf:title>
 	    <bflc:marcKey>8102 $aSicherheitsakademie &lt;Wien&gt;$tSIAK scientific series$v5.</bflc:marcKey>
 	  </bf:Hub>
-	</bf:relatedTo>
+	</bf:associatedResource>
 	<bf:seriesEnumeration>5.</bf:seriesEnumeration>
-      </bflc:Relationship>
-    </bflc:relationship>
-    <bflc:relationship>
-      <bflc:Relationship>
-	<bflc:relation>
-	  <bflc:Relation rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
 	    <rdfs:label>Has Series</rdfs:label>
-	  </bflc:Relation>
-	</bflc:relation>
-	<bf:relatedTo>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
 	  <bf:Hub rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Hub830-23">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
 	    <bf:title>
@@ -234,10 +233,10 @@
 	    </bf:title>
 	    <bflc:marcKey>830 0$aSIAK scientific series ;$v5.</bflc:marcKey>
 	  </bf:Hub>
-	</bf:relatedTo>
+	</bf:associatedResource>
 	<bf:seriesEnumeration>5.</bf:seriesEnumeration>
-      </bflc:Relationship>
-    </bflc:relationship>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/REPLACE/16998093#Instance"/>
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/16998093#Instance">
@@ -252,7 +251,7 @@
 	<bflc:simpleDate>2010</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">Vienna: Federal Ministry of the Interior; 2010</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Vienna: Federal Ministry of the Interior, 2010</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2011409962</rdf:value>
@@ -279,7 +278,7 @@
 	<rdfs:label>164 p.</rdfs:label>
       </bf:Extent>
     </bf:extent>
-    <bf:dimensions>21 cm.</bf:dimensions>
+    <bf:dimensions>21 cm</bf:dimensions>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
@@ -287,7 +286,7 @@
     </bf:media>
     <bf:supplementaryContent>
       <bf:SupplementaryContent>
-	<rdfs:label>Literaturangaben.</rdfs:label>
+	<rdfs:label>Literaturangaben</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/16998093#Work"/>

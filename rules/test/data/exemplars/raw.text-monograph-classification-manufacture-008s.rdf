@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.6.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-10T08:59:57.931713-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-12T07:17:45.3907-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -67,6 +67,7 @@
 	</bf:identifiedBy>
 	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
 	<lclocal:d955>=955     $a bw54 (ds) to ba00 08-04-88; fd18 02-06-89</lclocal:d955>
+	<bflc:marcKey>040  $aDLC$cDLC$dDLC</bflc:marcKey>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
@@ -76,9 +77,7 @@
       </bf:Content>
     </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng"/>
-    </bf:language>
+    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
     <bf:illustrativeContent>
       <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
 	<rdfs:label>illustrations</rdfs:label>
@@ -156,8 +155,8 @@
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/1972268#Agent710-19">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
-	    <bflc:marcKey>7102 $aMilnor Centennial Corporation.</bflc:marcKey>
 	    <rdfs:label>Milnor Centennial Corporation</rdfs:label>
+	    <bflc:marcKey>7102 $aMilnor Centennial Corporation.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -165,17 +164,22 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:relatedTo>
-      <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/1972268#Work740-20">
-	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
-	<bf:title>
-	  <bf:Title>
-	    <bflc:nonSortNum>0</bflc:nonSortNum>
-	    <bf:mainTitle>One hundred years of Milnor memories, 1883-1983</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-      </bf:Work>
-    </bf:relatedTo>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/vocabulary/relationship/relatedwork"/>
+	<bf:associatedResource>
+	  <bf:Work rdf:about="http://id.loc.gov/resources/REPLACE/1972268#Work740-20">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
+	    <bf:title>
+	      <bf:Title>
+		<bflc:nonSortNum>0</bflc:nonSortNum>
+		<bf:mainTitle>One hundred years of Milnor memories, 1883-1983</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:hasInstance rdf:resource="http://id.loc.gov/resources/REPLACE/1972268#Instance"/>
   </bf:Work>
   <bf:Instance rdf:about="http://id.loc.gov/resources/REPLACE/1972268#Instance">
@@ -190,7 +194,7 @@
 	<bflc:simpleDate>[1983?]</bflc:simpleDate>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:publicationStatement xmlns:exsl="http://exslt.org/common">[Milnor, N.D.]: [Milnor Centennial Corp]; [1983?]</bflc:publicationStatement>
+    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">[Milnor, N.D.]: [Milnor Centennial Corp], [1983?]</bf:publicationStatement>
     <bf:provisionActivity xmlns:exsl="http://exslt.org/common">
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Manufacture"/>
@@ -198,7 +202,7 @@
 	<bflc:simpleAgent>J &amp; M Print</bflc:simpleAgent>
       </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bflc:manufactureStatement xmlns:exsl="http://exslt.org/common">Gwiner, N.D.: J &amp; M Print</bflc:manufactureStatement>
+    <bf:manufactureStatement xmlns:exsl="http://exslt.org/common">Gwiner, N.D.: J &amp; M Print</bf:manufactureStatement>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
@@ -225,10 +229,10 @@
 	<rdfs:label>ill.</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:dimensions>29 cm.</bf:dimensions>
+    <bf:dimensions>29 cm</bf:dimensions>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Cover title.</rdfs:label>
+	<rdfs:label>Cover title</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/1972268#Work"/>
