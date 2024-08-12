@@ -452,6 +452,7 @@
         <switch>
           <case test="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
             <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+            <!--
             <var name="vEndsWith">
                 <transform>
                     <xsl:call-template name="tEndsWith">
@@ -465,9 +466,11 @@
                 <xsl:text>.</xsl:text>
               </xsl:if>
             </transform>
+            -->
           </case>
           <case test="count(ancestor::bf:Instance/bf:responsibilityStatement)=1 and ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]">
             <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang]" />
+            <!--
             <var name="vEndsWith">
                 <transform>
                     <xsl:call-template name="tEndsWith">
@@ -481,6 +484,7 @@
                 <xsl:text>.</xsl:text>
               </xsl:if>
             </transform>
+            -->
           </case>
         </switch>
       </sf>
@@ -649,6 +653,7 @@
             <switch>
               <case test="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]">
                 <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]"/>
+                <!--
                 <var name="vEndsWith">
                     <transform>
                         <xsl:call-template name="tEndsWith">
@@ -662,6 +667,7 @@
                     <xsl:text>.</xsl:text>
                   </xsl:if>
                 </transform>
+                -->
               </case>
             </switch>
           </sf>
@@ -1040,6 +1046,7 @@
                   <marc:subfield code='c'>
                     <xsl:value-of select="." />
                     <xsl:if test="following-sibling::bflc:simpleDate[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                    <!--
                     <xsl:if test="position() = last()">
                         <xsl:variable name="vEndsWith">
                             <xsl:call-template name="tEndsWith">
@@ -1051,6 +1058,7 @@
                             <xsl:text>.</xsl:text>
                         </xsl:if>
                     </xsl:if>
+                    -->
                   </marc:subfield>
                 </xsl:for-each>
               </transform>
@@ -1153,6 +1161,7 @@
                       <marc:subfield code='c'>
                         <xsl:value-of select="." />
                         <xsl:if test="following-sibling::bflc:simpleDate[@xml:lang]"><xsl:text>,</xsl:text></xsl:if>
+                        <!--
                         <xsl:if test="position() = last()">
                             <xsl:variable name="vEndsWith">
                                 <xsl:call-template name="tEndsWith">
@@ -1164,6 +1173,7 @@
                                 <xsl:text>.</xsl:text>
                             </xsl:if>
                         </xsl:if>
+                        -->
                       </marc:subfield>
                     </xsl:for-each>
                   </transform>
