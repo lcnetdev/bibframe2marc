@@ -10,7 +10,8 @@
 
   <!-- Series added entries -->
   <select xpath="
-        bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
+        bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:Series[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
+        bf:Work/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bflc:Uncontrolled[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
         //bf:Item/bf:relation/bf:Relation[bf:relationship[contains(@rdf:resource, 'hasSeries') or contains(bf:Relationship/@rdf:about, 'hasSeries')]]/bf:associatedResource/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
         
         bf:Work/bf:hasSeries/bf:Series[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
