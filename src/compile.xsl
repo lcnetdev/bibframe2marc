@@ -297,6 +297,16 @@
           <xsl:value-of select="." /><xsl:if test="position() != last()"><xsl:value-of select="$pJoinChar" /></xsl:if>
         </xsl:for-each>
       </xsl:template>
+      
+      
+      <xsl:template name="tEndsWith">
+          <xsl:param name="pStr" />
+          <xsl:param name="pEndChar" />
+          <xsl:choose>
+              <xsl:when test="substring($pStr, string-length($pStr)) = $pEndChar">1</xsl:when>
+              <xsl:otherwise>0</xsl:otherwise>
+          </xsl:choose>
+      </xsl:template>
 
       <!-- EDTF functions -->
 

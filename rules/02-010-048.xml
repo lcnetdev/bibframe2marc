@@ -1114,7 +1114,7 @@
                 </codes>
               </xsl:variable>
               <xsl:variable name="modifierCodes" select="exsl:node-set($modifierCodePreNS)" />
-              <xsl:for-each select="$modifierCodes//*:modifierCode[not(.=preceding::*[1])]">
+              <xsl:for-each select="$modifierCodes//modifierCode[not(.=preceding::*[1])]">
                 <marc:subfield code="d"><xsl:value-of select="." /></marc:subfield>
               </xsl:for-each>
             </transform>
