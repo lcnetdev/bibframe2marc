@@ -190,7 +190,7 @@
 
   <x:scenario label="MARC 043">
     <x:context href="../data/010-048/010-048.xml"/>
-    <x:expect label="generate 043 from geographicCoverage" test="count(//marc:datafield[@tag='043']) = 3"/>
+    <x:expect label="generate 043 from geographicCoverage" test="count(//marc:datafield[@tag='043']) = 4"/>
     <x:expect label="GeographicCoverage with URI http://id.loc.gov/vocabulary/geographicAreas/ generates $a"
               test="//marc:datafield[@tag='043'][1]/marc:subfield[@code='a'][1] = 'n-us---'"/>
     <x:expect label="...with accompanying $0"
@@ -199,6 +199,11 @@
     <x:expect label="...other sources generate $b" test="//marc:datafield[@tag='043'][2]/marc:subfield[@code='b'] = 's-bl-ba'"/>
     <x:expect label="...and $2" test="//marc:datafield[@tag='043'][2]/marc:subfield[@code='2'] = 'BlRjBN'"/>
     <x:expect label="GeographicCoverage with identifiedBy property generates $0" test="//marc:datafield[@tag='043'][2]/marc:subfield[@code='0'] = '(DE-101c)310008891'"/>
+    
+    <x:expect label="GeographicCoverage with madsrdf:code generates $a"
+      test="//marc:datafield[@tag='043'][4]/marc:subfield[@code='a'][1] = 'n-us-ny'"/>
+    <x:expect label="...with accompanying $0"
+      test="//marc:datafield[@tag='043'][4]/marc:subfield[@code='0'] = 'http://id.loc.gov/authorities/names/no2015024697'"/>
   </x:scenario>
 
   <x:scenario label="MARC 045">
