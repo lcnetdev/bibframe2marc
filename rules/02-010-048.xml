@@ -654,6 +654,13 @@
                   </xsl:call-template>
                 </transform>
               </case>
+              <case test="contains($vAssignerUri,'ld.zdb-services.de')">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="$vAssignerUri"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
               <case test="default"><transform><xsl:value-of select="$vAssignerUri"/></transform></case>
             </switch>
           </case>
