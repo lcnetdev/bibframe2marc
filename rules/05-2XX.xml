@@ -782,6 +782,19 @@
           <ind2 default=" "/>
           <sf code="6"><transform><xsl:value-of select="concat('250-00/',$v880Script)"/></transform></sf>
           <sf code="a" chopPunct="false"><select xpath="."/></sf>
+          <var name="vEndsWith">
+            <transform>
+              <xsl:call-template name="tEndsWith">
+                <xsl:with-param name="pStr" select="."/>
+                <xsl:with-param name="pEndChar" select="'.'"/>
+              </xsl:call-template>
+            </transform>
+          </var>
+          <transform>
+            <xsl:if test="$vEndsWith = '0'">
+              <xsl:text>.</xsl:text>
+            </xsl:if>
+          </transform>
         </df>
       </case>
       <case test="default">
@@ -789,6 +802,19 @@
           <ind1 default=" "/>
           <ind2 default=" "/>
           <sf code="a" chopPunct="false"><select xpath="."/></sf>
+          <var name="vEndsWith">
+            <transform>
+              <xsl:call-template name="tEndsWith">
+                <xsl:with-param name="pStr" select="."/>
+                <xsl:with-param name="pEndChar" select="'.'"/>
+              </xsl:call-template>
+            </transform>
+          </var>
+          <transform>
+            <xsl:if test="$vEndsWith = '0'">
+              <xsl:text>.</xsl:text>
+            </xsl:if>
+          </transform>
         </df>
       </case>
     </switch>
