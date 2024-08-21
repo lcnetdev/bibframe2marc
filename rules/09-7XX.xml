@@ -561,9 +561,74 @@
           <transform><xsl:value-of select="$vRelationLabel"/></transform>
         </sf>
       </select>
-      <sf code="i">
-        <select xpath="ancestor::bf:Relation/bf:relationship/bf:Relationship/rdfs:label|../bf:relationship/bf:Relationship/madsrdf:authoritativeLabel |
-                       ancestor::bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label|../bflc:relation/bflc:Relation/madsrdf:authoritativeLabel" />
+      
+      <var name="vRelStrs">
+        <transform>
+          <xsl:value-of select="'
+            http://id.loc.gov/vocabulary/relationship/subseries 
+            http://id.loc.gov/vocabulary/relationship/series 
+            http://id.loc.gov/vocabulary/relationship/translationof 
+            http://id.loc.gov/vocabulary/relationship/translatedas 
+            http://id.loc.gov/vocabulary/relationship/supplementto 
+            http://id.loc.gov/vocabulary/relationship/supplement 
+            http://id.loc.gov/vocabulary/relationship/partof 
+            http://id.loc.gov/vocabulary/relationship/part 
+            http://id.loc.gov/vocabulary/relationship/otheredition 
+            http://id.loc.gov/vocabulary/relationship/otherphysicalformat 
+            http://id.loc.gov/vocabulary/relationship/issuedwith 
+            http://id.loc.gov/vocabulary/relationship/continuedinpart 
+            http://id.loc.gov/vocabulary/relationship/continuationof 
+            http://id.loc.gov/vocabulary/relationship/continues 
+            http://id.loc.gov/vocabulary/relationship/precededby 
+            http://id.loc.gov/vocabulary/relationship/mergerof 
+            http://id.loc.gov/vocabulary/relationship/absorbedby 
+            http://id.loc.gov/vocabulary/relationship/absorptionof 
+            http://id.loc.gov/vocabulary/relationship/separatedby 
+            http://id.loc.gov/vocabulary/relationship/continuedby 
+            http://id.loc.gov/vocabulary/relationship/continuedinpartby 
+            http://id.loc.gov/vocabulary/relationship/succeededby 
+            http://id.loc.gov/vocabulary/relationship/splitinto 
+            http://id.loc.gov/vocabulary/relationship/mergedtoform 
+            http://id.loc.gov/vocabulary/relationship/datasource 
+            http://id.loc.gov/vocabulary/relationship/relatedwork
+            '" />
+        </transform> 
+      </var>
+      <sf code="i" chopPunct="true">
+        <select xpath="ancestor::bf:Relation/bf:relationship[
+                ( 
+                  exists(@rdf:resource) and 
+                  not(contains($vRelStrs, @rdf:resource)) and 
+                  not(contains(@rdf:resource, 'ontologies/bibframe'))
+                ) or
+                ( 
+                  exists(bf:Relationship/@rdf:about) and 
+                  not(contains($vRelStrs, bf:Relationship/@rdf:about)) and
+                  not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))
+                )
+                ]/bf:Relationship[rdfs:label or madsrdf:authoritativeLabel] 
+                
+                | 
+                
+                ancestor::bflc:Relationship/bflc:relation[
+                ( 
+                  exists(@rdf:resource) and 
+                  not(contains($vRelStrs, @rdf:resource)) and 
+                  not(contains(@rdf:resource, 'ontologies/bibframe'))
+                ) or
+                ( 
+                  exists(bf:Relationship/@rdf:about) and 
+                  not(contains($vRelStrs, bf:Relationship/@rdf:about)) and
+                  not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))
+                )
+                ]/bflc:Relation[rdfs:label or madsrdf:authoritativeLabel] 
+                
+                ">
+          <switch>
+            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+            <case test="default"><select xpath="rdfs:label"/></case>
+          </switch>
+        </select>
       </sf>
       <switch>
         <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]">
@@ -597,6 +662,7 @@
         </case>
       </switch>
       
+      <!--
       <switch>
         <case test="../../bf:relationship/bf:Relationship/@rdf:about or ../bf:relationship/@rdf:resource">
           <sf code="4">
@@ -609,6 +675,40 @@
           </sf>
         </case>
       </switch>
+      -->
+      
+      <sf code="4" chopPunct="true">
+        <select xpath="ancestor::bf:Relation/bf:relationship[
+          ( 
+          exists(@rdf:resource) and 
+          not(contains($vRelStrs, @rdf:resource)) and 
+          not(contains(@rdf:resource, 'ontologies/bibframe'))
+          ) or
+          ( 
+          exists(bf:Relationship/@rdf:about) and 
+          not(contains($vRelStrs, bf:Relationship/@rdf:about)) and
+          not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))
+          )
+          ]//@rdf:* 
+          
+          | 
+          
+          ancestor::bflc:Relationship/bflc:relation[
+          ( 
+          exists(@rdf:resource) and 
+          not(contains($vRelStrs, @rdf:resource)) and 
+          not(contains(@rdf:resource, 'ontologies/bibframe'))
+          ) or
+          ( 
+          exists(bf:Relationship/@rdf:about) and 
+          not(contains($vRelStrs, bf:Relationship/@rdf:about)) and
+          not(contains(bf:Relationship/@rdf:about, 'ontologies/bibframe'))
+          )
+          ]//@rdf:*
+          
+          ">
+        </select>
+      </sf>
       
       <sf code="1">
         <switch>
