@@ -33,7 +33,7 @@ declare -A exemplars=(
 ["2971034"]="text-monograph-series-matching490and811"
 # 20231121 - cataloger updated and ruined the following for testing purposes.  
 # Will keep the 'good' one for now. 
-# ["19279034"]="text-monograph-series-unmatched490sand830"   
+["19279034"]="text-monograph-series-unmatched490sand830"   
 ["22076502"]="text-monograph-series-sole490withIssn"
 ["4384447"]="text-monograph-series-490paralleltitle-830-contributors"
 
