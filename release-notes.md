@@ -1,5 +1,20 @@
 # bibframe2marc release notes
 
+## v2.7.0
+
+Conversion updates based on specifications v2.7. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the [spec](spec/) directory. Changes of note:
+
+* New instructions to construct added entry fields from new relation construct
+* New instruction to construct MARC 066 
+* Updated creation of MARC 041 from new language resources and language notes
+* Updated creation of MARC 490 from new status codes
+* Updated creation of OCLC numbers in MARC 035
+* Updated support for NAL Classification
+* Added 758 with Work and Instance URIs.
+* Numerous bug fixes and other refinements.
+
+See the [NEWS](NEWS) file for full details of changes.
+
 ## v2.6.0
 
 Conversion updates based on specifications v2.6. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the spec directory. Changes of note:
