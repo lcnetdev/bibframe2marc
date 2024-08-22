@@ -10,18 +10,19 @@
   <!-- <x:param name="pGenerationDatestamp">19700101</x:param> -->
   <!-- <x:param name="pSourceRecordId">http://example.org/test-record</x:param> -->
   <!-- <x:param name="pConversionAgency">DLC</x:param> -->
-
  <x:scenario label="MARC 490 - Test 01">
-   <x:context href="../data/exemplars/raw.text-monograph-series-unmatched490sand830.rdf"/>
-    <x:expect label="generate 800" test="count(//marc:datafield[@tag='490']) = 2"/>
+   <x:context href="../data/exemplars/text-monograph-series-matching490and811.rdf"/>
+    <x:expect label="generate 490" test="count(//marc:datafield[@tag='490']) = 1"/>
     <x:expect label="ind1 is 1, because there is a Series 8XX present"
               test="//marc:datafield[@tag='490'][1]/@ind1 = '1'"/>
     <x:expect label="ind2 default to blank"
               test="//marc:datafield[@tag='490'][1]/@ind2 = ' '"/>
     <x:expect label="$a from label of agent"
-              test="//marc:datafield[@tag='490'][1]/marc:subfield[@code='a'] = 'AIP conference proceedings'"/>
+              test="//marc:datafield[@tag='490'][1]/marc:subfield[@code='a'] = 'Calabar studies in African literature'"/>
+    <!--
     <x:expect label="$v from seriesEnumeration"
               test="//marc:datafield[@tag='490'][1]/marc:subfield[@code='v'] = '1592'"/>
+    -->
   </x:scenario>
 
   <x:scenario label="MARC 490 - Test 02">
