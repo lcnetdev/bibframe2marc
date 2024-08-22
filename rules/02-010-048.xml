@@ -1126,6 +1126,51 @@
               </xsl:for-each>
             </transform>
           </case>
+          <case test="count($vAdminMetadata/bf:descriptionModifier) &gt; 0">
+            <var name="vLastAgentUri">
+              <switch>
+                <case test="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/@rdf:resource">
+                  <transform>
+                    <xsl:value-of select="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/@rdf:resource"/>
+                  </transform>
+                </case>
+                <case test="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/*/@rdf:about">
+                  <transform>
+                    <xsl:value-of select="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/*/@rdf:about"/>
+                  </transform>
+                </case>
+              </switch>
+            </var>
+            <var name="vModifierCode">
+              <switch>
+                <case test="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/*/*[local-name()='code']">
+                  <transform>
+                    <xsl:value-of select="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/*/*[local-name()='code']"/>
+                  </transform>
+                </case>
+                <case test="$vLastAgentUri != '' and contains($vLastAgentUri,'id.loc.gov')">
+                  <transform>
+                    <xsl:call-template name="tUriCode">
+                      <xsl:with-param name="pUri" select="$vLastAgentUri"/>
+                    </xsl:call-template>
+                  </transform>
+                </case>
+                <case test="default">
+                  <transform>
+                    <xsl:value-of select="$vAdminMetadata/bf:descriptionModifier[count($vAdminMetadata/bf:descriptionModifier)]/*/*[local-name()='code']"/>
+                  </transform>
+                </case>
+              </switch>
+            </var>
+            <switch>
+              <case test="$vModifierCode = 'dlc'">
+                <sf code="d"><transform><xsl:value-of select="translate($vModifierCode,$lower,$upper)"/></transform></sf>
+              </case>
+              <case test="$vModifierCode != ''">
+                <sf code="d"><transform><xsl:value-of select="$vModifierCode"/></transform></sf>
+              </case>
+            </switch>
+          </case>
         </switch>
       </df>
     </case>
@@ -1136,7 +1181,7 @@
       <var name="vAllLangElements" xpath="
         bf:Work/bf:language/@rdf:resource[contains(., 'id.loc.gov/vocabulary/languages')] |
         bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]//@rdf:about[contains(., 'id.loc.gov/vocabulary/languages')] | 
-        bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part) and not(//@rdf:about)] | 
+        bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part) and not(@rdf:about)] | 
         bf:Work/bf:language/bf:Language[not(bf:source) and bf:part] |
         bf:Work/bf:accompaniedBy/bf:*[contains(rdf:type/@rdf:resource, 'id.loc.gov/vocabulary/resourceComponents')]/bf:language//@rdf:*[contains(., 'id.loc.gov/vocabulary/languages')][1] |
         bf:Work/bf:note/bf:*[contains(rdf:type/@rdf:resource, 'id.loc.gov/vocabulary/resourceComponents')]/bf:language//@rdf:*[contains(., 'id.loc.gov/vocabulary/languages')][1]
@@ -1155,7 +1200,7 @@
         <transform>
           <xsl:variable name="vLangElements" select="bf:Work/bf:language/@rdf:resource[contains(., 'id.loc.gov/vocabulary/languages')] |
                                                      bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]//@rdf:about[contains(., 'id.loc.gov/vocabulary/languages')] | 
-                                                     bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part) and not(//@rdf:about)] | 
+                                                     bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part) and not(@rdf:about)] | 
                                                      bf:Work/bf:language/bf:Language[not(bf:source) and bf:part]"/>
           <xsl:variable name="vFirstLangCode">
             <xsl:choose>
@@ -1258,7 +1303,9 @@
         </case>
       </switch>
     </case>
-    <case test="bf:Work/bf:language//@rdf:*[not(contains(., 'id.loc.gov/vocabulary/languages'))] or bf:Work/bf:language/*/bf:source">
+    </switch>
+    <switch>
+      <case test="bf:Work/bf:language//@rdf:*[not(contains(., 'id.loc.gov/vocabulary/languages'))] or bf:Work/bf:language/*/bf:source">
       <df tag="041">
         <ind1 default=" ">
           <switch>
@@ -1379,18 +1426,20 @@
           </xsl:for-each>
         </transform>
         
+        <var name="vSourceLang" xpath="bf:Work/bf:language/@rdf:resource[not(contains(., 'id.loc.gov/vocabulary/languages'))]|
+                                       bf:Work/bf:language/bf:Language[bf:source//@rdf:*[not(contains(., 'id.loc.gov/vocabulary/languages'))]]|
+                                       bf:Work/bf:language/bf:Language[bf:source]" />
         <var name="vSourceUri">
           <switch>
-            <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
-            <case test="bf:source/bf:Source/@rdf:about"><transform><xsl:value-of select="bf:source/bf:Source/@rdf:about"/></transform></case>
+            <case test="$vSourceLang[1]/bf:source/@rdf:resource"><transform><xsl:value-of select="$vSourceLang[1]/bf:source/@rdf:resource"/></transform></case>
+            <case test="$vSourceLang[1]/bf:source/bf:Source/@rdf:about"><transform><xsl:value-of select="$vSourceLang[1]/bf:source/bf:Source/@rdf:about"/></transform></case>
           </switch>
         </var>
         <transform>
-          <xsl:if test="$vSourceUri!=''">
             <marc:subfield code="2">
               <xsl:choose>
-                <xsl:when test="bf:source/bf:Source/*[local-name()='code']">
-                  <xsl:value-of select="bf:source/bf:Source/*[local-name()='code']"/>
+                <xsl:when test="$vSourceLang[1]/bf:source/bf:Source/*[local-name()='code']">
+                  <xsl:value-of select="$vSourceLang[1]/bf:source/bf:Source/*[local-name()='code']"/>
                 </xsl:when>
                 <xsl:when test="$vSourceUri != ''">
                   <xsl:choose>
@@ -1404,12 +1453,12 @@
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/rdfs:label"/>
+                    <xsl:with-param name="pString" select="$vSourceLang[1]/bf:source/bf:Source/rdfs:label"/>
                   </xsl:call-template>
                 </xsl:otherwise>
               </xsl:choose>
             </marc:subfield>
-          </xsl:if>
+          
         </transform>
         
       </df>
