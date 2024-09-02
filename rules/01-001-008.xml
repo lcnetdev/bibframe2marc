@@ -693,9 +693,21 @@
                                   string-length($date1) = 4 and string-length($date2) = 4">
                     <xsl:value-of select="translate(concat('d', $date1, $date2), 'X', 'u')" />
                   </xsl:when>
+                  <!-- <bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1940~/1997~</bf:date> -->
+                  <xsl:when test="string-length($date1)=5 and string-length($date2)=5 and 
+                    (contains($date1, '~') or contains($date1, '?') or contains($date1, '%')) and
+                    (contains($date2, '~') or contains($date2, '?') or contains($date2, '%'))">
+                    <xsl:value-of select="translate(concat('q', substring($date1, 1, 4), substring($date2, 1, 4)), 'X', 'u')" />
+                  </xsl:when>
+                  <!-- <bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1940~/1997</bf:date> -->
+                  <xsl:when test="string-length($date1)=5 and string-length($date2)=4 and 
+                    (contains($date1, '~') or contains($date1, '?') or contains($date1, '%'))">
+                    <xsl:value-of select="translate(concat('q', substring($date1, 1, 4), $date2), 'X', 'u')" />
+                  </xsl:when>
+                  <!-- <bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1940/1997~</bf:date> -->
                   <xsl:when test="string-length($date1)=4 and string-length($date2)=5 and 
-                                  (contains($date2, '~') or contains($date2, '?') or contains($date2, '%'))">
-                    <xsl:value-of select="translate(concat('q', $date1, $date2), 'X', 'u')" />
+                    (contains($date2, '~') or contains($date2, '?') or contains($date2, '%'))">
+                    <xsl:value-of select="translate(concat('q', $date1, substring($date2, 1, 4)), 'X', 'u')" />
                   </xsl:when>
                   <xsl:when test="string-length($date1)=4 and string-length($date2)=4">
                     <xsl:value-of select="translate(concat('m', $date1, $date2), 'X', 'u')" />
