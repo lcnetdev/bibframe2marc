@@ -163,9 +163,9 @@
 
   <x:scenario label="MARC 040 from authorities">
     <x:context href="../data/010-048/040-codes.xml"/>
-    <x:expect label="$a from AdminMetadata/assigner" test="//marc:datafield[@tag='040']/marc:subfield[@code='a'] = 'Uk'"/>
+    <x:expect label="$a from AdminMetadata/assigner" test="//marc:datafield[@tag='040']/marc:subfield[@code='a'] = 'Uk@'"/>
     <x:expect label="$b from AdminMetadata/descriptionLanguage" test="//marc:datafield[@tag='040']/marc:subfield[@code='b'] = 'eng'"/>
-    <x:expect label="$c also from AdminMetadata/assigner" test="//marc:datafield[@tag='040']/marc:subfield[@code='c'] = 'Uk'"/>
+    <x:expect label="$c also from AdminMetadata/assigner" test="//marc:datafield[@tag='040']/marc:subfield[@code='c'] = 'Uk@'"/>
     <x:expect label="$d from AdminMetadata/descriptionModifier" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][1] = 'CtY'"/>
     <x:expect label="Final $d from pConversionAgency" test="//marc:datafield[@tag='040']/marc:subfield[@code='d'][1] = 'CtY'"/>
     <x:expect label="$e from AdminMetadata/descriptionConventions" test="//marc:datafield[@tag='040']/marc:subfield[@code='e'][1] = 'rda'"/>
