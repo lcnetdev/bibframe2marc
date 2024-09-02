@@ -1337,7 +1337,7 @@
     </case>
     </switch>
     <switch>
-      <case test="bf:Work/bf:language//@rdf:*[not(contains(., 'id.loc.gov/vocabulary/languages'))] or bf:Work/bf:language/*/bf:source">
+      <case test="bf:Work/bf:language//@rdf:*[(local-name='resource' or local-name='about') and not(contains(., 'id.loc.gov/vocabulary/languages'))] or bf:Work/bf:language/*/bf:source">
       <df tag="041">
         <ind1 default=" ">
           <switch>
