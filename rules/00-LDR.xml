@@ -73,10 +73,10 @@
         <switch>
           <case test="$vAdminMetadata/bflc:encodingLevel[@rdf:resource] or
                       $vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[@rdf:about] or 
-                      $vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[bf:code]">
+                      $vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[not(@rdf:about) and bf:code]">
             <select xpath="$vAdminMetadata/bflc:encodingLevel/@rdf:resource |
                            $vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/@rdf:about | 
-                           $vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel/bf:code">
+                           $vAdminMetadata/bflc:encodingLevel/bflc:EncodingLevel[not(@rdf:about)]/bf:code">
               <var name="vLdr17" xpath="substring(.,string-length(.))"/>
               <switch>
                 <case test="$vLdr17='f'"><transform><xsl:value-of select="' '"/></transform></case>
