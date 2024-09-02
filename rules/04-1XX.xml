@@ -157,7 +157,7 @@
       <switch>
         <case test="$vMainEntryTag='100' or $vMainEntryTag='110'">
           <sf code="e" chopPunct="true">
-            <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+            <select xpath="../../bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
               <switch>
                 <case test="madsrdf:authoritativeLabel">
                   <select xpath="madsrdf:authoritativeLabel">
@@ -190,7 +190,7 @@
       <switch>
         <case test="$vMainEntryTag='111'">
           <sf code="j" chopPunct="true">
-            <select xpath="../../bf:role/*[rdfs:label or madsrdf:authoritativeLabel]">
+            <select xpath="../../bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
               <switch>
                 <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
                 <case test="default"><select xpath="rdfs:label"/></case>
@@ -200,7 +200,7 @@
         </case>
       </switch>
       <sf code="4">
-        <select xpath="../../bf:role/*[madsrdf:code or bf:code]|../bf:role/*[madsrdf:code or bf:code]">
+        <select xpath="../../bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']]|../bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']]">
           <switch>
             <case test="madsrdf:code">
               <select xpath="madsrdf:code"/>
@@ -210,7 +210,11 @@
         </select>
       </sf>
       <sf code="4">
-        <select xpath="../../bf:role/*/@rdf:about|../bf:role/*/@rdf:about|../../bf:role/@rdf:resource|../bf:role/@rdf:resource"/>
+        <select xpath="
+                ../../bf:role/*/@rdf:about[not(contains(., 'relators/ctb'))] | 
+                ../bf:role/*/@rdf:about[not(contains(., 'relators/ctb'))] | 
+                ../../bf:role/@rdf:resource[not(contains(., 'relators/ctb'))] | 
+                ../bf:role/@rdf:resource[not(contains(., 'relators/ctb'))]"/>
       </sf>
       <switch>
         <case test="$vSourceUri != '' or bf:source/bf:Source/bf:code or bf:source/bf:Source/rdfs:label">
