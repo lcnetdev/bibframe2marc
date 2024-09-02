@@ -1388,7 +1388,7 @@
                 <case test="bf:Instance/bf:carrier[@rdf:resource='http://id.loc.gov/vocabulary/carriers/cz' or 
                                                     */@rdf:about='http://id.loc.gov/vocabulary/carriers/cz' or 
                                                     */*[local-name()='code']='cz']">s</case>
-                <case test="default"><text> </text></case>
+                <case test="default"><transform><xsl:value-of select="' '"/></transform></case>
               </switch>
             </case>
             <case test="$v008Format='MU'">
