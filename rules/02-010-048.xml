@@ -936,12 +936,12 @@
   -->
   
   <switch>
-    <case test="$vAdminMetadata[bf:descriptionConventions]">
+    <case test="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]">
       <df tag="040" repeatable="false">
         <var name="vLanguageUri">
           <switch>
-            <case test="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/@rdf:resource"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/@rdf:resource"/></transform></case>
-            <case test="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/*/@rdf:about"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/*/@rdf:about"/></transform></case>
+            <case test="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/@rdf:resource"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/@rdf:resource"/></transform></case>
+            <case test="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/*/@rdf:about"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/*/@rdf:about"/></transform></case>
           </switch>
         </var>
         <ind1 default=" "/>
@@ -991,7 +991,15 @@
             <sf code="a" repeatable="false"><transform><xsl:value-of select="translate($vAcode,$lower,$upper)"/></transform></sf>
           </case>
           <case test="$vAcode != ''">
-            <sf code="a" repeatable="false"><transform><xsl:value-of select="$vAcode"/></transform></sf>
+            <sf code="a" repeatable="false">
+              <transform>
+                <xsl:call-template  name="tPadRight">
+                  <xsl:with-param name="pInput" select="$vAcode"/>
+                  <xsl:with-param name="pPadChar" select="'@'"/>
+                  <xsl:with-param name="pStringLength" select="3" />
+                </xsl:call-template>
+              </transform>
+            </sf>
           </case>
         </switch>
         <switch>
@@ -1004,14 +1012,14 @@
               </transform>
             </sf>
           </case>
-          <case test="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/*/*[local-name()='code']">
+          <case test="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/*/*[local-name()='code']">
             <sf code="b">
-              <transform><xsl:value-of select="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/*/*[local-name()='code']"/></transform>
+              <transform><xsl:value-of select="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/*/*[local-name()='code']"/></transform>
             </sf>
           </case>
         </switch>
         <sf code="e">
-          <select xpath="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionConventions[not(contains(@rdf:resource,'isbd')) and
+          <select xpath="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionConventions[not(contains(@rdf:resource,'isbd')) and
                           not(contains(*/@rdf:about,'isbd')) and
                           not(*/rdf:value='isbd') and
                           not(*/*[local-name()='code']='isbd') and
@@ -1051,7 +1059,15 @@
             <sf code="c" repeatable="false"><transform><xsl:value-of select="translate($vAcode,$lower,$upper)"/></transform></sf>
           </case>
           <case test="$vAcode != ''">
-            <sf code="c" repeatable="false"><transform><xsl:value-of select="$vAcode"/></transform></sf>
+            <sf code="c" repeatable="false">
+              <transform>
+                <xsl:call-template  name="tPadRight">
+                  <xsl:with-param name="pInput" select="$vAcode"/>
+                  <xsl:with-param name="pPadChar" select="'@'"/>
+                  <xsl:with-param name="pStringLength" select="3" />
+                </xsl:call-template>
+              </transform>
+            </sf>
           </case>
         </switch>
         <switch>
@@ -1114,7 +1130,15 @@
                     <xsl:choose>
                       <xsl:when test="$mCode = 'dlc'">DLC</xsl:when>
                       <xsl:when test="$mCode = 'dlcmrc'">DLCMRC</xsl:when>
-                      <xsl:otherwise><xsl:value-of select="$mCode" /></xsl:otherwise>
+                      <xsl:otherwise>
+                        <transform>
+                          <xsl:call-template  name="tPadRight">
+                            <xsl:with-param name="pInput" select="$mCode"/>
+                            <xsl:with-param name="pPadChar" select="'@'"/>
+                            <xsl:with-param name="pStringLength" select="3" />
+                          </xsl:call-template>
+                        </transform>
+                      </xsl:otherwise>
                     </xsl:choose>
                   </marc:modifierCode>
                 </xsl:for-each>
@@ -1167,7 +1191,15 @@
                 <sf code="d"><transform><xsl:value-of select="translate($vModifierCode,$lower,$upper)"/></transform></sf>
               </case>
               <case test="$vModifierCode != ''">
-                <sf code="d"><transform><xsl:value-of select="$vModifierCode"/></transform></sf>
+                <sf code="d">
+                  <transform>
+                    <xsl:call-template  name="tPadRight">
+                      <xsl:with-param name="pInput" select="$vModifierCode"/>
+                      <xsl:with-param name="pPadChar" select="'@'"/>
+                      <xsl:with-param name="pStringLength" select="3" />
+                    </xsl:call-template>
+                  </transform>
+                </sf>
               </case>
             </switch>
           </case>
