@@ -991,15 +991,7 @@
             <sf code="a" repeatable="false"><transform><xsl:value-of select="translate($vAcode,$lower,$upper)"/></transform></sf>
           </case>
           <case test="$vAcode != ''">
-            <sf code="a" repeatable="false">
-              <transform>
-                <xsl:call-template  name="tPadRight">
-                  <xsl:with-param name="pInput" select="$vAcode"/>
-                  <xsl:with-param name="pPadChar" select="'@'"/>
-                  <xsl:with-param name="pStringLength" select="3" />
-                </xsl:call-template>
-              </transform>
-            </sf>
+            <sf code="a" repeatable="false"><transform><xsl:value-of select="$vAcode"/></transform></sf>
           </case>
         </switch>
         <switch>
@@ -1059,15 +1051,7 @@
             <sf code="c" repeatable="false"><transform><xsl:value-of select="translate($vAcode,$lower,$upper)"/></transform></sf>
           </case>
           <case test="$vAcode != ''">
-            <sf code="c" repeatable="false">
-              <transform>
-                <xsl:call-template  name="tPadRight">
-                  <xsl:with-param name="pInput" select="$vAcode"/>
-                  <xsl:with-param name="pPadChar" select="'@'"/>
-                  <xsl:with-param name="pStringLength" select="3" />
-                </xsl:call-template>
-              </transform>
-            </sf>
+            <sf code="c" repeatable="false"><transform><xsl:value-of select="$vAcode"/></transform></sf>
           </case>
         </switch>
         <switch>
@@ -1130,15 +1114,7 @@
                     <xsl:choose>
                       <xsl:when test="$mCode = 'dlc'">DLC</xsl:when>
                       <xsl:when test="$mCode = 'dlcmrc'">DLCMRC</xsl:when>
-                      <xsl:otherwise>
-                        <transform>
-                          <xsl:call-template  name="tPadRight">
-                            <xsl:with-param name="pInput" select="$mCode"/>
-                            <xsl:with-param name="pPadChar" select="'@'"/>
-                            <xsl:with-param name="pStringLength" select="3" />
-                          </xsl:call-template>
-                        </transform>
-                      </xsl:otherwise>
+                      <xsl:otherwise><xsl:value-of select="$mCode" /></xsl:otherwise>
                     </xsl:choose>
                   </marc:modifierCode>
                 </xsl:for-each>
@@ -1191,15 +1167,7 @@
                 <sf code="d"><transform><xsl:value-of select="translate($vModifierCode,$lower,$upper)"/></transform></sf>
               </case>
               <case test="$vModifierCode != ''">
-                <sf code="d">
-                  <transform>
-                    <xsl:call-template  name="tPadRight">
-                      <xsl:with-param name="pInput" select="$vModifierCode"/>
-                      <xsl:with-param name="pPadChar" select="'@'"/>
-                      <xsl:with-param name="pStringLength" select="3" />
-                    </xsl:call-template>
-                  </transform>
-                </sf>
+                <sf code="d"><transform><xsl:value-of select="$vModifierCode"/></transform></sf>
               </case>
             </switch>
           </case>
