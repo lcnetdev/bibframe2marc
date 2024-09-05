@@ -154,9 +154,9 @@
     <x:context href="../data/2XX/250.xml"/>
     <x:expect label="generate 250" test="count(//marc:datafield[@tag='250']) = 1"/>
     <x:expect label="$a from editionStatement"
-              test="//marc:datafield[@tag='250'][1]/marc:subfield[@code='a'] = 'Third edition'"/>
+              test="//marc:datafield[@tag='250'][1]/marc:subfield[@code='a'] = 'Third edition.'"/>
     <x:expect label="generate 880 from editionStatement with xml:lang attribute"
-              test="//marc:datafield[@tag='880']/marc:subfield[@code='a'] = '第三版'"/>
+              test="//marc:datafield[@tag='880']/marc:subfield[@code='a'] = '第三版.'"/>
   </x:scenario>
 
   <!--
