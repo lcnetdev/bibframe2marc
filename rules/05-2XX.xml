@@ -780,7 +780,12 @@
         <df tag="880">
           <ind1 default=" "/>
           <ind2 default=" "/>
-          <sf code="6"><transform><xsl:value-of select="concat('250-00/',$v880Script)"/></transform></sf>
+          <switch>
+            <case test="ancestor::bf:Instance/bf:editionStatement[not(@xml:lang)]">
+              <sf code="6"><transform><xsl:value-of select="concat('250-25/',$v880Script)"/></transform></sf>    
+            </case>
+            <case test="default"><sf code="6"><transform><xsl:value-of select="concat('250-00/',$v880Script)"/></transform></sf></case>
+          </switch>
           <sf code="a" chopPunct="false">
             <transform>
               <xsl:value-of select="."></xsl:value-of>
@@ -803,6 +808,11 @@
         <df tag="250">
           <ind1 default=" "/>
           <ind2 default=" "/>
+          <switch>
+            <case test="ancestor::bf:Instance/bf:editionStatement[@xml:lang]">
+              <sf code="6"><transform><xsl:value-of select="'880-25'"/></transform></sf>    
+            </case>
+          </switch>
           <sf code="a" chopPunct="false">
             <transform>
               <xsl:value-of select="."></xsl:value-of>
