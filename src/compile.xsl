@@ -33,7 +33,7 @@
       <xsl:param name="pRecordId" select="'default'"/>
       <xsl:param name="pCatScript" select="'Latn'"/>
 
-      <xsl:key name="langs" match="//@xml:lang[contains(., '-')]" use="." />
+      <xsl:key name="langs" match="//@xml:lang[contains(., '-') and not(contains(., 'atn'))]" use="." />
       
       <!-- parameters for 884 generation -->
       <xsl:param name="pGenerationDatestamp">
