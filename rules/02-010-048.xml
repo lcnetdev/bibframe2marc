@@ -936,14 +936,33 @@
   -->
   
   <switch>
-    <case test="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]">
+    <case test="$vAdminMetadata[bf:descriptionLevel or bf:descriptionConventions or bflc:encodingLevel]">
       <df tag="040" repeatable="false">
         <var name="vLanguageUri">
           <switch>
-            <case test="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/@rdf:resource"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/@rdf:resource"/></transform></case>
-            <case test="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/*/@rdf:about"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/*/@rdf:about"/></transform></case>
+            <case test="$vAdminMetadata[bf:descriptionLevel or bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/@rdf:resource"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/@rdf:resource"/></transform></case>
+            <case test="$vAdminMetadata[bf:descriptionLevel or bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/*/@rdf:about"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/*/@rdf:about"/></transform></case>
           </switch>
         </var>
+        <var name="df040sfsPreNS">
+          <switch>
+            <case test="$vAdminMetadata/bflc:marcKey[starts-with(., '040')]">
+              <transform>
+                <xsl:call-template name="tParseMarcKey">
+                  <xsl:with-param name="pString" select="substring($vAdminMetadata/bflc:marcKey[starts-with(., '040')], 6)" />
+                </xsl:call-template>
+              </transform>
+            </case>
+            <case test="$vAdminMetadata/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/internal']/rdfs:label[starts-with(., '040')]">
+              <transform>
+                <xsl:call-template name="tParseMarcKey">
+                  <xsl:with-param name="pString" select="substring($vAdminMetadata/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/internal']/rdfs:label[starts-with(., '040')], 6)" />
+                </xsl:call-template>
+              </transform>
+            </case>
+          </switch>
+        </var>
+        <var name="df040sfs" xpath="exsl:node-set($df040sfsPreNS)" />
         <ind1 default=" "/>
         <ind2 default=" "/>
         <var name="vAuri">
@@ -1045,8 +1064,11 @@
             </switch>
           </select>
         </sf>
-        <!-- Logic for $c was/is identical to $a, so just using the $a stuff here. -->
+        <!-- Logic for $c: Look for the historical value.  If not found, use $a. -->
         <switch>
+          <case test="$df040sfs//marc:subfield[@code='c']">
+            <sf code="c" repeatable="false"><transform><xsl:value-of select="$df040sfs//marc:subfield[@code='c'][1]"/></transform></sf>
+          </case>
           <case test="$vAcode = 'dlc'">
             <sf code="c" repeatable="false"><transform><xsl:value-of select="translate($vAcode,$lower,$upper)"/></transform></sf>
           </case>
@@ -1059,19 +1081,9 @@
             <transform>
               <xsl:variable name="modifierCodePreNS">
                 <marc:codes>
-                  <xsl:if test="$vAdminMetadata/bflc:marcKey[starts-with(., '040')]">
-                    <xsl:variable name="df040sfsPreNS">
-                      <subfields>
-                        <xsl:call-template name="tParseMarcKey">
-                          <xsl:with-param name="pString" select="substring($vAdminMetadata/bflc:marcKey[starts-with(., '040')], 6)" />
-                        </xsl:call-template>
-                      </subfields>
-                    </xsl:variable>
-                    <xsl:variable name="df040sfs" select="exsl:node-set($df040sfsPreNS)" />
-                    <xsl:for-each select="$df040sfs//marc:subfield[@code='d']">
-                      <marc:modifierCode><xsl:value-of select="." /></marc:modifierCode>
-                    </xsl:for-each>
-                  </xsl:if>
+                  <xsl:for-each select="$df040sfs//marc:subfield[@code='d']">
+                    <marc:modifierCode><xsl:value-of select="." /></marc:modifierCode>
+                  </xsl:for-each>
                   <xsl:for-each select="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']]">
                     <xsl:sort select="bf:date" data-type="text" order="ascending" />
                     <xsl:variable name="mCode">
