@@ -163,9 +163,21 @@
               </sf>
             </case>
             <case test="$relURI != '' and 
-              ( contains($relURI, 'id.worldcat.org/fast') )">
+              ( contains($relURI, 'http://id.worldcat.org/fast/') )">
               <sf code="0">
                 <transform><xsl:value-of select="$relURI" /></transform>
+              </sf>
+              <sf code="0">
+                <transform>
+                  <xsl:variable name="vFastID">
+                    <xsl:call-template name="tPadLeft">
+                      <xsl:with-param name="pInput" select="substring-after($relURI,'http://id.worldcat.org/fast/')"/>
+                      <xsl:with-param name="pPadChar" select="'0'"/>
+                      <xsl:with-param name="pStringLength" select="'8'" />
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('(OCoLC)fst', $vFastID)" />
+                </transform>
               </sf>
             </case>
           </switch>
@@ -212,6 +224,22 @@
           <sf code="0">
             <transform><xsl:value-of select="$relURI" /></transform>
           </sf>
+          <switch>
+            <case test="contains($relURI, 'id.worldcat.org/fast')">
+              <sf code="0">
+                <transform>
+                  <xsl:variable name="vFastID">
+                    <xsl:call-template name="tPadLeft">
+                      <xsl:with-param name="pInput" select="substring-after($relURI,'http://id.worldcat.org/fast/')"/>
+                      <xsl:with-param name="pPadChar" select="'0'"/>
+                      <xsl:with-param name="pStringLength" select="'8'" />
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('(OCoLC)fst', $vFastID)" />
+                </transform>
+              </sf>
+            </case>
+          </switch>
         </case>
       </switch>
     </context>
@@ -2054,6 +2082,22 @@
           <sf code="0">
             <transform><xsl:value-of select="$relURI" /></transform>
           </sf>
+          <switch>
+            <case test="contains($relURI, 'id.worldcat.org/fast')">
+              <sf code="0">
+                <transform>
+                  <xsl:variable name="vFastID">
+                    <xsl:call-template name="tPadLeft">
+                      <xsl:with-param name="pInput" select="substring-after($relURI,'http://id.worldcat.org/fast/')"/>
+                      <xsl:with-param name="pPadChar" select="'0'"/>
+                      <xsl:with-param name="pStringLength" select="'8'" />
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('(OCoLC)fst', $vFastID)" />
+                </transform>
+              </sf>
+            </case>
+          </switch>
         </case>
       </switch>
     </context>
@@ -2067,7 +2111,7 @@
                         not(contains(bf:*/@rdf:about, '/authorities/')) and 
                         (*/rdfs:label or */madsrdf:authoritativeLabel)
                       ) and
-                      not(*/marc:record)
+                      not(*/marc:record) and not(*/bflc:marcKey)
                     ] | 
                     //bf:Item/bf:genreForm[
                       not(@rdf:resource) and 
@@ -2075,7 +2119,7 @@
                         not(contains(bf:*/@rdf:about, '/authorities/')) and 
                         (*/rdfs:label or */madsrdf:authoritativeLabel)
                       ) and
-                      not(*/marc:record)
+                      not(*/marc:record) and not(*/bflc:marcKey)
                     ]">
       <var name="vInd2Val">
         <switch>
