@@ -217,19 +217,25 @@
     </context>
   </df>
   
-  <df tag="066">
-    <context xpath="//@xml:lang[generate-id() = generate-id(key('langs',.)[1])]">
-      <ind1 default=" "/>
-      <ind2 default=" "/>
-      <var name="v880Script">
-        <lookup map="df880script" targetField="code">
-          <lookupField name="lang" xpath="translate(substring-after(.,'-'),$upper,$lower)"/>
-        </lookup>
-      </var>
-      <sf code="c"><transform><xsl:value-of select="$v880Script" /></transform></sf>
-    </context>
-  </df>
-
+  <switch>
+    <case test="//@xml:lang[contains(., '-') and not(contains(., 'atn'))]">
+      <df tag="066">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <transform>
+            <xsl:variable name="df880scriptNS" select="exsl:node-set($df880script)" />
+            <xsl:variable name="vLangs" select="//@xml:lang[contains(., '-') and not(contains(., 'atn'))]" />
+            <xsl:for-each select="$df880scriptNS/script/lang">
+              <xsl:variable name="vLang" select="." />
+              <xsl:if test="$vLangs[translate(substring-after(.,'-'),$upper,$lower) = $vLang ]">
+                <marc:subfield code="c"><xsl:value-of select="../code" /></marc:subfield>  
+              </xsl:if>
+            </xsl:for-each>
+          </transform>
+      </df>
+    </case>
+  </switch>
+  
   <df tag="070">
     <context xpath="bf:Work/bf:classification/bf:ClassificationNal|bf:Work/bf:classification/bf:Classification[bf:assigner/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnal' or
                     bf:assigner/*/@rdf:about='http://id.loc.gov/vocabulary/organizations/dnal']">
