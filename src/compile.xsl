@@ -32,8 +32,6 @@
 
       <xsl:param name="pRecordId" select="'default'"/>
       <xsl:param name="pCatScript" select="'Latn'"/>
-
-      <xsl:key name="langs" match="//@xml:lang[contains(., '-') and not(contains(., 'atn'))]" use="." />
       
       <!-- parameters for 884 generation -->
       <xsl:param name="pGenerationDatestamp">
@@ -955,6 +953,12 @@
         <xslt:copy-of select="."/>
       </xslt:for-each>
     </xsl:variable>
+    <!-- 
+       The below works but is unused: 20240909.
+       In future, could replace a bunch of exsl:node-set calls in the main code with
+       this.
+    <xsl:variable name="{@name}NS" select="exsl:node-set(${@name})" />
+    -->
   </xslt:template>
 
   <!-- templates for constructing keys: simple pass-through -->
