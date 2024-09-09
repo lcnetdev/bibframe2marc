@@ -64,17 +64,19 @@
     <var name="langScript">
       <switch>
         <case test="ends-with($mainLang, '/heb')">-Hebr</case>
+        <case test="ends-with($mainLang, '/kor')">-Hang</case>
+        <case test="ends-with($mainLang, '/rus')">-Cyrl</case>
       </switch>
     </var>
 
     <var name="vNameVariantPreNS">
-      <transform>
         <transform>
-          <xsl:call-template name="tGetMiniMARCFromKey">
-            <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript)][1]"/>
-          </xsl:call-template>
+          <xsl:if test="self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript[1])][1]">
+            <xsl:call-template name="tGetMiniMARCFromKey">
+              <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript)][1]"/>
+            </xsl:call-template>
+          </xsl:if>
         </transform>
-      </transform>
     </var>
     <var name="vNameVariant" xpath="exsl:node-set($vNameVariantPreNS)" />
     <var name="vNameVariantTag">
@@ -100,7 +102,7 @@
       </ind1>
       <ind2 default=" "/>
       <switch>
-        <case test="$vNameVariant">
+        <case test="$vNameVariant//marc:record">
           <!-- We have a variant, so we need to create an 880 link. -->
           <sf code="6"><transform><xsl:value-of select="concat('880-0', position())"/></transform></sf>   
         </case>
@@ -116,7 +118,7 @@
     </df>
     
     <switch>
-      <case test="$vNameVariant">
+      <case test="$vNameVariant//marc:record">
         <!-- We have a variant, so we need to create an 880. -->
         <df tag="880">
           <ind1 default="2">
