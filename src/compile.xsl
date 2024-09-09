@@ -561,47 +561,9 @@
             <xsl:copy-of select="$pContext/marc:record"/>
           </xsl:when>
           <xsl:when test="$pContext/bflc:marcKey">
-            <marc:record>
-              <marc:datafield>
-                <xsl:attribute name="tag">
-                  <xsl:choose>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '00'">100</xsl:when>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '10'">110</xsl:when>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '11'">111</xsl:when>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '30'">130</xsl:when>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '50'">150</xsl:when>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '51'">151</xsl:when>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 2, 2) = '55'">155</xsl:when>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 1, 3) = '440'">130</xsl:when>
-                    <xsl:otherwise><xsl:value-of select="substring($pContext/bflc:marcKey, 1, 3)" /></xsl:otherwise>
-                  </xsl:choose>
-                </xsl:attribute>
-                <xsl:attribute name="ind1">
-                  <xsl:choose>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 1, 3) = 630 or substring($pContext/bflc:marcKey, 1, 3) = 730">
-                      <!-- flipping to a 130 so we need to get non filing info into the right place. -->
-                      <xsl:value-of select="substring($pContext/bflc:marcKey, 5, 1)" />
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <xsl:value-of select="substring($pContext/bflc:marcKey, 4, 1)" />    
-                    </xsl:otherwise>
-                  </xsl:choose>
-                </xsl:attribute> 
-                <xsl:attribute name="ind2">
-                  <xsl:choose>
-                    <xsl:when test="substring($pContext/bflc:marcKey, 1, 3) = 630 or substring($pContext/bflc:marcKey, 1, 3) = 730">
-                      <xsl:value-of select="substring($pContext/bflc:marcKey, 4, 1)" />
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <xsl:value-of select="substring($pContext/bflc:marcKey, 5, 1)" />
-                    </xsl:otherwise>
-                  </xsl:choose>
-                </xsl:attribute> 
-                <xsl:call-template name="tParseMarcKey">
-                  <xsl:with-param name="pString" select="substring($pContext/bflc:marcKey, 6)" />
-                </xsl:call-template>
-              </marc:datafield>
-            </marc:record>
+            <xsl:call-template name="tGetMiniMARCFromKey">
+              <xsl:with-param name="pFieldStr" select="$pContext/bflc:marcKey" />
+            </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
             <xsl:variable name="vRelResourcePreNS">
@@ -624,6 +586,51 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:template>
+      
+      <xsl:template name="tGetMiniMARCFromKey">
+        <xsl:param name="pFieldStr"/>
+        <marc:record>
+          <marc:datafield>
+            <xsl:attribute name="tag">
+              <xsl:choose>
+                <xsl:when test="substring($pFieldStr, 2, 2) = '00'">100</xsl:when>
+                <xsl:when test="substring($pFieldStr, 2, 2) = '10'">110</xsl:when>
+                <xsl:when test="substring($pFieldStr, 2, 2) = '11'">111</xsl:when>
+                <xsl:when test="substring($pFieldStr, 2, 2) = '30'">130</xsl:when>
+                <xsl:when test="substring($pFieldStr, 2, 2) = '50'">150</xsl:when>
+                <xsl:when test="substring($pFieldStr, 2, 2) = '51'">151</xsl:when>
+                <xsl:when test="substring($pFieldStr, 2, 2) = '55'">155</xsl:when>
+                <xsl:when test="substring($pFieldStr, 1, 3) = '440'">130</xsl:when>
+                <xsl:otherwise><xsl:value-of select="substring($pFieldStr, 1, 3)" /></xsl:otherwise>
+              </xsl:choose>
+            </xsl:attribute>
+            <xsl:attribute name="ind1">
+              <xsl:choose>
+                <xsl:when test="substring($pFieldStr, 1, 3) = 630 or substring($pFieldStr, 1, 3) = 730">
+                  <!-- flipping to a 130 so we need to get non filing info into the right place. -->
+                  <xsl:value-of select="substring($pFieldStr, 5, 1)" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="substring($pFieldStr, 4, 1)" />    
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:attribute> 
+            <xsl:attribute name="ind2">
+              <xsl:choose>
+                <xsl:when test="substring($pFieldStr, 1, 3) = 630 or substring($pFieldStr, 1, 3) = 730">
+                  <xsl:value-of select="substring($pFieldStr, 4, 1)" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="substring($pFieldStr, 5, 1)" />
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:attribute> 
+            <xsl:call-template name="tParseMarcKey">
+              <xsl:with-param name="pString" select="substring($pFieldStr, 6)" />
+            </xsl:call-template>
+          </marc:datafield>
+        </marc:record>
+      </xsl:template>
 
       <!--
           special handling for id.loc.gov authorities:
@@ -633,7 +640,6 @@
           limitations of libxslt web client. Can also force SRU
           lookup with template param pForceSRULookup (for testing)
       -->
-
       <xsl:template name="tGetMARCAuth">
         <xsl:param name="pUri"/>
         <xsl:param name="pForceSRULookup" select="false()"/>
