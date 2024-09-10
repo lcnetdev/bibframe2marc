@@ -46,10 +46,19 @@
       </var>
       <var name="vRelResourcePreNS">
         <transform>
-          <xsl:call-template name="tGetRelResource">
-            <xsl:with-param name="pRelUri" select="$relURI"/>
-            <xsl:with-param name="pContext" select="."/>
-          </xsl:call-template>
+          <xsl:choose>
+            <xsl:when test="bflc:marcKey">
+                <xsl:call-template name="tGetMiniMARCFromKey">
+                  <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '1')][1]"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="tGetRelResource">
+                <xsl:with-param name="pRelUri" select="$relURI"/>
+                <xsl:with-param name="pContext" select="."/>
+              </xsl:call-template>              
+            </xsl:otherwise>
+          </xsl:choose>
         </transform>
       </var>
       <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
