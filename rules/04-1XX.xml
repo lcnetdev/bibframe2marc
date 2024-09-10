@@ -63,6 +63,7 @@
     <var name="mainLang" xpath="$mainLangs[1]" />
     <var name="langScript">
       <switch>
+        <case test="ends-with($mainLang, '/ara')">-Arab</case>
         <case test="ends-with($mainLang, '/heb')">-Hebr</case>
         <case test="ends-with($mainLang, '/kor')">-Hang</case>
         <case test="ends-with($mainLang, '/rus')">-Cyrl</case>
