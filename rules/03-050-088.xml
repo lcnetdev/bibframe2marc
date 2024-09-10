@@ -224,7 +224,9 @@
           <ind2 default=" "/>
           <transform>
             <xsl:variable name="df880scriptNS" select="exsl:node-set($df880script)" />
-            <xsl:variable name="vLangs" select="//@xml:lang[contains(., '-') and not(contains(., 'atn'))]" />
+            <xsl:variable name="vLangs" select="/descendant::node()[bf:Title|bf:ProvisionActivity|bf:Series]//@xml:lang[contains(., '-') and not(contains(., 'atn'))] |
+              //bf:editionStatement/@xml:lang[contains(., '-') and not(contains(., 'atn'))]" />
+            <xsl:message><xsl:for-each select="$vLangs"><xsl:value-of select="concat('---', name(parent::node()[2]), '--', name(parent::node()[1]), '-', .)" /></xsl:for-each></xsl:message>
             <xsl:for-each select="$df880scriptNS/script/lang">
               <xsl:variable name="vLang" select="." />
               <xsl:if test="$vLangs[translate(substring-after(.,'-'),$upper,$lower) = $vLang ]">
