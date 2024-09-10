@@ -335,7 +335,12 @@
             </switch>
           </ind1>
           <ind2 default=" "/>
-          <sf code="6"><transform><xsl:value-of select="concat($vAddedEntryNameMarcKeyTag, '-7', position())"/></transform></sf>
+          <var name="v880Script">
+            <lookup map="df880script" targetField="code">
+              <lookupField name="lang" xpath="translate(substring-after($langScript, '-'),$upper,$lower)"/>
+            </lookup>
+          </var>
+          <sf code="6"><transform><xsl:value-of select="concat($vAddedEntryNameMarcKeyTag, '-7', position(), '/', $v880Script)"/></transform></sf>
           <transform>
             <xsl:for-each select="$vNameVariant//marc:datafield[@tag=$vNameVariantTag]/marc:subfield[contains($vValidSubfields,@code)]">
               <marc:subfield>
