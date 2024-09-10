@@ -58,8 +58,8 @@
           And the 880 will need to be created from the 4XX marcKey.
     -->
     <var name="mainLangs" xpath="
-        bf:Work/bf:language/@rdf:resource[contains(., 'id.loc.gov/vocabulary/languages')] |
-        bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]//@rdf:about[contains(., 'id.loc.gov/vocabulary/languages')]" />
+      ancestor::bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]//@rdf:about[contains(., 'id.loc.gov/vocabulary/languages')] | 
+      ancestor::bf:Work/bf:language/@rdf:resource[contains(., 'id.loc.gov/vocabulary/languages')]" />
     <var name="mainLang" xpath="$mainLangs[1]" />
     <var name="langScript">
       <switch>
@@ -71,7 +71,7 @@
 
     <var name="vNameVariantPreNS">
         <transform>
-          <xsl:if test="self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript)][1]">
+          <xsl:if test="$langScript != '' and self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript)][1]">
             <xsl:call-template name="tGetMiniMARCFromKey">
               <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript)][1]"/>
             </xsl:call-template>
@@ -92,6 +92,161 @@
       </switch>
     </var>
     
+    <var name="vSourceUri">
+      <switch>
+        <case test="bf:source/@rdf:resource"><transform><xsl:value-of select="bf:source/@rdf:resource"/></transform></case>
+        <case test="bf:source/bf:Source/@rdf:about"><transform><xsl:value-of select="bf:source/bf:Source/@rdf:about"/></transform></case>
+      </switch>
+    </var>
+    
+    <!-- Let's sort out the shared fields here. -->
+    <var name="vShared">
+      <switch>
+        <case test="$vNameTag='100' or $vNameTag='110'">
+          <sf code="e" chopPunct="true">
+            <select xpath="ancestor::bf:Contribution/bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
+              <switch>
+                <case test="madsrdf:authoritativeLabel">
+                  <select xpath="madsrdf:authoritativeLabel">
+                    <transform>
+                      <xsl:value-of select="translate(., $upper, $lower)"/>
+                    </transform>
+                  </select>
+                </case>
+                <case test="default">
+                  <select xpath="rdfs:label">
+                    <transform>
+                      <xsl:value-of select="translate(., $upper, $lower)"/>
+                    </transform>
+                  </select>
+                </case>
+              </switch>
+            </select>
+          </sf>
+          <sf code="e" chopPunct="true">
+            <select xpath="ancestor::bf:Contribution/bf:role/@rdf:resource">
+              <transform>
+                <xsl:if test="contains(., 'id.loc.gov/vocabulary/relators/')">
+                  <xsl:value-of select="substring-after(., 'vocabulary/relators/')" />
+                </xsl:if>
+              </transform>
+            </select>
+          </sf>
+        </case>
+        <case test="$vNameTag='111'">
+          <sf code="j" chopPunct="true">
+            <select xpath="ancestor::bf:Contribution/bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
+              <switch>
+                <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                <case test="default"><select xpath="rdfs:label"/></case>
+              </switch>
+            </select>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="1=1">
+          <sf code="4">
+            <select xpath="ancestor::bf:Contribution/bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']]|../bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']]">
+              <switch>
+                <case test="madsrdf:code">
+                  <select xpath="madsrdf:code"/>
+                </case>
+                <case test="default"><select xpath="bf:code"/></case>
+              </switch>
+            </select>
+          </sf>
+          <sf code="4">
+            <select xpath="
+              ancestor::bf:Contribution/bf:role/*/@rdf:about[not(contains(., 'relators/ctb'))] | 
+              ancestor::bf:PrimaryContribution/bf:role/*/@rdf:about[not(contains(., 'relators/ctb'))] | 
+              ancestor::bf:Contribution/bf:role/@rdf:resource[not(contains(., 'relators/ctb'))] | 
+              ancestor::bf:PrimaryContribution/bf:role/@rdf:resource[not(contains(., 'relators/ctb'))]"/>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="$vSourceUri != '' or bf:source/bf:Source/bf:code or bf:source/bf:Source/rdfs:label">
+          <sf code="2">
+            <switch>
+              <case test="bf:source/bf:Source/bf:code"><transform><xsl:value-of select="bf:source/bf:Source/bf:code"/></transform></case>
+              <case test="$vSourceUri != ''">
+                <switch>
+                  <case test="contains($vSourceUri,'id.loc.gov')">
+                    <transform>
+                      <xsl:call-template name="tUriCode">
+                        <xsl:with-param name="pUri" select="$vSourceUri"/>
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                </switch>
+              </case>
+              <case test="default"><transform><xsl:value-of select="bf:source/bf:Source/rdfs:label"/></transform></case>
+            </switch>
+          </sf>
+        </case>
+      </switch>
+        <switch>
+          <case test="1=1">
+            <sf code="0">
+              <switch>
+                <case test="$agentURI != '' and contains($agentURI, '/authorities/')">
+                  <transform><xsl:value-of select="$agentURI"/></transform>
+                </case>
+                <case test="$agentURI != '' and contains($agentURI, 'id.loc.gov/rwo/agents/')">
+                  <transform><xsl:value-of select="concat(substring-before($agentURI,'rwo/agents'), 'authorities/names/', substring-after($agentURI,'rwo/agents/'))"/></transform>
+                </case>
+                <case test="@rdf:about[
+                  not(contains(.,'example.org')) and 
+                  not(contains(.,'REPLACE')) and 
+                  not(contains(., '/agents/')) and
+                  not(contains(., '/isni/')) and
+                  not(contains(., '/gnd/'))
+                  ]">
+                  <select xpath="@rdf:about[
+                    not(contains(.,'example.org')) and 
+                    not(contains(.,'REPLACE')) and 
+                    not(contains(., '/agents/')) and
+                    not(contains(., '/isni/')) and
+                    not(contains(., '/gnd/'))
+                    ]"/>
+                </case>
+              </switch>
+            </sf>
+            <sf code="0">
+              <select xpath="bf:identifiedBy/bf:Identifier">
+                <transform>
+                  <xsl:variable name="vIdType">
+                    <xsl:call-template name="tChopPunct">
+                      <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <xsl:choose>
+                    <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                  </xsl:choose>
+                </transform>
+              </select>
+            </sf>
+            <sf code="1">
+              <switch>
+                <case test="$agentURI != '' and (contains($agentURI, '/agents/') or contains($agentURI, '/gnd/'))">
+                  <transform><xsl:value-of select="$agentURI"/></transform>
+                </case>
+                <case test="@rdf:about[
+                  contains(., '/agents/') or contains(., '/gnd/') or contains(., '/isni/') 
+                  ]">
+                  <select xpath="@rdf:about[
+                    contains(., '/agents/') or contains(., '/gnd/') or contains(., '/isni/')
+                    ]" />
+                </case>
+              </switch>
+            </sf>
+          </case>
+        </switch>
+    </var>
+    
     <df tag="$vNameTag">
       <ind1 default="2">
         <switch>
@@ -108,12 +263,13 @@
         </case>
       </switch>
       <transform>
-        <xsl:for-each select="$vNameAuth//marc:datafield[@tag=$vNameTag]/marc:subfield[contains($vAuthSubfields,@code)]">
+        <xsl:for-each select="$vNameAuth//marc:datafield/marc:subfield[contains($vAuthSubfields,@code)]">
           <marc:subfield>
             <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
             <xsl:value-of select="."/>
           </marc:subfield>
         </xsl:for-each>
+        <xsl:copy-of select="$vShared" />
       </transform>
     </df>
     
@@ -137,6 +293,7 @@
                 <xsl:value-of select="."/>
               </marc:subfield>
             </xsl:for-each>
+            <xsl:copy-of select="$vShared" />
           </transform>
         </df>
       </case>

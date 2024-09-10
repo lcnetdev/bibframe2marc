@@ -189,12 +189,14 @@
       <var name="langScript">
         <switch>
           <case test="ends-with($mainLang, '/heb')">-Hebr</case>
+          <case test="ends-with($mainLang, '/kor')">-Hang</case>
+          <case test="ends-with($mainLang, '/rus')">-Cyrl</case>
         </switch>
       </var>
       
       <var name="vNameVariantPreNS">
           <transform>
-            <xsl:if test="self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript)][1]">
+            <xsl:if test="$langScript != '' and self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript)][1]">
               <xsl:call-template name="tGetMiniMARCFromKey">
                 <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript[1])][1]"/>
               </xsl:call-template>
@@ -211,6 +213,83 @@
             <case test="$vNameVariant//marc:datafield[@tag='111']">111</case>
             <case test="$vNameVariant//marc:datafield[@tag='151']">110</case>
           </switch>
+        </case>
+      </switch>
+    </var>
+    
+    <var name="vShared">
+      <switch>
+        <case test="ancestor::node()/bf:role/bf:Role[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
+          <select xpath="ancestor::node()/bf:role/bf:Role/rdfs:label|ancestor::node()/bf:role/bf:Role/madsrdf:authoritativeLabel">
+            <sf code="e">
+              <transform><xsl:value-of select="translate(., $upper, $lower)" /></transform>
+            </sf>
+          </select>
+        </case>
+        <case test="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about[not(contains(., 'relators/ctb'))] or ancestor::node()/bf:role/@rdf:resource[not(contains(., 'relators/ctb'))]">
+          <select xpath="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ancestor::node()/bf:role/@rdf:resource">
+            <var name="vRelationURI">
+              <switch>
+                <case test="contains(.,'id.loc.gov/')"><transform><xsl:value-of select="."/></transform></case>
+              </switch>
+            </var>
+            <var name="vRelationLabel">
+              <switch>
+                <case test="$vRelationURI != ''">
+                  <transform>
+                    <xsl:call-template name="tGetLabel">
+                      <xsl:with-param name="pUri" select="$vRelationURI"/>
+                    </xsl:call-template>
+                  </transform>
+                </case>
+              </switch>
+            </var>
+            <sf code="e" xpath="translate($vRelationLabel, $upper, $lower)" />
+          </select>              
+        </case>
+      </switch>
+      
+      <switch>
+        <case test="ancestor::node()/bf:role/bf:Role/@rdf:about[not(contains(., 'relators/ctb'))] or ancestor::node()/bf:role/@rdf:resource[not(contains(., 'relators/ctb'))]">
+          <sf code="4">
+            <select xpath="ancestor::node()/bf:role/bf:Role/@rdf:about | ancestor::node()/bf:role/@rdf:resource" />
+          </sf>
+        </case>
+        <case test="ancestor::node()/bf:role/bf:Role[bf:code[.!='ctb'] or madsrdf:code[.!='ctb']]">
+          <sf code="4">
+            <select xpath="ancestor::node()/bf:role/bf:Role/*[local-name() = 'code']" />
+          </sf>
+        </case>
+      </switch>
+      
+      <switch>
+        <case test="not(contains($relURI,'example.org')) and 
+          not(contains($relURI,'REPLACE')) and 
+          not(contains($relURI,'rwo')) and 
+          not(contains($relURI,'id.oclc.org/worldcat/entity/')) and 
+          not(contains($relURI,'isni.org/isni/')) and 
+          not(contains($relURI,'viaf.org/viaf/')) and 
+          not(contains($relURI,'d-nb.info/gnd/'))">
+          <sf code="0">
+            <transform><xsl:value-of select="$relURI" /></transform>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="contains($relURI,'id.oclc.org/worldcat/entity/') or 
+          contains($relURI,'isni.org/isni/') or 
+          contains($relURI,'viaf.org/viaf/') or 
+          contains($relURI,'d-nb.info/gnd/')">
+          <sf code="1">
+            <transform><xsl:value-of select="$relURI" /></transform>
+          </sf>
+        </case>
+        <case test="not(contains($relURI,'example.org')) and 
+          not(contains($relURI,'REPLACE')) and 
+          not(contains($relURI,'authorities'))">
+          <sf code="1">
+            <transform><xsl:value-of select="$relURI" /></transform>
+          </sf>
         </case>
       </switch>
     </var>
@@ -240,82 +319,8 @@
             <xsl:value-of select="."/>
           </marc:subfield>
         </xsl:for-each>
+        <xsl:copy-of select="$vShared" />
       </transform>
-
-      <switch>
-          <case test="ancestor::node()/bf:role/bf:Role[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
-            <select xpath="ancestor::node()/bf:role/bf:Role/rdfs:label|ancestor::node()/bf:role/bf:Role/madsrdf:authoritativeLabel">
-              <sf code="e">
-                <transform><xsl:value-of select="translate(., $upper, $lower)" /></transform>
-              </sf>
-            </select>
-          </case>
-          <case test="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about[not(contains(., 'relators/ctb'))] or ancestor::node()/bf:role/@rdf:resource[not(contains(., 'relators/ctb'))]">
-            <select xpath="ancestor::node()/bf:role/bf:Role[not(rdfs:label) and not(madsrdf:authoritativeLabel)]/@rdf:about | ancestor::node()/bf:role/@rdf:resource">
-                <var name="vRelationURI">
-                  <switch>
-                    <case test="contains(.,'id.loc.gov/')"><transform><xsl:value-of select="."/></transform></case>
-                  </switch>
-                </var>
-                <var name="vRelationLabel">
-                  <switch>
-                    <case test="$vRelationURI != ''">
-                      <transform>
-                        <xsl:call-template name="tGetLabel">
-                          <xsl:with-param name="pUri" select="$vRelationURI"/>
-                        </xsl:call-template>
-                      </transform>
-                    </case>
-                  </switch>
-                </var>
-                <sf code="e" xpath="translate($vRelationLabel, $upper, $lower)" />
-              </select>              
-          </case>
-      </switch>
-      
-      <switch>
-        <case test="ancestor::node()/bf:role/bf:Role/@rdf:about[not(contains(., 'relators/ctb'))] or ancestor::node()/bf:role/@rdf:resource[not(contains(., 'relators/ctb'))]">
-          <sf code="4">
-            <select xpath="ancestor::node()/bf:role/bf:Role/@rdf:about | ancestor::node()/bf:role/@rdf:resource" />
-          </sf>
-        </case>
-        <case test="ancestor::node()/bf:role/bf:Role[bf:code[.!='ctb'] or madsrdf:code[.!='ctb']]">
-          <sf code="4">
-            <select xpath="ancestor::node()/bf:role/bf:Role/*[local-name() = 'code']" />
-          </sf>
-        </case>
-      </switch>
-      
-      <switch>
-        <case test="not(contains($relURI,'example.org')) and 
-                    not(contains($relURI,'REPLACE')) and 
-                    not(contains($relURI,'rwo')) and 
-                    not(contains($relURI,'id.oclc.org/worldcat/entity/')) and 
-                    not(contains($relURI,'isni.org/isni/')) and 
-                    not(contains($relURI,'viaf.org/viaf/')) and 
-                    not(contains($relURI,'d-nb.info/gnd/'))">
-          <sf code="0">
-            <transform><xsl:value-of select="$relURI" /></transform>
-          </sf>
-        </case>
-      </switch>
-      <switch>
-        <case test="contains($relURI,'id.oclc.org/worldcat/entity/') or 
-                    contains($relURI,'isni.org/isni/') or 
-                    contains($relURI,'viaf.org/viaf/') or 
-                    contains($relURI,'d-nb.info/gnd/')">
-          <sf code="1">
-            <transform><xsl:value-of select="$relURI" /></transform>
-          </sf>
-        </case>
-        <case test="not(contains($relURI,'example.org')) and 
-                    not(contains($relURI,'REPLACE')) and 
-                    not(contains($relURI,'authorities'))">
-          <sf code="1">
-            <transform><xsl:value-of select="$relURI" /></transform>
-          </sf>
-        </case>
-      </switch>
     </df>
     
     <switch>
@@ -338,6 +343,7 @@
                 <xsl:value-of select="."/>
               </marc:subfield>
             </xsl:for-each>
+            <xsl:copy-of select="$vShared" />
           </transform>
         </df>
       </case>
