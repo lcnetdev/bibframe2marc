@@ -105,7 +105,8 @@
       <switch>
         <case test="$vNameTag='100' or $vNameTag='110'">
           <sf code="e" chopPunct="true">
-            <select xpath="ancestor::bf:Contribution/bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
+            <select xpath="ancestor::bf:Contribution/bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']] |
+                           ancestor::bf:PrimaryContribution/bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
               <switch>
                 <case test="madsrdf:authoritativeLabel">
                   <select xpath="madsrdf:authoritativeLabel">
@@ -125,7 +126,7 @@
             </select>
           </sf>
           <sf code="e" chopPunct="true">
-            <select xpath="ancestor::bf:Contribution/bf:role/@rdf:resource">
+            <select xpath="ancestor::bf:Contribution/bf:role/@rdf:resource | ancestor::bf:PrimaryContribution/bf:role/@rdf:resource">
               <transform>
                 <xsl:if test="contains(., 'id.loc.gov/vocabulary/relators/')">
                   <xsl:value-of select="substring-after(., 'vocabulary/relators/')" />
@@ -136,7 +137,8 @@
         </case>
         <case test="$vNameTag='111'">
           <sf code="j" chopPunct="true">
-            <select xpath="ancestor::bf:Contribution/bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
+            <select xpath="ancestor::bf:Contribution/bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']] |
+                           ancestor::bf:PrimaryContribution/bf:role/*[rdfs:label[.!='Contributor'] or madsrdf:authoritativeLabel[.!='Contributor']]">
               <switch>
                 <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
                 <case test="default"><select xpath="rdfs:label"/></case>
@@ -148,7 +150,8 @@
       <switch>
         <case test="1=1">
           <sf code="4">
-            <select xpath="ancestor::bf:Contribution/bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']]|../bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']]">
+            <select xpath="ancestor::bf:Contribution/bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']]|../bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']] |
+                           ancestor::bf:PrimaryContribution/bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']]|../bf:role/*[madsrdf:code[.!='ctb'] or bf:code[.!='ctb']]">
               <switch>
                 <case test="madsrdf:code">
                   <select xpath="madsrdf:code"/>
