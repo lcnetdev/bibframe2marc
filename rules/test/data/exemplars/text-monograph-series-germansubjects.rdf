@@ -7,11 +7,13 @@
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	<rdfs:label xml:lang="en">English</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
       </bf:Language>
     </bf:language>
     <bf:intendedAudience>
       <bf:IntendedAudience rdf:about="http://id.loc.gov/vocabulary/maudience/juv">
 	<rdfs:label>Juvenile</rdfs:label>
+	<bf:code>juv</bf:code>
       </bf:IntendedAudience>
     </bf:intendedAudience>
     <bf:genreForm>
@@ -23,6 +25,7 @@
     <bf:geographicCoverage>
       <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/e-uk-en">
 	<rdfs:label xml:lang="en">England</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">e-uk-en</bf:code>
       </bf:GeographicCoverage>
     </bf:geographicCoverage>
     <bf:classification>
@@ -83,12 +86,21 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n97108433">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Rowling, J. K.</rdfs:label>
+	    <rdfs:label xml:lang="zxx-Hebr">רולינג, ג׳יי. קיי</rdfs:label>
+	    <bflc:marcKey>4001 $aרולינג, ג׳יי. קיי$7[bcp47]zxx-Hebr</bflc:marcKey>
+	    <rdfs:label xml:lang="zxx-Cyrl">Роулинг, Дж. К.</rdfs:label>
+	    <bflc:marcKey>4001 $aРоулинг, Дж. К.$7[bcp47]zxx-Cyrl</bflc:marcKey>
+	    <rdfs:label xml:lang="zxx-Hani">罗琳, J. K.</rdfs:label>
+	    <bflc:marcKey>4001 $a罗琳, J. K.$7[bcp47]zxx-Hani</bflc:marcKey>
+	    <rdfs:label xml:lang="zxx-Arab">رولينج، چ. ك.</rdfs:label>
+	    <bflc:marcKey>4001 $aرولينج، چ. ك.$7[bcp47]zxx-Arab</bflc:marcKey>
 	    <bflc:marcKey>1001 $aRowling, J. K.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 	    <rdfs:label>Contributor</rdfs:label>
+	    <bf:code>ctb</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
@@ -101,6 +113,7 @@
     <bf:content>
       <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
 	<rdfs:label>text</rdfs:label>
+	<bf:code>txt</bf:code>
       </bf:Content>
     </bf:content>
     <bf:summary>
@@ -122,9 +135,8 @@
 	    <rdfs:label>Potter, Harry (Fictitious character)</rdfs:label>
 	    <bflc:marcKey>1001 $aPotter, Harry$c(Fictitious character)</bflc:marcKey>
 	  </madsrdf:PersonalName>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>potterharry(fictitiouscharacter)juvenilefiction</bflc:aap-normalized>
@@ -150,9 +162,8 @@
 	    <rdfs:label xml:lang="en">Hogwarts School of Witchcraft and Wizardry (Imaginary organization)</rdfs:label>
 	    <bflc:marcKey>150  $aHogwarts School of Witchcraft and Wizardry (Imaginary organization)</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>hogwartsschoolofwitchcraftandwizardry(imaginaryorganization)juvenilefiction</bflc:aap-normalized>
@@ -208,9 +219,8 @@
 	    <rdfs:label>England</rdfs:label>
 	    <bflc:marcKey>181  $zEngland</bflc:marcKey>
 	  </madsrdf:Geographic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>wizardsenglandjuvenilefiction</bflc:aap-normalized>
@@ -240,9 +250,8 @@
 	    <rdfs:label>England</rdfs:label>
 	    <bflc:marcKey>181  $zEngland</bflc:marcKey>
 	  </madsrdf:Geographic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>boardingschoolstudentsenglandjuvenilefiction</bflc:aap-normalized>
@@ -272,9 +281,8 @@
 	    <rdfs:label>England</rdfs:label>
 	    <bflc:marcKey>181  $zEngland</bflc:marcKey>
 	  </madsrdf:Geographic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>boardingschoolsenglandjuvenilefiction</bflc:aap-normalized>
@@ -304,9 +312,8 @@
 	    <rdfs:label>England</rdfs:label>
 	    <bflc:marcKey>181  $zEngland</bflc:marcKey>
 	  </madsrdf:Geographic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>magicenglandjuvenilefiction</bflc:aap-normalized>
@@ -336,9 +343,8 @@
 	    <rdfs:label xml:lang="en">Conduct of life</rdfs:label>
 	    <bflc:marcKey>180  $xConduct of life</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>youthconductoflifejuvenilefiction</bflc:aap-normalized>
@@ -390,9 +396,8 @@
 	    <rdfs:label xml:lang="en">Teacher-student relationships</rdfs:label>
 	    <bflc:marcKey>150  $aTeacher-student relationships</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>teacherstudentrelationshipsjuvenilefiction</bflc:aap-normalized>
@@ -418,9 +423,8 @@
 	    <rdfs:label xml:lang="en">Hate</rdfs:label>
 	    <bflc:marcKey>150 0$aHate</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>hatejuvenilefiction</bflc:aap-normalized>
@@ -450,9 +454,8 @@
 	    <rdfs:label xml:lang="en">Military aspects</rdfs:label>
 	    <bflc:marcKey>180  $xMilitary aspects</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>parapsychologymilitaryaspectsjuvenilefiction</bflc:aap-normalized>
@@ -478,9 +481,8 @@
 	    <rdfs:label xml:lang="en">Dueling</rdfs:label>
 	    <bflc:marcKey>150 0$aDueling</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001687">
-	    <rdfs:label xml:lang="en">Juvenile fiction</rdfs:label>
-	    <bflc:marcKey>185  $vJuvenile fiction</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Juvenile fiction</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>duelingjuvenilefiction</bflc:aap-normalized>
@@ -630,11 +632,13 @@
 	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/gnd">
 	    <rdfs:label>Gemeinsame Normdatei</rdfs:label>
+	    <bf:code>gnd</bf:code>
 	  </madsrdf:Authority>
 	</madsrdf:isMemberOfMADSScheme>
 	<bf:source>
 	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/gnd">
 	    <rdfs:label>Gemeinsame Normdatei</rdfs:label>
+	    <bf:code>gnd</bf:code>
 	  </madsrdf:Authority>
 	</bf:source>
       </bf:Place>
@@ -680,15 +684,9 @@
       </bf:GenreForm>
     </bf:genreForm>
     <bf:genreForm>
-      <bf:GenreForm>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
-	<madsrdf:authoritativeLabel>Fantasy fiction</madsrdf:authoritativeLabel>
-	<bf:source>
-	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gsafd">
-	    <rdfs:label>Guidelines on subject access to individual works of fiction, drama, etc</rdfs:label>
-	  </madsrdf:Authority>
-	</bf:source>
-	<rdfs:label>Fantasy fiction</rdfs:label>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026333">
+	<rdfs:label xml:lang="en">Fantasy fiction</rdfs:label>
+	<bflc:marcKey>155  $aFantasy fiction</bflc:marcKey>
       </bf:GenreForm>
     </bf:genreForm>
     <bf:contribution>
@@ -703,6 +701,7 @@
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ill">
 	    <rdfs:label>Illustrator</rdfs:label>
+	    <bf:code>ill</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
@@ -719,6 +718,7 @@
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/pbl">
 	    <rdfs:label>Publisher</rdfs:label>
+	    <bf:code>pbl</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
@@ -734,6 +734,7 @@
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prt">
 	    <rdfs:label>Printer</rdfs:label>
+	    <bf:code>prt</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
@@ -749,6 +750,7 @@
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/tyg">
 	    <rdfs:label>Typographer</rdfs:label>
+	    <bf:code>tyg</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
@@ -764,11 +766,13 @@
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
 		<rdfs:label>transcribed</rdfs:label>
+		<bf:code>t</bf:code>
 	      </bf:Status>
 	    </bf:status>
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/tr">
 		<rdfs:label>traced</rdfs:label>
+		<bf:code>tr</bf:code>
 	      </bf:Status>
 	    </bf:status>
 	    <bf:title>
@@ -795,12 +799,21 @@
 		  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n97108433">
 		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		    <rdfs:label>Rowling, J. K.</rdfs:label>
+		    <rdfs:label xml:lang="zxx-Cyrl">Роулинг, Дж. К.</rdfs:label>
+		    <bflc:marcKey>4001 $aРоулинг, Дж. К.$7[bcp47]zxx-Cyrl</bflc:marcKey>
+		    <rdfs:label xml:lang="zxx-Hebr">רולינג, ג׳יי. קיי</rdfs:label>
+		    <bflc:marcKey>4001 $aרולינג, ג׳יי. קיי$7[bcp47]zxx-Hebr</bflc:marcKey>
+		    <rdfs:label xml:lang="zxx-Hani">罗琳, J. K.</rdfs:label>
+		    <bflc:marcKey>4001 $a罗琳, J. K.$7[bcp47]zxx-Hani</bflc:marcKey>
+		    <rdfs:label xml:lang="zxx-Arab">رولينج، چ. ك.</rdfs:label>
+		    <bflc:marcKey>4001 $aرولينج، چ. ك.$7[bcp47]zxx-Arab</bflc:marcKey>
 		    <bflc:marcKey>1001 $aRowling, J. K.</bflc:marcKey>
 		  </bf:Agent>
 		</bf:agent>
 		<bf:role>
 		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 		    <rdfs:label>Contributor</rdfs:label>
+		    <bf:code>ctb</bf:code>
 		  </bf:Role>
 		</bf:role>
 	      </bf:Contribution>
@@ -848,6 +861,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-05-04</bf:date>
@@ -863,12 +877,16 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-05-06T09:39:41</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
@@ -878,16 +896,20 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:12:30.976718-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T16:19:53.424379-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -896,11 +918,13 @@
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
 	    <rdfs:label>preliminary</rdfs:label>
+	    <bf:code>5</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -909,6 +933,9 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
@@ -916,12 +943,19 @@
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <rdfs:label>LC Copy Cataloging</rdfs:label>
+	    <bf:code>lccopycat</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d906>=906     $a 0 $b ibc $c copycat $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
@@ -934,6 +968,7 @@
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
       </bf:Issuance>
     </bf:issuance>
     <bf:provisionActivity>
@@ -943,6 +978,7 @@
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/enk">
 	    <rdfs:label xml:lang="en">England</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">enk</bf:code>
 	  </bf:Place>
 	</bf:place>
 	<bflc:simplePlace>London</bflc:simplePlace>
@@ -962,6 +998,7 @@
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/nationalbibschemes/bnb">
 	    <rdfs:label>British national bibliography</rdfs:label>
+	    <bf:code>bnb</bf:code>
 	  </bf:Source>
 	</bf:source>
       </bf:Nbn>
@@ -972,6 +1009,7 @@
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/nationalbibschemes/bnb">
 	    <rdfs:label>British national bibliography</rdfs:label>
+	    <bf:code>bnb</bf:code>
 	  </bf:Source>
 	</bf:source>
       </bf:Nbn>
@@ -982,6 +1020,7 @@
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/nationalbibschemes/bnb">
 	    <rdfs:label>British national bibliography</rdfs:label>
+	    <bf:code>bnb</bf:code>
 	  </bf:Source>
 	</bf:source>
       </bf:Nbn>
@@ -1037,11 +1076,13 @@
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
+	<bf:code>n</bf:code>
       </bf:Media>
     </bf:media>
     <bf:carrier>
       <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
 	<rdfs:label>volume</rdfs:label>
+	<bf:code>nc</bf:code>
       </bf:Carrier>
     </bf:carrier>
     <bf:note>
@@ -1060,12 +1101,21 @@
 	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n97108433">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Rowling, J. K.</rdfs:label>
+		<rdfs:label xml:lang="zxx-Arab">رولينج، چ. ك.</rdfs:label>
+		<bflc:marcKey>4001 $aرولينج، چ. ك.$7[bcp47]zxx-Arab</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Hani">罗琳, J. K.</rdfs:label>
+		<bflc:marcKey>4001 $a罗琳, J. K.$7[bcp47]zxx-Hani</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Hebr">רולינג, ג׳יי. קיי</rdfs:label>
+		<bflc:marcKey>4001 $aרולינג, ג׳יי. קיי$7[bcp47]zxx-Hebr</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Cyrl">Роулинг, Дж. К.</rdfs:label>
+		<bflc:marcKey>4001 $aРоулинг, Дж. К.$7[bcp47]zxx-Cyrl</bflc:marcKey>
 		<bflc:marcKey>1001 $aRowling, J. K.</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 		<rdfs:label>Contributor</rdfs:label>
+		<bf:code>ctb</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1082,6 +1132,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ill">
 		<rdfs:label>Illustrator</rdfs:label>
+		<bf:code>ill</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1098,6 +1149,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/pbl">
 		<rdfs:label>Publisher</rdfs:label>
+		<bf:code>pbl</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1113,6 +1165,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prt">
 		<rdfs:label>Printer</rdfs:label>
+		<bf:code>prt</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1128,6 +1181,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/tyg">
 		<rdfs:label>Typographer</rdfs:label>
+		<bf:code>tyg</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1144,6 +1198,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-05-04</bf:date>
@@ -1159,12 +1214,16 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-05-06T09:39:41</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
@@ -1174,16 +1233,20 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:12:30.976718-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T16:19:53.424379-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1192,11 +1255,13 @@
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
 	    <rdfs:label>preliminary</rdfs:label>
+	    <bf:code>5</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -1205,6 +1270,9 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
@@ -1212,12 +1280,19 @@
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <rdfs:label>LC Copy Cataloging</rdfs:label>
+	    <bf:code>lccopycat</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d906>=906     $a 0 $b ibc $c copycat $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
@@ -1231,16 +1306,19 @@
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
       </bf:Issuance>
     </bf:issuance>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/c">
 	<rdfs:label>computer</rdfs:label>
+	<bf:code>c</bf:code>
       </bf:Media>
     </bf:media>
     <bf:carrier>
       <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/cr">
 	<rdfs:label>online resource</rdfs:label>
+	<bf:code>cr</bf:code>
       </bf:Carrier>
     </bf:carrier>
     <bf:title>
@@ -1265,12 +1343,21 @@
 	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n97108433">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Rowling, J. K.</rdfs:label>
+		<rdfs:label xml:lang="zxx-Arab">رولينج، چ. ك.</rdfs:label>
+		<bflc:marcKey>4001 $aرولينج، چ. ك.$7[bcp47]zxx-Arab</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Cyrl">Роулинг, Дж. К.</rdfs:label>
+		<bflc:marcKey>4001 $aРоулинг, Дж. К.$7[bcp47]zxx-Cyrl</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Hebr">רולינג, ג׳יי. קיי</rdfs:label>
+		<bflc:marcKey>4001 $aרולינג, ג׳יי. קיי$7[bcp47]zxx-Hebr</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Hani">罗琳, J. K.</rdfs:label>
+		<bflc:marcKey>4001 $a罗琳, J. K.$7[bcp47]zxx-Hani</bflc:marcKey>
 		<bflc:marcKey>1001 $aRowling, J. K.</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 		<rdfs:label>Contributor</rdfs:label>
+		<bf:code>ctb</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1287,6 +1374,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ill">
 		<rdfs:label>Illustrator</rdfs:label>
+		<bf:code>ill</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1303,6 +1391,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/pbl">
 		<rdfs:label>Publisher</rdfs:label>
+		<bf:code>pbl</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1318,6 +1407,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prt">
 		<rdfs:label>Printer</rdfs:label>
+		<bf:code>prt</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1333,6 +1423,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/tyg">
 		<rdfs:label>Typographer</rdfs:label>
+		<bf:code>tyg</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1349,6 +1440,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-05-04</bf:date>
@@ -1364,12 +1456,16 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-05-06T09:39:41</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
@@ -1379,16 +1475,20 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:12:30.976718-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T16:19:53.424379-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1399,6 +1499,9 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
@@ -1407,22 +1510,31 @@
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
 	    <rdfs:label>preliminary</rdfs:label>
+	    <bf:code>5</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <rdfs:label>LC Copy Cataloging</rdfs:label>
+	    <bf:code>lccopycat</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d906>=906     $a 0 $b ibc $c copycat $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
@@ -1436,16 +1548,19 @@
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
       </bf:Issuance>
     </bf:issuance>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/c">
 	<rdfs:label>computer</rdfs:label>
+	<bf:code>c</bf:code>
       </bf:Media>
     </bf:media>
     <bf:carrier>
       <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/cr">
 	<rdfs:label>online resource</rdfs:label>
+	<bf:code>cr</bf:code>
       </bf:Carrier>
     </bf:carrier>
     <bf:title>
@@ -1470,12 +1585,21 @@
 	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n97108433">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Rowling, J. K.</rdfs:label>
+		<rdfs:label xml:lang="zxx-Cyrl">Роулинг, Дж. К.</rdfs:label>
+		<bflc:marcKey>4001 $aРоулинг, Дж. К.$7[bcp47]zxx-Cyrl</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Hani">罗琳, J. K.</rdfs:label>
+		<bflc:marcKey>4001 $a罗琳, J. K.$7[bcp47]zxx-Hani</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Arab">رولينج، چ. ك.</rdfs:label>
+		<bflc:marcKey>4001 $aرولينج، چ. ك.$7[bcp47]zxx-Arab</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Hebr">רולינג, ג׳יי. קיי</rdfs:label>
+		<bflc:marcKey>4001 $aרולינג, ג׳יי. קיי$7[bcp47]zxx-Hebr</bflc:marcKey>
 		<bflc:marcKey>1001 $aRowling, J. K.</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 		<rdfs:label>Contributor</rdfs:label>
+		<bf:code>ctb</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1492,6 +1616,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ill">
 		<rdfs:label>Illustrator</rdfs:label>
+		<bf:code>ill</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1508,6 +1633,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/pbl">
 		<rdfs:label>Publisher</rdfs:label>
+		<bf:code>pbl</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1523,6 +1649,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prt">
 		<rdfs:label>Printer</rdfs:label>
+		<bf:code>prt</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1538,6 +1665,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/tyg">
 		<rdfs:label>Typographer</rdfs:label>
+		<bf:code>tyg</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1554,6 +1682,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-05-04</bf:date>
@@ -1569,12 +1698,16 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-05-06T09:39:41</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
@@ -1584,16 +1717,20 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:12:30.976718-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T16:19:53.424379-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1604,6 +1741,9 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
@@ -1612,22 +1752,31 @@
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
 	    <rdfs:label>preliminary</rdfs:label>
+	    <bf:code>5</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <rdfs:label>LC Copy Cataloging</rdfs:label>
+	    <bf:code>lccopycat</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d906>=906     $a 0 $b ibc $c copycat $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
@@ -1641,6 +1790,7 @@
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
       </bf:Issuance>
     </bf:issuance>
     <bf:title>
@@ -1656,6 +1806,7 @@
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
+	<bf:code>n</bf:code>
       </bf:Media>
     </bf:media>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
@@ -1669,12 +1820,21 @@
 	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n97108433">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Rowling, J. K.</rdfs:label>
+		<rdfs:label xml:lang="zxx-Cyrl">Роулинг, Дж. К.</rdfs:label>
+		<bflc:marcKey>4001 $aРоулинг, Дж. К.$7[bcp47]zxx-Cyrl</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Hebr">רולינג, ג׳יי. קיי</rdfs:label>
+		<bflc:marcKey>4001 $aרולינג, ג׳יי. קיי$7[bcp47]zxx-Hebr</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Hani">罗琳, J. K.</rdfs:label>
+		<bflc:marcKey>4001 $a罗琳, J. K.$7[bcp47]zxx-Hani</bflc:marcKey>
+		<rdfs:label xml:lang="zxx-Arab">رولينج، چ. ك.</rdfs:label>
+		<bflc:marcKey>4001 $aرولينج، چ. ك.$7[bcp47]zxx-Arab</bflc:marcKey>
 		<bflc:marcKey>1001 $aRowling, J. K.</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 		<rdfs:label>Contributor</rdfs:label>
+		<bf:code>ctb</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1691,6 +1851,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ill">
 		<rdfs:label>Illustrator</rdfs:label>
+		<bf:code>ill</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1707,6 +1868,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/pbl">
 		<rdfs:label>Publisher</rdfs:label>
+		<bf:code>pbl</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1722,6 +1884,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prt">
 		<rdfs:label>Printer</rdfs:label>
+		<bf:code>prt</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1737,6 +1900,7 @@
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/tyg">
 		<rdfs:label>Typographer</rdfs:label>
+		<bf:code>tyg</bf:code>
 	      </bf:Role>
 	    </bf:role>
 	  </bf:Contribution>
@@ -1753,6 +1917,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-05-04</bf:date>
@@ -1768,12 +1933,16 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-05-06T09:39:41</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
@@ -1783,16 +1952,20 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:12:30.976718-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T16:19:53.424379-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1803,6 +1976,9 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
@@ -1811,22 +1987,31 @@
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
 	    <rdfs:label>preliminary</rdfs:label>
+	    <bf:code>5</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aUKM$beng$cUKM$dNLGGC$dYDXCP$dOCLCQ$dDEBBG$dCUS$dNZQPM$dOCL$dEUM$dOCL$dBLBSF$dFUG$dOCLCA$dOCLCQ$dAUMCS$dOCLCO$dAUMCS$dOCLCA$dOCLCQ$dOCLCO$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
 	    <rdfs:label>LC Copy Cataloging</rdfs:label>
+	    <bf:code>lccopycat</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d906>=906     $a 0 $b ibc $c copycat $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>

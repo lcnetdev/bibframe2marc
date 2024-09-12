@@ -4,6 +4,7 @@
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
 	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
       </bf:Issuance>
     </bf:issuance>
     <bf:provisionActivity>
@@ -13,6 +14,7 @@
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/it">
 	    <rdfs:label xml:lang="en">Italy</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">it</bf:code>
 	  </bf:Place>
 	</bf:place>
 	<bflc:simplePlace>Bologna, Italy</bflc:simplePlace>
@@ -24,6 +26,7 @@
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 	<rdfs:label>unmediated</rdfs:label>
+	<bf:code>n</bf:code>
       </bf:Media>
     </bf:media>
     <bf:identifiedBy>
@@ -61,6 +64,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1991-04-04</bf:date>
@@ -68,6 +72,9 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
       </bf:AdminMetadata>
@@ -77,12 +84,16 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1995-03-22T11:07:35</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
@@ -92,12 +103,16 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
@@ -110,11 +125,13 @@
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
+	    <bf:code>f</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -123,6 +140,9 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
@@ -139,17 +159,20 @@
     <bf:content>
       <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
 	<rdfs:label>text</rdfs:label>
+	<bf:code>txt</bf:code>
       </bf:Content>
     </bf:content>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	<rdfs:label xml:lang="en">English</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
       </bf:Language>
     </bf:language>
     <bf:illustrativeContent>
       <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
 	<rdfs:label>Illustrations</rdfs:label>
+	<bf:code>ill</bf:code>
       </bf:Illustration>
     </bf:illustrativeContent>
     <bf:genreForm>
@@ -161,6 +184,7 @@
     <bf:geographicCoverage>
       <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/t">
 	<rdfs:label xml:lang="en">Antarctic Ocean | Antarctica</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">t</bf:code>
       </bf:GeographicCoverage>
     </bf:geographicCoverage>
     <bf:classification>
@@ -170,11 +194,15 @@
 	<bf:assigner>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:assigner>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/uba">
 	    <rdfs:label>used by assigner</rdfs:label>
+	    <bf:code>uba</bf:code>
 	  </bf:Status>
 	</bf:status>
       </bf:ClassificationLcc>
@@ -191,6 +219,9 @@
 	<bf:assigner>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:assigner>
       </bf:ClassificationDdc>
@@ -328,6 +359,7 @@
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 	    <rdfs:label>Contributor</rdfs:label>
+	    <bf:code>ctb</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
@@ -344,6 +376,7 @@
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 	    <rdfs:label>Contributor</rdfs:label>
+	    <bf:code>ctb</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
@@ -360,6 +393,7 @@
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 	    <rdfs:label>Contributor</rdfs:label>
+	    <bf:code>ctb</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
@@ -375,6 +409,7 @@
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
 		<rdfs:label>transcribed</rdfs:label>
+		<bf:code>t</bf:code>
 	      </bf:Status>
 	    </bf:status>
 	    <bf:title>
@@ -396,6 +431,7 @@
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/relatedwork">
 	    <rdfs:label>related work</rdfs:label>
+	    <bf:code>relatedwork</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
@@ -418,6 +454,7 @@
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/relatedwork">
 	    <rdfs:label>related work</rdfs:label>
+	    <bf:code>relatedwork</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
@@ -455,6 +492,7 @@
 		<bf:role>
 		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 		    <rdfs:label>Contributor</rdfs:label>
+		    <bf:code>ctb</bf:code>
 		  </bf:Role>
 		</bf:role>
 	      </bf:Contribution>
@@ -471,6 +509,7 @@
 		<bf:role>
 		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
 		    <rdfs:label>Contributor</rdfs:label>
+		    <bf:code>ctb</bf:code>
 		  </bf:Role>
 		</bf:role>
 	      </bf:Contribution>
@@ -506,6 +545,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1991-04-04</bf:date>
@@ -513,6 +553,9 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
       </bf:AdminMetadata>
@@ -522,12 +565,16 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1995-03-22T11:07:35</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:descriptionModifier>
       </bf:AdminMetadata>
@@ -537,12 +584,16 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
@@ -555,11 +606,13 @@
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
+	    <bf:code>f</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -568,6 +621,9 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
