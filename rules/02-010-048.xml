@@ -1081,7 +1081,7 @@
             <transform>
               <xsl:variable name="modifierCodePreNS">
                 <marc:codes>
-                  <xsl:for-each select="$df040sfs//marc:subfield[@code='d']">
+                  <xsl:for-each select="$df040sfs//marc:subfield[@code='d' and .!='']">
                     <marc:modifierCode><xsl:value-of select="." /></marc:modifierCode>
                   </xsl:for-each>
                   <xsl:for-each select="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']]">
