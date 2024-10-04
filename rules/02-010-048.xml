@@ -1692,10 +1692,11 @@
   <df tag="043">
     <context xpath="bf:Work/bf:geographicCoverage[
                       contains(@rdf:resource,'id.loc.gov/vocabulary/geographicAreas') or
-                      contains(bf:GeographicCoverage/@rdf:about,'id.loc.gov/vocabulary/geographicAreas') or
-                      bf:GeographicCoverage/rdf:value or 
-                      bf:GeographicCoverage/madsrdf:code  or 
-                      madsrdf:Geographic/madsrdf:code]">
+                      contains(bf:GeographicCoverage/@rdf:about,'id.loc.gov/vocabulary/geographicAreas') or 
+                      bf:GeographicCoverage/madsrdf:code or
+                      bf:GeographicCoverage/bf:code or
+                      madsrdf:Geographic/madsrdf:code or 
+                      bf:GeographicCoverage/rdf:value]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <var name="vUri">
@@ -1705,6 +1706,14 @@
         </switch>
       </var>
       <switch>
+        <case test="*/bf:code">
+          <sf code="a"><select xpath="*/bf:code" /></sf>
+          <switch>
+            <case test="*/@rdf:about">
+              <sf code="0"><transform><xsl:value-of select="*/@rdf:about"/></transform></sf>
+            </case>
+          </switch>
+        </case>
         <case test="*/madsrdf:code">
           <sf code="a"><select xpath="*/madsrdf:code" /></sf>
           <switch>
