@@ -1572,6 +1572,7 @@
                     <xsl:when test="$v008Format='BK'">
                       <xsl:choose>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026047' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026047']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026085' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026085']">a</xsl:when>
                         <xsl:when test="bf:Work/bf:note/bf:Note/rdfs:label[contains(., 'Contains biographical information')]">d</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026049' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026049']">b</xsl:when>
                         <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
