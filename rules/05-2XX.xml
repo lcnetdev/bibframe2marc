@@ -1019,10 +1019,10 @@
                 <xsl:for-each select="bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                   <marc:subfield code='a'>
                     <xsl:value-of select="." />
-                    <xsl:if test="following-sibling::bflc:simplePlace[not(@xml:lang)]"><xsl:text> ;</xsl:text></xsl:if>
+                    <xsl:if test="following-sibling::bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text> ;</xsl:text></xsl:if>
                     <xsl:if test="position() = last()">
-                      <xsl:if test="../bflc:simpleAgent[not(@xml:lang)]"><xsl:text> :</xsl:text></xsl:if>
-                      <xsl:if test="not(../bflc:simpleAgent[not(@xml:lang)]) and ../bflc:simpleDate[not(@xml:lang)]"><xsl:text> ,</xsl:text></xsl:if>
+                      <xsl:if test="../bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text> :</xsl:text></xsl:if>
+                      <xsl:if test="not(../bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]) and ../bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text> ,</xsl:text></xsl:if>
                     </xsl:if>
                   </marc:subfield>
                 </xsl:for-each>
@@ -1056,9 +1056,9 @@
                 <xsl:for-each select="bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                   <marc:subfield code='b'>
                     <xsl:value-of select="." />
-                    <xsl:if test="following-sibling::bflc:simpleAgent[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                    <xsl:if test="following-sibling::bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text>,</xsl:text></xsl:if>
                     <xsl:if test="position() = last()">
-                      <xsl:if test="../bflc:simpleDate[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                      <xsl:if test="../bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text>,</xsl:text></xsl:if>
                     </xsl:if>
                   </marc:subfield>
                 </xsl:for-each>
@@ -1081,7 +1081,7 @@
                 <xsl:for-each select="bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                   <marc:subfield code='c'>
                     <xsl:value-of select="." />
-                    <xsl:if test="following-sibling::bflc:simpleDate[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                    <xsl:if test="following-sibling::bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text>,</xsl:text></xsl:if>
                     <xsl:if test="position() = last()">
                         <xsl:variable name="vEndsWith">
                             <xsl:call-template name="tEndsWith">
