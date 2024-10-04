@@ -967,14 +967,16 @@
     </var>
     <var name="v880Script">
       <switch>
-        <case test="bflc:simplePlace/@xml:lang and not(contains(translate(bflc:simplePlace/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
+        <case test="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang">
+          <var name="vLangTag" xpath="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang" />
           <lookup map="df880script" targetField="code">
-            <lookupField name="lang" xpath="translate(substring-after(bflc:simplePlace/@xml:lang,'-'),$upper,$lower)"/>
+            <lookupField name="lang" xpath="translate(substring-after($vLangTag,'-'),$upper,$lower)"/>
           </lookup>
         </case>
-        <case test="bf:place/*/rdfs:label/@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
+        <case test="bf:place/*/rdfs:labe[@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang">
+          <var name="vLangTag" xpath="bf:place/*/rdfs:labe[@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang" />
           <lookup map="df880script" targetField="code">
-            <lookupField name="lang" xpath="translate(substring-after(bf:place/*/rdfs:label/@xml:lang,'-'),$upper,$lower)"/>
+            <lookupField name="lang" xpath="translate(substring-after($vLangTag,'-'),$upper,$lower)"/>
           </lookup>
         </case>
       </switch>
