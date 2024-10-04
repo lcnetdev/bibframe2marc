@@ -1541,6 +1541,7 @@
       <ind1 default="0"/>
       <ind2 default=" ">
         <switch>
+          <case test="$vLinkTagFromWork2 != '780' and $vLinkTagFromWork2 != '785'">8</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuedinpart') or contains(bf:Relationship/@rdf:about, 'continuedinpart')]">1</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuationof') or contains(bf:Relationship/@rdf:about, 'continuationof')]">0</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continues') or contains(bf:Relationship/@rdf:about, 'continues')]">0</case>
