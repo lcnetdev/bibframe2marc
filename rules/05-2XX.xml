@@ -1083,15 +1083,24 @@
                     <xsl:value-of select="." />
                     <xsl:if test="following-sibling::bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text>,</xsl:text></xsl:if>
                     <xsl:if test="position() = last()">
-                        <xsl:variable name="vEndsWith">
-                            <xsl:call-template name="tEndsWith">
-                                <xsl:with-param name="pStr" select="."/>
-                                <xsl:with-param name="pEndChar" select="'.'"/>
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:if test="$vEndsWith = '0'">
-                            <xsl:text>.</xsl:text>
-                        </xsl:if>
+                      <xsl:variable name="vEndsWithBracket">
+                        <xsl:call-template name="tEndsWith">
+                          <xsl:with-param name="pStr" select="."/>
+                          <xsl:with-param name="pEndChar" select="']'"/>
+                        </xsl:call-template>
+                      </xsl:variable>
+                      <xsl:variable name="vEndsWithPeriod">
+                        <xsl:call-template name="tEndsWith">
+                          <xsl:with-param name="pStr" select="."/>
+                          <xsl:with-param name="pEndChar" select="'.'"/>
+                        </xsl:call-template>
+                      </xsl:variable>
+                      <xsl:choose>
+                        <xsl:when test="$vEndsWithBracket = '1'" />
+                        <xsl:when test="$vEndsWithPeriod = '0'">
+                          <xsl:text>.</xsl:text>
+                        </xsl:when>
+                      </xsl:choose>
                     </xsl:if>
                   </marc:subfield>
                 </xsl:for-each>
@@ -1196,15 +1205,24 @@
                         <xsl:value-of select="." />
                         <xsl:if test="following-sibling::bflc:simpleDate[@xml:lang]"><xsl:text>,</xsl:text></xsl:if>
                         <xsl:if test="position() = last()">
-                            <xsl:variable name="vEndsWith">
-                                <xsl:call-template name="tEndsWith">
-                                    <xsl:with-param name="pStr" select="."/>
-                                    <xsl:with-param name="pEndChar" select="'.'"/>
-                                </xsl:call-template>
-                            </xsl:variable>
-                            <xsl:if test="$vEndsWith = '0'">
-                                <xsl:text>.</xsl:text>
-                            </xsl:if>
+                          <xsl:variable name="vEndsWithBracket">
+                            <xsl:call-template name="tEndsWith">
+                              <xsl:with-param name="pStr" select="."/>
+                              <xsl:with-param name="pEndChar" select="']'"/>
+                            </xsl:call-template>
+                          </xsl:variable>
+                          <xsl:variable name="vEndsWithPeriod">
+                            <xsl:call-template name="tEndsWith">
+                              <xsl:with-param name="pStr" select="."/>
+                              <xsl:with-param name="pEndChar" select="'.'"/>
+                            </xsl:call-template>
+                          </xsl:variable>
+                          <xsl:choose>
+                            <xsl:when test="$vEndsWithBracket = '1'" />
+                            <xsl:when test="$vEndsWithPeriod = '0'">
+                              <xsl:text>.</xsl:text>
+                            </xsl:when>
+                          </xsl:choose>
                         </xsl:if>
                       </marc:subfield>
                     </xsl:for-each>
