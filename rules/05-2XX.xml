@@ -784,7 +784,7 @@
             <case test="ancestor::bf:Instance/bf:editionStatement[not(@xml:lang)]">
               <sf code="6"><transform><xsl:value-of select="concat('250-24/',$v880Script)"/></transform></sf>    
             </case>
-            <case test="default"><sf code="6"><transform><xsl:value-of select="concat('250-00/',$v880Script)"/></transform></sf></case>
+            <case test="default"><sf code="6"><transform><xsl:value-of select="concat('250-25/',$v880Script)"/></transform></sf></case>
           </switch>
           <sf code="a" chopPunct="false">
             <transform>
@@ -967,14 +967,16 @@
     </var>
     <var name="v880Script">
       <switch>
-        <case test="bflc:simplePlace/@xml:lang and not(contains(translate(bflc:simplePlace/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
+        <case test="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang">
+          <var name="vLangTag" xpath="bflc:simplePlace[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang" />
           <lookup map="df880script" targetField="code">
-            <lookupField name="lang" xpath="translate(substring-after(bflc:simplePlace/@xml:lang,'-'),$upper,$lower)"/>
+            <lookupField name="lang" xpath="translate(substring-after($vLangTag,'-'),$upper,$lower)"/>
           </lookup>
         </case>
-        <case test="bf:place/*/rdfs:label/@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
+        <case test="bf:place/*/rdfs:labe[@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang">
+          <var name="vLangTag" xpath="bf:place/*/rdfs:labe[@xml:lang and not(contains(translate(bf:place/*/rdfs:label/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang" />
           <lookup map="df880script" targetField="code">
-            <lookupField name="lang" xpath="translate(substring-after(bf:place/*/rdfs:label/@xml:lang,'-'),$upper,$lower)"/>
+            <lookupField name="lang" xpath="translate(substring-after($vLangTag,'-'),$upper,$lower)"/>
           </lookup>
         </case>
       </switch>
@@ -1017,10 +1019,10 @@
                 <xsl:for-each select="bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                   <marc:subfield code='a'>
                     <xsl:value-of select="." />
-                    <xsl:if test="following-sibling::bflc:simplePlace[not(@xml:lang)]"><xsl:text> ;</xsl:text></xsl:if>
+                    <xsl:if test="following-sibling::bflc:simplePlace[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text> ;</xsl:text></xsl:if>
                     <xsl:if test="position() = last()">
-                      <xsl:if test="../bflc:simpleAgent[not(@xml:lang)]"><xsl:text> :</xsl:text></xsl:if>
-                      <xsl:if test="not(../bflc:simpleAgent[not(@xml:lang)]) and ../bflc:simpleDate[not(@xml:lang)]"><xsl:text> ,</xsl:text></xsl:if>
+                      <xsl:if test="../bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text> :</xsl:text></xsl:if>
+                      <xsl:if test="not(../bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]) and ../bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text> ,</xsl:text></xsl:if>
                     </xsl:if>
                   </marc:subfield>
                 </xsl:for-each>
@@ -1054,9 +1056,9 @@
                 <xsl:for-each select="bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                   <marc:subfield code='b'>
                     <xsl:value-of select="." />
-                    <xsl:if test="following-sibling::bflc:simpleAgent[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                    <xsl:if test="following-sibling::bflc:simpleAgent[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text>,</xsl:text></xsl:if>
                     <xsl:if test="position() = last()">
-                      <xsl:if test="../bflc:simpleDate[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                      <xsl:if test="../bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text>,</xsl:text></xsl:if>
                     </xsl:if>
                   </marc:subfield>
                 </xsl:for-each>
@@ -1079,17 +1081,26 @@
                 <xsl:for-each select="bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                   <marc:subfield code='c'>
                     <xsl:value-of select="." />
-                    <xsl:if test="following-sibling::bflc:simpleDate[not(@xml:lang)]"><xsl:text>,</xsl:text></xsl:if>
+                    <xsl:if test="following-sibling::bflc:simpleDate[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text>,</xsl:text></xsl:if>
                     <xsl:if test="position() = last()">
-                        <xsl:variable name="vEndsWith">
-                            <xsl:call-template name="tEndsWith">
-                                <xsl:with-param name="pStr" select="."/>
-                                <xsl:with-param name="pEndChar" select="'.'"/>
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:if test="$vEndsWith = '0'">
-                            <xsl:text>.</xsl:text>
-                        </xsl:if>
+                      <xsl:variable name="vEndsWithBracket">
+                        <xsl:call-template name="tEndsWith">
+                          <xsl:with-param name="pStr" select="."/>
+                          <xsl:with-param name="pEndChar" select="']'"/>
+                        </xsl:call-template>
+                      </xsl:variable>
+                      <xsl:variable name="vEndsWithPeriod">
+                        <xsl:call-template name="tEndsWith">
+                          <xsl:with-param name="pStr" select="."/>
+                          <xsl:with-param name="pEndChar" select="'.'"/>
+                        </xsl:call-template>
+                      </xsl:variable>
+                      <xsl:choose>
+                        <xsl:when test="$vEndsWithBracket = '1'" />
+                        <xsl:when test="$vEndsWithPeriod = '0'">
+                          <xsl:text>.</xsl:text>
+                        </xsl:when>
+                      </xsl:choose>
                     </xsl:if>
                   </marc:subfield>
                 </xsl:for-each>
@@ -1194,15 +1205,24 @@
                         <xsl:value-of select="." />
                         <xsl:if test="following-sibling::bflc:simpleDate[@xml:lang]"><xsl:text>,</xsl:text></xsl:if>
                         <xsl:if test="position() = last()">
-                            <xsl:variable name="vEndsWith">
-                                <xsl:call-template name="tEndsWith">
-                                    <xsl:with-param name="pStr" select="."/>
-                                    <xsl:with-param name="pEndChar" select="'.'"/>
-                                </xsl:call-template>
-                            </xsl:variable>
-                            <xsl:if test="$vEndsWith = '0'">
-                                <xsl:text>.</xsl:text>
-                            </xsl:if>
+                          <xsl:variable name="vEndsWithBracket">
+                            <xsl:call-template name="tEndsWith">
+                              <xsl:with-param name="pStr" select="."/>
+                              <xsl:with-param name="pEndChar" select="']'"/>
+                            </xsl:call-template>
+                          </xsl:variable>
+                          <xsl:variable name="vEndsWithPeriod">
+                            <xsl:call-template name="tEndsWith">
+                              <xsl:with-param name="pStr" select="."/>
+                              <xsl:with-param name="pEndChar" select="'.'"/>
+                            </xsl:call-template>
+                          </xsl:variable>
+                          <xsl:choose>
+                            <xsl:when test="$vEndsWithBracket = '1'" />
+                            <xsl:when test="$vEndsWithPeriod = '0'">
+                              <xsl:text>.</xsl:text>
+                            </xsl:when>
+                          </xsl:choose>
                         </xsl:if>
                       </marc:subfield>
                     </xsl:for-each>

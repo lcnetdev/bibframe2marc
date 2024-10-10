@@ -796,12 +796,12 @@
   
   <!-- 
     This handles patterns for what will become a Name added entry or Name/Title, Title Entry.
-    No URIs for Hubs or Agents.
+    No URIs for Hubs or Agents.  No marcKeys.
   -->
   <df tag="$vAddEntryTag" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
-                    bf:Work/bf:relation/bf:Relation/bf:associatedResource/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
-                    bf:Work/bf:relatedTo/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/* |
+                    bf:Work/bf:relation/bf:Relation/bf:associatedResource/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey) and not(bf:hasInstance)]/bf:contribution/*/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
+                    bf:Work/bf:relatedTo/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey) and not(bf:hasInstance)]/bf:contribution/*/bf:agent/* |
                     bf:Work/bf:hasPart/bf:*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)]/bf:contribution/*/bf:agent/* |
                     bf:Instance/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
                     //bf:Item/bf:contribution/*[not(local-name()='PrimaryContribution') and not(rdf:type[contains(@rdf:resource, '/PrimaryContribution')])]/bf:agent/*[(not(contains(@rdf:about, 'id.loc.gov')) or contains(@rdf:about, 'REPLACE')) and not(bflc:marcKey)] |
@@ -1609,6 +1609,7 @@
       <ind1 default="0"/>
       <ind2 default=" ">
         <switch>
+          <case test="$vLinkTagFromWork2 != '780' and $vLinkTagFromWork2 != '785'">8</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuedinpart') or contains(bf:Relationship/@rdf:about, 'continuedinpart')]">1</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuationof') or contains(bf:Relationship/@rdf:about, 'continuationof')]">0</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continues') or contains(bf:Relationship/@rdf:about, 'continues')]">0</case>

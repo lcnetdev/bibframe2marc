@@ -1431,7 +1431,7 @@
                 <xsl:variable name="v008-31">
                   <xsl:choose>
                     <xsl:when test="bf:Instance/bf:supplementaryContent/*[contains(rdfs:label,'index')]">1</xsl:when>
-                    <xsl:otherwise>|</xsl:otherwise>
+                    <xsl:otherwise><xsl:value-of select="'0'"/></xsl:otherwise>
                   </xsl:choose>
                 </xsl:variable>
                 <xsl:value-of select="$v008-31"/>
@@ -1502,15 +1502,24 @@
                     <xsl:when test="$v008Format='BK'">
                       <xsl:choose>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026339' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026339']">1</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/madsrdf:authoritativeLabel[contains(., 'fiction')]">1</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/rdfs:label[contains(., 'fiction')]">1</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026297' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026297']">d</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026094' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026094']">e</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2015026020' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2015026020']">f</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026110' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026110']">h</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/madsrdf:authoritativeLabel[contains(., 'Humor')]">h</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/rdfs:label[contains(., 'Humor')]">h</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026141' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026141']">i</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026054' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026054']">i</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026542' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026542']">j</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026339' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026339']">m</xsl:when>
+                        <!-- <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026339' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026339']">m</xsl:when> -->
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026481' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026481']">p</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/madsrdf:authoritativeLabel[contains(., 'poetry')]">p</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/rdfs:label[contains(., 'poetry')]">p</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026363' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026363']">s</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/madsrdf:authoritativeLabel[contains(., 'speeches')]">s</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/rdfs:label[contains(., 'speeches')]">s</xsl:when>
                         <xsl:otherwise>0</xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
@@ -1563,8 +1572,10 @@
                     <xsl:when test="$v008Format='BK'">
                       <xsl:choose>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026047' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026047']">a</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026049' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026049']">d</xsl:when>
-                        <xsl:otherwise>|</xsl:otherwise>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026085' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026085']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:note/bf:Note/rdfs:label[contains(., 'Contains biographical information')]">d</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026049' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026049']">b</xsl:when>
+                        <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                     <xsl:when test="$v008Format='CR'">
@@ -1574,7 +1585,7 @@
                             <xsl:when test="contains(translate(rdfs:label,$upper,$lower),'successive')">0</xsl:when>
                             <xsl:when test="contains(translate(rdfs:label,$upper,$lower),'latest')">1</xsl:when>
                             <xsl:when test="contains(translate(rdfs:label,$upper,$lower),'integrated')">2</xsl:when>
-                            <xsl:otherwise>|</xsl:otherwise>
+                            <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                           </xsl:choose>
                         </xsl:if>
                       </xsl:for-each>
@@ -1586,7 +1597,7 @@
                         <xsl:when test="bf:Work/bflc:movingImageTechnique[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/animlive' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/animlive']">c</xsl:when>
                         <xsl:when test="bf:Work/bflc:movingImageTechnique[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/live' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/live']">l</xsl:when>
                         <xsl:when test="bf:Work/bflc:movingImageTechnique[@rdf:resource='http://id.loc.gov/vocabulary/mtechnique/other' or */@rdf:about='http://id.loc.gov/vocabulary/mtechnique/other']">z</xsl:when>
-                        <xsl:otherwise>|</xsl:otherwise>
+                        <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
                   </xsl:choose>
