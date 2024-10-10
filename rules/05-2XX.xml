@@ -282,7 +282,7 @@
       </ind2>
       <switch>
         <case test="count(bf:mainTitle)=2 and bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
-          <sf code="6">880-01</sf>
+          <sf code="6">880-02</sf>
         </case>
       </switch>
       <sf code="a" chopPunct="true" repeatable="false">
@@ -520,7 +520,7 @@
           <sf code="6">
             <switch>
               <case test="$v880Script != ''">
-                <transform><xsl:value-of select="concat('245-01/',$v880Script)"/></transform>
+                <transform><xsl:value-of select="concat('245-02/',$v880Script)"/></transform>
               </case>
               <case test="default">245-01</case>
             </switch>
@@ -782,7 +782,7 @@
           <ind2 default=" "/>
           <switch>
             <case test="ancestor::bf:Instance/bf:editionStatement[not(@xml:lang)]">
-              <sf code="6"><transform><xsl:value-of select="concat('250-25/',$v880Script)"/></transform></sf>    
+              <sf code="6"><transform><xsl:value-of select="concat('250-24/',$v880Script)"/></transform></sf>    
             </case>
             <case test="default"><sf code="6"><transform><xsl:value-of select="concat('250-25/',$v880Script)"/></transform></sf></case>
           </switch>
@@ -810,7 +810,7 @@
           <ind2 default=" "/>
           <switch>
             <case test="ancestor::bf:Instance/bf:editionStatement[@xml:lang]">
-              <sf code="6"><transform><xsl:value-of select="'880-25'"/></transform></sf>    
+              <sf code="6"><transform><xsl:value-of select="'880-24'"/></transform></sf>    
             </case>
           </switch>
           <sf code="a" chopPunct="false">
@@ -982,10 +982,10 @@
       </switch>
     </var>
     <var name="v880Occurence">
-      <transform><xsl:value-of select="10+position()"/></transform>
+      <transform><xsl:value-of select="30+position()"/></transform>
     </var>
     <switch>
-      <case test="$v880Occurence &lt; 21">
+      <case test="$v880Occurence &lt; 41">
         <df tag="264">
           <ind1 default=" ">
             <switch>
