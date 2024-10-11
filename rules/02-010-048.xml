@@ -1122,13 +1122,15 @@
                         </xsl:when>
                       </xsl:choose>
                   </xsl:variable>
-                  <marc:modifierCode>
-                    <xsl:choose>
-                      <xsl:when test="$mCode = 'dlc'">DLC</xsl:when>
-                      <xsl:when test="$mCode = 'dlcmrc'">DLCMRC</xsl:when>
-                      <xsl:otherwise><xsl:value-of select="$mCode" /></xsl:otherwise>
-                    </xsl:choose>
-                  </marc:modifierCode>
+                  <xsl:if test="$mCode != ''">
+                    <marc:modifierCode>
+                      <xsl:choose>
+                        <xsl:when test="$mCode = 'dlc'">DLC</xsl:when>
+                        <xsl:when test="$mCode = 'dlcmrc'">DLC-MRC</xsl:when>
+                        <xsl:otherwise><xsl:value-of select="$mCode" /></xsl:otherwise>
+                      </xsl:choose>
+                    </marc:modifierCode>
+                  </xsl:if>
                 </xsl:for-each>
                 </marc:codes>
               </xsl:variable>
