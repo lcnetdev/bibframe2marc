@@ -72,9 +72,9 @@
 
     <var name="vNameVariantPreNS">
         <transform>
-          <xsl:if test="$langScript != '' and self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript)][1]">
+          <xsl:if test="$langScript != '' and self::node()/bflc:marcKey[starts-with(. , '4') and contains(@xml:lang, $langScript)][1]">
             <xsl:call-template name="tGetMiniMARCFromKey">
-              <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and contains(., $langScript)][1]"/>
+              <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and contains(@xml:lang, $langScript)][1]"/>
             </xsl:call-template>
           </xsl:if>
         </transform>
@@ -92,6 +92,7 @@
         </case>
       </switch>
     </var>
+    <transform><xsl:copy-of select="$vNameVariant" /></transform>
     
     <var name="vSourceUri">
       <switch>
