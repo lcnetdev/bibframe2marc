@@ -1858,6 +1858,46 @@
                               </switch>
                             </sf>
                           </case>
+                          <case test="
+                              (
+                                local-name()='HierarchicalGeographic' or 
+                                rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#HierarchicalGeographic'] or 
+                                local-name()='Geographic' or 
+                                rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']
+                              ) 
+                              and 
+                              (
+                                contains(madsrdf:authoritativeLabel, '--') or contains(rdfs:label, '--')
+                              )
+                              ">
+                            <!-- 
+                                We that this is a subdivision.  
+                                It is either a HierarchicalGeographic or Geographic.
+                                it has either an authoritativeLabel or rdfs:label that
+                                contains two dashses.  Let's break them into geo subdivisions.
+                                These assumes only two geo levels.
+                            -->
+                            <sf code="z" chopPunct="true">
+                              <switch>
+                                <case test="madsrdf:authoritativeLabel">
+                                  <transform><xsl:value-of select="substring-before(madsrdf:authoritativeLabel, '--')" /></transform>
+                                </case>
+                                <case test="default">
+                                  <transform><xsl:value-of select="substring-before(rdfs:label, '--')" /></transform>
+                                </case>
+                              </switch>
+                            </sf>
+                            <sf code="z" chopPunct="true">
+                              <switch>
+                                <case test="madsrdf:authoritativeLabel">
+                                  <transform><xsl:value-of select="substring-after(madsrdf:authoritativeLabel, '--')" /></transform>
+                                </case>
+                                <case test="default">
+                                  <transform><xsl:value-of select="substring-after(rdfs:label, '--')" /></transform>
+                                </case>
+                              </switch>
+                            </sf>
+                          </case>
                           <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
                             <sf code="z" chopPunct="true">
                               <switch>
