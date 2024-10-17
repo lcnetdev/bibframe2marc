@@ -127,13 +127,13 @@
     <x:expect label="245 data from transliterated properties"
               test="//marc:datafield[@tag='245']/marc:subfield[@code='a'] = 'Nei Menggu Lang Shan--Seerteng Shan shan qian huo dong duan lie dai di zhi tu'"/>
     <x:expect label="Generate 245 $6"
-              test="//marc:datafield[@tag='245']/marc:subfield[@code='6'] = '880-01'"/>
+              test="//marc:datafield[@tag='245']/marc:subfield[@code='6'] = '880-02'"/>
     <x:expect label="generate 880 from vernacular title"
               test="count(//marc:datafield[@tag='880']) = 1"/>
     <x:expect label="880 data from vernacular properties"
               test="//marc:datafield[@tag='880']/marc:subfield[@code='a'] = '内蒙古狼山--色尔滕山山前活动断裂带地质图'"/>
     <x:expect label="generate 880 $6"
-              test="//marc:datafield[@tag='880']/marc:subfield[@code='6'] = '245-01/$1'"/>
+              test="//marc:datafield[@tag='880']/marc:subfield[@code='6'] = '245-02/$1'"/>
   </x:scenario>
 
   <x:scenario label="MARC 246">
