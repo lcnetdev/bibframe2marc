@@ -196,6 +196,12 @@
     <x:expect label="008/38-39 not coded"
               test="substring(marc:record/marc:controlfield[@tag='008'],39,2)='  '"/>
   </x:scenario>
+  
+  <x:scenario label="MARC 008 - Production PA, s date">
+    <x:context href="../data/2XX/264-05.xml"/>
+    <x:expect label="008/06-14 generated from date in bf:Instance/bf:provisionActivity/bf:Production"
+      test="substring(marc:record/marc:controlfield[@tag='008'],7,9) = 's2021    '"/>
+  </x:scenario>
 
   <x:scenario label="MARC 008 - BK">
     <x:context href="../data/001-008/008-BK.xml"/>

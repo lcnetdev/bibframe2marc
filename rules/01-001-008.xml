@@ -551,7 +551,7 @@
               </select>
             </case>
             <case test="$pGenerationDatestamp != ''">
-              <transform><xsl:value-of select="translate(substring($pGenerationDatestamp,3,8),'-','')"/></transform>
+              <transform><xsl:value-of select="substring(translate($pGenerationDatestamp,'-',''), 3, 6)"/></transform>
             </case>
           </switch>
         </position>
@@ -622,6 +622,9 @@
                   </xsl:when>
                   <xsl:when test="$vPA/bf:*/bf:note/bf:Note/rdfs:label = 'bulk collection dates'">
                     <xsl:value-of select="translate(concat('k', translate($date1, '/', '')), 'X', 'u')"></xsl:value-of>
+                  </xsl:when>
+                  <xsl:when test="string-length($date1) = 4">
+                    <xsl:value-of select="translate(concat('s', $date1, '    '), 'X', 'u')" />
                   </xsl:when>
                 </xsl:choose>
               </transform>
