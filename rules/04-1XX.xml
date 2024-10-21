@@ -43,38 +43,23 @@
         <case test="$vNameTag='111'">acdegnq</case>
       </switch>
     </var>
-    
-    <!--
-      Get the languages.  
-      Get the first one that is not english or mul or zxx or und.
-      Does the language type map to a script?
-        E.g. /heb -> Hebr
-             /rus -> Cyrl
-             /jap -> Japn
-             /kor -> Kore, Hang
-      If 'yes,' then is there a marcKey that begins with a 4 and contains this script code in it?
-      If 'yes,' we have the makings of an 880 pair.
-          The 1XX will need a $6.
-          And the 880 will need to be created from the 4XX marcKey.
-    -->
-    <var name="mainLangs" xpath="
-      ancestor::bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]//@rdf:about[contains(., 'id.loc.gov/vocabulary/languages')] | 
-      ancestor::bf:Work/bf:language/@rdf:resource[contains(., 'id.loc.gov/vocabulary/languages')]" />
-    <var name="mainLang" xpath="$mainLangs[1]" />
-    <var name="langScript">
+
+    <var name="v880Script">
       <switch>
-        <case test="ends-with($mainLang, '/ara')">-Arab</case>
-        <case test="ends-with($mainLang, '/heb')">-Hebr</case>
-        <case test="ends-with($mainLang, '/kor')">-Hang</case>
-        <case test="ends-with($mainLang, '/rus')">-Cyrl</case>
+        <case test="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang">
+          <var name="vLangTag" xpath="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
+          <lookup map="df880script" targetField="code">
+            <lookupField name="lang" xpath="translate(substring-after($vLangTag,'-'),$upper,$lower)"/>
+          </lookup>
+        </case>
       </switch>
     </var>
 
     <var name="vNameVariantPreNS">
         <transform>
-          <xsl:if test="$langScript != '' and self::node()/bflc:marcKey[starts-with(. , '4') and contains(@xml:lang, $langScript)][1]">
+          <xsl:if test="$v880Script != '' and self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]">
             <xsl:call-template name="tGetMiniMARCFromKey">
-              <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and contains(@xml:lang, $langScript)][1]"/>
+              <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]"/>
             </xsl:call-template>
           </xsl:if>
         </transform>
@@ -92,7 +77,6 @@
         </case>
       </switch>
     </var>
-    <transform><xsl:copy-of select="$vNameVariant" /></transform>
     
     <var name="vSourceUri">
       <switch>
@@ -290,11 +274,6 @@
             </switch>
           </ind1>
           <ind2 default=" "/>
-          <var name="v880Script">
-            <lookup map="df880script" targetField="code">
-              <lookupField name="lang" xpath="translate(substring-after($langScript, '-'),$upper,$lower)"/>
-            </lookup>
-          </var>
           <sf code="6"><transform><xsl:value-of select="concat($vNameTag, '-0', position(), '/', $v880Script)"/></transform></sf>
           <transform>
             <xsl:for-each select="$vNameVariant//marc:datafield[@tag=$vNameTag]/marc:subfield[contains($vAuthSubfields,@code)]">
