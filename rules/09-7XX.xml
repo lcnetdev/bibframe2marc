@@ -181,29 +181,27 @@
           <case test="$vAddedEntryNameMarcKeyTag='711'">acdegnq</case>
         </switch>
       </var>
+    
+    <var name="v880Script">
+      <switch>
+        <case test="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang">
+          <var name="vLangTag" xpath="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
+          <lookup map="df880script" targetField="code">
+            <lookupField name="lang" xpath="translate(substring-after($vLangTag,'-'),$upper,$lower)"/>
+          </lookup>
+        </case>
+      </switch>
+    </var>
       
-      <var name="mainLangs" xpath="
-        ancestor::bf:Work/bf:language/@rdf:resource[contains(., 'id.loc.gov/vocabulary/languages')] |
-        ancestor::bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]//@rdf:about[contains(., 'id.loc.gov/vocabulary/languages')]" />
-      <var name="mainLang" xpath="$mainLangs[1]" />
-      <var name="langScript">
-        <switch>
-          <case test="ends-with($mainLang, '/ara')">-Arab</case>
-          <case test="ends-with($mainLang, '/heb')">-Hebr</case>
-          <case test="ends-with($mainLang, '/kor')">-Hang</case>
-          <case test="ends-with($mainLang, '/rus')">-Cyrl</case>
-        </switch>
-      </var>
-      
-      <var name="vNameVariantPreNS">
-          <transform>
-            <xsl:if test="$langScript != '' and self::node()/bflc:marcKey[starts-with(. , '4') and contains(@xml:lang, $langScript)][1]">
-              <xsl:call-template name="tGetMiniMARCFromKey">
-                <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and contains(@xml:lang, $langScript[1])][1]"/>
-              </xsl:call-template>
-            </xsl:if>
-          </transform>
-      </var>
+    <var name="vNameVariantPreNS">
+      <transform>
+        <xsl:if test="$v880Script != '' and self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]">
+          <xsl:call-template name="tGetMiniMARCFromKey">
+            <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]"/>
+          </xsl:call-template>
+        </xsl:if>
+      </transform>
+    </var>
       <var name="vNameVariant" xpath="exsl:node-set($vNameVariantPreNS)" />
     <var name="vNameVariantTag">
       <switch>
@@ -336,11 +334,6 @@
             </switch>
           </ind1>
           <ind2 default=" "/>
-          <var name="v880Script">
-            <lookup map="df880script" targetField="code">
-              <lookupField name="lang" xpath="translate(substring-after($langScript, '-'),$upper,$lower)"/>
-            </lookup>
-          </var>
           <sf code="6"><transform><xsl:value-of select="concat($vAddedEntryNameMarcKeyTag, '-7', position(), '/', $v880Script)"/></transform></sf>
           <transform>
             <xsl:for-each select="$vNameVariant//marc:datafield[@tag=$vNameVariantTag]/marc:subfield[contains($vValidSubfields,@code)]">
