@@ -257,13 +257,53 @@
                     not(*/*[local-name()='code'])]
             ">
         <!-- Subjects not referenced by URI. -->
-            <var name="vScriptSubtag">
-      <transform>
-        <xsl:call-template name="tScriptCode">
-          <xsl:with-param name="pXmlLang" select="*/rdfs:label/@xml:lang"/>
-        </xsl:call-template>
-      </transform>
-    </var>
+        <var name="v880Script">
+          <switch>
+            <case test="self::node()/*/madsrdf:componentList/*[1]/rdfs:label/@xml:lang">
+                <var name="vLangTag" xpath="self::node()/*/madsrdf:componentList/*[1]/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
+                <lookup map="df880script" targetField="code">
+                  <lookupField name="lang" xpath="translate(substring-after($vLangTag,'-'),$upper,$lower)"/>
+                </lookup>
+            </case>
+            <case test="self::node()/rdfs:label/@xml:lang">
+                <var name="vLangTag" xpath="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
+                <lookup map="df880script" targetField="code">
+                  <lookupField name="lang" xpath="translate(substring-after($vLangTag,'-'),$upper,$lower)"/>
+                </lookup>      
+            </case>
+          </switch>
+        </var>
+        <var name="vNameVariantPreNS">
+          <transform>
+            <xsl:if test="$v880Script != ''">
+              <xsl:choose>
+                <xsl:when test="self::node()/*/madsrdf:componentList/*[1]/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]">
+                  <xsl:call-template name="tGetMiniMARCFromKey">
+                    <xsl:with-param name="pFieldStr" select="self::node()/*/madsrdf:componentList/*[1]/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="self::node()/*/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]">
+                  <xsl:call-template name="tGetMiniMARCFromKey">
+                    <xsl:with-param name="pFieldStr" select="self::node()/*/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]"/>
+                  </xsl:call-template>
+                </xsl:when>
+            </xsl:choose>
+            </xsl:if>
+          </transform>
+        </var>
+        <var name="vNameVariant" xpath="exsl:node-set($vNameVariantPreNS)" />
+        <var name="vNameVariantTag">
+          <switch>
+            <case test="$vNameVariant//marc:record">
+              <switch>
+                <case test="$vNameVariant//marc:datafield[@tag='100']">600</case>
+                <case test="$vNameVariant//marc:datafield[@tag='110']">610</case>
+                <case test="$vNameVariant//marc:datafield[@tag='111']">611</case>
+                <case test="$vNameVariant//marc:datafield[@tag='151']">610</case>
+              </switch>
+            </case>
+          </switch>
+        </var>
     <var name="vDollar0Uri">
       <transform>
         <xsl:value-of select="*/@rdf:about[
@@ -273,8 +313,6 @@
             ]"></xsl:value-of>
       </transform>
     </var>
-    <switch>
-      <case test="$vScriptSubtag='' or translate($vScriptSubtag,$upper,$lower)=translate($pCatScript,$upper,$lower)">
         <var name="vInd2Val">
           <switch>
             <case test="*/bf:source/bf:Source/bf:code='lcsh' or
@@ -310,26 +348,115 @@
                     <case test="*/@rdf:about"><transform><xsl:value-of select="*/@rdf:about"/></transform></case>
                   </switch>
                 </var>
-                      <switch>
-                        <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
-                        <case test="$vSourceUri != ''">
-                          <switch>
-                            <case test="contains($vSourceUri,'id.loc.gov')">
-                              <transform>
-                                <xsl:call-template name="tUriCode">
-                                  <xsl:with-param name="pUri" select="$vSourceUri"/>
-                                </xsl:call-template>
-                              </transform>
-                            </case>
-                            <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
-                          </switch>
-                        </case>
-                        <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
-                      </switch>
+                <switch>
+                  <case test="bf:Source/bf:code"><transform><xsl:value-of select="bf:Source/bf:code"/></transform></case>
+                  <case test="$vSourceUri != ''">
+                    <switch>
+                      <case test="contains($vSourceUri,'id.loc.gov')">
+                        <transform>
+                          <xsl:call-template name="tUriCode">
+                            <xsl:with-param name="pUri" select="$vSourceUri"/>
+                          </xsl:call-template>
+                        </transform>
+                      </case>
+                      <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+                    </switch>
+                  </case>
+                  <case test="default"><transform><xsl:value-of select="bf:Source/rdfs:label"/></transform></case>
+                </switch>
               </select>
             </case>
           </switch>
         </var>
+        <var name="vSharedDollar0s">
+          <switch>
+            <case test="1=1">
+          <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
+          <sf code="0">
+            <select xpath="*/bf:identifiedBy/bf:Identifier">
+              <transform>
+                <xsl:variable name="vIdType">
+                  <xsl:call-template name="tChopPunct">
+                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:choose>
+                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                </xsl:choose>
+              </transform>
+            </select>
+          </sf>
+            </case>
+          </switch>
+        </var>
+        <var name="vSharedDollar2">
+          <switch>
+            <case test="1=1">
+          <!-- $2 if source not in ind2 -->
+          <sf code="2">
+            <switch>
+              <case test="$vSf2val != ''">
+                <transform><xsl:value-of select="$vSf2val"/></transform>
+              </case>
+            </switch>
+          </sf>
+            </case>
+          </switch>
+        </var>
+        <var name="vShared">
+          <switch>
+            <case test="1=1">
+              <!-- subdivisions -->
+              <select xpath="*/madsrdf:componentList/*">
+                <switch>
+                  <case test="position() &gt; 1">
+                    <switch>
+                      <case test="local-name()='GenreForm' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#GenreForm']">
+                        <sf code="v" chopPunct="true">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
+                      </case>
+                      <case test="local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal']">
+                        <sf code="y" chopPunct="true">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
+                      </case>
+                      <case test="local-name()='Geographic' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic']">
+                        <sf code="z" chopPunct="true">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
+                      </case>
+                      <case test="default">
+                        <sf code="x" chopPunct="true">
+                          <switch>
+                            <case test="madsrdf:authoritativeLabel"><select xpath="madsrdf:authoritativeLabel"/></case>
+                            <case test="default"><select xpath="rdfs:label"/></case>
+                          </switch>
+                        </sf>
+                      </case>
+                    </switch>
+                  </case>
+                </switch>
+              </select>
+              <transform>
+                <xsl:copy-of select="$vSharedDollar0s" />
+                <xsl:copy-of select="$vSharedDollar2" />
+              </transform>
+            </case>
+          </switch>
+        </var>
+        <!-- End vshared -->
+    
         <switch>
           <!-- 600 -->
           <case test="*[(local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or
@@ -490,7 +617,9 @@
                 <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
               </select>
 
+              <transform><xsl:copy-of select="$vShared" /></transform>
               <!-- subdivisions -->
+              <!--
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
                   <case test="position() &gt; 1">
@@ -547,7 +676,7 @@
                   </transform>
                 </select>
               </sf>
-              <!-- $2 if source not in ind2 -->
+              <!-\- $2 if source not in ind2 -\->
               <sf code="2">
                 <switch>
                   <case test="$vSf2val != ''">
@@ -555,6 +684,7 @@
                   </case>
                 </switch>
               </sf>
+              -->
             </df>
           </case>
 
@@ -568,6 +698,8 @@
                       bf:contribution/*/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']] or
                       madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']]) and
                       (madsrdf:componentList or madsrdf:authoritativeLabel)]">
+            
+            
             <df tag="610">
               <ind1 default="2">
                 <switch>
@@ -584,6 +716,12 @@
                   </case>
                 </switch>
               </ind2>
+              <switch>
+                <case test="$vNameVariant//marc:record">
+                  <!-- We have a variant, so we need to create an 880 link. -->
+                  <sf code="6"><transform><xsl:value-of select="concat('880-6', position())"/></transform></sf>   
+                </case>
+              </switch>
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
@@ -613,10 +751,19 @@
                 </var>
                 <var name="vRelResourcePreNS">
                   <transform>
-                    <xsl:call-template name="tGetRelResource">
-                      <xsl:with-param name="pRelUri" select="$relURI"/>
-                      <xsl:with-param name="pContext" select="."/>
-                    </xsl:call-template>
+                    <xsl:choose>
+                      <xsl:when test="self::node()/bflc:marcKey[starts-with(. , '1')][1]">
+                        <xsl:call-template name="tGetMiniMARCFromKey">
+                          <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '1')][1]"/>
+                        </xsl:call-template>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:call-template name="tGetRelResource">
+                          <xsl:with-param name="pRelUri" select="$relURI"/>
+                          <xsl:with-param name="pContext" select="."/>
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
                   </transform>
                 </var>
                 <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
@@ -707,7 +854,9 @@
                 <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
               </select>
 
+              <transform><xsl:copy-of select="$vShared" /></transform>
               <!-- subdivisions -->
+              <!--
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
                   <case test="position() &gt; 1">
@@ -763,7 +912,7 @@
                   </transform>
                 </select>
               </sf>
-              <!-- $2 if source not in ind2 -->
+              <!-\- $2 if source not in ind2 -\->
               <sf code="2">
                 <switch>
                   <case test="$vSf2val != ''">
@@ -771,7 +920,44 @@
                   </case>
                 </switch>
               </sf>
+              -->
             </df>
+            
+            <switch>
+              <case test="$vNameVariant//marc:record">
+                <df tag="880">
+                  <ind1 default="2">
+                    <switch>
+                      <case test="*[local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction'] or
+                        local-name(madsrdf:componentList/*[1])='Jurisdiction' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction' or
+                        bf:Hub/bf:contribution/*/bf:agent/*[local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']] or
+                        madsrdf:componentList/*[1]/bf:Hub/bf:contribution/*/bf:agent/*[local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']]]">1</case>
+                    </switch>
+                  </ind1>
+                  <ind2 default="4">
+                    <switch>
+                      <case test="$vInd2Val != ''">
+                        <transform><xsl:value-of select="$vInd2Val"/></transform>
+                      </case>
+                    </switch>
+                  </ind2>
+                  <sf code="6"><transform><xsl:value-of select="concat('610-6', position(), '/', $v880Script)"/></transform></sf>
+                  <sf code="3" chopPunct="true" repeatable="false">
+                    <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+                  </sf>
+                  <transform>
+                    <xsl:for-each select="$vNameVariant//marc:record/marc:datafield[@tag='110']/marc:subfield[contains('abcdfghklmnoprst',@code)]">
+                      <marc:subfield>
+                        <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+                        <xsl:value-of select="."/>
+                      </marc:subfield>
+                    </xsl:for-each>
+                    <xsl:copy-of select="$vShared" />
+                  </transform>
+                </df>
+              </case>
+            </switch>
+            
           </case>
 
           <!-- 611 -->
@@ -914,7 +1100,9 @@
                 <sf code="s" chopPunct="true"><select xpath="bf:version"/></sf>
               </select>
 
+              <transform><xsl:copy-of select="$vShared" /></transform>
               <!-- subdivisions -->
+              <!--
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
                   <case test="position() &gt; 1">
@@ -970,7 +1158,7 @@
                   </transform>
                 </select>
               </sf>
-              <!-- $2 if source not in ind2 -->
+              <!-\- $2 if source not in ind2 -\->
               <sf code="2">
                 <switch>
                   <case test="$vSf2val != ''">
@@ -978,6 +1166,7 @@
                   </case>
                 </switch>
               </sf>
+              -->
             </df>
           </case>
 
@@ -1128,7 +1317,9 @@
                 </sf>
               </select>
 
+              <transform><xsl:copy-of select="$vShared" /></transform>
               <!-- subdivisions -->
+              <!--
               <select xpath="*/madsrdf:componentList/*">
                 <switch>
                   <case test="position() &gt; 1">
@@ -1185,7 +1376,7 @@
                   </transform>
                 </select>
               </sf>
-              <!-- $2 if source not in ind2 -->
+              <!-\- $2 if source not in ind2 -\->
               <sf code="2">
                 <switch>
                   <case test="$vSf2val != ''">
@@ -1193,6 +1384,7 @@
                   </case>
                 </switch>
               </sf>
+              -->
             </df>
           </case>
 
@@ -1224,6 +1416,8 @@
                   </sf>
 
                   <!-- subdivisions -->
+                  <transform><xsl:copy-of select="$vShared" /></transform>
+                  <!--
                   <select xpath="*/madsrdf:componentList/*">
                     <switch>
                       <case test="position() &gt; 1">
@@ -1280,6 +1474,7 @@
                       </transform>
                     </select>
                   </sf>
+                  -->
                 </case>
                 <case test="default">
                   <sf code="3" chopPunct="true" repeatable="false">
@@ -1293,6 +1488,11 @@
                       <case test="default"><select xpath="*/rdfs:label[1]"/></case>
                     </switch>
                   </sf>
+                  <transform>
+                    <xsl:copy-of select="$vSharedDollar0s" />
+                    <xsl:copy-of select="$vSharedDollar2" />
+                  </transform>
+                  <!--
                   <sf code="0">
                     <switch>
                       <case test="$vDollar0Uri != ''">
@@ -1315,16 +1515,17 @@
                       </transform>
                     </select>
                   </sf>
+                  <!-\- $2 if source not in ind2 -\->
+                  <sf code="2">
+                    <switch>
+                      <case test="$vSf2val != ''">
+                        <transform><xsl:value-of select="$vSf2val"/></transform>
+                      </case>
+                    </switch>
+                  </sf>
+                  -->
                 </case>
               </switch>
-              <!-- $2 if source not in ind2 -->
-              <sf code="2">
-                <switch>
-                  <case test="$vSf2val != ''">
-                    <transform><xsl:value-of select="$vSf2val"/></transform>
-                  </case>
-                </switch>
-              </sf>
             </df>
           </case>
           
@@ -1357,8 +1558,10 @@
                       <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                     </switch>
                   </sf>
-                  
+
+                  <transform><xsl:copy-of select="$vShared" /></transform>
                   <!-- subdivisions -->
+                  <!--
                   <select xpath="*/madsrdf:componentList/*">
                     <switch>
                       <case test="position() &gt; 1">
@@ -1415,6 +1618,15 @@
                       </transform>
                     </select>
                   </sf>
+                  <!-\- $2 if source not in ind2 -\->
+                  <sf code="2">
+                    <switch>
+                      <case test="$vSf2val != ''">
+                        <transform><xsl:value-of select="$vSf2val"/></transform>
+                      </case>
+                    </switch>
+                  </sf>
+                  -->
                 </case>
                 <case test="default">
                   <sf code="3" chopPunct="true" repeatable="false">
@@ -1428,6 +1640,11 @@
                       <case test="default"><select xpath="*/rdfs:label[1]"/></case>
                     </switch>
                   </sf>
+                  <transform>
+                    <xsl:copy-of select="$vSharedDollar0s" />
+                    <xsl:copy-of select="$vSharedDollar2" />
+                  </transform>
+                  <!--
                   <sf code="0">
                     <switch>
                       <case test="$vDollar0Uri != ''">
@@ -1450,16 +1667,17 @@
                       </transform>
                     </select>
                   </sf>
+                  <!-\- $2 if source not in ind2 -\->
+                  <sf code="2">
+                    <switch>
+                      <case test="$vSf2val != ''">
+                        <transform><xsl:value-of select="$vSf2val"/></transform>
+                      </case>
+                    </switch>
+                  </sf>
+                  -->
                 </case>
               </switch>
-              <!-- $2 if source not in ind2 -->
-              <sf code="2">
-                <switch>
-                  <case test="$vSf2val != ''">
-                    <transform><xsl:value-of select="$vSf2val"/></transform>
-                  </case>
-                </switch>
-              </sf>
             </df>
           </case>
 
@@ -1528,6 +1746,15 @@
                   </case>
                 </switch>
               </select>
+              <!-- Is this allowed? -->
+              <sf code="e" chopPunct="true">
+                <select xpath="*/bf:role/bf:Role/rdfs:label"/>
+              </sf>
+              <transform>
+                <xsl:copy-of select="$vSharedDollar0s" />
+                <xsl:copy-of select="$vSharedDollar2" />
+              </transform>
+              <!--
               <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
               <sf code="0">
                 <select xpath="*/bf:identifiedBy/bf:Identifier">
@@ -1544,9 +1771,6 @@
                   </transform>
                 </select>
               </sf>
-              <sf code="e" chopPunct="true">
-                <select xpath="*/bf:role/bf:Role/rdfs:label"/>
-              </sf>
               <sf code="2">
                 <switch>
                   <case test="$vSf2val != ''">
@@ -1554,6 +1778,7 @@
                   </case>
                 </switch>
               </sf>
+              -->
             </df>
           </case>
 
@@ -1586,7 +1811,10 @@
                   <sf code="e" chopPunct="true">
                     <select xpath="*/bf:role/bf:Role/rdfs:label"/>
                   </sf>
+
+                  <transform><xsl:copy-of select="$vShared" /></transform>
                   <!-- subdivisions -->
+                  <!--
                   <select xpath="*/madsrdf:componentList/*">
                     <switch>
                       <case test="position() &gt; 1">
@@ -1643,6 +1871,15 @@
                       </transform>
                     </select>
                   </sf>
+                  <!-\- $2 if source not in ind2 -\->
+                  <sf code="2">
+                    <switch>
+                      <case test="$vSf2val != ''">
+                        <transform><xsl:value-of select="$vSf2val"/></transform>
+                      </case>
+                    </switch>
+                  </sf>
+                  -->
                 </case>
                 <case test="default">
                   <sf code="3" chopPunct="true" repeatable="false">
@@ -1656,6 +1893,14 @@
                       <case test="default"><select xpath="*/rdfs:label[1]"/></case>
                     </switch>
                   </sf>
+                  <sf code="e" chopPunct="true">
+                    <select xpath="*/bf:role/bf:Role/rdfs:label"/>
+                  </sf>
+                  <transform>
+                    <xsl:copy-of select="$vSharedDollar0s" />
+                    <xsl:copy-of select="$vSharedDollar2" />
+                  </transform>
+                  <!--
                   <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
                   <sf code="0">
                     <select xpath="*/bf:identifiedBy/bf:Identifier">
@@ -1672,22 +1917,22 @@
                       </transform>
                     </select>
                   </sf>
-                  <sf code="e" chopPunct="true">
-                    <select xpath="*/bf:role/bf:Role/rdfs:label"/>
+                  <!-\- $2 if source not in ind2 -\->
+                  <sf code="2">
+                    <switch>
+                      <case test="$vSf2val != ''">
+                        <transform><xsl:value-of select="$vSf2val"/></transform>
+                      </case>
+                    </switch>
                   </sf>
+                  -->
                 </case>
               </switch>
+              <!--
               <sf code="e" chopPunct="true">
                 <select xpath="*/bflc:relationship/bflc:Relationship/bflc:relation/bflc:Relation/rdfs:label"/>
               </sf>
-              <!-- $2 if source not in ind2 -->
-              <sf code="2">
-                <switch>
-                  <case test="$vSf2val != ''">
-                    <transform><xsl:value-of select="$vSf2val"/></transform>
-                  </case>
-                </switch>
-              </sf>
+              -->
             </df>
           </case>
 
@@ -1710,7 +1955,10 @@
                       <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
                     </switch>
                   </sf>
+
+                  <transform><xsl:copy-of select="$vShared" /></transform>
                   <!-- subdivisions -->
+                  <!--
                   <select xpath="*/madsrdf:componentList/*">
                     <switch>
                       <case test="position() &gt; 1">
@@ -1767,6 +2015,14 @@
                       </transform>
                     </select>
                   </sf>
+                  <sf code="2">
+                    <switch>
+                      <case test="$vSf2val != ''">
+                        <transform><xsl:value-of select="$vSf2val"/></transform>
+                      </case>
+                    </switch>
+                  </sf>
+                  -->
                 </case>
                 <case test="default">
                   <sf code="3" chopPunct="true" repeatable="false">
@@ -1780,6 +2036,11 @@
                       <case test="default"><select xpath="*/rdfs:label[1]"/></case>
                     </switch>
                   </sf>
+                  <transform>
+                    <xsl:copy-of select="$vSharedDollar0s" />
+                    <xsl:copy-of select="$vSharedDollar2" />
+                  </transform>
+                  <!--
                   <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
                   <sf code="0">
                     <select xpath="*/bf:identifiedBy/bf:Identifier">
@@ -1796,15 +2057,16 @@
                       </transform>
                     </select>
                   </sf>
+                  <sf code="2">
+                    <switch>
+                      <case test="$vSf2val != ''">
+                        <transform><xsl:value-of select="$vSf2val"/></transform>
+                      </case>
+                    </switch>
+                  </sf>
+                  -->
                 </case>
               </switch>
-              <sf code="2">
-                <switch>
-                  <case test="$vSf2val != ''">
-                    <transform><xsl:value-of select="$vSf2val"/></transform>
-                  </case>
-                </switch>
-              </sf>
             </df>
           </case>
 
@@ -1837,6 +2099,7 @@
                   <sf code="e" chopPunct="true">
                     <select xpath="*/bf:role/bf:Role/rdfs:label"/>
                   </sf>
+
                   <!-- subdivisions -->
                   <select xpath="*/madsrdf:componentList/*">
                     <switch>
@@ -1918,6 +2181,11 @@
                       </case>
                     </switch>
                   </select>
+                  <transform>
+                    <xsl:copy-of select="$vSharedDollar0s" />
+                    <xsl:copy-of select="$vSharedDollar2" />
+                  </transform>
+                  <!--
                   <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
                   <sf code="0">
                     <select xpath="*/bf:identifiedBy/bf:Identifier">
@@ -1934,6 +2202,14 @@
                       </transform>
                     </select>
                   </sf>
+                  <sf code="2">
+                    <switch>
+                      <case test="$vSf2val != ''">
+                        <transform><xsl:value-of select="$vSf2val"/></transform>
+                      </case>
+                    </switch>
+                  </sf>
+                  -->
                 </case>
                 <case test="default">
                   <sf code="3" chopPunct="true" repeatable="false">
@@ -1950,6 +2226,11 @@
                   <sf code="e" chopPunct="true">
                     <select xpath="*/bf:role/bf:Role/rdfs:label"/>
                   </sf>
+                  <transform>
+                    <xsl:copy-of select="$vSharedDollar0s" />
+                    <xsl:copy-of select="$vSharedDollar2" />
+                  </transform>
+                  <!--
                   <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
                   <sf code="0">
                     <select xpath="*/bf:identifiedBy/bf:Identifier">
@@ -1966,16 +2247,18 @@
                       </transform>
                     </select>
                   </sf>
+                  <sf code="2">
+                    <switch>
+                      <case test="$vSf2val != ''">
+                        <transform><xsl:value-of select="$vSf2val"/></transform>
+                      </case>
+                    </switch>
+                  </sf>
+                  -->
                 </case>
               </switch>
               <!-- $2 if source not in ind2 -->
-              <sf code="2">
-                <switch>
-                  <case test="$vSf2val != ''">
-                    <transform><xsl:value-of select="$vSf2val"/></transform>
-                  </case>
-                </switch>
-              </sf>
+
             </df>
           </case>
 
@@ -2001,8 +2284,7 @@
         </switch>
       </case>
     </switch>
-      </case>
-    </switch>
+
   </select>
 
   <!-- genreForms referenced by URIs -->
