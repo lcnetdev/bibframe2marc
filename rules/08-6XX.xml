@@ -337,7 +337,7 @@
               <switch>
                 <case test="$vNameVariant//marc:record">
                   <!-- We have a variant, so we need to create an 880 link. -->
-                  <sf code="6"><transform><xsl:value-of select="concat('880-', $vOccurrenceNumber)"/></transform></sf>   
+                  <sf code="6"><transform><xsl:value-of select="concat($vSubjectTag, '-', $vOccurrenceNumber)"/></transform></sf>   
                 </case>
               </switch>
               <transform>
@@ -615,7 +615,7 @@
                       local-name(madsrdf:componentList/*[1])='Family' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family' or
                       bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']] or
                       madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='PersonalName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#PersonalName'] or local-name()='FamilyName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#FamilyName'] or local-name()='Person' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Person'] or local-name()='Family' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Family']]) and
-                      (madsrdf:componentList or madsrdf:authoritativeLabel)]">
+                      (madsrdf:componentList or madsrdf:authoritativeLabel or rdfs:label)]">
             <df tag="600">
               <ind1 default="1">
                 <switch>
@@ -821,7 +821,7 @@
                       local-name(madsrdf:componentList/*[1])='Jurisdiction' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction' or
                       bf:contribution/*/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']] or
                       madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='CorporateName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#CorporateName'] or local-name()='Organization' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization'] or local-name()='Jurisdiction' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']]) and
-                      (madsrdf:componentList or madsrdf:authoritativeLabel)]">
+                      (madsrdf:componentList or madsrdf:authoritativeLabel or rdfs:label)]">
             
             
             <df tag="610">
@@ -1025,7 +1025,7 @@
                       local-name(madsrdf:componentList/*[1])='Meeting' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting' or
                       bf:contribution/*/bf:agent/*[local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']] or
                       madsrdf:componentList/*[1]/bf:contribution/*/bf:agent/*[local-name()='ConferenceName' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#ConferenceName'] or local-name()='Meeting' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Meeting']]) and
-                      (madsrdf:componentList or madsrdf:authoritativeLabel)]">
+                      (madsrdf:componentList or madsrdf:authoritativeLabel or rdfs:label)]">
             <df tag="611">
               <ind1 default="2"/>
               <ind2 default="4">
@@ -1204,7 +1204,7 @@
                       local-name(madsrdf:componentList/*[1])='Work' or
                       madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Hub' or
                       madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Work') and
-                      (madsrdf:componentList or madsrdf:authoritativeLabel)]">
+                      (madsrdf:componentList or madsrdf:authoritativeLabel or rdfs:label)]">
             <df tag="630">
               
               
@@ -1419,7 +1419,7 @@
                       local-name()='Temporal' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Temporal'] or
                       local-name(madsrdf:componentList/*[1])='Temporal' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal' or
                       local-name(madsrdf:componentList/*[1])='Temporal' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Temporal') and
-                      (madsrdf:componentList or madsrdf:authoritativeLabel)]">
+                      (madsrdf:componentList or madsrdf:authoritativeLabel or rdfs:label)]">
             <df tag="648">
               <ind1 default=" "/>
               <ind2 default="4">
@@ -1813,7 +1813,7 @@
                       local-name()='Place' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place'] or
                       local-name(madsrdf:componentList/*[1])='Geographic' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#Geographic' or
                       local-name(madsrdf:componentList/*[1])='Place' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place') and
-                      (madsrdf:componentList or madsrdf:authoritativeLabel)]">
+                      (madsrdf:componentList or madsrdf:authoritativeLabel or rdfs:label)]">
             <df tag="651">
               <ind1 default=" "/>
               <ind2 default="4">
