@@ -353,6 +353,12 @@
                   (translate(bf:noteType,$upper,$lower)='physical details' or translate(bf:noteType,$upper,$lower)='accompanying material' or translate(bf:noteType,$upper,$lower)='binding' or translate(bf:noteType,$upper,$lower)='action') or 
                   (rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/physical' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/accmat' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/binding' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/action')
                   )"/>
+      
+      <!-- these notes are picked up in the rules for data field 041, do not process here -->
+      <case test="(
+        local-name(../..)='Instance' and 
+        rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/biblio'
+        )"/>
 
       <case test="default">
         <df tag="500" lang-xpath="rdfs:label">
@@ -414,6 +420,16 @@
   <df tag="504" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]  |
                     bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]
+      ">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:count"/></sf>
+    </context>
+  </df>
+  
+  <df tag="504" lang-xpath="rdfs:label">
+    <context xpath="bf:Instance/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/biblio' and rdfs:label[. != '']]
       ">
       <ind1 default=" "/>
       <ind2 default=" "/>
