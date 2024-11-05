@@ -1191,7 +1191,7 @@
   </switch>
 
   <switch>
-    <case test="bf:Work/bf:language//@rdf:*[contains(., 'id.loc.gov/vocabulary/languages')] or bf:Work/bf:language/*/*[not(bf:source)]">
+    <case test="bf:Work/bf:language//@rdf:*[contains(., 'id.loc.gov/vocabulary/languages') and not(contains(., '/zxx'))] or bf:Work/bf:language/*/*[not(bf:source)]">
       <var name="vAllLangElements" xpath="
         bf:Work/bf:language/@rdf:resource[contains(., 'id.loc.gov/vocabulary/languages')] |
         bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]//@rdf:about[contains(., 'id.loc.gov/vocabulary/languages')] | 
@@ -1239,9 +1239,10 @@
           
          <xsl:for-each select="$vAllLangElements">
           <xsl:choose>
-            <xsl:when test="position() = 1">
+            <xsl:when test="position() = 1 and $vFirstLangCode!='zxx'">
               <marc:subfield code="a"><xsl:value-of select="$vFirstLangCode"/></marc:subfield>
             </xsl:when>
+            <xsl:when test="position() = 1 and $vFirstLangCode='zxx'" />
             <xsl:otherwise>
                 <xsl:variable name="vLangCode">
                   <xsl:choose>
