@@ -228,10 +228,19 @@
               <xsl:variable name="vLangs" select="//@xml:lang[contains(., '-') and not(contains(., 'atn'))]" />
               <!-- <xsl:for-each select="$df880scriptNS/*[lang]/lang"> -->
               <marc:codes>
+                <!-- Those defined in the map. -->
                 <xsl:for-each select="$df880scriptNS/script/lang">
                   <xsl:variable name="vLang" select="." />
                   <xsl:if test="$vLangs[translate(substring-after(.,'-'),$upper,$lower) = $vLang ]">
                     <marc:scriptCode><xsl:value-of select="../code" /></marc:scriptCode>
+                  </xsl:if>
+                </xsl:for-each>
+                
+                <!-- For those not defined in the map. -->
+                <xsl:for-each select="$vLangs">
+                  <xsl:variable name="vLang" select="translate(substring-after(.,'-'),$upper,$lower)" />
+                  <xsl:if test="count($df880scriptNS/script/lang[. = $vLang]) = 0">
+                    <marc:scriptCode><xsl:value-of select="$vLang" /></marc:scriptCode>
                   </xsl:if>
                 </xsl:for-each>
               </marc:codes>
