@@ -337,7 +337,7 @@
               <switch>
                 <case test="$vNameVariant//marc:record">
                   <!-- We have a variant, so we need to create an 880 link. -->
-                  <sf code="6"><transform><xsl:value-of select="concat($vSubjectTag, '-', $vOccurrenceNumber)"/></transform></sf>   
+                  <sf code="6"><transform><xsl:value-of select="concat($vSubjectTag, '-', $vOccurrenceNumber, '/', $v880Script)"/></transform></sf>   
                 </case>
               </switch>
               <transform>
