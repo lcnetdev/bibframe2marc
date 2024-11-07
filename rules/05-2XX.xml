@@ -671,8 +671,7 @@
     </switch>
   </select>
 
-  <df tag="246" lang-xpath="bf:mainTitle">
-    <context xpath="
+    <select xpath="
                       bf:*[local-name()='Instance' or local-name()='Work']/bf:title/bf:*[(
                         local-name()='VariantTitle' or
                         local-name()='ParallelTitle' or
@@ -699,7 +698,34 @@
                       not(bf:variantType = 'former') and
                       bf:mainTitle]
                     ">
-      <ind1 default="1"/>
+      
+      <var name="vOccurrenceNumber">
+        <transform>
+          <xsl:if test="count(bf:mainTitle)=2 and bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+            <xsl:variable name="prevTitleCount" select="count(parent::bf:title/preceding-sibling::bf:title/*[(
+              local-name()='VariantTitle' or
+              local-name()='ParallelTitle' or
+              local-name()='TranscribedTitle' or
+              rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle'] or
+              rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle'] or
+              rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
+              ) and 
+              not(bf:variantType = 'translated') and
+              not(bf:variantType = 'former') and
+              bf:mainTitle[@xml:lang]])" />
+            <xsl:value-of select="3 + $prevTitleCount" />
+          </xsl:if>
+        </transform>
+      </var>
+      
+      <df tag="246" lang-xpath="bf:mainTitle">
+      <ind1 default="1">
+        <switch>
+          <case test="local-name()='ParallelTitle' or
+            rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']">3</case>
+          <case test="bf:variantType = 'portion'">3</case>
+        </switch>
+      </ind1>
       <ind2 default=" ">
         <switch>
           <case test="local-name()='ParallelTitle' or
@@ -713,6 +739,12 @@
           <case test="bf:variantType = 'spine'">8</case>
         </switch>
       </ind2>
+
+      <switch>
+        <case test="count(bf:mainTitle)=2 and bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+          <sf code="6"><transform><xsl:value-of select="concat('880-0', $vOccurrenceNumber)" /></transform></sf>
+        </case>
+      </switch>
       <sf code="i" chopPunct="true" repeatable="false">
         <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
@@ -722,17 +754,82 @@
       <sf code="n" chopPunct="true"><select xpath="bf:partNumber"/></sf>
       <sf code="p" chopPunct="true"><select xpath="bf:partName"/></sf>
       <sf code="5" repeatable="false"><select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/></sf>
-    </context>
-  </df>
+      </df>
+      
+      <switch>
+        <case test="count(bf:mainTitle)=2 and bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+          <var name="v880Script">
+            <lookup map="df880script" targetField="code">
+              <lookupField name="lang" xpath="translate(substring-after(bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang,'-'),$upper,$lower)"/>
+            </lookup>
+          </var>
+          <df tag="880" lang-xpath="bf:mainTitle">
+            <ind1 default="1">
+              <switch>
+                <case test="local-name()='ParallelTitle' or
+                  rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']">3</case>
+                <case test="bf:variantType = 'portion'">3</case>
+              </switch>
+            </ind1>
+            <ind2 default=" ">
+              <switch>
+                <case test="local-name()='ParallelTitle' or
+                  rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']">1</case>
+                <case test="bf:variantType = 'portion'">0</case>
+                <case test="bf:variantType = 'distinctive'">2</case>
+                <case test="bf:variantType = 'cover'">4</case>
+                <case test="bf:variantType = 'added title page'">5</case>
+                <case test="bf:variantType = 'caption'">6</case>
+                <case test="bf:variantType = 'running'">7</case>
+                <case test="bf:variantType = 'spine'">8</case>
+              </switch>
+            </ind2>
+          <sf code="6"><transform><xsl:value-of select="concat('246-0', $vOccurrenceNumber, '/' , $v880Script)" /></transform></sf>
+          <sf code="i" chopPunct="true" repeatable="false">
+            <select xpath="bf:note/bf:Note/rdfs:label"/>
+          </sf>
+          <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:mainTitle[@xml:lang]"/></sf>
+          <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:subtitle[@xml:lang]"/></sf>
+          <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:date[@xml:lang]"/></sf>
+          <sf code="n" chopPunct="true"><select xpath="bf:partNumber[@xml:lang]"/></sf>
+          <sf code="p" chopPunct="true"><select xpath="bf:partName[@xml:lang]"/></sf>
+          <sf code="5" repeatable="false"><select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/></sf>
+          </df>
+        </case>
+      </switch>
+      
+    </select>
+  
 
+
+  <select xpath="//bf:title/*[(
+    local-name()='VariantTitle' or
+    rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
+    ) and
+    bf:variantType = 'former']">
+    
+    <var name="vOccurrenceNumber">
+      <transform>
+        <xsl:if test="count(bf:mainTitle)=2 and bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+          <xsl:variable name="prevTitleCount" select="count(parent::bf:title/preceding-sibling::bf:title/*[(
+            local-name()='VariantTitle' or
+            rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
+            ) and
+            bf:variantType = 'former' and 
+            bf:mainTitle[@xml:lang]])" />
+          <xsl:value-of select="7 + $prevTitleCount" />
+        </xsl:if>
+      </transform>
+    </var>
+    
   <df tag="247" lang-xpath="bf:mainTitle">
-    <context xpath="//bf:title/*[(
-                      local-name()='VariantTitle' or
-                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
-                    ) and
-                    bf:variantType = 'former']">
       <ind1 default="1"/>
       <ind2 default="0"/>
+    <switch>
+      <case test="count(bf:mainTitle)=2 and bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+        <sf code="6"><transform><xsl:value-of select="concat('880-0', $vOccurrenceNumber)" /></transform></sf>
+      </case>
+    </switch>
       <sf code="a" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
@@ -761,8 +858,52 @@
       <sf code="x" repeatable="false">
         <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']]/rdf:value"/>
       </sf>
-    </context>
   </df>
+    
+    <switch>
+      <case test="count(bf:mainTitle)=2 and bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+        <var name="v880Script">
+          <lookup map="df880script" targetField="code">
+            <lookupField name="lang" xpath="translate(substring-after(bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang,'-'),$upper,$lower)"/>
+          </lookup>
+        </var>
+        <df tag="880" lang-xpath="bf:mainTitle">
+          <ind1 default="1"/>
+          <ind2 default="0"/>
+          <sf code="6"><transform><xsl:value-of select="concat('246-0', $vOccurrenceNumber, '/' , $v880Script)" /></transform></sf>
+          <sf code="a" chopPunct="true" repeatable="false">
+            <switch>
+              <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
+              <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+            </switch>
+          </sf>
+          <sf code="b" chopPunct="true" repeatable="false">
+            <select xpath="bf:subtitle"/>
+          </sf>
+          <sf code="f" chopPunct="true" repeatable="false">
+            <select xpath="bf:date"/>
+          </sf>
+          <sf code="g" chopPunct="true" repeatable="false">
+            <select xpath="bf:qualifier">
+              <transform>
+                <xsl:value-of select="concat('(',.,')')"/>
+              </transform>
+            </select>
+          </sf>
+          <sf code="n" chopPunct="true">
+            <select xpath="bf:partNumber"/>
+          </sf>
+          <sf code="p" chopPunct="true">
+            <select xpath="bf:partName"/>
+          </sf>
+          <sf code="x" repeatable="false">
+            <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']]/rdf:value"/>
+          </sf>
+        </df>
+      </case>
+    </switch>
+    
+  </select>
 
   <!-- 250/880 -->
   <select xpath="bf:Instance/bf:editionStatement">
