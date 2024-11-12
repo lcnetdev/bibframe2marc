@@ -2372,22 +2372,22 @@
           <sf code="0">
             <transform><xsl:value-of select="$relURI" /></transform>
           </sf>
-          <switch>
-            <case test="contains($relURI, 'id.worldcat.org/fast')">
-              <sf code="0">
-                <transform>
-                  <xsl:variable name="vFastID">
-                    <xsl:call-template name="tPadLeft">
-                      <xsl:with-param name="pInput" select="substring-after($relURI,'http://id.worldcat.org/fast/')"/>
-                      <xsl:with-param name="pPadChar" select="'0'"/>
-                      <xsl:with-param name="pStringLength" select="'8'" />
-                    </xsl:call-template>
-                  </xsl:variable>
-                  <xsl:value-of select="concat('(OCoLC)fst', $vFastID)" />
-                </transform>
-              </sf>
-            </case>
-          </switch>
+        </case>
+      </switch>
+      <switch>
+        <case test="contains($relURI, 'id.worldcat.org/fast')">
+          <sf code="0">
+            <transform>
+              <xsl:variable name="vFastID">
+                <xsl:call-template name="tPadLeft">
+                  <xsl:with-param name="pInput" select="substring-after($relURI,'http://id.worldcat.org/fast/')"/>
+                  <xsl:with-param name="pPadChar" select="'0'"/>
+                  <xsl:with-param name="pStringLength" select="'8'" />
+                </xsl:call-template>
+              </xsl:variable>
+              <xsl:value-of select="concat('(OCoLC)fst', $vFastID)" />
+            </transform>
+          </sf>
         </case>
       </switch>
     </context>
