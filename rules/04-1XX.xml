@@ -276,7 +276,7 @@
           <ind2 default=" "/>
           <sf code="6"><transform><xsl:value-of select="concat($vNameTag, '-0', position(), '/', $v880Script)"/></transform></sf>
           <transform>
-            <xsl:for-each select="$vNameVariant//marc:datafield[@tag=$vNameTag]/marc:subfield[contains($vAuthSubfields,@code)]">
+            <xsl:for-each select="$vNameVariant//marc:datafield/marc:subfield[contains($vAuthSubfields,@code)]">
               <marc:subfield>
                 <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
                 <xsl:value-of select="."/>
