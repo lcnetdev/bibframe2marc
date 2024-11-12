@@ -806,7 +806,12 @@
     local-name()='VariantTitle' or
     rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
     ) and
-    bf:variantType = 'former']">
+    bf:variantType = 'former' and 
+    (
+      bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] or 
+      rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
+    )
+    ]">
     
     <var name="vOccurrenceNumber">
       <transform>
@@ -822,7 +827,7 @@
       </transform>
     </var>
     
-  <df tag="247" lang-xpath="bf:mainTitle">
+    <df tag="247" lang-xpath="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
       <ind1 default="1"/>
       <ind2 default="0"/>
     <switch>
@@ -832,28 +837,28 @@
     </switch>
       <sf code="a" chopPunct="true" repeatable="false">
         <switch>
-          <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-          <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+          <case test="bf:mainTitle"><select xpath="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></case>
+          <case test="rdfs:label"><select xpath="rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></case>
         </switch>
       </sf>
       <sf code="b" chopPunct="true" repeatable="false">
-        <select xpath="bf:subtitle"/>
+        <select xpath="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
       </sf>
       <sf code="f" chopPunct="true" repeatable="false">
-        <select xpath="bf:date"/>
+        <select xpath="bf:date[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
       </sf>
       <sf code="g" chopPunct="true" repeatable="false">
-        <select xpath="bf:qualifier">
+        <select xpath="bf:qualifier[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
           <transform>
             <xsl:value-of select="concat('(',.,')')"/>
           </transform>
         </select>
       </sf>
       <sf code="n" chopPunct="true">
-        <select xpath="bf:partNumber"/>
+        <select xpath="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
       </sf>
       <sf code="p" chopPunct="true">
-        <select xpath="bf:partName"/>
+        <select xpath="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
       </sf>
       <sf code="x" repeatable="false">
         <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']]/rdf:value"/>
@@ -862,39 +867,43 @@
     
     <switch>
       <case test="count(bf:mainTitle)=2 and bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+        <var name="vLangTag" xpath="bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
+        <var name="vScript"><transform><xsl:value-of select="translate(substring-after($vLangTag,'-'),$upper,$lower)" /></transform></var>
+        <transform><xsl:message><xsl:value-of select="$vLangTag" /></xsl:message></transform>
         <var name="v880Script">
           <lookup map="df880script" targetField="code">
-            <lookupField name="lang" xpath="translate(substring-after(bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]/@xml:lang,'-'),$upper,$lower)"/>
+            <lookupField name="lang" xpath="$vScript"/>
           </lookup>
         </var>
-        <df tag="880" lang-xpath="bf:mainTitle">
+        <transform><xsl:message><xsl:value-of select="$v880Script" /></xsl:message></transform>
+        <df tag="880" lang-xpath="bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]">
           <ind1 default="1"/>
           <ind2 default="0"/>
           <sf code="6"><transform><xsl:value-of select="concat('246-0', $vOccurrenceNumber, '/' , $v880Script)" /></transform></sf>
           <sf code="a" chopPunct="true" repeatable="false">
             <switch>
-              <case test="bf:mainTitle"><select xpath="bf:mainTitle"/></case>
-              <case test="rdfs:label"><select xpath="rdfs:label"/></case>
+              <case test="bf:mainTitle"><select xpath="bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></case>
+              <case test="rdfs:label"><select xpath="rdfs:label[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></case>
             </switch>
           </sf>
           <sf code="b" chopPunct="true" repeatable="false">
-            <select xpath="bf:subtitle"/>
+            <select xpath="bf:subtitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/>
           </sf>
           <sf code="f" chopPunct="true" repeatable="false">
-            <select xpath="bf:date"/>
+            <select xpath="bf:date[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/>
           </sf>
           <sf code="g" chopPunct="true" repeatable="false">
-            <select xpath="bf:qualifier">
+            <select xpath="bf:qualifier[contains(translate(@xml:lang,$upper,$lower), $vScript)]">
               <transform>
                 <xsl:value-of select="concat('(',.,')')"/>
               </transform>
             </select>
           </sf>
           <sf code="n" chopPunct="true">
-            <select xpath="bf:partNumber"/>
+            <select xpath="bf:partNumber[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/>
           </sf>
           <sf code="p" chopPunct="true">
-            <select xpath="bf:partName"/>
+            <select xpath="bf:partName[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/>
           </sf>
           <sf code="x" repeatable="false">
             <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']]/rdf:value"/>
