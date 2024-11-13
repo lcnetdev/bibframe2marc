@@ -1312,8 +1312,8 @@
     <var name="vOccurrenceNumber">
       <transform>
         <xsl:if test="$vLangTag != ''">
-          <xsl:variable name="prevRelationCount" select="count(parent::bf:Work/preceding-sibling::bf:relation[bf:Relation/bf:associatedResource/bf:Work[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled']])" />
-          <xsl:value-of select="7 + $prevRelationCount" />
+          <xsl:variable name="prevRelationCount" select="position()" />
+          <xsl:value-of select="6 + $prevRelationCount" />
         </xsl:if>
       </transform>
     </var>
