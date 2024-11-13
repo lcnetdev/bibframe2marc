@@ -1277,6 +1277,7 @@
     </context>
   </df>
 
+  <!--
   <df tag="740">
     <context xpath="bf:Work/bf:relation/bf:Relation/bf:associatedResource/bf:Work[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled'] |
                     bf:Work/bf:relatedTo/bf:Work[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled'] |
@@ -1295,6 +1296,72 @@
       </sf>
     </context>
   </df>
+  -->
+  <select xpath="bf:Work/bf:relation/bf:Relation/bf:associatedResource/bf:Work[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled'] |
+    bf:Work/bf:relatedTo/bf:Work[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled'] |
+    bf:Work/bf:hasPart/bf:Work[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled']">
+    
+    <var name="vLangTag" xpath="bf:title/bf:Title/bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
+    <var name="vScript"><transform><xsl:value-of select="translate(substring-after($vLangTag,'-'),$upper,$lower)" /></transform></var>
+    <var name="v880Script">
+      <lookup map="df880script" targetField="code">
+        <lookupField name="lang" xpath="$vScript"/>
+      </lookup>
+    </var>
+    
+    <var name="vOccurrenceNumber">
+      <transform>
+        <xsl:if test="$vLangTag != ''">
+          <xsl:variable name="prevRelationCount" select="count(parent::bf:Work/preceding-sibling::bf:relation[bf:Relation/bf:associatedResource/bf:Work[rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/Uncontrolled']])" />
+          <xsl:value-of select="7 + $prevRelationCount" />
+        </xsl:if>
+      </transform>
+    </var>
+    
+    <df tag="740">
+      <ind1 default="0"/>
+      <ind2 default=' '>
+        <switch>
+          <case test="local-name(..)='hasPart'">2</case>
+        </switch>
+      </ind2>
+      <switch>
+        <case test="$vLangTag != ''">
+          <sf code="6"><transform><xsl:value-of select="concat('880-9', $vOccurrenceNumber)" /></transform></sf>
+        </case>
+      </switch>
+      <sf code="a" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></sf>
+      <sf code="n"><select xpath="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></sf>
+      <sf code="p"><select xpath="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></sf>
+      <sf code="5" repeatable="false">
+        <select xpath="bflc:applicableInstitution/*/bf:code"/>
+      </sf>
+    </df>
+    
+    <switch>
+      <case test="$vLangTag != ''">
+        <df tag="880">
+          <ind1 default="0"/>
+          <ind2 default=' '>
+            <switch>
+              <case test="local-name(..)='hasPart'">2</case>
+            </switch>
+          </ind2>
+          <switch>
+            <case test="$vLangTag != ''">
+              <sf code="6"><transform><xsl:value-of select="concat('740-9', $vOccurrenceNumber)" /></transform></sf>
+            </case>
+          </switch>
+          <sf code="a" repeatable="false"><select xpath="bf:title/bf:Title/bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
+          <sf code="n"><select xpath="bf:partNumber[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
+          <sf code="p"><select xpath="bf:partName[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
+          <sf code="5" repeatable="false">
+            <select xpath="bflc:applicableInstitution/*/bf:code"/>
+          </sf>
+        </df>
+      </case>
+    </switch>
+  </select>
 
   <df tag="752" lang-xpath="rdfs:label" lang-prefer="transliterated">
     <context xpath="bf:Work/bf:place/*[local-name()='HierarchicalGeographic' or rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#HierarchicalGeographic']">
