@@ -137,11 +137,14 @@
                     <transform><xsl:value-of select="$relURI" /></transform>
                   </sf>
                 </case>
-                <case test="$relURI != '' and 
-                  ( contains($relURI, 'http://id.worldcat.org/fast/') )">
+                <case test="$relURI != ''">
                   <sf code="0">
                     <transform><xsl:value-of select="$relURI" /></transform>
                   </sf>
+                </case>
+              </switch>
+              <switch>
+                <case test="contains($relURI, 'id.worldcat.org/fast')">
                   <sf code="0">
                     <transform>
                       <xsl:variable name="vFastID">

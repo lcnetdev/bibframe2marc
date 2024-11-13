@@ -720,7 +720,7 @@
         </transform>
       </var>
       
-      <df tag="246" lang-xpath="bf:mainTitle">
+      <df tag="246">
       <ind1 default="1">
         <switch>
           <case test="local-name()='ParallelTitle' or
@@ -767,7 +767,7 @@
               <lookupField name="lang" xpath="$vScript"/>
             </lookup>
           </var>
-          <df tag="880" lang-xpath="bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]">
+          <df tag="880">
             <ind1 default="1">
               <switch>
                 <case test="local-name()='ParallelTitle' or
@@ -831,7 +831,7 @@
       </transform>
     </var>
     
-    <df tag="247" lang-xpath="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+    <df tag="247">
       <ind1 default="1"/>
       <ind2 default="0"/>
     <switch>
@@ -878,7 +878,7 @@
             <lookupField name="lang" xpath="$vScript"/>
           </lookup>
         </var>
-        <df tag="880" lang-xpath="bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]">
+        <df tag="880">
           <ind1 default="1"/>
           <ind2 default="0"/>
           <sf code="6"><transform><xsl:value-of select="concat('246-0', $vOccurrenceNumber, '/' , $v880Script)" /></transform></sf>
