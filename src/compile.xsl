@@ -601,6 +601,9 @@
                 <xsl:when test="substring($pFieldStr, 2, 2) = '51'">151</xsl:when>
                 <xsl:when test="substring($pFieldStr, 2, 2) = '55'">155</xsl:when>
                 <xsl:when test="substring($pFieldStr, 1, 3) = '440'">130</xsl:when>
+                <xsl:when test="substring($pFieldStr, 1, 3) = '880'">
+                  <xsl:value-of select="substring( substring-after($pFieldStr, '$6'), 1, 3)" />
+                </xsl:when>
                 <xsl:otherwise><xsl:value-of select="substring($pFieldStr, 1, 3)" /></xsl:otherwise>
               </xsl:choose>
             </xsl:attribute>
@@ -627,7 +630,7 @@
             </xsl:attribute> 
             <xsl:call-template name="tParseMarcKey">
               <xsl:with-param name="pString" select="substring($pFieldStr, 6)" />
-            </xsl:call-template>
+            </xsl:call-template>  
           </marc:datafield>
         </marc:record>
       </xsl:template>
@@ -814,6 +817,13 @@
               <marc:subfield>
                 <xsl:attribute name="code"><xsl:value-of select="substring(substring-after($pString,$pSeparator),1,1)"/></xsl:attribute>
                 <xsl:choose>
+                  <xsl:when test="substring(substring-after($pString,$pSeparator),1,1) = '6' and 
+                                  contains(substring-after($pString,$pSeparator),$pSeparator) and 
+                                  substring-before(substring(substring-after($pString,$pSeparator),2),'/$1$') != ''
+                                  ">
+                    <!-- We have something like this:  $6700-09/$1$a李... -->
+                    <xsl:value-of select="concat(substring-before(substring(substring-after($pString,$pSeparator),2),'/$1'),'/$1')"/>
+                  </xsl:when>
                   <xsl:when test="contains(substring-after($pString,$pSeparator),$pSeparator)">
                     <xsl:value-of select="substring-before(substring(substring-after($pString,$pSeparator),2),$pSeparator)"/>
                   </xsl:when>
@@ -824,6 +834,14 @@
               </marc:subfield>
             
             <xsl:choose>
+              <xsl:when test="substring(substring-after($pString,$pSeparator),1,1) = '6' and 
+                              substring-before(substring(substring-after($pString,$pSeparator),2),'/$1$') != '' and
+                              contains(substring-after($pString,$pSeparator),$pSeparator)">
+                <xsl:call-template name="tParseMarcKey">
+                  <xsl:with-param name="pString" select="concat($pSeparator,substring-after(substring-after($pString,$pSeparator),'/$1$'))"/>
+                  <xsl:with-param name="pSeparator" select="$pSeparator"/>
+                </xsl:call-template>
+              </xsl:when>
               <xsl:when test="contains(substring-after($pString,$pSeparator),$pSeparator)">
                 <xsl:call-template name="tParseMarcKey">
                   <xsl:with-param name="pString" select="concat($pSeparator,substring-after(substring-after($pString,$pSeparator),$pSeparator))"/>
