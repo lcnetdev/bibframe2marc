@@ -805,8 +805,7 @@
     </select>
   
 
-
-  <select xpath="//bf:title/*[(
+  <select xpath="bf:Work/bf:title/*[(
     local-name()='VariantTitle' or
     rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
     ) and
@@ -814,6 +813,16 @@
     (
       bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] or 
       rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
+    )
+    ] |
+    bf:Instance[rdf:type/@rdf:resource!='http://id.loc.gov/ontologies/bflc/SecondaryInstance']/bf:title/*[(
+    local-name()='VariantTitle' or
+    rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
+    ) and
+    bf:variantType = 'former' and 
+    (
+    bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] or 
+    rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
     )
     ]">
     
