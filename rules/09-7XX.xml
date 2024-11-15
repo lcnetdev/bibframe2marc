@@ -164,12 +164,20 @@
       <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
       <var name="vAddedEntryNameMarcKeyTag">
         <switch>
-          <case test="$vRelResource//marc:record">
+          <case test="$vRelResource//marc:record[@tag!='']">
             <switch>
               <case test="$vRelResource//marc:datafield[@tag='100']">700</case>
               <case test="$vRelResource//marc:datafield[@tag='110']">710</case>
               <case test="$vRelResource//marc:datafield[@tag='111']">711</case>
               <case test="$vRelResource//marc:datafield[@tag='151']">710</case>
+            </switch>
+          </case>
+          <case test="default">
+            <switch>
+              <case test="local-name()='Person' or contains(rdf:type/@rdf:resource, '/Person')">700</case>
+              <case test="local-name()='Organization' or contains(rdf:type/@rdf:resource, '/Organization')">710</case>
+              <case test="local-name()='Meeting' or contains(rdf:type/@rdf:resource, '/Meeting')">711</case>
+              <case test="local-name()='Place' or contains(rdf:type/@rdf:resource, '/Place')">710</case>
             </switch>
           </case>
         </switch>
@@ -293,7 +301,9 @@
       </switch>
     </var>
     
-    <df tag="$vAddedEntryNameMarcKeyTag">
+    <switch>
+      <case test="$vRelResource//marc:record[@tag!='']">
+        <df tag="$vAddedEntryNameMarcKeyTag">
       <ind1 default=" ">
         <switch>
           <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != ''">
@@ -320,6 +330,8 @@
         <xsl:copy-of select="$vShared" />
       </transform>
     </df>
+      </case>
+    </switch>
     
     <switch>
       <case test="$vNameVariant//marc:record">
@@ -333,7 +345,16 @@
             </switch>
           </ind1>
           <ind2 default=" "/>
-          <sf code="6"><transform><xsl:value-of select="concat($vAddedEntryNameMarcKeyTag, '-7', position(), '/', $v880Script)"/></transform></sf>
+          <sf code="6">
+            <switch>
+              <case test="$vRelResource//marc:record[@tag!='']">
+                <transform><xsl:value-of select="concat($vAddedEntryNameMarcKeyTag, '-7', position(), '/', $v880Script)"/></transform>
+              </case>
+              <case test="default">
+                <transform><xsl:value-of select="concat($vAddedEntryNameMarcKeyTag, '-00', '/', $v880Script)"/></transform>
+              </case>
+            </switch>
+          </sf>
           <transform>
             <xsl:for-each select="$vNameVariant//marc:datafield/marc:subfield[contains($vValidSubfields,@code)]">
               <marc:subfield>
@@ -575,7 +596,6 @@
           <case test="$vAddRelationMarcKeyTag='730'">adfghklmnoprst</case>
         </switch>
       </var>
-      
       <ind1 default=" ">
         <switch>
           <case test="$vAddRelationMarcKeyTag = '730'">
