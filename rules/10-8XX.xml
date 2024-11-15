@@ -83,9 +83,22 @@
             <xsl:value-of select="."/>
           </marc:subfield>
         </xsl:for-each>
+        <xsl:for-each select="$vRelResource//marc:datafield[@tag = '240']/marc:subfield">
+          <marc:subfield>
+            <xsl:choose>
+              <xsl:when test="@code='a'">
+                <xsl:attribute name="code">t</xsl:attribute>  
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:value-of select="."/>
+          </marc:subfield>
+        </xsl:for-each>
       </transform>
       <sf code="v" repeatable="false">
-        <select xpath="../bf:seriesEnumeration"/>
+        <select xpath="ancestor::bf:Relation/bf:seriesEnumeration[not(@xml:lang)]|ancestor::bflc:Relationship/bf:seriesEnumeration[not(@xml:lang)]"/>
       </sf>
       <sf code="x" repeatable="false">
         <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
