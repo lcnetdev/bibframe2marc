@@ -99,7 +99,7 @@
                 <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/caninv' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/caninv')]/rdf:value"/>
               </sf>
               <sf code="v" repeatable="true">
-                <select xpath="../../bf:seriesEnumeration"/>
+                <select xpath="../../bf:seriesEnumeration[not(@xml:lang)]"/>
               </sf>
             </df>
       </case>
@@ -166,7 +166,7 @@
             <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/caninv' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/caninv')]/rdf:value"/>
           </sf>
           <sf code="v" repeatable="true">
-            <select xpath="../../bf:seriesEnumeration"/>
+            <select xpath="../../bf:seriesEnumeration[@xml:lang]"/>
           </sf>
         </df>
       </case>
