@@ -1430,7 +1430,8 @@
                 <xsl:value-of select="$v008-30"/>
                 <xsl:variable name="v008-31">
                   <xsl:choose>
-                    <xsl:when test="bf:Instance/bf:supplementaryContent/*[contains(rdfs:label,'index')]">1</xsl:when>
+                    <xsl:when test="bf:Work/bf:supplementaryContent[@rdf:resource='http://id.loc.gov/vocabulary/msupplcont/index' or */@rdf:about='http://id.loc.gov/vocabulary/msupplcont/index']">1</xsl:when>
+                    <xsl:when test="bf:Work/bf:supplementaryContent/*[contains(rdfs:label,'index')]">1</xsl:when>
                     <xsl:otherwise><xsl:value-of select="'0'"/></xsl:otherwise>
                   </xsl:choose>
                 </xsl:variable>
