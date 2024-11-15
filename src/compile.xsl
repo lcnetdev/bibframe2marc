@@ -589,27 +589,34 @@
       
       <xsl:template name="tGetMiniMARCFromKey">
         <xsl:param name="pFieldStr"/>
+        <xsl:variable name="tTag">
+          <xsl:choose>
+            <xsl:when test="substring($pFieldStr, 1, 3) = '880'">
+              <xsl:value-of select="substring( substring-after($pFieldStr, '$6'), 1, 3)" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="substring($pFieldStr, 1, 3)" />
+            </xsl:otherwise>
+          </xsl:choose> 
+        </xsl:variable>
         <marc:record>
           <marc:datafield>
             <xsl:attribute name="tag">
               <xsl:choose>
-                <xsl:when test="substring($pFieldStr, 2, 2) = '00'">100</xsl:when>
-                <xsl:when test="substring($pFieldStr, 2, 2) = '10'">110</xsl:when>
-                <xsl:when test="substring($pFieldStr, 2, 2) = '11'">111</xsl:when>
-                <xsl:when test="substring($pFieldStr, 2, 2) = '30'">130</xsl:when>
-                <xsl:when test="substring($pFieldStr, 2, 2) = '50'">150</xsl:when>
-                <xsl:when test="substring($pFieldStr, 2, 2) = '51'">151</xsl:when>
-                <xsl:when test="substring($pFieldStr, 2, 2) = '55'">155</xsl:when>
-                <xsl:when test="substring($pFieldStr, 1, 3) = '440'">130</xsl:when>
-                <xsl:when test="substring($pFieldStr, 1, 3) = '880'">
-                  <xsl:value-of select="substring( substring-after($pFieldStr, '$6'), 1, 3)" />
-                </xsl:when>
-                <xsl:otherwise><xsl:value-of select="substring($pFieldStr, 1, 3)" /></xsl:otherwise>
+                <xsl:when test="substring($tTag, 2, 2) = '00'">100</xsl:when>
+                <xsl:when test="substring($tTag, 2, 2) = '10'">110</xsl:when>
+                <xsl:when test="substring($tTag, 2, 2) = '11'">111</xsl:when>
+                <xsl:when test="substring($tTag, 2, 2) = '30'">130</xsl:when>
+                <xsl:when test="substring($tTag, 2, 2) = '50'">150</xsl:when>
+                <xsl:when test="substring($tTag, 2, 2) = '51'">151</xsl:when>
+                <xsl:when test="substring($tTag, 2, 2) = '55'">155</xsl:when>
+                <xsl:when test="substring($tTag, 1, 3) = '440'">130</xsl:when>
+                <xsl:otherwise><xsl:value-of select="substring($tTag, 1, 3)" /></xsl:otherwise>
               </xsl:choose>
             </xsl:attribute>
             <xsl:attribute name="ind1">
               <xsl:choose>
-                <xsl:when test="substring($pFieldStr, 1, 3) = 630 or substring($pFieldStr, 1, 3) = 730">
+                <xsl:when test="$tTag = 630 or $tTag = 730">
                   <!-- flipping to a 130 so we need to get non filing info into the right place. -->
                   <xsl:value-of select="substring($pFieldStr, 5, 1)" />
                 </xsl:when>
@@ -620,7 +627,7 @@
             </xsl:attribute> 
             <xsl:attribute name="ind2">
               <xsl:choose>
-                <xsl:when test="substring($pFieldStr, 1, 3) = 630 or substring($pFieldStr, 1, 3) = 730">
+                <xsl:when test="$tTag = 630 or $tTag = 730">
                   <xsl:value-of select="substring($pFieldStr, 4, 1)" />
                 </xsl:when>
                 <xsl:otherwise>
