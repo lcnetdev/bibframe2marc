@@ -382,6 +382,28 @@
       </switch>
     </context>
   </df>
+  
+  <df tag="080">
+    <context xpath="bf:Work/bf:classification/*[(local-name()='ClassificationUdc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationUdc') and bf:classificationPortion/text()]">
+      <ind1 default=" ">
+        <switch>
+          <case test="bf:edition = 'full'">0</case>
+          <case test="bf:edition = 'abridged'">1</case>
+        </switch>
+      </ind1>
+      <ind2 default=" " />
+      <sf code="a"><select xpath="bf:classificationPortion"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
+      <switch>
+        <case test="not(bf:assigner[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or */@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc'])">
+          <sf code="q" chopPunct="true" repeatable="false"><select xpath="bf:assigner/bf:Agent/rdfs:label"/></sf>
+        </case>
+      </switch>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/bf:code" />
+      </sf>
+    </context>
+  </df>
 
   <df tag="082">
     <context xpath="bf:Work/bf:classification/*[(local-name()='ClassificationDdc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationDdc') and bf:classificationPortion/text()]">
