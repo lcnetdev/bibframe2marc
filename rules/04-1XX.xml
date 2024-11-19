@@ -19,14 +19,14 @@
     <var name="vNameAuthPreNS">
       <transform>
         <xsl:call-template name="tGetMiniMARCFromKey">
-          <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '1')][1]"/>
+          <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))][1]"/>
         </xsl:call-template>
       </transform>
     </var>
     <var name="vNameAuth" xpath="exsl:node-set($vNameAuthPreNS)" />
     <var name="vNameTag">
       <switch>
-        <case test="$vNameAuth//marc:record">
+        <case test="$vNameAuth//marc:datafield[@tag!='']">
           <switch>
             <case test="$vNameAuth//marc:datafield[@tag='100']">100</case>
             <case test="$vNameAuth//marc:datafield[@tag='110']">110</case>
@@ -46,8 +46,8 @@
 
     <var name="v880Script">
       <switch>
-        <case test="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang">
-          <var name="vLangTag" xpath="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
+        <case test="self::node()/bflc:marcKey[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang">
+          <var name="vLangTag" xpath="self::node()/bflc:marcKey[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
           <lookup map="df880script" targetField="code">
             <lookupField name="lang" xpath="translate(substring-after($vLangTag,'-'),$upper,$lower)"/>
           </lookup>
@@ -57,9 +57,9 @@
 
     <var name="vNameVariantPreNS">
         <transform>
-          <xsl:if test="$v880Script != '' and self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]">
+          <xsl:if test="$v880Script != '' and self::node()/bflc:marcKey[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]">
             <xsl:call-template name="tGetMiniMARCFromKey">
-              <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[starts-with(. , '4') and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]"/>
+              <xsl:with-param name="pFieldStr" select="self::node()/bflc:marcKey[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]"/>
             </xsl:call-template>
           </xsl:if>
         </transform>
@@ -67,7 +67,7 @@
     <var name="vNameVariant" xpath="exsl:node-set($vNameVariantPreNS)" />
     <var name="vNameVariantTag">
       <switch>
-        <case test="$vNameVariant//marc:record">
+        <case test="$vNameVariant//marc:datafield[@tag!='']">
           <switch>
             <case test="$vNameVariant//marc:datafield[@tag='400']">100</case>
             <case test="$vNameVariant//marc:datafield[@tag='410']">110</case>
@@ -246,7 +246,7 @@
       </ind1>
       <ind2 default=" "/>
       <switch>
-        <case test="$vNameVariant//marc:record">
+        <case test="$vNameVariant//marc:datafield[@tag!='']">
           <!-- We have a variant, so we need to create an 880 link. -->
           <sf code="6"><transform><xsl:value-of select="concat('880-0', position())"/></transform></sf>   
         </case>
@@ -263,7 +263,7 @@
     </df>
     
     <switch>
-      <case test="$vNameVariant//marc:record">
+      <case test="$vNameVariant//marc:datafield[@tag!='']">
         <!-- We have a variant, so we need to create an 880. -->
         <df tag="880">
           <ind1 default="2">
@@ -315,7 +315,7 @@
       <var name="vNameAuth" xpath="exsl:node-set($vNameAuthPreNS)" />
       <var name="vMainEntryTag">
         <switch>
-          <case test="$vNameAuth//marc:record">
+          <case test="$vNameAuth//marc:datafield[@tag!='']">
             <switch>
               <case test="$vNameAuth//marc:datafield[@tag='100']">100</case>
               <case test="$vNameAuth//marc:datafield[@tag='110']">110</case>

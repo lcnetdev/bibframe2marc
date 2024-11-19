@@ -46,7 +46,7 @@
       <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
       <var name="vAddedEntryNameLookupTag">
         <switch>
-          <case test="$vRelResource//marc:record">
+          <case test="$vRelResource//marc:datafield[@tag!='']">
             <switch>
               <case test="$vRelResource//marc:datafield[@tag='100']">700</case>
               <case test="$vRelResource//marc:datafield[@tag='110']">710</case>
@@ -164,7 +164,7 @@
       <var name="vRelResource" xpath="exsl:node-set($vRelResourcePreNS)" />
       <var name="vAddedEntryNameMarcKeyTag">
         <switch>
-          <case test="$vRelResource//marc:record[@tag!='']">
+          <case test="$vRelResource//marc:datafield[@tag!='']">
             <switch>
               <case test="$vRelResource//marc:datafield[@tag='100']">700</case>
               <case test="$vRelResource//marc:datafield[@tag='110']">710</case>
@@ -302,7 +302,7 @@
     </var>
     
     <switch>
-      <case test="$vRelResource//marc:record[@tag!='']">
+      <case test="$vRelResource//marc:datafield[@tag!='']">
         <df tag="$vAddedEntryNameMarcKeyTag">
       <ind1 default=" ">
         <switch>
@@ -315,7 +315,7 @@
       </ind1>
       <ind2 default=" "/>
       <switch>
-        <case test="$vNameVariant//marc:record">
+        <case test="$vNameVariant//marc:datafield[@tag!='']">
           <!-- We have a variant, so we need to create an 880 link. -->
           <sf code="6"><transform><xsl:value-of select="concat('880-7', position())"/></transform></sf>   
         </case>
@@ -334,7 +334,7 @@
     </switch>
     
     <switch>
-      <case test="$vNameVariant//marc:record">
+      <case test="$vNameVariant//marc:datafield[@tag!='']">
         <!-- We have a variant, so we need to create an 880. -->
         <df tag="880">
           <ind1 default="2">
