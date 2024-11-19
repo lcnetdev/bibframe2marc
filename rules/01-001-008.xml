@@ -1670,8 +1670,21 @@
           </select>
         </position>
 
-        <!-- 38-39 -->
-        <position default="  "/>
+        <!-- 38 -->
+        <position default=" "/>
+        
+        <!-- 39 -->
+        <position default=" ">
+          <switch>
+            <case test="contains($vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/n']]/bf:agent//@rdf:*[1], '/dlc')">
+              <transform>
+                <xsl:value-of select="' '" />
+              </transform>
+            </case>
+            <case test="contains($vAdminMetadata/bf:descriptionAuthentication//@rdf:*[1], '/pcc')">c</case>
+            <case test="contains($vAdminMetadata/bf:descriptionAuthentication//@rdf:*[1], '/lccopycat')">d</case>
+          </switch>
+        </position>
 
       </fixed-field>
     </context>
