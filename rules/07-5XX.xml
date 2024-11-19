@@ -379,9 +379,13 @@
                   </xsl:choose>
                 </xsl:for-each>
               </xsl:variable>
+              <!-- Do not chop punctuation - 20241119 -->
+              <!--
               <xsl:call-template name="tChopPunct">
                 <xsl:with-param name="pString" select="$vNoteText"/>
               </xsl:call-template>
+              -->
+              <xsl:value-of select="$vNoteText" />
             </transform>
           </sf>
           <sf code="5" repeatable="false">
@@ -578,7 +582,7 @@
       <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a" chopPunct="true" repeatable="false">
+      <sf code="a" chopPunct="false" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
       <sf code="u">
