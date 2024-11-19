@@ -17,27 +17,20 @@
         bf:Work/bf:hasSeries/bf:Series[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
         bf:Work/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']] |
         //bf:Item/bflc:relationship/bflc:Relationship[bflc:relation[contains(@rdf:resource, 'hasSeries') or contains(bflc:Relation/@rdf:about, 'hasSeries')]]/bf:relatedTo/bf:*[bf:status/@rdf:resource[.='http://id.loc.gov/vocabulary/mstatus/t'] or bf:status/bf:Status/@rdf:about[.='http://id.loc.gov/vocabulary/mstatus/t']]">
-    <var name="vScriptSubtag">
-      <transform>
-        <xsl:call-template name="tScriptCode">
-          <xsl:with-param name="pXmlLang" select="rdfs:label/@xml:lang"/>
-        </xsl:call-template>
-      </transform>
-    </var>
+    
+    <var name="vLangTag" xpath="bf:title/bf:Title/bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
+    <var name="vScript"><transform><xsl:value-of select="translate(substring-after($vLangTag,'-'),$upper,$lower)" /></transform></var>
     <var name="v880Script">
-      <switch>
-        <case test="bf:title/bf:Title/bf:mainTitle/@xml:lang and not(contains(translate(bf:title/bf:Title/bf:mainTitle/@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))">
-          <lookup map="df880script" targetField="code">
-            <lookupField name="lang" xpath="translate(substring-after(bf:title/bf:Title/bf:mainTitle/@xml:lang,'-'),$upper,$lower)"/>
-          </lookup>
-        </case>
-      </switch>
+      <lookup map="df880script" targetField="code">
+        <lookupField name="lang" xpath="$vScript"/>
+      </lookup>
     </var>
     <var name="v880Occurence">
       <transform><xsl:value-of select="20+position()"/></transform>
     </var>
+    
     <switch>
-      <case test="bf:title/bf:Title/bf:mainTitle[not(@xml:lang)]">
+      <case test="bf:title/bf:Title/bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
             <df tag="490">
               <ind1 default="0">
                 <switch>
@@ -55,12 +48,16 @@
               </sf>
               <var name="vMainTitle">
                 <switch>
-                  <case test="bf:title/bf:Title/bf:mainTitle[not(@xml:lang)]"><select xpath="bf:title/bf:Title/bf:mainTitle[not(@xml:lang)]"/></case>
+                  <case test="bf:title/bf:Title/bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                    <select xpath="bf:title/bf:Title/bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+                  </case>
                 </switch>
               </var>
               <var name="vParallelTitle">
                 <switch>
-                  <case test="bf:title/bf:ParallelTitle/bf:mainTitle[not(@xml:lang)]"><select xpath="bf:title/bf:ParallelTitle/bf:mainTitle[not(@xml:lang)]"/></case>
+                  <case test="bf:title/bf:ParallelTitle/bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                    <select xpath="bf:title/bf:ParallelTitle/bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+                  </case>
                 </switch>
               </var>
               
@@ -79,7 +76,7 @@
                 <switch>
                   <case test="$vParallelTitle != ''">
                     <transform>
-                      <xsl:for-each select="bf:title/bf:ParallelTitle/bf:mainTitle[not(@xml:lang)]">
+                      <xsl:for-each select="bf:title/bf:ParallelTitle/bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
                         <marc:subfield code='a'>
                           <xsl:value-of select="." />
                           <xsl:if test="position() != last()"><xsl:text> =</xsl:text></xsl:if>
@@ -99,7 +96,7 @@
                 <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/caninv' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/caninv')]/rdf:value"/>
               </sf>
               <sf code="v" repeatable="true">
-                <select xpath="../../bf:seriesEnumeration[not(@xml:lang)]"/>
+                <select xpath="../../bf:seriesEnumeration[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
               </sf>
             </df>
       </case>
@@ -122,12 +119,16 @@
           </sf>
           <var name="vMainTitle">
             <switch>
-              <case test="bf:title/bf:Title/bf:mainTitle[@xml:lang]"><select xpath="bf:title/bf:Title/bf:mainTitle[@xml:lang]"/></case>
+              <case test="bf:title/bf:Title/bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]">
+                <select xpath="bf:title/bf:Title/bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/>
+              </case>
             </switch>
           </var>
           <var name="vParallelTitle">
             <switch>
-              <case test="bf:title/bf:ParallelTitle/bf:mainTitle[@xml:lang]"><select xpath="bf:title/bf:ParallelTitle/bf:mainTitle[@xml:lang]"/></case>
+              <case test="bf:title/bf:ParallelTitle/bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]">
+                <select xpath="bf:title/bf:ParallelTitle/bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/>
+              </case>
             </switch>
           </var>
           
@@ -146,7 +147,7 @@
           <switch>
             <case test="$vParallelTitle != ''">
               <transform>
-                <xsl:for-each select="bf:title/bf:ParallelTitle/bf:mainTitle[@xml:lang]">
+                <xsl:for-each select="bf:title/bf:ParallelTitle/bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]">
                   <marc:subfield code='a'>
                     <xsl:value-of select="." />
                     <xsl:if test="position() != last()"><xsl:text> =</xsl:text></xsl:if>
@@ -166,7 +167,7 @@
             <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/caninv' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/caninv')]/rdf:value"/>
           </sf>
           <sf code="v" repeatable="true">
-            <select xpath="../../bf:seriesEnumeration[@xml:lang]"/>
+            <select xpath="../../bf:seriesEnumeration[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/>
           </sf>
         </df>
       </case>
