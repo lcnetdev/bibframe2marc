@@ -347,7 +347,7 @@
           <ind2 default=" "/>
           <sf code="6">
             <switch>
-              <case test="$vRelResource//marc:record[@tag!='']">
+              <case test="$vRelResource//marc:datafield[@tag!='']">
                 <transform><xsl:value-of select="concat($vAddedEntryNameMarcKeyTag, '-7', position(), '/', $v880Script)"/></transform>
               </case>
               <case test="default">
