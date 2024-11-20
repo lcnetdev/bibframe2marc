@@ -47,6 +47,32 @@
     <x:expect label="$1 exists from marcKey and matches"
       test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/n79079048'"/>
   </x:scenario>
+  
+  <x:scenario label="MARC 100 - 880">
+    <x:context href="../data/exemplars/text-monograph-880s-008s.rdf"/>
+    <x:expect label="generate 100" test="count(//marc:datafield[@tag='100']) = 1"/>
+    <x:expect label="$a exists from marcKey and matches"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='a'] = 'Ye, Shuxian,'"/>
+    <x:expect label="$d exists from marcKey and matches"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='d'] = '1954-'"/>
+    <x:expect label="$e exists from marcKey and matches relator code"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='e'] = 'author'"/>
+    <x:expect label="$1 exists from marcKey and matches"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/nr88010802'"/>
+    <x:expect label="$6 for paired non-latin field"
+      test="//marc:datafield[@tag='100'][1]/marc:subfield[@code='6'] = '880-01'"/>
+    
+    <x:expect label="generate 880" test="count(//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='100-01/$1']]) = 1"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='100-01/$1']]/marc:subfield[@code='a'] = '叶舒宪,'"/>
+    <x:expect label="$d from label of agent"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='100-01/$1']]/marc:subfield[@code='d'] = '1954-'"/>
+    <x:expect label="$e from label of agent"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='100-01/$1']]/marc:subfield[@code='e'] = 'author'"/>
+    <x:expect label="$1 from label of agent"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='100-01/$1']]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/nr88010802'"/>
+
+  </x:scenario>
 
   <x:scenario label="MARC 110">
     <x:context href="../data/1XX/110.xml"/>
