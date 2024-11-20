@@ -64,12 +64,26 @@
                 <switch>
                   <case test="$vMainTitle != '' and $vParallelTitle != ''">
                     <sf code="a" chopPunct="false" repeatable="true">
-                        <transform><xsl:value-of select="concat($vMainTitle, ' =')"/></transform>
+                        <transform>
+                          <xsl:value-of select="concat($vMainTitle, ' =')"/>
+                        </transform>
                     </sf>
                   </case>
                   <case test="$vMainTitle != ''">
                     <sf code="a" chopPunct="false" repeatable="true">
-                        <transform><xsl:value-of select="$vMainTitle"/></transform>
+                        <transform>
+                          <xsl:choose>
+                            <xsl:when test="bf:identifiedBy/*[local-name()='Issn']">
+                              <xsl:value-of select="concat($vMainTitle, ',')"/>
+                            </xsl:when>
+                            <xsl:when test="ancestor::bf:Relation/bf:seriesEnumeration[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                              <xsl:value-of select="concat($vMainTitle, ' ;')"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <xsl:value-of select="$vMainTitle"/>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </transform>
                     </sf>
                   </case>
                 </switch>
@@ -80,21 +94,62 @@
                         <marc:subfield code='a'>
                           <xsl:value-of select="." />
                           <xsl:if test="position() != last()"><xsl:text> =</xsl:text></xsl:if>
+                          <xsl:choose>
+                            <xsl:when test="position() != last()">
+                              <xsl:text> =</xsl:text>
+                            </xsl:when>
+                            <xsl:when test="bf:identifiedBy/*[local-name()='Issn']">
+                              <xsl:value-of select="concat($vMainTitle, ',')"/>
+                            </xsl:when>
+                            <xsl:when test="ancestor::bf:Relation/bf:seriesEnumeration[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                              <xsl:value-of select="concat($vMainTitle, ' ;')"/>
+                            </xsl:when>
+                          </xsl:choose>
                         </marc:subfield>
                       </xsl:for-each>
                     </transform>
                   </case>
                 </switch>
-
-              <sf code="x" repeatable="true">
-                <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
-              </sf>
-              <sf code="y" repeatable="true">
-                <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/incorrect' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/incorrect')]/rdf:value"/>
-              </sf>
-              <sf code="z" repeatable="true">
-                <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/caninv' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/caninv')]/rdf:value"/>
-              </sf>
+             
+              <switch>
+                <case test="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and not(bf:status)]/rdf:value">
+                  <transform>
+                    <xsl:for-each select="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and not(bf:status)]/rdf:value">
+                      <marc:subfield code='x'>
+                        <xsl:value-of select="." />
+                        <xsl:if test="following-sibling::bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']"><xsl:text>,</xsl:text></xsl:if>
+                        <xsl:if test="ancestor::bf:Relation/bf:seriesEnumeration[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text> ;</xsl:text></xsl:if>
+                      </marc:subfield>
+                    </xsl:for-each>
+                  </transform>
+                </case>
+              </switch>
+              <switch>
+                <case test="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/incorrect']/rdf:value">
+                  <transform>
+                    <xsl:for-each select="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/incorrect']/rdf:value">
+                      <marc:subfield code='y'>
+                        <xsl:value-of select="." />
+                        <xsl:if test="following-sibling::bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']"><xsl:text>,</xsl:text></xsl:if>
+                        <xsl:if test="ancestor::bf:Relation/bf:seriesEnumeration[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text> ;</xsl:text></xsl:if>
+                      </marc:subfield>
+                    </xsl:for-each>
+                  </transform>
+                </case>
+              </switch>
+              <switch>
+                <case test="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv']/rdf:value">
+                  <transform>
+                    <xsl:for-each select="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv']/rdf:value">
+                      <marc:subfield code='z'>
+                        <xsl:value-of select="." />
+                        <xsl:if test="following-sibling::bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']"><xsl:text>,</xsl:text></xsl:if>
+                        <xsl:if test="ancestor::bf:Relation/bf:seriesEnumeration[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><xsl:text> ;</xsl:text></xsl:if>
+                      </marc:subfield>
+                    </xsl:for-each>
+                  </transform>
+                </case>
+              </switch>
               <sf code="v" repeatable="true">
                 <select xpath="../../bf:seriesEnumeration[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
               </sf>
@@ -135,12 +190,26 @@
           <switch>
             <case test="$vMainTitle != '' and $vParallelTitle != ''">
               <sf code="a" chopPunct="false" repeatable="true">
-                <transform><xsl:value-of select="concat($vMainTitle, ' =')"/></transform>
+                <transform>
+                  <xsl:value-of select="concat($vMainTitle, ' =')"/>
+                </transform>
               </sf>
             </case>
             <case test="$vMainTitle != ''">
               <sf code="a" chopPunct="false" repeatable="true">
-                <transform><xsl:value-of select="$vMainTitle"/></transform>
+                <transform>
+                  <xsl:choose>
+                    <xsl:when test="bf:identifiedBy/*[local-name()='Issn']">
+                      <xsl:value-of select="concat($vMainTitle, ',')"/>
+                    </xsl:when>
+                    <xsl:when test="ancestor::bf:Relation/bf:seriesEnumeration[contains(translate(@xml:lang,$upper,$lower), $vScript)]">
+                      <xsl:value-of select="concat($vMainTitle, ' ;')"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="$vMainTitle"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </transform>
               </sf>
             </case>
           </switch>
@@ -151,21 +220,62 @@
                   <marc:subfield code='a'>
                     <xsl:value-of select="." />
                     <xsl:if test="position() != last()"><xsl:text> =</xsl:text></xsl:if>
+                    <xsl:choose>
+                      <xsl:when test="position() != last()">
+                        <xsl:text> =</xsl:text>
+                      </xsl:when>
+                      <xsl:when test="bf:identifiedBy/*[local-name()='Issn']">
+                        <xsl:value-of select="concat($vMainTitle, ',')"/>
+                      </xsl:when>
+                      <xsl:when test="ancestor::bf:Relation/bf:seriesEnumeration[contains(translate(@xml:lang,$upper,$lower), $vScript)]">
+                        <xsl:value-of select="concat($vMainTitle, ' ;')"/>
+                      </xsl:when>
+                    </xsl:choose>
                   </marc:subfield>
                 </xsl:for-each>
               </transform>
             </case>
           </switch>
           
-          <sf code="x" repeatable="true">
-            <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
-          </sf>
-          <sf code="y" repeatable="true">
-            <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/incorrect' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/incorrect')]/rdf:value"/>
-          </sf>
-          <sf code="z" repeatable="true">
-            <select xpath="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and (bf:status/@rdf:resource='http://id.loc.gov/vocabulary/mstatus/caninv' or bf:status/bf:Status/@rdf:about='http://id.loc.gov/vocabulary/mstatus/caninv')]/rdf:value"/>
-          </sf>
+          <switch>
+            <case test="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and not(bf:status)]/rdf:value">
+              <transform>
+                <xsl:for-each select="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and not(bf:status)]/rdf:value">
+                  <marc:subfield code='x'>
+                    <xsl:value-of select="." />
+                    <xsl:if test="following-sibling::bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']"><xsl:text>,</xsl:text></xsl:if>
+                    <xsl:if test="ancestor::bf:Relation/bf:seriesEnumeration[contains(translate(@xml:lang,$upper,$lower), $vScript)]"><xsl:text> ;</xsl:text></xsl:if>
+                  </marc:subfield>
+                </xsl:for-each>
+              </transform>
+            </case>
+          </switch>
+          <switch>
+            <case test="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/incorrect']/rdf:value">
+              <transform>
+                <xsl:for-each select="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/incorrect']/rdf:value">
+                  <marc:subfield code='y'>
+                    <xsl:value-of select="." />
+                    <xsl:if test="following-sibling::bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']"><xsl:text>,</xsl:text></xsl:if>
+                    <xsl:if test="ancestor::bf:Relation/bf:seriesEnumeration[contains(translate(@xml:lang,$upper,$lower), $vScript)]"><xsl:text> ;</xsl:text></xsl:if>
+                  </marc:subfield>
+                </xsl:for-each>
+              </transform>
+            </case>
+          </switch>
+          <switch>
+            <case test="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv']/rdf:value">
+              <transform>
+                <xsl:for-each select="bf:identifiedBy/*[(local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn') and bf:status//@rdf:*[1]='http://id.loc.gov/vocabulary/mstatus/cancinv']/rdf:value">
+                  <marc:subfield code='z'>
+                    <xsl:value-of select="." />
+                    <xsl:if test="following-sibling::bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']"><xsl:text>,</xsl:text></xsl:if>
+                    <xsl:if test="ancestor::bf:Relation/bf:seriesEnumeration[contains(translate(@xml:lang,$upper,$lower), $vScript)]"><xsl:text> ;</xsl:text></xsl:if>
+                  </marc:subfield>
+                </xsl:for-each>
+              </transform>
+            </case>
+          </switch>
           <sf code="v" repeatable="true">
             <select xpath="../../bf:seriesEnumeration[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/>
           </sf>
