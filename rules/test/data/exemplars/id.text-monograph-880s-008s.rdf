@@ -1,20 +1,14 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/22014581">
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Print"/>
-    <bf:title>
-      <bf:Title>
-	<bf:mainTitle>Xuan yu shi dai</bf:mainTitle>
-	<bf:mainTitle xml:lang="zh-hani">玄玉时代</bf:mainTitle>
-	<bf:subtitle>wu qian nian Zhongguo de xin qiu zheng = Black Jade Age : New Evidence of 5000 Years History of China</bf:subtitle>
-	<bf:subtitle xml:lang="zh-hani">五千年中国的新求证 = Black Jade Age : New Evidence of 5000 Years History of China</bf:subtitle>
-      </bf:Title>
-    </bf:title>
-    <bf:responsibilityStatement>Ye Shuxian zhu</bf:responsibilityStatement>
-    <bf:responsibilityStatement xml:lang="zh-hani">叶舒宪著</bf:responsibilityStatement>
-    <bf:editionStatement>Di 1 ban</bf:editionStatement>
-    <bf:editionStatement xml:lang="zh-hani">第 1 版</bf:editionStatement>
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
+      </bf:Issuance>
+    </bf:issuance>
     <bf:provisionActivity>
-      <bf:Publication>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
 	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2020</bf:date>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/cc">
@@ -22,67 +16,25 @@
 	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cc</bf:code>
 	  </bf:Place>
 	</bf:place>
-      </bf:Publication>
+	<bflc:simplePlace>Shanghai</bflc:simplePlace>
+	<bflc:simplePlace xml:lang="zh-hani">上海</bflc:simplePlace>
+	<bflc:simpleAgent>Shanghai ren min chu ban she</bflc:simpleAgent>
+	<bflc:simpleAgent xml:lang="zh-hani">上海人民出版社</bflc:simpleAgent>
+	<bflc:simpleDate>2020</bflc:simpleDate>
+	<bflc:simpleDate xml:lang="zh-hani">2020</bflc:simpleDate>
+      </bf:ProvisionActivity>
     </bf:provisionActivity>
-    <bf:provisionActivity>
-      <bf:Publication>
-	<bf:place>
-	  <bf:Place>
-	    <rdfs:label>Shanghai</rdfs:label>
-	    <rdfs:label xml:lang="zh-hani">上海</rdfs:label>
-	  </bf:Place>
-	</bf:place>
-	<bf:agent>
-	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n50001481">
-	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
-	    <rdfs:label>Shanghai ren min chu ban she</rdfs:label>
-	    <rdfs:label xml:lang="zxx-Hani">上海人民出版社</rdfs:label>
-	    <bflc:marcKey>4102 $a上海人民出版社$7[bcp47]zxx-Hani</bflc:marcKey>
-	    <bflc:marcKey>1102 $aShanghai ren min chu ban she</bflc:marcKey>
-	  </bf:Agent>
-	</bf:agent>
-	<bf:date>2020</bf:date>
-	<bf:date xml:lang="zh-hani">2020</bf:date>
-      </bf:Publication>
-    </bf:provisionActivity>
-    <bf:seriesStatement>Zhonghua chuang shi shen hua yan jiu gong cheng xi lie. Zhonghua chuang shi shen hua kao gu zhuan ti. Yu cheng Zhongguo</bf:seriesStatement>
-    <bf:seriesStatement xml:lang="zh-hani">中华创世神话研究工程系列. 中华创世神话考古专题·玉成中国</bf:seriesStatement>
-    <bf:issuance>
-      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
-	<rdfs:label>single unit</rdfs:label>
-	<bf:code>mono</bf:code>
-      </bf:Issuance>
-    </bf:issuance>
+    <bf:publicationStatement>Shanghai: Shanghai ren min chu ban she, 2020</bf:publicationStatement>
+    <bflc:publicationStatement xml:lang="zh-hani">上海: 上海人民出版社, 2020</bflc:publicationStatement>
     <bf:identifiedBy>
-      <bf:Local>
+      <bf:OclcNumber>
 	<rdf:value>on1246209164</rdf:value>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">OCoLC</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">ocolc</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-ocolc</bf:code>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:Local>
+      </bf:OclcNumber>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Local>
-	<rdf:value>1246209164</rdf:value>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/ocolc">
-	    <rdfs:label>Online Computer Library Center, Inc.</rdfs:label>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">OCoLC</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">ocolc</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-ocolc</bf:code>
-	  </bf:Organization>
-	</bf:assigner>
-      </bf:Local>
-    </bf:identifiedBy>
-    <bf:identifiedBy>
-      <bf:Isbn>
-	<rdf:value>720815743X</rdf:value>
-      </bf:Isbn>
+      <bf:Lccn>
+	<rdf:value>  2020452750</rdf:value>
+      </bf:Lccn>
     </bf:identifiedBy>
     <bf:identifiedBy>
       <bf:Isbn>
@@ -90,19 +42,54 @@
       </bf:Isbn>
     </bf:identifiedBy>
     <bf:identifiedBy>
-      <bf:Lccn>
-	<rdf:value>  2020452750</rdf:value>
-      </bf:Lccn>
+      <bf:Isbn>
+	<rdf:value>720815743X</rdf:value>
+      </bf:Isbn>
     </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:OclcNumber>
+	<rdf:value>1246209164</rdf:value>
+      </bf:OclcNumber>
+    </bf:identifiedBy>
+    <bf:responsibilityStatement>Ye Shuxian zhu</bf:responsibilityStatement>
+    <bf:responsibilityStatement xml:lang="zh-hani">叶舒宪著</bf:responsibilityStatement>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Xuan yu shi dai</bf:mainTitle>
+	<bf:subtitle>wu qian nian Zhongguo de xin qiu zheng = Black Jade Age : New Evidence of 5000 Years History of China</bf:subtitle>
+	<bf:mainTitle xml:lang="zh-hani">玄玉时代</bf:mainTitle>
+	<bf:subtitle xml:lang="zh-hani">五千年中国的新求证 = Black Jade Age : New Evidence of 5000 Years History of China</bf:subtitle>
+      </bf:Title>
+    </bf:title>
+    <bf:editionStatement>Di 1 ban</bf:editionStatement>
+    <bf:editionStatement xml:lang="zh-hani">第 1 版</bf:editionStatement>
+    <bf:extent>
+      <bf:Extent>
+	<rdfs:label>3, 2, 264 pages</rdfs:label>
+      </bf:Extent>
+    </bf:extent>
     <bf:note>
       <bf:Note>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
 	<rdfs:label>illustrations (some color), maps</rdfs:label>
       </bf:Note>
     </bf:note>
+    <bf:dimensions>25 cm</bf:dimensions>
+    <bf:media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+	<rdfs:label>unmediated</rdfs:label>
+	<bf:code>n</bf:code>
+      </bf:Media>
+    </bf:media>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+	<rdfs:label>volume</rdfs:label>
+	<bf:code>nc</bf:code>
+      </bf:Carrier>
+    </bf:carrier>
     <bf:note>
       <bf:Note>
-	<rdfs:label xml:lang="zh-hani">"国家出版基金项目"-Title page verso.</rdfs:label>
+	<rdfs:label xml:lang="zh-hani">"国家出版基金项目"--title page verso.</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:supplementaryContent>
@@ -110,58 +97,81 @@
 	<rdfs:label>Includes bibliographical references.</rdfs:label>
       </bf:SupplementaryContent>
     </bf:supplementaryContent>
-    <bf:media>
-      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
-	<rdfs:label>unmediated</rdfs:label>
-	<bf:code>n</bf:code>
-      </bf:Media>
-    </bf:media>
-    <bf:extent>
-      <bf:Extent>
-	<rdfs:label>3, 2, 264 pages</rdfs:label>
-      </bf:Extent>
-    </bf:extent>
-    <bf:dimensions>25 cm.</bf:dimensions>
-    <bf:carrier>
-      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
-	<rdfs:label>volume</rdfs:label>
-	<bf:code>nc</bf:code>
-      </bf:Carrier>
-    </bf:carrier>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/22014581"/>
-    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/22014581-050-16"/>
-    <bf:hasItem rdf:resource="http://id.loc.gov/resources/items/22014581-050-17"/>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-03-17T01:31:01.234501-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-14</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-03-25T08:54:11</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-09T22:39:40.873626-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-4-0/"/>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
-	    <rdfs:label>preliminary</rdfs:label>
-	    <bf:code>5</bf:code>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+	    <rdfs:label>full</rdfs:label>
+	    <bf:code>f</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
 	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
 	    <bf:code>isbd</bf:code>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdfs:label>Resource description and access</rdfs:label>
-	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -177,11 +187,78 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-03-16T11:14:41</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-14</bf:creationDate>
-	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d 3 $e ncip $f 20 $g y-nonroman</lclocal:d906>
+	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 20 $g y-nonroman</lclocal:d906>
 	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
-	<lclocal:d955>=955     $a ve11 to LC 2021-04-28 $c cc18 2022-03-16 TW to cc14 review and SH</lclocal:d955>
+	<lclocal:d955>=955     $a ve11 to LC 2021-04-28 $c cc18 2022-03-16 TW $d cc14 2022-03-25 (TW situational) $e cc14 2022-03-25 (TW situational) to ASIAN</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$erda$cDLC$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+	<lclocal:d985>=985     $a CNP load-new $d 2021-04-28</lclocal:d985>
+	<lclocal:batch>BibframePilot2</lclocal:batch>
+	<lclocal:d985>=985     $e BibframePilot2 $d 2022-03-25 $f cc14 2022-03-25</lclocal:d985>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Instance>
+  <bf:Work rdf:about="http://id.loc.gov/resources/works/22014581">
+    <bflc:aap>Ye, Shuxian, 1954- Xuan yu shi dai</bflc:aap>
+    <bflc:aap-normalized>yeshuxian1954xuanyushidai</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/chi">
+	<rdfs:label xml:lang="en">Chinese</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">chi</bf:code>
+      </bf:Language>
+    </bf:language>
+    <bf:illustrativeContent>
+      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
+	<rdfs:label>illustrations</rdfs:label>
+	<bf:code>ill</bf:code>
+      </bf:Illustration>
+    </bf:illustrativeContent>
+    <bf:illustrativeContent>
+      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/map">
+	<rdfs:label>maps</rdfs:label>
+	<bf:code>map</bf:code>
+      </bf:Illustration>
+    </bf:illustrativeContent>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/bibliography">
+	<rdfs:label>bibliography</rdfs:label>
+	<bf:code>bibliography</bf:code>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:geographicCoverage>
+      <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/a-cc">
+	<rdfs:label xml:lang="en">China</rdfs:label>
+	<bf:code rdf:datatype="http://id.loc.gov/datatypes/codes/gac">a-cc---</bf:code>
+      </bf:GeographicCoverage>
+    </bf:geographicCoverage>
+    <bf:classification>
+      <bf:ClassificationLcc>
+	<bf:classificationPortion>GN855.C6</bf:classificationPortion>
+	<bf:itemPortion>Y5 2020</bf:itemPortion>
 	<bf:assigner>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
@@ -190,53 +267,33 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:assigner>
-	<bf:descriptionLanguage>
-	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
-	    <rdfs:label xml:lang="en">English</rdfs:label>
-	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
-	  </bf:Language>
-	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
-	  </bf:Organization>
-	</bf:descriptionModifier>
-	<bf:descriptionAuthentication>
-	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
-	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
-	    <bf:code>pcc</bf:code>
-	  </bf:DescriptionAuthentication>
-	</bf:descriptionAuthentication>
-	<bflc:catalogerId>jtopping</bflc:catalogerId>
-	<bflc:procInfo>update instance</bflc:procInfo>
-      </bf:AdminMetadata>
-    </bf:adminMetadata>
-  </bf:Instance>
-  <bf:Work rdf:about="http://id.loc.gov/resources/works/22014581">
-    <bflc:aap>Ye, Shuxian, 1954- Xuan yu shi dai 玄玉时代</bflc:aap>
-    <bflc:aap-normalized>yeshuxian1954xuanyushidai玄玉时代</bflc:aap-normalized>
-    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/uba">
+	    <rdfs:label>used by assigner</rdfs:label>
+	    <bf:code>uba</bf:code>
+	  </bf:Status>
+	</bf:status>
+      </bf:ClassificationLcc>
+    </bf:classification>
     <bf:contribution>
-      <bflc:PrimaryContribution>
+      <bf:Contribution>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/nr88010802">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Ye, Shuxian, 1954-</rdfs:label>
-	    <rdfs:label xml:lang="zxx-Hani">叶舒憲, 1954-</rdfs:label>
-	    <bflc:marcKey>4001 $a叶舒憲,$d1954-$7[bcp47]zxx-Hani</bflc:marcKey>
 	    <bflc:marcKey>1001 $aYe, Shuxian,$d1954-</bflc:marcKey>
+	    <rdfs:label xml:lang="zxx-Hani">葉舒憲, 1954-</rdfs:label>
+	    <bflc:marcKey xml:lang="zxx-Hani">4001 $a葉舒憲,$d1954-</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
-	    <rdfs:label>Author</rdfs:label>
+	    <rdfs:label>author</rdfs:label>
 	    <bf:code>aut</bf:code>
 	  </bf:Role>
 	</bf:role>
-      </bflc:PrimaryContribution>
+      </bf:Contribution>
     </bf:contribution>
     <bf:title>
       <bf:Title>
@@ -256,49 +313,46 @@
 	<bf:mainTitle xml:lang="zh-hani">五千年中国的新求证</bf:mainTitle>
       </bf:VariantTitle>
     </bf:title>
-    <bf:originDate>2020</bf:originDate>
-    <bf:originPlace>
-      <madsrdf:Geographic rdf:about="http://id.loc.gov/vocabulary/countries/cc">
-	<rdfs:label xml:lang="en">China</rdfs:label>
-	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cc</bf:code>
-      </madsrdf:Geographic>
-    </bf:originPlace>
-    <bf:geographicCoverage>
-      <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/a-cc">
-	<rdfs:label xml:lang="en">China</rdfs:label>
-	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a-cc</bf:code>
-      </bf:GeographicCoverage>
-    </bf:geographicCoverage>
-    <bf:note>
-      <bf:Note>
-	<rdfs:label>"国家出版基金项目"--title page verso.</rdfs:label>
-      </bf:Note>
-    </bf:note>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+	<bf:code>txt</bf:code>
+      </bf:Content>
+    </bf:content>
     <bf:subject>
       <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
 	<rdfs:label>Jade carving, Prehistoric--China</rdfs:label>
+	<madsrdf:authoritativeLabel>Jade carving, Prehistoric--China</madsrdf:authoritativeLabel>
 	<madsrdf:isMemberOfMADSScheme>
 	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
 	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
 	  </madsrdf:MADSScheme>
 	</madsrdf:isMemberOfMADSScheme>
-	<madsrdf:authoritativeLabel>Jade carving, Prehistoric--China</madsrdf:authoritativeLabel>
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2009009309">
 	    <rdfs:label xml:lang="en">Jade carving, Prehistoric</rdfs:label>
 	    <bflc:marcKey>150  $aJade carving, Prehistoric</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:Geographic rdf:about="http://id.loc.gov/authorities/names/n79091151-781">
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n79091151-781">
 	    <rdfs:label>China</rdfs:label>
 	    <bflc:marcKey>181  $zChina</bflc:marcKey>
+	    <rdfs:label xml:lang="zxx-hani">中国</rdfs:label>
+	    <bflc:marcKey xml:lang="zxx-hani">4101 $a中国.</bflc:marcKey>
 	  </madsrdf:Geographic>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>jadecarvingprehistoricchina</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh88006828">
 	<rdfs:label xml:lang="en">Jade art objects--China--History--To 221 B.C.</rdfs:label>
+	<bflc:marcKey>150 0$aJade art objects$zChina$xHistory$yTo 221 B.C.</bflc:marcKey>
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
@@ -337,95 +391,105 @@
 	    </madsrdf:elementList>
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
-	<bflc:marcKey>150 0$aJade art objects$zChina$xHistory$yTo 221 B.C.</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
-    <bf:classification>
-      <bf:ClassificationLcc>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:associatedResource>
+	  <bf:Series>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
+	    <bf:status>
+	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
+		<rdfs:label>transcribed</rdfs:label>
+		<bf:code>t</bf:code>
+	      </bf:Status>
+	    </bf:status>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Zhonghua chuang shi shen hua yan jiu gong cheng xi lie. Zhonghua chuang shi shen hua kao gu zhuan ti. Yu cheng Zhongguo</bf:mainTitle>
+		<bf:mainTitle xml:lang="zh-hani">中华创世神话研究工程系列. 中华创世神话考古专题·玉成中国</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	  </bf:Series>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/22014581"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-14</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
-	  </bf:Organization>
-	</bf:assigner>
-	<bf:classificationPortion>GN855.C6 </bf:classificationPortion>
-	<bf:itemPortion>Y5 2020</bf:itemPortion>
-      </bf:ClassificationLcc>
-    </bf:classification>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
-	<rdfs:label>text</rdfs:label>
-	<bf:code>txt</bf:code>
-      </bf:Content>
-    </bf:content>
-    <bf:content>
-      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
-	<rdfs:label>text</rdfs:label>
-	<bf:code>txt</bf:code>
-      </bf:Content>
-    </bf:content>
-    <bf:language>
-      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/chi">
-	<rdfs:label xml:lang="en">Chinese</rdfs:label>
-	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">chi</bf:code>
-      </bf:Language>
-    </bf:language>
-    <bf:illustrativeContent>
-      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
-	<rdfs:label>Illustrations</rdfs:label>
-	<bf:code>ill</bf:code>
-      </bf:Illustration>
-    </bf:illustrativeContent>
-    <bf:illustrativeContent>
-      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/map">
-	<rdfs:label>Maps</rdfs:label>
-	<bf:code>map</bf:code>
-      </bf:Illustration>
-    </bf:illustrativeContent>
-    <bf:colorContent>
-      <bf:ColorContent>
-	<rdfs:label>(some color)</rdfs:label>
-      </bf:ColorContent>
-    </bf:colorContent>
-    <bf:supplementaryContent>
-      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/bibliography">
-	<rdfs:label>bibliography</rdfs:label>
-	<bf:code>bibliography</bf:code>
-      </bf:SupplementaryContent>
-    </bf:supplementaryContent>
-    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:generationProcess>
-	  <bf:GenerationProcess>
-	    <rdfs:label>DLC marc2bibframe2 v1.7.0</rdfs:label>
-	    <bf:generationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-03-17T01:31:01.234501-04:00</bf:generationDate>
-	  </bf:GenerationProcess>
-	</bf:generationProcess>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-03-25T08:54:11</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-09T22:39:40.873626-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-4-0/"/>
 	<bflc:encodingLevel>
-	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
-	    <rdfs:label>preliminary</rdfs:label>
-	    <bf:code>5</bf:code>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+	    <rdfs:label>full</rdfs:label>
+	    <bf:code>f</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
 	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
 	    <bf:code>isbd</bf:code>
-	  </bf:DescriptionConventions>
-	</bf:descriptionConventions>
-	<bf:descriptionConventions>
-	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
-	    <rdfs:label>Resource description and access</rdfs:label>
-	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -441,41 +505,36 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:changeDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-03-16T11:14:41</bf:changeDate>
-	<bf:creationDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-14</bf:creationDate>
-	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d 3 $e ncip $f 20 $g y-nonroman</lclocal:d906>
+	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 20 $g y-nonroman</lclocal:d906>
 	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
-	<lclocal:d955>=955     $a ve11 to LC 2021-04-28 $c cc18 2022-03-16 TW to cc14 review and SH</lclocal:d955>
-	<bf:assigner>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
-	  </bf:Organization>
-	</bf:assigner>
+	<lclocal:d955>=955     $a ve11 to LC 2021-04-28 $c cc18 2022-03-16 TW $d cc14 2022-03-25 (TW situational) $e cc14 2022-03-25 (TW situational) to ASIAN</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
 	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bf:descriptionModifier>
-	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
-	    <rdfs:label>United States, Library of Congress</rdfs:label>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
-	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
-	  </bf:Organization>
-	</bf:descriptionModifier>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$erda$cDLC$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
 	    <bf:code>pcc</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<bflc:catalogerId>jtopping</bflc:catalogerId>
-	<bflc:procInfo>update instance</bflc:procInfo>
+	<lclocal:d985>=985     $a CNP load-new $d 2021-04-28</lclocal:d985>
+	<lclocal:batch>BibframePilot2</lclocal:batch>
+	<lclocal:d985>=985     $e BibframePilot2 $d 2022-03-25 $f cc14 2022-03-25</lclocal:d985>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>

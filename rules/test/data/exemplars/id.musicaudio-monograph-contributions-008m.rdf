@@ -33,7 +33,7 @@
     </bf:soundCharacteristic>
     <bf:soundCharacteristic>
       <bf:GrooveCharacteristic rdf:about="http://id.loc.gov/vocabulary/mgroove/coarse">
-	<rdfs:label>Coarse groove</rdfs:label>
+	<rdfs:label>coarse groove</rdfs:label>
 	<bf:code>coarse</bf:code>
       </bf:GrooveCharacteristic>
     </bf:soundCharacteristic>
@@ -51,7 +51,7 @@
     </bf:soundCharacteristic>
     <bf:soundCharacteristic>
       <bf:CaptureStorage rdf:about="http://id.loc.gov/vocabulary/mcapturestorage/aes">
-	<rdfs:label>Electrical capture, Analog electrical storage</rdfs:label>
+	<rdfs:label>electrical capture, analog electrical storage</rdfs:label>
 	<bf:code>aes</bf:code>
       </bf:CaptureStorage>
     </bf:soundCharacteristic>
@@ -356,18 +356,18 @@
     <bf:dimensions>10 in</bf:dimensions>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Decca: A-359 (23282--23287), 383 (23389--23390)</rdfs:label>
+	<rdfs:label>Decca: A-359 (23282--23287), 383 (23389--23390).</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Title from each container</rdfs:label>
+	<rdfs:label>Title from each container.</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:credits>Alfred Drake ; Joan Roberts, Howard da Silva, Cleste Holm, Lee Dixon (v. 1) ; Joseph Buloff, Betty Garde, Ralph Riggs (v. 2) ; with chorus and orchestra conducted by Jay Blackton.</bf:credits>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Program notes inserted in container</rdfs:label>
+	<rdfs:label>Program notes inserted in container.</rdfs:label>
       </bf:Note>
     </bf:note>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
@@ -428,13 +428,13 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-07T20:40:31.850279-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-09T22:42:17.365523-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-4-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/4">
 	    <rdfs:label>core</rdfs:label>
@@ -463,7 +463,12 @@
 	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 4 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d925>=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955>=955     $a vk17 01-17-01; to MBRS 01-17-01; vl22 05-18-01 (v. 1); to MBRS 05-21-01</lclocal:d955>
-	<bflc:marcKey>040  $aDLC$cDLC$dDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$cDLC$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
@@ -533,7 +538,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-	    <rdfs:label>Contributor</rdfs:label>
+	    <rdfs:label>contributor</rdfs:label>
 	    <bf:code>ctb</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -554,7 +559,7 @@
 	    </bf:agent>
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-		<rdfs:label>Contributor</rdfs:label>
+		<rdfs:label>contributor</rdfs:label>
 		<bf:code>ctb</bf:code>
 	      </bf:Role>
 	    </bf:role>
@@ -585,7 +590,6 @@
 	    <bf:mainTitle>Music from Rodgers and Hammerstein's Oklahoma! Music from Rodgers and Hammerstein's Carousel</bf:mainTitle>
 	  </bf:VariantTitle>
 	</bf:title>
-	<bflc:marcKey>1001 $aRodgers, Richard,$d1902-1979.$tOklahoma!$kSelections</bflc:marcKey>
       </bf:Hub>
     </bf:expressionOf>
     <bf:title>
@@ -619,9 +623,8 @@
 	    <rdfs:label xml:lang="en">Musicals</rdfs:label>
 	    <bflc:marcKey>150  $aMusicals</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001547">
-	    <rdfs:label xml:lang="en">Excerpts</rdfs:label>
-	    <bflc:marcKey>185  $vExcerpts</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Excerpts</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>musicalsexcerpts</bflc:aap-normalized>
@@ -643,7 +646,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/lyr">
-	    <rdfs:label>Lyricist</rdfs:label>
+	    <rdfs:label>lyricist</rdfs:label>
 	    <bf:code>lyr</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -660,7 +663,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
-	    <rdfs:label>Performer</rdfs:label>
+	    <rdfs:label>performer</rdfs:label>
 	    <bf:code>prf</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -677,7 +680,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
-	    <rdfs:label>Performer</rdfs:label>
+	    <rdfs:label>performer</rdfs:label>
 	    <bf:code>prf</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -694,7 +697,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
-	    <rdfs:label>Performer</rdfs:label>
+	    <rdfs:label>performer</rdfs:label>
 	    <bf:code>prf</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -711,7 +714,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
-	    <rdfs:label>Performer</rdfs:label>
+	    <rdfs:label>performer</rdfs:label>
 	    <bf:code>prf</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -728,7 +731,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
-	    <rdfs:label>Performer</rdfs:label>
+	    <rdfs:label>performer</rdfs:label>
 	    <bf:code>prf</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -740,16 +743,12 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n82089153">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Buloff, Joseph</rdfs:label>
-	    <rdfs:label xml:lang="zxx-Hebr">בולאוו, יוסף</rdfs:label>
-	    <bflc:marcKey>4001 $aבולאוו, יוסף$7[bcp47]zxx-Hebr</bflc:marcKey>
-	    <rdfs:label xml:lang="zxx-Cyrl">Булов, Иосиф</rdfs:label>
-	    <bflc:marcKey>4001 $aБулов, Иосиф$7[bcp47]zxx-Cyrl</bflc:marcKey>
 	    <bflc:marcKey>1001 $aBuloff, Joseph</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
-	    <rdfs:label>Performer</rdfs:label>
+	    <rdfs:label>performer</rdfs:label>
 	    <bf:code>prf</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -766,7 +765,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
-	    <rdfs:label>Performer</rdfs:label>
+	    <rdfs:label>performer</rdfs:label>
 	    <bf:code>prf</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -783,7 +782,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/prf">
-	    <rdfs:label>Performer</rdfs:label>
+	    <rdfs:label>performer</rdfs:label>
 	    <bf:code>prf</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -800,7 +799,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/cnd">
-	    <rdfs:label>Conductor</rdfs:label>
+	    <rdfs:label>conductor</rdfs:label>
 	    <bf:code>cnd</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -817,6 +816,12 @@
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
 		<rdfs:label>transcribed</rdfs:label>
 		<bf:code>t</bf:code>
+	      </bf:Status>
+	    </bf:status>
+	    <bf:status>
+	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/tr">
+		<rdfs:label>traced</rdfs:label>
+		<bf:code>tr</bf:code>
 	      </bf:Status>
 	    </bf:status>
 	    <bf:title>
@@ -845,7 +850,6 @@
 		<bf:mainTitle>Personality series (Decca Records (Firm))</bf:mainTitle>
 	      </bf:VariantTitle>
 	    </bf:title>
-	    <bflc:marcKey>1300 $aDecca personality series</bflc:marcKey>
 	  </bf:Hub>
 	</bf:associatedResource>
       </bf:Relation>
@@ -907,13 +911,13 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-07T20:40:31.850279-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-09T22:42:17.365523-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-4-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/4">
 	    <rdfs:label>core</rdfs:label>
@@ -942,7 +946,12 @@
 	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 4 $e ncip $f 20 $g y-genmusic</lclocal:d906>
 	<lclocal:d925>=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
 	<lclocal:d955>=955     $a vk17 01-17-01; to MBRS 01-17-01; vl22 05-18-01 (v. 1); to MBRS 05-21-01</lclocal:d955>
-	<bflc:marcKey>040  $aDLC$cDLC$dDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$cDLC$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>

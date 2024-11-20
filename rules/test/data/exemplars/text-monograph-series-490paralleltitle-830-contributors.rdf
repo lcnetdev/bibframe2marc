@@ -18,7 +18,7 @@
     </bf:language>
     <bf:illustrativeContent>
       <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
-	<rdfs:label>Illustrations</rdfs:label>
+	<rdfs:label>illustrations</rdfs:label>
 	<bf:code>ill</bf:code>
       </bf:Illustration>
     </bf:illustrativeContent>
@@ -31,7 +31,7 @@
     <bf:geographicCoverage>
       <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/t">
 	<rdfs:label xml:lang="en">Antarctic Ocean | Antarctica</rdfs:label>
-	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">t</bf:code>
+	<bf:code rdf:datatype="http://id.loc.gov/datatypes/codes/gac">t------</bf:code>
       </bf:GeographicCoverage>
     </bf:geographicCoverage>
     <bf:classification>
@@ -145,6 +145,7 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2010114816">
 	<rdfs:label xml:lang="en">Stratosphere--Congresses</rdfs:label>
+	<bflc:marcKey>150  $aStratosphere$vCongresses</bflc:marcKey>
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
@@ -165,12 +166,12 @@
 	    </madsrdf:elementList>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
-	<bflc:marcKey>150  $aStratosphere$vCongresses</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2008108678">
 	<rdfs:label xml:lang="en">Optical radar--Congresses</rdfs:label>
+	<bflc:marcKey>150  $aOptical radar$vCongresses</bflc:marcKey>
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
@@ -191,7 +192,6 @@
 	    </madsrdf:elementList>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
-	<bflc:marcKey>150  $aOptical radar$vCongresses</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
     <bf:contribution>
@@ -205,7 +205,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-	    <rdfs:label>Contributor</rdfs:label>
+	    <rdfs:label>contributor</rdfs:label>
 	    <bf:code>ctb</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -222,7 +222,7 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-	    <rdfs:label>Contributor</rdfs:label>
+	    <rdfs:label>contributor</rdfs:label>
 	    <bf:code>ctb</bf:code>
 	  </bf:Role>
 	</bf:role>
@@ -239,13 +239,40 @@
 	</bf:agent>
 	<bf:role>
 	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-	    <rdfs:label>Contributor</rdfs:label>
+	    <rdfs:label>contributor</rdfs:label>
 	    <bf:code>ctb</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:associatedResource>
+	  <bf:Series>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
+	    <bf:status>
+	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
+		<rdfs:label>transcribed</rdfs:label>
+		<bf:code>t</bf:code>
+	      </bf:Status>
+	    </bf:status>
+	    <bf:status>
+	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/tr">
+		<rdfs:label>traced</rdfs:label>
+		<bf:code>tr</bf:code>
+	      </bf:Status>
+	    </bf:status>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Conference proceedings</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	  </bf:Series>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:relation>
       <bf:Relation>
 	<bf:relationship rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
@@ -267,13 +294,8 @@
 	    </bf:status>
 	    <bf:title>
 	      <bf:Title>
-		<bf:mainTitle>Conference proceedings</bf:mainTitle>
-	      </bf:Title>
-	    </bf:title>
-	    <bf:title>
-	      <bf:ParallelTitle>
 		<bf:mainTitle>Atti di conferenze</bf:mainTitle>
-	      </bf:ParallelTitle>
+	      </bf:Title>
 	    </bf:title>
 	  </bf:Series>
 	</bf:associatedResource>
@@ -344,7 +366,7 @@
 		</bf:agent>
 		<bf:role>
 		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-		    <rdfs:label>Contributor</rdfs:label>
+		    <rdfs:label>contributor</rdfs:label>
 		    <bf:code>ctb</bf:code>
 		  </bf:Role>
 		</bf:role>
@@ -361,7 +383,7 @@
 		</bf:agent>
 		<bf:role>
 		  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-		    <rdfs:label>Contributor</rdfs:label>
+		    <rdfs:label>contributor</rdfs:label>
 		    <bf:code>ctb</bf:code>
 		  </bf:Role>
 		</bf:role>
@@ -387,7 +409,6 @@
 		<bf:mainTitle>Atti di conferenze</bf:mainTitle>
 	      </bf:VariantTitle>
 	    </bf:title>
-	    <bflc:marcKey>1300 $aConference proceedings (Società italiana di fisica)</bflc:marcKey>
 	  </bf:Hub>
 	</bf:associatedResource>
       </bf:Relation>
@@ -459,7 +480,7 @@
 	  </bf:Agent>
 	</bf:agent>
 	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T16:19:45.730038-04:00</bf:date>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:32.694118-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -573,7 +594,7 @@
 	    </bf:agent>
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-		<rdfs:label>Contributor</rdfs:label>
+		<rdfs:label>contributor</rdfs:label>
 		<bf:code>ctb</bf:code>
 	      </bf:Role>
 	    </bf:role>
@@ -590,7 +611,7 @@
 	    </bf:agent>
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-		<rdfs:label>Contributor</rdfs:label>
+		<rdfs:label>contributor</rdfs:label>
 		<bf:code>ctb</bf:code>
 	      </bf:Role>
 	    </bf:role>
@@ -607,7 +628,7 @@
 	    </bf:agent>
 	    <bf:role>
 	      <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-		<rdfs:label>Contributor</rdfs:label>
+		<rdfs:label>contributor</rdfs:label>
 		<bf:code>ctb</bf:code>
 	      </bf:Role>
 	    </bf:role>
@@ -677,7 +698,7 @@
 	  </bf:Agent>
 	</bf:agent>
 	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T16:19:45.730038-04:00</bf:date>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:32.694118-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>

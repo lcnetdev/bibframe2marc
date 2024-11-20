@@ -39,7 +39,7 @@
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
 	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T16:20:08.134646-04:00</bf:date>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:51.204572-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -126,7 +126,9 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/22014581#Agent100-18">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Ye, Shuxian, 1954-</rdfs:label>
+	    <rdfs:label xml:lang="zh-hani">叶舒宪, 1954-</rdfs:label>
 	    <bflc:marcKey>1001 $6880-01$aYe, Shuxian,$d1954-$eauthor.</bflc:marcKey>
+	    <bflc:marcKey xml:lang="zh-hani">8801 $6100-01/$1$a叶舒宪,$d1954-$eauthor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -151,6 +153,7 @@
     <bf:title>
       <bf:VariantTitle>
 	<bf:variantType>portion</bf:variantType>
+	<bf:mainTitle>Wu qian nian Zhongguo de xin qiu zheng</bf:mainTitle>
 	<bf:mainTitle xml:lang="zh-hani">五千年中国的新求证</bf:mainTitle>
       </bf:VariantTitle>
     </bf:title>
@@ -162,7 +165,7 @@
 	</bf:source>
       </bf:Content>
     </bf:content>
-    <bf:relation>
+    <bf:relation xmlns:exsl="http://exslt.org/common">
       <bf:Relation>
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
@@ -170,7 +173,7 @@
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
-	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/22014581#Hub490-34">
+	  <bf:Series>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
@@ -245,7 +248,7 @@
       </bf:ProvisionActivity>
     </bf:provisionActivity>
     <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Shanghai: Shanghai ren min chu ban she, 2020</bf:publicationStatement>
-    <bflc:publicationStatement xml:lang="zh-hani" xmlns:exsl="http://exslt.org/common">上海: 上海人民出版社, 2020</bflc:publicationStatement>
+    <bf:publicationStatement xml:lang="zh-hani" xmlns:exsl="http://exslt.org/common">上海: 上海人民出版社, 2020</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:OclcNumber>
 	<rdf:value>on1246209164</rdf:value>
@@ -316,11 +319,12 @@
 	<rdfs:label xml:lang="zh-hani">"国家出版基金项目"--title page verso.</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:supplementaryContent>
-      <bf:SupplementaryContent>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/biblio"/>
 	<rdfs:label>Includes bibliographical references.</rdfs:label>
-      </bf:SupplementaryContent>
-    </bf:supplementaryContent>
+      </bf:Note>
+    </bf:note>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/22014581#Work"/>
   </bf:Instance>
 </rdf:RDF>

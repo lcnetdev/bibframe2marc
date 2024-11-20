@@ -185,13 +185,13 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-09T09:56:52.988236-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-10T19:58:11.774294-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-4-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -229,7 +229,12 @@
 	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aNSD$beng$cNSD$dDLC$dNSD$dOCL$dDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCL</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aNSD$beng$cNSD$dDLC$dNSD$dOCL$dDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCL</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/nsdp">
 	    <rdfs:label>U.S. ISSN Center</rdfs:label>
@@ -298,7 +303,7 @@
     <bf:geographicCoverage>
       <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/n-us">
 	<rdfs:label xml:lang="en">United States</rdfs:label>
-	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">n-us</bf:code>
+	<bf:code rdf:datatype="http://id.loc.gov/datatypes/codes/gac">n-us---</bf:code>
       </bf:GeographicCoverage>
     </bf:geographicCoverage>
     <bf:classification>
@@ -348,7 +353,6 @@
 	    <bf:mainTitle>National sports daily (New York ed.)</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bflc:marcKey>130  $aNational sports daily (New York ed.)</bflc:marcKey>
       </bf:Hub>
     </bf:expressionOf>
     <bf:title>
@@ -377,7 +381,7 @@
     </bf:title>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Issued in 4 other regional editions: Chicago, Los Angeles, San Diego, and San Francisco</rdfs:label>
+	<rdfs:label>Issued in 4 other regional editions: Chicago, Los Angeles, San Diego, and San Francisco.</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:subject>
@@ -399,9 +403,8 @@
 	    <rdfs:label>United States</rdfs:label>
 	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
 	  </madsrdf:Geographic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001647">
-	    <rdfs:label xml:lang="en">Periodicals</rdfs:label>
-	    <bflc:marcKey>185  $vPeriodicals</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Periodicals</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>sportsunitedstatesperiodicals</bflc:aap-normalized>
@@ -421,16 +424,8 @@
     <bf:subject>
       <bf:Place rdf:about="http://id.loc.gov/rwo/agents/n78095330">
 	<rdfs:label>United States</rdfs:label>
-	<rdfs:label xml:lang="zxx-Cyrl">Северо-Американские Соединенные Штаты</rdfs:label>
-	<bflc:marcKey>451  $aСеверо-Американские Соединенные Штаты$7[bcp47]zxx-Cyrl</bflc:marcKey>
-	<rdfs:label xml:lang="zxx-Arab">ولايات المتّحدة الأمريكيّة</rdfs:label>
-	<bflc:marcKey>451  $aولايات المتّحدة الأمريكيّة$7[bcp47]zxx-Arab</bflc:marcKey>
-	<rdfs:label xml:lang="zxx-Hang">미국</rdfs:label>
-	<bflc:marcKey>451  $a미국$7[bcp47]zxx-Hang</bflc:marcKey>
-	<rdfs:label xml:lang="zxx-Grek">Ηνωμένες Πολιτείες της Αμερικής</rdfs:label>
-	<bflc:marcKey>451  $aΗνωμένες Πολιτείες της Αμερικής$7[bcp47]zxx-Grek</bflc:marcKey>
-	<bf:code rdf:datatype="http://id.loc.gov/datatypes/codes/gac">n-us---</bf:code>
 	<bflc:marcKey>151  $aUnited States</bflc:marcKey>
+	<bf:code rdf:datatype="http://id.loc.gov/datatypes/codes/gac">n-us---</bf:code>
       </bf:Place>
     </bf:subject>
     <bf:genreForm>
@@ -730,13 +725,13 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-09T09:56:52.988236-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-10T19:58:11.774294-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-4-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
 	    <rdfs:label>full</rdfs:label>
@@ -774,7 +769,12 @@
 	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aNSD$beng$cNSD$dDLC$dNSD$dOCL$dDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCL</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aNSD$beng$cNSD$dDLC$dNSD$dOCL$dDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCL</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/nsdp">
 	    <rdfs:label>U.S. ISSN Center</rdfs:label>
