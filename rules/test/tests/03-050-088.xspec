@@ -75,7 +75,7 @@
     <x:expect label="generate 066 from xml:langs" test="count(//marc:datafield[@tag='066']) = 1"/>
     <x:expect label="ind1 is blank" test="//marc:datafield[@tag='066']/@ind1 = ' '"/>
     <x:expect label="ind2 is blank" test="//marc:datafield[@tag='066']/@ind2 = ' '"/>
-    <x:expect label="$a is (N" test="//marc:datafield[@tag='066']/marc:subfield[@code='a'] = '(N'"/>
+    <x:expect label="$a is (N" test="//marc:datafield[@tag='066']/marc:subfield[@code='c'] = '(N'"/>
   </x:scenario>
 
   <x:scenario label="MARC 070">
@@ -118,6 +118,19 @@
               test="//marc:datafield[@tag='074'][2]/marc:subfield[@code='z'] = '334-C-11'"/>
     <x:expect label="Identifier with assigner dgpo should not generate 024"
               test="count(//marc:datafield[@tag='024']) = 0"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 080">
+    <x:context href="../data/050-088/050-088.xml"/>
+    <x:expect label="generate 080" test="count(//marc:datafield[@tag='080']) = 1"/>
+    <x:expect label="ind1 is blank"
+      test="//marc:datafield[@tag='080'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank"
+      test="//marc:datafield[@tag='080'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from classPortion"
+      test="//marc:datafield[@tag='080'][1]/marc:subfield[@code='a']='311.3:330.322'"/>
+    <x:expect label="$2 from source"
+      test="//marc:datafield[@tag='080'][1]/marc:subfield[@code='2']='8th French Abbr. Ed.'"/>
   </x:scenario>
 
   <x:scenario label="MARC 082">

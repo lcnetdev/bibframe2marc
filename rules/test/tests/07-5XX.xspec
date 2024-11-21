@@ -117,7 +117,7 @@
 
   <x:scenario label="MARC 510">
     <x:context href="../data/5XX/510.xml"/>
-    <x:expect label="generate 510" test="count(//marc:datafield[@tag='510']) = 2"/>
+    <x:expect label="generate 510" test="count(//marc:datafield[@tag='510']) = 3"/>
     <x:expect label="ind1 from class of property"
               test="//marc:datafield[@tag='510'][1]/@ind1 = '2'"/>
     <x:expect label="ind2 default to blank"
@@ -128,6 +128,19 @@
               test="//marc:datafield[@tag='510'][1]/marc:subfield[@code='b'] = 'v1n1, 1984-'"/>
     <x:expect label="$x from Issn"
               test="//marc:datafield[@tag='510'][1]/marc:subfield[@code='x'] = '0019-3879'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 510 - with uri">
+    <x:context href="../data/5XX/510.xml"/>
+    <x:expect label="generate 510" test="count(//marc:datafield[@tag='510']) = 3"/>
+    <x:expect label="ind1 from class of property"
+      test="//marc:datafield[@tag='510'][3]/@ind1 = '3'"/>
+    <x:expect label="ind2 default to blank"
+      test="//marc:datafield[@tag='510'][3]/@ind2 = ' '"/>
+    <x:expect label="$a from title"
+      test="//marc:datafield[@tag='510'][3]/marc:subfield[@code='a'] = 'LC-USW3-056508-C'"/>
+    <x:expect label="$b from coverage note"
+      test="//marc:datafield[@tag='510'][3]/marc:subfield[@code='u'] = 'https://www.loc.gov/pictures/item/2017868761/'"/>
   </x:scenario>
 
   <x:scenario label="MARC 511">

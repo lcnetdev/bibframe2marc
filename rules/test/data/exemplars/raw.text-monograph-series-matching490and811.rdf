@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:12:38.970684-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:47.665004-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -66,7 +66,12 @@
 	  </bf:Local>
 	</bf:identifiedBy>
 	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 19 $g y-gencatlg</lclocal:d906>
-	<bflc:marcKey>040  $aDLC$cDLC$dDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$cDLC$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
@@ -106,7 +111,7 @@
 	<bf:mainTitle>African literature and African historical experiences</bf:mainTitle>
       </bf:Title>
     </bf:title>
-    <bf:relation>
+    <bf:relation xmlns:exsl="http://exslt.org/common">
       <bf:Relation>
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
@@ -114,7 +119,7 @@
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
-	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/2971034#Hub490-17">
+	  <bf:Series>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
@@ -248,7 +253,7 @@
 	</bf:role>
       </bf:Contribution>
     </bf:contribution>
-    <bf:relation>
+    <bf:relation xmlns:exsl="http://exslt.org/common">
       <bf:Relation>
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
@@ -336,11 +341,12 @@
 	<rdfs:label>Papers from the Ninth International Conference on African Literature and the English Language, held at the University of Calabar in May, 1990.</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:supplementaryContent>
-      <bf:SupplementaryContent>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/biblio"/>
 	<rdfs:label>Includes bibliographical references and index.</rdfs:label>
-      </bf:SupplementaryContent>
-    </bf:supplementaryContent>
+      </bf:Note>
+    </bf:note>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/2971034#Work"/>
   </bf:Instance>
 </rdf:RDF>

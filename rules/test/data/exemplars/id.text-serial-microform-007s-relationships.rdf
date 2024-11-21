@@ -1,40 +1,47 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
-  <!--[{"level": "WARNING", "message": "ProvisionActivity only has bflc:simplePlace, bflc:simpleDate, bflc:simpleAgent, bf:date, bf:place, bf:agent, bf:note, rdf:type. "},
+  <!--[{"level": "WARNING", "message": "ProvisionActivity has something other than simplePlace, simpleDate, simpleAgent, EDTF date, place, agent, note, rdf:type, or appliesTo. This may be a problem."},
 {"level": "WARNING", "message": "LCC missing item portion."}]-->
   <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11891684">
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/serl">
 	<rdfs:label>serial</rdfs:label>
+	<bf:code>serl</bf:code>
       </bf:Issuance>
     </bf:issuance>
     <bf:polarity>
       <bf:Polarity rdf:about="http://id.loc.gov/vocabulary/mpolarity/pos">
 	<rdfs:label>positive</rdfs:label>
+	<bf:code>pos</bf:code>
       </bf:Polarity>
     </bf:polarity>
     <bf:reductionRatio>
       <bf:ReductionRatio rdf:about="http://id.loc.gov/vocabulary/mreductionratio/normal">
 	<rdfs:label>normal reduction</rdfs:label>
+	<bf:code>normal</bf:code>
       </bf:ReductionRatio>
     </bf:reductionRatio>
     <bf:colorContent>
       <bf:ColorContent rdf:about="http://id.loc.gov/vocabulary/mcolor/blw">
 	<rdfs:label>black and white</rdfs:label>
+	<bf:code>blw</bf:code>
       </bf:ColorContent>
     </bf:colorContent>
     <bf:emulsion>
       <bf:Emulsion rdf:about="http://id.loc.gov/vocabulary/mmaterial/slh">
 	<rdfs:label>silver halide emulsion</rdfs:label>
+	<bf:code>slh</bf:code>
       </bf:Emulsion>
     </bf:emulsion>
     <bf:generation>
       <bf:Generation rdf:about="http://id.loc.gov/vocabulary/mgeneration/servcopy">
 	<rdfs:label>service copy</rdfs:label>
+	<bf:code>servcopy</bf:code>
       </bf:Generation>
     </bf:generation>
     <bf:baseMaterial>
       <bf:BaseMaterial rdf:about="http://id.loc.gov/vocabulary/mmaterial/saf">
 	<rdfs:label>safety base</rdfs:label>
+	<bf:code>saf</bf:code>
       </bf:BaseMaterial>
     </bf:baseMaterial>
     <bf:provisionActivity>
@@ -44,11 +51,13 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/current">
 	    <rdfs:label>current</rdfs:label>
+	    <bf:code>current</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:place>
 	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/it">
 	    <rdfs:label xml:lang="en">Italy</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">it</bf:code>
 	  </bf:Place>
 	</bf:place>
 	<bflc:simplePlace>Torino</bflc:simplePlace>
@@ -60,11 +69,13 @@
     <bf:frequency>
       <bf:Frequency rdf:about="http://id.loc.gov/vocabulary/frequencies/mon">
 	<rdfs:label>monthly</rdfs:label>
+	<bf:code>mon</bf:code>
       </bf:Frequency>
     </bf:frequency>
     <bf:frequency>
       <bf:Frequency rdf:about="http://id.loc.gov/vocabulary/frequencies/irr">
 	<rdfs:label>irregular</rdfs:label>
+	<bf:code>irr</bf:code>
       </bf:Frequency>
     </bf:frequency>
     <bf:identifiedBy>
@@ -78,6 +89,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/cancinv">
 	    <rdfs:label>canceled or invalid</rdfs:label>
+	    <bf:code>cancinv</bf:code>
 	  </bf:Status>
 	</bf:status>
       </bf:Lccn>
@@ -118,11 +130,13 @@
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/h">
 	<rdfs:label>microform</rdfs:label>
+	<bf:code>h</bf:code>
       </bf:Media>
     </bf:media>
     <bf:carrier>
       <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/hd">
 	<rdfs:label>microfilm reel</rdfs:label>
+	<bf:code>hd</bf:code>
       </bf:Carrier>
     </bf:carrier>
     <bf:frequency>
@@ -131,6 +145,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/current">
 	    <rdfs:label>current</rdfs:label>
+	    <bf:code>current</bf:code>
 	  </bf:Status>
 	</bf:status>
       </bf:Frequency>
@@ -138,12 +153,12 @@
     <bf:firstIssue>Anno 1, n. 1 (magg. 1983)</bf:firstIssue>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Title from caption</rdfs:label>
+	<rdfs:label>Title from caption.</rdfs:label>
       </bf:Note>
     </bf:note>
     <bf:note>
       <bf:Note>
-	<rdfs:label>Microfilm. Washington, D.C. : Library of Congress Preservation Microfilming Program : Available from Library of Congress Photoduplication Service, microfilm reels; 35 mm</rdfs:label>
+	<rdfs:label>Microfilm. Washington, D.C. : Library of Congress Preservation Microfilming Program : Available from Library of Congress Photoduplication Service, microfilm reels; 35 mm.</rdfs:label>
 	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/repro"/>
 	<bflc:appliesTo>
 	  <bflc:AppliesTo>
@@ -159,6 +174,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-14</bf:date>
@@ -166,6 +182,9 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
       </bf:AdminMetadata>
@@ -175,6 +194,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-09T13:30:10</bf:date>
@@ -190,29 +210,35 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-10T02:09:20.929483-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-09T22:03:04.204257-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-4-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/1">
 	    <rdfs:label>full not examined</rdfs:label>
+	    <bf:code>1</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -221,6 +247,9 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
@@ -234,12 +263,19 @@
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d906>=906     $a 7 $b cbc $c serials $d 4 $e ncip $f 20 $g n-oclcserc</lclocal:d906>
@@ -256,11 +292,13 @@
     <bf:language>
       <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/ita">
 	<rdfs:label xml:lang="en">Italian</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ita</bf:code>
       </bf:Language>
     </bf:language>
     <bflc:serialPubType>
       <bflc:SerialPubType rdf:about="http://id.loc.gov/vocabulary/mserialpubtype/periodical">
 	<rdfs:label>periodical</rdfs:label>
+	<bf:code>periodical</bf:code>
       </bflc:SerialPubType>
     </bflc:serialPubType>
     <bf:identifiedBy>
@@ -279,11 +317,15 @@
 	<bf:assigner>
 	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Organization>
 	</bf:assigner>
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/uba">
 	    <rdfs:label>used by assigner</rdfs:label>
+	    <bf:code>uba</bf:code>
 	  </bf:Status>
 	</bf:status>
       </bf:ClassificationLcc>
@@ -296,7 +338,6 @@
 	    <bf:mainTitle>Giornale dell'arte (Turin, Italy)</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bflc:marcKey>130  $aGiornale dell'arte (Turin, Italy)</bflc:marcKey>
       </bf:Hub>
     </bf:expressionOf>
     <bf:title>
@@ -323,6 +364,7 @@
     <bf:content>
       <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
 	<rdfs:label>text</rdfs:label>
+	<bf:code>txt</bf:code>
       </bf:Content>
     </bf:content>
     <bf:supplementaryContent>
@@ -350,9 +392,8 @@
 	    <rdfs:label xml:lang="en">Art, Italian</rdfs:label>
 	    <bflc:marcKey>150  $aArt, Italian</bflc:marcKey>
 	  </madsrdf:Topic>
-	  <madsrdf:GenreForm rdf:about="http://id.loc.gov/authorities/subjects/sh99001647">
-	    <rdfs:label xml:lang="en">Periodicals</rdfs:label>
-	    <bflc:marcKey>185  $vPeriodicals</bflc:marcKey>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Periodicals</madsrdf:authoritativeLabel>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>artitalianperiodicals</bflc:aap-normalized>
@@ -366,6 +407,7 @@
     <bf:subject>
       <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2007101354">
 	<rdfs:label xml:lang="en">Art--Periodicals</rdfs:label>
+	<bflc:marcKey>150  $aArt$vPeriodicals</bflc:marcKey>
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <madsrdf:Topic>
 	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
@@ -386,7 +428,6 @@
 	    </madsrdf:elementList>
 	  </madsrdf:GenreForm>
 	</madsrdf:componentList>
-	<bflc:marcKey>150  $aArt$vPeriodicals</bflc:marcKey>
       </bf:Topic>
     </bf:subject>
     <bf:subject>
@@ -413,6 +454,7 @@
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otheredition">
 	    <rdfs:label>other edition</rdfs:label>
+	    <bf:code>otheredition</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
@@ -447,6 +489,7 @@
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otheredition">
 	    <rdfs:label>other edition</rdfs:label>
+	    <bf:code>otheredition</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
@@ -474,11 +517,13 @@
 		<bf:media>
 		  <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/h">
 		    <rdfs:label>microform</rdfs:label>
+		    <bf:code>h</bf:code>
 		  </bf:Media>
 		</bf:media>
 		<bf:carrier>
 		  <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/hd">
 		    <rdfs:label>microfilm reel</rdfs:label>
+		    <bf:code>hd</bf:code>
 		  </bf:Carrier>
 		</bf:carrier>
 	      </bf:Instance>
@@ -492,6 +537,7 @@
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otherphysicalformat">
 	    <rdfs:label>other physical format</rdfs:label>
+	    <bf:code>otherphysicalformat</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
@@ -518,11 +564,13 @@
 		<bf:media>
 		  <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
 		    <rdfs:label>unmediated</rdfs:label>
+		    <bf:code>n</bf:code>
 		  </bf:Media>
 		</bf:media>
 		<bf:carrier>
 		  <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
 		    <rdfs:label>volume</rdfs:label>
+		    <bf:code>nc</bf:code>
 		  </bf:Carrier>
 		</bf:carrier>
 	      </bf:Instance>
@@ -537,6 +585,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-14</bf:date>
@@ -544,6 +593,9 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
       </bf:AdminMetadata>
@@ -553,6 +605,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-09T13:30:10</bf:date>
@@ -568,29 +621,35 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-10T02:09:20.929483-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-09T22:03:04.204257-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
       <bf:AdminMetadata>
-	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-4-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/1">
 	    <rdfs:label>full not examined</rdfs:label>
+	    <bf:code>1</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:identifiedBy>
@@ -599,6 +658,9 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
@@ -612,12 +674,19 @@
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d906>=906     $a 7 $b cbc $c serials $d 4 $e ncip $f 20 $g n-oclcserc</lclocal:d906>
@@ -631,47 +700,56 @@
     <bf:issuance>
       <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/serl">
 	<rdfs:label>serial</rdfs:label>
+	<bf:code>serl</bf:code>
       </bf:Issuance>
     </bf:issuance>
     <bf:media>
       <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/h">
 	<rdfs:label>microform</rdfs:label>
+	<bf:code>h</bf:code>
       </bf:Media>
     </bf:media>
     <bf:carrier>
       <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/hd">
 	<rdfs:label>microfilm reel</rdfs:label>
+	<bf:code>hd</bf:code>
       </bf:Carrier>
     </bf:carrier>
     <bf:polarity>
       <bf:Polarity rdf:about="http://id.loc.gov/vocabulary/mpolarity/neg">
 	<rdfs:label>negative</rdfs:label>
+	<bf:code>neg</bf:code>
       </bf:Polarity>
     </bf:polarity>
     <bf:dimensions>35 mm.</bf:dimensions>
     <bf:reductionRatio>
       <bf:ReductionRatio rdf:about="http://id.loc.gov/vocabulary/mreductionratio/normal">
 	<rdfs:label>normal reduction</rdfs:label>
+	<bf:code>normal</bf:code>
       </bf:ReductionRatio>
     </bf:reductionRatio>
     <bf:colorContent>
       <bf:ColorContent rdf:about="http://id.loc.gov/vocabulary/mcolor/blw">
 	<rdfs:label>black and white</rdfs:label>
+	<bf:code>blw</bf:code>
       </bf:ColorContent>
     </bf:colorContent>
     <bf:emulsion>
       <bf:Emulsion rdf:about="http://id.loc.gov/vocabulary/mmaterial/slh">
 	<rdfs:label>silver halide emulsion</rdfs:label>
+	<bf:code>slh</bf:code>
       </bf:Emulsion>
     </bf:emulsion>
     <bf:generation>
       <bf:Generation rdf:about="http://id.loc.gov/vocabulary/mgeneration/firstgen">
 	<rdfs:label>first generation</rdfs:label>
+	<bf:code>firstgen</bf:code>
       </bf:Generation>
     </bf:generation>
     <bf:baseMaterial>
       <bf:BaseMaterial rdf:about="http://id.loc.gov/vocabulary/mmaterial/saf">
 	<rdfs:label>safety base</rdfs:label>
+	<bf:code>saf</bf:code>
       </bf:BaseMaterial>
     </bf:baseMaterial>
     <bf:title>
@@ -686,6 +764,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
 	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-14</bf:date>
@@ -693,6 +772,9 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
       </bf:AdminMetadata>
@@ -702,6 +784,7 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-09T13:30:10</bf:date>
@@ -717,16 +800,20 @@
 	<bf:status>
 	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
 	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
 	<bf:agent>
 	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-10T02:09:20.929483-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-09T22:03:04.204257-04:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -737,19 +824,24 @@
 	    <bf:assigner>
 	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
 		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
 	      </bf:Organization>
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-3-0/"/>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-4-0/"/>
 	<bflc:encodingLevel>
 	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/1">
 	    <rdfs:label>full not examined</rdfs:label>
+	    <bf:code>1</bf:code>
 	  </bflc:EncodingLevel>
 	</bflc:encodingLevel>
 	<bf:descriptionConventions>
 	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/aacr">
 	    <rdfs:label>Anglo-American cataloguing rules</rdfs:label>
+	    <bf:code>aacr</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
 	<bf:note>
@@ -761,12 +853,19 @@
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
 	  </bf:Language>
 	</bf:descriptionLanguage>
-	<bflc:marcKey>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$cDLC$dOCLCQ$dOCLCF$dOCLCO$dOCLCQ$dOCLCA</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:d906>=906     $a 7 $b cbc $c serials $d 4 $e ncip $f 20 $g n-oclcserc</lclocal:d906>

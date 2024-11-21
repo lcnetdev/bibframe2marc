@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:12:19.667354-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:26.759509-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -73,7 +73,12 @@
 	    <bf:code>dcrmg</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<bflc:marcKey>040  $aDLC$beng$edcrmg$cDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$edcrmg$cDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d u $e ncip $f 20 $g y-printpho</lclocal:d906>
 	<lclocal:d955>=955     $a pr 2022-07 ; pnpm qw08 2022-08</lclocal:d955>
 	<lclocal:d985>=985     $a pp/lilj</lclocal:d985>
@@ -123,9 +128,6 @@
     <bf:subject>
       <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Agent600-24">
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#PersonalName"/>
-	<madsrdf:authoritativeLabel>Wren, James, 1825</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme rdf:resource="http://id.loc.gov/authorities/subjects"/>
 	<rdfs:label>Wren, James, 1825-</rdfs:label>
 	<bflc:marcKey>60010$aWren, James,$d1825-</bflc:marcKey>
 	<bf:source rdf:resource="http://id.loc.gov/authorities/subjects"/>
@@ -138,10 +140,8 @@
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Agent610-25">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Jurisdiction"/>
-	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#CorporateName"/>
-	    <madsrdf:authoritativeLabel>United States. Army. Pennsylvania Infantry Regiment, 48th (1861-1865)</madsrdf:authoritativeLabel>
 	    <rdfs:label>United States. Army. Pennsylvania Infantry Regiment, 48th (1861-1865)</rdfs:label>
-	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 48th (1861-1865)$xPeople.</bflc:marcKey>
+	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 48th (1861-1865)</bflc:marcKey>
 	  </bf:Agent>
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>People</madsrdf:authoritativeLabel>
@@ -156,10 +156,8 @@
 	<madsrdf:componentList rdf:parseType="Collection">
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/22724623#Agent610-26">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Jurisdiction"/>
-	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#CorporateName"/>
-	    <madsrdf:authoritativeLabel>United States. Army. Pennsylvania Infantry Regiment, 25th (1861)</madsrdf:authoritativeLabel>
 	    <rdfs:label>United States. Army. Pennsylvania Infantry Regiment, 25th (1861)</rdfs:label>
-	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 25th (1861)$xPeople.</bflc:marcKey>
+	    <bflc:marcKey>61014$aUnited States.$bArmy.$bPennsylvania Infantry Regiment, 25th (1861)</bflc:marcKey>
 	  </bf:Agent>
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>People</madsrdf:authoritativeLabel>
@@ -383,7 +381,7 @@
     <bf:provisionActivity xmlns:exsl="http://exslt.org/common">
       <bf:ProvisionActivity>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
-	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1861/1863</bf:date>
+	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">1861~/1863~</bf:date>
 	<bf:place rdf:resource="http://id.loc.gov/vocabulary/countries/xxu"/>
 	<bflc:simplePlace>[Place not identified]</bflc:simplePlace>
 	<bflc:simpleAgent>[Publisher not identified]</bflc:simpleAgent>

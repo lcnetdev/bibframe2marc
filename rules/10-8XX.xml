@@ -83,9 +83,22 @@
             <xsl:value-of select="."/>
           </marc:subfield>
         </xsl:for-each>
+        <xsl:for-each select="$vRelResource//marc:datafield[@tag = '240']/marc:subfield">
+          <marc:subfield>
+            <xsl:choose>
+              <xsl:when test="@code='a'">
+                <xsl:attribute name="code">t</xsl:attribute>  
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:attribute name="code"><xsl:value-of select="@code"/></xsl:attribute>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:value-of select="."/>
+          </marc:subfield>
+        </xsl:for-each>
       </transform>
       <sf code="v" repeatable="false">
-        <select xpath="../bf:seriesEnumeration"/>
+        <select xpath="ancestor::bf:Relation/bf:seriesEnumeration[not(@xml:lang)]|ancestor::bflc:Relationship/bf:seriesEnumeration[not(@xml:lang)]"/>
       </sf>
       <sf code="x" repeatable="false">
         <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
@@ -190,17 +203,29 @@
           </marc:subfield>
         </xsl:for-each>
       </transform>
-      <sf code="v" repeatable="false">
-        <select xpath="../../bf:seriesEnumeration"/>
-      </sf>
-      <sf code="x" repeatable="false">
-        <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
-      </sf>
-      <sf code="w">
-        <select xpath="bf:identifiedBy/*[local-name()='Lccn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn']">
-          <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
-        </select>
-      </sf>
+      <switch>
+        <case test="not($vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[@code='v'])">
+          <sf code="v" repeatable="false">
+            <select xpath="ancestor::bf:Relation/bf:seriesEnumeration[not(@xml:lang)]|ancestor::bflc:Relationship/bf:seriesEnumeration[not(@xml:lang)]"/>
+          </sf>            
+        </case>
+      </switch>
+      <switch>
+        <case test="not($vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[@code='x'])">
+          <sf code="x" repeatable="false">
+            <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
+          </sf>
+        </case>
+      </switch>
+      <switch>
+        <case test="not($vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[@code='w'])">
+          <sf code="w">
+            <select xpath="bf:identifiedBy/*[local-name()='Lccn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Lccn']">
+              <transform><xsl:value-of select="concat('(DLC)',rdf:value)"/></transform>
+            </select>
+          </sf>
+        </case>
+      </switch>
       <switch>
         <case test="$relURI != ''">
           <sf code="1">

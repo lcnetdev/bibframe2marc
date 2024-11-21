@@ -936,14 +936,33 @@
   -->
   
   <switch>
-    <case test="$vAdminMetadata[bf:descriptionConventions]">
+    <case test="$vAdminMetadata[bf:descriptionLevel or bf:descriptionConventions or bflc:encodingLevel]">
       <df tag="040" repeatable="false">
         <var name="vLanguageUri">
           <switch>
-            <case test="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/@rdf:resource"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/@rdf:resource"/></transform></case>
-            <case test="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/*/@rdf:about"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/*/@rdf:about"/></transform></case>
+            <case test="$vAdminMetadata[bf:descriptionLevel or bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/@rdf:resource"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/@rdf:resource"/></transform></case>
+            <case test="$vAdminMetadata[bf:descriptionLevel or bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/*/@rdf:about"><transform><xsl:value-of select="$vAdminMetadata/bf:descriptionLanguage/*/@rdf:about"/></transform></case>
           </switch>
         </var>
+        <var name="df040sfsPreNS">
+          <switch>
+            <case test="$vAdminMetadata/bflc:marcKey[starts-with(., '040')]">
+              <transform>
+                <xsl:call-template name="tParseMarcKey">
+                  <xsl:with-param name="pString" select="substring($vAdminMetadata/bflc:marcKey[starts-with(., '040')], 6)" />
+                </xsl:call-template>
+              </transform>
+            </case>
+            <case test="$vAdminMetadata/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/internal']/rdfs:label[starts-with(., '040')]">
+              <transform>
+                <xsl:call-template name="tParseMarcKey">
+                  <xsl:with-param name="pString" select="substring($vAdminMetadata/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/internal']/rdfs:label[starts-with(., '040')], 6)" />
+                </xsl:call-template>
+              </transform>
+            </case>
+          </switch>
+        </var>
+        <var name="df040sfs" xpath="exsl:node-set($df040sfsPreNS)" />
         <ind1 default=" "/>
         <ind2 default=" "/>
         <var name="vAuri">
@@ -1004,14 +1023,14 @@
               </transform>
             </sf>
           </case>
-          <case test="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/*/*[local-name()='code']">
+          <case test="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/*/*[local-name()='code']">
             <sf code="b">
-              <transform><xsl:value-of select="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionLanguage/*/*[local-name()='code']"/></transform>
+              <transform><xsl:value-of select="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionLanguage/*/*[local-name()='code']"/></transform>
             </sf>
           </case>
         </switch>
         <sf code="e">
-          <select xpath="$vAdminMetadata[bf:descriptionConventions]/bf:descriptionConventions[not(contains(@rdf:resource,'isbd')) and
+          <select xpath="$vAdminMetadata[bf:descriptionConventions or bflc:encodingLevel]/bf:descriptionConventions[not(contains(@rdf:resource,'isbd')) and
                           not(contains(*/@rdf:about,'isbd')) and
                           not(*/rdf:value='isbd') and
                           not(*/*[local-name()='code']='isbd') and
@@ -1045,8 +1064,11 @@
             </switch>
           </select>
         </sf>
-        <!-- Logic for $c was/is identical to $a, so just using the $a stuff here. -->
+        <!-- Logic for $c: Look for the historical value.  If not found, use $a. -->
         <switch>
+          <case test="$df040sfs//marc:subfield[@code='c']">
+            <sf code="c" repeatable="false"><transform><xsl:value-of select="$df040sfs//marc:subfield[@code='c'][1]"/></transform></sf>
+          </case>
           <case test="$vAcode = 'dlc'">
             <sf code="c" repeatable="false"><transform><xsl:value-of select="translate($vAcode,$lower,$upper)"/></transform></sf>
           </case>
@@ -1059,19 +1081,9 @@
             <transform>
               <xsl:variable name="modifierCodePreNS">
                 <marc:codes>
-                  <xsl:if test="$vAdminMetadata/bflc:marcKey[starts-with(., '040')]">
-                    <xsl:variable name="df040sfsPreNS">
-                      <subfields>
-                        <xsl:call-template name="tParseMarcKey">
-                          <xsl:with-param name="pString" select="substring($vAdminMetadata/bflc:marcKey[starts-with(., '040')], 6)" />
-                        </xsl:call-template>
-                      </subfields>
-                    </xsl:variable>
-                    <xsl:variable name="df040sfs" select="exsl:node-set($df040sfsPreNS)" />
-                    <xsl:for-each select="$df040sfs//marc:subfield[@code='d']">
-                      <marc:modifierCode><xsl:value-of select="." /></marc:modifierCode>
-                    </xsl:for-each>
-                  </xsl:if>
+                  <xsl:for-each select="$df040sfs//marc:subfield[@code='d' and .!='']">
+                    <marc:modifierCode><xsl:value-of select="." /></marc:modifierCode>
+                  </xsl:for-each>
                   <xsl:for-each select="$vAdminMetadata[bf:status/bf:Status[@rdf:about='http://id.loc.gov/vocabulary/mstatus/c']]">
                     <xsl:sort select="bf:date" data-type="text" order="ascending" />
                     <xsl:variable name="mCode">
@@ -1110,13 +1122,15 @@
                         </xsl:when>
                       </xsl:choose>
                   </xsl:variable>
-                  <marc:modifierCode>
-                    <xsl:choose>
-                      <xsl:when test="$mCode = 'dlc'">DLC</xsl:when>
-                      <xsl:when test="$mCode = 'dlcmrc'">DLCMRC</xsl:when>
-                      <xsl:otherwise><xsl:value-of select="$mCode" /></xsl:otherwise>
-                    </xsl:choose>
-                  </marc:modifierCode>
+                  <xsl:if test="$mCode != ''">
+                    <marc:modifierCode>
+                      <xsl:choose>
+                        <xsl:when test="$mCode = 'dlc'">DLC</xsl:when>
+                        <xsl:when test="$mCode = 'dlcmrc'">DLC-MRC</xsl:when>
+                        <xsl:otherwise><xsl:value-of select="$mCode" /></xsl:otherwise>
+                      </xsl:choose>
+                    </marc:modifierCode>
+                  </xsl:if>
                 </xsl:for-each>
                 </marc:codes>
               </xsl:variable>
@@ -1177,7 +1191,7 @@
   </switch>
 
   <switch>
-    <case test="bf:Work/bf:language//@rdf:*[contains(., 'id.loc.gov/vocabulary/languages')] or bf:Work/bf:language/*/*[not(bf:source)]">
+    <case test="bf:Work/bf:language//@rdf:*[contains(., 'id.loc.gov/vocabulary/languages') and not(contains(., '/zxx'))] or bf:Work/bf:language/*/*[not(bf:source)]">
       <var name="vAllLangElements" xpath="
         bf:Work/bf:language/@rdf:resource[contains(., 'id.loc.gov/vocabulary/languages')] |
         bf:Work/bf:language/bf:Language[not(bf:source) and not(bf:part)]//@rdf:about[contains(., 'id.loc.gov/vocabulary/languages')] | 
@@ -1225,9 +1239,10 @@
           
          <xsl:for-each select="$vAllLangElements">
           <xsl:choose>
-            <xsl:when test="position() = 1">
+            <xsl:when test="position() = 1 and $vFirstLangCode!='zxx'">
               <marc:subfield code="a"><xsl:value-of select="$vFirstLangCode"/></marc:subfield>
             </xsl:when>
+            <xsl:when test="position() = 1 and $vFirstLangCode='zxx'" />
             <xsl:otherwise>
                 <xsl:variable name="vLangCode">
                   <xsl:choose>
@@ -1305,7 +1320,7 @@
     </case>
     </switch>
     <switch>
-      <case test="bf:Work/bf:language//@rdf:*[not(contains(., 'id.loc.gov/vocabulary/languages'))] or bf:Work/bf:language/*/bf:source">
+      <case test="bf:Work/bf:language//@rdf:*[(local-name='resource' or local-name='about') and not(contains(., 'id.loc.gov/vocabulary/languages'))] or bf:Work/bf:language/*/bf:source">
       <df tag="041">
         <ind1 default=" ">
           <switch>
@@ -1680,10 +1695,11 @@
   <df tag="043">
     <context xpath="bf:Work/bf:geographicCoverage[
                       contains(@rdf:resource,'id.loc.gov/vocabulary/geographicAreas') or
-                      contains(bf:GeographicCoverage/@rdf:about,'id.loc.gov/vocabulary/geographicAreas') or
-                      bf:GeographicCoverage/rdf:value or 
-                      bf:GeographicCoverage/madsrdf:code  or 
-                      madsrdf:Geographic/madsrdf:code]">
+                      contains(bf:GeographicCoverage/@rdf:about,'id.loc.gov/vocabulary/geographicAreas') or 
+                      bf:GeographicCoverage/madsrdf:code or
+                      bf:GeographicCoverage/bf:code or
+                      madsrdf:Geographic/madsrdf:code or 
+                      bf:GeographicCoverage/rdf:value]">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <var name="vUri">
@@ -1693,6 +1709,14 @@
         </switch>
       </var>
       <switch>
+        <case test="*/bf:code">
+          <sf code="a"><select xpath="*/bf:code" /></sf>
+          <switch>
+            <case test="*/@rdf:about">
+              <sf code="0"><transform><xsl:value-of select="*/@rdf:about"/></transform></sf>
+            </case>
+          </switch>
+        </case>
         <case test="*/madsrdf:code">
           <sf code="a"><select xpath="*/madsrdf:code" /></sf>
           <switch>

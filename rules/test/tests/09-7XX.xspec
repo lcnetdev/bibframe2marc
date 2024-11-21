@@ -35,6 +35,29 @@
     <x:expect label="$5 from bflc:applicableInsitution"
               test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='5'] = 'DLC'"/>
   </x:scenario>
+  
+  
+  <x:scenario label="MARC 700 - 880">
+    <x:context href="../data/exemplars/text-monograph-880s-in-245-264-490-700-also-066.rdf"/>
+    <x:expect label="generate 700" test="count(//marc:datafield[@tag='700']) = 1"/>
+    <x:expect label="ind1 default to blank"
+      test="//marc:datafield[@tag='700'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 default to blank"
+      test="//marc:datafield[@tag='700'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='a'] = 'Kipiani, Vakhtanh'"/>
+    <x:expect label="$6 for paired non-latin field"
+      test="//marc:datafield[@tag='700'][1]/marc:subfield[@code='6'] = '880-71'"/>
+    
+    <x:expect label="generate 880" test="count(//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='700-71/(N']]) = 1"/>
+    <x:expect label="ind1 default to blank"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='700-71/(N']]/@ind1 = '1'"/>
+    <x:expect label="ind2 default to blank"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='700-71/(N']]/@ind2 = ' '"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='700-71/(N']]/marc:subfield[@code='a'] = 'Кіпіані, Вахтанг'"/>
+    
+  </x:scenario>
 
   <x:scenario label="MARC 700 analytic entry">
     <x:context href="../data/7XX/700-analytic.xml"/>
@@ -69,6 +92,28 @@
               test="//marc:datafield[@tag='710'][1]/marc:subfield[@code='4'][1] = 'orm'"/>
     <x:expect label="$4 URI from role"
               test="//marc:datafield[@tag='710'][1]/marc:subfield[@code='4'][2] = 'http://id.loc.gov/vocabulary/relators/orm'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 710 - 880">
+    <x:context href="../data/exemplars/text-serial-880s-and-245-246-247-264-710-780-chinese.rdf"/>
+    <x:expect label="generate 710 with 880" test="count(//marc:datafield[@tag='710']) = 2"/>
+    <x:expect label=".. and expected ind1"
+      test="//marc:datafield[@tag='710'][1]/@ind1 = '2'"/>
+    <x:expect label=".. and expected ind2"
+      test="//marc:datafield[@tag='710'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='710'][1]/marc:subfield[@code='a'] = 'Beijing sheng wu chan ye fa zhan bao gao bian ji wei yuan hui'"/>
+    <x:expect label="$6 for paired non-latin field"
+      test="//marc:datafield[@tag='710'][1]/marc:subfield[@code='6'] = '880-71'"/>
+    
+    <x:expect label="generate 880" test="count(//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='710-71/$1']]) = 1"/>
+    <x:expect label=".. and expected ind1"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='710-71/$1']]/@ind1 = '2'"/>
+    <x:expect label=".. and expected ind2"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='710-71/$1']]/@ind2 = ' '"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='710-71/$1']]/marc:subfield[@code='a'] = '北京生物产业发展报告编辑委员会'"/>
+    
   </x:scenario>
 
   <x:scenario label="MARC 711">

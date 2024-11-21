@@ -353,6 +353,12 @@
                   (translate(bf:noteType,$upper,$lower)='physical details' or translate(bf:noteType,$upper,$lower)='accompanying material' or translate(bf:noteType,$upper,$lower)='binding' or translate(bf:noteType,$upper,$lower)='action') or 
                   (rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/physical' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/accmat' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/binding' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/action')
                   )"/>
+      
+      <!-- these notes are picked up in the rules for data field 041, do not process here -->
+      <case test="(
+        local-name(../..)='Instance' and 
+        rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/biblio'
+        )"/>
 
       <case test="default">
         <df tag="500" lang-xpath="rdfs:label">
@@ -373,9 +379,13 @@
                   </xsl:choose>
                 </xsl:for-each>
               </xsl:variable>
+              <!-- Do not chop punctuation - 20241119 -->
+              <!--
               <xsl:call-template name="tChopPunct">
                 <xsl:with-param name="pString" select="$vNoteText"/>
               </xsl:call-template>
+              -->
+              <xsl:value-of select="$vNoteText" />
             </transform>
           </sf>
           <sf code="5" repeatable="false">
@@ -414,6 +424,16 @@
   <df tag="504" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]  |
                     bf:Instance/bf:supplementaryContent/bf:SupplementaryContent[rdfs:label[. != ''] and not(@rdf:about)]
+      ">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:count"/></sf>
+    </context>
+  </df>
+  
+  <df tag="504" lang-xpath="rdfs:label">
+    <context xpath="bf:Instance/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/biblio' and rdfs:label[. != '']]
       ">
       <ind1 default=" "/>
       <ind2 default=" "/>
@@ -513,6 +533,9 @@
       <sf code="x" repeatable="false">
         <select xpath="bf:identifiedBy/*[local-name()='Issn' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Issn']/rdf:value"/>
       </sf>
+      <sf code="u" repeatable="false">
+        <select xpath="bf:electronicLocator/@rdf:resource"/>
+      </sf>
     </context>
   </df>
 
@@ -559,7 +582,7 @@
       <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
-      <sf code="a" chopPunct="true" repeatable="false">
+      <sf code="a" chopPunct="false" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
       <sf code="u">
@@ -653,7 +676,7 @@
   </df>
 
   <df tag="546" lang-xpath="rdfs:label">
-    <context xpath="bf:Work/bf:notation/bf:Notation">
+    <context xpath="bf:Work/bf:notation/bf:Notation|bf:Work/bf:notation/bf:Script">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="3" chopPunct="true" repeatable="false">

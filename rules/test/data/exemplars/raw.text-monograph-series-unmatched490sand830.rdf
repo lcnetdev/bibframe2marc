@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:12:29.752789-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:37.216002-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -76,7 +76,12 @@
 	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<bflc:marcKey>040  $aDLC$beng$erda$cDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$erda$cDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <bf:code>pcc</bf:code>
@@ -142,7 +147,7 @@
 	</bf:source>
       </bf:Content>
     </bf:content>
-    <bf:relation>
+    <bf:relation xmlns:exsl="http://exslt.org/common">
       <bf:Relation>
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
@@ -150,7 +155,7 @@
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
-	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/19279034#Hub490-23">
+	  <bf:Series>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
@@ -159,12 +164,12 @@
 	    </bf:status>
 	    <bf:title>
 	      <bf:Title>
-		<bf:mainTitle>AIP conference proceedings,</bf:mainTitle>
+		<bf:mainTitle>AIP conference proceedings</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
 	    <bf:identifiedBy>
 	      <bf:Issn>
-		<rdf:value>0094-243X ;</rdf:value>
+		<rdf:value>0094-243X</rdf:value>
 	      </bf:Issn>
 	    </bf:identifiedBy>
 	  </bf:Series>
@@ -266,11 +271,12 @@
 	<rdfs:label>"All papers have been peer reviewed."</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:supplementaryContent>
-      <bf:SupplementaryContent>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/biblio"/>
 	<rdfs:label>Includes bibliographical references.</rdfs:label>
-      </bf:SupplementaryContent>
-    </bf:supplementaryContent>
+      </bf:Note>
+    </bf:note>
     <bf:instanceOf rdf:resource="http://id.loc.gov/resources/REPLACE/19279034#Work"/>
   </bf:Instance>
 </rdf:RDF>

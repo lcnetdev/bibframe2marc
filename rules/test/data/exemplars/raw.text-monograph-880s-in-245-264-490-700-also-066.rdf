@@ -38,8 +38,8 @@
 	  </bf:Status>
 	</bf:status>
 	<bf:agent rdf:resource="http://id.loc.gov/vocabulary/organizations/dlcmrc"/>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.7.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:12:41.023116-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:50.080594-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -76,7 +76,12 @@
 	    <bf:code>rda</bf:code>
 	  </bf:DescriptionConventions>
 	</bf:descriptionConventions>
-	<bflc:marcKey>040  $aDLC$beng$erda$cDLC</bflc:marcKey>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$erda$cDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
 	<bf:descriptionAuthentication>
 	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
 	    <bf:code>pcc</bf:code>
@@ -126,7 +131,7 @@
 	</bf:source>
       </bf:Content>
     </bf:content>
-    <bf:relation>
+    <bf:relation xmlns:exsl="http://exslt.org/common">
       <bf:Relation>
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
@@ -134,7 +139,7 @@
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
-	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/23126927#Hub490-26">
+	  <bf:Series>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
@@ -151,7 +156,7 @@
 	</bf:associatedResource>
       </bf:Relation>
     </bf:relation>
-    <bf:relation>
+    <bf:relation xmlns:exsl="http://exslt.org/common">
       <bf:Relation>
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/ontologies/bibframe/hasSeries">
@@ -159,7 +164,7 @@
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
-	  <bf:Series rdf:about="http://id.loc.gov/resources/REPLACE/23126927#Hub490-28">
+	  <bf:Series>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
 	    <bf:status>
 	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
@@ -236,7 +241,9 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/resources/REPLACE/23126927#Agent700-32">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Kipiani, Vakhtanh</rdfs:label>
+	    <rdfs:label xml:lang="uk-cyrl">Кіпіані, Вахтанг</rdfs:label>
 	    <bflc:marcKey>7001 $6880-05$aKipiani, Vakhtanh,$eeditor.</bflc:marcKey>
+	    <bflc:marcKey xml:lang="uk-cyrl">8801 $6700-05/(N$aКіпіані, Вахтанг,$eeditor.</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -264,7 +271,7 @@
       </bf:ProvisionActivity>
     </bf:provisionActivity>
     <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Kharkiv: Vydavnyt︠s︡tvo Vivat, 2021</bf:publicationStatement>
-    <bflc:publicationStatement xml:lang="uk-cyrl" xmlns:exsl="http://exslt.org/common">Харків: Видавництво Vivat, 2021</bflc:publicationStatement>
+    <bf:publicationStatement xml:lang="uk-cyrl" xmlns:exsl="http://exslt.org/common">Харків: Видавництво Vivat, 2021</bf:publicationStatement>
     <bf:identifiedBy>
       <bf:Lccn>
 	<rdf:value>  2023449325</rdf:value>

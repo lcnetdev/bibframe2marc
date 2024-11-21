@@ -13,9 +13,9 @@
     <x:expect label="ind2 generated from bf:source"
               test="//marc:datafield[@tag='600'][1]/@ind2 = '0'"/>
     <x:expect label="$a can be generated from name label"
-              test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='a'] = 'Obama, Barack.'"/>
+              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='a'] = 'Obama, Barack.'"/>
     <x:expect label="$t from title of bf:subject/bf:Work"
-              test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='t'] = 'Faust.'"/>
+              test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='t'] = 'Faust.'"/>
     <x:expect label="parse subdivisions"
               test="//marc:datafield[@tag='600'][3]/marc:subfield[@code='v'] = 'Interviews'"/>
   </x:scenario>
@@ -43,26 +43,27 @@
     <x:expect label="ind1 from marcKey/ind1"
       test="//marc:datafield[@tag='600'][1]/@ind1 = '1'"/>
     <x:expect label="ind2 from source logic"
-      test="//marc:datafield[@tag='600'][1]/@ind2 = '7'"/>
+      test="//marc:datafield[@tag='600'][1]/@ind2 = '0'"/>
     <x:expect label="$a from marcKey/a"
       test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='a'] = 'Hamilton, Alexander,'"/>
     <x:expect label="$d from marcKey/d"
-      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='d'] = '1757-1804.'"/>
-    <x:expect label="$2 from source logic"
-      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='2'] = 'fast'"/>
+      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='d'] = '1757-1804'"/>
     <x:expect label="$4 from URI"
-      test="//marc:datafield[@tag='600'][1]/marc:subfield[@code='0'] = 'http://id.worldcat.org/fast/00031768'"/>
-    
+      test="count(//marc:datafield[@tag='600'][1]/marc:subfield[@code='0']) = 0"/>
+
     <x:expect label="ind1 from marcKey/ind1"
       test="//marc:datafield[@tag='600'][2]/@ind1 = '1'"/>
     <x:expect label="ind2 from source logic"
-      test="//marc:datafield[@tag='600'][2]/@ind2 = '0'"/>
+      test="//marc:datafield[@tag='600'][2]/@ind2 = '7'"/>
     <x:expect label="$a from marcKey/a"
       test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='a'] = 'Hamilton, Alexander,'"/>
     <x:expect label="$d from marcKey/d"
-      test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='d'] = '1757-1804'"/>
+      test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='d'] = '1757-1804.'"/>
+    <x:expect label="$2 from source logic"
+      test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='2'] = 'fast'"/>
     <x:expect label="$4 from URI"
-      test="count(//marc:datafield[@tag='600'][2]/marc:subfield[@code='0']) = 0"/>
+      test="//marc:datafield[@tag='600'][2]/marc:subfield[@code='0'] = 'http://id.worldcat.org/fast/00031768'"/>
+
   </x:scenario>
   
   <!-- FIX in 2.5
@@ -152,7 +153,7 @@
 
   <x:scenario label="MARC 650">
     <x:context href="../data/6XX/650.xml"/>
-    <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 3"/>
+    <x:expect label="generate 650" test="count(//marc:datafield[@tag='650']) = 5"/>
     <x:expect label="$0 for entire complex subject at end of subdivision"
               test="//marc:datafield[@tag='650'][1]/marc:subfield[3] = 'http://id.loc.gov/authorities/subjects/sh2008102225'"/>
     <x:expect label="$0 for simple subjects after $a"
@@ -171,6 +172,32 @@
               test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='a'] = 'Maryland'"/>
     <x:expect label="subdivisions generated from subsequent elements in componentList"
               test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='x'] = 'Antiquities'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 651 - 880">
+    <x:context href="../data/exemplars/text-serial-880s-and-245-246-247-264-710-780-chinese.rdf"/>
+    <x:expect label="generate 710 with 880" test="count(//marc:datafield[@tag='651']) = 2"/>
+    <x:expect label=".. and expected ind1"
+      test="//marc:datafield[@tag='651'][1]/@ind1 = ' '"/>
+    <x:expect label=".. and expected ind2"
+      test="//marc:datafield[@tag='651'][1]/@ind2 = '0'"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='a'] = 'China'"/>
+    <x:expect label="..and expected $1"
+      test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/n79091151'"/>
+    <x:expect label="$6 for paired non-latin field"
+      test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='6'] = '880-50'"/>
+    
+    <x:expect label="generate 880" test="count(//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='651-50/$1']]) = 1"/>
+    <x:expect label=".. and expected ind1"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='651-50/$1']]/@ind1 = ' '"/>
+    <x:expect label=".. and expected ind2"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='651-50/$1']]/@ind2 = '0'"/>
+    <x:expect label="$a from label of agent"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='651-50/$1']]/marc:subfield[@code='a'] = '中华民国 (1912-1949)'"/>
+    <x:expect label="..and expected $1"
+      test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='651-50/$1']]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/n79091151'"/>
+    
   </x:scenario>
 
   <x:scenario label="MARC 653">

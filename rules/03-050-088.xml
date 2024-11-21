@@ -217,19 +217,50 @@
     </context>
   </df>
   
-  <df tag="066">
-    <context xpath="//@xml:lang[generate-id() = generate-id(key('langs',.)[1])]">
-      <ind1 default=" "/>
-      <ind2 default=" "/>
-      <var name="v880Script">
-        <lookup map="df880script" targetField="code">
-          <lookupField name="lang" xpath="translate(substring-after(.,'-'),$upper,$lower)"/>
-        </lookup>
-      </var>
-      <sf code="a"><transform><xsl:value-of select="$v880Script" /></transform></sf>
-    </context>
-  </df>
-
+  <switch>
+    <case test="/descendant::node()[bf:Title|bf:ProvisionActivity|bf:editionStatement|bf:Series]//@xml:lang[contains(., '-') and not(contains(., 'atn'))]">
+      <df tag="066">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <transform>
+            <xsl:variable name="scriptCodesPreNS">
+              <xsl:variable name="df880scriptNS" select="exsl:node-set($df880script)" />
+              <xsl:variable name="vLangs" select="//@xml:lang[contains(., '-') and not(contains(., 'atn'))]" />
+              <!-- <xsl:for-each select="$df880scriptNS/*[lang]/lang"> -->
+              <marc:codes>
+                <!-- Those defined in the map. -->
+                <xsl:for-each select="$df880scriptNS/script/lang">
+                  <xsl:variable name="vLang" select="." />
+                  <xsl:if test="$vLangs[translate(substring-after(.,'-'),$upper,$lower) = $vLang ]">
+                    <marc:scriptCode><xsl:value-of select="../code" /></marc:scriptCode>
+                  </xsl:if>
+                </xsl:for-each>
+                
+                <!-- For those not defined in the map. -->
+                <xsl:for-each select="$vLangs">
+                  <xsl:variable name="vLang" select="translate(substring-after(.,'-'),$upper,$lower)" />
+                  <xsl:if test="count($df880scriptNS/script/lang[. = $vLang]) = 0">
+                    <marc:scriptCode><xsl:value-of select="$vLang" /></marc:scriptCode>
+                  </xsl:if>
+                </xsl:for-each>
+              </marc:codes>
+            </xsl:variable>
+            <xsl:variable name="scriptCodes" select="exsl:node-set($scriptCodesPreNS)" />
+            <xsl:for-each select="$scriptCodes//marc:scriptCode[not(.=preceding::*[1])]">
+              <xsl:choose>
+                <xsl:when test="contains(., '/')">
+                  <marc:subfield code="c"><xsl:value-of select="substring-before(., '/')" /></marc:subfield>
+                </xsl:when>
+                <xsl:otherwise>
+                  <marc:subfield code="c"><xsl:value-of select="." /></marc:subfield>    
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:for-each>
+          </transform>
+      </df>
+    </case>
+  </switch>
+  
   <df tag="070">
     <context xpath="bf:Work/bf:classification/bf:ClassificationNal|bf:Work/bf:classification/bf:Classification[bf:assigner/@rdf:resource='http://id.loc.gov/vocabulary/organizations/dnal' or
                     bf:assigner/*/@rdf:about='http://id.loc.gov/vocabulary/organizations/dnal']">
@@ -349,6 +380,28 @@
           <sf code="a" repeatable="false"><select xpath="rdf:value"/></sf>
         </case>
       </switch>
+    </context>
+  </df>
+  
+  <df tag="080">
+    <context xpath="bf:Work/bf:classification/*[(local-name()='ClassificationUdc' or rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/ClassificationUdc') and bf:classificationPortion/text()]">
+      <ind1 default=" ">
+        <switch>
+          <case test="bf:edition = 'full'">0</case>
+          <case test="bf:edition = 'abridged'">1</case>
+        </switch>
+      </ind1>
+      <ind2 default=" " />
+      <sf code="a"><select xpath="bf:classificationPortion"/></sf>
+      <sf code="b" repeatable="false"><select xpath="bf:itemPortion"/></sf>
+      <switch>
+        <case test="not(bf:assigner[@rdf:resource='http://id.loc.gov/vocabulary/organizations/dlc' or */@rdf:about='http://id.loc.gov/vocabulary/organizations/dlc'])">
+          <sf code="q" chopPunct="true" repeatable="false"><select xpath="bf:assigner/bf:Agent/rdfs:label"/></sf>
+        </case>
+      </switch>
+      <sf code="2" repeatable="false">
+        <select xpath="bf:source/bf:Source/bf:code" />
+      </sf>
     </context>
   </df>
 
