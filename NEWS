@@ -2,18 +2,25 @@
 
 Changes for updated v2.8.0 specifications:
 	
-008-bf2marc
-	Improved support for 008/24-27 for Books
-AdminMetadata-bf2marc
-	Improved support for 008/39
-Work-bf2marc
-    Look for relationship URIs from PCC list
 Instance-bf2marc
-    Look for Note structure with notetype of 'biblio' for 504 creation
-    Improved support for 008 date types from Provision Activity dates
-    Refine ind1 value of 246 based on Variant title type
-Process-0-4
-	Use $c of 066.
+	Updated creation of 008/06=q
+	Changed generation of indicators in MARC 246 field
+	Updated creation of MARC 504 field to use bf:note instead of bf:supplementaryContent
+Work-bf2marc
+Added creation of paired MARC 880 fields for agents and added titles
+Added $u to MARC 510 field
+	Added creation of MARC 080 field
+	Changed generation of indicators in MARC 246 field
+	Corrected relationship URIs within the relation - Relation ... elements to align the specifications with the conversion program
+008-bf2marc
+	Added bf:genreForm mapping to create 008/24-27 for ooks and serials; previously only bf:supplementaryContent values were mapped to these bytes
+	Added information about 008/06 creation that is also included in the Instance-bf2marc spec
+	Added reference to AdminMetadata spec regarding the creation of MARC 008/39 byte
+AdminMetadata-bf2marc
+	Added creation of MARC 008/39 byte
+Process0-4-bf2marc
+	Editorial changes to add new "biblio" notetype to Process 3 and update example of 066 field in Process 1
+
 
 --- 2.7.0 2024/08/23
 
