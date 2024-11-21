@@ -1,5 +1,22 @@
 # bibframe2marc release notes
 
+## v2.8.0
+
+Conversion updates based on specifications v2.8. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the [spec](spec/) directory. Changes of note:
+
+* Added creation of paired MARC 880 fields for agents
+* Improved 880 support for variant titles
+* Added conversion of MARC 080 field
+* Added conversion of $u to MARC 510 field
+* Updated creation of MARC 504 field to use bf:note instead of bf:supplementaryContent
+* Corrected relationships within the relation - Relation ... elements to align the specifications with the conversion program
+* Added bf:genreForm mapping to populate 008/24-27 bytes; previously only the bf:supplementaryContent values were mapped
+* Add creation of 008/39 value from data elements in Admin Metadata
+* Support for 008 date type 'q'
+* Numerous bug fixes
+
+See the [NEWS](NEWS) file for full details of changes.
+
 ## v2.7.0
 
 Conversion updates based on specifications v2.7. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the [spec](spec/) directory. Changes of note:
