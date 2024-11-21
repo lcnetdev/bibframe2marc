@@ -211,8 +211,8 @@
               test="substring(marc:record/marc:controlfield[@tag='008'],23,1) = 'j'"/>
     <x:expect label="BK 008/23 generated from bf:Instance/bf:carrier"
               test="substring(marc:record/marc:controlfield[@tag='008'],24,1) = 's'"/>
-    <!--<x:expect label="BK 008/24-27 generated from bf:Work/bf:genreForm or bf:Work/bf:supplementaryContent"
-              test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = 'bh  '"/>-->
+    <x:expect label="BK 008/24-27 generated from bf:Work/bf:genreForm or bf:Work/bf:supplementaryContent"
+              test="substring(marc:record/marc:controlfield[@tag='008'],25,4) = 'bh  '"/>
     <x:expect label="BK 008/28 generated from bflc:governmentPubType with gov doc URI"
               test="substring(marc:record/marc:controlfield[@tag='008'],29,1) = 'f'"/>
     <x:expect label="BK 008/29 generated from bf:Work/bf:genreForm with conference URI"
