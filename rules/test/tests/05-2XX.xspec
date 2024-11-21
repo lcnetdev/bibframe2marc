@@ -149,6 +149,25 @@
     <x:expect label="$b from subtitle"
               test="//marc:datafield[@tag='247']/marc:subfield[@code='b'] = 'for every woman'"/>
   </x:scenario>
+  
+  <x:scenario label="MARC 246 and 247 with 880s">
+    <x:context href="../data/exemplars/text-monograph-880s-and-100-245-246-247-264-700-cyrllic.rdf"/>
+    <x:expect label="generate 246" test="count(//marc:datafield[@tag='246']) = 1"/>
+    <x:expect label="246 ind2 set correctly" test="//marc:datafield[@tag='246']/@ind2 = '0'"/>
+    <x:expect label=".. and with the expected $a" test="//marc:datafield[@tag='246']/marc:subfield[@code='a'] = 'Kalmyt︠s︡ko-russkiĭ slovarʹ'"/>
+    <x:expect label=".. and with the expected $6" test="//marc:datafield[@tag='246']/marc:subfield[@code='6'] = '880-03'"/>
+    
+    <x:expect label="880 for 246" test="count(//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='246-03/(N']]) = 1"/>
+    <x:expect label=".. and with the expected $a" test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='246-03/(N']]/marc:subfield[@code='a'] = 'Калмыцко-русский словарь'"/>
+    
+    <x:expect label="generate 247" test="count(//marc:datafield[@tag='247']) = 1"/>
+    <x:expect label=".. and with the expected $a" test="contains(//marc:datafield[@tag='247']/marc:subfield[@code='a'], ' daschanav : khalʹmg-ors tolʹ')"/>
+    <x:expect label=".. and with the expected $6" test="//marc:datafield[@tag='247']/marc:subfield[@code='6'] = '880-07'"/>
+    
+    <x:expect label="880 for 247" test="count(//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='247-07/(N']]) = 1"/>
+    <x:expect label=".. and with the expected $a" test="contains(//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='247-07/(N']]/marc:subfield[@code='a'], ' дасчанав : хальмг-орс толь')"/>
+    
+  </x:scenario>
 
   <x:scenario label="MARC 250">
     <x:context href="../data/2XX/250.xml"/>
