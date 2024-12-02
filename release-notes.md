@@ -1,5 +1,14 @@
 # bibframe2marc release notes
 
+## v2.8.1
+
+Patch release. This still conforms with 2.8.0 specs, which can be found in the [spec](spec/) directory. Changes of note:
+
+* Stop incorrect genre/form from populating obsolete 008 byte for monographs
+* Refine XPath selection for 072 production
+
+See the [NEWS](NEWS) file for full details of changes.
+
 ## v2.8.0
 
 Conversion updates based on specifications v2.8. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the [spec](spec/) directory. Changes of note:
