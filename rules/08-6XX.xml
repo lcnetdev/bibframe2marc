@@ -1839,8 +1839,8 @@
                 <case test="*/madsrdf:componentList">
                   <sf code="a" chopPunct="true" repeatable="false">
                     <switch>
-                      <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></case>
-                      <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></case>
+                      <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or @xml:lang='en']"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></case>
+                      <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or @xml:lang='en']"/></case>
                     </switch>
                   </sf>
                   <sf code="e" chopPunct="true">
@@ -1851,10 +1851,10 @@
                 <case test="default">
                   <sf code="a" chopPunct="true" repeatable="false">
                     <switch>
-                      <case test="*/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
-                        <select xpath="*/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/>
+                      <case test="*/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or @xml:lang='en']">
+                        <select xpath="*/madsrdf:authoritativeLabel[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or @xml:lang='en']"/>
                       </case>
-                      <case test="default"><select xpath="*/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></case>
+                      <case test="default"><select xpath="*/rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or @xml:lang='en']"/></case>
                     </switch>
                   </sf>
                   <sf code="e" chopPunct="true">
