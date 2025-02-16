@@ -679,7 +679,8 @@
                         rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle'] or
                         rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle'] or
                         rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
-                      ) and 
+                      ) and
+                        not(rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/for']) and
                         not(bf:variantType = 'translated') and
                         not(bf:variantType = 'former') and
                         bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
@@ -695,6 +696,7 @@
                         rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle'] or
                         rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
                       ) and 
+                      not(rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/for']) and
                       not(bf:variantType = 'translated') and
                       not(bf:variantType = 'former') and
                       bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
@@ -712,6 +714,7 @@
               rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle'] or
               rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
               ) and 
+              not(rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/for']) and
               not(bf:variantType = 'translated') and
               not(bf:variantType = 'former') and
               bf:mainTitle[@xml:lang]])" />
@@ -721,17 +724,33 @@
       </var>
       
       <df tag="246">
-      <ind1 default="1">
+      <ind1 default="3">
         <switch>
-          <case test="local-name()='ParallelTitle' or
-            rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']">3</case>
-          <case test="bf:variantType = 'portion'">3</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/por']">1</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/atp']">1</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/cap']">1</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/run']">1</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/cov']">1</case>
+          
+          <case test="bf:variantType = 'portion'">1</case>
+          <case test="bf:variantType = 'added title page'">1</case>
+          <case test="bf:variantType = 'caption'">1</case>
+          <case test="bf:variantType = 'running'">1</case>
+          <case test="bf:variantType = 'spine'">1</case>
+          <case test="bf:variantType = 'cover'">1</case>
         </switch>
       </ind1>
       <ind2 default=" ">
         <switch>
           <case test="local-name()='ParallelTitle' or
                       rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']">1</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/por']">0</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/dis']">2</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/cov']">4</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/atp']">5</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/cap']">6</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/run']">7</case>
+          <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/spi']">8</case>
           <case test="bf:variantType = 'portion'">0</case>
           <case test="bf:variantType = 'distinctive'">2</case>
           <case test="bf:variantType = 'cover'">4</case>
@@ -768,17 +787,33 @@
             </lookup>
           </var>
           <df tag="880">
-            <ind1 default="1">
+            <ind1 default="3">
               <switch>
-                <case test="local-name()='ParallelTitle' or
-                  rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']">3</case>
-                <case test="bf:variantType = 'portion'">3</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/por']">1</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/atp']">1</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/cap']">1</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/run']">1</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/cov']">1</case>
+                
+                <case test="bf:variantType = 'portion'">1</case>
+                <case test="bf:variantType = 'added title page'">1</case>
+                <case test="bf:variantType = 'caption'">1</case>
+                <case test="bf:variantType = 'running'">1</case>
+                <case test="bf:variantType = 'spine'">1</case>
+                <case test="bf:variantType = 'cover'">1</case>
               </switch>
             </ind1>
             <ind2 default=" ">
               <switch>
                 <case test="local-name()='ParallelTitle' or
                   rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle']">1</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/por']">0</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/dis']">2</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/cov']">4</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/atp']">5</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/cap']">6</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/run']">7</case>
+                <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/spi']">8</case>
                 <case test="bf:variantType = 'portion'">0</case>
                 <case test="bf:variantType = 'distinctive'">2</case>
                 <case test="bf:variantType = 'cover'">4</case>
@@ -809,7 +844,9 @@
     local-name()='VariantTitle' or
     rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
     ) and
-    bf:variantType = 'former' and 
+    (
+      bf:variantType = 'former' or rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/for']
+    ) and 
     (
       bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] or 
       rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
@@ -819,7 +856,9 @@
     local-name()='VariantTitle' or
     rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
     ) and
-    bf:variantType = 'former' and 
+    (
+      bf:variantType = 'former' or rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/for']
+    ) and 
     (
     bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] or 
     rdfs:label[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
@@ -833,7 +872,9 @@
             local-name()='VariantTitle' or
             rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle']
             ) and
-            bf:variantType = 'former' and 
+            (
+              bf:variantType = 'former' or rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/for']
+            ) and
             bf:mainTitle[@xml:lang]])" />
           <xsl:value-of select="7 + $prevTitleCount" />
         </xsl:if>
