@@ -444,7 +444,12 @@
 
   <df tag="505" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:tableOfContents/bf:TableOfContents[rdfs:label]">
-      <ind1 default="0"/>
+      <ind1 default="0">
+        <switch>
+          <case test="bf:status//@rdf:*[.='http://id.loc.gov/vocabulary/mstatus/incmp']">1</case>
+          <case test="bf:status//@rdf:*[.='http://id.loc.gov/vocabulary/mstatus/part']">2</case>
+        </switch>
+      </ind1>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
       <sf code="u"><select xpath="bf:electronicLocator/@rdf:resource|rdf:value[@rdf:datatype='http://www.w3.org/2001/XMLSchema#anyURI']"/></sf>
