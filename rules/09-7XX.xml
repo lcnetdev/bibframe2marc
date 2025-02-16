@@ -65,7 +65,17 @@
       </var>
       
       <ind1 default=" ">
-        <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+        <case test="local-name()='Place' or
+                    rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place'] or 
+                    local-name()='Jurisdiction' or
+                    rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">1</case>
+        <case test="local-name()='Organization' or
+                    rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']">2</case>
+        <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]">
+          <transform>
+            <xsl:value-of select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1"></xsl:value-of>
+          </transform>
+        </case>
       </ind1>
       <ind2 default=" "/>
       
@@ -306,6 +316,12 @@
         <df tag="$vAddedEntryNameMarcKeyTag">
       <ind1 default=" ">
         <switch>
+          <case test="local-name()='Place' or
+            rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place'] or 
+            local-name()='Jurisdiction' or
+            rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">1</case>
+          <case test="local-name()='Organization' or
+            rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']">2</case>
           <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != ''">
             <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
           </case>
@@ -337,8 +353,17 @@
       <case test="$vNameVariant//marc:datafield[@tag!='']">
         <!-- We have a variant, so we need to create an 880. -->
         <df tag="880">
-          <ind1 default="2">
+          <ind1 default=" ">
             <switch>
+              <case test="local-name()='Place' or
+                rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place'] or 
+                local-name()='Jurisdiction' or
+                rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">1</case>
+              <case test="local-name()='Organization' or
+                rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']">2</case>
+              <case test="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1 != ''">
+                <select xpath="$vRelResource//marc:datafield[starts-with(@tag, '1')]/@ind1" />
+              </case>
               <case test="$vNameVariant//marc:datafield[@tag=$vNameVariantTag]">
                 <transform><xsl:value-of select="$vNameVariant//marc:datafield[@tag=$vNameVariantTag]/@ind1"/></transform>
               </case>

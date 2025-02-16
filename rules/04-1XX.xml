@@ -8,6 +8,7 @@
        xmlns:marc="http://www.loc.gov/MARC21/slim"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <!-- This is for when there is a marcKey present. -->
   <select xpath="bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]/bf:agent/bf:*[bflc:marcKey]">
     <var name="agentURI">
       <switch>
@@ -239,6 +240,12 @@
     <df tag="$vNameTag">
       <ind1 default="2">
         <switch>
+          <case test="local-name()='Place' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place'] or 
+                      local-name()='Jurisdiction' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">1</case>
+          <case test="local-name()='Organization' or
+                      rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']">2</case>
           <case test="$vNameAuth//marc:datafield[@tag=$vNameTag]">
             <transform><xsl:value-of select="$vNameAuth//marc:datafield[@tag=$vNameTag]/@ind1"/></transform>
           </case>
@@ -268,6 +275,12 @@
         <df tag="880">
           <ind1 default="2">
             <switch>
+              <case test="local-name()='Place' or
+                          rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place'] or 
+                          local-name()='Jurisdiction' or
+                          rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Jurisdiction']">1</case>
+              <case test="local-name()='Organization' or
+                          rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Organization']">2</case>
               <case test="$vNameVariant//marc:datafield[@tag=$vNameTag]">
                 <transform><xsl:value-of select="$vNameVariant//marc:datafield[@tag=$vNameTag]/@ind1"/></transform>
               </case>
@@ -289,6 +302,7 @@
     </switch>
   </select>
   
+  <!-- No marcKey present.  URI may or may not be present. -->
   <df tag="$vMainEntryTag" lang-xpath="rdfs:label">
     <context xpath="bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]/bf:agent[@rdf:resource]|
       bf:Work/bf:contribution/*[local-name()='PrimaryContribution' or rdf:type[contains(@rdf:resource, '/PrimaryContribution')]]/bf:agent/bf:*[not(bflc:marcKey)] |
