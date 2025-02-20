@@ -57,6 +57,7 @@
                 <case test="$vRelResource//marc:datafield[@tag='110']">610</case>
                 <case test="$vRelResource//marc:datafield[@tag='111']">611</case>
                 <case test="$vRelResource//marc:datafield[@tag='130']">630</case>
+                <case test="$vRelResource//marc:datafield[@tag='147']">647</case>
                 <case test="$vRelResource//marc:datafield[@tag='150']">650</case>
                 <case test="$vRelResource//marc:datafield[@tag='151']">651</case>
               </switch>
@@ -69,6 +70,7 @@
             <case test="$vSubjectTag='610'">abcdfghklmnopqrst</case>
             <case test="$vSubjectTag='611'">acdefghklmnpqst</case>
             <case test="$vSubjectTag='630'">adfghklmnoprs</case>
+            <case test="$vSubjectTag='647'">acdg</case>
             <case test="$vSubjectTag='650'">a</case>
             <case test="$vSubjectTag='651'">a</case>
           </switch>
@@ -1417,6 +1419,57 @@
             </df>
           </case>
 
+          <!-- 647 -->
+          <case test="*[(local-name()='Event' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Event'] or
+            local-name()='Temporal' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Event'] or
+            local-name(madsrdf:componentList/*[1])='Temporal' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://www.loc.gov/mads/rdf/v1#Event' or
+            local-name(madsrdf:componentList/*[1])='Temporal' or madsrdf:componentList/*[1]/rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bibframe/Event') and
+            (madsrdf:componentList or madsrdf:authoritativeLabel or rdfs:label)]">
+            <df tag="647">
+              <ind1 default=" "/>
+              <ind2 default="4">
+                <switch>
+                  <case test="$vInd2Val != ''">
+                    <transform><xsl:value-of select="$vInd2Val"/></transform>
+                  </case>
+                </switch>
+              </ind2>
+              <switch>
+                <case test="*/madsrdf:componentList">
+                  <sf code="3" chopPunct="true" repeatable="false">
+                    <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+                  </sf>
+                  <sf code="a" chopPunct="true" repeatable="false">
+                    <switch>
+                      <case test="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"><select xpath="*/madsrdf:componentList/*[1]/madsrdf:authoritativeLabel"/></case>
+                      <case test="default"><select xpath="*/madsrdf:componentList/*[1]/rdfs:label"/></case>
+                    </switch>
+                  </sf>
+                  
+                  <!-- subdivisions -->
+                  <transform><xsl:copy-of select="$vShared" /></transform>
+                </case>
+                <case test="default">
+                  <sf code="3" chopPunct="true" repeatable="false">
+                    <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+                  </sf>
+                  <sf code="a" chopPunct="true" repeatable="false">
+                    <switch>
+                      <case test="*/madsrdf:authoritativeLabel">
+                        <select xpath="*/madsrdf:authoritativeLabel[1]"/>
+                      </case>
+                      <case test="default"><select xpath="*/rdfs:label[1]"/></case>
+                    </switch>
+                  </sf>
+                  <transform>
+                    <xsl:copy-of select="$vSharedDollar0s" />
+                    <xsl:copy-of select="$vSharedDollar2" />
+                  </transform>
+                </case>
+              </switch>
+            </df>
+          </case>
+          
           <!-- 648 -->
           <case test="*[(local-name()='Temporal' or rdf:type[@rdf:resource='http://www.loc.gov/mads/rdf/v1#Temporal'] or
                       local-name()='Temporal' or rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Temporal'] or
