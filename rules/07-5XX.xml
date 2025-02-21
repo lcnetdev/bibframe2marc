@@ -333,12 +333,14 @@
         </df>
       </case>
       
-      <!-- these notes are picked up in the rules for data field 300, do not process here -->
+      <!-- these notes are picked up in the rules for data field 300 or other 5XXs, do not process here -->
       <case test="(local-name(../..)='Work' and 
         (
           translate(bf:noteType,$upper,$lower)='language' or 
           rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/lang' or 
-          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/award'
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/award' or 
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/credits' or 
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/participants'
         ))"/>
       
       <!-- these notes are picked up in the rules for data field 041, do not process here -->
@@ -508,11 +510,15 @@
   </select>
 
   <df tag="508" lang-xpath=".">
-    <context xpath="bf:Instance/bf:credits[not(starts-with(text(),'Cast:'))]">
+    <context xpath="bf:Instance/bf:credits[not(starts-with(text(),'Cast:'))] |
+                    bf:Work/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/credits']/rdfs:label">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="."/>
+      </sf>
+      <sf code="3" chopPunct="true" repeatable="false">
+        <select xpath="ancestor::bf:Note/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
     </context>
   </df>
@@ -545,15 +551,33 @@
   </df>
 
   <df tag="511" lang-xpath=".">
-    <context xpath="bf:Instance/bf:credits[starts-with(text(),'Cast:')]">
-      <ind1 default="1"/>
+    <context xpath="bf:Instance/bf:credits[starts-with(text(),'Cast:')] |
+                    bf:Work/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/participants']/rdfs:label">
+      <ind1 default="0">
+        <switch>
+          <case test="contains(., 'Cast:')">1</case>
+        </switch>
+      </ind1>
       <ind2 default=" "/>
       <sf code="a" repeatable="false">
-        <transform>
-          <xsl:call-template name="tChopPunct">
-            <xsl:with-param name="pString" select="substring-after(.,'Cast:')"/>
-          </xsl:call-template>
-        </transform>
+        <switch>
+          <case test="contains(., 'Cast:')">
+            <transform>
+              <xsl:call-template name="tChopPunct">
+                <xsl:with-param name="pString" select="substring-after(.,'Cast:')"/>
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="default"><transform>
+            <xsl:call-template name="tChopPunct">
+              <xsl:with-param name="pString" select="."/>
+            </xsl:call-template>
+          </transform></case>
+        </switch>
+        
+      </sf>
+      <sf code="3" chopPunct="true" repeatable="false">
+        <select xpath="ancestor::bf:Note/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
     </context>
   </df>
