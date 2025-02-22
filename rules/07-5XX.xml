@@ -275,6 +275,16 @@
           </sf>
         </df>
       </case>
+      
+      <case test="local-name(../..)='Instance' and (translate(bf:noteType,$upper,$lower)='documentation' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/doc')">
+        <df tag="556" lang-xpath="rdfs:label">
+          <ind1 default="8"/>
+          <ind2 default=" "/>
+          <sf code="a" chopPunct="true" repeatable="false">
+            <select xpath="rdfs:label"/>
+          </sf>
+        </df>
+      </case>
 
       <case test="local-name(../..)='Instance' and (translate(bf:noteType,$upper,$lower)='related material' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/related')">
         <df tag="581" lang-xpath="rdfs:label">
@@ -340,7 +350,9 @@
           rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/lang' or 
           rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/award' or 
           rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/credits' or 
-          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/participants'
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/participants' or 
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/doc' or 
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/citeas'
         ))"/>
       
       <!-- these notes are picked up in the rules for data field 041, do not process here -->
@@ -361,6 +373,13 @@
         local-name(../..)='Instance' and 
         rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/biblio'
         )"/>
+      
+      <!-- these notes are picked up in the rules for various 5XXs, do not process here -->
+      <case test="(local-name(../..)='Instance' and 
+        (
+        rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/doc' or 
+        rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/citeas'
+        ))"/>
 
       <case test="default">
         <df tag="500" lang-xpath="rdfs:label">
@@ -637,7 +656,8 @@
   </df>
 
   <df tag="524" lang-xpath=".">
-    <context xpath="bf:Instance/bf:preferredCitation">
+    <context xpath="bf:Instance/bf:preferredCitation | 
+                    bf:Instance/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/citeas']/rdfs:label">
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true"><select xpath="."/></sf>
