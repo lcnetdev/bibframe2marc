@@ -352,7 +352,8 @@
           rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/credits' or 
           rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/participants' or 
           rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/doc' or 
-          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/citeas'
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/citeas' or 
+          rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/suppl'
         ))"/>
       
       <!-- these notes are picked up in the rules for data field 041, do not process here -->
@@ -661,6 +662,15 @@
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true"><select xpath="."/></sf>
+    </context>
+  </df>
+  
+  <df tag="525" lang-xpath="rdfs:label">
+    <context xpath="bf:Work/bf:note/bf:Note[rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/suppl' and rdfs:label[. != '']]
+      ">
+      <ind1 default=" "/>
+      <ind2 default=" "/>
+      <sf code="a" chopPunct="true" repeatable="false"><select xpath="rdfs:label"/></sf>
     </context>
   </df>
 
