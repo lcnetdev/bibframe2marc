@@ -65,6 +65,9 @@
       </var>
       
       <ind1 default=" ">
+        <case test="$vRelResource//marc:datafield[@tag='110']/@ind1 != ''">
+          <select xpath="$vRelResource//marc:datafield[@tag='110']/@ind1" />
+        </case>
         <case test="local-name()='Place' or
                     rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Place'] or 
                     local-name()='Jurisdiction' or
