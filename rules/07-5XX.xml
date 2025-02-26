@@ -556,16 +556,22 @@
   </df>
 
   <df tag="510" lang-xpath="bf:title/*/bf:mainTitle">
-    <context xpath="bf:Work/bflc:indexedIn/bf:Work |
+    <context xpath="bf:Work/bf:relation/bf:Relation[bf:relationship//@rdf:*[1]='http://id.loc.gov/vocabulary/relationship/references']/bf:associatedResource/bf:Work |
+                    bf:Work/bf:relation/bf:Relation[bf:relationship//@rdf:*[1]='http://id.loc.gov/vocabulary/relationship/indexedin']/bf:associatedResource/bf:Work |
+                    bf:Work/bflc:indexedIn/bf:Work |
                     bf:Work/bf:references/bf:Work">
       <ind1 default="0">
         <switch>
-          <case test="local-name(..)='indexedIn' and bf:note/bf:Note[translate(bf:noteType,$upper,$lower)='coverage' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/coverage']">2</case>
+          <case test="ancestor::bf:Relation/bf:relationship//@rdf:*[1]='http://id.loc.gov/vocabulary/relationship/references' and (bf:note/bf:Note[translate(bf:noteType,$upper,$lower)='location' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/loc'])">4</case>
+          <case test="ancestor::bf:Relation/bf:relationship//@rdf:*[1]='http://id.loc.gov/vocabulary/relationship/references'">3</case>
           <case test="local-name(..)='references' and bf:note/bf:Note[translate(bf:noteType,$upper,$lower)='location' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/loc']">4</case>
           <case test="local-name(..)='references'">3</case>
         </switch>
       </ind1>
       <ind2 default=" "/>
+      <sf code="3" chopPunct="true" repeatable="false">
+        <select xpath="ancestor::bf:Relation/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
       <sf code="a" repeatable="false"><select xpath="bf:title/*/bf:mainTitle"/></sf>
       <sf code="b" repeatable="false">
         <select xpath="bf:note/bf:Note[translate(bf:noteType,$upper,$lower)='coverage' or rdf:type/@rdf:resource='http://id.loc.gov/vocabulary/mnotetype/coverage']/rdfs:label"/>
@@ -591,6 +597,9 @@
         </switch>
       </ind1>
       <ind2 default=" "/>
+      <sf code="3" chopPunct="true" repeatable="false">
+        <select xpath="ancestor::bf:Note/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
+      </sf>
       <sf code="a" repeatable="false">
         <switch>
           <case test="contains(., 'Cast:')">
@@ -607,9 +616,6 @@
           </transform></case>
         </switch>
         
-      </sf>
-      <sf code="3" chopPunct="true" repeatable="false">
-        <select xpath="ancestor::bf:Note/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
     </context>
   </df>
@@ -690,10 +696,10 @@
     <context xpath="bf:Instance/bf:contentAccessibility/bf:ContentAccessibility/rdfs:label">
       <ind1 default="8"/>
       <ind2 default=" "/>
-      <sf code="a" chopPunct="true"><select xpath="."/></sf>
       <sf code="3" chopPunct="true" repeatable="false">
         <select xpath="bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
       </sf>
+      <sf code="a" chopPunct="true"><select xpath="."/></sf>
     </context>
   </df>
 
