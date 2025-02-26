@@ -249,10 +249,17 @@
                 contains($relURI, '/fast/') or
                 contains($relURI, 'd-nb.info/gnd/')">7</case>
               
-              <case test="madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/subjects'] or 
-                bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects']">0</case>
               <case test="madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects'] or 
                 bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects']">1</case>
+              <case test="madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/subjects'] or 
+                bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects']">0</case>
+              
+              <case test="contains(bf:source//@rdf:*[1], '/subjectSchemes/cyac') or 
+                          contains(bf:source//@rdf:*[1], '/authorities/childrensSubjects') or
+                          contains(bf:source//@rdf:*[1], '/subjectSchemes/lcshac')">1</case>
+              <case test="contains(bf:source//@rdf:*[1], '/subjectSchemes/lcsh') or 
+                          contains(bf:source//@rdf:*[1], '/authorities/subjects')">0</case>
+              
               <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh']">2</case>
               <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/nal']">3</case>
               <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/cash']">5</case>
@@ -466,14 +473,26 @@
         </var>
         <var name="vInd2Val">
           <switch>
-            <case test="*/bf:source/bf:Source/bf:code='lcsh' or
-              */madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or 
-              */bf:source[@rdf:resource='http://id.loc.gov/authorities/subjects' or */@rdf:about='http://id.loc.gov/authorities/subjects'] or
-              */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
             <case test="*/bf:source/bf:Source/bf:code='lcshac' or
               */madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or 
               */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
               */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+            
+            <case test="contains(*/bf:source//@rdf:*[1], '/subjectSchemes/cyac') or 
+                        contains(*/bf:source//@rdf:*[1], '/authorities/childrensSubjects') or
+                        contains(*/bf:source//@rdf:*[1], '/subjectSchemes/lcshac') or 
+                        */bf:source/bf:Source/bf:code='lcshac' or
+                        */bf:source/bf:Source/bf:code='cyac' or
+                        */madsrdf:isMemberOfMADSScheme//@rdf:*[1]='http://id.loc.gov/authorities/childrensSubjects' or 
+                        */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cyac' or 
+                        */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+            
+            <case test="contains(*/bf:source//@rdf:*[1], '/subjectSchemes/lcsh') or 
+                        contains(*/bf:source//@rdf:*[1], '/authorities/subjects') or
+                        */bf:source/bf:Source/bf:code='lcsh' or
+                        */madsrdf:isMemberOfMADSScheme//@rdf:*[1]='http://id.loc.gov/authorities/subjects' or 
+                        */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcsh'">0</case>
+            
             <case test="*/bf:source/bf:Source/bf:code='mesh' or
               */bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/mesh' or */@rdf:about='http://id.loc.gov/vocabulary/subjectSchemes/mesh'] or
               */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='mesh'">2</case>
