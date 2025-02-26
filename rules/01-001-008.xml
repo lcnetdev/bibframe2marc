@@ -1273,8 +1273,21 @@
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026707'">z</xsl:when>
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026055' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026055'">5</xsl:when>
+                      
+                      <!-- Comics (graphic novels) -->
                       <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026266' or
                                       */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026266'">6</xsl:when>
+                      <!-- Manga -->
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2022026036' or
+                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2022026036'">6</xsl:when>
+                      <!-- Graphic Novels -->
+                      <xsl:when test="@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026362' or
+                                      */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026362'">6</xsl:when>
+                      <xsl:when test="*/madsrdf:authoritativeLabel[contains(., 'comics')] or 
+                                      */rdfs:label[contains(., 'comics')]">6</xsl:when>
+                      <xsl:when test="*/madsrdf:authoritativeLabel[contains(., 'comics')] or 
+                                      */rdfs:label[contains(., 'comics')]">6</xsl:when>
+                      
                     </xsl:choose>
                   </xsl:for-each>
                 </xsl:variable>
@@ -1505,25 +1518,25 @@
                     <xsl:when test="$v008Format='BK'">
                       <xsl:choose>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026339' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026339']">1</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm/madsrdf:authoritativeLabel[contains(., 'fiction')]">1</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm/rdfs:label[contains(., 'fiction')]">1</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/*/madsrdf:authoritativeLabel[contains(., 'fiction')]">1</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/*/rdfs:label[contains(., 'fiction')]">1</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026297' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026297']">d</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026094' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026094']">e</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2015026020' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2015026020']">f</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026110' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026110']">h</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm/madsrdf:authoritativeLabel[contains(., 'Humor')]">h</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm/rdfs:label[contains(., 'Humor')]">h</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/*/madsrdf:authoritativeLabel[contains(., 'Humor')]">h</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/*/rdfs:label[contains(., 'Humor')]">h</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026141' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026141']">i</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026054' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026054']">i</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026542' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026542']">j</xsl:when>
                         <!-- <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026339' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026339']">m</xsl:when> -->
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026488' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026488']">p</xsl:when> <!-- Prose peoms. -->
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026481' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026481']">p</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm/madsrdf:authoritativeLabel[contains(., 'poetry')]">p</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm/rdfs:label[contains(., 'poetry')]">p</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/*/madsrdf:authoritativeLabel[contains(., 'poetry')]">p</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/*/rdfs:label[contains(., 'poetry')]">p</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2011026363' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2011026363']">s</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm/madsrdf:authoritativeLabel[contains(., 'speeches')]">s</xsl:when>
-                        <xsl:when test="bf:Work/bf:genreForm/rdfs:label[contains(., 'speeches')]">s</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/*/madsrdf:authoritativeLabel[contains(., 'speeches')]">s</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm/*/rdfs:label[contains(., 'speeches')]">s</xsl:when>
                         <xsl:otherwise>0</xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
@@ -1579,6 +1592,11 @@
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026085' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026085']">a</xsl:when>
                         <xsl:when test="bf:Work/bf:note/bf:Note/rdfs:label[contains(., 'Contains biographical information')]">d</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026049' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026049']">b</xsl:when>
+                        
+                        <!-- Autobiographical comics -->
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026229' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026229']">a</xsl:when>
+                        <!-- Biographical comics -->
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026244' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026244']">b</xsl:when>
                         <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                       </xsl:choose>
                     </xsl:when>
