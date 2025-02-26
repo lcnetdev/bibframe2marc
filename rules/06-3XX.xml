@@ -1013,6 +1013,27 @@
         <case test="*/bf:source/bf:Source/@rdf:about"><transform><xsl:value-of select="*/bf:source/bf:Source/@rdf:about"/></transform></case>
       </switch>
     </var>
+    <var name="vSharedDollar2">
+      <switch>
+        <case test="*/bf:source/bf:Source/*[local-name()='code']">
+          <sf code="2"><transform><xsl:value-of select="*/bf:source/bf:Source/*[local-name()='code'][1]"/></transform></sf>
+        </case>
+        <case test="$vSourceUri != ''">
+          <sf code="2">
+            <switch>
+              <case test="contains($vSourceUri,'id.loc.gov')">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="$vSourceUri"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
+            </switch>
+          </sf>
+        </case>
+      </switch>
+    </var>
     <switch>
       <case test="@rdf:resource[not(contains(., '/maudience/'))] or 
                   bf:IntendedAudience[
@@ -1059,25 +1080,9 @@
           <sf code="a" chopPunct="true">
             <select xpath="bf:IntendedAudience/rdfs:label"/>
           </sf>
-          <switch>
-            <case test="*/bf:source/bf:Source/*[local-name()='code']">
-              <sf code="2"><transform><xsl:value-of select="*/bf:source/bf:Source/*[local-name()='code'][1]"/></transform></sf>
-            </case>
-            <case test="$vSourceUri != ''">
-              <sf code="2">
-                <switch>
-                  <case test="contains($vSourceUri,'id.loc.gov')">
-                    <transform>
-                      <xsl:call-template name="tUriCode">
-                        <xsl:with-param name="pUri" select="$vSourceUri"/>
-                      </xsl:call-template>
-                    </transform>
-                  </case>
-                  <case test="default"><transform><xsl:value-of select="$vSourceUri"/></transform></case>
-                </switch>
-              </sf>
-            </case>
-          </switch>
+          <transform>
+            <xsl:copy-of select="$vSharedDollar2" />
+          </transform>
           <sf code="0">
             <select xpath="@rdf:resource|bf:IntendedAudience/@rdf:about"/>
           </sf>
@@ -1099,9 +1104,27 @@
           <sf code="a" chopPunct="true">
             <select xpath="bf:IntendedAudience/rdfs:label"/>
           </sf>
-          <sf code="b">
-            <select xpath="bf:IntendedAudience/bf:source/bf:Source/rdfs:label" />
+          <transform>
+            <xsl:copy-of select="$vSharedDollar2" />
+          </transform>
+        </df>
+      </case>
+      <case test="bflc:DemographicGroup[not(@rdf:about)]/rdfs:label">
+        <df tag="521">
+          <ind1 default = " " />
+          <ind2 default = " "/>
+          <sf code="3" chopPunct="true" repeatable="false">
+            <select xpath="bflc:DemographicGroup/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
           </sf>
+          <sf code="a" chopPunct="true">
+            <select xpath="bflc:DemographicGroup/rdfs:label"/>
+          </sf>
+          <sf code="2">
+            <select xpath="bflc:DemographicGroup/bf:source/bf:Source/rdfs:label" />
+          </sf>
+          <transform>
+            <xsl:copy-of select="$vSharedDollar2" />
+          </transform>
         </df>
       </case>
     </switch>
