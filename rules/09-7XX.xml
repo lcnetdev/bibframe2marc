@@ -1717,10 +1717,14 @@
           <case test="bf:hasInstance/bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place/*/@rdf:about"><transform><xsl:value-of select="bf:hasInstance/bf:Instance/bf:provisionActivity/bf:ProvisionActivity/bf:place/*/@rdf:about"/></transform></case>
         </switch>
       </var>
-      <ind1 default="0"/>
+      <ind1 default="1">
+        <switch>
+          <case test="$vLinkTagFromWork2 = '780' or $vLinkTagFromWork2 = '785'">0</case>
+        </switch>
+      </ind1>
       <ind2 default=" ">
         <switch>
-          <case test="$vLinkTagFromWork2 != '780' and $vLinkTagFromWork2 != '785'">8</case>
+          <case test="$vLinkTagFromWork2 != '780' and $vLinkTagFromWork2 != '785'"><transform><xsl:value-of select="' '" /></transform></case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuedinpart') or contains(bf:Relationship/@rdf:about, 'continuedinpart')]">1</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continuationof') or contains(bf:Relationship/@rdf:about, 'continuationof')]">0</case>
           <case test="ancestor::bf:Relation/bf:relationship[contains(@rdf:resource, 'continues') or contains(bf:Relationship/@rdf:about, 'continues')]">0</case>
