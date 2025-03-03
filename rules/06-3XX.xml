@@ -1104,13 +1104,16 @@
           <sf code="a" chopPunct="true">
             <select xpath="bf:IntendedAudience/rdfs:label"/>
           </sf>
+          <sf code="b">
+            <select xpath="bf:IntendedAudience/bf:source/bf:Source/rdfs:label" />
+          </sf>
           <transform>
             <xsl:copy-of select="$vSharedDollar2" />
           </transform>
         </df>
       </case>
       <case test="bflc:DemographicGroup[not(@rdf:about)]/rdfs:label">
-        <df tag="521">
+        <df tag="385">
           <ind1 default = " " />
           <ind2 default = " "/>
           <sf code="3" chopPunct="true" repeatable="false">
