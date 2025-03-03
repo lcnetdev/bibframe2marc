@@ -285,7 +285,7 @@
           <sf code="6">880-02</sf>
         </case>
       </switch>
-      <sf code="a" chopPunct="true" repeatable="false">
+      <sf code="a" chopPunct="false" repeatable="false">
         <!-- The main title -->
         <switch>
           <case test="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
@@ -417,7 +417,7 @@
         </switch>
       </sf>
 
-      <sf code="b" chopPunct="true" repeatable="false">
+      <sf code="b" chopPunct="false" repeatable="false">
         <var name="bExists">
           <switch>
             <case test="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
@@ -684,7 +684,7 @@
                         not(rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/for']) and
                         not(bf:variantType = 'translated') and
                         not(bf:variantType = 'former') and
-                        bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
+                        bf:mainTitle != ''
                         ]
                       |
                       bf:Instance/bf:hasItem/bf:Item/bf:title/bf:*[
@@ -700,7 +700,7 @@
                       not(rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/for']) and
                       not(bf:variantType = 'translated') and
                       not(bf:variantType = 'former') and
-                      bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]
+                      bf:mainTitle != ''
                       ]
                     ">
       
@@ -724,7 +724,29 @@
         </transform>
       </var>
       
-      <df tag="246">
+      <var name="vTag">
+        <switch>
+          <!-- If there is a vOccurrenceNumber, field will be 246 followed by an 880. -->
+          <case test="$vOccurrenceNumber != ''">246</case>
+          <!-- If there is only one mainTitle and it either does not have a lang tag or is in the cataloging script, this is a 246. -->
+          <case test="count(bf:mainTitle)='1' and
+                      bf:mainTitle[
+                          not(@xml:lang) or 
+                          contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or 
+                          (
+                            string-length(@xml:lang)='2' or 
+                            string-length(@xml:lang)='3'
+                          )
+                      ]">246</case>
+          <!-- If there is only one mainTitle, it has a langtag, and the langtag is in something other than the cataloging script, this is an 880. -->
+          <case test="count(bf:mainTitle)='1' and
+                      bf:mainTitle[
+                        @xml:lang and 
+                        not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))
+                      ]">880</case>
+        </switch>
+      </var>
+      <df tag="$vTag">
       <ind1 default="3">
         <switch>
           <case test="rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/por']">1</case>
@@ -767,15 +789,107 @@
         <case test="count(bf:mainTitle)=2 and bf:mainTitle[@xml:lang] and bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
           <sf code="6"><transform><xsl:value-of select="concat('880-0', $vOccurrenceNumber)" /></transform></sf>
         </case>
+        <case test="$vTag = '880'">
+          <var name="vLangTag" xpath="bf:mainTitle[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))][1]/@xml:lang" />
+          <var name="vScript"><transform><xsl:value-of select="translate(substring-after($vLangTag,'-'),$upper,$lower)" /></transform></var>
+          <var name="v880Script">
+            <lookup map="df880script" targetField="code">
+              <lookupField name="lang" xpath="$vScript"/>
+            </lookup>
+          </var>
+          <sf code="6"><transform><xsl:value-of select="concat('246-00', '/' , $v880Script)" /></transform></sf>
+        </case>
       </switch>
       <sf code="i" chopPunct="true" repeatable="false">
         <select xpath="bf:note/bf:Note/rdfs:label"/>
       </sf>
-      <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:mainTitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></sf>
-      <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:subtitle[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></sf>
-      <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:date[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></sf>
-      <sf code="n" chopPunct="true"><select xpath="bf:partNumber[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></sf>
-      <sf code="p" chopPunct="true"><select xpath="bf:partName[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]"/></sf>
+      <switch>
+        <case test="$vTag = '246'">
+          <sf code="a" chopPunct="true" repeatable="false">
+            <select xpath="bf:mainTitle[
+                            not(@xml:lang) or 
+                            contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or 
+                            (
+                              string-length(@xml:lang)='2' or 
+                              string-length(@xml:lang)='3'
+                            )
+                        ]"/>
+          </sf>
+          <sf code="b" chopPunct="true" repeatable="false">
+            <select xpath="bf:subtitle[
+                            not(@xml:lang) or 
+                            contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or 
+                            (
+                              string-length(@xml:lang)='2' or 
+                              string-length(@xml:lang)='3'
+                            )
+                        ]"/>
+          </sf>
+          <sf code="f" chopPunct="true" repeatable="false">
+            <select xpath="bf:date[
+                            not(@xml:lang) or 
+                            contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or 
+                            (
+                              string-length(@xml:lang)='2' or 
+                              string-length(@xml:lang)='3'
+                            )
+                        ]"/>
+          </sf>
+          <sf code="n" chopPunct="true">
+            <select xpath="bf:partNumber[
+                            not(@xml:lang) or 
+                            contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or 
+                            (
+                              string-length(@xml:lang)='2' or 
+                              string-length(@xml:lang)='3'
+                            )
+                        ]"/>
+          </sf>
+          <sf code="p" chopPunct="true">
+            <select xpath="bf:partName[
+                            not(@xml:lang) or 
+                            contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)) or 
+                            (
+                              string-length(@xml:lang)='2' or 
+                              string-length(@xml:lang)='3'
+                            )
+                        ]"/>
+          </sf>
+        </case>
+        <case test="$vTag = '880'">
+          <sf code="a" chopPunct="true" repeatable="false">
+            <select xpath="bf:mainTitle[
+                            @xml:lang and  
+                            not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))
+                      ]"/>
+          </sf>
+          <sf code="b" chopPunct="true" repeatable="false">
+            <select xpath="bf:subtitle[
+                            @xml:lang and  
+                            not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))
+                      ]"/>
+          </sf>
+          <sf code="f" chopPunct="true" repeatable="false">
+            <select xpath="bf:date[
+                            @xml:lang and  
+                            not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))
+                      ]"/>
+          </sf>
+          <sf code="n" chopPunct="true">
+            <select xpath="bf:partNumber[
+                            @xml:lang and  
+                            not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))
+                     ]"/>
+          </sf>
+          <sf code="p" chopPunct="true">
+            <select xpath="bf:partName[
+                            @xml:lang and  
+                            not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))
+                      ]"/>
+          </sf>
+        </case>
+        
+      </switch>
       <sf code="5" repeatable="false"><select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/></sf>
       </df>
       
