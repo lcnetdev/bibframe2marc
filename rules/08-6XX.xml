@@ -76,6 +76,7 @@
           </switch>
         </var>
 
+        <!--
         <var name="v880Script">
           <switch>
             <case test="self::node()/*/rdfs:label/@xml:lang">
@@ -120,6 +121,7 @@
             </xsl:if>
           </transform>
         </var>
+        -->
         
         <var name="vShared0and1">
           <switch>
@@ -266,12 +268,12 @@
               <case test="bf:source[@rdf:resource='http://id.loc.gov/vocabulary/subjectSchemes/rvm']">6</case>
             </switch>
           </ind2>
-          <switch>
+          <!--<switch>
             <case test="$vNameVariant//marc:record">
-              <!-- We have a variant, so we need to create an 880 link. -->
+              <!-\- We have a variant, so we need to create an 880 link. -\->
               <sf code="6"><transform><xsl:value-of select="concat('880-', $vOccurrenceNumber)"/></transform></sf>   
             </case>
-          </switch>
+          </switch>-->
           <transform>
             <xsl:for-each select="$vRelResource//marc:datafield[starts-with(@tag, '1')]/marc:subfield[contains($vValidSubfields,@code)]">
               <marc:subfield>
@@ -309,6 +311,7 @@
           <transform><xsl:copy-of select="$vShared0and1" /></transform>
         </df>
         
+        <!-- 880
         <switch>
           <case test="$vNameVariant//marc:record">
             <df tag="880">
@@ -348,7 +351,7 @@
               </ind2>
               <switch>
                 <case test="$vNameVariant//marc:record">
-                  <!-- We have a variant, so we need to create an 880 link. -->
+                  <!-\- We have a variant, so we need to create an 880 link. -\->
                   <sf code="6"><transform><xsl:value-of select="concat($vSubjectTag, '-', $vOccurrenceNumber, '/', $v880Script)"/></transform></sf>   
                 </case>
               </switch>
@@ -378,7 +381,7 @@
               </transform>
               <sf code="2">
                 <switch>
-                  <!-- <case test="contains($relURI, '/names/')">naf</case> -->
+                  <!-\- <case test="contains($relURI, '/names/')">naf</case> -\->
                   <case test="contains($relURI, '/genreForms/')">lcgft</case>
                   <case test="contains($relURI, '/demogrpahicTerms/')">lcdgt</case>
                   <case test="contains($relURI, '/graphicMaterials/')">lctgm</case>
@@ -390,6 +393,7 @@
             </df>
           </case>
         </switch>
+        -->
       </case>
       <case test="self::node()[
                     not(@rdf:resource) and 
@@ -407,6 +411,7 @@
                     not(*/*[local-name()='code'])]
             ">
         <!-- Subjects not referenced by URI. -->
+        <!-- 880 related
         <var name="v880Script">
           <switch>
             <case test="self::node()/*/madsrdf:componentList/*[1]/rdfs:label/@xml:lang">
@@ -462,6 +467,7 @@
             </xsl:if>
           </transform>
         </var>
+        -->
         <var name="vDollar0Uri">
           <transform>
             <xsl:value-of select="*/@rdf:about[
@@ -473,6 +479,8 @@
         </var>
         <var name="vInd2Val">
           <switch>
+            <case test="contains(*/madsrdf:componentList/*[1]/@rdf:about, 'id.loc.gov/authorities/childrensSubjects/')">1</case>
+            
             <case test="*/bf:source/bf:Source/bf:code='lcshac' or
               */madsrdf:isMemberOfMADSScheme[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or 
               */bf:source[@rdf:resource='http://id.loc.gov/authorities/childrensSubjects' or */@rdf:about='http://id.loc.gov/authorities/childrensSubjects'] or
@@ -486,6 +494,10 @@
                         */madsrdf:isMemberOfMADSScheme//@rdf:*[1]='http://id.loc.gov/authorities/childrensSubjects' or 
                         */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='cyac' or 
                         */madsrdf:componentList/*[1]/bf:source/bf:Source/bf:code='lcshac'">1</case>
+            
+            <case test="
+              contains(*/madsrdf:componentList/*[1]/@rdf:about, 'id.loc.gov/authorities/subjects/') or
+              contains(*/madsrdf:componentList/*[1]/@rdf:about, 'id.loc.gov/authorities/names/')">0</case>
             
             <case test="contains(*/bf:source//@rdf:*[1], '/subjectSchemes/lcsh') or 
                         contains(*/bf:source//@rdf:*[1], '/authorities/subjects') or
@@ -660,12 +672,12 @@
                   </case>
                 </switch>
               </ind2>
-              <switch>
+              <!--<switch>
                 <case test="$vNameVariant//marc:record">
-                  <!-- We have a variant, so we need to create an 880 link. -->
+                  <!-\- We have a variant, so we need to create an 880 link. -\->
                   <sf code="6"><transform><xsl:value-of select="concat('880-', $vOccurrenceNumber)"/></transform></sf>   
                 </case>
-              </switch>
+              </switch>-->
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
@@ -796,6 +808,7 @@
               <transform><xsl:copy-of select="$vShared" /></transform>
             </df>
             
+            <!-- 880
             <switch>
               <case test="$vNameVariant//marc:record">
                 <df tag="880">
@@ -834,6 +847,7 @@
                 </df>
               </case>
             </switch>
+            -->
           </case>
 
           <!-- 610 -->
@@ -864,12 +878,12 @@
                   </case>
                 </switch>
               </ind2>
-              <switch>
+              <!--<switch>
                 <case test="$vNameVariant//marc:record">
-                  <!-- We have a variant, so we need to create an 880 link. -->
+                  <!-\- We have a variant, so we need to create an 880 link. -\->
                   <sf code="6"><transform><xsl:value-of select="concat('880-', $vOccurrenceNumber)"/></transform></sf>   
                 </case>
-              </switch>
+              </switch>-->
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
@@ -1005,6 +1019,7 @@
               <transform><xsl:copy-of select="$vShared" /></transform>
             </df>
             
+            <!-- 880
             <switch>
               <case test="$vNameVariant//marc:record">
                 <df tag="880">
@@ -1039,6 +1054,7 @@
                 </df>
               </case>
             </switch>
+            -->
             
           </case>
 
@@ -1059,12 +1075,12 @@
                   </case>
                 </switch>
               </ind2>
-              <switch>
+              <!--<switch>
                 <case test="$vNameVariant//marc:record">
-                  <!-- We have a variant, so we need to create an 880 link. -->
+                  <!-\- We have a variant, so we need to create an 880 link. -\->
                   <sf code="6"><transform><xsl:value-of select="concat('880-', $vOccurrenceNumber)"/></transform></sf>   
                 </case>
-              </switch>
+              </switch>-->
               <sf code="3" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
@@ -1191,6 +1207,7 @@
               <transform><xsl:copy-of select="$vShared" /></transform>
             </df>
             
+            <!-- 880
             <switch>
               <case test="$vNameVariant//marc:record">
                 <df tag="880">
@@ -1218,6 +1235,7 @@
                 </df>
               </case>
             </switch>
+            -->
           </case>
 
           <!-- 630 -->
@@ -1898,12 +1916,12 @@
                   </case>
                 </switch>
               </ind2>
-              <switch>
+              <!--<switch>
                 <case test="$vNameVariant//marc:record">
-                  <!-- We have a variant, so we need to create an 880 link. -->
+                  <!-\- We have a variant, so we need to create an 880 link. -\->
                   <sf code="6"><transform><xsl:value-of select="concat('880-', $vOccurrenceNumber)"/></transform></sf>   
                 </case>
-              </switch>
+              </switch>-->
               <sf code="3" chopPunct="true" repeatable="false">
                 <select xpath="*/bflc:appliesTo/bflc:AppliesTo/rdfs:label"/>
               </sf>
@@ -1940,6 +1958,7 @@
               </switch>
             </df>
             
+            <!--
             <switch>
               <case test="$vNameVariant//marc:record">
                 <df tag="880">
@@ -1967,6 +1986,7 @@
                 </df>
               </case>
             </switch>
+            -->
           </case>
 
           <!-- 656 -->
