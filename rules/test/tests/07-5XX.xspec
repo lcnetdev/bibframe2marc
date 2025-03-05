@@ -270,6 +270,8 @@
               test="//marc:datafield[@tag='521'][1]/@ind2 = ' '"/>
     <x:expect label="$a from label"
               test="//marc:datafield[@tag='521'][1]/marc:subfield[@code='a'] = 'K-3. Follet Library Book Co.'"/>
+    <x:expect label="$b from source"
+              test="//marc:datafield[@tag='521'][1]/marc:subfield[@code='b'] = 'Amazon.com'"/>
   </x:scenario>
 
   <x:scenario label="MARC 522">
