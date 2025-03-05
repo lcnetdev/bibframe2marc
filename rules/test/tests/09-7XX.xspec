@@ -266,5 +266,33 @@
     <x:expect label="$x from Issn"
               test="//marc:datafield[@tag='787'][1]/marc:subfield[@code='x'] = '1552-5007'"/>
   </x:scenario>
-
+  
+  <x:scenario label="MARC 77X, 78X Relationships">
+    <x:context href="../data/exemplars/text-serial-frequencies-relationships-subjects-businessweek.rdf"/>
+    <x:expect label="Exepected number of 775s" test="count(//marc:datafield[@tag='775']) = 2"/>
+    <x:expect label=".. and expected ind1" test="//marc:datafield[@tag='775'][1]/@ind1 = '1'"/>
+    <x:expect label=".. and expected ind2" test="//marc:datafield[@tag='775'][1]/@ind2 = ' '"/>
+    <x:expect label=".. and expected first $w" test="//marc:datafield[@tag='775'][1]/marc:subfield[@code='w'][1] = '(DLC)sc 84005053'" />
+    
+    <x:expect label="Exepected number of 776s" test="count(//marc:datafield[@tag='776']) = 4"/>
+    <x:expect label=".. and expected ind1" test="//marc:datafield[@tag='776'][1]/@ind1 = '1'"/>
+    <x:expect label=".. and expected ind2" test="//marc:datafield[@tag='776'][1]/@ind2 = ' '"/>
+    <x:expect label=".. and expected $i" test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='i'][1] = 'Microfiche version'" />
+    <x:expect label=".. and expected first $w" test="//marc:datafield[@tag='776'][1]/marc:subfield[@code='w'][1] = '(OCoLC)4048788'" />
+    
+    <x:expect label=".. and expected $i" test="//marc:datafield[@tag='776'][3]/marc:subfield[@code='4'][1] = 'http://id.loc.gov/entities/relationships/onlineversion'" />
+    <x:expect label=".. and expected first $w" test="//marc:datafield[@tag='776'][3]/marc:subfield[@code='w'][1] = '(OCoLC)559912867'" />
+    
+    <x:expect label="Exepected number of 780s" test="count(//marc:datafield[@tag='780']) = 2"/>
+    <x:expect label=".. and expected ind1" test="//marc:datafield[@tag='780'][2]/@ind1 = '0'"/>
+    <x:expect label=".. and expected ind2" test="//marc:datafield[@tag='780'][2]/@ind2 = '5'"/>
+    <x:expect label=".. and expected first $w" test="//marc:datafield[@tag='780'][2]/marc:subfield[@code='w'][1] = '(DLC)   16007142 '" />
+    
+    
+    <x:expect label="Exepected number of 787s" test="count(//marc:datafield[@tag='787']) = 1"/>
+    <x:expect label=".. and expected ind1" test="//marc:datafield[@tag='787'][1]/@ind1 = '1'"/>
+    <x:expect label=".. and expected ind2" test="//marc:datafield[@tag='787'][1]/@ind2 = ' '"/>
+    <x:expect label=".. and expected first $w" test="//marc:datafield[@tag='787'][1]/marc:subfield[@code='w'][1] = '(DLC)  2011201713'" />
+  </x:scenario>
+  
 </x:description>
