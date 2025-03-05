@@ -35,6 +35,16 @@
     <x:expect label="generate subdivisions"
               test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='v'] = 'Periodicals'"/>
   </x:scenario>
+  
+  <x:scenario label="MARC 610 - Jurisdiction">
+    <x:context href="../data/exemplars/raw.stillimage-monograph-subjects-pnp-008q.rdf"/>
+    <x:expect label="generate 610" test="count(//marc:datafield[@tag='610']) = 2"/>
+    <x:expect label="ind1 generated from Jurisdiction" test="//marc:datafield[@tag='610'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 generated from bf:source" test="//marc:datafield[@tag='610'][1]/@ind2 = '4'"/>
+    <x:expect label="... $a" test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='a'] = 'United States.'"/>
+    <x:expect label="... first $b" test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='b'] = 'Army.'"/>
+    <x:expect label="... second $b" test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='b'] = 'Pennsylvania Infantry Regiment, 48th (1861-1865)'"/>
+  </x:scenario>
 
   <x:scenario label="MARC 600 - test 02">
     <x:context href="../data/exemplars/raw.musicaudio-monograph-hamilton-contributos-subjects-genreforms.rdf"/>
