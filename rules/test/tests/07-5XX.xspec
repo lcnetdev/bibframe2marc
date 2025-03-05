@@ -103,6 +103,19 @@
     <x:expect label="$5 from applicableInstitution"
               test="//marc:datafield[@tag='506'][1]/marc:subfield[@code='5'] = 'MH'"/>
   </x:scenario>
+  
+  <x:scenario label="MARC 506 and 540">
+    <x:context href="../data/exemplars/stillimage-monograph-subjects-pnp-008q.rdf"/>
+    <x:expect label="generate 506 from AccessPolicy" test="count(//marc:datafield[@tag='506']) = 1"/>
+    <x:expect label="ind1 default to blank" test="//marc:datafield[@tag='506'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank" test="//marc:datafield[@tag='506'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label" test="//marc:datafield[@tag='506'][1]/marc:subfield[@code='a'] = 'Use digital images. Original served only by appointment because material requires special handling. For more information see: (http://www.loc.gov/rr/print/info/617_apptonly.html)'"/>
+
+    <x:expect label="generate 540 from UsePolicy" test="count(//marc:datafield[@tag='540']) = 1"/>
+    <x:expect label="ind1 default to blank" test="//marc:datafield[@tag='540'][1]/@ind1 = ' '"/>
+    <x:expect label="ind2 default to blank" test="//marc:datafield[@tag='540'][1]/@ind2 = ' '"/>
+    <x:expect label="$a from rdfs:label" test="//marc:datafield[@tag='540'][1]/marc:subfield[@code='a'] = 'No known restrictions on publication.'"/>
+  </x:scenario>
 
   <x:scenario label="MARC 508">
     <x:context href="../data/5XX/508.xml"/>
@@ -113,6 +126,26 @@
               test="//marc:datafield[@tag='508'][1]/@ind2 = ' '"/>
     <x:expect label="$a from credits"
               test="//marc:datafield[@tag='508'][1]/marc:subfield[@code='a'] = 'Producer, Joseph N. Ermolieff ; director, Lesley Selander ; screenplay, Theodore St. John ; music director, Michel Michelet.'"/>
+  </x:scenario>
+  
+  <x:scenario label="MARC 508, 511, 586">
+    <x:context href="../data/exemplars/movingimage-wizard-of-oz.rdf"/>
+
+    <x:expect label="generate 508" test="count(//marc:datafield[@tag='508']) = 1"/>
+    <x:expect label="... ind1 is blank" test="//marc:datafield[@tag='508'][1]/@ind1 = ' '"/>
+    <x:expect label="... ind2 is blank" test="//marc:datafield[@tag='508'][1]/@ind2 = ' '"/>
+    <x:expect label="..$a matches" test="//marc:datafield[@tag='508'][1]/marc:subfield[@code='a'] = 'Adaptation, Noel Langley ; musical adaptation, Herbert Stothart ; music, Harold Arlen ; lyrics, E.Y. Harburg ; photographed by Harold Rosson.'"/>
+
+    <x:expect label="generate 511" test="count(//marc:datafield[@tag='511']) = 1"/>
+    <x:expect label="... ind1 is 1" test="//marc:datafield[@tag='511'][1]/@ind1 = '1'"/>
+    <x:expect label="... ind2 is blank" test="//marc:datafield[@tag='511'][1]/@ind2 = ' '"/>
+    <x:expect label="..$a matches" test="//marc:datafield[@tag='511'][1]/marc:subfield[@code='a'] = 'Judy Garland, Frank Morgan, Ray Bolger, Bert Lahr, Jack Haley, Billie Burke, Margaret Hamilton, Charley Grapewin, Toto (dog)'"/>
+    
+    <x:expect label="generate 586" test="count(//marc:datafield[@tag='586']) = 1"/>
+    <x:expect label="... ind1 is 8" test="//marc:datafield[@tag='586'][1]/@ind1 = '8'"/>
+    <x:expect label="... ind2 is blank" test="//marc:datafield[@tag='586'][1]/@ind2 = ' '"/>
+    <x:expect label="..$a matches" test="//marc:datafield[@tag='586'][1]/marc:subfield[@code='a'] = 'This film was selected for the National Film Registry.'"/>    
+
   </x:scenario>
 
   <x:scenario label="MARC 510">
