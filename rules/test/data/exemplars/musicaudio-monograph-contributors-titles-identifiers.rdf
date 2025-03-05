@@ -1,6 +1,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:lcc="http://id.loc.gov/ontologies/lcc#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/18344194">
-    <bflc:aap>Paganini, Nicolò, 1782-1840 Paganini's 24 caprices</bflc:aap>
+    <bflc:aap>Paganini, Nicolò, 1782-1840. Paganini's 24 caprices</bflc:aap>
     <bflc:aap-normalized>paganininicolò17821840paganini's24caprices</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/MusicAudio"/>
     <bf:content>
@@ -87,7 +87,8 @@
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Arrangement"/>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Audio"/>
 	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic"/>
-	<rdfs:label>Paganini, Nicolò, 1782-1840 Caprices, violin, M.S. 25; arranged. M.S. 25</rdfs:label>
+	<rdfs:label>Paganini, Nicolò, 1782-1840. Caprices, violin, M.S. 25; arranged</rdfs:label>
+	<bflc:marcKey>1001 $aPaganini, Nicolò,$d1782-1840.$tCaprices,$mviolin,$nM.S. 25;$oarranged</bflc:marcKey>
 	<bf:contribution>
 	  <bf:Contribution>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
@@ -154,6 +155,12 @@
 	<bf:mainTitle>24 caprices</bf:mainTitle>
       </bf:VariantTitle>
     </bf:title>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/participants"/>
+	<rdfs:label>Scott Slapin, viola.</rdfs:label>
+      </bf:Note>
+    </bf:note>
     <bf:capture>
       <bf:Capture>
 	<rdfs:label>Recorded on the evenings of June 10, 12 and 13, 2008, at the Cellar Dweller Productions South in North Plainfield, New Jersey.</rdfs:label>
@@ -257,8 +264,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:30.247274-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:39.347622-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -425,7 +432,6 @@
 	<rdfs:label>Originally for violin.</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:credits>Scott Slapin, viola.</bf:credits>
     <bf:note>
       <bf:Note>
 	<rdfs:label>Compact disc.</rdfs:label>
@@ -495,6 +501,47 @@
 	    <bf:mainTitle>24 caprices</bf:mainTitle>
 	  </bf:VariantTitle>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/zxx"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/18344194">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Paganini's 24 caprices</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>  2014624918</rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Upc>
+		<rdf:value>714548342026</rdf:value>
+	      </bf:Upc>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>JDT3420</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Eroica Classical Recordings</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:OclcNumber>
+		<rdf:value>ocn311097395</rdf:value>
+	      </bf:OclcNumber>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>Ventura, CA: Eroica Classical Recordings, p2008</bf:publicationStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>1 sound disc</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:adminMetadata>
@@ -549,8 +596,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:30.247274-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:39.347622-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>

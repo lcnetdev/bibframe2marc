@@ -147,22 +147,6 @@
 	<bf:code>txt</bf:code>
       </bf:Content>
     </bf:content>
-    <bflc:indexedIn>
-      <bf:Work>
-	<bflc:aap>Chemical abstracts</bflc:aap>
-	<bflc:aap-normalized>chemicalabstracts</bflc:aap-normalized>
-	<bf:title>
-	  <bf:Title>
-	    <bf:mainTitle>Chemical abstracts</bf:mainTitle>
-	  </bf:Title>
-	</bf:title>
-	<bf:identifiedBy>
-	  <bf:Issn>
-	    <rdf:value>0009-2258</rdf:value>
-	  </bf:Issn>
-	</bf:identifiedBy>
-      </bf:Work>
-    </bflc:indexedIn>
     <bf:note>
       <bf:Note>
 	<rdfs:label>Available in numerous editions, including several language editions.</rdfs:label>
@@ -377,10 +361,10 @@
       </bf:GenreForm>
     </bf:genreForm>
     <bf:genreForm>
-      <bf:Topic rdf:about="http://id.worldcat.org/fast/1411641">
+      <bf:GenreForm rdf:about="http://id.worldcat.org/fast/1411641">
 	<bflc:marcKey>155  $aPeriodicals</bflc:marcKey>
 	<madsrdf:authoritativeLabel>Periodicals</madsrdf:authoritativeLabel>
-      </bf:Topic>
+      </bf:GenreForm>
     </bf:genreForm>
     <bf:genreForm>
       <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026139">
@@ -414,6 +398,32 @@
       </bf:GenreForm>
     </bf:genreForm>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/indexedin">
+	    <rdfs:label>indexed in</rdfs:label>
+	    <bf:code>indexedin</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work>
+	    <bflc:aap>Chemical abstracts</bflc:aap>
+	    <bflc:aap-normalized>chemicalabstracts</bflc:aap-normalized>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Chemical abstracts</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Issn>
+		<rdf:value>0009-2258</rdf:value>
+	      </bf:Issn>
+	    </bf:identifiedBy>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
     <bf:relation>
       <bf:Relation>
 	<bf:relationship>
@@ -654,6 +664,48 @@
 		<bf:mainTitle>Business week</bf:mainTitle>
 	      </bf:Title>
 	    </bf:title>
+	    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11310069">
+		<bf:title>
+		  <bf:AbbreviatedTitle>
+		    <bf:mainTitle>Bus. week</bf:mainTitle>
+		  </bf:AbbreviatedTitle>
+		</bf:title>
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Business week</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>sf 86091498 </rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>sn 85020083 </rdf:value>
+		    <bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/cancinv"/>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Coden>
+		    <rdf:value>BUWEA3</rdf:value>
+		  </bf:Coden>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:OclcNumber>
+		    <rdf:value>ocm03548330 </rdf:value>
+		  </bf:OclcNumber>
+		</bf:identifiedBy>
+		<bf:publicationStatement>[New York, etc.]: [McGraw-Hill]</bf:publicationStatement>
+		<bf:extent>
+		  <bf:Extent>
+		    <rdfs:label>volumes</rdfs:label>
+		  </bf:Extent>
+		</bf:extent>
+	      </bf:Instance>
+	    </bf:hasInstance>
 	  </bf:Work>
 	</bf:associatedResource>
       </bf:Relation>
@@ -756,6 +808,38 @@
 		<bf:mainTitle>Businessweek online</bf:mainTitle>
 	      </bf:VariantTitle>
 	    </bf:title>
+	    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/16894999">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Bloomberg businessweek</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>  2011201713</rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>   99103080 </rdf:value>
+		    <bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/cancinv"/>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:OclcNumber>
+		    <rdf:value>ocm42637019 </rdf:value>
+		  </bf:OclcNumber>
+		</bf:identifiedBy>
+		<bf:publicationStatement>[New York]: Bloomberg L.P.</bf:publicationStatement>
+		<bf:extent>
+		  <bf:Extent>
+		    <rdfs:label>1 online resource</rdfs:label>
+		  </bf:Extent>
+		</bf:extent>
+	      </bf:Instance>
+	    </bf:hasInstance>
 	  </bf:Work>
 	</bf:associatedResource>
       </bf:Relation>
@@ -830,6 +914,40 @@
 		<bflc:nonSortNum>4</bflc:nonSortNum>
 	      </bf:Title>
 	    </bf:title>
+	    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11136815">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>The Annalist</bf:mainTitle>
+		    <bf:subtitle>a magazine of finance, commerce and economics</bf:subtitle>
+		    <bflc:nonSortNum>4</bflc:nonSortNum>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>   16007142 </rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Local>
+		    <rdf:value>(AMICUS)000004684751</rdf:value>
+		    <bf:source rdf:resource="http://id.loc.gov/authorities/names/no2004037399"/>
+		  </bf:Local>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:OclcNumber>
+		    <rdf:value>ocm06247317 </rdf:value>
+		  </bf:OclcNumber>
+		</bf:identifiedBy>
+		<bf:publicationStatement>New York, N.Y.: New York Times Co</bf:publicationStatement>
+		<bf:extent>
+		  <bf:Extent>
+		    <rdfs:label>54 volumes</rdfs:label>
+		  </bf:Extent>
+		</bf:extent>
+	      </bf:Instance>
+	    </bf:hasInstance>
 	  </bf:Work>
 	</bf:associatedResource>
       </bf:Relation>
@@ -887,6 +1005,38 @@
 		<bf:mainTitle>Businessweek online</bf:mainTitle>
 	      </bf:VariantTitle>
 	    </bf:title>
+	    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/16894999">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Bloomberg businessweek</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>  2011201713</rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>   99103080 </rdf:value>
+		    <bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/cancinv"/>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:OclcNumber>
+		    <rdf:value>ocm42637019 </rdf:value>
+		  </bf:OclcNumber>
+		</bf:identifiedBy>
+		<bf:publicationStatement>[New York]: Bloomberg L.P.</bf:publicationStatement>
+		<bf:extent>
+		  <bf:Extent>
+		    <rdfs:label>1 online resource</rdfs:label>
+		  </bf:Extent>
+		</bf:extent>
+	      </bf:Instance>
+	    </bf:hasInstance>
 	  </bf:Work>
 	</bf:associatedResource>
       </bf:Relation>
@@ -925,7 +1075,7 @@
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-29T06:56:45</bf:date>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-02-07T06:56:47</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Agent>
 	    <bf:code>WARTN</bf:code>
@@ -950,8 +1100,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:12.839332-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:17.107912-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1273,6 +1423,61 @@
 	    <bf:mainTitle>Bloomberg businessweek</bf:mainTitle>
 	  </bf:VariantTitle>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11138862">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Business week</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>   31006225 </rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>sn 86022631 </rdf:value>
+		<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/cancinv"/>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Local>
+		<rdf:value>B59000000</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/dnlm"/>
+	      </bf:Local>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Local>
+		<rdf:value>013890614</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/uk"/>
+	      </bf:Local>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Coden>
+		<rdf:value>BUWEA3</rdf:value>
+	      </bf:Coden>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:PostalRegistration>
+		<rdf:value>080900</rdf:value>
+		<bf:assigner rdf:resource="http://id.loc.gov/rwo/agents/n89658260"/>
+	      </bf:PostalRegistration>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:OclcNumber>
+		<rdf:value>ocm01537921 </rdf:value>
+	      </bf:OclcNumber>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>[New York, etc.]: [Bloomberg L.P., etc.]</bf:publicationStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>volumes</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:adminMetadata>
@@ -1299,7 +1504,7 @@
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-29T06:56:45</bf:date>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-02-07T06:56:47</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Agent>
 	    <bf:code>WARTN</bf:code>
@@ -1324,8 +1529,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:12.839332-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:17.107912-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1456,6 +1661,61 @@
 	    <bf:mainTitle>Bloomberg businessweek</bf:mainTitle>
 	  </bf:VariantTitle>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/11138862">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Business week</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>   31006225 </rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>sn 86022631 </rdf:value>
+		<bf:status rdf:resource="http://id.loc.gov/vocabulary/mstatus/cancinv"/>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Local>
+		<rdf:value>B59000000</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/dnlm"/>
+	      </bf:Local>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Local>
+		<rdf:value>013890614</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/uk"/>
+	      </bf:Local>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Coden>
+		<rdf:value>BUWEA3</rdf:value>
+	      </bf:Coden>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:PostalRegistration>
+		<rdf:value>080900</rdf:value>
+		<bf:assigner rdf:resource="http://id.loc.gov/rwo/agents/n89658260"/>
+	      </bf:PostalRegistration>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:OclcNumber>
+		<rdf:value>ocm01537921 </rdf:value>
+	      </bf:OclcNumber>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>[New York, etc.]: [Bloomberg L.P., etc.]</bf:publicationStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>volumes</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:adminMetadata>
@@ -1482,7 +1742,7 @@
 	    <bf:code>c</bf:code>
 	  </bf:Status>
 	</bf:status>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-29T06:56:45</bf:date>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-02-07T06:56:47</bf:date>
 	<bf:descriptionModifier>
 	  <bf:Agent>
 	    <bf:code>WARTN</bf:code>
@@ -1507,8 +1767,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:12.839332-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:17.107912-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>

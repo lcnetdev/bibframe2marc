@@ -1,6 +1,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:lcc="http://id.loc.gov/ontologies/lcc#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/12280298">
-    <bflc:aap>Rodgers, Richard, 1902-1979 Selections from the Theatre Guild musical play Oklahoma!</bflc:aap>
+    <bflc:aap>Rodgers, Richard, 1902-1979. Selections from the Theatre Guild musical play Oklahoma!</bflc:aap>
     <bflc:aap-normalized>rodgersrichard19021979selectionsfromthetheatreguildmusicalplayoklahoma!</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/MusicAudio"/>
     <bf:content>
@@ -67,7 +67,8 @@
     </bf:contribution>
     <bf:expressionOf>
       <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/d5b24baa-5667-74b5-a178-edcafdefbbf1">
-	<rdfs:label>Rodgers, Richard, 1902-1979 Oklahoma! Selections</rdfs:label>
+	<rdfs:label>Rodgers, Richard, 1902-1979. Oklahoma! Selections</rdfs:label>
+	<bflc:marcKey>1001 $aRodgers, Richard,$d1902-1979.$tOklahoma!$kSelections</bflc:marcKey>
 	<bf:contribution>
 	  <bf:Contribution>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
@@ -120,10 +121,16 @@
     </bf:title>
     <bf:title>
       <bf:VariantTitle>
-	<bf:variantType>portion</bf:variantType>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/vartitletype/por"/>
 	<bf:mainTitle>Oklahoma!</bf:mainTitle>
       </bf:VariantTitle>
     </bf:title>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/participants"/>
+	<rdfs:label>Alfred Drake ; Joan Roberts, Howard da Silva, Cleste Holm, Lee Dixon (v. 1) ; Joseph Buloff, Betty Garde, Ralph Riggs (v. 2) ; with chorus and orchestra conducted by Jay Blackton.</rdfs:label>
+      </bf:Note>
+    </bf:note>
     <bf:tableOfContents>
       <bf:TableOfContents>
 	<rdfs:label>[v. 1] Overture ; Oh, what a beautiful mornin' ; Surrey with the fringe on top ; Kansas City ; I cain't say no ; Many a new day ; People will say we're in love ; Pore Jud is daid ; Out of my dreams ; All er nothin' ; Oklahoma ; Finale -- v. 2. Lonely room ; It's a scandal ; The farmer and the cowman.</rdfs:label>
@@ -329,7 +336,12 @@
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
     <bf:relation>
       <bf:Relation>
-	<bf:relationship rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/series">
+	    <rdfs:label>series</rdfs:label>
+	    <bf:code>series</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
 	<bf:associatedResource>
 	  <bf:Series>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
@@ -356,11 +368,17 @@
     </bf:relation>
     <bf:relation>
       <bf:Relation>
-	<bf:relationship rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/series">
+	    <rdfs:label>series</rdfs:label>
+	    <bf:code>series</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
 	<bf:associatedResource>
 	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/c74bdeab-7d1c-c2f1-f777-1f05663e2973">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
 	    <rdfs:label>Decca personality series</rdfs:label>
+	    <bflc:marcKey>1300 $aDecca personality series</bflc:marcKey>
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Decca personality series</bf:mainTitle>
@@ -442,8 +460,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:23.140161-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:31.654042-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -856,7 +874,6 @@
 	<rdfs:label>Title from each container.</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:credits>Alfred Drake ; Joan Roberts, Howard da Silva, Cleste Holm, Lee Dixon (v. 1) ; Joseph Buloff, Betty Garde, Ralph Riggs (v. 2) ; with chorus and orchestra conducted by Jay Blackton.</bf:credits>
     <bf:note>
       <bf:Note>
 	<rdfs:label>Program notes inserted in container.</rdfs:label>
@@ -865,7 +882,7 @@
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
     <bf:instanceOf>
       <bf:Work rdf:about="http://id.loc.gov/resources/works/12280298">
-	<rdfs:label>Rodgers, Richard, 1902-1979 Selections from the Theatre Guild musical play Oklahoma!</rdfs:label>
+	<rdfs:label>Rodgers, Richard, 1902-1979. Selections from the Theatre Guild musical play Oklahoma!</rdfs:label>
 	<bf:contribution>
 	  <bf:Contribution>
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
@@ -1061,10 +1078,292 @@
 	</bf:title>
 	<bf:title>
 	  <bf:VariantTitle>
-	    <bf:variantType>portion</bf:variantType>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/vartitletype/por"/>
 	    <bf:mainTitle>Oklahoma!</bf:mainTitle>
 	  </bf:VariantTitle>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/12280298">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Selections from the Theatre Guild musical play Oklahoma!</bf:mainTitle>
+		<bf:subtitle>music by Richard Rodgers ; lyrics by Oscar Hammerstein</bf:subtitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>  2001539900</rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>A-359</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>383</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>23282</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>23283</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>23284</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>23285</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>23286</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>23287</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>23389</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:AudioIssueNumber>
+		<rdf:value>23390</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:AudioIssueNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>WW71454T4A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W71455T3A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W71459T3A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W71475T3A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W71457T2A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>71478AA</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>71477AA</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W71456T7A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W71479T2A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W71458T2A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W71474T3A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W71476T5A</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W72172A3</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W72169A3</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W72170A3</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:MatrixNumber>
+		<rdf:value>W72171A3</rdf:value>
+		<bf:assigner>
+		  <bf:Agent>
+		    <rdfs:label>Decca</rdfs:label>
+		  </bf:Agent>
+		</bf:assigner>
+	      </bf:MatrixNumber>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>New York: Decca, [1943-1945]</bf:publicationStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>8 sound discs</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:adminMetadata>
@@ -1123,8 +1422,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:23.140161-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:31.654042-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
