@@ -1,3 +1,21 @@
+--- 2.9 2025/03/07
+
+Changes for updated v2.9.0 specifications:
+
+Instance-bf2marc
+	Updated creation of MARC 246 and 247 fields based on vartitletype URIs
+	Updated creation of MARC 506 and 540 fields
+	Added creation of 5XX fields with new notetypes
+Work-bf2marc
+	Added creation of MARC 041 $a when multiple language resources exist
+	Changed creation of MARC 041 Ind1
+	Updated creation of MARC 246 and 247 fields based on vartitletype URIs
+	Added creation of MARC X10 fields when the agent is a bf:Jurisdiction or bf:Place
+	Added creation of MARC 505 Ind1
+	Added creation of MARC 5XX fields with new notetypes
+	Added creation of MARC 647 fields
+	Updated creation of MARC 510 fields to follow indirect relationship model
+
 --- 2.8.1 2024/12/02
 
 Patch release.
@@ -17,7 +35,7 @@ Instance-bf2marc
 	Changed generation of indicators in MARC 246 field
 	Updated creation of MARC 504 field to use bf:note instead of bf:supplementaryContent
 Work-bf2marc
-Added creation of paired MARC 880 fields for agents and added titles
+    Added creation of paired MARC 880 fields for agents and added titles
 Added $u to MARC 510 field
 	Added creation of MARC 080 field
 	Changed generation of indicators in MARC 246 field

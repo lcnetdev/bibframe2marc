@@ -1,5 +1,17 @@
 # bibframe2marc release notes
 
+## v2.9.0
+
+Conversion updates based on specifications v2.9. See the Library of Congress’s [BIBFRAME site](https://www.loc.gov/bibframe/) for more details. Specifications are included in the distribution in the [spec](spec/) directory. Changes of note:
+
+* Improved creation of indicator values for MARC 246 and 247 fields based on new vartitletype URIs
+* Changed creation of MARC 041 Ind1 byte
+* Added creation of MARC 505 Ind1 byte
+* Added creation of MARC 5XX fields based on new notetype URIs
+* Updated creation of MARC X10 fields to include bf:Jurisdiction and bf:Place data
+
+See the [NEWS](NEWS) file for full details of changes.
+
 ## v2.8.1
 
 Patch release. This still conforms with 2.8.0 specs, which can be found in the [spec](spec/) directory. Changes of note:

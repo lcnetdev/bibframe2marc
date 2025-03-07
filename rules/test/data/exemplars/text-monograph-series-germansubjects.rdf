@@ -96,9 +96,9 @@
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
-	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ctb">
-	    <rdfs:label>contributor</rdfs:label>
-	    <bf:code>ctb</bf:code>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
+	    <rdfs:label>author</rdfs:label>
+	    <bf:code>aut</bf:code>
 	  </bf:Role>
 	</bf:role>
       </bf:Contribution>
@@ -682,9 +682,16 @@
       </bf:GenreForm>
     </bf:genreForm>
     <bf:genreForm>
-      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026333">
-	<rdfs:label xml:lang="en">Fantasy fiction</rdfs:label>
-	<bflc:marcKey>155  $aFantasy fiction</bflc:marcKey>
+      <bf:GenreForm>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#GenreForm"/>
+	<madsrdf:authoritativeLabel>Fantasy fiction</madsrdf:authoritativeLabel>
+	<bf:source>
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gsafd">
+	    <rdfs:label>Guidelines on subject access to individual works of fiction, drama, etc</rdfs:label>
+	    <bf:code>gsafd</bf:code>
+	  </madsrdf:Authority>
+	</bf:source>
+	<rdfs:label>Fantasy fiction</rdfs:label>
       </bf:GenreForm>
     </bf:genreForm>
     <bf:contribution>
@@ -758,7 +765,12 @@
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
     <bf:relation>
       <bf:Relation>
-	<bf:relationship rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/series">
+	    <rdfs:label>series</rdfs:label>
+	    <bf:code>series</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
 	<bf:seriesEnumeration>bk. 5</bf:seriesEnumeration>
 	<bf:associatedResource>
 	  <bf:Series>
@@ -786,12 +798,18 @@
     </bf:relation>
     <bf:relation>
       <bf:Relation>
-	<bf:relationship rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/series">
+	    <rdfs:label>series</rdfs:label>
+	    <bf:code>series</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
 	<bf:seriesEnumeration>5.</bf:seriesEnumeration>
 	<bf:associatedResource>
 	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/af664ef4-0459-e382-f2b1-7ef8a5d00016">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
 	    <rdfs:label>Rowling, J. K. Harry Potter series</rdfs:label>
+	    <bflc:marcKey>1001 $aRowling, J. K.$tHarry Potter series</bflc:marcKey>
 	    <bf:contribution>
 	      <bf:Contribution>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
@@ -821,12 +839,18 @@
     </bf:relation>
     <bf:relation>
       <bf:Relation>
-	<bf:relationship rdf:resource="http://id.loc.gov/ontologies/bibframe/hasSeries"/>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/series">
+	    <rdfs:label>series</rdfs:label>
+	    <bf:code>series</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
 	<bf:seriesEnumeration>bk. 5.</bf:seriesEnumeration>
 	<bf:associatedResource>
 	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/62836544-8faa-de1b-57b8-bd68ae6cd8f9">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
 	    <rdfs:label>Harry Potter</rdfs:label>
+	    <bflc:marcKey>1300 $aHarry Potter</bflc:marcKey>
 	    <bf:title>
 	      <bf:Title>
 		<bf:mainTitle>Harry Potter</bf:mainTitle>
@@ -898,8 +922,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:38.505052-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:48.514348-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1142,6 +1166,7 @@
 	      <bf:Agent>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 		<rdfs:label>Clays Ltd</rdfs:label>
+		<bflc:marcKey>7102 $aClays Ltd.$4prt</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -1158,6 +1183,7 @@
 	      <bf:Agent>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 		<rdfs:label>Palimpsest Book Production Ltd</rdfs:label>
+		<bflc:marcKey>7102 $aPalimpsest Book Production Ltd.$4tyg</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -1173,6 +1199,81 @@
 	    <bf:mainTitle>Harry Potter and the Order of the Phoenix</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/18602501">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Harry Potter and the Order of the Phoenix</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>  2014495444</rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3X7384</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3X7389</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3V2642</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747569401</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747569404</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747551006</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747551003</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747569649</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747569640</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:OclcNumber>
+		<rdf:value>ocm52055301</rdf:value>
+	      </bf:OclcNumber>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>London: Bloomsbury, 2003</bf:publicationStatement>
+	    <bf:editionStatement>1st ed.</bf:editionStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>766 pages ; Clays Ltd, St Ives plc.</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:adminMetadata>
@@ -1227,8 +1328,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:38.505052-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:48.514348-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1376,6 +1477,7 @@
 	      <bf:Agent>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 		<rdfs:label>Clays Ltd</rdfs:label>
+		<bflc:marcKey>7102 $aClays Ltd.$4prt</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -1392,6 +1494,7 @@
 	      <bf:Agent>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 		<rdfs:label>Palimpsest Book Production Ltd</rdfs:label>
+		<bflc:marcKey>7102 $aPalimpsest Book Production Ltd.$4tyg</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -1407,6 +1510,81 @@
 	    <bf:mainTitle>Harry Potter and the Order of the Phoenix</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/18602501">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Harry Potter and the Order of the Phoenix</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>  2014495444</rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3X7384</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3X7389</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3V2642</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747569401</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747569404</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747551006</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747551003</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747569649</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747569640</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:OclcNumber>
+		<rdf:value>ocm52055301</rdf:value>
+	      </bf:OclcNumber>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>London: Bloomsbury, 2003</bf:publicationStatement>
+	    <bf:editionStatement>1st ed.</bf:editionStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>766 pages ; Clays Ltd, St Ives plc.</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:adminMetadata>
@@ -1461,8 +1639,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:38.505052-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:48.514348-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1610,6 +1788,7 @@
 	      <bf:Agent>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 		<rdfs:label>Clays Ltd</rdfs:label>
+		<bflc:marcKey>7102 $aClays Ltd.$4prt</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -1626,6 +1805,7 @@
 	      <bf:Agent>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 		<rdfs:label>Palimpsest Book Production Ltd</rdfs:label>
+		<bflc:marcKey>7102 $aPalimpsest Book Production Ltd.$4tyg</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -1641,6 +1821,81 @@
 	    <bf:mainTitle>Harry Potter and the Order of the Phoenix</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/18602501">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Harry Potter and the Order of the Phoenix</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>  2014495444</rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3X7384</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3X7389</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3V2642</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747569401</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747569404</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747551006</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747551003</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747569649</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747569640</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:OclcNumber>
+		<rdf:value>ocm52055301</rdf:value>
+	      </bf:OclcNumber>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>London: Bloomsbury, 2003</bf:publicationStatement>
+	    <bf:editionStatement>1st ed.</bf:editionStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>766 pages ; Clays Ltd, St Ives plc.</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:adminMetadata>
@@ -1695,8 +1950,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:38.505052-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:48.514348-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1837,6 +2092,7 @@
 	      <bf:Agent>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 		<rdfs:label>Clays Ltd</rdfs:label>
+		<bflc:marcKey>7102 $aClays Ltd.$4prt</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -1853,6 +2109,7 @@
 	      <bf:Agent>
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
 		<rdfs:label>Palimpsest Book Production Ltd</rdfs:label>
+		<bflc:marcKey>7102 $aPalimpsest Book Production Ltd.$4tyg</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -1868,6 +2125,81 @@
 	    <bf:mainTitle>Harry Potter and the Order of the Phoenix</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/18602501">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Harry Potter and the Order of the Phoenix</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>  2014495444</rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3X7384</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3X7389</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Nbn>
+		<rdf:value>GBA3V2642</rdf:value>
+		<bf:source rdf:resource="http://id.loc.gov/vocabulary/nationalbibschemes/bnb"/>
+	      </bf:Nbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747569401</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747569404</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747551006</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747551003</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>0747569649</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:Isbn>
+		<rdf:value>9780747569640</rdf:value>
+	      </bf:Isbn>
+	    </bf:identifiedBy>
+	    <bf:identifiedBy>
+	      <bf:OclcNumber>
+		<rdf:value>ocm52055301</rdf:value>
+	      </bf:OclcNumber>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>London: Bloomsbury, 2003</bf:publicationStatement>
+	    <bf:editionStatement>1st ed.</bf:editionStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>766 pages ; Clays Ltd, St Ives plc.</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:adminMetadata>
@@ -1922,8 +2254,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:38.505052-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:48.514348-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>

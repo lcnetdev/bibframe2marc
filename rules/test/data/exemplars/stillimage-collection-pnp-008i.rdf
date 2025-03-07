@@ -1,6 +1,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:lcc="http://id.loc.gov/ontologies/lcc#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/14437118">
-    <bflc:aap>Office of Charles and Ray Eames Eames Collection (Library of Congress)</bflc:aap>
+    <bflc:aap>Office of Charles and Ray Eames. Eames Collection (Library of Congress)</bflc:aap>
     <bflc:aap-normalized>officeofcharlesandrayeameseamescollection(libraryofcongress)</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/StillImage"/>
     <bf:content>
@@ -295,7 +295,7 @@
 	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79128113">
 	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 	    <rdfs:label>Eames, Charles</rdfs:label>
-	    <bflc:marcKey>10010$aEames, Charles</bflc:marcKey>
+	    <bflc:marcKey>1001 $aEames, Charles</bflc:marcKey>
 	  </bf:Agent>
 	</bf:agent>
 	<bf:role>
@@ -342,7 +342,7 @@
 		  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79128113">
 		    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		    <rdfs:label>Eames, Charles</rdfs:label>
-		    <bflc:marcKey>10010$aEames, Charles</bflc:marcKey>
+		    <bflc:marcKey>1001 $aEames, Charles</bflc:marcKey>
 		  </bf:Agent>
 		</bf:agent>
 		<bf:role>
@@ -363,6 +363,37 @@
 		<bf:mainTitle>Work of Charles and Ray Eames (Library of Congress)</bf:mainTitle>
 	      </bf:VariantTitle>
 	    </bf:title>
+	    <bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	    <bf:hasInstance>
+	      <bf:Instance rdf:about="http://id.loc.gov/resources/instances/5811493">
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Charles Eames and Ray Eames papers</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value>mm 94083006 </rdf:value>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Identifier>
+		    <rdf:value>MSS83006</rdf:value>
+		    <bf:qualifier>: Manuscript Division collection ID</bf:qualifier>
+		    <bf:source>
+		      <bf:Source>
+			<bf:code>lcmd</bf:code>
+		      </bf:Source>
+		    </bf:source>
+		  </bf:Identifier>
+		</bf:identifiedBy>
+		<bf:extent>
+		  <bf:Extent>
+		    <rdfs:label>265,000 items.</rdfs:label>
+		  </bf:Extent>
+		</bf:extent>
+	      </bf:Instance>
+	    </bf:hasInstance>
 	  </bf:Work>
 	</bf:associatedResource>
       </bf:Relation>
@@ -433,8 +464,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:28.838615-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:37.786219-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -574,7 +605,12 @@
 	<rdfs:label>Collection title devised by Library staff.</rdfs:label>
       </bf:Note>
     </bf:note>
-    <bf:preferredCitation>Cite as the Work of Charles and Ray Eames, Library of Congress, Prints &amp; Photographs Division.</bf:preferredCitation>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/citeas"/>
+	<rdfs:label>Cite as the Work of Charles and Ray Eames, Library of Congress, Prints &amp; Photographs Division.</rdfs:label>
+      </bf:Note>
+    </bf:note>
     <bf:usageAndAccessPolicy>
       <bf:UsePolicy>
 	<rdfs:label>Publication may be restricted. For general information see "Eames Office ...,"</rdfs:label>
@@ -634,7 +670,7 @@
 	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79128113">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Eames, Charles</rdfs:label>
-		<bflc:marcKey>10010$aEames, Charles</bflc:marcKey>
+		<bflc:marcKey>1001 $aEames, Charles</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -677,6 +713,27 @@
 	    <bf:mainTitle>Visual materials from the Work of Charles and Ray Eames</bf:mainTitle>
 	  </bf:VariantTitle>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/14437118">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Eames Collection (Library of Congress)</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>  2006678412</rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>1885-1988, bulk 1940-1978</bf:publicationStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>ca. 750,000 items (chiefly photographs)</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:hasItem>
@@ -738,8 +795,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:28.838615-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:37.786219-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -858,7 +915,7 @@
 	      <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n79128113">
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Eames, Charles</rdfs:label>
-		<bflc:marcKey>10010$aEames, Charles</bflc:marcKey>
+		<bflc:marcKey>1001 $aEames, Charles</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -901,6 +958,27 @@
 	    <bf:mainTitle>Visual materials from the Work of Charles and Ray Eames</bf:mainTitle>
 	  </bf:VariantTitle>
 	</bf:title>
+	<bf:language rdf:resource="http://id.loc.gov/vocabulary/languages/eng"/>
+	<bf:hasInstance>
+	  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/14437118">
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Eames Collection (Library of Congress)</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Lccn>
+		<rdf:value>  2006678412</rdf:value>
+	      </bf:Lccn>
+	    </bf:identifiedBy>
+	    <bf:publicationStatement>1885-1988, bulk 1940-1978</bf:publicationStatement>
+	    <bf:extent>
+	      <bf:Extent>
+		<rdfs:label>ca. 750,000 items (chiefly photographs)</rdfs:label>
+	      </bf:Extent>
+	    </bf:extent>
+	  </bf:Instance>
+	</bf:hasInstance>
       </bf:Work>
     </bf:instanceOf>
     <bf:adminMetadata>
@@ -959,8 +1037,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:28.838615-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:37.786219-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1104,8 +1182,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.8.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-20T16:32:28.838615-05:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v2.9.0-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-05T11:34:37.786219-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>

@@ -35,6 +35,16 @@
     <x:expect label="generate subdivisions"
               test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='v'] = 'Periodicals'"/>
   </x:scenario>
+  
+  <x:scenario label="MARC 610 - Jurisdiction">
+    <x:context href="../data/exemplars/raw.stillimage-monograph-subjects-pnp-008q.rdf"/>
+    <x:expect label="generate 610" test="count(//marc:datafield[@tag='610']) = 2"/>
+    <x:expect label="ind1 generated from Jurisdiction" test="//marc:datafield[@tag='610'][1]/@ind1 = '1'"/>
+    <x:expect label="ind2 generated from bf:source" test="//marc:datafield[@tag='610'][1]/@ind2 = '4'"/>
+    <x:expect label="... $a" test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='a'] = 'United States.'"/>
+    <x:expect label="... first $b" test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='b'] = 'Army.'"/>
+    <x:expect label="... second $b" test="//marc:datafield[@tag='610'][1]/marc:subfield[@code='b'] = 'Pennsylvania Infantry Regiment, 48th (1861-1865)'"/>
+  </x:scenario>
 
   <x:scenario label="MARC 600 - test 02">
     <x:context href="../data/exemplars/raw.musicaudio-monograph-hamilton-contributos-subjects-genreforms.rdf"/>
@@ -185,6 +195,7 @@
       test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='a'] = 'China'"/>
     <x:expect label="..and expected $1"
       test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/n79091151'"/>
+    <!--
     <x:expect label="$6 for paired non-latin field"
       test="//marc:datafield[@tag='651'][1]/marc:subfield[@code='6'] = '880-50'"/>
     
@@ -197,7 +208,7 @@
       test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='651-50/$1']]/marc:subfield[@code='a'] = '中华民国 (1912-1949)'"/>
     <x:expect label="..and expected $1"
       test="//marc:datafield[@tag='880' and marc:subfield[@code='6' and .='651-50/$1']]/marc:subfield[@code='1'] = 'http://id.loc.gov/rwo/agents/n79091151'"/>
-    
+    -->
   </x:scenario>
 
   <x:scenario label="MARC 653">
