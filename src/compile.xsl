@@ -691,10 +691,10 @@
                     <xsl:when test="not($langcode-to-scriptNS/langcode-script[langcode=$l])">
                       <xsl:value-of select="$spart" />
                     </xsl:when>
+                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l]/script = $spart" />
                     <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l]/script != $spart">
                       <xsl:value-of select="$spart" />
                     </xsl:when>
-                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l]/script = $spart" />
                   </xsl:choose>
                 </xsl:variable>
                 <xsl:choose>
@@ -722,11 +722,11 @@
                     <xsl:when test="not($langcode-to-scriptNS/langcode-script[langcode=$lpart])">
                       <xsl:value-of select="$spart" />
                     </xsl:when>
+                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script = $spart">
+                      <xsl:value-of select="''" />
+                    </xsl:when>
                     <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script != $spart">
                       <xsl:value-of select="$spart" />
-                    </xsl:when>
-                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script = $spart">
-                        <xsl:value-of select="''" />
                     </xsl:when>
                   </xsl:choose>
                 </xsl:variable>
@@ -862,8 +862,8 @@
                 </xsl:variable>
                 <xsl:variable name="s">
                   <xsl:choose>
-                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l]/script">
-                      <xsl:value-of select="$langcode-to-scriptNS/langcode-script[langcode=$l]/script" />
+                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l][1]/script">
+                      <xsl:value-of select="$langcode-to-scriptNS/langcode-script[langcode=$l][1]/script" />
                     </xsl:when>
                   </xsl:choose>
                 </xsl:variable>
@@ -884,8 +884,8 @@
                 <xsl:variable name="lpart" select="$first2" />
                 <xsl:variable name="s">
                   <xsl:choose>
-                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script">
-                      <xsl:value-of select="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script" />
+                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart][1]/script">
+                      <xsl:value-of select="$langcode-to-scriptNS/langcode-script[langcode=$lpart][1]/script" />
                     </xsl:when>
                   </xsl:choose>
                 </xsl:variable>
