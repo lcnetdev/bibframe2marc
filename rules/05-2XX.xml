@@ -383,6 +383,9 @@
           </xsl:choose>
         </transform>
       </var>
+      <transform>
+        <xsl:message><xsl:value-of select="$vLangMainTitle"></xsl:value-of></xsl:message>
+      </transform>
       <ind1 default="0">
         <switch>
           <case test="/rdf:RDF/bf:Work/bf:expressionOf">1</case>
@@ -578,12 +581,12 @@
       
       <sf code="c" chopPunct="false" repeatable="false">
         <switch>
-          <case test="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]">
-            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]"/>
+          <case test="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle or ($vLangMainTitle='' and contains(translate(@xml:lang,$upper,$lower),$pCatScriptNormalized))]">
+            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle or ($vLangMainTitle='' and contains(translate(@xml:lang,$upper,$lower),$pCatScriptNormalized))]"/>
             <var name="vEndsWith">
                 <transform>
                     <xsl:call-template name="tEndsWith">
-                        <xsl:with-param name="pStr" select="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]"/>
+                      <xsl:with-param name="pStr" select="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle or ($vLangMainTitle='' and contains(translate(@xml:lang,$upper,$lower),$pCatScriptNormalized))]"/>
                         <xsl:with-param name="pEndChar" select="'.'"/>
                     </xsl:call-template>
                 </transform>
