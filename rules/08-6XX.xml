@@ -229,6 +229,14 @@
                 </transform>
               </sf>
             </case>
+            <case test="self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource != '' and
+                        self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource != $relURI">
+              <sf code="0">
+                <transform>
+                  <xsl:value-of select="self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource" />
+                </transform>
+              </sf>
+            </case>
           </switch>
         </var>
         
@@ -277,6 +285,7 @@
               <case test="contains($vMainSourceUri, '/subjectSchemes/nal')">3</case>
               <case test="contains($vMainSourceUri, '/subjectSchemes/cash')">5</case>
               <case test="contains($vMainSourceUri, '/subjectSchemes/rvm')">6</case>
+              <case test="contains($vMainSourceUri, 'vocabulary/subjectSchemes/')">7</case>
             </switch>
           </ind2>
           <switch>
@@ -321,6 +330,13 @@
               <case test="contains($relURI, '/graphicMaterials/')">lctgm</case>
               <case test="contains($relURI, '/fast/')">fast</case>
               <case test="contains($relURI, 'd-nb.info/gnd/')">gnd</case>
+              <case test="contains($vMainSourceUri, 'vocabulary/subjectSchemes/')">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="$vMainSourceUri"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
             </switch>
           </sf>
           <transform><xsl:copy-of select="$vShared0and1" /></transform>
@@ -584,23 +600,32 @@
         </var>
         <var name="vSharedDollar0s">
           <switch>
-            <case test="1=1">
-          <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
-          <sf code="0">
-            <select xpath="*/bf:identifiedBy/bf:Identifier">
-              <transform>
-                <xsl:variable name="vIdType">
-                  <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:choose>
-                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                </xsl:choose>
-              </transform>
-            </select>
-          </sf>
+            <case test="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]">
+              <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
+            </case>
+            <case test="*/bf:identifiedBy/bf:Identifier">
+              <sf code="0">
+                <select xpath="*/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType">
+                      <xsl:call-template name="tChopPunct">
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
+            </case>
+            <case test="self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource != ''">
+              <sf code="0">
+                <transform>
+                  <xsl:value-of select="self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource" />
+                </transform>
+              </sf>
             </case>
           </switch>
         </var>
