@@ -330,7 +330,8 @@
               <case test="contains($relURI, '/graphicMaterials/')">lctgm</case>
               <case test="contains($relURI, '/fast/')">fast</case>
               <case test="contains($relURI, 'd-nb.info/gnd/')">gnd</case>
-              <case test="contains($vMainSourceUri, 'vocabulary/subjectSchemes/')">
+              <case test="not(contains($relURI, 'loc.gov/authorities/')) and 
+                          contains($vMainSourceUri, 'vocabulary/subjectSchemes/')">
                 <transform>
                   <xsl:call-template name="tUriCode">
                     <xsl:with-param name="pUri" select="$vMainSourceUri"/>
