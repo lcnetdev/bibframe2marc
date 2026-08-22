@@ -411,16 +411,32 @@
       </switch>
       <sf code="a" chopPunct="false" repeatable="false">
         <!-- The main title -->
-        <switch>
-          <case test="bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]">
-            <select xpath="bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]"/>
-          </case>
-          <case test="count(bf:mainTitle)=1 and bf:mainTitle[@xml:lang]">
-            <select xpath="bf:mainTitle[@xml:lang]" />
-          </case>
-        </switch>
+        <var name="v245a">
+          <switch>
+            <case test="bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]">
+              <select xpath="bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]"/>
+            </case>
+            <case test="count(bf:mainTitle)=1 and bf:mainTitle[@xml:lang]">
+              <select xpath="bf:mainTitle[@xml:lang]" />
+            </case>
+          </switch>
+        </var>
+        
+        <transform><xsl:value-of select="$v245a" /></transform>
+        
+        <var name="vAEndsWithEqual">
+          <transform>
+            <xsl:call-template name="tEndsWith">
+              <xsl:with-param name="pStr" select="$v245a" />
+              <xsl:with-param name="pEndChar" select="'='" />
+            </xsl:call-template>
+          </transform>
+        </var>
         
         <switch>
+          
+          <!-- Do nothing if ends with equal sign. -->
+          <case test="$vAEndsWithEqual = '1'" />
           
           <!--  If there is a partNumber, do a period. -->
           <case test="
@@ -1000,36 +1016,71 @@
       </sf>
       <switch>
         <case test="$vTag = '246'">
-          <sf code="a" chopPunct="true" repeatable="false">
-            <select xpath="bf:mainTitle[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
-          <sf code="b" chopPunct="true" repeatable="false">
-            <select xpath="bf:subtitle[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
-          <sf code="f" chopPunct="true" repeatable="false">
-            <select xpath="bf:date[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
-          <sf code="n" chopPunct="true">
-            <select xpath="bf:partNumber[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
-          <sf code="p" chopPunct="true">
-            <select xpath="bf:partName[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
+          <switch>
+            <case test="contains(
+                          bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangTagLabel], 
+                          ':'
+                        ) and 
+                        not(
+                          bf:subtitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangTagLabel]
+                        )">
+              <sf code="a" chopPunct="true" repeatable="false">
+                <transform>
+                  <xsl:value-of select="
+                    concat(
+                      normalize-space(
+                        substring-before(
+                          bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangTagLabel],
+                          ':')
+                        )
+                        , ' :'
+                      )" />
+                </transform>
+              </sf>
+              <sf code="b" chopPunct="true" repeatable="false">
+                <transform>
+                  <xsl:value-of select="
+                    normalize-space(
+                      substring-after(
+                        bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangTagLabel],
+                        ':')
+                       )" />
+                </transform>
+              </sf>
+            </case>
+            <case test="default">
+              <sf code="a" chopPunct="true" repeatable="false">
+                <select xpath="bf:mainTitle[
+                                not(@xml:lang) or 
+                                translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                                ]"/>
+              </sf>
+              <sf code="b" chopPunct="true" repeatable="false">
+                <select xpath="bf:subtitle[
+                                not(@xml:lang) or 
+                                translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                                ]"/>
+              </sf>
+              <sf code="f" chopPunct="true" repeatable="false">
+                <select xpath="bf:date[
+                                not(@xml:lang) or 
+                                translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                              ]"/>
+              </sf>
+              <sf code="n" chopPunct="true">
+                <select xpath="bf:partNumber[
+                                  not(@xml:lang) or 
+                                  translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                                ]"/>
+              </sf>
+              <sf code="p" chopPunct="true">
+                <select xpath="bf:partName[
+                                not(@xml:lang) or 
+                                translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                              ]"/>
+              </sf>
+            </case>
+          </switch>
         </case>
         <case test="$vTag = '880'">
           <sf code="a" chopPunct="true" repeatable="false">
