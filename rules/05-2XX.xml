@@ -707,14 +707,26 @@
               <case test="default">245-03</case>
             </switch>
           </sf>
-          <sf code="a" chopPunct="true" repeatable="false">
+          <sf code="a" chopPunct="false" repeatable="false">
             <switch>
               <case test="bf:mainTitle[@xml:lang and not(translate(@xml:lang,$upper,$lower)=$vLangMainTitle)]">
                 <select xpath="bf:mainTitle[@xml:lang and not(translate(@xml:lang,$upper,$lower)=$vLangMainTitle)]"/>
               </case>
             </switch>
             
+            <var name="v880AEndsWithEqual">
+              <transform>
+                <xsl:call-template name="tEndsWith">
+                  <xsl:with-param name="pStr" select="bf:mainTitle[@xml:lang and not(translate(@xml:lang,$upper,$lower)=$vLangMainTitle)]" />
+                  <xsl:with-param name="pEndChar" select="'='" />
+                </xsl:call-template>
+              </transform>
+            </var>
+            
             <switch>
+              
+              <!-- Do nothing if ends with equal sign. -->
+              <case test="$v880AEndsWithEqual = '1'" />
               
               <!--  If there is a partNumber, do a period. -->
               <case test="
