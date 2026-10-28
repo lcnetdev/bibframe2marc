@@ -114,15 +114,32 @@
   
   <df tag="334" lang-xpath="rdfs:label" repeatable="true">
     <context xpath="bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:issuance">
+      <var name="vIssuanceUri">
+        <transform>
+          <xsl:value-of select="self::node()//@rdf:*[1]"></xsl:value-of>
+        </transform>
+      </var>
       <ind1 default=" "/>
       <ind2 default=" "/>
       <sf code="a" chopPunct="true">
         <switch>
+          <case test="$vIssuanceUri = 'http://id.loc.gov/vocabulary/issuance/intg'">multiple unit</case>
+          <case test="$vIssuanceUri = 'http://id.loc.gov/vocabulary/issuance/serl'">multiple unit</case>
+          <case test="$vIssuanceUri = 'http://id.loc.gov/vocabulary/issuance/mulm'">multiple unit</case>
           <case test="bf:*/madsrdf:authoritativeLabel"><select xpath="bf:*/madsrdf:authoritativeLabel"/></case>
           <case test="default"><select xpath="bf:*/rdfs:label"/></case>
         </switch>
       </sf>
       <switch>
+        <case test="$vIssuanceUri = 'http://id.loc.gov/vocabulary/issuance/intg'">
+          <sf code="b"><transform><xsl:value-of select="'mult'"/></transform></sf>
+        </case>
+        <case test="$vIssuanceUri = 'http://id.loc.gov/vocabulary/issuance/serl'">
+          <sf code="b"><transform><xsl:value-of select="'mult'"/></transform></sf>
+        </case>
+        <case test="$vIssuanceUri = 'http://id.loc.gov/vocabulary/issuance/mulm'">
+          <sf code="b"><transform><xsl:value-of select="'mult'"/></transform></sf>
+        </case>
         <case test="bf:*/*[local-name()='code']">
           <sf code="b"><transform><xsl:value-of select="bf:*/*[local-name()='code']"/></transform></sf>
         </case>
@@ -148,29 +165,46 @@
           </sf>
         </case>
       </switch>
-      <sf code="0">
-        <select xpath="@rdf:resource"/>
-      </sf>
-      <sf code="0">
-        <select xpath="bf:*/@rdf:about"/>
-      </sf>
-      <sf code="0">
-        <select xpath="bf:*/bf:identifiedBy/bf:Identifier">
-          <transform>
-            <xsl:variable name="vIdType">
-              <xsl:call-template name="tChopPunct">
-                <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-              </xsl:call-template>
-            </xsl:variable>
-            <xsl:choose>
-              <xsl:when test="$vIdType != ''">
-                <xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/>
-              </xsl:when>
-              <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-            </xsl:choose>
-          </transform>
-        </select>
-      </sf>
+      <switch>
+        <case test="$vIssuanceUri = 'http://id.loc.gov/vocabulary/issuance/intg'">
+          <sf code="0"><transform><xsl:value-of select="'http://id.loc.gov/vocabulary/issuance/mult'"/></transform></sf>
+        </case>
+        <case test="$vIssuanceUri = 'http://id.loc.gov/vocabulary/issuance/serl'">
+          <sf code="0"><transform><xsl:value-of select="'http://id.loc.gov/vocabulary/issuance/mult'"/></transform></sf>
+        </case>
+        <case test="$vIssuanceUri = 'http://id.loc.gov/vocabulary/issuance/mulm'">
+          <sf code="0"><transform><xsl:value-of select="'http://id.loc.gov/vocabulary/issuance/mult'"/></transform></sf>
+        </case>
+        <case test="@rdf:resource">
+          <sf code="0">
+            <select xpath="@rdf:resource"/>
+          </sf>
+        </case>
+        <case test="bf:*/@rdf:about">
+          <sf code="0">
+            <select xpath="bf:*/@rdf:about"/>
+          </sf>
+        </case>
+        <case test="bf:*/bf:identifiedBy/bf:Identifier">
+          <sf code="0">
+            <select xpath="bf:*/bf:identifiedBy/bf:Identifier">
+              <transform>
+                <xsl:variable name="vIdType">
+                  <xsl:call-template name="tChopPunct">
+                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:choose>
+                  <xsl:when test="$vIdType != ''">
+                    <xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/>
+                  </xsl:when>
+                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                </xsl:choose>
+              </transform>
+            </select>
+          </sf>
+        </case>
+      </switch>
       <sf code="2" chopPunct="true" repeatable="false">
         <select xpath="bf:*/bf:source/bf:Source/bf:code"/>
       </sf>
