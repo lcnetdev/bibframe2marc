@@ -502,6 +502,29 @@
       </xsl:template>
 
       <!-- get the code (last element) from a URI -->
+      <xsl:template name="tOrgCode">
+        <xsl:param name="pOrgProp"/> <!-- bf:heldBy or bflc:applicableInstitution, etc. -->
+        <xsl:choose>
+          <xsl:when test="$pOrgProp/*/bf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']">
+            <xsl:value-of select="$pOrgProp/*/bf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']" />
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*/@rdf:about and contains(substring-after($pOrgProp/*/@rdf:about,'://'),'/')">
+            <xsl:call-template name="tUriCode">
+              <xsl:with-param name="pUri" select="substring-after($pOrgProp/*/@rdf:about,'://')"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="$pOrgProp/@rdf:resource and contains(substring-after($pOrgProp/@rdf:resource,'://'),'/')">
+            <xsl:call-template name="tUriCode">
+              <xsl:with-param name="pUri" select="substring-after($pOrgProp/@rdf:resource,'://')"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*/*:code">
+            <xsl:value-of select="$pOrgProp/*/*:code[1]" />
+          </xsl:when>
+        </xsl:choose>
+      </xsl:template>
+    
+      <!-- get the code (last element) from a URI -->
       <xsl:template name="tUriCode">
         <xsl:param name="pUri"/>
         <xsl:choose>
