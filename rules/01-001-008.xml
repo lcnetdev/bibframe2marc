@@ -1167,6 +1167,27 @@
                     <xsl:when test="bf:Work/bf:intendedAudience[@rdf:resource='http://id.loc.gov/vocabulary/maudience/juv'
                                     or */@rdf:about='http://id.loc.gov/vocabulary/maudience/juv'
                                     or */*[local-name='code']='juv']">j</xsl:when>
+                    
+                    <xsl:when test="bf:Work/bf:intendedAudience[
+                                      @rdf:resource='authorities/demographicTerms/dg2015060008' or 
+                                      */@rdf:about='authorities/demographicTerms/dg2015060008' or 
+                                      @rdf:resource='authorities/demographicTerms/dg2015060009' or 
+                                      */@rdf:about='authorities/demographicTerms/dg2015060009' or 
+                                      @rdf:resource='authorities/demographicTerms/dg2015060032' or 
+                                      */@rdf:about='authorities/demographicTerms/dg2015060032'
+                                    ]">a</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[
+                                      @rdf:resource='authorities/demographicTerms/dg2015060023' or 
+                                      */@rdf:about='authorities/demographicTerms/dg2015060023'
+                                    ]">b</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[
+                                      @rdf:resource='authorities/demographicTerms/dg2015060394' or 
+                                      */@rdf:about='authorities/demographicTerms/dg2015060394'
+                                    ]">c</xsl:when>
+                    <xsl:when test="bf:Work/bf:intendedAudience[
+                                      @rdf:resource='authorities/demographicTerms/dg2015060011' or 
+                                      */@rdf:about='authorities/demographicTerms/dg2015060011'
+                                    ]">d</xsl:when>
                     <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
                   </xsl:choose>
                 <!--</xsl:variable>-->
