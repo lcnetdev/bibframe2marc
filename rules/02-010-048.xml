@@ -1782,19 +1782,33 @@
         <ind1 default=" "/>
         <ind2 default=" "/>
         <sf code="a">
-          <select xpath="$vAdminMetadata/bf:descriptionAuthentication">
+          <select xpath="$vAdminMetadata/bf:descriptionAuthentication[
+                               (
+                                  */@rdf:about and 
+                                  not(following-sibling::bf:descriptionAuthentication/*/@rdf:about = */@rdf:about)
+                               ) or 
+                               (
+                                  @rdf:resource and 
+                                  not(following-sibling::bf:descriptionAuthentication/@rdf:resource = @rdf:resource)
+                                ) or
+                                (
+                                  */*[local-name()='code'] and 
+                                  not(following-sibling::bf:descriptionAuthentication/*/*[local-name()='code'] = */*[local-name()='code'])
+                                )
+                                ]
+                                ">
             <switch>
-              <case test="*/rdf:value">
-                <transform><xsl:value-of select="*/rdf:value"/></transform>
-              </case>
-              <case test="*/*[local-name()='code']">
-                <transform><xsl:value-of select="*/*[local-name()='code']"/></transform>
-              </case>
               <case test="starts-with(*/@rdf:about,'http://id.loc.gov/vocabulary/marcauthen/')">
                 <transform><xsl:value-of select="substring-after(*/@rdf:about,'http://id.loc.gov/vocabulary/marcauthen/')"/></transform>
               </case>
               <case test="starts-with(@rdf:resource,'http://id.loc.gov/vocabulary/marcauthen/')">
                 <transform><xsl:value-of select="substring-after(@rdf:resource,'http://id.loc.gov/vocabulary/marcauthen/')"/></transform>
+              </case>
+              <case test="*/*[local-name()='code']">
+                <transform><xsl:value-of select="*/*[local-name()='code']"/></transform>
+              </case>
+              <case test="*/rdf:value">
+                <transform><xsl:value-of select="*/rdf:value"/></transform>
               </case>
               <case test="default">
                 <transform>
