@@ -1247,7 +1247,22 @@
               </transform>
             </sf>
             <sf code="5" repeatable="false">
-              <select xpath="../bflc:applicableInstitution/*/bf:code"/>
+              <switch>
+                <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+                  <transform>
+                    <xsl:call-template name="tOrgCode">
+                      <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+                    </xsl:call-template>
+                  </transform>
+                </case>
+                <case test="../bflc:applicableInstitution">
+                  <transform>
+                    <xsl:call-template name="tOrgCode">
+                      <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+                    </xsl:call-template>
+                  </transform>
+                </case>
+              </switch>
             </sf>
             <sf code="7">
               <switch>
@@ -1810,7 +1825,22 @@
             <select xpath="bf:source/bf:Source/bf:code"/>
           </sf>
           <sf code="5" repeatable="false">
-            <select xpath="bflc:applicableInstitution/*/bf:code"/>
+            <switch>
+              <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+                <transform>
+                  <xsl:call-template name="tOrgCode">
+                    <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="bflc:applicableInstitution">
+                <transform>
+                  <xsl:call-template name="tOrgCode">
+                    <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+                  </xsl:call-template>
+                </transform>
+              </case>
+            </switch>
           </sf>
         </df>
       </case>
@@ -2061,8 +2091,23 @@
       <sf code="a" chopPunct="true" repeatable="false">
         <select xpath="rdfs:label"/>
       </sf>
-      <sf code="5">
-        <select xpath="bflc:applicableInstitution/*/bf:code"/>
+      <sf code="5" repeatable="false">
+        <switch>
+          <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="bflc:applicableInstitution">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
       </sf>
     </context>
   </df>
@@ -2209,50 +2254,100 @@
     </context>
   </df>
 
-  <df tag="561" lang-xpath=".">
-    <context xpath="bf:Instance/bf:custodialHistory|//bf:Item/bf:custodialHistory">
-      <ind1 default=" "/>
-      <ind2 default=" "/>
-      <sf code="a" chopPunct="true" repeatable="false">
-        <select xpath="."/>
-      </sf>
+  <select xpath="bf:Instance/bf:custodialHistory[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] | 
+                 bf:Item/bf:custodialHistory[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+    
+    <var name="vLangTagLabel">
+      <transform>
+        <xsl:call-template name="tGetBCP47RegField">
+          <xsl:with-param name="x" select="." />
+        </xsl:call-template>
+      </transform>
+    </var>
+    <var name="vLangTagScript">
+      <transform>
+        <xsl:call-template name="tGetBCP47for880">
+          <xsl:with-param name="x" select="../bf:custodialHistory[@xml:lang and not(contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower)))]" />
+          <xsl:with-param name="bcp47forRegField" select="$vLangTagLabel" />
+        </xsl:call-template>
+      </transform>
+    </var>
+    <var name="vLabel" xpath="." />
+    <var name="v880Script">
+      <lookup map="df880script" targetField="code">
+        <lookupField name="lang" xpath="substring-after($vLangTagScript,'-')"/>
+      </lookup>
+    </var>
+    <var name="v880Occurrence">
       <switch>
-        <case test="local-name(parent::node()) = 'Item'">
-          <sf code="5" chopPunct="true" repeatable="false">
-            <transform><xsl:value-of select="$pConversionAgency" /></transform>
-          </sf>
+        <case test="string($vLabel) = ''"><text>00</text></case>
+        <case test="parent::bf:Instance">
+          <transform>
+            <xsl:value-of select="57 + position()" />
+          </transform>
         </case>
-        <!--
-        <case test="bflc:applicableInstitution">
-          <var name="vAppOrg">
+        <case test="parent::bf:Item">
+          <transform>
+            <xsl:value-of select="58 + position()" />
+          </transform>
+        </case>
+      </switch>
+    </var>
+    
+    <switch>
+      <case test="string($vLabel) != ''">
+        <df tag="561" lang-xpath=".">
+          <ind1 default=" "/>
+          <ind2 default=" "/>
+          <switch>
+            <case test="$v880Script != ''">
+              <sf code="6"><transform><xsl:value-of select="concat('880-', $v880Occurrence)"/></transform></sf>
+            </case>
+          </switch>
+          <sf code="a" chopPunct="true" repeatable="false">
+            <transform><xsl:value-of select="$vLabel" /></transform>
+          </sf>
+          <switch>
+            <case test="parent::bf:Item/bf:heldBy">
+              <sf code="5" chopPunct="true" repeatable="false">
+                <transform>
+                  <xsl:call-template name="tOrgCode">
+                    <xsl:with-param name="pOrgProp" select="parent::bf:Item/bf:heldBy" />
+                  </xsl:call-template>
+                </transform>
+              </sf>
+            </case>
+          </switch>
+        </df>
+      </case>
+    </switch>
+    
+    <switch>
+      <case test="$v880Script != ''">
+        <select xpath="../bf:custodialHistory[@xml:lang and translate(@xml:lang,$upper,$lower)!=$vLangTagLabel]">
+          <df tag="880">
+            <ind1 default=" "/>
+            <ind2 default=" "/>
+            <sf code="6"><transform><xsl:value-of select="concat('561-', $v880Occurrence, '/', $v880Script)"/></transform></sf>
+            <sf code="a" chopPunct="true" repeatable="false">
+              <transform><xsl:value-of select="." /></transform>
+            </sf>
             <switch>
-              <case test="bflc:applicableInstitution/@rdf:resource">
-                <transform>
-                  <xsl:call-template name="tUriCode">
-                    <xsl:with-param name="pUri" select="bflc:applicableInstitution/@rdf:resource"/>
-                  </xsl:call-template>
-                </transform>
-              </case>
-              <case test="bflc:applicableInstitution/*/@rdf:about">
-                <transform>
-                  <xsl:call-template name="tUriCode">
-                    <xsl:with-param name="pUri" select="bflc:applicableInstitution/*/@rdf:about"/>
-                  </xsl:call-template>
-                </transform>
-              </case>
-              <case test="bflc:applicableInstitution/*/*[local-name()='code']">
-                <transform><xsl:value-of select="bflc:applicableInstitution/*/*[local-name()='code']" /></transform>
+              <case test="parent::bf:Item/bf:heldBy">
+                <sf code="5" chopPunct="true" repeatable="false">
+                  <transform>
+                    <xsl:call-template name="tOrgCode">
+                      <xsl:with-param name="pOrgProp" select="parent::bf:Item/bf:heldBy" />
+                    </xsl:call-template>
+                  </transform>
+                </sf>
               </case>
             </switch>
-          </var>
-          <sf code="5" chopPunct="true" repeatable="false">
-            <transform><xsl:value-of select="$vAppOrg" /></transform>
-          </sf>
-        </case>
-        -->
-      </switch>
-    </context>
-  </df>
+          </df>
+        </select>
+      </case>
+    </switch>
+  </select>
   
   <df tag="563" lang-xpath="rdfs:label">
     <context xpath="

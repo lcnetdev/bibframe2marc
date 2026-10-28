@@ -313,6 +313,15 @@
       </switch>
       
       <switch>
+        <case test="ancestor::bf:contribution/parent::bf:Item/bf:heldBy//@rdf:*">
+          <sf code="5">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="ancestor::bf:contribution/parent::bf:Item/bf:heldBy" />
+              </xsl:call-template>
+            </transform>
+          </sf>
+        </case>
         <case test="ancestor::bf:contribution/parent::bf:Item">
           <sf code="5">
             <transform><xsl:value-of select="$pConversionAgency" /></transform>
