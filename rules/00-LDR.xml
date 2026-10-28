@@ -59,10 +59,15 @@
         </switch>
       </position>
       <!-- 07 -->
+      
       <position default="m">
         <switch>
+          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Collection'] and 
+                      bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:issuance//@rdf:*[1] = 'http://id.loc.gov/vocabulary/issuance/mono'">d</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Collection']">c</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Integrating']">i</case>
+          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Serial'] and 
+                      bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:issuance//@rdf:*[1] = 'http://id.loc.gov/vocabulary/issuance/mono'">b</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Serial']">s</case>
         </switch>
       </position>
