@@ -1737,8 +1737,15 @@
                         <xsl:when test="bf:Work/bf:note/bf:Note/rdfs:label[contains(., 'Contains biographical information')]">d</xsl:when>
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026049' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026049']">b</xsl:when>
                         
-                        <!-- Autobiographical comics -->
+                        <!-- Autobiographical comics, and other narrowers of autobiographies -->
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026229' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026229']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026230' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026230']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026232' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026232']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026056' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026056']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2025026019' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2025026019']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2015026011' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2015026011']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026176' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026176']">a</xsl:when>
+                        <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026142' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026142']">a</xsl:when>
                         <!-- Biographical comics -->
                         <xsl:when test="bf:Work/bf:genreForm[@rdf:resource='http://id.loc.gov/authorities/genreForms/gf2014026244' or */@rdf:about='http://id.loc.gov/authorities/genreForms/gf2014026244']">b</xsl:when>
                         <xsl:otherwise><xsl:value-of select="' '"/></xsl:otherwise>
