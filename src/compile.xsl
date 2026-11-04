@@ -518,8 +518,11 @@
               <xsl:with-param name="pUri" select="substring-after($pOrgProp/@rdf:resource,'://')"/>
             </xsl:call-template>
           </xsl:when>
-          <xsl:when test="$pOrgProp/*/*:code">
-            <xsl:value-of select="$pOrgProp/*/*:code[1]" />
+          <xsl:when test="$pOrgProp/*/bf:code">
+            <xsl:value-of select="$pOrgProp/*/bf:code[1]" />
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*/madsrdf:code">
+            <xsl:value-of select="$pOrgProp/*/madsrdf:code[1]" />
           </xsl:when>
         </xsl:choose>
       </xsl:template>
