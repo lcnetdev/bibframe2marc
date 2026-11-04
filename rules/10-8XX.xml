@@ -598,8 +598,26 @@
                   </sf>
                 </case>
               </switch>
-              <sf code="5">
-                <select xpath="bflc:applicableInstitution/*/bf:code"/>
+              <sf code="5" repeatable="false">
+                <switch>
+                  <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+                    <transform>
+                      <xsl:call-template name="tOrgCode">
+                        <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="bflc:applicableInstitution">
+                    <transform>
+                      <xsl:call-template name="tOrgCode">
+                        <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="ancestor::bf:Item">
+                    <transform><xsl:value-of select="$pConversionAgency" /></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -755,8 +773,26 @@
                   </sf>
                 </case>
               </switch>
-              <sf code="5">
-                <select xpath="bflc:applicableInstitution/*/bf:code"/>
+              <sf code="5" repeatable="false">
+                <switch>
+                  <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+                    <transform>
+                      <xsl:call-template name="tOrgCode">
+                        <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="bflc:applicableInstitution">
+                    <transform>
+                      <xsl:call-template name="tOrgCode">
+                        <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="ancestor::bf:Item">
+                    <transform><xsl:value-of select="$pConversionAgency" /></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>
@@ -909,8 +945,26 @@
                   </sf>
                 </case>
               </switch>
-              <sf code="5">
-                <select xpath="bflc:applicableInstitution/*/bf:code"/>
+              <sf code="5" repeatable="false">
+                <switch>
+                  <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+                    <transform>
+                      <xsl:call-template name="tOrgCode">
+                        <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="bflc:applicableInstitution">
+                    <transform>
+                      <xsl:call-template name="tOrgCode">
+                        <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="ancestor::bf:Item">
+                    <transform><xsl:value-of select="$pConversionAgency" /></transform>
+                  </case>
+                </switch>
               </sf>
               <!-- nac $7 -->
             </df>
@@ -975,8 +1029,26 @@
                 </select>
               </sf>
               <sf code="2"><select xpath="bf:source/bf:Source/bf:code"/></sf>
-              <sf code="5">
-                <select xpath="bflc:applicableInstitution/*/bf:code"/>
+              <sf code="5" repeatable="false">
+                <switch>
+                  <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+                    <transform>
+                      <xsl:call-template name="tOrgCode">
+                        <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="bflc:applicableInstitution">
+                    <transform>
+                      <xsl:call-template name="tOrgCode">
+                        <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+                      </xsl:call-template>
+                    </transform>
+                  </case>
+                  <case test="ancestor::bf:Item">
+                    <transform><xsl:value-of select="$pConversionAgency" /></transform>
+                  </case>
+                </switch>
               </sf>
             </df>
           </case>

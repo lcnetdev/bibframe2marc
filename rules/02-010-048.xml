@@ -361,8 +361,26 @@
           </sf>
         </case>
       </switch>
-      <sf code="5">
-        <select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/>
+      <sf code="5" repeatable="false">
+        <switch>
+          <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="bflc:applicableInstitution">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="ancestor::bf:Item">
+            <transform><xsl:value-of select="$pConversionAgency" /></transform>
+          </case>
+        </switch>
       </sf>
     </context>
   </df>
@@ -763,7 +781,27 @@
       <sf code="n" chopPunct="true">
         <select xpath="bf:note/bf:Note/rdfs:label[text() != 'intervening source' and text() != 'current source']"/>
       </sf>
-      <sf code="5"><select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/></sf>
+      <sf code="5" repeatable="false">
+        <switch>
+          <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="bflc:applicableInstitution">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="ancestor::bf:Item">
+            <transform><xsl:value-of select="$pConversionAgency" /></transform>
+          </case>
+        </switch>
+      </sf>
     </context>
   </df>
 
