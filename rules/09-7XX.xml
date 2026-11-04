@@ -2205,10 +2205,28 @@
       <sf code="t" chopPunct="true" repeatable="false">
         <switch>
           <case test="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle">
-            <select xpath="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle"/>            
+            <transform>
+              <xsl:choose>
+                <xsl:when test="contains(bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle, ' : ')">
+                  <xsl:value-of select="substring-before(bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle, ' : ')" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="bf:hasInstance/bf:Instance/bf:title/bf:Title/bf:mainTitle" />
+                </xsl:otherwise>
+              </xsl:choose>
+            </transform>
           </case>
           <case test="bf:title/bf:Title/bf:mainTitle">
-            <select xpath="bf:title/bf:Title/bf:mainTitle"/>
+            <transform>
+              <xsl:choose>
+                <xsl:when test="contains(bf:title/bf:Title/bf:mainTitle, ' : ')">
+                  <xsl:value-of select="substring-before(bf:title/bf:Title/bf:mainTitle, ' : ')" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="bf:title/bf:Title/bf:mainTitle" />
+                </xsl:otherwise>
+              </xsl:choose>
+            </transform>
           </case>
         </switch>
       </sf>
