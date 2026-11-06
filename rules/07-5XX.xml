@@ -2405,7 +2405,8 @@
   </df>
 
   <select xpath="bf:Instance/bf:custodialHistory[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] | 
-                 bf:Item/bf:custodialHistory[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
+                 bf:Item/bf:custodialHistory[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))] | 
+                 bf:Instance/bf:hasItem/bf:Item/bf:custodialHistory[not(@xml:lang) or contains(translate(@xml:lang,$upper,$lower),translate($pCatScript,$upper,$lower))]">
     
     <var name="vLangTagLabel">
       <transform>
