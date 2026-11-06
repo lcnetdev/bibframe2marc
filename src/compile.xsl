@@ -508,6 +508,15 @@
           <xsl:when test="$pOrgProp/*/bf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']">
             <xsl:value-of select="$pOrgProp/*/bf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']" />
           </xsl:when>
+          <xsl:when test="$pOrgProp/*/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']">
+            <xsl:value-of select="$pOrgProp/*/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']" />
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*[contains(@rdf:about, 'id.loc.gov/vocabulary/organizations/')]/bf:code">
+            <xsl:value-of select="$pOrgProp/*/bf:code[1]" />
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*[contains(@rdf:about, 'id.loc.gov/vocabulary/organizations/')]/madsrdf:code">
+            <xsl:value-of select="$pOrgProp/*/madsrdf:code[1]" />
+          </xsl:when>
           <xsl:when test="$pOrgProp/*/@rdf:about and contains(substring-after($pOrgProp/*/@rdf:about,'://'),'/')">
             <xsl:call-template name="tUriCode">
               <xsl:with-param name="pUri" select="substring-after($pOrgProp/*/@rdf:about,'://')"/>
