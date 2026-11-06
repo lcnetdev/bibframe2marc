@@ -62,6 +62,21 @@
       
       <position default="m">
         <switch>
+          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Text'] and 
+                      bf:Work/bf:relation/bf:Relation/bf:relationship//@rdf:*[1] = 'http://id.loc.gov/vocabulary/relationship/partof' and  
+                      bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:issuance//@rdf:*[1] = 'http://id.loc.gov/vocabulary/issuance/mono'">a</case>
+          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Cartopgraphy'] and 
+                      bf:Work/bf:relation/bf:Relation/bf:relationship//@rdf:*[1] = 'http://id.loc.gov/vocabulary/relationship/partof' and  
+                      bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:issuance//@rdf:*[1] = 'http://id.loc.gov/vocabulary/issuance/mono'">a</case>
+          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Manuscript'] and 
+                      bf:Work/bf:relation/bf:Relation/bf:relationship//@rdf:*[1] = 'http://id.loc.gov/vocabulary/relationship/partof' and  
+                      bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:issuance//@rdf:*[1] = 'http://id.loc.gov/vocabulary/issuance/mono'">a</case>
+          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/NotatedMusic'] and 
+                      bf:Work/bf:relation/bf:Relation/bf:relationship//@rdf:*[1] = 'http://id.loc.gov/vocabulary/relationship/partof' and  
+                      bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:issuance//@rdf:*[1] = 'http://id.loc.gov/vocabulary/issuance/mono'">a</case>
+          <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/StillImage'] and 
+                      bf:Work/bf:relation/bf:Relation/bf:relationship//@rdf:*[1] = 'http://id.loc.gov/vocabulary/relationship/partof' and  
+                      bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:issuance//@rdf:*[1] = 'http://id.loc.gov/vocabulary/issuance/mono'">d</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Collection'] and 
                       bf:Instance[not(rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance'])]/bf:issuance//@rdf:*[1] = 'http://id.loc.gov/vocabulary/issuance/mono'">d</case>
           <case test="bf:Work/rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/Collection']">c</case>
