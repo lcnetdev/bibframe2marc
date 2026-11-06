@@ -38,5 +38,13 @@
     <x:expect label="...pos 07 determined by value of bf:Work/rdf:type/@rdf:resource when Monograph"
       test="substring(marc:record/marc:leader,8,1) = 'm'"/>
   </x:scenario>
+  
+  <x:scenario label="Checking types - 03">
+    <x:context href="../data/exemplars/id.stillimage-monograph-subjects-pnp-008q.rdf"/>
+    <x:expect label="...pos 06 determined by value of bf:Work/rdf:type/@rdf:resource when StillImage"
+      test="substring(marc:record/marc:leader,7,1) = 'k'"/>
+    <x:expect label="...pos 07 determined by value of bf:Work/rdf:type/@rdf:resource when Component part"
+      test="substring(marc:record/marc:leader,8,1) = 'd'"/>
+  </x:scenario>
 
 </x:description>
