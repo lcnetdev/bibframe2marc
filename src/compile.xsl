@@ -1094,7 +1094,7 @@
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:message>Desire to look up <xsl:value-of select="$pUri"/> but using xsltproc. No lookup occurred.</xsl:message>
-                      <xsl:value-of select="$pUri"/></xsl:otherwise>
+                    </xsl:otherwise>
                   </xsl:choose>
                 </xsl:when>
                 <xsl:when test="contains($pUri, 'id.worldcat.org/fast/')">
@@ -1127,7 +1127,7 @@
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:when>
-            <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+            <!-- <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise> -->
           </xsl:choose>
         </xsl:variable>
         <xsl:choose>
