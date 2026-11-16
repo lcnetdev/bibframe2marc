@@ -1111,9 +1111,44 @@
           </switch>
         </case>
         <case test="$vTag = '880'">
-          <sf code="a" chopPunct="true" repeatable="false">
-            <select xpath="bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript]"/>
-          </sf>
+          <switch>
+            <case test="contains(
+              bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript], 
+              ':'
+              ) and 
+              not(
+              bf:subtitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript]
+              )">
+              <sf code="a" chopPunct="true" repeatable="false">
+                <transform>
+                  <xsl:value-of select="
+                    concat(
+                    normalize-space(
+                    substring-before(
+                    bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript],
+                    ':')
+                    )
+                    , ' :'
+                    )" />
+                </transform>
+              </sf>
+              <sf code="b" chopPunct="true" repeatable="false">
+                <transform>
+                  <xsl:value-of select="
+                    normalize-space(
+                    substring-after(
+                    bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript],
+                    ':')
+                    )" />
+                </transform>
+              </sf>
+            </case>
+            <case test="default">
+              <sf code="a" chopPunct="true" repeatable="false">
+                <select xpath="bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript]"/>
+              </sf>
+            </case>
+          </switch>
           <sf code="b" chopPunct="true" repeatable="false">
             <select xpath="bf:subtitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript]"/>
           </sf>
@@ -1226,7 +1261,42 @@
           <sf code="i" chopPunct="true" repeatable="false">
             <select xpath="bf:note/bf:Note/rdfs:label"/>
           </sf>
-          <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
+            <switch>
+              <case test="contains(
+                bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)], 
+                ':'
+                ) and 
+                not(
+                bf:subtitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]
+                )">
+                <sf code="a" chopPunct="true" repeatable="false">
+                  <transform>
+                    <xsl:value-of select="
+                      concat(
+                      normalize-space(
+                      substring-before(
+                      bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)],
+                      ':')
+                      )
+                      , ' :'
+                      )" />
+                  </transform>
+                </sf>
+                <sf code="b" chopPunct="true" repeatable="false">
+                  <transform>
+                    <xsl:value-of select="
+                      normalize-space(
+                      substring-after(
+                      bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)],
+                      ':')
+                      )" />
+                  </transform>
+                </sf>
+              </case>
+              <case test="default">
+                <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
+              </case>
+            </switch>
           <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:subtitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
           <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:date[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
           <sf code="n" chopPunct="true"><select xpath="bf:partNumber[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
