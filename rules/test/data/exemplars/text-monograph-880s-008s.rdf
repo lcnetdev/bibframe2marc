@@ -1,7 +1,5 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:lcc="http://id.loc.gov/ontologies/lcc#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/22014581">
-    <bflc:aap>Ye, Shuxian, 1954-. Xuan yu shi dai : wu qian nian Zhongguo de xin qiu zheng = Black Jade Age : New Evidence of 5000 Years History of China</bflc:aap>
-    <bflc:aap-normalized>yeshuxian1954xuanyushidai:wuqiannianzhongguodexinqiuzheng=blackjadeage:newevidenceof5000yearshistoryofchina</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
@@ -75,10 +73,16 @@
       </bf:Contribution>
     </bf:contribution>
     <bf:title>
-      <bf:Title>
-	<bf:mainTitle>Xuan yu shi dai : wu qian nian Zhongguo de xin qiu zheng = Black Jade Age : New Evidence of 5000 Years History of China</bf:mainTitle>
-	<bf:mainTitle xml:lang="zh-hani">玄玉时代 : 五千年中国的新求证 = Black Jade Age : New Evidence of 5000 Years History of China</bf:mainTitle>
-      </bf:Title>
+      <bf:ParallelTitle>
+	<bf:mainTitle>Xuan yu shi dai : wu qian nian Zhongguo de xin qiu zheng</bf:mainTitle>
+	<bf:mainTitle xml:lang="zh-hani">玄玉时代 : 五千年中国的新求证</bf:mainTitle>
+      </bf:ParallelTitle>
+    </bf:title>
+    <bf:title>
+      <bf:ParallelTitle>
+	<bf:mainTitle>Black Jade Age : New Evidence of 5000 Years History of China</bf:mainTitle>
+	<bf:mainTitle xml:lang="zh-hani">Black Jade Age : New Evidence of 5000 Years History of China</bf:mainTitle>
+      </bf:ParallelTitle>
     </bf:title>
     <bf:title>
       <bf:ParallelTitle>
@@ -136,7 +140,7 @@
 	    <bf:subtitle xml:lang="zh-hani">五千年中国的新求证 = Black Jade Age : New Evidence of 5000 Years History of China</bf:subtitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:publicationStatement xmlns:exsl="http://exslt.org/common">Shanghai: Shanghai ren min chu ban she, 2020</bf:publicationStatement>
+	<bf:publicationStatement>Shanghai: Shanghai ren min chu ban she, 2020</bf:publicationStatement>
       </bf:Instance>
     </bf:hasInstance>
     <bf:subject>
@@ -173,52 +177,50 @@
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label>Jade art objects--China--History--To 221 B.C.</rdfs:label>
-	<madsrdf:authoritativeLabel>Jade art objects--China--History--To 221 B.C.</madsrdf:authoritativeLabel>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh88006828">
+	<rdfs:label xml:lang="en">Jade art objects--China--History--To 221 B.C.</rdfs:label>
+	<bflc:marcKey>150 0$aJade art objects$zChina$xHistory$yTo 221 B.C.</bflc:marcKey>
 	<madsrdf:componentList rdf:parseType="Collection">
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85069235">
-	    <rdfs:label xml:lang="en">Jade art objects</rdfs:label>
-	    <bflc:marcKey>150 0$aJade art objects</bflc:marcKey>
-	    <bf:source>
-	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-		<rdfs:label>LC Subject Headings</rdfs:label>
-	      </bf:Source>
-	    </bf:source>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Jade art objects</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Jade art objects</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Topic>
-	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n79091151-781">
-	    <rdfs:label>China</rdfs:label>
-	    <bflc:marcKey>181  $zChina</bflc:marcKey>
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">China</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">China</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Geographic>
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh99005024">
-	    <rdfs:label xml:lang="en">History</rdfs:label>
-	    <bflc:marcKey>180  $xHistory</bflc:marcKey>
-	    <bf:source>
-	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-		<rdfs:label>LC Subject Headings</rdfs:label>
-	      </bf:Source>
-	    </bf:source>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">History</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">History</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Topic>
-	  <madsrdf:Temporal rdf:about="http://id.loc.gov/authorities/subjects/sh2001008863">
-	    <rdfs:label xml:lang="en">To 221 B.C.</rdfs:label>
-	    <bflc:marcKey>182  $yTo 221 B.C.</bflc:marcKey>
-	    <bf:source>
-	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-		<rdfs:label>LC Subject Headings</rdfs:label>
-	      </bf:Source>
-	    </bf:source>
+	  <madsrdf:Temporal>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">To 221 B.C</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TemporalElement>
+		<madsrdf:elementValue xml:lang="en">To 221 B.C.</madsrdf:elementValue>
+	      </madsrdf:TemporalElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Temporal>
 	</madsrdf:componentList>
-	<bflc:aap-normalized>jadeartobjectschinahistoryto221bc</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	    <rdfs:label>LC Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -279,8 +281,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.1.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-15T18:48:18.706781-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-16T14:47:01.968683-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -311,12 +313,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bflc:marcKey>906  $a7$bcbc$corignew$d3$encip$f20$gy-nonroman</bflc:marcKey>
-	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 20 $g y-nonroman</lclocal:d906>
-	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
-	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
-	<bflc:marcKey>955  $ave11 to LC 2021-04-28$ccc18 2022-03-16 TW$dcc14 2022-03-25 (TW situational)$ecc14 2022-03-25 (TW situational) to ASIAN</bflc:marcKey>
-	<lclocal:d955>=955     $a ve11 to LC 2021-04-28 $c cc18 2022-03-16 TW $d cc14 2022-03-25 (TW situational) $e cc14 2022-03-25 (TW situational) to ASIAN</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -341,11 +337,15 @@
 	    <bf:code>pcc</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<lclocal:d985>=985     $a CNP load-new $d 2021-04-28</lclocal:d985>
 	<lclocal:batch>BibframePilot2</lclocal:batch>
-	<lclocal:d985>=985     $e BibframePilot2 $d 2022-03-25 $f cc14 2022-03-25</lclocal:d985>
+	<bflc:marcKey>906  $a7$bcbc$corignew$d3$encip$f20$gy-nonroman</bflc:marcKey>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<bflc:marcKey>955  $ave11 to LC 2021-04-28$ccc18 2022-03-16 TW$dcc14 2022-03-25 (TW situational)$ecc14 2022-03-25 (TW situational) to ASIAN</bflc:marcKey>
+	<bflc:marcKey>4900 $6880-06$aZhonghua chuang shi shen hua yan jiu gong cheng xi lie. Zhonghua chuang shi shen hua kao gu zhuan ti. Yu cheng Zhongguo</bflc:marcKey>
+	<bflc:marcKey>923  $d20210414$nUS01221118$sCNP</bflc:marcKey>
+	<bflc:marcKey>985  $aCNP load-new$d2021-04-28</bflc:marcKey>
+	<bflc:marcKey>985  $eBibframePilot2$d2022-03-25$fcc14 2022-03-25</bflc:marcKey>
 	<bflc:marcKey>999ff$i45d893f0-fc1a-5d03-abf0-7f37a899fb45$s0edea461-add2-46fc-8bbb-792c90e2a319</bflc:marcKey>
-	<lclocal:d999>=999  ff $i 45d893f0-fc1a-5d03-abf0-7f37a899fb45 $s 0edea461-add2-46fc-8bbb-792c90e2a319</lclocal:d999>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
@@ -461,8 +461,8 @@
 		<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
 		<rdfs:label>Ye, Shuxian, 1954-</rdfs:label>
 		<bflc:marcKey>1001 $aYe, Shuxian,$d1954-</bflc:marcKey>
-		<rdfs:label xml:lang="und-hani">葉舒憲, 1954-</rdfs:label>
-		<bflc:marcKey xml:lang="und-hani">4001 $a葉舒憲,$d1954-$7(bcp47)und-hani</bflc:marcKey>
+		<rdfs:label xml:lang="und-hani">叶舒宪, 1954-</rdfs:label>
+		<bflc:marcKey xml:lang="und-hani">4001 $a叶舒宪,$d1954-$7(bcp47)und-hani</bflc:marcKey>
 	      </bf:Agent>
 	    </bf:agent>
 	    <bf:role>
@@ -543,8 +543,8 @@
 		<rdf:value>1246209164</rdf:value>
 	      </bf:OclcNumber>
 	    </bf:identifiedBy>
-	    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Shanghai: Shanghai ren min chu ban she, 2020</bf:publicationStatement>
-	    <bf:publicationStatement xml:lang="zh-hani" xmlns:exsl="http://exslt.org/common">上海: 上海人民出版社, 2020</bf:publicationStatement>
+	    <bf:publicationStatement>Shanghai: Shanghai ren min chu ban she, 2020</bf:publicationStatement>
+	    <bf:publicationStatement xml:lang="zh-hani">上海: 上海人民出版社, 2020</bf:publicationStatement>
 	    <bf:editionStatement>Di 1 ban</bf:editionStatement>
 	    <bf:editionStatement xml:lang="zh-hani">第 1 版</bf:editionStatement>
 	    <bf:extent>
@@ -618,8 +618,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.1.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-15T18:48:18.706781-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-16T14:47:01.968683-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -650,12 +650,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bflc:marcKey>906  $a7$bcbc$corignew$d3$encip$f20$gy-nonroman</bflc:marcKey>
-	<lclocal:d906>=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 20 $g y-nonroman</lclocal:d906>
-	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
-	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
-	<bflc:marcKey>955  $ave11 to LC 2021-04-28$ccc18 2022-03-16 TW$dcc14 2022-03-25 (TW situational)$ecc14 2022-03-25 (TW situational) to ASIAN</bflc:marcKey>
-	<lclocal:d955>=955     $a ve11 to LC 2021-04-28 $c cc18 2022-03-16 TW $d cc14 2022-03-25 (TW situational) $e cc14 2022-03-25 (TW situational) to ASIAN</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -680,11 +674,15 @@
 	    <bf:code>pcc</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
-	<lclocal:d985>=985     $a CNP load-new $d 2021-04-28</lclocal:d985>
 	<lclocal:batch>BibframePilot2</lclocal:batch>
-	<lclocal:d985>=985     $e BibframePilot2 $d 2022-03-25 $f cc14 2022-03-25</lclocal:d985>
+	<bflc:marcKey>906  $a7$bcbc$corignew$d3$encip$f20$gy-nonroman</bflc:marcKey>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<bflc:marcKey>955  $ave11 to LC 2021-04-28$ccc18 2022-03-16 TW$dcc14 2022-03-25 (TW situational)$ecc14 2022-03-25 (TW situational) to ASIAN</bflc:marcKey>
+	<bflc:marcKey>4900 $6880-06$aZhonghua chuang shi shen hua yan jiu gong cheng xi lie. Zhonghua chuang shi shen hua kao gu zhuan ti. Yu cheng Zhongguo</bflc:marcKey>
+	<bflc:marcKey>923  $d20210414$nUS01221118$sCNP</bflc:marcKey>
+	<bflc:marcKey>985  $aCNP load-new$d2021-04-28</bflc:marcKey>
+	<bflc:marcKey>985  $eBibframePilot2$d2022-03-25$fcc14 2022-03-25</bflc:marcKey>
 	<bflc:marcKey>999ff$i45d893f0-fc1a-5d03-abf0-7f37a899fb45$s0edea461-add2-46fc-8bbb-792c90e2a319</bflc:marcKey>
-	<lclocal:d999>=999  ff $i 45d893f0-fc1a-5d03-abf0-7f37a899fb45 $s 0edea461-add2-46fc-8bbb-792c90e2a319</lclocal:d999>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>

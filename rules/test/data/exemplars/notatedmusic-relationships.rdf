@@ -1,7 +1,5 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#" xmlns:lcc="http://id.loc.gov/ontologies/lcc#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/">
   <bf:Work rdf:about="http://id.loc.gov/resources/works/21851594">
-    <bflc:aap>Handel, George Frideric, 1685-1759. Sosarme, re di Media : opera in tre atti : HWV 30 ; Fernando, re di Castiglia : (fragment)</bflc:aap>
-    <bflc:aap-normalized>handelgeorgefrideric16851759sosarmeredimedia:operaintreatti:hwv30;fernandoredicastiglia:(fragment)</bflc:aap-normalized>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/NotatedMusic"/>
     <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
     <bf:language>
@@ -111,9 +109,19 @@
       </bf:Contribution>
     </bf:contribution>
     <bf:title>
-      <bf:Title>
+      <bf:ParallelTitle>
 	<bf:mainTitle>Sosarme, re di Media : opera in tre atti : HWV 30 ; Fernando, re di Castiglia : (fragment)</bf:mainTitle>
-      </bf:Title>
+      </bf:ParallelTitle>
+    </bf:title>
+    <bf:title>
+      <bf:ParallelTitle>
+	<bf:mainTitle>Sosarme, re di Media : opera in tre atti : HWV 30 ; Fernando, re di Castiglia : libretto by Giacomo Rossi (?) after Antonio Salvi ; Deutsche Übersetzung von Peter Brenner</bf:mainTitle>
+      </bf:ParallelTitle>
+    </bf:title>
+    <bf:title>
+      <bf:ParallelTitle>
+	<bf:mainTitle>German translation by Peter Brenner</bf:mainTitle>
+      </bf:ParallelTitle>
     </bf:title>
     <bf:content>
       <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/ntm">
@@ -282,8 +290,9 @@
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:relationship>
-	  <bf:Relationship rdf:about="http://id.loc.gov/entities/relationships/libretto">
-	    <rdfs:label>Libretto</rdfs:label>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/libretto">
+	    <rdfs:label>libretto</rdfs:label>
+	    <bf:code>libretto</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
@@ -326,8 +335,9 @@
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:relationship>
-	  <bf:Relationship rdf:about="http://id.loc.gov/entities/relationships/operaadaptationof">
-	    <rdfs:label>Opera adaptation of</rdfs:label>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/adaptationof">
+	    <rdfs:label>adaptation of</rdfs:label>
+	    <bf:code>adaptationof</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
@@ -365,7 +375,7 @@
       <bf:Relation>
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/part">
-	    <rdfs:label>part</rdfs:label>
+	    <rdfs:label>contains</rdfs:label>
 	    <bf:code>part</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
@@ -424,7 +434,7 @@
       <bf:Relation>
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/part">
-	    <rdfs:label>part</rdfs:label>
+	    <rdfs:label>contains</rdfs:label>
 	    <bf:code>part</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
@@ -464,7 +474,7 @@
       <bf:Relation>
 	<bf:relationship>
 	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/part">
-	    <rdfs:label>part</rdfs:label>
+	    <rdfs:label>contains</rdfs:label>
 	    <bf:code>part</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
@@ -484,6 +494,7 @@
       </bf:Relation>
     </bf:relation>
     <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works/collection_music"/>
     <bf:hasInstance>
       <bf:Instance rdf:about="http://id.loc.gov/resources/instances/21851594">
 	<bf:title>
@@ -492,7 +503,7 @@
 	    <bf:subtitle>opera in tre atti : HWV 30 ; Fernando, re di Castiglia : (fragment)</bf:subtitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:publicationStatement xmlns:exsl="http://exslt.org/common">Kassel: Bärenreiter, [2020]</bf:publicationStatement>
+	<bf:publicationStatement>Kassel: Bärenreiter, [2020]</bf:publicationStatement>
       </bf:Instance>
     </bf:hasInstance>
     <bf:genreForm>
@@ -702,8 +713,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.1.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-15T18:48:58.039249-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-16T14:47:39.592427-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -734,14 +745,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bflc:marcKey>906  $a7$bcbc$ccopycat$d2$encip$f20$gy-genmusic</bflc:marcKey>
-	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
-	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
-	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
-	<bflc:marcKey>955  $avk39 2022-04-19 z-client$ivk39 2022-04-19$evk39 2022-05-03 c.1 to BCCD</bflc:marcKey>
-	<lclocal:d955>=955     $a vk39 2022-04-19 z-client $i vk39 2022-04-19 $e vk39 2022-05-03 c.1 to BCCD</lclocal:d955>
-	<bflc:marcKey>955  $bfd11 2020-12-22 to MBAS</bflc:marcKey>
-	<lclocal:d955>=955     $b fd11 2020-12-22 to MBAS</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -767,9 +770,13 @@
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:batch>BibframePilot2</lclocal:batch>
-	<lclocal:d985>=985     $e BibframePilot2 $d 2022-04-19 $f vk39 2022-04-19</lclocal:d985>
+	<bflc:marcKey>906  $a7$bcbc$ccopycat$d2$encip$f20$gy-genmusic</bflc:marcKey>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<bflc:marcKey>955  $avk39 2022-04-19 z-client$ivk39 2022-04-19$evk39 2022-05-03 c.1 to BCCD</bflc:marcKey>
+	<bflc:marcKey>955  $bfd11 2020-12-22 to MBAS</bflc:marcKey>
+	<bflc:marcKey>923  $d20201009$n0236649$s93001286</bflc:marcKey>
+	<bflc:marcKey>985  $eBibframePilot2$d2022-04-19$fvk39 2022-04-19</bflc:marcKey>
 	<bflc:marcKey>999ff$id6a26120-effa-5bd1-8dec-3d99188ecd15$s0b43180f-7d97-4369-a4af-fbc064c40339</bflc:marcKey>
-	<lclocal:d999>=999  ff $i d6a26120-effa-5bd1-8dec-3d99188ecd15 $s 0b43180f-7d97-4369-a4af-fbc064c40339</lclocal:d999>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
@@ -1045,7 +1052,7 @@
 		<rdf:value>1197943499</rdf:value>
 	      </bf:OclcNumber>
 	    </bf:identifiedBy>
-	    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">Kassel: Bärenreiter, [2020]</bf:publicationStatement>
+	    <bf:publicationStatement>Kassel: Bärenreiter, [2020]</bf:publicationStatement>
 	    <bf:editionStatement>Londoner Fassung = London version : 1732</bf:editionStatement>
 	    <bf:editionStatement>Klavierauszug nach dem Urtext der Hallischen Händel-Ausgabe / von Andreas Köhs = Piano reduction based on the Urtext of the Halle Handel Edition / by Andreas Köhs</bf:editionStatement>
 	    <bf:extent>
@@ -1109,8 +1116,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.1.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-15T18:48:58.039249-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-16T14:47:39.592427-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1141,14 +1148,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bflc:marcKey>906  $a7$bcbc$ccopycat$d2$encip$f20$gy-genmusic</bflc:marcKey>
-	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-genmusic</lclocal:d906>
-	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
-	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
-	<bflc:marcKey>955  $avk39 2022-04-19 z-client$ivk39 2022-04-19$evk39 2022-05-03 c.1 to BCCD</bflc:marcKey>
-	<lclocal:d955>=955     $a vk39 2022-04-19 z-client $i vk39 2022-04-19 $e vk39 2022-05-03 c.1 to BCCD</lclocal:d955>
-	<bflc:marcKey>955  $bfd11 2020-12-22 to MBAS</bflc:marcKey>
-	<lclocal:d955>=955     $b fd11 2020-12-22 to MBAS</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -1174,9 +1173,13 @@
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
 	<lclocal:batch>BibframePilot2</lclocal:batch>
-	<lclocal:d985>=985     $e BibframePilot2 $d 2022-04-19 $f vk39 2022-04-19</lclocal:d985>
+	<bflc:marcKey>906  $a7$bcbc$ccopycat$d2$encip$f20$gy-genmusic</bflc:marcKey>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<bflc:marcKey>955  $avk39 2022-04-19 z-client$ivk39 2022-04-19$evk39 2022-05-03 c.1 to BCCD</bflc:marcKey>
+	<bflc:marcKey>955  $bfd11 2020-12-22 to MBAS</bflc:marcKey>
+	<bflc:marcKey>923  $d20201009$n0236649$s93001286</bflc:marcKey>
+	<bflc:marcKey>985  $eBibframePilot2$d2022-04-19$fvk39 2022-04-19</bflc:marcKey>
 	<bflc:marcKey>999ff$id6a26120-effa-5bd1-8dec-3d99188ecd15$s0b43180f-7d97-4369-a4af-fbc064c40339</bflc:marcKey>
-	<lclocal:d999>=999  ff $i d6a26120-effa-5bd1-8dec-3d99188ecd15 $s 0b43180f-7d97-4369-a4af-fbc064c40339</lclocal:d999>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>

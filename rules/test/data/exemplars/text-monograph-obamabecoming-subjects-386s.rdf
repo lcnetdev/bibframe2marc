@@ -63,6 +63,16 @@
     <bf:classification>
       <bf:ClassificationDdc>
 	<bf:classificationPortion>973.932092</bf:classificationPortion>
+	<bf:source>
+	  <bf:Source>
+	    <bf:code>23</bf:code>
+	  </bf:Source>
+	</bf:source>
+	<bf:edition>full</bf:edition>
+      </bf:ClassificationDdc>
+    </bf:classification>
+    <bf:classification>
+      <bf:ClassificationDdc>
 	<bf:classificationPortion>B</bf:classificationPortion>
 	<bf:source>
 	  <bf:Source>
@@ -236,7 +246,7 @@
 	    <bf:mainTitle>Becoming</bf:mainTitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:publicationStatement xmlns:exsl="http://exslt.org/common">New York: Crown, an imprint of the Crown Publishing Group, [2018]</bf:publicationStatement>
+	<bf:publicationStatement>New York: Crown, an imprint of the Crown Publishing Group, [2018]</bf:publicationStatement>
       </bf:Instance>
     </bf:hasInstance>
     <bf:genreForm>
@@ -373,34 +383,32 @@
       </bf:Person>
     </bf:subject>
     <bf:subject>
-      <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label>Presidents' spouses--United States</rdfs:label>
-	<madsrdf:authoritativeLabel>Presidents' spouses--United States</madsrdf:authoritativeLabel>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85106496">
+	<rdfs:label xml:lang="en">Presidents' spouses--United States</rdfs:label>
+	<bflc:marcKey>150 0$aPresidents' spouses$zUnited States</bflc:marcKey>
 	<madsrdf:componentList rdf:parseType="Collection">
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85106498">
-	    <rdfs:label xml:lang="en">Presidents' spouses</rdfs:label>
-	    <bflc:marcKey>150  $aPresidents' spouses</bflc:marcKey>
-	    <bf:source>
-	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-		<rdfs:label>LC Subject Headings</rdfs:label>
-	      </bf:Source>
-	    </bf:source>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Presidents' spouses</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Presidents' spouses</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Topic>
-	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n78095330-781">
-	    <rdfs:label>United States</rdfs:label>
-	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">United States</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">United States</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Geographic>
 	</madsrdf:componentList>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
-	<bflc:aap-normalized>presidents'spousesunitedstates</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	    <rdfs:label>LC Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -727,9 +735,8 @@
 	  <madsrdf:Topic>
 	    <madsrdf:authoritativeLabel>Presidents' spouses</madsrdf:authoritativeLabel>
 	  </madsrdf:Topic>
-	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n78095330-781">
-	    <rdfs:label>United States</rdfs:label>
-	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
+	  <madsrdf:Geographic>
+	    <madsrdf:authoritativeLabel>United States</madsrdf:authoritativeLabel>
 	  </madsrdf:Geographic>
 	  <madsrdf:GenreForm>
 	    <madsrdf:authoritativeLabel>Biography</madsrdf:authoritativeLabel>
@@ -764,6 +771,7 @@
 	  </madsrdf:Geographic>
 	</madsrdf:componentList>
 	<bflc:aap-normalized>illinoischicago</bflc:aap-normalized>
+	<bflc:marcKey>151 4$aIllinois$zChicago</bflc:marcKey>
       </bf:Place>
     </bf:subject>
     <bf:subject>
@@ -849,8 +857,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.1.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-15T18:43:32.748778-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-16T14:42:28.928744-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -881,12 +889,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bflc:marcKey>906  $a7$bcbc$ccopycat$d1$encip$f20$gy-gencatlg</bflc:marcKey>
-	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 1 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
-	<bflc:marcKey>9250 $aacquire$b2 shelf copies$xpolicy default (ex.)</bflc:marcKey>
-	<lclocal:d925>=925  0  $a acquire $b 2 shelf copies $x policy default (ex.)</lclocal:d925>
-	<bflc:marcKey>955  $brf21 2019-03-21 z-processor$irf21 2019-03-21 HAND CARRY to SL$erf07 2019-03-21 to Hand Carry$ahh12 2019-05-06 2 copies On Order for Loan$trm11 2019-05-06 copy 2 to CALM$ahh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</bflc:marcKey>
-	<lclocal:d955>=955     $b rf21 2019-03-21 z-processor $i rf21 2019-03-21 HAND CARRY to SL $e rf07 2019-03-21 to Hand Carry $a hh12 2019-05-06 2 copies On Order for Loan $t rm11 2019-05-06 copy 2 to CALM $a hh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -911,8 +913,12 @@
 	    <bf:code>lccopycat</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
+	<bflc:marcKey>906  $a7$bcbc$ccopycat$d1$encip$f20$gy-gencatlg</bflc:marcKey>
+	<bflc:marcKey>9250 $aacquire$b2 shelf copies$xpolicy default (ex.)</bflc:marcKey>
+	<bflc:marcKey>955  $brf21 2019-03-21 z-processor$irf21 2019-03-21 HAND CARRY to SL$erf07 2019-03-21 to Hand Carry$ahh12 2019-05-06 2 copies On Order for Loan$trm11 2019-05-06 copy 2 to CALM$ahh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</bflc:marcKey>
+	<bflc:marcKey>923  $aPurchase$d20190506$n344515$sEast City Bookshop</bflc:marcKey>
+	<bflc:marcKey>923  $aPurchase$d20190725$n345912$sEast City Bookshop</bflc:marcKey>
 	<bflc:marcKey>999ff$if8223058-c841-5527-84b3-f78034d1eb64$sbd07b72d-ed27-4cf6-a9ee-099b0449b754</bflc:marcKey>
-	<lclocal:d999>=999  ff $i f8223058-c841-5527-84b3-f78034d1eb64 $s bd07b72d-ed27-4cf6-a9ee-099b0449b754</lclocal:d999>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
@@ -1127,7 +1133,7 @@
 		<rdf:value>1030413521</rdf:value>
 	      </bf:OclcNumber>
 	    </bf:identifiedBy>
-	    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">New York: Crown, an imprint of the Crown Publishing Group, [2018]</bf:publicationStatement>
+	    <bf:publicationStatement>New York: Crown, an imprint of the Crown Publishing Group, [2018]</bf:publicationStatement>
 	    <bf:editionStatement>First edition</bf:editionStatement>
 	    <bf:extent>
 	      <bf:Extent>
@@ -1196,8 +1202,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.1.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-15T18:43:32.748778-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-16T14:42:28.928744-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1228,12 +1234,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bflc:marcKey>906  $a7$bcbc$ccopycat$d1$encip$f20$gy-gencatlg</bflc:marcKey>
-	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 1 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
-	<bflc:marcKey>9250 $aacquire$b2 shelf copies$xpolicy default (ex.)</bflc:marcKey>
-	<lclocal:d925>=925  0  $a acquire $b 2 shelf copies $x policy default (ex.)</lclocal:d925>
-	<bflc:marcKey>955  $brf21 2019-03-21 z-processor$irf21 2019-03-21 HAND CARRY to SL$erf07 2019-03-21 to Hand Carry$ahh12 2019-05-06 2 copies On Order for Loan$trm11 2019-05-06 copy 2 to CALM$ahh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</bflc:marcKey>
-	<lclocal:d955>=955     $b rf21 2019-03-21 z-processor $i rf21 2019-03-21 HAND CARRY to SL $e rf07 2019-03-21 to Hand Carry $a hh12 2019-05-06 2 copies On Order for Loan $t rm11 2019-05-06 copy 2 to CALM $a hh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -1258,8 +1258,12 @@
 	    <bf:code>lccopycat</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
+	<bflc:marcKey>906  $a7$bcbc$ccopycat$d1$encip$f20$gy-gencatlg</bflc:marcKey>
+	<bflc:marcKey>9250 $aacquire$b2 shelf copies$xpolicy default (ex.)</bflc:marcKey>
+	<bflc:marcKey>955  $brf21 2019-03-21 z-processor$irf21 2019-03-21 HAND CARRY to SL$erf07 2019-03-21 to Hand Carry$ahh12 2019-05-06 2 copies On Order for Loan$trm11 2019-05-06 copy 2 to CALM$ahh12 2019-07-25 2 copies On Order for Loan Picked up by Signe Carey 6/14/2019</bflc:marcKey>
+	<bflc:marcKey>923  $aPurchase$d20190506$n344515$sEast City Bookshop</bflc:marcKey>
+	<bflc:marcKey>923  $aPurchase$d20190725$n345912$sEast City Bookshop</bflc:marcKey>
 	<bflc:marcKey>999ff$if8223058-c841-5527-84b3-f78034d1eb64$sbd07b72d-ed27-4cf6-a9ee-099b0449b754</bflc:marcKey>
-	<lclocal:d999>=999  ff $i f8223058-c841-5527-84b3-f78034d1eb64 $s bd07b72d-ed27-4cf6-a9ee-099b0449b754</lclocal:d999>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>
