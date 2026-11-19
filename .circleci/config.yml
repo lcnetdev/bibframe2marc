@@ -43,7 +43,7 @@ jobs:
             git clone https://github.com/xspec/xspec.git /tmp/xspec
       - run:
           name: Run tests
-          command: "make test XSPEC=$XSPEC"
+          command: "make test_rules XSPEC=$XSPEC"
       - store_artifacts:
           path: test/xspec/compile-result.html
           destination: xspec-tests/compile-result.html
