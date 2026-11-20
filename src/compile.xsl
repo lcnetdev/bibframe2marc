@@ -11,6 +11,7 @@
                  xmlns:local="http://example.org/local"
                  xmlns:exsl="http://exslt.org/common"
                  xmlns:xdmp="http://marklogic.com/xdmp"
+                 xmlns:http="http://expath.org/ns/http-client"
                  exclude-result-prefixes="bf2marc">
 
   <xslt:namespace-alias stylesheet-prefix="xsl" result-prefix="xslt"/>
@@ -24,8 +25,9 @@
                     xmlns:date="http://exslt.org/dates-and-times"
                     xmlns:xdmp="http://marklogic.com/xdmp"
                     xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                    xmlns:http="http://expath.org/ns/http-client"
                     extension-element-prefixes="exsl date xdmp"
-                    exclude-result-prefixes="fn rdf rdfs bf bflc madsrdf local">
+                    exclude-result-prefixes="fn rdf rdfs bf bflc madsrdf local http">
 
       <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
       <xsl:strip-space elements="*"/>
@@ -1136,6 +1138,24 @@
               <xsl:choose>
                 <xsl:when test="function-available('xdmp:document-get')">
                   <xsl:copy-of select="xdmp:document-get($vUrl)" />
+                </xsl:when>
+                <xsl:when test="function-available('http:send-request')">
+                  <xsl:variable name="httprequest">
+                    <http:request xmlns:http="http://expath.org/ns/http-client" method="get">
+                      <xsl:attribute name="href"><xsl:value-of select="$vUrl" /></xsl:attribute>
+                      <http:header name="Accept" value="application/marcxml+xml"/>
+                    </http:request>  
+                  </xsl:variable>
+                  <xsl:variable name="httprequestRes" select="exsl:node-set($httprequest)" />
+                  <xsl:variable name="httpresponse" select="http:send-request($httprequestRes/http:request)" />
+                  <xsl:choose>
+                    <xsl:when test="$httpresponse/http:response/@status = '200'">
+                      <xsl:copy-of select="$httpresponse/marc:record" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:message>HTTP response for <xsl:value-of select="$vUrl" /> was: <xsl:value-of select="$httpresponse/http:response/@status" /></xsl:message>
+                    </xsl:otherwise>
+                  </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:copy-of select="document($vUrl)" />
