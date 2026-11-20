@@ -446,8 +446,9 @@
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:relationship>
-	  <bf:Relationship rdf:about="http://id.loc.gov/entities/relationships/inspiredby">
-	    <rdfs:label>Inspired by</rdfs:label>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/inspiredby">
+	    <rdfs:label>inspired by</rdfs:label>
+	    <bf:code>inspiredby</bf:code>
 	  </bf:Relationship>
 	</bf:relationship>
 	<bf:associatedResource>
@@ -490,7 +491,7 @@
 	    <bf:subtitle>original Broadway cast recording</bf:subtitle>
 	  </bf:Title>
 	</bf:title>
-	<bf:publicationStatement xmlns:exsl="http://exslt.org/common">New York, NY: Atlantic Recording Corporation, [2015]</bf:publicationStatement>
+	<bf:publicationStatement>New York, NY: Atlantic Recording Corporation, [2015]</bf:publicationStatement>
       </bf:Instance>
     </bf:hasInstance>
     <bf:genreForm>
@@ -700,34 +701,32 @@
       </bf:Topic>
     </bf:subject>
     <bf:subject>
-      <bf:Topic>
-	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
-	<rdfs:label>Statesmen--United States</rdfs:label>
-	<madsrdf:authoritativeLabel>Statesmen--United States</madsrdf:authoritativeLabel>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2006003364">
+	<rdfs:label xml:lang="en">Statesmen--United States</rdfs:label>
+	<bflc:marcKey>150  $aStatesmen$zUnited States</bflc:marcKey>
 	<madsrdf:componentList rdf:parseType="Collection">
-	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85127538">
-	    <rdfs:label xml:lang="en">Statesmen</rdfs:label>
-	    <bflc:marcKey>150  $aStatesmen</bflc:marcKey>
-	    <bf:source>
-	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-		<rdfs:label>LC Subject Headings</rdfs:label>
-	      </bf:Source>
-	    </bf:source>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Statesmen</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Statesmen</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Topic>
-	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n78095330-781">
-	    <rdfs:label>United States</rdfs:label>
-	    <bflc:marcKey>181  $zUnited States</bflc:marcKey>
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">United States</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">United States</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
 	  </madsrdf:Geographic>
 	</madsrdf:componentList>
-	<madsrdf:isMemberOfMADSScheme>
-	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
-	  </madsrdf:MADSScheme>
-	</madsrdf:isMemberOfMADSScheme>
-	<bflc:aap-normalized>statesmenunitedstates</bflc:aap-normalized>
 	<bf:source>
 	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
-	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	    <rdfs:label>LC Subject Headings</rdfs:label>
 	  </bf:Source>
 	</bf:source>
       </bf:Topic>
@@ -858,8 +857,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.1.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-15T18:44:17.754723-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-16T14:43:07.880942-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -890,14 +889,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bflc:marcKey>906  $a7$bcbc$ccopycat$d2$encip$f20$gy-soundrec</bflc:marcKey>
-	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-soundrec</lclocal:d906>
-	<bflc:marcKey>9250 $aacquire$b2 shelf copies$xpolicy default</bflc:marcKey>
-	<lclocal:d925>=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
-	<bflc:marcKey>955  $aqr27 2017-03-03 z-client$iqr27 2017-03-03</bflc:marcKey>
-	<lclocal:d955>=955     $a qr27 2017-03-03 z-client $i qr27 2017-03-03</lclocal:d955>
-	<bflc:marcKey>955  $aLCAP batch update 2025-06-02-04:00: LCAPM-821</bflc:marcKey>
-	<lclocal:d955>=955     $a LCAP batch update 2025-06-02-04:00: LCAPM-821</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -922,8 +913,11 @@
 	    <bf:code>lccopycat</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
+	<bflc:marcKey>906  $a7$bcbc$ccopycat$d2$encip$f20$gy-soundrec</bflc:marcKey>
+	<bflc:marcKey>9250 $aacquire$b2 shelf copies$xpolicy default</bflc:marcKey>
+	<bflc:marcKey>955  $aqr27 2017-03-03 z-client$iqr27 2017-03-03</bflc:marcKey>
+	<bflc:marcKey>955  $aLCAP batch update 2025-06-02-04:00: LCAPM-821</bflc:marcKey>
 	<bflc:marcKey>999ff$i3861f94f-548e-590d-9efe-8d22ee367624$s820b220d-249d-4168-b054-1ec230d97bc1</bflc:marcKey>
-	<lclocal:d999>=999  ff $i 3861f94f-548e-590d-9efe-8d22ee367624 $s 820b220d-249d-4168-b054-1ec230d97bc1</lclocal:d999>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Work>
@@ -1423,7 +1417,7 @@
 		<rdf:value>919490894</rdf:value>
 	      </bf:OclcNumber>
 	    </bf:identifiedBy>
-	    <bf:publicationStatement xmlns:exsl="http://exslt.org/common">New York, NY: Atlantic Recording Corporation, [2015]</bf:publicationStatement>
+	    <bf:publicationStatement>New York, NY: Atlantic Recording Corporation, [2015]</bf:publicationStatement>
 	    <bf:editionStatement>[Explicit version]</bf:editionStatement>
 	    <bf:extent>
 	      <bf:Extent>
@@ -1492,8 +1486,8 @@
 	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
 	  </bf:Agent>
 	</bf:agent>
-	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.1.0"/>
-	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-15T18:44:17.754723-04:00</bf:date>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-16T14:43:07.880942-05:00</bf:date>
       </bf:AdminMetadata>
     </bf:adminMetadata>
     <bf:adminMetadata>
@@ -1524,14 +1518,6 @@
 	    </bf:assigner>
 	  </bf:Local>
 	</bf:identifiedBy>
-	<bflc:marcKey>906  $a7$bcbc$ccopycat$d2$encip$f20$gy-soundrec</bflc:marcKey>
-	<lclocal:d906>=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-soundrec</lclocal:d906>
-	<bflc:marcKey>9250 $aacquire$b2 shelf copies$xpolicy default</bflc:marcKey>
-	<lclocal:d925>=925  0  $a acquire $b 2 shelf copies $x policy default</lclocal:d925>
-	<bflc:marcKey>955  $aqr27 2017-03-03 z-client$iqr27 2017-03-03</bflc:marcKey>
-	<lclocal:d955>=955     $a qr27 2017-03-03 z-client $i qr27 2017-03-03</lclocal:d955>
-	<bflc:marcKey>955  $aLCAP batch update 2025-06-02-04:00: LCAPM-821</bflc:marcKey>
-	<lclocal:d955>=955     $a LCAP batch update 2025-06-02-04:00: LCAPM-821</lclocal:d955>
 	<bf:descriptionLanguage>
 	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
 	    <rdfs:label xml:lang="en">English</rdfs:label>
@@ -1556,8 +1542,11 @@
 	    <bf:code>lccopycat</bf:code>
 	  </bf:DescriptionAuthentication>
 	</bf:descriptionAuthentication>
+	<bflc:marcKey>906  $a7$bcbc$ccopycat$d2$encip$f20$gy-soundrec</bflc:marcKey>
+	<bflc:marcKey>9250 $aacquire$b2 shelf copies$xpolicy default</bflc:marcKey>
+	<bflc:marcKey>955  $aqr27 2017-03-03 z-client$iqr27 2017-03-03</bflc:marcKey>
+	<bflc:marcKey>955  $aLCAP batch update 2025-06-02-04:00: LCAPM-821</bflc:marcKey>
 	<bflc:marcKey>999ff$i3861f94f-548e-590d-9efe-8d22ee367624$s820b220d-249d-4168-b054-1ec230d97bc1</bflc:marcKey>
-	<lclocal:d999>=999  ff $i 3861f94f-548e-590d-9efe-8d22ee367624 $s 820b220d-249d-4168-b054-1ec230d97bc1</lclocal:d999>
       </bf:AdminMetadata>
     </bf:adminMetadata>
   </bf:Instance>

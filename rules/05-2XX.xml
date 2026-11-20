@@ -411,16 +411,32 @@
       </switch>
       <sf code="a" chopPunct="false" repeatable="false">
         <!-- The main title -->
-        <switch>
-          <case test="bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]">
-            <select xpath="bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]"/>
-          </case>
-          <case test="count(bf:mainTitle)=1 and bf:mainTitle[@xml:lang]">
-            <select xpath="bf:mainTitle[@xml:lang]" />
-          </case>
-        </switch>
+        <var name="v245a">
+          <switch>
+            <case test="bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]">
+              <select xpath="bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]"/>
+            </case>
+            <case test="count(bf:mainTitle)=1 and bf:mainTitle[@xml:lang]">
+              <select xpath="bf:mainTitle[@xml:lang]" />
+            </case>
+          </switch>
+        </var>
+        
+        <transform><xsl:value-of select="$v245a" /></transform>
+        
+        <var name="vAEndsWithEqual">
+          <transform>
+            <xsl:call-template name="tEndsWith">
+              <xsl:with-param name="pStr" select="$v245a" />
+              <xsl:with-param name="pEndChar" select="'='" />
+            </xsl:call-template>
+          </transform>
+        </var>
         
         <switch>
+          
+          <!-- Do nothing if ends with equal sign. -->
+          <case test="$vAEndsWithEqual = '1'" />
           
           <!--  If there is a partNumber, do a period. -->
           <case test="
@@ -578,12 +594,12 @@
       
       <sf code="c" chopPunct="false" repeatable="false">
         <switch>
-          <case test="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]">
-            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]"/>
+          <case test="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle or ($vLangMainTitle='' and contains(translate(@xml:lang,$upper,$lower),$pCatScriptNormalized))]">
+            <select xpath="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle or ($vLangMainTitle='' and contains(translate(@xml:lang,$upper,$lower),$pCatScriptNormalized))]"/>
             <var name="vEndsWith">
                 <transform>
                     <xsl:call-template name="tEndsWith">
-                        <xsl:with-param name="pStr" select="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle]"/>
+                      <xsl:with-param name="pStr" select="ancestor::bf:Instance/bf:responsibilityStatement[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangMainTitle or ($vLangMainTitle='' and contains(translate(@xml:lang,$upper,$lower),$pCatScriptNormalized))]"/>
                         <xsl:with-param name="pEndChar" select="'.'"/>
                     </xsl:call-template>
                 </transform>
@@ -691,14 +707,26 @@
               <case test="default">245-03</case>
             </switch>
           </sf>
-          <sf code="a" chopPunct="true" repeatable="false">
+          <sf code="a" chopPunct="false" repeatable="false">
             <switch>
               <case test="bf:mainTitle[@xml:lang and not(translate(@xml:lang,$upper,$lower)=$vLangMainTitle)]">
                 <select xpath="bf:mainTitle[@xml:lang and not(translate(@xml:lang,$upper,$lower)=$vLangMainTitle)]"/>
               </case>
             </switch>
             
+            <var name="v880AEndsWithEqual">
+              <transform>
+                <xsl:call-template name="tEndsWith">
+                  <xsl:with-param name="pStr" select="bf:mainTitle[@xml:lang and not(translate(@xml:lang,$upper,$lower)=$vLangMainTitle)]" />
+                  <xsl:with-param name="pEndChar" select="'='" />
+                </xsl:call-template>
+              </transform>
+            </var>
+            
             <switch>
+              
+              <!-- Do nothing if ends with equal sign. -->
+              <case test="$v880AEndsWithEqual = '1'" />
               
               <!--  If there is a partNumber, do a period. -->
               <case test="
@@ -866,6 +894,20 @@
                         bf:mainTitle != ''
                         ]
                       |
+                      bf:*[local-name()='Item' and contains(bf:heldBy//@rdf:*[1], '/organizations/')]/bf:title/bf:*[(
+                        local-name()='VariantTitle' or
+                        local-name()='ParallelTitle' or
+                        local-name()='TranscribedTitle' or
+                        rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/VariantTitle'] or
+                        rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bibframe/ParallelTitle'] or
+                        rdf:type[@rdf:resource='http://id.loc.gov/ontologies/bflc/TranscribedTitle']
+                      ) and
+                        not(rdf:type[@rdf:resource='http://id.loc.gov/vocabulary/vartitletype/for']) and
+                        not(bf:variantType = 'translated') and
+                        not(bf:variantType = 'former') and
+                        bf:mainTitle != ''
+                        ]
+                      |
                       bf:Instance/bf:hasItem/bf:Item/bf:title/bf:*[
                         bflc:applicableInstitution/*/bf:code='DLC' and 
                         (
@@ -958,6 +1000,8 @@
           <case test="bf:variantType = 'running'">1</case>
           <case test="bf:variantType = 'spine'">1</case>
           <case test="bf:variantType = 'cover'">1</case>
+          
+          <case test="bf:note/bf:Note/rdfs:label">1</case>
         </switch>
       </ind1>
       <ind2 default=" ">
@@ -1000,41 +1044,111 @@
       </sf>
       <switch>
         <case test="$vTag = '246'">
-          <sf code="a" chopPunct="true" repeatable="false">
-            <select xpath="bf:mainTitle[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
-          <sf code="b" chopPunct="true" repeatable="false">
-            <select xpath="bf:subtitle[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
-          <sf code="f" chopPunct="true" repeatable="false">
-            <select xpath="bf:date[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
-          <sf code="n" chopPunct="true">
-            <select xpath="bf:partNumber[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
-          <sf code="p" chopPunct="true">
-            <select xpath="bf:partName[
-                            not(@xml:lang) or 
-                            translate(@xml:lang,$upper,$lower)=$vLangTagLabel
-                        ]"/>
-          </sf>
+          <switch>
+            <case test="contains(
+                          bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangTagLabel], 
+                          ':'
+                        ) and 
+                        not(
+                          bf:subtitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangTagLabel]
+                        )">
+              <sf code="a" chopPunct="true" repeatable="false">
+                <transform>
+                  <xsl:value-of select="
+                    concat(
+                      normalize-space(
+                        substring-before(
+                          bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangTagLabel],
+                          ':')
+                        )
+                        , ' :'
+                      )" />
+                </transform>
+              </sf>
+              <sf code="b" chopPunct="true" repeatable="false">
+                <transform>
+                  <xsl:value-of select="
+                    normalize-space(
+                      substring-after(
+                        bf:mainTitle[not(@xml:lang) or translate(@xml:lang,$upper,$lower)=$vLangTagLabel],
+                        ':')
+                       )" />
+                </transform>
+              </sf>
+            </case>
+            <case test="default">
+              <sf code="a" chopPunct="true" repeatable="false">
+                <select xpath="bf:mainTitle[
+                                not(@xml:lang) or 
+                                translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                                ]"/>
+              </sf>
+              <sf code="b" chopPunct="true" repeatable="false">
+                <select xpath="bf:subtitle[
+                                not(@xml:lang) or 
+                                translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                                ]"/>
+              </sf>
+              <sf code="f" chopPunct="true" repeatable="false">
+                <select xpath="bf:date[
+                                not(@xml:lang) or 
+                                translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                              ]"/>
+              </sf>
+              <sf code="n" chopPunct="true">
+                <select xpath="bf:partNumber[
+                                  not(@xml:lang) or 
+                                  translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                                ]"/>
+              </sf>
+              <sf code="p" chopPunct="true">
+                <select xpath="bf:partName[
+                                not(@xml:lang) or 
+                                translate(@xml:lang,$upper,$lower)=$vLangTagLabel
+                              ]"/>
+              </sf>
+            </case>
+          </switch>
         </case>
         <case test="$vTag = '880'">
-          <sf code="a" chopPunct="true" repeatable="false">
-            <select xpath="bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript]"/>
-          </sf>
+          <switch>
+            <case test="contains(
+              bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript], 
+              ':'
+              ) and 
+              not(
+              bf:subtitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript]
+              )">
+              <sf code="a" chopPunct="true" repeatable="false">
+                <transform>
+                  <xsl:value-of select="
+                    concat(
+                    normalize-space(
+                    substring-before(
+                    bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript],
+                    ':')
+                    )
+                    , ' :'
+                    )" />
+                </transform>
+              </sf>
+              <sf code="b" chopPunct="true" repeatable="false">
+                <transform>
+                  <xsl:value-of select="
+                    normalize-space(
+                    substring-after(
+                    bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript],
+                    ':')
+                    )" />
+                </transform>
+              </sf>
+            </case>
+            <case test="default">
+              <sf code="a" chopPunct="true" repeatable="false">
+                <select xpath="bf:mainTitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript]"/>
+              </sf>
+            </case>
+          </switch>
           <sf code="b" chopPunct="true" repeatable="false">
             <select xpath="bf:subtitle[translate(@xml:lang,$upper,$lower)=$vLangTagScript]"/>
           </sf>
@@ -1049,7 +1163,24 @@
           </sf>
         </case>
       </switch>
-      <sf code="5" repeatable="false"><select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/></sf>
+      <sf code="5" repeatable="false">
+        <switch>
+          <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="bflc:applicableInstitution">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+              </xsl:call-template>
+            </transform>
+          </case>
+        </switch>
+      </sf>
       <sf code="7">
         <switch>
           <case test="$vOccurrenceNumber = '00' and $vLangTagScript!=''">
@@ -1130,12 +1261,64 @@
           <sf code="i" chopPunct="true" repeatable="false">
             <select xpath="bf:note/bf:Note/rdfs:label"/>
           </sf>
-          <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
+            <switch>
+              <case test="contains(
+                bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)], 
+                ':'
+                ) and 
+                not(
+                bf:subtitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]
+                )">
+                <sf code="a" chopPunct="true" repeatable="false">
+                  <transform>
+                    <xsl:value-of select="
+                      concat(
+                      normalize-space(
+                      substring-before(
+                      bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)],
+                      ':')
+                      )
+                      , ' :'
+                      )" />
+                  </transform>
+                </sf>
+                <sf code="b" chopPunct="true" repeatable="false">
+                  <transform>
+                    <xsl:value-of select="
+                      normalize-space(
+                      substring-after(
+                      bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)],
+                      ':')
+                      )" />
+                  </transform>
+                </sf>
+              </case>
+              <case test="default">
+                <sf code="a" chopPunct="true" repeatable="false"><select xpath="bf:mainTitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
+              </case>
+            </switch>
           <sf code="b" chopPunct="true" repeatable="false"><select xpath="bf:subtitle[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
           <sf code="f" chopPunct="true" repeatable="false"><select xpath="bf:date[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
           <sf code="n" chopPunct="true"><select xpath="bf:partNumber[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
           <sf code="p" chopPunct="true"><select xpath="bf:partName[contains(translate(@xml:lang,$upper,$lower), $vScript)]"/></sf>
-          <sf code="5" repeatable="false"><select xpath="bflc:applicableInstitution/bf:Agent/bf:code"/></sf>
+          <sf code="5" repeatable="false">
+            <switch>
+              <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+                <transform>
+                  <xsl:call-template name="tOrgCode">
+                    <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+                  </xsl:call-template>
+                </transform>
+              </case>
+              <case test="bflc:applicableInstitution">
+                <transform>
+                  <xsl:call-template name="tOrgCode">
+                    <xsl:with-param name="pOrgProp" select="bflc:applicableInstitution" />
+                  </xsl:call-template>
+                </transform>
+              </case>
+            </switch>
+          </sf>
           <sf code="7">
             <transform>
               <xsl:variable name="bcp47code">
@@ -1903,7 +2086,7 @@
     </switch>
   </select>
 
-  <df tag="264" repeatable="false">
+  <df tag="264" repeatable="true">
     <context xpath="bf:Instance[not(rdf:type/@rdf:resource='http://id.loc.gov/ontologies/bflc/SecondaryInstance')]/bf:copyrightDate[. != '']">
       <ind1 default=" "/>
       <ind2 default="4"/>

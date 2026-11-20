@@ -11,6 +11,7 @@
                  xmlns:local="http://example.org/local"
                  xmlns:exsl="http://exslt.org/common"
                  xmlns:xdmp="http://marklogic.com/xdmp"
+                 xmlns:http="http://expath.org/ns/http-client"
                  exclude-result-prefixes="bf2marc">
 
   <xslt:namespace-alias stylesheet-prefix="xsl" result-prefix="xslt"/>
@@ -24,8 +25,9 @@
                     xmlns:date="http://exslt.org/dates-and-times"
                     xmlns:xdmp="http://marklogic.com/xdmp"
                     xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                    xmlns:http="http://expath.org/ns/http-client"
                     extension-element-prefixes="exsl date xdmp"
-                    exclude-result-prefixes="fn rdf rdfs bf bflc madsrdf local">
+                    exclude-result-prefixes="fn rdf rdfs bf bflc madsrdf local http">
 
       <xsl:output encoding="UTF-8" method="xml" indent="yes"/>
       <xsl:strip-space elements="*"/>
@@ -502,6 +504,41 @@
       </xsl:template>
 
       <!-- get the code (last element) from a URI -->
+      <xsl:template name="tOrgCode">
+        <xsl:param name="pOrgProp"/> <!-- bf:heldBy or bflc:applicableInstitution, etc. -->
+        <xsl:choose>
+          <xsl:when test="$pOrgProp/*/bf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']">
+            <xsl:value-of select="$pOrgProp/*/bf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']" />
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']">
+            <xsl:value-of select="$pOrgProp/*/madsrdf:code[@rdf:datatype='http://id.loc.gov/datatypes/orgs/code']" />
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*[contains(@rdf:about, 'id.loc.gov/vocabulary/organizations/')]/bf:code">
+            <xsl:value-of select="$pOrgProp/*/bf:code[1]" />
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*[contains(@rdf:about, 'id.loc.gov/vocabulary/organizations/')]/madsrdf:code">
+            <xsl:value-of select="$pOrgProp/*/madsrdf:code[1]" />
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*/@rdf:about and contains(substring-after($pOrgProp/*/@rdf:about,'://'),'/')">
+            <xsl:call-template name="tUriCode">
+              <xsl:with-param name="pUri" select="substring-after($pOrgProp/*/@rdf:about,'://')"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="$pOrgProp/@rdf:resource and contains(substring-after($pOrgProp/@rdf:resource,'://'),'/')">
+            <xsl:call-template name="tUriCode">
+              <xsl:with-param name="pUri" select="substring-after($pOrgProp/@rdf:resource,'://')"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*/bf:code">
+            <xsl:value-of select="$pOrgProp/*/bf:code[1]" />
+          </xsl:when>
+          <xsl:when test="$pOrgProp/*/madsrdf:code">
+            <xsl:value-of select="$pOrgProp/*/madsrdf:code[1]" />
+          </xsl:when>
+        </xsl:choose>
+      </xsl:template>
+    
+      <!-- get the code (last element) from a URI -->
       <xsl:template name="tUriCode">
         <xsl:param name="pUri"/>
         <xsl:choose>
@@ -691,10 +728,10 @@
                     <xsl:when test="not($langcode-to-scriptNS/langcode-script[langcode=$l])">
                       <xsl:value-of select="$spart" />
                     </xsl:when>
+                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l]/script = $spart" />
                     <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l]/script != $spart">
                       <xsl:value-of select="$spart" />
                     </xsl:when>
-                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l]/script = $spart" />
                   </xsl:choose>
                 </xsl:variable>
                 <xsl:choose>
@@ -722,11 +759,11 @@
                     <xsl:when test="not($langcode-to-scriptNS/langcode-script[langcode=$lpart])">
                       <xsl:value-of select="$spart" />
                     </xsl:when>
+                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script = $spart">
+                      <xsl:value-of select="''" />
+                    </xsl:when>
                     <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script != $spart">
                       <xsl:value-of select="$spart" />
-                    </xsl:when>
-                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script = $spart">
-                        <xsl:value-of select="''" />
                     </xsl:when>
                   </xsl:choose>
                 </xsl:variable>
@@ -862,8 +899,8 @@
                 </xsl:variable>
                 <xsl:variable name="s">
                   <xsl:choose>
-                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l]/script">
-                      <xsl:value-of select="$langcode-to-scriptNS/langcode-script[langcode=$l]/script" />
+                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$l][1]/script">
+                      <xsl:value-of select="$langcode-to-scriptNS/langcode-script[langcode=$l][1]/script" />
                     </xsl:when>
                   </xsl:choose>
                 </xsl:variable>
@@ -884,8 +921,8 @@
                 <xsl:variable name="lpart" select="$first2" />
                 <xsl:variable name="s">
                   <xsl:choose>
-                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script">
-                      <xsl:value-of select="$langcode-to-scriptNS/langcode-script[langcode=$lpart]/script" />
+                    <xsl:when test="$langcode-to-scriptNS/langcode-script[langcode=$lpart][1]/script">
+                      <xsl:value-of select="$langcode-to-scriptNS/langcode-script[langcode=$lpart][1]/script" />
                     </xsl:when>
                   </xsl:choose>
                 </xsl:variable>
@@ -1059,7 +1096,7 @@
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:message>Desire to look up <xsl:value-of select="$pUri"/> but using xsltproc. No lookup occurred.</xsl:message>
-                      <xsl:value-of select="$pUri"/></xsl:otherwise>
+                    </xsl:otherwise>
                   </xsl:choose>
                 </xsl:when>
                 <xsl:when test="contains($pUri, 'id.worldcat.org/fast/')">
@@ -1092,7 +1129,7 @@
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:when>
-            <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise>
+            <!-- <xsl:otherwise><xsl:value-of select="$pUri"/></xsl:otherwise> -->
           </xsl:choose>
         </xsl:variable>
         <xsl:choose>
@@ -1101,6 +1138,27 @@
               <xsl:choose>
                 <xsl:when test="function-available('xdmp:document-get')">
                   <xsl:copy-of select="xdmp:document-get($vUrl)" />
+                </xsl:when>
+                <xsl:when test="function-available('http:send-request')">
+                  <xsl:variable name="httprequest">
+                    <http:request xmlns:http="http://expath.org/ns/http-client" method="get">
+                      <xsl:attribute name="href"><xsl:value-of select="$vUrl" /></xsl:attribute>
+                      <http:header name="Accept" value="application/marcxml+xml"/>
+                      <http:header name="User-Agent">
+                        <xsl:attribute name="value"><xsl:value-of select="$vCurrentVersion" /></xsl:attribute>
+                      </http:header>
+                    </http:request>  
+                  </xsl:variable>
+                  <xsl:variable name="httprequestRes" select="exsl:node-set($httprequest)" />
+                  <xsl:variable name="httpresponse" select="http:send-request($httprequestRes/http:request)" />
+                  <xsl:choose>
+                    <xsl:when test="$httpresponse/http:response/@status = '200'">
+                      <xsl:copy-of select="$httpresponse/marc:record" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:message>HTTP response for <xsl:value-of select="$vUrl" /> was: <xsl:value-of select="$httpresponse/http:response/@status" /></xsl:message>
+                    </xsl:otherwise>
+                  </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:copy-of select="document($vUrl)" />

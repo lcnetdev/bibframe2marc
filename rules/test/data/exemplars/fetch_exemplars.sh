@@ -48,6 +48,7 @@ declare -A exemplars=(
 
 ["22915593"]="text-monograph-880s-and-100-245-246-247-264-700-cyrllic"
 ["16777386"]="text-serial-880s-and-245-246-247-264-710-780-chinese"
+["21550295"]="text-880s-russian-item"
 )
 
 for key in "${!exemplars[@]}"; do

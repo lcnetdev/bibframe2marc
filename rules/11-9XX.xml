@@ -8,7 +8,7 @@
        xmlns:marc="http://www.loc.gov/MARC21/slim"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <select xpath="$vAdminMetadata/bflc:marcKey[starts-with(., '9')]">
+  <select xpath="$vAdminMetadata[bf:descriptionLevel or bf:descriptionConventions or bflc:encodingLevel]/bflc:marcKey[starts-with(., '9')]">
     <var name="vTag">
       <transform><xsl:value-of select="substring(., 1, 3)" /></transform>
     </var>

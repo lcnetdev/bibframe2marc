@@ -94,6 +94,21 @@
             </case>
           </switch>
         </var>
+        <var name="vLangTagLabel">
+          <transform>
+            <xsl:call-template name="tGetBCP47RegField">
+              <xsl:with-param name="x" select="self::node()/*/bflc:marcKey" />
+            </xsl:call-template>
+          </transform>
+        </var>
+        <var name="vLangTagScript">
+          <transform>
+            <xsl:call-template name="tGetBCP47for880">
+              <xsl:with-param name="x" select="self::node()/*/bflc:marcKey" />
+              <xsl:with-param name="bcp47forRegField" select="$vLangTagLabel" />
+            </xsl:call-template>
+          </transform>
+        </var>
         <var name="vNameVariantPreNS">
           <transform>
             <xsl:if test="$v880Script != ''">
@@ -229,6 +244,14 @@
                 </transform>
               </sf>
             </case>
+            <case test="self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource != '' and
+                        self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource != $relURI">
+              <sf code="0">
+                <transform>
+                  <xsl:value-of select="self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource" />
+                </transform>
+              </sf>
+            </case>
           </switch>
         </var>
         
@@ -277,6 +300,7 @@
               <case test="contains($vMainSourceUri, '/subjectSchemes/nal')">3</case>
               <case test="contains($vMainSourceUri, '/subjectSchemes/cash')">5</case>
               <case test="contains($vMainSourceUri, '/subjectSchemes/rvm')">6</case>
+              <case test="contains($vMainSourceUri, 'vocabulary/subjectSchemes/')">7</case>
             </switch>
           </ind2>
           <switch>
@@ -321,6 +345,14 @@
               <case test="contains($relURI, '/graphicMaterials/')">lctgm</case>
               <case test="contains($relURI, '/fast/')">fast</case>
               <case test="contains($relURI, 'd-nb.info/gnd/')">gnd</case>
+              <case test="not(contains($relURI, 'loc.gov/authorities/')) and 
+                          contains($vMainSourceUri, 'vocabulary/subjectSchemes/')">
+                <transform>
+                  <xsl:call-template name="tUriCode">
+                    <xsl:with-param name="pUri" select="$vMainSourceUri"/>
+                  </xsl:call-template>
+                </transform>
+              </case>
             </switch>
           </sf>
           <transform><xsl:copy-of select="$vShared0and1" /></transform>
@@ -420,6 +452,16 @@
                 </switch>
               </sf>
               <transform><xsl:copy-of select="$vShared0and1" /></transform>
+              <sf code="7">
+                <transform>
+                  <xsl:variable name="bcp47code">
+                    <xsl:call-template name="tOutputBCP47">
+                      <xsl:with-param name="bcp47orig" select="$vLangTagScript" />
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <xsl:value-of select="concat('(bcp47)', $bcp47code)" />
+                </transform>
+              </sf>
             </df>
           </case>
         </switch>
@@ -584,23 +626,32 @@
         </var>
         <var name="vSharedDollar0s">
           <switch>
-            <case test="1=1">
-          <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
-          <sf code="0">
-            <select xpath="*/bf:identifiedBy/bf:Identifier">
-              <transform>
-                <xsl:variable name="vIdType">
-                  <xsl:call-template name="tChopPunct">
-                    <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
-                  </xsl:call-template>
-                </xsl:variable>
-                <xsl:choose>
-                  <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
-                  <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
-                </xsl:choose>
-              </transform>
-            </select>
-          </sf>
+            <case test="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]">
+              <sf code="0"><select xpath="*/@rdf:about[not(contains(.,'example.org')) and not(contains(.,'REPLACE'))]"/></sf>
+            </case>
+            <case test="*/bf:identifiedBy/bf:Identifier">
+              <sf code="0">
+                <select xpath="*/bf:identifiedBy/bf:Identifier">
+                  <transform>
+                    <xsl:variable name="vIdType">
+                      <xsl:call-template name="tChopPunct">
+                        <xsl:with-param name="pString" select="bf:source/bf:Source/bf:code"/>
+                      </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="$vIdType != ''"><xsl:value-of select="concat('(',$vIdType,')',rdf:value)"/></xsl:when>
+                      <xsl:otherwise><xsl:value-of select="rdf:value"/></xsl:otherwise>
+                    </xsl:choose>
+                  </transform>
+                </select>
+              </sf>
+            </case>
+            <case test="self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource != ''">
+              <sf code="0">
+                <transform>
+                  <xsl:value-of select="self::node()/*/madsrdf:isIdentifiedByAuthority/@rdf:resource" />
+                </transform>
+              </sf>
             </case>
           </switch>
         </var>
@@ -2532,13 +2583,20 @@
           <case test="contains($relURI, 'd-nb.info/gnd/')">gnd</case>
         </switch>
       </sf>
-      <switch>
-        <case test="parent::bf:genreForm/parent::bf:Item">
-          <sf code="5">
+      <sf code="5" repeatable="false">
+        <switch>
+          <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="parent::bf:genreForm/parent::bf:Item">
             <transform><xsl:value-of select="$pConversionAgency" /></transform>
-          </sf>
-        </case>
-      </switch>
+          </case>
+        </switch>
+      </sf>
       <switch>
         <case test="$relURI != ''">
           <sf code="0">
@@ -2768,7 +2826,25 @@
         </switch>
       </sf>
       <sf code="5" repeatable="false">
-        <select xpath="*/bflc:applicableInstitution/*/bf:code"/>
+        <switch>
+          <case test="ancestor::bf:Item/bf:heldBy//@rdf:*">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="ancestor::bf:Item/bf:heldBy" />
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="*/bflc:applicableInstitution">
+            <transform>
+              <xsl:call-template name="tOrgCode">
+                <xsl:with-param name="pOrgProp" select="*/bflc:applicableInstitution" />
+              </xsl:call-template>
+            </transform>
+          </case>
+          <case test="ancestor::bf:Item">
+            <transform><xsl:value-of select="$pConversionAgency" /></transform>
+          </case>
+        </switch>
       </sf>
     </context>
   </df>

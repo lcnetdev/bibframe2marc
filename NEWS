@@ -1,3 +1,28 @@
+--- 3.2.0 2026/11/20
+
+Changes for updated v3.2.0 specifications:
+
+008-bf2marc
+    Added mapping of new 008/21 codes for continuing resources.
+
+Instance-bf2marc
+    Changed creation of $5; code is taken from URI in Item bf:heldBy resource since bflc:applicableInstitution resources are no longer created.
+
+Item-bf2marc
+    Added conversion of variant title resources.
+    Changed creation of $5; code is taken from URI in bf:heldBy resource since bflc:applicableInstitution resources are no longer created.
+
+Work-bf2marc
+    Editorial cleanup to convert bf:musicMedium resources.
+    Added creation of 341 $h.
+    Refined creation of 700-730 second indicator based on contents of bf:relationship URIs.
+    Changed creation of $5; code is taken from URI in Item bf:heldBy resource since bflc:applicableInstitution resources are no longer created.
+    Added creation of L/07="b" and "d" codes and refined data output in MARC 334 field based on changes in Official RDA.
+
+Process0-4
+    Updated creation of 856 field in Process 4 to add default indicator values.
+
+
 --- 3.1.0 2026/04/16
 
 Changes for updated v3.1.0 specifications:
