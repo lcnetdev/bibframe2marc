@@ -1144,6 +1144,9 @@
                     <http:request xmlns:http="http://expath.org/ns/http-client" method="get">
                       <xsl:attribute name="href"><xsl:value-of select="$vUrl" /></xsl:attribute>
                       <http:header name="Accept" value="application/marcxml+xml"/>
+                      <http:header name="User-Agent">
+                        <xsl:attribute name="value"><xsl:value-of select="$vCurrentVersion" /></xsl:attribute>
+                      </http:header>
                     </http:request>  
                   </xsl:variable>
                   <xsl:variable name="httprequestRes" select="exsl:node-set($httprequest)" />
